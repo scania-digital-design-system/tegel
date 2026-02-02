@@ -41,8 +41,6 @@
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
     z-index: calc(var(--tds-z-index-header) + 1);
-    padding-top: 2px;
-    border-bottom: 2px solid var(--header-nav-item-border-active);
 
     &:hover {
       background-color: var(--header-basic-element-background-pressed);
@@ -99,8 +97,6 @@
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
     z-index: calc(var(--tds-z-index-header) + 1);
-    padding-top: calc(var(--component-header-space-profile-padding) - 2px);
-    border-bottom: 2px solid var(--header-nav-item-border-active);
 
     &:hover {
       background-color: var(--header-basic-element-background-pressed);
