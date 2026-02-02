@@ -54,8 +54,8 @@
     top: calc(50% + 24px);
   }
 
-  :has(.tl-text-field__input:disabled) {
-    pointer-events: none;
+  &:has(.tl-text-field__input:disabled) {
+    cursor: not-allowed;
   }
 
   .tl-icon {
@@ -110,6 +110,7 @@
     background-color: var(--text-field-background-disabled);
     color: var(--text-field-text-disabled);
     cursor: not-allowed;
+    pointer-events: none;
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {

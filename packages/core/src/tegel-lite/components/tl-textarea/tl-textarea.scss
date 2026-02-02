@@ -15,9 +15,8 @@
     min-width: auto;
   }
 
-  :has(.tl-textarea__input:disabled) {
+  &:has(.tl-textarea__input:disabled) {
     cursor: not-allowed;
-    pointer-events: none;
   }
 
   // Readonly icon (on wrapper because ::before doesn't work on textarea element)
@@ -174,6 +173,7 @@
     box-shadow: none;
     color: var(--textarea-text-disabled);
     cursor: not-allowed;
+    pointer-events: none;
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
