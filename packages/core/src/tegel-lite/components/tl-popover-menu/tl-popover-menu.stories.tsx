@@ -57,10 +57,10 @@ export default {
   args: {
     modeVariant: 'Primary',
     showPopoverMenu: false,
-    fluidWidth: false,
-    animation: 'none',
     showIcon: false,
     icon: 'share',
+    fluidWidth: false,
+    animation: 'none',
   },
 };
 

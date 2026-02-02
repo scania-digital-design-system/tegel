@@ -35,10 +35,10 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    showLeftButton: false,
-    showRightButton: false,
     selectedIndex: 0,
     leftPadding: 32,
+    showLeftButton: false,
+    showRightButton: false,
   },
 };
 

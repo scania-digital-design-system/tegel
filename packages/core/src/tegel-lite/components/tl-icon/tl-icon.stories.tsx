@@ -25,8 +25,8 @@ export default {
     },
   },
   args: {
-    icon: 'info',
     size: '24',
+    icon: 'info',
   },
 };
 
