@@ -140,7 +140,7 @@ const Template = ({
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
               <ul class="tl-header__launcher-menu-grid">
-                <li class="tl-header__launcher-menu-title">title</li>
+                <li class="tl-header__launcher-menu-title">CATEGORY NAME</li>
                 <ul class="tl-header__launcher-menu-list">
                   <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
                   <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--settings tl-icon--32"></span>My Settings</a></li>
@@ -159,7 +159,7 @@ const Template = ({
                 <span class="tl-icon tl-icon--burger tl-icon--16"></span>
               </button>
               <ul class="tl-header__launcher-menu">
-                <li class="tl-header__launcher-menu-title">title</li>
+                <li class="tl-header__launcher-menu-title">CATEGORY NAME</li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">My Profile</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My settings</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">Support</a></li>

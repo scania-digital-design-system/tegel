@@ -5,7 +5,7 @@
 
   /* Nav-item states */
   --header-nav-item-background-hover: var(--color-background-surface-100);
-  --header-nav-item-background-selected: var(--color-background-surface-100);
+  --header-nav-item-background-selected: var(--component-header-dropdown-item-background);
   --header-nav-item-border-pressed: var(--color-foreground-border-accent-focus);
   --header-item-hover: var(--component-header-color-background-hover);
 
@@ -20,11 +20,11 @@
   --tds-header-nav-item-dropdown-opened-background-pressed: var(--tds-grey-300);
   --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
 
-  /* Basic element (“Bento”) separators & backgrounds */
+  /* Basic element ("Bento") separators & backgrounds */
   --header-basic-element-border: var(--component-header-color-background-border);
   --header-basic-element-border-open: var(--component-header-color-background-open);
-  --header-basic-element-background-pressed: var(--component-header-color-background-pressed);
-  --header-basic-element-background-selected: var(--component-header-color-background-selected);
+  --header-basic-element-background-pressed: var(--component-header-dropdown-item-background);
+  --header-basic-element-background-selected: var(--component-header-dropdown-item-background);
 
   /* Avatar dropdown */
   --header-avatar-item-background: var(--component-header-avatar-item-background);
@@ -79,5 +79,6 @@
 
   .tl-header {
     --component-header-space-profile-padding: 20px;
+    --header-background: transparent;
   }
 }

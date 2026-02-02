@@ -41,6 +41,8 @@
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
     z-index: calc(var(--tds-z-index-header) + 1);
+    padding-top: 2px;
+    border-bottom: 2px solid var(--header-nav-item-border-active);
 
     &:hover {
       background-color: var(--header-basic-element-background-pressed);
@@ -97,6 +99,8 @@
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
     z-index: calc(var(--tds-z-index-header) + 1);
+    padding-top: calc(var(--component-header-space-profile-padding) - 2px);
+    border-bottom: 2px solid var(--header-nav-item-border-active);
 
     &:hover {
       background-color: var(--header-basic-element-background-pressed);
@@ -259,9 +263,9 @@
 }
 
 .tl-header__user-menu-header {
-  @include headline-07;
+  @include detail-06;
 
-  color: var(--header-nav-item-dropdown-opened);
+  color: var(--color-foreground-text-defined);
 }
 
 .tl-header__user-menu-subheader {
@@ -292,11 +296,15 @@
 .tl-header__launcher-menu-title {
   all: unset;
   box-sizing: border-box;
-  @include detail-06;
+  font-family: var(--text-component-title-02-font-family);
+  font-size: var(--text-component-title-02-font-size);
+  line-height: var(--text-component-title-02-line-height);
+  font-weight: var(--text-component-title-02-font-weight);
+  letter-spacing: var(--text-component-title-02-letter-spacing);
+  text-transform: var(--text-component-title-02-text-transform);
 
   background-color: var(--header-nav-dropdown-item-background);
   color: var(--header-app-launcher-grid-category-title);
-  text-transform: uppercase;
   height: 48px;
   padding: 0 16px;
   display: flex;
@@ -318,7 +326,7 @@ button {
     @include detail-02;
 
     background-color: var(--header-nav-dropdown-item-background);
-    color: var(--header-nav-item-dropdown-opened);
+    color: var(--color-foreground-text-defined);
 
     &:hover {
       background-color: var(--header-nav-item-background-hover);
@@ -350,7 +358,7 @@ button {
     @include detail-05;
 
     background-color: var(--header-nav-dropdown-item-background);
-    color: var(--header-nav-item-dropdown-opened);
+    color: var(--color-foreground-text-defined);
     border-radius: 4px;
     transition: background-color 150ms ease;
 
