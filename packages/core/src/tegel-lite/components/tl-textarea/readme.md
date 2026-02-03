@@ -58,10 +58,10 @@ Apply these classes to the `.tl-textarea` element.
 
 | Modifier                   | Description                           |
 | -------------------------- | ------------------------------------- |
-| `.tl-textarea--disabled`   | Disabled state                        |
-| `.tl-textarea--readonly`   | Read-only state with edit icon        |
 | `.tl-textarea--error`      | Error state with error styling        |
 | `.tl-textarea--success`    | Success state with success styling    |
+
+**Note:** Use the native `disabled` and `readonly` attributes on the `<textarea>` element for disabled and read-only states. The component will automatically style these states.
 
 ### Textarea Layout Modifiers
 

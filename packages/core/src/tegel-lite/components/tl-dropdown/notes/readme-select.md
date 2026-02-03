@@ -48,6 +48,8 @@ Apply these classes to the `.tl-dropdown` container element.
 
 **Note:** Label is positioned outside the dropdown by default.
 
+**Disabled State:** Use the native `disabled` attribute on the `<select>` element for disabled state. The component will automatically style the disabled state.
+
 ## JavaScript
 
 The native select variant uses the browser's built-in functionality and **does not require custom JavaScript**.
