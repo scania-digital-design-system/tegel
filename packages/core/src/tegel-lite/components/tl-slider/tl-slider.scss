@@ -10,11 +10,6 @@
 
   width: 100%;
 
-  &:has(input[type='range']:disabled) {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
   &:has(input[type='range'][readonly]):not(:has(input[type='range']:disabled)) {
     pointer-events: none;
   }
@@ -285,7 +280,7 @@
 
   :has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
-    cursor: default;
+    cursor: not-allowed;
 
     &::before {
       display: none;

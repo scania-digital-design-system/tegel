@@ -2,6 +2,12 @@
 @use '../../../mixins/focus-state' as *;
 @use './tl-toggle-vars' as *;
 
+.tl-toggle {
+  &:has(input[type='checkbox']:disabled) {
+    cursor: not-allowed;
+  }
+}
+
 .tl-toggle__input {
   appearance: initial;
   margin: 0;
@@ -68,6 +74,7 @@
 
   &:disabled {
     pointer-events: none;
+    cursor: not-allowed;
 
     &::before {
       background-color: var(--toggle-disabled);
@@ -133,6 +140,7 @@
   :has(input[type='checkbox']:disabled) & {
     color: var(--toggle-disabled);
     user-select: none;
+    cursor: not-allowed;
   }
 }
 
@@ -149,5 +157,6 @@
   input[type='checkbox']:disabled ~ & {
     color: var(--toggle-disabled);
     pointer-events: none;
+    cursor: not-allowed;
   }
 }
