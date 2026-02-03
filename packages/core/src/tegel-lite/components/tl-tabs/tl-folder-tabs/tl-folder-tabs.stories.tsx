@@ -7,8 +7,8 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     showLeftButton: {
       name: 'Show left scroll button',
@@ -28,7 +28,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -36,8 +36,7 @@ export default {
 };
 
 const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tl-folder-tabs--${modeVariant.toLowerCase()}` : '';
+  const modeClass = `tl-folder-tabs--${modeVariant.toLowerCase()}`;
 
   const labels = ['First tab', 'Second tab is muuuuuuch longer', 'Third tab', 'Fourth tab'];
 
@@ -85,11 +84,9 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
     -->
 
     <div class="tl-folder-tabs ${modeClass}">
-      <div class="tl-folder-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->

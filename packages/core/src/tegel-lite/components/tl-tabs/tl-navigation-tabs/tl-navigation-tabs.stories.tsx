@@ -28,7 +28,7 @@ export default {
     },
     leftPadding: {
       name: 'Left Padding',
-      description: 'Sets the custom left padding for the wrapper element. Accepts a numeric value.',
+      description: 'Sets the custom left padding for the tabs container. Accepts a numeric value.',
       control: { type: 'number' },
       table: { defaultValue: { summary: 32 } },
     },
@@ -88,11 +88,9 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
     -->
 
     <div class="tl-navigation-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
-      <div class="tl-navigation-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->

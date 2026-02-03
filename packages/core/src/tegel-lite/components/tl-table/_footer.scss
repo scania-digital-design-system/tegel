@@ -17,8 +17,8 @@
 }
 
 .tl-table__footer
-.tl-dropdown--sm
-:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
+  .tl-dropdown--sm
+  :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
 .tl-table__footer .tl-dropdown__option {
   height: 29px;
 }
@@ -60,6 +60,7 @@
 
 .tl-table__rows-per-page-label {
   margin-right: var(--tds-spacing-element-8);
+  font-family: var(--detail-02-font-family);
 }
 
 .tl-table__rows-per-page-select {
@@ -70,6 +71,7 @@
   border-radius: var(--tds-spacing-element-4);
   padding: 0 var(--tds-spacing-element-8);
   transition: background-color 250ms ease;
+  font-family: var(--detail-02-font-family);
 
   &:hover {
     background-color: var(--table-footer-page-selector-input-hover);
@@ -94,6 +96,7 @@
   height: 30px;
   border: none;
   transition: background-color 250ms ease;
+  font-family: var(--detail-02-font-family);
 
   &:hover {
     background-color: var(--table-footer-page-selector-input-hover);
@@ -110,6 +113,11 @@
 
 .tl-table__footer-text {
   padding: 1px 22px 0 0;
+  font-family: var(--detail-02-font-family);
+
+  span {
+    font-family: var(--detail-02-font-family);
+  }
 }
 
 .tl-table__footer-button {

@@ -30,8 +30,8 @@
   }
 
   &:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
-  &--hide-readonly-icon
-)::before {
+      &--hide-readonly-icon
+    )::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -49,8 +49,8 @@
 
   // Outside label - readonly icon position adjustment (only when label exists)
   &:not(&--label-inside):has(.tl-text-field__label):has(.tl-text-field__input[readonly]):not(
-  :has(.tl-text-field__input:disabled)
-):not(&--hide-readonly-icon)::before {
+      :has(.tl-text-field__input:disabled)
+    ):not(&--hide-readonly-icon)::before {
     top: calc(50% + 24px);
   }
 
@@ -99,9 +99,9 @@
   }
 
   .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
-  :has(.tl-text-field__input:disabled)
-)
-  &:not(:focus) {
+      :has(.tl-text-field__input:disabled)
+    )
+    &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
@@ -122,7 +122,7 @@
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
-  &:not(:focus) {
+    &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -134,9 +134,9 @@
   }
 
   .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
-  .tl-text-field--hide-readonly-icon
-)
-  & {
+      .tl-text-field--hide-readonly-icon
+    )
+    & {
     padding-right: 54px;
   }
 
@@ -228,10 +228,10 @@
   // Focus and filled state for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
-  &,
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     @include detail-07;
 
     top: 8px;
@@ -241,47 +241,47 @@
 
   // Keep prefix offset when focused for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + 20px + 8px);
   }
 
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   // Focus and filled state for sm - label disappears
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     opacity: 0;
     visibility: hidden;
   }
@@ -340,9 +340,9 @@
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
-  :has(.tl-text-field__input:disabled)
-)
-  & {
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
     color: var(--text-field-error);
   }
 
@@ -362,9 +362,9 @@
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
-  :has(.tl-text-field__input:disabled)
-)
-  & {
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
     color: var(--text-field-error);
 
     .tl-text-field__charcounter-divider {
@@ -389,9 +389,9 @@
     z-index: 1;
   }
 
-  // Default behavior (label outside) - prefix position adjustment
-  .tl-text-field:not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
+  // Default behavior (label outside) - prefix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
@@ -425,9 +425,9 @@
     z-index: 1;
   }
 
-  // Default behavior (label outside) - suffix position adjustment
-  .tl-text-field:not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
+  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
@@ -453,9 +453,9 @@
   padding-right: 0;
   z-index: 1;
 
-  // Default behavior (label outside) - suffix position adjustment
-  .tl-text-field:not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
+  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
