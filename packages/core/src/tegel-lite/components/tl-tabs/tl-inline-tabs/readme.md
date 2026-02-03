@@ -40,15 +40,6 @@ The Inline Tabs component provides a horizontal tabbed navigation with scrollabl
 
 ## Modifiers
 
-### Container Modifiers
-
-Apply these classes to `.tl-inline-tabs` container.
-
-| Modifier                          | Description                    |
-| --------------------------------- | ------------------------------ |
-| `.tds-mode-variant-primary`       | Primary mode variant           |
-| `.tds-mode-variant-secondary`     | Secondary mode variant         |
-
 ### Tab State Modifiers
 
 Apply these classes to `.tl-inline-tabs__tab` elements.
