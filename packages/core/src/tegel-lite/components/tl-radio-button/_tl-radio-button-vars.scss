@@ -15,4 +15,20 @@
   // Units
   --radio-button-spacing-4: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
     var(--tds-spacing-element-4);
+
+  // Focus outline
+  --radio-button-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --radio-button-focus-outline-width: 2px;
+}
+
+.scania {
+  .tl-radio-button {
+    --radio-button-focus-outline-width: 2px;
+  }
+}
+
+.traton {
+  .tl-radio-button {
+    --radio-button-focus-outline-width: 4px;
+  }
 }
