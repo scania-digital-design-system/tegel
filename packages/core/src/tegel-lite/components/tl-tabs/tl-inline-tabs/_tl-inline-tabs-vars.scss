@@ -2,11 +2,26 @@
   /* Horizontal divider */
   --inline-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
 
+  /* Mode variant backgrounds */
+  --inline-tabs-primary: var(--color-background-base);
+  --inline-tabs-secondary: var(--color-background-layer-01);
+  --inline-tabs: var(--inline-tabs-primary);
+
   /* Scroll button */
   --inline-tabs-scroll-button-text: var(--color-foreground-icon-strong);
-  --inline-tabs-scroll-button: transparent;
-  --inline-tabs-scroll-button-hover: transparent;
-  --inline-tabs-scroll-button-active: transparent;
+  --inline-tabs-scroll-button: var(--inline-tabs);
+  --inline-tabs-scroll-button-hover: var(--inline-tabs);
+  --inline-tabs-scroll-button-active: var(--inline-tabs);
+
+  &--primary {
+    --inline-tabs: var(--inline-tabs-primary);
+    --inline-tabs-scroll-button: var(--inline-tabs-primary);
+  }
+
+  &--secondary {
+    --inline-tabs: var(--inline-tabs-secondary);
+    --inline-tabs-scroll-button: var(--inline-tabs-secondary);
+  }
 }
 
 .tl-inline-tabs__tab {
