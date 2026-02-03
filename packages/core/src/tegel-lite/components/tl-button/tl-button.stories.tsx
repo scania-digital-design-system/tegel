@@ -5,18 +5,6 @@ import { iconsNames } from '../../../components/icon/iconsArray';
 export default {
   title: 'Tegel Lite (Beta)/Button',
   argTypes: {
-    modeVariant: {
-      name: 'Mode variant',
-      description:
-        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: {
-        defaultValue: { summary: 'Inherit from parent' },
-      },
-    },
     variant: {
       name: 'Variant',
       description:
@@ -82,7 +70,6 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
     variant: 'Primary',
     size: 'Medium',
     fullWidth: false,
@@ -92,7 +79,7 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, variant, size, fullWidth, disabled, onlyIcon, icon }) => {
+const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
   // Convert display values to CSS values
   const sizeMap = {
     'Large': 'lg',
@@ -119,20 +106,13 @@ const Template = ({ modeVariant, variant, size, fullWidth, disabled, onlyIcon, i
       : '';
   const buttonText = !onlyIcon || isXs ? 'Button' : '';
 
-  const modeClass =
-    modeVariant === 'Primary'
-      ? 'tl-mode-variant-primary'
-      : modeVariant === 'Secondary'
-      ? 'tl-mode-variant-secondary'
-      : '';
-
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-button.css";
       "@scania/tegel-lite/tl-icon.css";
     -->
-      <button class="tl-button ${onlyIconClass} ${modeClass} tl-button--${variantValue} tl-button--${sizeValue} 
+      <button class="tl-button ${onlyIconClass} tl-button--${variantValue} tl-button--${sizeValue} 
         ${fullWidth ? 'tl-button--full-width' : ''} 
         ${iconClass}"
         ${disabled ? 'disabled' : ''}>
