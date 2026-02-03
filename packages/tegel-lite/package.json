@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.1",
   "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
