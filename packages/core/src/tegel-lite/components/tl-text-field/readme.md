@@ -69,10 +69,10 @@ Apply these classes to the `.tl-text-field` element.
 
 | Modifier                  | Description                           |
 | ------------------------- | ------------------------------------- |
-| `.tl-text-field--disabled`| Disabled state                        |
-| `.tl-text-field--readonly`| Read-only state with edit icon        |
 | `.tl-text-field--error`   | Error state with error styling        |
 | `.tl-text-field--success` | Success state with success styling    |
+
+**Note:** Use the native `disabled` and `readonly` attributes on the `<input>` element for disabled and read-only states. The component will automatically style these states.
 
 ### Text Field Layout Modifiers
 
