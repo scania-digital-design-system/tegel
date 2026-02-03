@@ -44,7 +44,7 @@ export default {
 
 const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
   const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tds-mode-variant-${modeVariant.toLowerCase()}` : '';
+    modeVariant !== 'Inherit from parent' ? `tl-navigation-tabs--${modeVariant.toLowerCase()}` : '';
 
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 

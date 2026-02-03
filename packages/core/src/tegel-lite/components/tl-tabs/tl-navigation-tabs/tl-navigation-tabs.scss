@@ -5,7 +5,7 @@
 .tl-navigation-tabs {
   @include tds-box-sizing;
 
-  background-color: transparent;
+  background-color: var(--navigation-tabs);
   display: flex;
   flex-wrap: nowrap;
   white-space: nowrap;
@@ -31,7 +31,7 @@
 }
 
 .tl-navigation-tabs__scroll-button {
-  background-color: transparent;
+  background-color: var(--navigation-tabs-scroll-button);
   color: var(--navigation-tabs-scroll-button-icon);
   cursor: pointer;
   min-width: 48px;
