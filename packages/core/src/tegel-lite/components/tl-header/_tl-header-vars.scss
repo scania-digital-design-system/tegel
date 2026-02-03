@@ -1,7 +1,10 @@
 .tl-header {
-  /* Base background & text */
-  --header-background: var(--component-header-color-background);
-  --header-nav-item: var(--component-header-color-foreground-strong);
+  /* Base background & text - with fallback for light mode as default */
+  --header-background: var(--component-header-color-background, var(--color-brand-primary-800));
+  --header-nav-item: var(
+    --component-header-color-foreground-strong,
+    var(--color-foreground-icon-inverse-strong)
+  );
 
   /* Nav-item states */
   --header-nav-item-background-hover: var(--color-background-surface-100);
