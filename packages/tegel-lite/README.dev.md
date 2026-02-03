@@ -16,17 +16,27 @@ npm install @scania/tegel-lite
 
 ## 🚀 Quick Start
 
-### Import all styles (global)
-
-```javascript
-import '@scania/tegel-lite/global.css';
-```
-
-### Import specific components (recommended)
+### Option 1: All Components (Recommended)
 
 ```javascript
 // Import brand variables (Scania or Traton)
 import '@scania/tegel-lite/scania-variables.css';
+
+// Import component tokens (required)
+import '@scania/tegel-lite/global.css';
+
+// Import all components in one file
+import '@scania/tegel-lite/components.css';
+```
+
+### Option 2: Import specific components (tree-shaking)
+
+```javascript
+// Import brand variables (Scania or Traton)
+import '@scania/tegel-lite/scania-variables.css';
+
+// Import component tokens (required)
+import '@scania/tegel-lite/global.css';
 
 // Import individual components
 import '@scania/tegel-lite/tl-button.css';
@@ -80,7 +90,9 @@ The files used as source for `@scania/tegel-lite` library are located in `packag
 
 - **packages/core/src/global/tegel-lite-components.scss**: All Tegel Lite component styles are imported here. This file is imported in the `packages/core/global/global.scss` file and thus enables Storybook documentation for Tegel Lite components.
 
-- **packages/core/src/global/tegel-lite-global.scss**: All global styles and variables are imported here. This file is compiled into a single `global.css` file in the `packages/tegel-lite/dist` folder.
+- **packages/core/src/tegel-lite/components.scss**: All Tegel Lite component imports in one bundle file. This file is compiled into `components.css` in the `packages/tegel-lite/dist` folder.
+
+- **packages/core/src/global/scania-variables.scss** and **traton-variables.scss**: Brand-specific variables (colors, fonts, tokens). These are compiled into separate CSS files in the `packages/tegel-lite/dist` folder.
 
 - **packages/core/src/tegel-lite/components**: Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files. Each component will be compiled into a separate CSS file in the `packages/tegel-lite/dist` folder. An export will be added to the `packages/tegel-lite/package.json` file to enable importing of the components in the consuming project.
 
@@ -92,7 +104,9 @@ The following scripts are used during build of `Tegel Lite`:
 
 - **packages/core/scripts/copy-tegel-lite-assets.js**: Handling copy and output of assets neccessary for the `Tegel Lite` library.
 
-- All global styles, variables etc are compiled into a single `global.css` file.
+- Brand variables (Scania & Traton) are compiled into separate CSS files: `scania-variables.css` and `traton-variables.css`.
+- Component tokens are compiled into `global.css` containing component-level CSS variables.
+- All components can be imported together via `components.css` (recommended) or individually for tree-shaking.
 - Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files and is compiled into a separate CSS file.
 - Components classes are prefixed with `tl-` to avoid conflicts with other styles.
 - Classes follow BEM convention: `tl-button`, `tl-button__label`, `tl-button--primary` etc. [Read more about Tegel Lite **Scss** conventions here](#tegel-lite-scss-conventions)
@@ -100,14 +114,22 @@ The following scripts are used during build of `Tegel Lite`:
 
 ### Example usage in consumer app (Examples from Next.js application)
 
-- For globals you import the `global.css` file:
+- You must import three files in order:
 
   ```tsx
   // layout.tsx
-  import "@scania/tegel-lite/global.css"
+  import "@scania/tegel-lite/scania-variables.css" // or traton-variables.css
+  import "@scania/tegel-lite/global.css" // Component tokens (required)
+  import "@scania/tegel-lite/components.css" // All components
   ```
 
-- For components you import only the styles you need:
+- Or for tree-shaking, import specific components:
+
+  ```tsx
+  // layout.tsx
+  import "@scania/tegel-lite/scania-variables.css" // or traton-variables.css
+  import "@scania/tegel-lite/global.css" // Component tokens (required)
+  ```
 
   ```tsx
     // TegelButton.tsx
@@ -147,6 +169,28 @@ The following scripts are used during build of `Tegel Lite`:
 
   export default TegelButton
   ```
+
+### Theming
+
+Set the brand on `<html>` and mode on `<body>`:
+
+```tsx
+// layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className="scania"> {/* or "traton" */}
+      <body className={isDarkMode ? "tds-mode-dark" : ""}>
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+**Important:** 
+- Brand class (`.scania` or `.traton`) goes on the `<html>` element
+- Mode class (`.tds-mode-dark`) goes on the `<body>` element for dark mode
+- Light mode is the default and doesn't require a class
 
 Checkout the Tegel Storybook documentation for more examples and usage.
 

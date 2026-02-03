@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.8",
   "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
@@ -26,6 +26,7 @@
     "./global.css": "./dist/global.css",
     "./scania-variables.css": "./dist/scania-variables.css",
     "./traton-variables.css": "./dist/traton-variables.css",
+    "./components.css": "./dist/components.css",
     "./tl-accordion.css": "./dist/tl-accordion.css",
     "./tl-badge.css": "./dist/tl-badge.css",
     "./tl-banner.css": "./dist/tl-banner.css",
@@ -47,7 +48,6 @@
     "./tl-step.css": "./dist/tl-step.css",
     "./tl-stepper.css": "./dist/tl-stepper.css",
     "./tl-text-field.css": "./dist/tl-text-field.css",
-    "./tl-textarea-mixins.css": "./dist/tl-textarea-mixins.css",
     "./tl-textarea.css": "./dist/tl-textarea.css",
     "./tl-toast.css": "./dist/tl-toast.css",
     "./tl-toggle.css": "./dist/tl-toggle.css",
@@ -60,7 +60,10 @@
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
     "./tl-footer.css": "./dist/tl-footer.css",
     "./tl-slider.css": "./dist/tl-slider.css",
-    "./tl-radiobutton.css": "./dist/tl-radiobutton.css"
+    "./tl-radiobutton.css": "./dist/tl-radiobutton.css",
+    "./tl-folder-tabs.css": "./dist/tl-folder-tabs.css",
+    "./tl-inline-tabs.css": "./dist/tl-inline-tabs.css",
+    "./tl-navigation-tabs.css": "./dist/tl-navigation-tabs.css"
   },
   "repository": {
     "type": "git",

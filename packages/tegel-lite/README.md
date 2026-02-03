@@ -15,31 +15,30 @@ npm install @scania/tegel-lite
 
 ## Quick Start
 
-**You must import brand variables separately** - `global.css` only contains component styles.
+**You must import brand variables separately** - component files only contain component styles.
 
-### Scania Brand
-
-```javascript
-import '@scania/tegel-lite/scania-variables.css';
-import '@scania/tegel-lite'; // All components
-```
-
-### TRATON Brand
-
-```javascript
-import '@scania/tegel-lite/traton-variables.css';
-import '@scania/tegel-lite'; // All components
-```
-
-### Tree-shaking (Import Specific Components)
+### Option 1: All Components (Recommended for most apps)
 
 ```javascript
 import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
-import '@scania/tegel-lite/tl-button.css';
-import '@scania/tegel-lite/tl-card.css';
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
+import '@scania/tegel-lite/components.css'; // All components
 ```
 
-> **Important:** Always import a brand variables file first (`scania-variables.css` or `traton-variables.css`) before any components.
+### Option 2: Tree-shaking (Import Specific Components)
+
+```javascript
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
+import '@scania/tegel-lite/tl-button.css';
+import '@scania/tegel-lite/tl-card.css';
+import '@scania/tegel-lite/tl-header.css';
+```
+
+> **Important:** You must import three files in order:
+> 1. Brand variables (`scania-variables.css` or `traton-variables.css`)
+> 2. Component tokens (`global.css`)
+> 3. Component styles (`components.css` or individual `tl-*.css` files)
 
 **HTML Usage:**
 
@@ -49,10 +48,11 @@ import '@scania/tegel-lite/tl-card.css';
 </button>
 ```
 
-## Components (35 total)
+## Components 
 
 **Layout:** header, footer, side-menu, breadcrumbs  
 **Forms:** text-field, textarea, checkbox, radio-button, toggle, dropdown, datetime, slider  
+**Navigation:** folder-tabs, inline-tabs, navigation-tabs  
 **Buttons:** button, link, chip  
 **Display:** card, table, accordion, stepper, step, badge, divider, block, icon  
 **Overlays:** modal, toast, banner, message, tooltip, popover-menu, popover-canvas, spinner
@@ -61,17 +61,21 @@ import '@scania/tegel-lite/tl-card.css';
 
 ```
 dist/
-├── global.css               # All 35 components (no variables)
+├── global.css               # Component tokens
+├── components.css           # All components 
 ├── scania-variables.css     # Scania brand (colors, fonts, tokens)
 ├── traton-variables.css     # TRATON brand (colors, fonts, tokens)
-├── tl-*.css                 # Individual components
+├── tl-*.css                 # Individual components for tree-shaking
 └── assets/
     ├── fonts/               # Latin & Cyrillic fonts
     ├── icons/               # SVG icons
     └── logos/               # Brand logos
 ```
 
-**Important:** `global.css` does NOT include brand variables. You must import `scania-variables.css` or `traton-variables.css` separately.
+**Import Order:**
+1. Brand variables (`scania-variables.css` or `traton-variables.css`)
+2. Component tokens (`global.css`)
+3. Component styles (`components.css` or individual `tl-*.css` files)
 
 ## BEM Naming Convention
 

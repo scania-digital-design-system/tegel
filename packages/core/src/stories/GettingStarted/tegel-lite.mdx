@@ -30,55 +30,75 @@ npm install @scania/tegel-lite
 
 ## Quick Start
 
-**Important:** You must import brand variables separately - `global.css` only contains component styles, not design tokens.
+**Important:** You must import brand variables separately - component CSS files only contain component styles, not design tokens.
 
-### Scania Brand
-
-```javascript
-import '@scania/tegel-lite/scania-variables.css'; // Brand variables (required)
-import '@scania/tegel-lite'; // All 35 components
-```
-
-### TRATON Brand
+### Option 1: All Components (Recommended for most apps)
 
 ```javascript
-import '@scania/tegel-lite/traton-variables.css'; // Brand variables (required)
-import '@scania/tegel-lite'; // All 35 components
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
+import '@scania/tegel-lite/components.css'; // All component styles
 ```
 
-### Tree-shaking (Import Specific Components)
+### Option 2: Tree-shaking (Import Specific Components)
 
 Import only what you need for better performance:
 
 ```javascript
-// Scania
-import '@scania/tegel-lite/scania-variables.css';
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
 import '@scania/tegel-lite/tl-button.css';
 import '@scania/tegel-lite/tl-card.css';
-
-// TRATON
-import '@scania/tegel-lite/traton-variables.css';
-import '@scania/tegel-lite/tl-button.css';
-import '@scania/tegel-lite/tl-card.css';
+import '@scania/tegel-lite/tl-header.css';
 ```
 
-> **Important:** Always import a brand variables file first (`scania-variables.css` or `traton-variables.css`) before any components. The variables file contains colors, fonts, and design tokens that components depend on.
+> **Important:** You must import three files in this order:
+> 1. Brand variables (`scania-variables.css` or `traton-variables.css`) - brand-specific colors, fonts, and tokens
+> 2. Component tokens (`global.css`) - component-level CSS variables
+> 3. Component styles (`components.css` for all, or individual `tl-*.css` files)
 
 ## Theming
 
-Tegel Lite supports both **Scania** and **Traton** themes. 
+Tegel Lite supports both **Scania** and **Traton** themes with light and dark modes.
 
-You must import the appropriate variables file (`scania-variables.css` or `traton-variables.css`) to get the brand-specific colors, fonts, and tokens.
+**Required:** You must import both the brand variables file (`scania-variables.css` or `traton-variables.css`) and the component tokens file (`global.css`) to get all necessary design tokens and CSS variables.
 
-Set the active theme by adding a class to the `<html>` element:
+Set the active theme on the `<html>` element and mode on the `<body>` element:
 
 ```html
-<!-- Scania (default) -->
+<!-- Scania light mode (default) -->
 <html class="scania">
+  <body>
+    <!-- Your content -->
+  </body>
+</html>
 
-<!-- Traton -->
+<!-- Scania dark mode -->
+<html class="scania">
+  <body class="tds-mode-dark">
+    <!-- Your content -->
+  </body>
+</html>
+
+<!-- Traton light mode (default) -->
 <html class="traton">
+  <body>
+    <!-- Your content -->
+  </body>
+</html>
+
+<!-- Traton dark mode -->
+<html class="traton">
+  <body class="tds-mode-dark">
+    <!-- Your content -->
+  </body>
+</html>
 ```
+
+**Important:** 
+- Place the brand class (`.scania` or `.traton`) on the `<html>` element
+- Place the mode class (`.tds-mode-dark`) on the `<body>` element for dark mode
+- Light mode is the default and doesn't require a class
 
 ## Usage
 
@@ -103,8 +123,10 @@ For vanilla HTML projects, link to the CSS files:
   <title>Tegel Lite</title>
   <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/scania-variables.css">
   <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/global.css">
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/components.css">
 </head>
 <body>
+  <!-- Add class="tds-mode-dark" to body for dark mode -->
   <button class="tl-button tl-button--primary tl-button--md">
     <span class="tl-button__label">Click me!</span>
   </button>
