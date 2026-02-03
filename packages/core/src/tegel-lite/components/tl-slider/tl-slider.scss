@@ -1,7 +1,6 @@
 @use '../../../mixins/box-sizing' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-slider-vars';
-@use '../tl-text-field/tl-text-field';
 @use '../tl-button/tl-button';
 @use '../tl-icon/tl-icon';
 
@@ -141,9 +140,9 @@
 
 .tl-slider__input-wrapper {
   flex-shrink: 0;
-  width: auto;
+  width: auto !important;
   height: auto;
-  min-width: auto;
+  min-width: auto !important;
   margin-left: 0;
   align-self: center;
 
