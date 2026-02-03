@@ -62,9 +62,9 @@ Apply these classes to the `.tl-slider` element.
 
 | Modifier               | Description                    |
 | ---------------------- | ------------------------------ |
-| `.tl-slider--disabled` | Disabled state                 |
-| `.tl-slider--read-only`| Read-only state                |
 | `.tl-slider--small`    | Small size variant             |
+
+**Note:** Use the native `disabled` and `readonly` attributes on the `<input type="range">` element for disabled and read-only states. The component will automatically style these states.
 
 ### Slider Input Field Modifiers
 

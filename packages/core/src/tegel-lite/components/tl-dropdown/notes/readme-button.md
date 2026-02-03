@@ -71,12 +71,13 @@ Apply these classes to the `.tl-dropdown` container element.
 | `.tl-dropdown--lg`             | Large dropdown                    |
 | `.tl-dropdown--primary`        | Primary mode variant              |
 | `.tl-dropdown--secondary`      | Secondary mode variant            |
-| `.tl-dropdown--disabled`       | Disabled state styling            |
 | `.tl-dropdown--error`          | Error state with error styling    |
 | `.tl-dropdown--label-inside`   | Positions label inside dropdown   |
 | `.tl-dropdown--dropup`         | Shows options above the button    |
 
 **Note:** Label is positioned outside the dropdown by default.
+
+**Disabled State:** Use the native `disabled` attribute on the `<button>` element (`.tl-dropdown__button`) for disabled state. The component will automatically style the disabled state.
 
 ### Option Modifiers
 
@@ -86,8 +87,9 @@ Apply these classes to `.tl-dropdown__option` elements.
 | ----------------------------------- | ---------------------------- |
 | `.tl-dropdown__option--selected`    | Selected option              |
 | `.tl-dropdown__option--highlighted` | Highlighted option           |
-| `.tl-dropdown__option--disabled`    | Disabled option              |
 | `.tl-dropdown__option--hidden`      | Hidden (filtered out) option |
+
+**Note:** Individual options cannot be disabled in the custom dropdown variant. To prevent selection of specific options, consider removing them from the list or using the native select variant instead.
 
 ## JavaScript Required
 
