@@ -41,16 +41,7 @@ Apply these classes to the `.tl-toggle__input` element.
 | `.tl-toggle__input--lg`  | Large toggle (default)         |
 | `.tl-toggle__input--sm`  | Small toggle                   |
 
-### Toggle State Modifiers
-
-Apply these classes to `.tl-toggle__headline` or `.tl-toggle__label` elements.
-
-| Modifier                       | Description                    |
-| ------------------------------ | ------------------------------ |
-| `.tl-toggle__headline--disabled` | Disabled headline text       |
-| `.tl-toggle__label--disabled`  | Disabled label text            |
-
-**Note:** Use the `disabled` attribute on the `<input>` element to disable the toggle switch itself.
+**Note:** Use the native `disabled` attribute on the `<input>` element to disable the toggle. The component will automatically style the toggle and associated text when disabled.
 
 ----------------------------------------------
 
