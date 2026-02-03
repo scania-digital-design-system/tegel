@@ -165,7 +165,7 @@ export default {
     header: 'Header text',
     subheader: 'Subheader text',
     thumbnail: true,
-    imagePlacement: 'Below',
+    imagePlacement: 'Above',
     bodyImg: false,
     bodyContent: 'Lorem ipsum dummy text for printing; standard filler ever since 1500s',
     bodyDivider: false,
