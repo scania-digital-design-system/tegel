@@ -22,6 +22,10 @@ const scaniaVarsCss = path.resolve(dirName, '../../tegel-lite/dist/scania-variab
 const tratonVarsScss = path.resolve(dirName, '../src/global/traton-variables.scss'); // Source Traton vars SCSS
 const tratonVarsCss = path.resolve(dirName, '../../tegel-lite/dist/traton-variables.css'); // Output compiled Traton vars CSS
 
+// Define paths for all components bundle
+const componentsScss = path.resolve(dirName, '../src/tegel-lite/components.scss'); // Source all components SCSS
+const componentsCss = path.resolve(dirName, '../../tegel-lite/dist/components.css'); // Output compiled all components CSS
+
 // Ensure output directories exist before compilation
 if (!fs.existsSync(outputCssDir)) {
   fs.mkdirSync(outputCssDir, { recursive: true });
@@ -42,6 +46,11 @@ console.log(`Compiling Traton variables: ${tratonVarsScss} -> ${tratonVarsCss}`)
 const tratonVarsResult = sass.compile(tratonVarsScss, { style: 'expanded' });
 fs.writeFileSync(tratonVarsCss, tratonVarsResult.css);
 
+// Compile All Components Bundle
+console.log(`Compiling all components: ${componentsScss} -> ${componentsCss}`);
+const componentsResult = sass.compile(componentsScss, { style: 'expanded' });
+fs.writeFileSync(componentsCss, componentsResult.css);
+
 // Compile Each Component's SCSS into CSS
 const componentEntries = fs.readdirSync(componentsDir, { withFileTypes: true });
 
@@ -50,24 +59,33 @@ componentEntries.forEach((entry) => {
   if (!entry.isDirectory()) return;
 
   const componentDir = path.join(componentsDir, entry.name);
-  const files = fs
-    .readdirSync(componentDir, { withFileTypes: true })
-    .filter((e) => e.isFile())
-    .map((e) => e.name);
 
-  files.forEach((file) => {
-    // Ignore partials (_filename.scss)
-    if (file.endsWith('.scss') && !file.startsWith('_')) {
-      const scssFile = path.join(componentDir, file);
-      const cssFileName = file.replace('.scss', '.css'); // Convert filename
-      const cssFile = path.join(outputCssDir, cssFileName);
+  // Function to recursively compile SCSS files in a directory
+  const compileScssInDirectory = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-      console.log(`Compiling component styles: ${scssFile} -> ${cssFile}`);
-      // Compile SCSS to CSS (style: 'expanded' for better readability) Could be 'compressed' for minimized output?
-      const result = sass.compile(scssFile, { style: 'expanded' });
-      fs.writeFileSync(cssFile, result.css);
-    }
-  });
+    entries.forEach((e) => {
+      const fullPath = path.join(dir, e.name);
+
+      if (e.isDirectory()) {
+        // Recursively process subdirectories
+        compileScssInDirectory(fullPath);
+      } else if (e.isFile() && e.name.endsWith('.scss') && !e.name.startsWith('_')) {
+        // Compile non-partial SCSS files
+        const scssFile = fullPath;
+        const cssFileName = e.name.replace('.scss', '.css');
+        const cssFile = path.join(outputCssDir, cssFileName);
+
+        console.log(`Compiling component styles: ${scssFile} -> ${cssFile}`);
+        // Compile SCSS to CSS (style: 'expanded' for better readability) Could be 'compressed' for minimized output?
+        const result = sass.compile(scssFile, { style: 'expanded' });
+        fs.writeFileSync(cssFile, result.css);
+      }
+    });
+  };
+
+  // Start recursive compilation from the component directory
+  compileScssInDirectory(componentDir);
 });
 
 console.log('SCSS compilation complete!');
