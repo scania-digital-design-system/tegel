@@ -1,12 +1,7 @@
 @use '../../../../../../grid-deprecated/vars' as *;
 @use './tl-side-menu-vars' as *;
 
-.tl-side-menu__item-wrapper {
-  display: block;
-}
-
-.tl-side-menu__item button,
-.tl-side-menu__item a {
+.tl-side-menu__item {
   all: unset;
   box-sizing: border-box;
   height: var(--side-menu-single-item-height);
@@ -22,53 +17,52 @@
   background-color: var(--side-menu-background-cover);
   color: var(--side-menu-single-item-color);
   cursor: pointer;
-  border-radius: var(--component-side-menu-radius-corner);
-}
-
-.tl-side-menu__item button:focus-visible,
-.tl-side-menu__item a:focus-visible {
-  outline: 2px solid var(--color-foreground-border-accent-focus);
-  outline-offset: -2px;
-}
-
-.tl-side-menu__item button:hover,
-.tl-side-menu__item a:hover {
-  background-color: var(--side-menu-item-state-hover);
-}
-
-.tl-side-menu__item button:active,
-.tl-side-menu__item a:active {
-  background-color: var(--side-menu-item-state-active);
-}
-
-.tl-side-menu__item--selected button,
-.tl-side-menu__item--selected a {
   position: relative;
-  background-color: var(--side-menu-item-state-selected);
-}
+  border-radius: var(--component-side-menu-radius-corner);
+  font-family: var(--side-menu-text-item-font-family);
+  font-size: var(--side-menu-text-item-font-size);
+  font-weight: var(--side-menu-text-item-font-weight);
+  line-height: var(--side-menu-text-item-line-height);
+  letter-spacing: var(--side-menu-text-item-letter-spacing);
 
-.tl-side-menu__item--selected button:active,
-.tl-side-menu__item--selected a:active {
-  background-color: var(--side-menu-item-state-selected);
-}
+  &:focus-visible {
+    outline: 2px solid var(--color-foreground-border-accent-focus);
+    outline-offset: -2px;
+  }
 
-.tl-side-menu__item--selected button:hover,
-.tl-side-menu__item--selected a:hover {
-  background-color: var(
-    --side-menu-item-state-selected-hover,
-    var(--side-menu-item-state-selected)
-  );
-}
+  &:hover {
+    background-color: var(--side-menu-item-state-hover);
+  }
 
-.tl-side-menu__item--selected button::before,
-.tl-side-menu__item--selected a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--component-side-menu-space-sub-page-selected-marker-width);
-  height: var(--component-side-menu-space-sub-menu-item-selected-marker-height);
-  background-color: var(--side-menu-single-subitem-selected-border-color);
-  border-radius: var(--component-side-menu-radius-corner) 0 0
-    var(--component-side-menu-radius-corner);
+  &:active {
+    background-color: var(--side-menu-item-state-active);
+  }
+
+  &--selected {
+    position: relative;
+    background-color: var(--side-menu-item-state-selected);
+
+    &:active {
+      background-color: var(--side-menu-item-state-selected);
+    }
+
+    &:hover {
+      background-color: var(
+        --side-menu-item-state-selected-hover,
+        var(--side-menu-item-state-selected)
+      );
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--component-side-menu-space-sub-page-selected-marker-width);
+      height: var(--component-side-menu-space-sub-menu-item-selected-marker-height);
+      background-color: var(--side-menu-single-subitem-selected-border-color);
+      border-radius: var(--component-side-menu-radius-corner) 0 0
+        var(--component-side-menu-radius-corner);
+    }
+  }
 }
