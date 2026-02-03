@@ -8,25 +8,11 @@
   position: relative;
   width: 100%;
   min-width: 208px;
-  height: 56px;
-  padding-bottom: 1px;
   border-radius: var(--text-field-border-radius);
   box-sizing: border-box;
 
   &--no-min-width {
     min-width: auto;
-  }
-
-  &--lg {
-    height: 56px;
-  }
-
-  &--md {
-    height: 48px;
-  }
-
-  &--sm {
-    height: 40px;
   }
 
   &--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
@@ -132,14 +118,17 @@
 
   .tl-text-field--lg & {
     padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+    height: 56px;
   }
 
   .tl-text-field--md & {
     padding: var(--tds-spacing-element-16);
+    height: 48px;
   }
 
   .tl-text-field--sm & {
     padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
+    height: 40px;
   }
 
   .tl-text-field--label-inside.tl-text-field--lg & {

@@ -193,6 +193,11 @@
   }
 }
 
+// Disabled state for select chevron (applies to all .tl-dropdown::after variants)
+.tl-dropdown:has(.tl-dropdown__select:disabled)::after {
+  background-color: var(--dropdown-disabled);
+}
+
 // Label outside without helper - size specific adjustments
 .tl-dropdown--lg:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
 :has(.tl-dropdown__helper)
