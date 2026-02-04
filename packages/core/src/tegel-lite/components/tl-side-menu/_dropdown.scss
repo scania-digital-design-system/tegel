@@ -6,11 +6,6 @@
 .tl-side-menu__dropdown {
   display: flex;
   flex-direction: column;
-  font-family: var(--side-menu-text-item-font-family);
-  font-size: var(--side-menu-text-item-font-size);
-  font-weight: var(--side-menu-text-item-font-weight);
-  line-height: var(--side-menu-text-item-line-height);
-  letter-spacing: var(--side-menu-text-item-letter-spacing);
 
   .tl-side-menu__item {
     &::after {
