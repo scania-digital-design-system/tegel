@@ -56,6 +56,15 @@ Apply these classes to the `.tl-popover-menu` element.
 | `.tl-popover-menu--visible`   | Shows the popover menu                |
 | `.tl-popover-menu--fluid`     | Fluid width based on content          |
 
+### Popover Menu Mode Modifiers
+
+Apply these classes to the `.tl-popover-menu` element to change the background color.
+
+| Modifier                        | Description                           |
+| ------------------------------- | ------------------------------------- |
+| `.tl-popover-menu--primary`     | Primary background (layer-01)         |
+| `.tl-popover-menu--secondary`   | Secondary background (layer-02)       |
+
 ### Popover Menu Animation Modifiers
 
 Apply these classes to the `.tl-popover-menu` element.
