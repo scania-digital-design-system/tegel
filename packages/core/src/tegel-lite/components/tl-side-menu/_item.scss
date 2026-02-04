@@ -18,6 +18,11 @@
   cursor: pointer;
   position: relative;
   border-radius: var(--component-side-menu-radius-corner);
+  font-family: var(--side-menu-text-item-font-family);
+  font-size: var(--side-menu-text-item-font-size);
+  font-weight: var(--side-menu-text-item-font-weight);
+  line-height: var(--side-menu-text-item-line-height);
+  letter-spacing: var(--side-menu-text-item-letter-spacing);
 
   &:focus-visible {
     outline: 2px solid var(--color-foreground-border-accent-focus);

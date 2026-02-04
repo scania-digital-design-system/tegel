@@ -1,9 +1,15 @@
 @use '../../../mixins/focus-state' as *;
 @use './tl-side-menu-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-side-menu__dropdown {
   display: flex;
   flex-direction: column;
+  font-family: var(--side-menu-text-item-font-family);
+  font-size: var(--side-menu-text-item-font-size);
+  font-weight: var(--side-menu-text-item-font-weight);
+  line-height: var(--side-menu-text-item-line-height);
+  letter-spacing: var(--side-menu-text-item-letter-spacing);
 
   .tl-side-menu__item {
     &::after {
@@ -71,13 +77,10 @@
   color: var(--side-menu-dropdown-list-item-color);
   border: none;
   border-radius: var(--component-side-menu-radius-corner);
-  font-family: var(--text-component-text-01-font-family);
-  font-size: var(--text-component-text-01-font-size);
-  font-weight: var(--text-component-text-01-font-weight);
-  line-height: var(--text-component-text-01-line-height);
-  letter-spacing: var(--text-component-text-01-letter-spacing);
   position: relative;
   cursor: pointer;
+
+  @include body-02;
 
   &:hover {
     background-color: var(--side-menu-dropdown-list-item-custom-background-hover);
@@ -120,5 +123,17 @@
       border-radius: var(--component-side-menu-radius-corner) 0 0
         var(--component-side-menu-radius-corner);
     }
+  }
+}
+
+.tl-side-menu__dropdown:has(.tl-side-menu__item .tl-icon) {
+  .tl-side-menu__dropdown-item {
+    padding-left: var(--side-menu-sub-item-with-icon);
+  }
+}
+
+.tl-side-menu__dropdown:has(.tl-side-menu__item .tl-side-menu__user .tl-side-menu__user-image) {
+  .tl-side-menu__dropdown-item {
+    padding-left: var(--side-menu-sub-item-with-user-image);
   }
 }
