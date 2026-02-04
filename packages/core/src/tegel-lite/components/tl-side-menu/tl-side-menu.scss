@@ -282,7 +282,7 @@ $breakpoint-lg: 992px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $breakpoint-lg) {
   .tl-side-menu:not(.tl-side-menu--persistent) {
     display: none;
   }
