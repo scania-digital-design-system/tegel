@@ -51,16 +51,14 @@ console.log(`Compiling all components: ${componentsScss} -> ${componentsCss}`);
 const componentsResult = sass.compile(componentsScss, { style: 'expanded' });
 fs.writeFileSync(componentsCss, componentsResult.css);
 
-// Compile Each Component's SCSS into CSS
+// Recursively compile each component's SCSS files into CSS
 const componentEntries = fs.readdirSync(componentsDir, { withFileTypes: true });
 
 componentEntries.forEach((entry) => {
-  // Only process directories; skip files like .DS_Store
   if (!entry.isDirectory()) return;
 
   const componentDir = path.join(componentsDir, entry.name);
 
-  // Function to recursively compile SCSS files in a directory
   const compileScssInDirectory = (dir) => {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
 
@@ -68,23 +66,19 @@ componentEntries.forEach((entry) => {
       const fullPath = path.join(dir, e.name);
 
       if (e.isDirectory()) {
-        // Recursively process subdirectories
         compileScssInDirectory(fullPath);
       } else if (e.isFile() && e.name.endsWith('.scss') && !e.name.startsWith('_')) {
-        // Compile non-partial SCSS files
         const scssFile = fullPath;
         const cssFileName = e.name.replace('.scss', '.css');
         const cssFile = path.join(outputCssDir, cssFileName);
 
         console.log(`Compiling component styles: ${scssFile} -> ${cssFile}`);
-        // Compile SCSS to CSS (style: 'expanded' for better readability) Could be 'compressed' for minimized output?
         const result = sass.compile(scssFile, { style: 'expanded' });
         fs.writeFileSync(cssFile, result.css);
       }
     });
   };
 
-  // Start recursive compilation from the component directory
   compileScssInDirectory(componentDir);
 });
 
