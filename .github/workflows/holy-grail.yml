@@ -35,6 +35,16 @@ on:
           - beta
           - dev
 
+      tegelLiteTag:
+        description: 'Tegel Lite NPM tag (independent of main tag)'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - latest
+          - beta
+          - dev
+
       dryVersion:
         description: 'Dry version'
         required: false
@@ -392,7 +402,7 @@ jobs:
       - name: Tegel Lite - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/tegel-lite
-        run: npm publish --tag ${{ github.event.inputs.tags }}
+        run: npm publish --tag ${{ github.event.inputs.tegelLiteTag || 'beta' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -414,9 +424,10 @@ jobs:
 
   #MERGE RELEASE BRANCH TO DEVELOP
   merge-release-branch-into-develop:
-    needs: [create-release-branch, release-core, release-angular-17, release-react]
+    needs:
+      [create-release-branch, release-core, release-angular-17, release-react, release-tegel-lite]
     runs-on: ubuntu-latest
-    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success' && needs.release-tegel-lite.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -516,6 +527,7 @@ jobs:
         bump-wrappers-to-new-version,
         release-angular-17,
         release-react,
+        release-tegel-lite,
       ]
     runs-on: ubuntu-latest
     if: always()
@@ -530,7 +542,8 @@ jobs:
              [ "${{ needs.release-core.result }}" == "failure" ] || \
              [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
              [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
-             [ "${{ needs.release-react.result }}" == "failure" ]; then
+             [ "${{ needs.release-react.result }}" == "failure" ] || \
+             [ "${{ needs.release-tegel-lite.result }}" == "failure" ]; then
             status="🔴 *Tegel Release ${version}* failed"
           else
             status="🟢 *Tegel Release ${version}* succeeded"
