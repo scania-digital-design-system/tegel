@@ -1,6 +1,6 @@
 # tl-navigation-tabs
 
-The Navigation Tabs component provides tab-style navigation links with primary and secondary variants.
+The Navigation Tabs component provides tab-style navigation links with scrollable functionality.
 
 ## Usage
 
@@ -24,21 +24,15 @@ The Navigation Tabs component provides tab-style navigation links with primary a
 
 ## Elements
 
-| Element                     | HTML Element | Description                  |
-| --------------------------- | ------------ | ---------------------------- |
-| `.tl-navigation-tabs`       | `<nav>`      | Navigation tabs container    |
-| `.tl-navigation-tabs__tab`  | `<a>`        | Individual navigation tab    |
+| Element                                        | HTML Element | Description                  |
+| ---------------------------------------------- | ------------ | ---------------------------- |
+| `.tl-navigation-tabs`                          | `<nav>`      | Navigation tabs container    |
+| `.tl-navigation-tabs__tab`                     | `<a>`        | Individual navigation tab    |
+| `.tl-navigation-tabs__scroll-button`           | `<button>`   | Scroll button                |
+| `.tl-navigation-tabs__scroll-button--left`     | `<button>`   | Left scroll button           |
+| `.tl-navigation-tabs__scroll-button--right`    | `<button>`   | Right scroll button          |
 
 ## Modifiers
-
-### Container Modifiers
-
-Apply these classes to `.tl-navigation-tabs` container.
-
-| Modifier                          | Description                    |
-| --------------------------------- | ------------------------------ |
-| `.tl-navigation-tabs--primary`    | Primary mode variant           |
-| `.tl-navigation-tabs--secondary`  | Secondary mode variant         |
 
 ### Tab State Modifiers
 
@@ -54,7 +48,9 @@ Apply these classes to `.tl-navigation-tabs__tab` elements.
 The Navigation Tabs component requires JavaScript to handle:
 - Active tab state management
 - Navigation and routing
+- Scroll button functionality
 - Keyboard navigation (Arrow keys)
+- Dynamic show/hide of scroll buttons based on overflow
 
 ----------------------------------------------
 
