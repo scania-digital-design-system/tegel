@@ -9,6 +9,7 @@ import {
   Event,
   EventEmitter,
   Listen,
+  Watch,
 } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 import generateUniqueId from '../../utils/generateUniqueId';
@@ -64,15 +65,7 @@ export class TdsModal {
   @Method()
   async showModal() {
     this.isShown = true;
-
-    // Set focus on first element when opened
-    requestAnimationFrame(() => {
-      const focusableElements = this.getFocusableElements();
-      if (focusableElements.length > 0) {
-        focusableElements[0].focus();
-        this.activeElementIndex = 0;
-      }
-    });
+    this.onOpen();
   }
 
   /** Closes the Modal. */
@@ -105,6 +98,20 @@ export class TdsModal {
     bubbles: true,
   })
   tdsOpen!: EventEmitter<void>;
+
+  /** Runs whenever the show prop changes. */
+  @Watch('show')
+  handleShowPropChange(newValue?: boolean, oldValue?: boolean) {
+    if (newValue === oldValue || newValue === undefined) return;
+
+    this.isShown = newValue;
+
+    if (newValue) {
+      this.onOpen();
+    } else {
+      this.returnFocusOnClose();
+    }
+  }
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -208,6 +215,32 @@ export class TdsModal {
     return [...focusableInShadowRoot, ...focusableInSlots];
   }
 
+  /** Resets the scroll position to the top. */
+  private resetScrollPosition() {
+    const root = this.host.shadowRoot;
+    const scroller =
+      root?.querySelector<HTMLElement>('.tds-modal__actions-sticky .body') ??
+      root?.querySelector<HTMLElement>('.tds-modal');
+    scroller?.scrollTo(0, 0);
+  }
+
+  /** Focuses the first focusable element in the modal. */
+  private focusFirstElement() {
+    const els = this.getFocusableElements();
+    if (els.length) {
+      els[0].focus();
+      this.activeElementIndex = 0;
+    }
+  }
+
+  /** Runs whenever the modal is opened and updates it. */
+  private onOpen() {
+    requestAnimationFrame(() => {
+      this.resetScrollPosition();
+      this.focusFirstElement();
+    });
+  }
+
   @Listen('keydown', { target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.isShown && !this.prevent) {
@@ -249,20 +282,22 @@ export class TdsModal {
 
   handleClose = (event: Event) => {
     const closeEvent = this.tdsClose.emit(event);
-    this.returnFocusOnClose();
+    if (closeEvent.defaultPrevented) return;
 
-    if (closeEvent.defaultPrevented) {
-      return;
-    }
+    // if (this.show !== undefined) return;
+
     this.isShown = false;
+    this.returnFocusOnClose();
   };
 
   handleShow = () => {
     const showEvent = this.tdsOpen.emit();
-    if (showEvent.defaultPrevented) {
-      return;
-    }
+    if (showEvent.defaultPrevented) return;
+
+    // if (this.show !== undefined) return;
+
     this.isShown = true;
+    this.onOpen();
   };
 
   /** Checks if click on Modal is on overlay, if so it closes the Modal if prevent is not true. */
