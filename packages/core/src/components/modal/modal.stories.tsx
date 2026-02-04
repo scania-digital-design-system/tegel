@@ -128,7 +128,7 @@ const ModalTemplate = ({
     <tds-modal 
       header="${headerText}"
       selector="#my-modal-button"
-      ${showModal ? 'show' : ''} 
+      ${showModal ? 'false' : ''} 
       id="my-modal" size="${sizeLookUp[size]}" 
       actions-position="${actionsPosition.toLowerCase()}"
       prevent="${prevent}"
