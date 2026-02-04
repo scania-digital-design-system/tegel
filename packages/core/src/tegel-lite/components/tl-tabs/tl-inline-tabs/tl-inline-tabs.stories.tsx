@@ -4,12 +4,6 @@ export default {
   title: 'Tegel Lite (CSS)/Tabs/Inline Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
-    modeVariant: {
-      name: 'Mode variant',
-      control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
-    },
     showLeftButton: {
       name: 'Show left scroll button',
       control: { type: 'boolean' },
@@ -34,7 +28,6 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -42,9 +35,8 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tl-inline-tabs--${modeVariant.toLowerCase()}` : '';
+const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
+  const modeClass = '';
 
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
