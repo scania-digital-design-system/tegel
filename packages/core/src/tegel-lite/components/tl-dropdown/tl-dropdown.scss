@@ -83,7 +83,6 @@
 
 .tl-dropdown__select {
   padding-top: 2px;
-  padding-left: calc(var(--tds-spacing-element-16) - 1px);
   cursor: pointer;
   display: block;
 
@@ -193,11 +192,6 @@
   }
 }
 
-// Disabled state for select chevron (applies to all .tl-dropdown::after variants)
-.tl-dropdown:has(.tl-dropdown__select:disabled)::after {
-  background-color: var(--dropdown-disabled);
-}
-
 // Label outside without helper - size specific adjustments
 .tl-dropdown--lg:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
@@ -216,6 +210,12 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
+}
+
+.tl-dropdown--lg:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
+:has(.tl-dropdown__helper)
+)::after {
+  background-color: var(--dropdown-disabled);
 }
 
 .tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
@@ -237,6 +237,12 @@
   transition: transform 0.2s;
 }
 
+.tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
+:has(.tl-dropdown__helper)
+)::after {
+  background-color: var(--dropdown-disabled);
+}
+
 .tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
   )::after {
@@ -254,6 +260,12 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
+}
+
+.tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
+:has(.tl-dropdown__helper)
+)::after {
+  background-color: var(--dropdown-disabled);
 }
 
 // Label outside for button/input - 1px lower
@@ -286,6 +298,10 @@
   transition: transform 0.2s;
 }
 
+.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):not(:has(.tl-dropdown__helper))::after {
+  background-color: var(--dropdown-disabled);
+}
+
 // No label without helper - perfectly centered
 .tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
@@ -306,6 +322,12 @@
   transition: transform 0.2s;
 }
 
+.tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select:disabled):not(
+:has(.tl-dropdown__helper)
+)::after {
+  background-color: var(--dropdown-disabled);
+}
+
 // Label inside with helper - same as no label with helper
 .tl-dropdown--label-inside:has(.tl-dropdown__select):has(.tl-dropdown__helper)::after {
   content: '';
@@ -322,6 +344,10 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
+}
+
+.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):has(.tl-dropdown__helper)::after {
+  background-color: var(--dropdown-disabled);
 }
 
 // No label with helper - helper below, chevron moves up
@@ -344,6 +370,12 @@
   transition: transform 0.2s;
 }
 
+.tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select:disabled):has(
+.tl-dropdown__helper
+)::after {
+  background-color: var(--dropdown-disabled);
+}
+
 // Label outside with helper - label above + helper below balance out, centered
 .tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(.tl-dropdown__select):has(
     .tl-dropdown__helper
@@ -362,6 +394,12 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
+}
+
+.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(.tl-dropdown__select:disabled):has(
+.tl-dropdown__helper
+)::after {
+  background-color: var(--dropdown-disabled);
 }
 
 .tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(
@@ -762,6 +800,10 @@
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   transition: box-shadow 0.2s;
+}
+
+.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
+  padding-top: 3px;
 }
 
 .tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select:disabled {
