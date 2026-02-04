@@ -49,9 +49,10 @@ The Header component provides a consistent navigation header with items, dropdow
 | `.tl-header__dropdown-icon`               | `<div>`      | Icon container for dropdown        |
 | `.tl-header__dropdown-menu`               | `<ul>`       | Dropdown menu list                 |
 | `.tl-header__dropdown-menu-item`          | `<li>`       | Dropdown menu item                 |
-| `.tl-header__dropdown-menu-launcher`      | `<ul>`       | Launcher grid menu container       |
-| `.tl-header__dropdown-menu-launcher-item` | `<li>`       | Launcher grid item                 |
-| `.tl-header__dropdown-menu-launcher-title`| `<li>`       | Launcher menu title                |
+| `.tl-header__launcher-menu-grid`          | `<ul>`       | Launcher grid menu container       |
+| `.tl-header__launcher-menu-list`          | `<ul>`       | Launcher list menu container       |
+| `.tl-header__launcher-menu-item`          | `<li>`       | Launcher menu item                 |
+| `.tl-header__launcher-menu-title`         | `<li>`       | Launcher menu section title        |
 | `.tl-header__dropdown-menu-user`          | `<li>`       | User profile menu item             |
 | `.tl-header__dropdown-menu-user-image`    | `<div>`      | User profile image container       |
 | `.tl-header__dropdown-menu-user-box`      | `<div>`      | User profile content box           |
