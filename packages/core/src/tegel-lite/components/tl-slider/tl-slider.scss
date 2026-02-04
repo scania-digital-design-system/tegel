@@ -10,12 +10,7 @@
 
   width: 100%;
 
-  &--disabled {
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-
-  &--read-only {
+  &:has(input[type='range'][readonly]):not(:has(input[type='range']:disabled)) {
     pointer-events: none;
   }
 }
@@ -53,7 +48,7 @@
     margin-left: 0;
   }
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -74,7 +69,7 @@
 .tl-slider__control-minus,
 .tl-slider__control-plus {
   flex-shrink: 0;
-  border: none !important;
+  border: none;
 }
 
 .tl-slider__track {
@@ -121,7 +116,7 @@
     z-index: 1;
   }
 
-  .tl-slider--disabled & {
+  &:disabled {
     cursor: not-allowed;
     background-color: var(--slider-disabled);
 
@@ -139,7 +134,7 @@
   flex-shrink: 0;
   align-self: center;
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -152,11 +147,12 @@
   margin-left: 0;
   align-self: center;
 
-  &.tl-text-field--readonly:not(.tl-text-field--disabled)::before {
+  &.tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled))::before {
     width: 16px;
     height: 16px;
     right: 16px;
     top: 50%;
+    transform: translateY(-50%);
   }
 }
 
@@ -177,7 +173,7 @@
   }
 }
 
-.tl-slider__input-wrapper.tl-text-field--readonly:not(.tl-text-field--disabled)
+.tl-slider__input-wrapper:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled))
 .tl-slider__input-field[readonly] {
   width: 74px;
   padding-right: 39px;
@@ -217,7 +213,7 @@
     display: block;
   }
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     display: none;
   }
 }
@@ -282,9 +278,9 @@
     }
   }
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
-    cursor: default;
+    cursor: not-allowed;
 
     &::before {
       display: none;
@@ -319,7 +315,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
   }
 }
@@ -338,7 +334,7 @@
   user-select: none;
   color: var(--slider-divider-values);
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -352,7 +348,7 @@
   top: -1px;
   z-index: 1;
 
-  .tl-slider--disabled & {
+  :has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
   }
 }
