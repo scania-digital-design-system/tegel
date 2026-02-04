@@ -30,10 +30,7 @@
   }
 
   &:active {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    background-color: var(--header-basic-element-background-selected);
-    box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
   &--open {
@@ -47,15 +44,11 @@
     }
 
     &:active {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      background-color: var(--header-basic-element-background-selected);
-      box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
     }
   }
 
   &--selected {
-    padding-top: 4px;
     border-bottom: 4px solid var(--header-nav-item-border-pressed);
   }
 }
@@ -86,10 +79,7 @@
   }
 
   &:active {
-    padding-top: calc(var(--component-header-space-profile-padding) - 2px);
-    padding-bottom: calc(var(--component-header-space-profile-padding) - 2px);
-    background-color: var(--header-basic-element-background-selected);
-    box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
   &--open {
@@ -103,21 +93,21 @@
     }
 
     &:active {
-      padding-top: calc(var(--component-header-space-profile-padding) - 2px);
-      padding-bottom: calc(var(--component-header-space-profile-padding) - 2px);
-      background-color: var(--header-basic-element-background-selected);
-      box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
     }
   }
 
   &--selected {
-    padding-top: calc(var(--component-header-space-profile-padding) + 4px);
     border-bottom: 4px solid var(--header-nav-item-border-pressed);
   }
 }
 
 .tl-header__dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease;
+  transform-origin: center center;
 
   &--rotated {
     transform: rotate(180deg);
@@ -298,7 +288,6 @@
   font-weight: var(--text-component-title-02-font-weight);
   letter-spacing: var(--text-component-title-02-letter-spacing);
   text-transform: var(--text-component-title-02-text-transform);
-
   background-color: var(--header-nav-dropdown-item-background);
   color: var(--header-app-launcher-grid-category-title);
   height: 48px;
