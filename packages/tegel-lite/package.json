@@ -72,6 +72,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "prepublishOnly": "echo 'Warning: Run npm run build:tegel-lite from root before publishing'",
     "test": "npx playwright test"
