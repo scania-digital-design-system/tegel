@@ -68,7 +68,7 @@ const Template = ({ size, headline, label, checked, disabled }) =>
     -->
 
       <div class="tl-toggle">
-        <div class="tl-toggle__headline ${disabled ? 'tl-toggle__headline--disabled' : ''}">
+        <div class="tl-toggle__headline">
              ${headline}
           </div>
         <input
@@ -79,9 +79,7 @@ const Template = ({ size, headline, label, checked, disabled }) =>
           ${checked ? 'checked' : ''}
           ${disabled ? 'disabled' : ''}
         />
-        <label class="tl-toggle__label ${
-          disabled ? 'tl-toggle__label--disabled' : ''
-        }">${label}</label>
+        <label class="tl-toggle__label">${label}</label>
     </div>
   `);
 export const Default = Template.bind({});

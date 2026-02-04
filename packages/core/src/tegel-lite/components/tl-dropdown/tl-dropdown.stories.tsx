@@ -275,9 +275,6 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   if (error) {
     classesList.push('tl-dropdown--error');
   }
-  if (disabled) {
-    classesList.push('tl-dropdown--disabled');
-  }
   if (direction === 'Up') {
     classesList.push('tl-dropdown--dropup');
   }
