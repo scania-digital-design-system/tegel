@@ -173,25 +173,19 @@ export class TdsModal {
       this.referenceEl ??
       (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
 
-    if (!referenceElement) {
-      return; // no element to return focus to
-    }
+    if (!referenceElement) return;
 
-    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
-    const isNativeFocusable = potentialReferenceElements.includes(referenceElement.tagName);
+    const potential = ['BUTTON', 'A', 'INPUT'];
+    const isNativeFocusable = potential.includes(referenceElement.tagName);
 
-    if (isNativeFocusable) {
-      referenceElement.focus();
-    } else {
-      // If referenced element is a custom element eg: tds-button we find the interactive element inside:
-      const interactiveElement = referenceElement.querySelector<HTMLElement>(
-        potentialReferenceElements.join(','),
-      );
+    const interactiveElement = isNativeFocusable
+      ? referenceElement
+      : referenceElement.querySelector<HTMLElement>(potential.join(','));
 
-      if (interactiveElement) {
-        interactiveElement.focus();
-      }
-    }
+    if (!interactiveElement) return;
+
+    interactiveElement.classList.remove('active');
+    interactiveElement.focus();
   }
 
   private getFocusableElements(): HTMLElement[] {
@@ -225,19 +219,25 @@ export class TdsModal {
   }
 
   /** Focuses the first focusable element in the modal. */
-  private focusFirstElement() {
-    const els = this.getFocusableElements();
-    if (els.length) {
-      els[0].focus();
-      this.activeElementIndex = 0;
-    }
+  // private focusFirstElement() {
+  //   const els = this.getFocusableElements();
+  //   if (els.length) {
+  //     els[0].focus();
+  //     this.activeElementIndex = 0;
+  //   }
+  // }
+
+  private focusModalContainer() {
+    this.host.shadowRoot?.querySelector<HTMLElement>('.tds-modal')?.focus();
+    this.activeElementIndex = 0;
   }
 
   /** Runs whenever the modal is opened and updates it. */
   private onOpen() {
     requestAnimationFrame(() => {
       this.resetScrollPosition();
-      this.focusFirstElement();
+      // this.focusFirstElement();
+      this.focusModalContainer();
     });
   }
 
@@ -366,7 +366,10 @@ export class TdsModal {
         onClick={(event: PointerEvent) => this.handleOverlayClick(event)}
       >
         <div class="tds-modal-backdrop" />
-        <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
+        <div
+          class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}
+          tabindex="-1"
+        >
           <div id={headerId} class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}

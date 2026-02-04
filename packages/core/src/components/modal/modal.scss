@@ -104,6 +104,12 @@ $modals: (
   pointer-events: auto;
   @include modal-scrollbar;
 
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
   &__actions-sticky {
     overflow: hidden;
     display: flex;
