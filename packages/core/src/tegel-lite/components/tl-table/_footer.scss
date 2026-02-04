@@ -17,8 +17,8 @@
 }
 
 .tl-table__footer
-  .tl-dropdown--sm
-  :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
+.tl-dropdown--sm
+:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
 .tl-table__footer .tl-dropdown__option {
   height: 29px;
 }
