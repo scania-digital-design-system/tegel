@@ -362,7 +362,7 @@ jobs:
           echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
 
       - name: Build Tegel Lite package
-        run: npm run build:lte
+        run: npm run build:tegel-lite
 
       - name: Check if Tegel Lite version already exists
         id: check-version

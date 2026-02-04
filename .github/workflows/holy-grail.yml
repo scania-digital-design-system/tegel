@@ -387,7 +387,7 @@ jobs:
         run: npm ci
 
       - name: Tegel Lite - Build
-        run: npm run build:lte
+        run: npm run build:tegel-lite
 
       - name: Tegel Lite - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
