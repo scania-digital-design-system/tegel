@@ -63,7 +63,11 @@
     "./tl-radiobutton.css": "./dist/tl-radiobutton.css",
     "./tl-folder-tabs.css": "./dist/tl-folder-tabs.css",
     "./tl-inline-tabs.css": "./dist/tl-inline-tabs.css",
-    "./tl-navigation-tabs.css": "./dist/tl-navigation-tabs.css"
+    "./tl-navigation-tabs.css": "./dist/tl-navigation-tabs.css",
+    "./tl-folder-tab.css": "./dist/tl-folder-tab.css",
+    "./tl-inline-tab.css": "./dist/tl-inline-tab.css",
+    "./tl-navigation-tab.css": "./dist/tl-navigation-tab.css",
+    "./tl-textarea-mixins.css": "./dist/tl-textarea-mixins.css"
   },
   "repository": {
     "type": "git",
