@@ -58,6 +58,10 @@ storybook-static/
 components.d.ts
 
 
+# Local pack / publish preview
+.pack-inspect/
+*.tgz
+
 # Playwright
 playwright-report/
 test-results/
