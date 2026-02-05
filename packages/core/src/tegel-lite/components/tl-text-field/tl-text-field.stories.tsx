@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Text Field',
+  title: 'Tegel Lite (Beta)/Text Field',
   parameters: {
     layout: 'centered',
   },

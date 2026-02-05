@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Side Menu',
+  title: 'Tegel Lite (Beta)/Side Menu',
   parameters: {
     layout: 'fullscreen',
     docs: {

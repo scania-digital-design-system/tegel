@@ -1,0 +1,53 @@
+/**
+ * Tegel Lite - All Components
+ * 
+ * This file imports all Tegel Lite components.
+ * Use this when you need most or all components in your project.
+ * 
+ * Usage:
+ * <link rel="stylesheet" href="node_modules/@scania/tegel-lite/dist/scania-variables.css">
+ * <link rel="stylesheet" href="node_modules/@scania/tegel-lite/dist/traton-variables.css">
+ * <link rel="stylesheet" href="node_modules/@scania/tegel-lite/dist/global.css">
+ * <link rel="stylesheet" href="node_modules/@scania/tegel-lite/dist/components.css">
+ */
+
+// Components (alphabetically ordered)
+@use './components/tl-accordion/tl-accordion';
+@use './components/tl-badge/tl-badge';
+@use './components/tl-banner/tl-banner';
+@use './components/tl-block/tl-block';
+@use './components/tl-breadcrumbs/tl-breadcrumbs';
+@use './components/tl-button/tl-button';
+@use './components/tl-card/tl-card';
+@use './components/tl-checkbox/tl-checkbox-vars';
+@use './components/tl-checkbox/tl-checkbox';
+@use './components/tl-chip/tl-chip';
+@use './components/tl-datetime/tl-datetime';
+@use './components/tl-divider/tl-divider';
+@use './components/tl-dropdown/tl-dropdown';
+@use './components/tl-footer/tl-footer';
+@use './components/tl-header/tl-header';
+@use './components/tl-icon/tl-icon';
+@use './components/tl-link/tl-link';
+@use './components/tl-message/tl-message';
+@use './components/tl-modal/tl-modal';
+@use './components/tl-popover-canvas/tl-popover-canvas';
+@use './components/tl-popover-menu/tl-popover-menu';
+@use './components/tl-radio-button/tl-radio-button';
+@use './components/tl-side-menu/tl-side-menu';
+@use './components/tl-slider/tl-slider';
+@use './components/tl-spinner/tl-spinner';
+@use './components/tl-stepper/tl-step';
+@use './components/tl-stepper/tl-stepper';
+@use './components/tl-table/tl-table';
+@use './components/tl-tabs/tl-folder-tabs/tl-folder-tabs';
+@use './components/tl-tabs/tl-folder-tabs/tl-folder-tab';
+@use './components/tl-tabs/tl-inline-tabs/tl-inline-tabs';
+@use './components/tl-tabs/tl-inline-tabs/tl-inline-tab';
+@use './components/tl-tabs/tl-navigation-tabs/tl-navigation-tabs';
+@use './components/tl-tabs/tl-navigation-tabs/tl-navigation-tab';
+@use './components/tl-text-field/tl-text-field';
+@use './components/tl-textarea/tl-textarea';
+@use './components/tl-toast/tl-toast';
+@use './components/tl-toggle/tl-toggle';
+@use './components/tl-tooltip/tl-tooltip';
