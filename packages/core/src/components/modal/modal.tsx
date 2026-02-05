@@ -175,12 +175,12 @@ export class TdsModal {
 
     if (!referenceElement) return;
 
-    const potential = ['BUTTON', 'A', 'INPUT'];
-    const isNativeFocusable = potential.includes(referenceElement.tagName);
+    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
+    const isNativeFocusable = potentialReferenceElements.includes(referenceElement.tagName);
 
     const interactiveElement = isNativeFocusable
       ? referenceElement
-      : referenceElement.querySelector<HTMLElement>(potential.join(','));
+      : referenceElement.querySelector<HTMLElement>(potentialReferenceElements.join(','));
 
     if (!interactiveElement) return;
 
@@ -217,15 +217,6 @@ export class TdsModal {
       root?.querySelector<HTMLElement>('.tds-modal');
     scroller?.scrollTo(0, 0);
   }
-
-  /** Focuses the first focusable element in the modal. */
-  // private focusFirstElement() {
-  //   const els = this.getFocusableElements();
-  //   if (els.length) {
-  //     els[0].focus();
-  //     this.activeElementIndex = 0;
-  //   }
-  // }
 
   private focusModalContainer() {
     this.host.shadowRoot?.querySelector<HTMLElement>('.tds-modal')?.focus();
@@ -284,8 +275,6 @@ export class TdsModal {
     const closeEvent = this.tdsClose.emit(event);
     if (closeEvent.defaultPrevented) return;
 
-    // if (this.show !== undefined) return;
-
     this.isShown = false;
     this.returnFocusOnClose();
   };
@@ -293,8 +282,6 @@ export class TdsModal {
   handleShow = () => {
     const showEvent = this.tdsOpen.emit();
     if (showEvent.defaultPrevented) return;
-
-    // if (this.show !== undefined) return;
 
     this.isShown = true;
     this.onOpen();
