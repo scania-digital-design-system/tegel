@@ -11,7 +11,7 @@ Tegel Lite is a **styles-only** component library that provides the same design 
 ## 📦 Installation
 
 ```bash
-npm install @scania/tegel-lite
+npm install @scania/tegel-lite@0.0.1-beta.10
 ```
 
 ## 🚀 Quick Start
