@@ -1,0 +1,202 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Tegel Lite (Beta)" />
+
+**Published: 2026-02-01**
+
+# Using Tegel Lite (Beta)
+
+> **⚠️ Beta Status:** This package is currently in beta. The API may change before stable 1.0.0. Report issues at [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
+
+Tegel Lite is a pure CSS alternative to Tegel's component library, providing the same design system without relying on Web Components or Stencil. It's a styles-only component system built using SCSS and compiled to CSS files, aligned to the same design tokens and variables as the original Tegel.
+
+## When to Use Tegel Lite
+
+Use Tegel Lite when you:
+- Want to avoid JavaScript frameworks
+- Need a lightweight, CSS-only solution
+- Are building server-rendered applications
+- Prefer full control over HTML structure and behavior
+
+Tegel Lite works with any framework or vanilla JavaScript. However, for React or Angular applications, we recommend using the framework-specific packages (`@scania/tegel-react` or `@scania/tegel-angular`) which provide a better developer experience with web component wrappers.
+
+## Installing `@scania/tegel-lite`
+
+Install the `@scania/tegel-lite` package via npm.
+
+```bash
+npm install @scania/tegel-lite
+```
+
+## Quick Start
+
+**Important:** You must import brand variables separately - component CSS files only contain component styles, not design tokens.
+
+### Option 1: All Components (Recommended for most apps)
+
+```javascript
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
+import '@scania/tegel-lite/components.css'; // All component styles
+```
+
+### Option 2: Tree-shaking (Import Specific Components)
+
+Import only what you need for better performance:
+
+```javascript
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
+import '@scania/tegel-lite/global.css'; // Component tokens (required)
+import '@scania/tegel-lite/tl-button.css';
+import '@scania/tegel-lite/tl-card.css';
+import '@scania/tegel-lite/tl-header.css';
+```
+
+> **Important:** You must import three files in this order:
+> 1. Brand variables (`scania-variables.css` or `traton-variables.css`) - brand-specific colors, fonts, and tokens
+> 2. Component tokens (`global.css`) - component-level CSS variables
+> 3. Component styles (`components.css` for all, or individual `tl-*.css` files)
+
+## Theming
+
+Tegel Lite supports both **Scania** and **Traton** themes with light and dark modes.
+
+**Required:** You must import both the brand variables file (`scania-variables.css` or `traton-variables.css`) and the component tokens file (`global.css`) to get all necessary design tokens and CSS variables.
+
+Set the active theme on the `<html>` element and mode on the `<body>` element:
+
+```html
+<!-- Scania light mode (default) -->
+<html class="scania">
+  <body>
+    <!-- Your content -->
+  </body>
+</html>
+
+<!-- Scania dark mode -->
+<html class="scania">
+  <body class="tds-mode-dark">
+    <!-- Your content -->
+  </body>
+</html>
+
+<!-- Traton light mode (default) -->
+<html class="traton">
+  <body>
+    <!-- Your content -->
+  </body>
+</html>
+
+<!-- Traton dark mode -->
+<html class="traton">
+  <body class="tds-mode-dark">
+    <!-- Your content -->
+  </body>
+</html>
+```
+
+**Important:** 
+- Place the brand class (`.scania` or `.traton`) on the `<html>` element
+- Place the mode class (`.tds-mode-dark`) on the `<body>` element for dark mode
+- Light mode is the default and doesn't require a class
+
+## Usage
+
+Tegel Lite components use BEM naming conventions with `tl-` prefix:
+
+```html
+<button class="tl-button tl-button--primary tl-button--md">
+  <span class="tl-button__label">Click me!</span>
+</button>
+```
+
+## HTML Example
+
+For vanilla HTML projects, link to the CSS files:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="scania">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tegel Lite</title>
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/scania-variables.css">
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/global.css">
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/components.css">
+</head>
+<body>
+  <!-- Add class="tds-mode-dark" to body for dark mode -->
+  <button class="tl-button tl-button--primary tl-button--md">
+    <span class="tl-button__label">Click me!</span>
+  </button>
+</body>
+</html>
+```
+
+## BEM Naming
+
+Tegel Lite uses BEM (Block Element Modifier) naming conventions:
+
+- **Block**: `.tl-button`
+- **Element**: `.tl-button__label`
+- **Modifier**: `.tl-button--primary`
+
+### Important: Correct Class Usage
+
+BEM modifiers like `.tl-button--primary` are **not standalone** — they must always be used together with the base class.
+
+**Correct:**
+```html
+<button class="tl-button tl-button--primary tl-button--md">
+  <span class="tl-button__label">Click me!</span>
+</button>
+```
+
+**Incorrect:**
+```html
+<!-- Missing base class -->
+<button class="tl-button--primary">
+  <span class="tl-button__label">Click me!</span>
+</button>
+```
+
+Always include the base class (`.tl-button`) when using modifiers like `--primary`, `--disabled`, `--lg`, etc. Modifiers extend the base styling, they don't replace it.
+
+## Component Documentation
+
+Detailed documentation for all components is available in the **Tegel Light (CSS)** section in Storybook, including:
+
+- Usage examples with HTML structure
+- Available elements and modifiers
+- Required stylesheets
+- JavaScript integration examples (when needed)
+
+## JavaScript Requirements
+
+Some components (Accordion, Dropdown, Modal, Tabs, Tooltip) require JavaScript for interactive behavior such as:
+
+- Toggling visibility states
+- Handling user interactions (clicks, keyboard events)
+- Managing ARIA attributes for accessibility
+- Position calculations
+
+These components provide the base styling and structure, but you need to implement the interactive behavior yourself. Check the component documentation in the **Tegel Light (CSS)** section for detailed requirements and examples.
+
+## Local Development Setup
+
+If you want to use a local version of Tegel Lite during development, you can link the package:
+
+### Using npm link
+
+In the `tegel/packages/tegel-lite` directory:
+
+```bash
+npm link
+```
+
+In your project:
+
+```bash
+npm link @scania/tegel-lite
+```

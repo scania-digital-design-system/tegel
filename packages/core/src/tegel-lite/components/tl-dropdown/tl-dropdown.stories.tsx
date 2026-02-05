@@ -349,7 +349,7 @@ const Template = (props: TemplateProps): string => {
 };
 
 export default {
-  title: 'Tegel Lite (CSS)/Dropdown',
+  title: 'Tegel Lite (Beta)/Dropdown',
   includeStories: ['Default'],
   parameters: { layout: 'centered' },
   argTypes: {

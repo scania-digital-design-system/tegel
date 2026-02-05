@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Expandable Rows',
+  title: 'Tegel Lite (Beta)/Table/Expandable Rows',
   parameters: {
     docs: {
       description: {
