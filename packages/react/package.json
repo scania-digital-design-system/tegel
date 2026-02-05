@@ -33,7 +33,7 @@
     }
   },
   "dependencies": {
-    "@scania/tegel": "file:../core/scania-tegel-1.45.0.tgz",
+    "@scania/tegel": "^1.45.0",
     "@stencil/react-output-target": "^1.3.0"
   },
   "devDependencies": {
