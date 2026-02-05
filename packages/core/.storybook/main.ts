@@ -13,7 +13,9 @@ function loadStories() {
   // Otherwise, exclude stories from the _beta folder
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
-    : storyFiles.filter((file: string | string[]) => !file.includes('/_beta/'));
+    : storyFiles.filter(
+        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-lite/'),
+      );
 }
 
 let addons = ['@vueless/storybook-dark-mode', '@storybook/addon-docs'];
