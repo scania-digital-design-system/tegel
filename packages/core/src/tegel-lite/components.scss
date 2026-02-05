@@ -41,8 +41,11 @@
 @use './components/tl-stepper/tl-stepper';
 @use './components/tl-table/tl-table';
 @use './components/tl-tabs/tl-folder-tabs/tl-folder-tabs';
+@use './components/tl-tabs/tl-folder-tabs/tl-folder-tab';
 @use './components/tl-tabs/tl-inline-tabs/tl-inline-tabs';
+@use './components/tl-tabs/tl-inline-tabs/tl-inline-tab';
 @use './components/tl-tabs/tl-navigation-tabs/tl-navigation-tabs';
+@use './components/tl-tabs/tl-navigation-tabs/tl-navigation-tab';
 @use './components/tl-text-field/tl-text-field';
 @use './components/tl-textarea/tl-textarea';
 @use './components/tl-toast/tl-toast';
