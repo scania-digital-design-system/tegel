@@ -143,6 +143,10 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+        continue-on-error: true
+
       - name: Set up Git for authentication
         run: |
           git config --global user.name "Tegel - Scania"
@@ -155,11 +159,11 @@ jobs:
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Core - Install
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Core - Run build
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -222,6 +226,10 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+        continue-on-error: true
+
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
@@ -237,34 +245,34 @@ jobs:
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17
         run: |
-          npm install ../../core-tarball/*.tgz
+          npm install ../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../core-tarball/*.tgz)
 
       - name: Angular 17 Components wrapper – install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17/projects/components
         run: |
-          npm install ../../../../core-tarball/*.tgz
+          npm install ../../../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../../../core-tarball/*.tgz)
 
       - name: React wrapper – install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/react
         run: |
-          npm install ../../core-tarball/*.tgz
+          npm install ../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../core-tarball/*.tgz)
 
       - name: Angular 17 - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
 
       - name: Angular 17 components - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
 
       - name: React - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
 
       - name: Wrappers Core increase - Commit and push changes
         run: |
@@ -295,20 +303,24 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+        continue-on-error: true
+
       - name: Install dependencies in root
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Angular-17 workspace - Install
         working-directory: packages/angular-17
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Angular-17 wrapper - Install
         working-directory: packages/angular-17/projects/components
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Angular-17 - Run build
         run: npm run build:angular-17
@@ -339,21 +351,25 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+        continue-on-error: true
+
       - name: React - Read package.json Version
         id: version
         working-directory: packages/react
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: React - Install
         working-directory: packages/react
-        run: npm ci
+        run: npm ci || (npm cache clean --force && npm ci)
 
       - name: React - Build
         run: npm run build:react
