@@ -118,11 +118,21 @@ export class TdsTable {
     let selectedRowsData: RowCell[][] = [];
 
     const tableBody = this.host.querySelector('tds-table-body');
-    const selectedRows = (
+
+    // Get both regular rows and expandable rows
+    const regularRows = (
       Array.from(
         tableBody?.querySelectorAll('tds-table-body-row') ?? [],
       ) as Array<HTMLTdsTableBodyRowElement>
     ).filter((element) => element.selected);
+
+    const expandableRows = (
+      Array.from(
+        tableBody?.querySelectorAll('tds-table-body-row-expandable') ?? [],
+      ) as Array<HTMLTdsTableBodyRowExpandableElement>
+    ).filter((element) => element.selected);
+
+    const selectedRows = [...regularRows, ...expandableRows];
 
     selectedRows.forEach((row) => {
       let selectedRow: RowCell[] = [];
