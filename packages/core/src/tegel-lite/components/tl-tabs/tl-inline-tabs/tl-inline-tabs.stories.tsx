@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tabs/Inline Tabs',
+  title: 'Tegel Lite (Beta)/Tabs/Inline Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
     showLeftButton: {
@@ -22,7 +22,7 @@ export default {
     },
     leftPadding: {
       name: 'Left Padding',
-      description: 'Sets the custom left padding for the wrapper element. Accepts a numeric value.',
+      description: 'Sets the custom left padding for the tabs container. Accepts a numeric value.',
       control: { type: 'number' },
       table: { defaultValue: { summary: 32 } },
     },
@@ -36,6 +36,8 @@ export default {
 };
 
 const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
+  const modeClass = '';
+
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
   const tabsHtml = labels
@@ -77,12 +79,10 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
       "@scania/tegel-lite/tl-icon.css"
     -->
 
-    <div class="tl-inline-tabs" style="padding-left: ${leftPadding}px;">
-      <div class="tl-inline-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+    <div class="tl-inline-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->

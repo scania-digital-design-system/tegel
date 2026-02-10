@@ -58,12 +58,12 @@
 
   &--primary {
     --card-box: none;
-    --card-background: var(--card-background-secondary);
+    --card-background: transparent;
   }
 
   &--secondary {
     --card-box: none;
-    --card-background: var(--card-background-primary);
+    --card-background: transparent;
   }
 }
 
@@ -91,6 +91,10 @@
 .traton .tds-mode-dark .tl-card,
 .traton .tl-mode-dark .tl-card {
   &--primary {
-    --card-background: var(--color-background-base);
+    --card-background: transparent;
+  }
+
+  &--secondary {
+    --card-background: transparent;
   }
 }

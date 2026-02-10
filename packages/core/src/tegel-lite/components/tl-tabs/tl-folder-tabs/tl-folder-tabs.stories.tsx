@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tabs/Folder Tabs',
+  title: 'Tegel Lite (Beta)/Tabs/Folder Tabs',
   parameters: { backgrounds: { default: 'white' }, layout: 'padded' },
   argTypes: {
     modeVariant: {
@@ -84,11 +84,9 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
     -->
 
     <div class="tl-folder-tabs ${modeClass}">
-      <div class="tl-folder-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->
