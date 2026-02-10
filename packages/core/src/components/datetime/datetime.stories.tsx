@@ -64,7 +64,7 @@ export default {
     defaultValue: {
       name: 'Default value',
       description:
-        'Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
+        'Default value of the component. Format for time: HH:MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH:MM.',
       control: {
         type: 'radio',
       },
