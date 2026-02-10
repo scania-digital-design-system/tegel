@@ -1,0 +1,6 @@
+{
+  "codeConnect": {
+    "include": ["packages/core/src/components/**/*.figma.ts"],
+    "parser": "html"
+  }
+}
