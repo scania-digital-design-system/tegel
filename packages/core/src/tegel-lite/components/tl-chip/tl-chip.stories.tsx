@@ -2,7 +2,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
-  title: 'Tegel Lite (CSS)/Chip',
+  title: 'Tegel Lite (Beta)/Chip',
   parameters: { layout: 'centered' },
   argTypes: {
     size: {

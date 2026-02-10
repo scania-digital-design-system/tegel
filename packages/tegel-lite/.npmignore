@@ -1,0 +1,17 @@
+# Development files
+.gitignore
+playwright.config.ts
+tests/
+README.dev.md
+
+# Build artifacts
+*.log
+*.tgz
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

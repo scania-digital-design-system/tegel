@@ -31,21 +31,21 @@
     z-index: 1;
   }
 
-  // Default behavior (label outside) - readonly icon position adjustment (only when a label element exists)
-  &:has(.tl-text-field__label):not(&--label-inside)#{&}--readonly:not(&--disabled):not(
-  &--hide-readonly-icon
-)::before {
+  // Outside label - readonly icon position adjustment (only when label exists)
+  &:not(&--label-inside):has(.tl-text-field__label):has(.tl-text-field__input[readonly]):not(
+      :has(.tl-text-field__input:disabled)
+    ):not(&--hide-readonly-icon)::before {
     top: calc(50% + 24px);
   }
 
-  &--disabled {
-    pointer-events: none;
+  &:has(.tl-text-field__input:disabled) {
+    cursor: not-allowed;
   }
 
   .tl-icon {
     background-color: var(--text-field-affix);
 
-    .tl-text-field--disabled & {
+    :has(.tl-text-field__input:disabled) & {
       background-color: var(--text-field-affix-disabled);
     }
   }
@@ -66,7 +66,7 @@
     box-shadow: inset var(--text-field-box-shadow-focus);
   }
 
-  .tl-text-field:hover &:not(:focus) {
+  .tl-text-field:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -78,16 +78,26 @@
     }
   }
 
-  .tl-text-field--error:hover &:not(:focus) {
+  .tl-text-field--error:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--text-field-box-shadow-error-hover);
   }
 
-  .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled)
-  &:not(:focus) {
+  .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
-  .tl-text-field--readonly & {
+  &:disabled {
+    box-shadow: none;
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
     box-shadow: inset var(--text-field-box-shadow);
 
     &:focus {
@@ -95,24 +105,22 @@
     }
   }
 
-  .tl-text-field--readonly:hover &:not(:focus) {
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
+    &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
-  .tl-text-field--disabled & {
-    box-shadow: none;
-    background-color: var(--text-field-background-disabled);
-    color: var(--text-field-text-disabled);
-  }
-
-  .tl-text-field--readonly & {
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
     user-select: auto;
     caret-color: transparent;
     cursor: default;
     pointer-events: none;
   }
 
-  .tl-text-field--readonly:not(.tl-text-field--disabled):not(.tl-text-field--hide-readonly-icon) & {
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+      .tl-text-field--hide-readonly-icon
+    )
+    & {
     padding-right: 54px;
   }
 
@@ -207,10 +215,10 @@
   // Focus and filled state for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
-  &,
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     @include detail-07;
 
     top: 8px;
@@ -220,58 +228,58 @@
 
   // Keep prefix offset when focused for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + 20px + 8px);
   }
 
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   // Focus and filled state for sm - label disappears
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     opacity: 0;
     visibility: hidden;
   }
 
   // Disabled label gets disabled color but keeps same behavior
-  .tl-text-field--label-inside.tl-text-field--disabled & {
+  .tl-text-field--label-inside:has(.tl-text-field__input:disabled) & {
     color: var(--text-field-label-disabled);
   }
 
   // Default behavior (label outside) - disabled state
-  .tl-text-field:not(.tl-text-field--label-inside).tl-text-field--disabled & {
+  .tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input:disabled) & {
     color: var(--text-field-label-disabled);
   }
 }
@@ -288,7 +296,7 @@
   color: var(--text-field-helper);
   position: relative;
 
-  .tl-text-field--disabled & {
+  :has(.tl-text-field__input:disabled) & {
     color: var(--color-foreground-text-disabled);
   }
 
@@ -310,7 +318,7 @@
     }
   }
 
-  .tl-text-field--error.tl-text-field--readonly & {
+  .tl-text-field--error:has(.tl-text-field__input[readonly]) & {
     padding-left: 0;
 
     &::before {
@@ -318,11 +326,14 @@
     }
   }
 
-  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
     color: var(--text-field-error);
   }
 
-  .tl-text-field--error.tl-text-field--disabled &::before {
+  .tl-text-field--error:has(.tl-text-field__input:disabled) &::before {
     background-color: var(--color-foreground-text-disabled);
   }
 }
@@ -333,11 +344,14 @@
   margin-left: auto;
   color: var(--text-field-textcounter);
 
-  .tl-text-field--disabled & {
+  :has(.tl-text-field__input:disabled) & {
     color: var(--color-foreground-text-disabled);
   }
 
-  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
     color: var(--text-field-error);
 
     .tl-text-field__charcounter-divider {
@@ -368,8 +382,8 @@
     transform: translateY(calc(-50% + 24px));
   }
 
-  .tl-text-field--disabled &--text,
-  .tl-text-field--disabled &--icon {
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
     color: var(--text-field-affix-disabled);
 
     > * {
@@ -381,7 +395,7 @@
     }
   }
 
-  .tl-text-field--disabled &--icon.tl-icon {
+  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
     background-color: var(--text-field-affix-disabled);
   }
 }
@@ -404,8 +418,8 @@
     transform: translateY(calc(-50% + 24px));
   }
 
-  .tl-text-field--disabled &--text,
-  .tl-text-field--disabled &--icon {
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
     color: var(--text-field-affix-disabled);
 
     > * {
@@ -432,8 +446,8 @@
     transform: translateY(calc(-50% + 24px));
   }
 
-  .tl-text-field--disabled &--text,
-  .tl-text-field--disabled &--icon {
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
     color: var(--text-field-affix-disabled);
 
     > * {
@@ -446,7 +460,7 @@
     }
   }
 
-  .tl-text-field--disabled &--icon.tl-icon {
+  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
     background-color: var(--text-field-affix-disabled);
   }
 }

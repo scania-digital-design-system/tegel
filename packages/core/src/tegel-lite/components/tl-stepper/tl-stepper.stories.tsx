@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Stepper',
+  title: 'Tegel Lite (Beta)/Stepper',
   parameters: {
     backgrounds: {
       default: 'white',

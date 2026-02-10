@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tabs/Folder Tabs',
+  title: 'Tegel Lite (Beta)/Tabs/Folder Tabs',
   parameters: { backgrounds: { default: 'white' }, layout: 'padded' },
   argTypes: {
     modeVariant: {
