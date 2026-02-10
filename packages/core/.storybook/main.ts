@@ -10,7 +10,7 @@ function loadStories() {
   );
 
   // If in development environment, return all story files
-  // Otherwise, exclude stories from the _beta and tegel-lite folders
+  // Otherwise, exclude stories from the _beta folder
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
     : storyFiles.filter(

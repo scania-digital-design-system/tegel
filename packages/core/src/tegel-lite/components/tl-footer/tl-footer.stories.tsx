@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Footer',
+  title: 'Tegel Lite (Beta)/Footer',
   parameters: {
     layout: 'fullscreen',
   },

@@ -1,4 +1,3 @@
-@use '../../../../../../grid-deprecated/vars' as *;
 @use '../../../mixins/tl-scrollbar' as *;
 @use '../../../mixins/z-index' as *;
 @use '../../../global/variables' as *;
@@ -8,6 +7,9 @@
 @use 'item' as *;
 @use 'dropdown' as *;
 @use 'user' as *;
+
+// Breakpoint for responsive layout
+$breakpoint-lg: 992px;
 
 .tl-side-menu {
   pointer-events: none;
@@ -42,7 +44,7 @@
 .tl-side-menu__wrapper--closed {
   display: none;
 
-  @media (min-width: $grid-lg) {
+  @media (min-width: $breakpoint-lg) {
     .tl-side-menu--persistent & {
       display: block;
     }
@@ -92,7 +94,7 @@
   display: none;
   border-top: 1px solid var(--side-menu-bottom-menu-border-top);
 
-  @media (min-width: $grid-lg) {
+  @media (min-width: $breakpoint-lg) {
     .tl-side-menu--persistent & {
       display: flex;
       flex-direction: row;
@@ -150,7 +152,7 @@
   border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
 }
 
-@media (min-width: $grid-lg) {
+@media (min-width: $breakpoint-lg) {
   .tl-side-menu--persistent {
     pointer-events: auto;
     position: static;
@@ -267,7 +269,7 @@
   }
 }
 
-@media (max-width: $grid-lg) {
+@media (max-width: $breakpoint-lg) {
   .tl-side-menu__wrapper--open {
     pointer-events: auto;
     z-index: tds-z-index(side-menu);
@@ -280,7 +282,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $breakpoint-lg) {
   .tl-side-menu:not(.tl-side-menu--persistent) {
     display: none;
   }

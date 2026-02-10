@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Textarea',
+  title: 'Tegel Lite (Beta)/Textarea',
   parameters: {
     layout: 'centered',
   },

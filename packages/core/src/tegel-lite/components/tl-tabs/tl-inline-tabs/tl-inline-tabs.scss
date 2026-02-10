@@ -13,7 +13,7 @@
   scrollbar-width: none;
   gap: 16px;
   position: relative;
-  background-color: transparent;
+  background-color: var(--inline-tabs-tab-background);
 
   &::-webkit-scrollbar {
     display: none;
@@ -31,7 +31,7 @@
 }
 
 .tl-inline-tabs__scroll-button {
-  background-color: var(--inline-tabs-scroll-button);
+  background-color: transparent;
   color: var(--inline-tabs-scroll-button-text);
   cursor: pointer;
   min-width: 48px;
