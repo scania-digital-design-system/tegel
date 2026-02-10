@@ -57,17 +57,20 @@ We recommend fitting your content within the table’s natural size whenever pos
 | -------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | -------------------- |
 | `autoCollapse`             | `auto-collapse`                | Enables auto-collapse of other expandable rows when one row is expanded                                                                   | `boolean`                         | `false`              |
 | `colSpan`                  | `col-span`                     | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `null \| number`                  | `null`               |
+| `disabled`                 | `disabled`                     | Marks the row as disabled, used for multiselect table.                                                                                    | `boolean \| undefined`            | `false`              |
 | `expanded`                 | `expanded`                     | Sets isExpanded state to true or false externally                                                                                         | `boolean \| undefined`            | `undefined`          |
 | `overflow`                 | `overflow`                     | Controls the overflow behavior of the expandable row content                                                                              | `"auto" \| "hidden" \| "visible"` | `'auto'`             |
 | `rowId`                    | `row-id`                       | ID for the table row. Randomly generated if not specified.                                                                                | `string`                          | `generateUniqueId()` |
+| `selected`                 | `selected`                     | Marks the row as selected, used for multiselect table.                                                                                    | `boolean`                         | `false`              |
 | `tdsAriaLabelExpandButton` | `tds-aria-label-expand-button` | Aria label for the expand button, providing an accessible description                                                                     | `string`                          | `''`                 |
 
 
 ## Events
 
-| Event       | Description                                                                            | Type                                                                                 |
-| ----------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string \| undefined; }>` |
+| Event       | Description                                                                            | Type                                                                                                    |
+| ----------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string \| undefined; }>`                    |
+| `tdsSelect` | Event emitted when a row is selected/deselected.                                       | `CustomEvent<{ tableId: string \| undefined; checked: boolean; selectedRows: object[] \| undefined; }>` |
 
 
 ## Methods
@@ -109,6 +112,19 @@ Type: `Promise<void>`
 | `"expand-row-cell"` | Selector for the cell in the expanded row of the table. |
 | `"row"`             | Selector for the main row of the table.                 |
 
+
+## Dependencies
+
+### Depends on
+
+- [tds-checkbox](../../checkbox)
+
+### Graph
+```mermaid
+graph TD;
+  tds-table-body-row-expandable --> tds-checkbox
+  style tds-table-body-row-expandable fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 
