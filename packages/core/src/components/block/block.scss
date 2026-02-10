@@ -11,11 +11,13 @@
   letter-spacing: var(--tds-body-01-ls);
 }
 
-.tds-mode-variant-primary {
+.tds-mode-variant-primary,
+.tl-mode-variant-primary {
   background-color: var(--tds-block-background-primary);
 }
 
-.tds-mode-variant-secondary {
+.tds-mode-variant-secondary,
+.tl-mode-variant-secondary {
   background-color: var(--tds-block-background-secondary);
 }
 

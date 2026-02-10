@@ -67,7 +67,9 @@
 
 // Dark mode variant secondary
 .tds-mode-dark .tl-table,
-.tl-mode-dark .tl-table {
+.tl-mode-dark .tl-table,
+.tds-mode-dark .tds-table,
+.tl-mode-dark .tds-table {
   &.tl-table--secondary {
     --table-body-cell-hover: var(--color-background-surface-300);
     --table-body-row-hover: var(--color-background-surface-300);

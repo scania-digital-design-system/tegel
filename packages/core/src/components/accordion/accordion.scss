@@ -36,10 +36,12 @@
   border-bottom: none;
 }
 
-:host(.tds-mode-variant-secondary) {
+:host(.tds-mode-variant-secondary),
+:host(.tl-mode-variant-secondary) {
   background-color: var(--tds-accordion-background);
 }
 
-:host(.tds-mode-variant-primary) {
+:host(.tds-mode-variant-primary),
+:host(.tl-mode-variant-primary) {
   background-color: var(--tds-accordion-background);
 }

@@ -20,7 +20,8 @@
 
 .tds-mode-dark,
 .tl-mode-dark {
-  .tl-checkbox {
+  .tl-checkbox,
+  .tds-checkbox {
     --checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%230D0F13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
     --checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%230D0F13'/></svg>");
     --checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%2356657A' stroke-linecap='round' stroke-linejoin='round'/></svg>");

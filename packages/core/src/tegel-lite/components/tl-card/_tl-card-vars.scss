@@ -73,23 +73,28 @@
   --card-background-primary: var(--tds-grey-900);
   --card-background-secondary: var(--tds-grey-850);
 
-  .tl-card {
+  .tl-card,
+  .tds-card {
     --card-background: var(--card-background-primary);
   }
 
-  .tl-card--primary {
+  .tl-card--primary,
+  .tds-card--primary {
     --card-box: var(--card-box-primary);
     --card-background: var(--card-background-primary);
   }
 
-  .tl-card--secondary {
+  .tl-card--secondary,
+  .tds-card--secondary {
     --card-box: var(--card-box-primary);
     --card-background: var(--card-background-secondary);
   }
 }
 
 .traton .tds-mode-dark .tl-card,
-.traton .tl-mode-dark .tl-card {
+.traton .tl-mode-dark .tl-card,
+.traton .tds-mode-dark .tds-card,
+.traton .tl-mode-dark .tds-card {
   &--primary {
     --card-background: transparent;
   }

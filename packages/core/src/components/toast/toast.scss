@@ -117,11 +117,13 @@
     }
   }
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-toast-background: var(--tds-toast-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-toast-background: var(--tds-toast-background-secondary);
   }
 }
