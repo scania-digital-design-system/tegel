@@ -39,7 +39,7 @@ export default {
 };
 
 const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
-  const modeClass = `tl-popover-canvas--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const animationClass = animation === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 
@@ -57,9 +57,9 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
         gap: 16px;
       }
     </style>
-    <div class="demo-wrapper">
+    <div class="demo-wrapper ${modeVariantClass}">
 
-      <div id="popover" class="tl-popover-canvas ${modeClass} ${animationClass} ${showPopoverClass}">
+      <div id="popover" class="tl-popover-canvas ${animationClass} ${showPopoverClass}">
         <div class="tl-popover-canvas__content">
           <h2 class="tl-popover-canvas__header">A Popover Canvas!</h2>
           <p>Where you can put anything you want!</p>

@@ -1,14 +1,16 @@
 .tl-popover-canvas {
   --popover-canvas-text: var(--color-foreground-text-strong);
   --popover-canvas-background: var(--color-background-layer-01);
+}
 
-  &--primary {
-    --popover-canvas-background: var(--color-background-layer-01);
-  }
+.tds-mode-variant-primary .tl-popover-canvas,
+.tl-mode-variant-primary .tl-popover-canvas {
+  --popover-canvas-background: var(--color-background-layer-01);
+}
 
-  &--secondary {
-    --popover-canvas-background: var(--color-background-layer-02);
-  }
+.tds-mode-variant-secondary .tl-popover-canvas,
+.tl-mode-variant-secondary .tl-popover-canvas {
+  --popover-canvas-background: var(--color-background-layer-02);
 }
 
 .scania .tl-popover-canvas {

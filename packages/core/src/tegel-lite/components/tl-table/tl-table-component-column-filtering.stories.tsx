@@ -124,7 +124,7 @@ const ColumnFilteringTemplate = ({
   column4Width,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
@@ -142,7 +142,8 @@ const ColumnFilteringTemplate = ({
       "@scania/tegel-lite/tl-text-field.css"
       "@scania/tegel-lite/tl-icon.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
+    <div class="${modeVariantClass}">
+    <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell" data-column="0" ${col1Style}>Truck type</th>
@@ -262,6 +263,7 @@ const ColumnFilteringTemplate = ({
         });
       })();
     </script>
+    </div>
   `);
 };
 

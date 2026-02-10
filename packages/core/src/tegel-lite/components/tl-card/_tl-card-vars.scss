@@ -18,30 +18,26 @@
   --card-header-padding: 16px;
   --card-slotted-padding: 16px;
   --card-divider-margin: 16px 16px 0;
-
-  &--primary {
-    --card-box: var(--card-box-primary);
-  }
-
-  &.tl-card--mode-variant-secondary {
-    --card-box: var(--card-box-secondary);
-  }
 }
 
-.scania .tl-card {
-  /* Paddings */
-  --card-body-padding: 0 16px;
-  --card-header-padding: 16px;
-  --card-slotted-padding: 16px;
-  --card-divider-margin: 16px 16px 0;
+.tds-mode-variant-primary .tl-card,
+.tl-mode-variant-primary .tl-card {
+  --card-box: var(--card-box-primary);
+}
 
-  &--primary {
-    --card-box: var(--card-box-primary);
-  }
+.tds-mode-variant-secondary .tl-card,
+.tl-mode-variant-secondary .tl-card {
+  --card-box: var(--card-box-secondary);
+}
 
-  &--secondary {
-    --card-box: var(--card-box-primary);
-  }
+.scania .tds-mode-variant-primary .tl-card,
+.scania .tl-mode-variant-primary .tl-card {
+  --card-box: var(--card-box-primary);
+}
+
+.scania .tds-mode-variant-secondary .tl-card,
+.scania .tl-mode-variant-secondary .tl-card {
+  --card-box: var(--card-box-primary);
 }
 
 .traton .tl-card {
@@ -55,16 +51,18 @@
   --card-header-padding: 16px 16px 16px 0;
   --card-slotted-padding: 16px 16px 16px 0;
   --card-divider-margin: 16px 0 0;
+}
 
-  &--primary {
-    --card-box: none;
-    --card-background: transparent;
-  }
+.traton .tds-mode-variant-primary .tl-card,
+.traton .tl-mode-variant-primary .tl-card {
+  --card-box: none;
+  --card-background: transparent;
+}
 
-  &--secondary {
-    --card-box: none;
-    --card-background: transparent;
-  }
+.traton .tds-mode-variant-secondary .tl-card,
+.traton .tl-mode-variant-secondary .tl-card {
+  --card-box: none;
+  --card-background: transparent;
 }
 
 /* Dark mode */
@@ -77,29 +75,50 @@
   .tds-card {
     --card-background: var(--card-background-primary);
   }
-
-  .tl-card--primary,
-  .tds-card--primary {
-    --card-box: var(--card-box-primary);
-    --card-background: var(--card-background-primary);
-  }
-
-  .tl-card--secondary,
-  .tds-card--secondary {
-    --card-box: var(--card-box-primary);
-    --card-background: var(--card-background-secondary);
-  }
 }
 
-.traton .tds-mode-dark .tl-card,
-.traton .tl-mode-dark .tl-card,
-.traton .tds-mode-dark .tds-card,
-.traton .tl-mode-dark .tds-card {
-  &--primary {
-    --card-background: transparent;
-  }
+.tds-mode-dark.tds-mode-variant-primary .tl-card,
+.tl-mode-dark.tds-mode-variant-primary .tl-card,
+.tds-mode-dark.tl-mode-variant-primary .tl-card,
+.tl-mode-dark.tl-mode-variant-primary .tl-card,
+.tds-mode-dark.tds-mode-variant-primary .tds-card,
+.tl-mode-dark.tds-mode-variant-primary .tds-card,
+.tds-mode-dark.tl-mode-variant-primary .tds-card,
+.tl-mode-dark.tl-mode-variant-primary .tds-card {
+  --card-box: var(--card-box-primary);
+  --card-background: var(--card-background-primary);
+}
 
-  &--secondary {
-    --card-background: transparent;
-  }
+.tds-mode-dark.tds-mode-variant-secondary .tl-card,
+.tl-mode-dark.tds-mode-variant-secondary .tl-card,
+.tds-mode-dark.tl-mode-variant-secondary .tl-card,
+.tl-mode-dark.tl-mode-variant-secondary .tl-card,
+.tds-mode-dark.tds-mode-variant-secondary .tds-card,
+.tl-mode-dark.tds-mode-variant-secondary .tds-card,
+.tds-mode-dark.tl-mode-variant-secondary .tds-card,
+.tl-mode-dark.tl-mode-variant-secondary .tds-card {
+  --card-box: var(--card-box-primary);
+  --card-background: var(--card-background-secondary);
+}
+
+.traton .tds-mode-dark.tds-mode-variant-primary .tl-card,
+.traton .tl-mode-dark.tds-mode-variant-primary .tl-card,
+.traton .tds-mode-dark.tl-mode-variant-primary .tl-card,
+.traton .tl-mode-dark.tl-mode-variant-primary .tl-card,
+.traton .tds-mode-dark.tds-mode-variant-primary .tds-card,
+.traton .tl-mode-dark.tds-mode-variant-primary .tds-card,
+.traton .tds-mode-dark.tl-mode-variant-primary .tds-card,
+.traton .tl-mode-dark.tl-mode-variant-primary .tds-card {
+  --card-background: transparent;
+}
+
+.traton .tds-mode-dark.tds-mode-variant-secondary .tl-card,
+.traton .tl-mode-dark.tds-mode-variant-secondary .tl-card,
+.traton .tds-mode-dark.tl-mode-variant-secondary .tl-card,
+.traton .tl-mode-dark.tl-mode-variant-secondary .tl-card,
+.traton .tds-mode-dark.tds-mode-variant-secondary .tds-card,
+.traton .tl-mode-dark.tds-mode-variant-secondary .tds-card,
+.traton .tds-mode-dark.tl-mode-variant-secondary .tds-card,
+.traton .tl-mode-dark.tl-mode-variant-secondary .tds-card {
+  --card-background: transparent;
 }

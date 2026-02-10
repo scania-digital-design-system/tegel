@@ -36,7 +36,7 @@ export default {
 };
 
 const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex }) => {
-  const modeClass = `tl-folder-tabs--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
 
   const labels = ['First tab', 'Second tab is muuuuuuch longer', 'Third tab', 'Fourth tab'];
 
@@ -83,10 +83,12 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
       "@scania/tegel-lite/tl-icon.css"
     -->
 
-    <div class="tl-folder-tabs ${modeClass}">
-      ${leftButton}
-      ${tabsHtml}
-      ${rightButton}
+    <div class="${modeVariantClass}">
+      <div class="tl-folder-tabs">
+        ${leftButton}
+        ${tabsHtml}
+        ${rightButton}
+      </div>
     </div>
 
     <!-- The script below is just for demo purposes -->

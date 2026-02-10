@@ -139,7 +139,7 @@ const HorizontalScrollTemplate = ({
   column4Width,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
@@ -170,7 +170,8 @@ const HorizontalScrollTemplate = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
+    <div class="${modeVariantClass}">
+    <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell" data-column="0" ${col1Style}>Truck type</th>

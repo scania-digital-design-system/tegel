@@ -125,7 +125,7 @@ const PaginationTemplate = ({
   column3Width,
   column4Width,
 }) => {
-  const modeClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const compactClass = compactDesign ? 'tl-table--compact' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
@@ -144,6 +144,7 @@ const PaginationTemplate = ({
       "@scania/tegel-lite/tl-icon.css"
       "@scania/tegel-lite/tl-dropdown.css"
     -->
+    <div class="${modeVariantClass}">
     <table class="tl-table ${modeClass} ${compactClass} ${responsiveClass} ${verticalDividersClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">

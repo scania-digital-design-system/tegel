@@ -15,10 +15,12 @@
   --folder-tab-text-disabled: var(--color-foreground-text-disabled);
 }
 
-.tl-folder-tabs--primary .tl-folder-tabs__tab {
+.tds-mode-variant-primary .tl-folder-tabs__tab,
+.tl-mode-variant-primary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-01);
 }
 
-.tl-folder-tabs--secondary .tl-folder-tabs__tab {
+.tds-mode-variant-secondary .tl-folder-tabs__tab,
+.tl-mode-variant-secondary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-02);
 }

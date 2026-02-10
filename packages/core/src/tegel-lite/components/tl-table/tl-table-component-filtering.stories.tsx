@@ -138,7 +138,7 @@ const FilteringTemplate = ({
   showInput,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
@@ -155,7 +155,8 @@ const FilteringTemplate = ({
       "@scania/tegel-lite/tl-text-field.css"
       "@scania/tegel-lite/tl-icon.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
+    <div class="${modeVariantClass}">
+    <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
       <caption class="tl-table__toolbar">
         <div class="tl-table__upper-bar">
           <div class="tl-table__actionbar-left">
@@ -250,6 +251,7 @@ const FilteringTemplate = ({
         });
       })();
     </script>
+    </div>
   `);
 };
 

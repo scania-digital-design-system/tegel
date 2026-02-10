@@ -54,7 +54,7 @@ export default {
 };
 
 const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
-  const modeClass = `tl-message--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const variantClass = `tl-message--${messageVariant.toLowerCase()}`;
   const minimalClass = minimal ? 'tl-message--minimal' : '';
   const noIconClass = noIcon ? 'tl-message--no-icon' : '';
@@ -68,8 +68,8 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
         max-width: 380px;
       }
     </style>
-    <div class="demo-wrapper">
-      <div class="tl-message ${modeClass} ${variantClass} ${minimalClass} ${noIconClass}">
+    <div class="demo-wrapper ${modeVariantClass}">
+      <div class="tl-message ${variantClass} ${minimalClass} ${noIconClass}">
         <div class="tl-message__wrapper">
           <div class="tl-message__content">
             <div class="tl-message__header">Message header</div>

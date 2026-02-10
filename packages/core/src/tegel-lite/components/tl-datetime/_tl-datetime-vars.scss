@@ -30,16 +30,18 @@
   // error
   --datetime-helper-error: var(--color-system-danger-default);
   --datetime-icon-error: var(--color-system-danger-default);
+}
 
-  &--primary {
-    --datetime-background: var(--datetime-background-primary);
-    --datetime-background-disabled: var(--datetime-background-disabled-primary);
-  }
+.tds-mode-variant-primary .tl-datetime,
+.tl-mode-variant-primary .tl-datetime {
+  --datetime-background: var(--datetime-background-primary);
+  --datetime-background-disabled: var(--datetime-background-disabled-primary);
+}
 
-  &--secondary {
-    --datetime-background: var(--datetime-background-secondary);
-    --datetime-background-disabled: var(--datetime-background-disabled-secondary);
-  }
+.tds-mode-variant-secondary .tl-datetime,
+.tl-mode-variant-secondary .tl-datetime {
+  --datetime-background: var(--datetime-background-secondary);
+  --datetime-background-disabled: var(--datetime-background-disabled-secondary);
 }
 
 .tl-datetime,

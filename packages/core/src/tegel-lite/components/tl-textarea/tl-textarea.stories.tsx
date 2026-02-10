@@ -105,9 +105,10 @@ const Template = ({
   hideReadonlyIcon,
   disabled,
 }) => {
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
+
   const componentClasses = [
     'tl-textarea',
-    `tl-textarea--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
     // Note: label-outside is now the default behavior, no class needed
@@ -149,10 +150,13 @@ const Template = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-textarea.css"
     -->
-    <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
-      ${labelContent}
-      <textarea class="tl-textarea__input" ${inputAttrs}></textarea>
-      ${helperWrapperContent}
+    <div class="${modeVariantClass}">
+      <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
+        ${labelContent}
+        <textarea class="tl-textarea__input" ${inputAttrs}></textarea>
+        ${helperWrapperContent}
+      </div>
+    </div>
     ${
       maxLength > 0
         ? `

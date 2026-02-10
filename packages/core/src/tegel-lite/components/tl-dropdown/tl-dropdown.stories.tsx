@@ -263,9 +263,9 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
       ${getFilterMarkup(placeholder, disabled, multiselect, optionOrder)}`;
   }
 
-  const classesList: string[] = ['tl-dropdown', `tl-dropdown--${sizeClass}`];
+  const modeVariantClass = `tl-mode-variant-${props.modeVariant.toLowerCase()}`;
 
-  classesList.push(`tl-dropdown--${props.modeVariant.toLowerCase()}`);
+  const classesList: string[] = ['tl-dropdown', `tl-dropdown--${sizeClass}`];
 
   if (isInside) {
     classesList.push('tl-dropdown--label-inside');
@@ -292,9 +292,11 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
 
   return `
 ${stylesheetsComment}
-<div class="${classes}">
-  ${fieldMarkup}
-  ${showHelper && helper ? getHelper(helper) : ''}
+<div class="${modeVariantClass}">
+  <div class="${classes}">
+    ${fieldMarkup}
+    ${showHelper && helper ? getHelper(helper) : ''}
+  </div>
 </div>
   `;
 }

@@ -70,7 +70,7 @@ export default {
 };
 
 const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
-  const modeVariantClass = `tl-accordion--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const hideLastBorderClass = hideLastBorder ? 'tl-accordion--hide-last-border' : '';
   const iconPositionClass =
     iconPosition === 'start' ? 'tl-accordion__item--icon-start' : 'tl-accordion__item--icon-end';
@@ -85,8 +85,8 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
     "@scania/tegel-lite/tl-icon.css"
     -->
     
-    <div style="width: 100%; margin: 0 auto;">
-      <div class="tl-accordion ${modeVariantClass} ${hideLastBorderClass}">
+    <div class="${modeVariantClass}" style="width: 100%; margin: 0 auto;">
+      <div class="tl-accordion ${hideLastBorderClass}">
         <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${paddingClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
             <span class="tl-accordion__title">First item</span>

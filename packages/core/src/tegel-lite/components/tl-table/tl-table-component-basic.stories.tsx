@@ -159,7 +159,7 @@ const Template = ({
   horizontalScrollWidth,
 }) => {
   const compactClass = compact ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDividers ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsive ? 'tl-table--responsive' : '';
   const headerTextAlignClass =
@@ -182,7 +182,8 @@ const Template = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
+    <div class="${modeVariantClass}">
+      <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
         <thead class="tl-table__header">
           <tr class="tl-table__row">
             <th class="tl-table__header-cell" data-column="0">Truck type</th>
@@ -247,6 +248,7 @@ const Template = ({
         });
       })();
     </script>
+    </div>
   `);
 };
 

@@ -12,14 +12,16 @@
   --inline-tabs-scroll-button-background: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-hover: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-active: var(--inline-tabs-tab-background);
+}
 
-  &--primary {
-    --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
-  }
+.tds-mode-variant-primary .tl-inline-tabs,
+.tl-mode-variant-primary .tl-inline-tabs {
+  --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
+}
 
-  &--secondary {
-    --inline-tabs-tab-background: var(--inline-tabs-tab-background-secondary);
-  }
+.tds-mode-variant-secondary .tl-inline-tabs,
+.tl-mode-variant-secondary .tl-inline-tabs {
+  --inline-tabs-tab-background: var(--inline-tabs-tab-background-secondary);
 }
 
 .traton {

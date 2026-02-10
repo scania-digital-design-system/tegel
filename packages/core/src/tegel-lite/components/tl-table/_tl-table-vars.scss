@@ -49,29 +49,33 @@
   /* Table-icons */
   --table-icon: var(--color-foreground-icon-strong);
   --table-icon-disabled: var(--color-foreground-icon-disabled);
+}
 
-  &.tl-table--primary {
-    --table-body-row: var(--component-table-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-body-cell-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-secondary-cell);
-  }
+.tds-mode-variant-primary .tl-table,
+.tl-mode-variant-primary .tl-table {
+  --table-body-row: var(--component-table-cell);
+  --table-body-row-hover: var(--component-table-cell-hover);
+  --table-body-cell-hover: var(--component-table-cell-hover);
+  --table-zebra-mode: var(--component-table-secondary-cell);
+}
 
-  &.tl-table--secondary {
-    --table-body-row: var(--component-table-secondary-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-body-cell-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-cell);
-  }
+.tds-mode-variant-secondary .tl-table,
+.tl-mode-variant-secondary .tl-table {
+  --table-body-row: var(--component-table-secondary-cell);
+  --table-body-row-hover: var(--component-table-cell-hover);
+  --table-body-cell-hover: var(--component-table-cell-hover);
+  --table-zebra-mode: var(--component-table-cell);
 }
 
 // Dark mode variant secondary
-.tds-mode-dark .tl-table,
-.tl-mode-dark .tl-table,
-.tds-mode-dark .tds-table,
-.tl-mode-dark .tds-table {
-  &.tl-table--secondary {
-    --table-body-cell-hover: var(--color-background-surface-300);
-    --table-body-row-hover: var(--color-background-surface-300);
-  }
+.tds-mode-dark.tds-mode-variant-secondary .tl-table,
+.tl-mode-dark.tds-mode-variant-secondary .tl-table,
+.tds-mode-dark.tl-mode-variant-secondary .tl-table,
+.tl-mode-dark.tl-mode-variant-secondary .tl-table,
+.tds-mode-dark.tds-mode-variant-secondary .tds-table,
+.tl-mode-dark.tds-mode-variant-secondary .tds-table,
+.tds-mode-dark.tl-mode-variant-secondary .tds-table,
+.tl-mode-dark.tl-mode-variant-secondary .tds-table {
+  --table-body-cell-hover: var(--color-background-surface-300);
+  --table-body-row-hover: var(--color-background-surface-300);
 }

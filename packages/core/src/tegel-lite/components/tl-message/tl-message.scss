@@ -1,14 +1,14 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-message-vars' as *;
 
-.tl-message {
-  &--primary {
-    --message-main-background: var(--message-mode-primary-background);
-  }
+.tds-mode-variant-primary .tl-message,
+.tl-mode-variant-primary .tl-message {
+  --message-main-background: var(--message-mode-primary-background);
+}
 
-  &--secondary {
-    --message-main-background: var(--message-mode-secondary-background);
-  }
+.tds-mode-variant-secondary .tl-message,
+.tl-mode-variant-secondary .tl-message {
+  --message-main-background: var(--message-mode-secondary-background);
 }
 
 .tl-message__wrapper {

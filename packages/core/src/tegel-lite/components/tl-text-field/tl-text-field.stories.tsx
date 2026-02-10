@@ -127,9 +127,10 @@ const Template = ({
   hideReadonlyIcon,
   disabled,
 }) => {
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
+
   const componentClasses = [
     'tl-text-field',
-    `tl-text-field--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-text-field--${state.toLowerCase()}`,
     size === 'Large' && 'tl-text-field--lg',
     size === 'Medium' && 'tl-text-field--md',
@@ -198,12 +199,14 @@ const Template = ({
     <!-- Optional stylesheets:
       "@scania/tegel-lite/tl-icon.css"
     -->
-    <div class="${componentClasses}"${styleAttr}>
-      ${labelContent}
-      <input class="tl-text-field__input" ${inputAttrs} />
-      ${prefixContent}
-      ${suffixContent}
-      ${helperWrapperContent}
+    <div class="${modeVariantClass}">
+      <div class="${componentClasses}"${styleAttr}>
+        ${labelContent}
+        <input class="tl-text-field__input" ${inputAttrs} />
+        ${prefixContent}
+        ${suffixContent}
+        ${helperWrapperContent}
+      </div>
     </div>
 
   ${

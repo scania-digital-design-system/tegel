@@ -15,16 +15,18 @@
   --textarea-error: var(--color-system-danger-default);
   --textarea-textcounter: var(--color-foreground-text-defined);
   --textarea-resize-icon: var(--color-foreground-text-subtle);
+}
 
-  &--primary {
-    --textarea-background: var(--textarea-background-primary);
-    --textarea-background-disabled: var(--textarea-background-primary);
-  }
+.tds-mode-variant-primary .tl-textarea,
+.tl-mode-variant-primary .tl-textarea {
+  --textarea-background: var(--textarea-background-primary);
+  --textarea-background-disabled: var(--textarea-background-primary);
+}
 
-  &--secondary {
-    --textarea-background: var(--textarea-background-secondary);
-    --textarea-background-disabled: var(--textarea-background-secondary);
-  }
+.tds-mode-variant-secondary .tl-textarea,
+.tl-mode-variant-secondary .tl-textarea {
+  --textarea-background: var(--textarea-background-secondary);
+  --textarea-background-disabled: var(--textarea-background-secondary);
 }
 
 .tl-textarea,

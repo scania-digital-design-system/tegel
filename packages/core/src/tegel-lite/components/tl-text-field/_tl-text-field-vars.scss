@@ -18,16 +18,18 @@
   --text-field-label-disabled: var(--color-foreground-text-disabled);
   --text-field-affix-disabled: var(--color-foreground-text-disabled);
   --text-field-textcounter: var(--color-foreground-text-defined);
+}
 
-  &--primary {
-    --text-field-background: var(--color-background-layer-01);
-    --text-field-background-disabled: var(--color-background-layer-01);
-  }
+.tds-mode-variant-primary .tl-text-field,
+.tl-mode-variant-primary .tl-text-field {
+  --text-field-background: var(--color-background-layer-01);
+  --text-field-background-disabled: var(--color-background-layer-01);
+}
 
-  &--secondary {
-    --text-field-background: var(--color-background-layer-02);
-    --text-field-background-disabled: var(--color-background-layer-02);
-  }
+.tds-mode-variant-secondary .tl-text-field,
+.tl-mode-variant-secondary .tl-text-field {
+  --text-field-background: var(--color-background-layer-02);
+  --text-field-background-disabled: var(--color-background-layer-02);
 }
 
 .tl-text-field,

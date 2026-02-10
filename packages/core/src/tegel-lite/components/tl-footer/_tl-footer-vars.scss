@@ -11,12 +11,14 @@
   --footer-main-links: var(--color-foreground-text-accent-brand);
   --footer-main-divider: var(--component-footer-border);
   --footer-main-copyright: var(--component-footer-text-color-copyright);
+}
 
-  &.tl-footer--primary {
-    --footer-top-background: var(--footer-top-background-primary);
-  }
+.tds-mode-variant-primary .tl-footer,
+.tl-mode-variant-primary .tl-footer {
+  --footer-top-background: var(--footer-top-background-primary);
+}
 
-  &.tl-footer--secondary {
-    --footer-top-background: var(--footer-top-background-secondary);
-  }
+.tds-mode-variant-secondary .tl-footer,
+.tl-mode-variant-secondary .tl-footer {
+  --footer-top-background: var(--footer-top-background-secondary);
 }

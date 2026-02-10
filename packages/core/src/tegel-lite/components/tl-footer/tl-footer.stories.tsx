@@ -83,7 +83,7 @@ const Template = ({
   includeFooterCopyright,
   numberOfLinks,
 }) => {
-  const modeVariantClass = `tl-footer--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
 
   // Generate groups based on numberOfLinks (actually number of groups)
   const generateGroups = () => {
@@ -115,15 +115,16 @@ const Template = ({
       </div>
     </main>
 
-    <footer class="tl-footer ${modeVariantClass}">
-      ${
-        includeFooterTop
-          ? `
+    <div class="${modeVariantClass}">
+      <footer class="tl-footer">
+        ${
+          includeFooterTop
+            ? `
             <div class="tl-footer__top">
               ${generateGroups()}
             </div>`
-          : ''
-      }
+            : ''
+        }
 
       <div class="tl-footer__main">
         ${
@@ -165,7 +166,8 @@ const Template = ({
               <p class="tl-footer__brand">Scania</p>
         </div>
       </div>
-    </footer>
+      </footer>
+    </div>
   `;
 
   return formatHtmlPreview(footerMarkup);

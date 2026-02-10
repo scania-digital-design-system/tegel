@@ -35,20 +35,24 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, componentTag }) =>
-  formatHtmlPreview(
+const Template = ({ modeVariant, componentTag }) => {
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
+  return formatHtmlPreview(
     `
       <!-- Required stylesheets:
         "@scania/tegel-lite/global.css"
         "@scania/tegel-lite/tl-block.css"
       -->
-      <div class="tl-block tl-block--${modeVariant.toLowerCase()}">
-        <${componentTag}>
-          <h2>Semantic Block</h2>
-          <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
-        </${componentTag}>
+      <div class="${modeVariantClass}">
+        <div class="tl-block">
+          <${componentTag}>
+            <h2>Semantic Block</h2>
+            <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
+          </${componentTag}>
+        </div>
       </div>
     `,
   );
+};
 
 export const Default = Template.bind({});

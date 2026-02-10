@@ -18,53 +18,65 @@
   p {
     @include body-01;
   }
+}
 
-  &--primary {
-    background-color: var(--block-background-mode-primary);
-  }
+.tds-mode-variant-primary .tl-block,
+.tl-mode-variant-primary .tl-block {
+  background-color: var(--block-background-mode-primary);
+}
 
-  &--secondary {
-    background-color: var(--block-background-mode-secondary);
-  }
+.tds-mode-variant-secondary .tl-block,
+.tl-mode-variant-secondary .tl-block {
+  background-color: var(--block-background-mode-secondary);
 }
 
 // Automatic alternating backgrounds for nested blocks in primary mode
-.tl-block--primary .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block {
   background-color: var(--block-background-odd);
 }
 
-.tl-block--primary .tl-block .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block .tl-block {
   background-color: var(--block-background-even);
 }
 
-.tl-block--primary .tl-block .tl-block .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block .tl-block .tl-block {
   background-color: var(--block-background-odd);
 }
 
-.tl-block--primary .tl-block .tl-block .tl-block .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block .tl-block .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block .tl-block .tl-block .tl-block {
   background-color: var(--block-background-even);
 }
 
 // Automatic alternating backgrounds for nested blocks in secondary mode
-.tl-block--secondary .tl-block {
+.tds-mode-variant-secondary .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block {
   background-color: var(--block-background-even);
 }
 
-.tl-block--secondary .tl-block .tl-block {
+.tds-mode-variant-secondary .tl-block .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block .tl-block {
   background-color: var(--block-background-odd);
 }
 
-.tl-block--secondary .tl-block .tl-block .tl-block {
+.tds-mode-variant-secondary .tl-block .tl-block .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block .tl-block .tl-block {
   background-color: var(--block-background-even);
 }
 
-.tl-block--secondary .tl-block .tl-block .tl-block .tl-block {
+.tds-mode-variant-secondary .tl-block .tl-block .tl-block .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block .tl-block .tl-block .tl-block {
   background-color: var(--block-background-odd);
 }
 
 // Nested block typography (first level)
-.tl-block--primary .tl-block,
-.tl-block--secondary .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block,
+.tds-mode-variant-secondary .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block {
   h3 {
     @include headline-04;
   }
@@ -75,8 +87,10 @@
 }
 
 // Deeply nested block typography (second level)
-.tl-block--primary .tl-block .tl-block,
-.tl-block--secondary .tl-block .tl-block {
+.tds-mode-variant-primary .tl-block .tl-block .tl-block,
+.tl-mode-variant-primary .tl-block .tl-block .tl-block,
+.tds-mode-variant-secondary .tl-block .tl-block .tl-block,
+.tl-mode-variant-secondary .tl-block .tl-block .tl-block {
   h4 {
     @include headline-06;
   }

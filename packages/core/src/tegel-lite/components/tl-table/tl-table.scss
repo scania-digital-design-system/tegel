@@ -89,18 +89,20 @@
     white-space: nowrap;
     @include tl-scrollbar(horizontal);
   }
+}
 
-  &--primary {
-    --table-body-row: var(--component-table-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-secondary-cell);
-  }
+.tds-mode-variant-primary .tl-table,
+.tl-mode-variant-primary .tl-table {
+  --table-body-row: var(--component-table-cell);
+  --table-body-row-hover: var(--component-table-cell-hover);
+  --table-zebra-mode: var(--component-table-secondary-cell);
+}
 
-  &--secondary {
-    --table-body-row: var(--component-table-secondary-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-cell);
-  }
+.tds-mode-variant-secondary .tl-table,
+.tl-mode-variant-secondary .tl-table {
+  --table-body-row: var(--component-table-secondary-cell);
+  --table-body-row-hover: var(--component-table-cell-hover);
+  --table-zebra-mode: var(--component-table-cell);
 }
 
 .tl-table__header {
@@ -425,8 +427,8 @@
 }
 
 .tl-table__actionbar-right
-  .tl-text-field:not(.tl-text-field--input-visible)
-  .tl-text-field__suffix--icon {
+.tl-text-field:not(.tl-text-field--input-visible)
+.tl-text-field__suffix--icon {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -606,14 +608,14 @@
   }
 }
 
-.tl-text-field__input {
-  .tl-table.tl-table--primary & {
-    background-color: var(--component-table-cell);
-  }
+.tds-mode-variant-primary .tl-table .tl-text-field__input,
+.tl-mode-variant-primary .tl-table .tl-text-field__input {
+  background-color: var(--component-table-cell);
+}
 
-  .tl-table.tl-table--secondary & {
-    background-color: var(--component-table-secondary-cell);
-  }
+.tds-mode-variant-secondary .tl-table .tl-text-field__input,
+.tl-mode-variant-secondary .tl-table .tl-text-field__input {
+  background-color: var(--component-table-secondary-cell);
 }
 
 .tl-table--compact {

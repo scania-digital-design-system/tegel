@@ -125,7 +125,7 @@ const BasicTemplate = ({
   column4Width,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
@@ -136,8 +136,9 @@ const BasicTemplate = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
     -->
+    <div class="${modeVariantClass}">
     <div style="overflow-x: auto; width: 100%;">
-      <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
+      <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell" data-column="0" ${getColumnStyle(
@@ -271,6 +272,7 @@ const BasicTemplate = ({
         });
       })();
     </script>
+    </div>
   `);
 };
 

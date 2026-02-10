@@ -5,16 +5,18 @@
   --popover-menu-item-outline-focus: var(--color-foreground-border-accent-focus);
   --popover-menu-item-disabled: var(--color-foreground-text-disabled);
   --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
+}
 
-  &--primary {
-    --popover-menu-background: var(--color-background-layer-01);
-    --popover-menu-background-hover: var(--color-background-layer-02);
-  }
+.tds-mode-variant-primary .tl-popover-menu,
+.tl-mode-variant-primary .tl-popover-menu {
+  --popover-menu-background: var(--color-background-layer-01);
+  --popover-menu-background-hover: var(--color-background-layer-02);
+}
 
-  &--secondary {
-    --popover-menu-background: var(--color-background-layer-02);
-    --popover-menu-background-hover: var(--color-background-layer-01);
-  }
+.tds-mode-variant-secondary .tl-popover-menu,
+.tl-mode-variant-secondary .tl-popover-menu {
+  --popover-menu-background: var(--color-background-layer-02);
+  --popover-menu-background-hover: var(--color-background-layer-01);
 }
 
 .scania .tl-popover-menu {

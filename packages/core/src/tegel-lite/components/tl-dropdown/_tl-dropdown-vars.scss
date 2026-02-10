@@ -9,14 +9,6 @@
 }
 
 .tl-dropdown {
-  &--primary {
-    --dropdown-background: var(--color-background-layer-01);
-  }
-
-  &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
-  }
-
   // Colors - Base
   --dropdown-background: var(--color-background-layer-01);
 
@@ -33,6 +25,16 @@
   // Colors - Error
   --dropdown-error: var(--color-system-danger-default);
   --dropdown-error-focus: var(--color-system-danger-subtle);
+}
+
+.tds-mode-variant-primary .tl-dropdown,
+.tl-mode-variant-primary .tl-dropdown {
+  --dropdown-background: var(--color-background-layer-01);
+}
+
+.tds-mode-variant-secondary .tl-dropdown,
+.tl-mode-variant-secondary .tl-dropdown {
+  --dropdown-background: var(--color-background-layer-02);
 }
 
 .tl-dropdown,
@@ -88,20 +90,24 @@
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
   --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4)
     var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+}
 
-  &--primary {
-    --dropdown-background: var(--color-background-layer-01);
+.traton .tds-mode-variant-primary .tl-dropdown,
+.traton .tl-mode-variant-primary .tl-dropdown {
+  --dropdown-background: var(--color-background-layer-01);
+}
 
-    .tl-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-01);
-    }
-  }
+.traton .tds-mode-variant-primary .tl-dropdown .tl-dropdown-option,
+.traton .tl-mode-variant-primary .tl-dropdown .tl-dropdown-option {
+  --dropdown-option-background: var(--color-background-layer-01);
+}
 
-  &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
+.traton .tds-mode-variant-secondary .tl-dropdown,
+.traton .tl-mode-variant-secondary .tl-dropdown {
+  --dropdown-background: var(--color-background-layer-02);
+}
 
-    .tl-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-02);
-    }
-  }
+.traton .tds-mode-variant-secondary .tl-dropdown .tl-dropdown-option,
+.traton .tl-mode-variant-secondary .tl-dropdown .tl-dropdown-option {
+  --dropdown-option-background: var(--color-background-layer-02);
 }

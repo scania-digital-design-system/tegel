@@ -197,7 +197,7 @@ const Template = ({
   showIcon,
   icon,
 }) => {
-  const modeClass = `tl-card--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
 
   let placementClass = '';
   if (imagePlacement === 'Above') {
@@ -255,7 +255,7 @@ const Template = ({
     : '';
 
   const wrapperClasses =
-    `tl-card ${modeClass} ${placementClass} ${clickableClass} ${stretchClass} ${expandableClass} ${expandedClass}`
+    `tl-card ${placementClass} ${clickableClass} ${stretchClass} ${expandableClass} ${expandedClass}`
       .replace(/\s+/g, ' ')
       .trim();
 
@@ -292,7 +292,7 @@ const Template = ({
         }
       }
     </style>
-    <div class="demo-wrapper">${markup}</div>
+    <div class="demo-wrapper ${modeVariantClass}">${markup}</div>
 
   <!-- The script below is just for demo purposes -->
   <script>

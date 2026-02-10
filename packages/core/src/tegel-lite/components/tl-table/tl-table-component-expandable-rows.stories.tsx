@@ -152,7 +152,7 @@ const ExpandableRowTemplate = ({
   overflow,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
@@ -176,10 +176,12 @@ const ExpandableRowTemplate = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
     -->
+    <div class="${modeVariantClass}">
     <!-- Optional stylesheet:
       "@scania/tegel-lite/tl-button.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
+    <div class="${modeVariantClass}">
+    <table class="tl-table ${compactClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell tl-table__header-cell--expand"></th>
@@ -360,6 +362,7 @@ const ExpandableRowTemplate = ({
         });
       })();
     </script>
+    </div>
   `);
 };
 

@@ -157,13 +157,14 @@ const MultiselectTemplate = ({
     "@scania/tegel-lite/tl-table.css"
     "@scania/tegel-lite/tl-checkbox.css"
     -->
+    <div class="${modeVariantClass}">
     
     
     <table class="tl-table ${compactDesign ? 'tl-table--compact' : ''} ${
     responsive ? 'tl-table--responsive' : ''
   } ${verticalDividers ? 'tl-table--vertical-dividers' : ''} ${
     noMinWidth ? 'tl-table--no-min-width' : ''
-  } tl-table--${modeVariant.toLowerCase()}">
+  } tl-mode-variant-${modeVariant.toLowerCase()}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
@@ -303,6 +304,7 @@ const MultiselectTemplate = ({
     
     setupMultiselectDemo();
     </script>
+    </div>
   `);
 
 export const Default = MultiselectTemplate.bind({});

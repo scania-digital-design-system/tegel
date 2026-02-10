@@ -93,11 +93,9 @@ const Template = ({
     Error: 'error',
   };
 
-  const classesArray = [
-    'tl-datetime',
-    `tl-datetime--${modeVariant.toLowerCase()}`,
-    `tl-datetime--${sizeLookup[size]}`,
-  ];
+  const modeVariantClass = `tl-mode-variant-${modeVariant.toLowerCase()}`;
+
+  const classesArray = ['tl-datetime', `tl-datetime--${sizeLookup[size]}`];
 
   if (stateLookup[state]) {
     classesArray.push(`tl-datetime--${stateLookup[state]}`);
@@ -138,9 +136,10 @@ const Template = ({
       "@scania/tegel-lite/tl-datetime.css"
     -->
 
-  <div class="${classes}" style="width: calc(100vw - 40px); max-width: 400px;">
-    ${labelOutside}
-    <div class="tl-datetime__wrapper">
+  <div class="${modeVariantClass}">
+    <div class="${classes}" style="width: calc(100vw - 40px); max-width: 400px;">
+      ${labelOutside}
+      <div class="tl-datetime__wrapper">
       <input
         class="tl-datetime__input"
         type="${typeLookup[type]}"
@@ -149,6 +148,7 @@ const Template = ({
       ${labelInside}
     </div>
     ${helperHtml}
+    </div>
   </div>
   `);
 };
