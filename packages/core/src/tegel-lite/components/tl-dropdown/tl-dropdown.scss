@@ -298,7 +298,9 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):not(:has(.tl-dropdown__helper))::after {
+.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):not(
+:has(.tl-dropdown__helper)
+)::after {
   background-color: var(--dropdown-disabled);
 }
 
@@ -396,9 +398,9 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(.tl-dropdown__select:disabled):has(
-.tl-dropdown__helper
-)::after {
+.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(
+.tl-dropdown__select:disabled
+):has(.tl-dropdown__helper)::after {
   background-color: var(--dropdown-disabled);
 }
 

@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Textarea',
+  title: 'Tegel Lite (Beta)/Textarea',
   parameters: {
     layout: 'centered',
   },
@@ -111,8 +111,6 @@ const Template = ({
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
     // Note: label-outside is now the default behavior, no class needed
-    disabled && 'tl-textarea--disabled',
-    readonly && 'tl-textarea--readonly',
     readonly && hideReadonlyIcon && 'tl-textarea--hide-readonly-icon',
     noMinWidth && 'tl-textarea--no-min-width',
   ]

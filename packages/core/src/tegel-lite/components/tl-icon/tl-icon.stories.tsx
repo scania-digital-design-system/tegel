@@ -8,7 +8,7 @@ const iconSizes = [
 
 const iconSizeOptions = Object.fromEntries(iconSizes.map((s) => [`${s}px`, `${s}`]));
 export default {
-  title: 'Tegel Lite (CSS)/Icon',
+  title: 'Tegel Lite (Beta)/Icon',
   parameters: {
     layout: 'centered',
   },
