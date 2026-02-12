@@ -218,17 +218,41 @@ export class TdsModal {
     scroller?.scrollTo(0, 0);
   }
 
-  private focusModalContainer() {
-    this.host.shadowRoot?.querySelector<HTMLElement>('.tds-modal')?.focus();
-    this.activeElementIndex = 0;
+  private focusFirstElement() {
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    // Prioritize focusable elements in slotted content (actions/body) over shadow DOM elements (like close button)
+    const focusableInSlots = Array.from(
+      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+
+    if (focusableInSlots.length > 0) {
+      focusableInSlots[0].focus();
+      this.activeElementIndex = this.getFocusableElements().indexOf(focusableInSlots[0]);
+    } else {
+      // Fallback to shadow DOM elements if no slotted content is focusable
+      const focusableInShadowRoot = Array.from(
+        this.host.shadowRoot?.querySelectorAll<HTMLElement>(focusableSelectors) ?? [],
+      );
+      if (focusableInShadowRoot.length > 0) {
+        focusableInShadowRoot[0].focus();
+        this.activeElementIndex = 0;
+      }
+    }
   }
 
   /** Runs whenever the modal is opened and updates it. */
   private onOpen() {
     requestAnimationFrame(() => {
       this.resetScrollPosition();
-      // this.focusFirstElement();
-      this.focusModalContainer();
+      this.focusFirstElement();
     });
   }
 
