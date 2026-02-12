@@ -1,0 +1,358 @@
+---
+description: Navigation and utility components including tabs, breadcrumbs, header, footer, side menu
+alwaysApply: true
+---
+
+# Navigation & Utility Components
+
+## Breadcrumbs
+
+**Classes**: `tl-breadcrumbs`
+
+```html
+<nav class="tl-breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="/products/trucks" aria-current="page">Trucks</a></li>
+  </ol>
+</nav>
+```
+
+---
+
+## Chip
+
+**Classes**: `tl-chip`
+**Sizes**: `tl-chip--sm` (24px), `tl-chip--lg` (32px)
+**States**: `tl-chip--selected`
+**Modifiers**: `tl-chip--prefix`, `tl-chip--suffix`
+
+```html
+<button class="tl-chip tl-chip--lg">Default</button>
+<button class="tl-chip tl-chip--lg tl-chip--selected">Selected</button>
+<button class="tl-chip tl-chip--sm" disabled>Disabled</button>
+```
+
+---
+
+## Tabs
+
+### Inline Tabs
+
+```html
+<div class="tl-inline-tabs" role="tablist">
+  <button
+    class="tl-inline-tabs__tab tl-inline-tabs__tab--selected"
+    role="tab"
+    aria-selected="true"
+  >
+    Tab 1
+  </button>
+  <button class="tl-inline-tabs__tab" role="tab" aria-selected="false">
+    Tab 2
+  </button>
+  <button
+    class="tl-inline-tabs__tab tl-inline-tabs__tab--disabled"
+    role="tab"
+    aria-disabled="true"
+  >
+    Disabled
+  </button>
+</div>
+```
+
+### Folder Tabs
+
+```html
+<div class="tl-folder-tabs" role="tablist">
+  <button
+    class="tl-folder-tabs__tab tl-folder-tabs__tab--selected"
+    role="tab"
+    aria-selected="true"
+  >
+    Active
+  </button>
+  <button class="tl-folder-tabs__tab" role="tab" aria-selected="false">
+    Another
+  </button>
+</div>
+```
+
+### Navigation Tabs
+
+```html
+<nav class="tl-navigation-tabs" role="tablist">
+  <a
+    class="tl-navigation-tabs__tab tl-navigation-tabs__tab--selected"
+    href="/overview"
+    role="tab"
+    aria-selected="true"
+    >Overview</a
+  >
+  <a class="tl-navigation-tabs__tab" href="/details" role="tab">Details</a>
+</nav>
+```
+
+---
+
+## Link
+
+**Classes**: `tl-link`
+**Modifiers**: `tl-link--underline`, `tl-link--standalone`, `tl-link--disabled`
+
+```html
+<a href="/page" class="tl-link tl-link--underline">
+  Learn more
+  <span class="tl-link__icon"
+    ><span class="tl-icon tl-icon--arrow_right"></span
+  ></span>
+</a>
+
+<!-- Standalone link (inherits detail-02 typography) -->
+<a href="/page" class="tl-link tl-link--standalone tl-link--underline"
+  >Standalone Link</a
+>
+
+<!-- Disabled link -->
+<span class="tl-link tl-link--disabled">Disabled link</span>
+```
+
+---
+
+## Divider
+
+**Classes**: `tl-divider`
+**Variants**: `tl-divider--horizontal`, `tl-divider--vertical`, `tl-divider--expressive`, `tl-divider--discrete`
+
+```html
+<div class="tl-divider tl-divider--horizontal"></div>
+<div class="tl-divider tl-divider--vertical" style="height: 40px;"></div>
+```
+
+---
+
+## Tooltip
+
+**Classes**: `tl-tooltip`
+**Modifiers**: `tl-tooltip--visible`, position variants: `tl-tooltip--top-start`, `tl-tooltip--top-end`, `tl-tooltip--bottom-start`, `tl-tooltip--bottom-end`, `tl-tooltip--left-start`, `tl-tooltip--left-end`, `tl-tooltip--right-start`, `tl-tooltip--right-end`
+
+```html
+<div class="tl-tooltip tl-tooltip--visible tl-tooltip--bottom-start">
+  Tooltip text here
+</div>
+```
+
+Max width: 204px. Positioning requires JS or CSS `position: fixed`.
+
+---
+
+## Popover Menu
+
+**Classes**: `tl-popover-menu`
+**Variants**: `tl-popover-menu--primary`, `tl-popover-menu--secondary`, `tl-popover-menu--visible`, `tl-popover-menu--fluid`
+
+```html
+<div
+  class="tl-popover-menu tl-popover-menu--visible tl-popover-menu--animation-fade"
+>
+  <div class="tl-popover-menu__item-wrapper">
+    <button class="tl-popover-menu__item">
+      <span class="tl-icon tl-icon--edit"></span>
+      Edit
+    </button>
+    <button class="tl-popover-menu__item">
+      <span class="tl-icon tl-icon--copy"></span>
+      Duplicate
+    </button>
+    <div class="tl-divider tl-divider--horizontal"></div>
+    <button class="tl-popover-menu__item--disabled">
+      <span class="tl-icon tl-icon--trash"></span>
+      Delete
+    </button>
+  </div>
+</div>
+```
+
+---
+
+## Slider
+
+**Classes**: `tl-slider`
+**Sizes**: default, `tl-slider--small`
+
+Slider requires JavaScript for thumb positioning. CSS provides the visual styling only.
+
+---
+
+## Icon
+
+**Classes**: `tl-icon tl-icon--{name}`
+**Sizes**: `tl-icon--12` through `tl-icon--96` (even numbers only)
+
+Common icons:
+
+- Navigation: `arrow_left`, `arrow_right`, `arrow_up`, `arrow_down`, `chevron_down`, `chevron_up`, `chevron_left`, `chevron_right`, `back`
+- Actions: `edit`, `trash`, `copy`, `save`, `download`, `upload`, `export`, `search`, `filters`, `settings`, `plus`, `minus`, `cross`, `tick`
+- Status: `error`, `warning`, `info`, `tick`
+- UI: `burger`, `bento`, `kebab`, `meatballs`, `eye`, `eye_inactive`, `lock`, `unlock`
+- Objects: `calendar`, `clock`, `document`, `folder`, `image`, `profile`, `home`, `notification`
+
+```html
+<span class="tl-icon tl-icon--search"></span>
+<span class="tl-icon tl-icon--search tl-icon--24"></span>
+<span class="tl-icon tl-icon--error tl-icon--16"></span>
+```
+
+Icons inherit `color` from parent via `currentcolor`.
+
+---
+
+## Header
+
+**Classes**: `tl-header`
+
+```html
+<header class="tl-header">
+  <nav class="tl-header__nav">
+    <ul class="tl-header__list">
+      <!-- Brand logo -->
+      <li class="tl-header__item">
+        <a class="tl-header__item-wrapper" href="/">
+          <span class="tl-header__brand"></span>
+        </a>
+      </li>
+
+      <!-- Title -->
+      <li class="tl-header__item">
+        <div class="tl-header__title">
+          <span class="tl-header__title-text">Application Name</span>
+        </div>
+      </li>
+
+      <!-- Nav items -->
+      <li class="tl-header__item">
+        <a class="tl-header__item-wrapper" href="/dashboard">Dashboard</a>
+      </li>
+
+      <!-- Spacer -->
+      <li class="tl-header__middle-spacer"></li>
+
+      <!-- Dropdown -->
+      <li class="tl-header__dropdown">
+        <button class="tl-header__dropdown-wrapper" aria-expanded="false">
+          <span class="tl-icon tl-icon--profile"></span>
+        </button>
+        <ul class="tl-header__dropdown-menu">
+          <li class="tl-header__dropdown-menu-item">
+            <a href="/settings">Settings</a>
+          </li>
+          <li class="tl-header__dropdown-menu-item">
+            <button>Logout</button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+```
+
+---
+
+## Footer
+
+**Classes**: `tl-footer`
+**Variants**: `tl-footer--primary`, `tl-footer--secondary`
+
+```html
+<footer class="tl-footer">
+  <!-- Top section with link groups -->
+  <div class="tl-footer__top">
+    <div class="tl-footer__group">
+      <button class="tl-footer__top-title">Resources</button>
+      <a class="tl-footer__link" href="#">Documentation</a>
+      <a class="tl-footer__link" href="#">API Reference</a>
+    </div>
+    <div class="tl-footer__group">
+      <button class="tl-footer__top-title">Support</button>
+      <a class="tl-footer__link" href="#">Contact</a>
+      <a class="tl-footer__link" href="#">FAQ</a>
+    </div>
+  </div>
+
+  <!-- Main section with brand -->
+  <div class="tl-footer__main">
+    <div class="tl-footer__main-top">
+      <div class="tl-footer__main-top--start">
+        <div class="tl-footer__group">
+          <a class="tl-footer__link" href="#">Privacy Policy</a>
+          <a class="tl-footer__link" href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="tl-footer__main-bottom">
+      <p class="tl-footer__copyright">© 2025 Scania CV AB</p>
+      <span class="tl-footer__brand">Scania</span>
+    </div>
+  </div>
+</footer>
+```
+
+---
+
+## Side Menu
+
+**Classes**: `tl-side-menu`
+**Modifiers**: `tl-side-menu--persistent`, `tl-side-menu--collapsed`
+
+```html
+<nav class="tl-side-menu tl-side-menu--persistent" aria-label="Side navigation">
+  <div class="tl-side-menu__wrapper tl-side-menu__wrapper--open">
+    <div class="tl-side-menu__overlay"></div>
+    <aside class="tl-side-menu__aside">
+      <div class="tl-side-menu__navigation">
+        <div class="tl-side-menu__list-wrapper">
+          <ul class="tl-side-menu__upper-list">
+            <li>
+              <a
+                class="tl-side-menu__item tl-side-menu__item--selected"
+                href="/dashboard"
+              >
+                <span class="tl-icon tl-icon--dashboard"></span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <!-- Dropdown -->
+              <div class="tl-side-menu__dropdown">
+                <button class="tl-side-menu__item">
+                  <span class="tl-icon tl-icon--settings"></span>
+                  Settings
+                </button>
+                <div class="tl-side-menu__dropdown-menu">
+                  <ul class="tl-side-menu__dropdown-list">
+                    <li>
+                      <a
+                        class="tl-side-menu__dropdown-item"
+                        href="/settings/general"
+                        >General</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="tl-side-menu__dropdown-item"
+                        href="/settings/account"
+                        >Account</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</nav>
+```

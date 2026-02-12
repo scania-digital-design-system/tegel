@@ -76,11 +76,22 @@
   "publishConfig": {
     "access": "public"
   },
+  "bin": {
+    "tegel-lite-setup-rules": "./bin/setup-ai-rules.js"
+  },
   "files": [
-    "dist/"
+    "dist/",
+    ".cursor/",
+    ".ai/",
+    ".github/",
+    "bin/",
+    "CLAUDE.md",
+    "AGENTS.md"
   ],
   "scripts": {
-    "prepublishOnly": "echo 'Warning: Run npm run build:tegel-lite from root before publishing'",
+    "generate:ai-rules": "node scripts/generate-ai-rules.js",
+    "prepublishOnly": "npm run generate:ai-rules && echo 'Warning: Run npm run build:tegel-lite from root before publishing'",
+    "postinstall": "echo \"\\n💡 Run npx tegel-lite-setup-rules to install AI coding rules for @scania/tegel-lite\\n\"",
     "test": "npx playwright test"
   },
   "devDependencies": {

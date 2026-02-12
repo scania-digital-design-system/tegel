@@ -1,0 +1,144 @@
+---
+description: Spacing, color usage, responsiveness, accessibility, and code conventions
+alwaysApply: true
+---
+
+# Guidelines
+
+## Spacing & Sizing Rules
+
+### Spacing Custom Properties (available globally)
+
+These are used by components internally and can be used for custom layouts:
+
+- `--tds-spacing-element-4` (4px)
+- `--tds-spacing-element-8` (8px)
+- `--tds-spacing-element-12` (12px)
+- `--tds-spacing-element-16` (16px)
+- `--tds-spacing-element-20` (20px)
+- `--tds-spacing-element-24` (24px)
+- `--tds-spacing-element-32` (32px)
+- `--tds-spacing-element-48` (48px)
+- `--tds-spacing-layout-64` (64px)
+
+### Rules
+
+1. Use `var(--dimension-space-small)` (16px) as the base gap between elements.
+2. Use `var(--dimension-space-medium)` (24px) for section padding.
+3. Use `var(--dimension-space-large)` (48px) for major section separators.
+4. Component height follows the sizing convention: sm=40px, md=48px, lg=56px.
+
+---
+
+## Color Usage
+
+### Semantic Color Usage
+
+| Purpose                   | Token to Use                                  |
+| ------------------------- | --------------------------------------------- |
+| Page background           | `var(--color-background-base)`                |
+| Card/section background   | `var(--color-background-layer-01)`            |
+| Nested section background | `var(--color-background-layer-02)`            |
+| Primary heading text      | `var(--color-foreground-text-strong)`         |
+| Secondary text            | `var(--color-foreground-text-defined)`        |
+| Subtle/hint text          | `var(--color-foreground-text-subtle)`         |
+| Link text                 | `var(--color-foreground-text-accent-default)` |
+| Disabled text             | `var(--color-foreground-text-disabled)`       |
+| Default border            | `var(--color-foreground-border-soft)`         |
+| Focus outline             | `var(--color-foreground-border-accent-focus)` |
+| Success state             | `var(--color-system-success-default)`         |
+| Warning state             | `var(--color-system-warning-default)`         |
+| Error/danger state        | `var(--color-system-danger-default)`          |
+| Info state                | `var(--color-system-info-default)`            |
+
+### RULE: Never hardcode colors. Always use CSS custom properties.
+
+---
+
+## Responsiveness
+
+### Breakpoints
+
+| Name    | Width    | CSS                          |
+| ------- | -------- | ---------------------------- |
+| Mobile  | < 672px  | `@media (max-width: 671px)`  |
+| Tablet  | ≥ 672px  | `@media (min-width: 672px)`  |
+| Desktop | ≥ 992px  | `@media (min-width: 992px)`  |
+| Wide    | ≥ 1056px | `@media (min-width: 1056px)` |
+| X-Wide  | ≥ 1312px | `@media (min-width: 1312px)` |
+| XX-Wide | ≥ 1584px | `@media (min-width: 1584px)` |
+
+### Rules
+
+1. **Mobile-first**: Write base styles for mobile, add media queries for larger screens.
+2. Header nav items hide below 992px (burger menu shows).
+3. Side menu collapses to overlay below 992px.
+4. Footer top section stacks vertically below 992px.
+5. Modal widths are responsive (100% on mobile, percentage-based on desktop).
+
+---
+
+## Accessibility (a11y)
+
+### Required ARIA Attributes
+
+| Component     | Required ARIA                                                                 |
+| ------------- | ----------------------------------------------------------------------------- |
+| Button        | `aria-label` for icon-only buttons                                            |
+| Modal         | `role="dialog"`, `aria-modal="true"`, `aria-labelledby`                       |
+| Accordion     | `aria-expanded="true/false"` on trigger                                       |
+| Tabs          | `role="tablist"`, `role="tab"`, `aria-selected`                               |
+| Dropdown      | `aria-expanded`, `aria-haspopup="listbox"`, `role="listbox"`, `role="option"` |
+| Breadcrumbs   | `aria-label="Breadcrumb"`, `aria-current="page"` on last item                 |
+| Toast/Banner  | `role="alert"`                                                                |
+| Tooltip       | `role="tooltip"`, `aria-describedby` on trigger                               |
+| Spinner       | `aria-label="Loading"`, `role="img"`                                          |
+| Close buttons | `aria-label="Close"` or `aria-label="Dismiss"`                                |
+| Navigation    | `aria-label` on `<nav>` elements                                              |
+
+### Focus Management
+
+- All interactive elements have `:focus-visible` styles (2px solid blue-400 outline).
+- Focus outline uses `var(--color-foreground-border-accent-focus)`.
+- Modals should trap focus.
+- Side menu overlay closes on Escape.
+
+### Contrast
+
+- Use semantic tokens (they meet WCAG 2.1 AA contrast requirements).
+- Never override text colors with lighter alternatives.
+- `--color-foreground-text-strong` on `--color-background-base` = ≥4.5:1 ratio.
+
+---
+
+## Code Conventions
+
+### BEM Naming Pattern
+
+```
+.tl-{block}                    → Component root
+.tl-{block}__{element}         → Sub-part of component
+.tl-{block}--{modifier}        → Variant/state
+.tl-{block}__{element}--{mod}  → Element variant
+```
+
+### Class Order in HTML
+
+1. Base class first: `tl-button`
+2. Variant modifier: `tl-button--primary`
+3. Size modifier: `tl-button--md`
+4. State modifier: `tl-button--full-width`
+
+Example: `class="tl-button tl-button--primary tl-button--md tl-button--full-width"`
+
+### Rules
+
+1. **NEVER write custom CSS** if a Tegel Lite class already exists for the purpose.
+2. **NEVER use inline styles for colors, spacing, or any design properties.** ALWAYS use CSS classes with Tegel tokens.
+   - ❌ BAD: `<span style="background-color: var(--color-system-success-discrete);">Active</span>`
+   - ✅ GOOD: Create a CSS class `.status-badge--success { background-color: var(--color-system-success-discrete); }`
+3. **NEVER add inline styles to Tegel components.** If a component doesn't have the variant you need, create a custom component.
+4. **ALWAYS use semantic HTML** (`<button>`, `<a>`, `<nav>`, `<header>`, etc.).
+5. **ALWAYS wrap the app** in `<body class="scania tds-mode-light">`.
+6. When building custom components, use Tegel tokens for all colors, spacing, and typography.
+7. Keep custom CSS in separate files, never modify the Tegel Lite CSS files.
