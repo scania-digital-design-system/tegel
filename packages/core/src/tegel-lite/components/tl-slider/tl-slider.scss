@@ -146,7 +146,9 @@
   margin-left: 0;
   align-self: center;
 
-  &.tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled))::before {
+  &.tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input[readonly]):not(
+  :has(.tl-text-field__input:disabled)
+)::before {
     width: 16px;
     height: 16px;
     right: 16px;
@@ -172,7 +174,9 @@
   }
 }
 
-.tl-slider__input-wrapper:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled))
+.tl-slider__input-wrapper:has(.tl-text-field__input[readonly]):not(
+:has(.tl-text-field__input:disabled)
+)
 .tl-slider__input-field[readonly] {
   width: 74px;
   padding-right: 39px;
