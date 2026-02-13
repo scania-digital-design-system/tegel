@@ -33,11 +33,11 @@
   }
 
   &--top-end {
-    border-radius: 4px 4px 0 4px; // sharp corner at bottom-right
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
   }
 
   &--bottom-start {
-    border-radius: 0 4px 4px 4px; // sharp corner at top-left
+    border-radius: 0 4px 4px; // sharp corner at top-left
   }
 
   &--bottom-end {
@@ -49,11 +49,11 @@
   }
 
   &--left-end {
-    border-radius: 4px 4px 0 4px; // sharp corner at bottom-right
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
   }
 
   &--right-start {
-    border-radius: 0 4px 4px 4px; // sharp corner at top-left
+    border-radius: 0 4px 4px; // sharp corner at top-left
   }
 
   &--right-end {
