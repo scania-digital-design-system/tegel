@@ -28,7 +28,7 @@ The Toggle component provides a switch input for binary on/off selections.
 | `.tl-toggle`           | `<div>`      | Main container               |
 | `.tl-toggle__headline` | `<div>`      | Headline text (optional)     |
 | `.tl-toggle__input`    | `<input>`    | Checkbox input (styled)      |
-| `.tl-toggle__label`    | `<label>`    | Label text                   |
+| `.tl-toggle__label`    | `<label>`    | Label text (optional)        |
 
 ## Modifiers
 
