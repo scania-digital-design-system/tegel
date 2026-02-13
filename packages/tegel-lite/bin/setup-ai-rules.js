@@ -146,6 +146,8 @@ function showCheckboxList(items) {
     // Initial render
     const output = render();
     stdout.write(output);
+    // Position cursor at start of line after menu for consistent re-renders
+    stdout.write('\n');
 
     stdin.setRawMode(true);
     stdin.resume();
@@ -185,9 +187,14 @@ function showCheckboxList(items) {
       }
 
       // Re-render: move up to overwrite
-      const lineCount = items.length + 2;
-      stdout.write(`\x1B[${lineCount}A\x1B[0J`);
+      // +3 because we have: items.length + empty line + help text + our newline
+      const lineCount = items.length + 3;
+      // Move to start of line, move up lineCount lines, clear from cursor to end of screen
+      stdout.write('\r');
+      stdout.write(`\x1B[${lineCount}A`);
+      stdout.write('\x1B[0J');
       stdout.write(render());
+      stdout.write('\n');
     }
 
     stdin.on('data', onKeypress);
