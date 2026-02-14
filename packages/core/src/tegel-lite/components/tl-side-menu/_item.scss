@@ -1,0 +1,67 @@
+@use './tl-side-menu-vars' as *;
+
+.tl-side-menu__item {
+  all: unset;
+  box-sizing: border-box;
+  height: var(--side-menu-single-item-height);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--component-side-menu-space-sub-menu-item-top-and-bottom)
+    var(--component-side-menu-space-sub-menu-item-chevron-right-padding)
+    var(--component-side-menu-space-sub-menu-item-top-and-bottom)
+    var(--component-side-menu-space-sub-menu-item-left);
+  border: none;
+  background-color: var(--side-menu-background-cover);
+  color: var(--side-menu-single-item-color);
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--component-side-menu-radius-corner);
+  font-family: var(--side-menu-text-item-font-family);
+  font-size: var(--side-menu-text-item-font-size);
+  font-weight: var(--side-menu-text-item-font-weight);
+  line-height: var(--side-menu-text-item-line-height);
+  letter-spacing: var(--side-menu-text-item-letter-spacing);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-foreground-border-accent-focus);
+    outline-offset: -2px;
+  }
+
+  &:hover {
+    background-color: var(--side-menu-item-state-hover);
+  }
+
+  &:active {
+    background-color: var(--side-menu-item-state-active);
+  }
+
+  &--selected {
+    position: relative;
+    background-color: var(--side-menu-item-state-selected);
+
+    &:active {
+      background-color: var(--side-menu-item-state-selected);
+    }
+
+    &:hover {
+      background-color: var(
+        --side-menu-item-state-selected-hover,
+        var(--side-menu-item-state-selected)
+      );
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--component-side-menu-space-sub-page-selected-marker-width);
+      height: var(--component-side-menu-space-sub-menu-item-selected-marker-height);
+      background-color: var(--side-menu-single-subitem-selected-border-color);
+      border-radius: var(--component-side-menu-radius-corner) 0 0
+        var(--component-side-menu-radius-corner);
+    }
+  }
+}

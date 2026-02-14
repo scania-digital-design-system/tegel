@@ -1,0 +1,22 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-footer__main {
+  .tl-footer__link {
+    @include headline-07;
+
+    display: inline-block;
+    color: var(--footer-main-links);
+    text-decoration: none;
+
+    &:focus-visible {
+      outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
+      box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
+      outline-offset: 1px;
+      z-index: 1;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

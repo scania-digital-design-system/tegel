@@ -1,0 +1,194 @@
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/disabled-style' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-accordion__item {
+  @include tds-box-sizing;
+
+  list-style: none;
+  color: var(--accordion-text);
+  position: relative;
+  border-top: 1px solid var(--accordion-border);
+  width: 100%;
+
+  button {
+    border: none;
+  }
+
+  &:last-child {
+    margin-bottom: -1px;
+    border-bottom: 1px solid var(--accordion-border);
+  }
+
+  &:hover:not(&--expanded):not(&--disabled) {
+    .tl-accordion__header-icon-start,
+    .tl-accordion__header-icon-end {
+      background-color: var(--accordion-background-hover);
+    }
+  }
+
+  &:active:not(&--disabled) {
+    .tl-accordion__header-icon-start,
+    .tl-accordion__header-icon-end {
+      background-color: var(--accordion-background-active);
+    }
+  }
+
+  /* Focus state  */
+  &:has(.tl-accordion__header-icon-start:focus-visible),
+  &:has(.tl-accordion__header-icon-end:focus-visible) {
+    outline: 2px solid var(--color-foreground-border-accent-focus);
+    outline-offset: 1px;
+    background-color: var(--accordion-background-focus);
+  }
+
+  &--disabled {
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &--less-padding {
+    .tl-accordion__panel {
+      padding-right: var(--tds-spacing-element-16);
+    }
+  }
+}
+
+.tl-accordion__title {
+  flex-grow: 2;
+  text-align: left;
+  color: var(--color-foreground-text-strong);
+
+  .tl-accordion__item--disabled & {
+    color: var(--accordion-text-disabled);
+  }
+
+  .tl-accordion__item--icon-start .tl-accordion__header-icon-start & {
+    order: 1;
+  }
+}
+
+.tl-accordion__panel {
+  cursor: default;
+  padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
+    var(--tds-spacing-element-16);
+  display: none;
+  @include detail-03;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .tl-accordion__item--disabled & {
+    color: var(--accordion-text-disabled);
+    cursor: not-allowed;
+  }
+
+  .tl-accordion__item--expanded & {
+    display: block;
+    padding-bottom: 31px;
+  }
+}
+
+.tl-accordion__header-icon-start,
+.tl-accordion__header-icon-end {
+  @include tds-box-sizing;
+  @include headline-07;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--tds-spacing-element-16);
+  background-color: var(--accordion-background);
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-color: var(--accordion-icon);
+    mask-image: var(--icon-chevron_down-svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transform-origin: center;
+    transition: transform 0.15s ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .tl-accordion__item--disabled &::after {
+    background-color: var(--accordion-text-disabled);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    transform: rotate(180deg);
+  }
+
+  button {
+    all: unset;
+    @include tds-box-sizing;
+    @include headline-07;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--tds-spacing-element-16);
+    background-color: var(--accordion-background);
+  }
+
+  .tl-accordion__icon {
+    transform-origin: center;
+    transition: transform 0.15s ease-in-out;
+    color: var(--accordion-icon);
+  }
+
+  .tl-accordion__item--disabled & {
+    color: var(--accordion-text-disabled);
+    cursor: not-allowed;
+  }
+
+  .tl-accordion__item--expanded & {
+    background-color: var(--color-background-surface-100);
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+.tl-accordion__header-icon-start {
+  &::after {
+    order: 0;
+    margin-right: var(--tds-spacing-element-16);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    margin-left: 0;
+    margin-right: var(--tds-spacing-element-16);
+  }
+}
+
+.tl-accordion__header-icon-end {
+  &::after {
+    margin-left: var(--tds-spacing-element-32);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    margin-right: 0;
+    margin-left: var(--tds-spacing-element-32);
+  }
+}

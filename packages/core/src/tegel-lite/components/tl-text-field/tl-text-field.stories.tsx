@@ -1,0 +1,236 @@
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+
+export default {
+  title: 'Tegel Lite (Beta)/Text Field',
+  parameters: {
+    layout: 'centered',
+  },
+  argTypes: {
+    modeVariant: {
+      name: 'Mode Variant',
+      control: { type: 'radio' },
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
+    },
+    state: {
+      name: 'State',
+      control: { type: 'radio' },
+      options: ['Default', 'Success', 'Error'],
+    },
+    type: {
+      name: 'Type',
+      control: { type: 'radio' },
+      options: ['Text', 'Password', 'Number'],
+    },
+    size: {
+      name: 'Size',
+      control: { type: 'radio' },
+      options: ['Large', 'Medium', 'Small'],
+    },
+    label: {
+      name: 'Label text',
+      control: { type: 'text' },
+    },
+    labelPosition: {
+      name: 'Label position',
+      control: { type: 'radio' },
+      options: ['Outside', 'Inside', 'No label'],
+    },
+    placeholderText: {
+      name: 'Placeholder',
+      control: { type: 'text' },
+    },
+    helper: {
+      name: 'Helper text',
+      control: { type: 'text' },
+    },
+    prefix: {
+      name: 'Prefix',
+      control: { type: 'boolean' },
+    },
+    prefixType: {
+      name: 'Prefix type',
+      control: { type: 'radio' },
+      options: ['Icon', 'Text'],
+      if: { arg: 'prefix', eq: true },
+    },
+    suffix: {
+      name: 'Suffix',
+      control: { type: 'boolean' },
+    },
+    suffixType: {
+      name: 'Suffix type',
+      control: { type: 'radio' },
+      options: ['Icon', 'Text'],
+      if: { arg: 'suffix', eq: true },
+    },
+    maxLength: {
+      name: 'Max length',
+      control: { type: 'number' },
+      description: 'Maximum number of characters allowed. When > 0 the character counter is shown.',
+    },
+    noMinWidth: {
+      name: 'No minimum width',
+      control: { type: 'boolean' },
+    },
+    readonly: {
+      name: 'Read only',
+      control: { type: 'boolean' },
+    },
+    hideReadonlyIcon: {
+      name: 'Hide read only icon',
+      control: { type: 'boolean' },
+      if: { arg: 'readonly', eq: true },
+    },
+    disabled: {
+      name: 'Disabled',
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    modeVariant: 'Primary',
+    state: 'Default',
+    type: 'Text',
+    size: 'Large',
+    label: 'Label',
+    labelPosition: 'Outside',
+    placeholderText: 'Placeholder',
+    helper: 'Helper text',
+    prefix: false,
+    prefixType: 'Icon',
+    suffix: false,
+    suffixType: 'Icon',
+    maxLength: 0,
+    noMinWidth: false,
+    readonly: false,
+    hideReadonlyIcon: false,
+    disabled: false,
+  },
+};
+
+const Template = ({
+  modeVariant,
+  state,
+  type,
+  size,
+  label,
+  labelPosition,
+  placeholderText,
+  helper,
+  prefix,
+  prefixType,
+  suffix,
+  suffixType,
+  maxLength,
+  noMinWidth,
+  readonly,
+  hideReadonlyIcon,
+  disabled,
+}) => {
+  const componentClasses = [
+    'tl-text-field',
+    `tl-text-field--${modeVariant.toLowerCase()}`,
+    state !== 'Default' && `tl-text-field--${state.toLowerCase()}`,
+    size === 'Large' && 'tl-text-field--lg',
+    size === 'Medium' && 'tl-text-field--md',
+    size === 'Small' && 'tl-text-field--sm',
+    labelPosition === 'Inside' && 'tl-text-field--label-inside',
+    // Note: label-outside is now the default behavior, no class needed
+    noMinWidth && 'tl-text-field--no-min-width',
+    hideReadonlyIcon && 'tl-text-field--hide-readonly-icon',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const inputAttrs = [
+    `type="${type.toLowerCase()}"`,
+    `placeholder="${placeholderText}"`,
+    maxLength > 0 && `maxlength="${maxLength}"`,
+    disabled && 'disabled',
+    readonly && 'readonly',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  let prefixContent = '';
+  if (prefix) {
+    if (prefixType === 'Text') {
+      prefixContent = '<span class="tl-text-field__prefix--text">$</span>';
+    } else {
+      prefixContent =
+        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__prefix--icon"></span>';
+    }
+  }
+
+  let suffixContent = '';
+  if (suffix && !readonly) {
+    if (suffixType === 'Text') {
+      suffixContent = '<span class="tl-text-field__suffix--text">$</span>';
+    } else {
+      suffixContent =
+        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__suffix--icon"></span>';
+    }
+  }
+
+  const labelContent =
+    labelPosition === 'Outside' || labelPosition === 'Inside'
+      ? `<label class="tl-text-field__label">${label}</label>`
+      : '';
+
+  const helperContent = helper ? `<div class="tl-text-field__helper">${helper}</div>` : '';
+
+  const charCounterContent =
+    maxLength > 0
+      ? `<span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
+      : '';
+  const helperWrapperContent =
+    helperContent || charCounterContent
+      ? `<div class="tl-text-field__bottom">${helperContent}${charCounterContent}</div>`
+      : '';
+
+  const styleAttr = noMinWidth ? ' style="width: calc(100vw - 40px); max-width: 208px;"' : '';
+
+  return formatHtmlPreview(`
+    <!-- Required stylesheets:
+      "@scania/tegel-lite/global.css"
+      "@scania/tegel-lite/tl-text-field.css"
+    -->
+    <!-- Optional stylesheets:
+      "@scania/tegel-lite/tl-icon.css"
+    -->
+    <div class="${componentClasses}"${styleAttr}>
+      ${labelContent}
+      <input class="tl-text-field__input" ${inputAttrs} />
+      ${prefixContent}
+      ${suffixContent}
+      ${helperWrapperContent}
+    </div>
+
+  ${
+    maxLength > 0
+      ? `<!-- Script tag for demo purposes -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const textElement = document.querySelector('.tl-text-field__input');
+        const counterElement = document.querySelector('.tl-text-field__charcounter');
+        
+        if (textElement && counterElement) {
+          textElement.addEventListener('input', (event) => {
+            const currentLength = event.target.value.length;
+            const maxLength = ${maxLength};
+            
+            if (maxLength > 0 && currentLength > maxLength) {
+              event.target.value = event.target.value.slice(0, maxLength);
+            }
+            
+            counterElement.innerHTML = event.target.value.length + ' <span class="tl-text-field__charcounter-divider">/</span> ' + maxLength;
+          });
+        }
+      });
+    </script>`
+      : ''
+  }
+  `);
+};
+
+export const Default = Template.bind({});

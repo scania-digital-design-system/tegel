@@ -12,7 +12,7 @@ import hasSlot from '../../utils/hasSlot';
 })
 export class TdsTag {
   /** The element host */
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** The title text to display in the tag */
   @Prop() text!: string;

@@ -23,7 +23,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
     test('render expandable-row table correctly', async ({ page }) => {
       /* check of diff in component screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });

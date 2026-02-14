@@ -1,0 +1,177 @@
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use './tl-checkbox-vars' as *;
+
+.tl-checkbox {
+  @include tds-box-sizing;
+  @include detail-02;
+
+  display: flex;
+  align-items: center;
+  color: var(--checkbox-label);
+
+  &:has(:disabled) {
+    cursor: not-allowed;
+  }
+}
+
+.tl-checkbox__input {
+  appearance: none;
+  outline: none;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: flex-start;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+  }
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    border-radius: 4px;
+  }
+
+  &::after {
+    border: 1px solid var(--checkbox-border);
+    background-color: var(--checkbox-fill);
+    width: 16px;
+    height: 16px;
+    left: 4px;
+    top: 4px;
+    border-radius: 2px;
+  }
+
+  &:not(:disabled):hover::before {
+    background-color: var(--checkbox-border-hover);
+  }
+
+  &:focus-visible::before {
+    background-color: var(--checkbox-border-focus);
+    transition: opacity 0.2s ease-in-out;
+    width: var(--checkbox-focus-width);
+    height: var(--checkbox-focus-height);
+    left: var(--checkbox-focus-left);
+    top: var(--checkbox-focus-top);
+  }
+
+  &:hover:focus-visible::before {
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: var(--checkbox-border-hover);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &::after {
+      border-color: var(--checkbox-border-disabled);
+      background-color: var(--checkbox-fill-disabled);
+    }
+
+    &:hover::before {
+      display: none;
+    }
+  }
+
+  &:checked {
+    &::after {
+      background-image: var(--checkbox-background-img);
+      background-color: var(--checkbox-border);
+      background-repeat: no-repeat;
+      background-position: center;
+      border-color: var(--checkbox-border);
+    }
+
+    &:not(:disabled):hover::after {
+      border-color: var(--checkbox-border-hover);
+    }
+
+    &:disabled::after {
+      background-image: var(--checkbox-background-img-disabled);
+      background-color: var(--checkbox-fill-disabled);
+      border-color: var(--checkbox-border-disabled);
+    }
+
+    &:focus-visible::before {
+      background-color: var(--checkbox-border-focus);
+    }
+  }
+
+  &--indeterminate {
+    &::after {
+      background-image: var(--checkbox-background-img-indeterminate);
+      background-color: var(--checkbox-border);
+      background-repeat: no-repeat;
+      background-position: center;
+      border-color: var(--checkbox-border);
+    }
+
+    &:not(:disabled):hover::after {
+      border-color: var(--checkbox-border-hover);
+    }
+
+    &:disabled::after {
+      background-image: var(--checkbox-background-img-indeterminate-disabled);
+      background-color: var(--checkbox-fill-disabled);
+      border-color: var(--checkbox-border-disabled);
+    }
+
+    &:focus-visible::before {
+      background-color: var(--checkbox-border-focus);
+    }
+  }
+}
+
+.tl-checkbox__label {
+  color: var(--checkbox-label);
+  padding-left: var(--tds-spacing-element-4);
+  padding-top: var(--tds-spacing-element-4);
+  padding-bottom: var(--tds-spacing-element-4);
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  .tl-checkbox:has(:disabled) & {
+    color: var(--checkbox-label-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.tl-checkbox__input--indeterminate {
+  &::after {
+    background-image: var(--checkbox-background-img-indeterminate);
+    background-color: var(--checkbox-border);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-color: var(--checkbox-border);
+  }
+
+  &:not(:disabled):hover::after {
+    border-color: var(--checkbox-border-hover);
+  }
+
+  &:disabled::after {
+    background-image: var(--checkbox-background-img-indeterminate-disabled);
+    background-color: var(--checkbox-fill-disabled);
+    border-color: var(--checkbox-border-disabled);
+  }
+
+  &:focus-visible::before {
+    background-color: var(--checkbox-border-focus);
+  }
+}

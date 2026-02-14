@@ -1,4 +1,14 @@
-@import './mixins';
+@use 'sass:map';
+@use './mixins' as *;
+
+@function get-color-original($token) {
+  @return map.get($original-colors, $token);
+}
+
+// to get color token from scss
+@function get-color($token) {
+  @return map.get($all-colors, $token);
+}
 
 $black: (
   black-100: rgb(0 0 0 / 100%),

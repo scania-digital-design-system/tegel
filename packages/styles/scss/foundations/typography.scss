@@ -1,4 +1,4 @@
 // Tegel Typography
-@import '../../../../typography/scania-fonts';
-@import '../../../../typography/scania-fonts-vars';
-@import '../../../../typography/scania-fonts-selectors';
+@forward '../../../../typography/scania-fonts';
+@forward '../../../../typography/scania-fonts-vars';
+@forward '../../../../typography/scania-fonts-selectors';

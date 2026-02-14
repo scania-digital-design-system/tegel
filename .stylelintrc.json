@@ -4,7 +4,8 @@
   "rules": {
     "indentation": 2,
     "alpha-value-notation": null,
-    "color-function-notation": ["legacy"]
+    "color-function-notation": ["legacy"],
+    "at-rule-disallowed-list": [["import"], { "severity": "error", "message": "@import is deprecated. Use @use/@forward instead." }]
   },
   "ignoreFiles": ["**/build/**", "**/dist/**"]
 }

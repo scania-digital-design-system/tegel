@@ -1,0 +1,495 @@
+@use './tl-text-field-vars' as *;
+@use './tl-text-field-mixins' as *;
+@use '../tl-icon/tl-icon' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-text-field {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 208px;
+  height: 56px;
+  padding-bottom: 1px;
+  border-radius: var(--text-field-border-radius);
+  box-sizing: border-box;
+
+  &--no-min-width {
+    min-width: auto;
+  }
+
+  &--lg {
+    height: 56px;
+  }
+
+  &--md {
+    height: 48px;
+  }
+
+  &--sm {
+    height: 40px;
+  }
+
+  &:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+      &--hide-readonly-icon
+    )::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-field-text);
+    mask-image: var(--icon-edit_inactive-svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  // Outside label - readonly icon position adjustment (only when label exists)
+  &:not(&--label-inside):has(.tl-text-field__label):has(.tl-text-field__input[readonly]):not(
+      :has(.tl-text-field__input:disabled)
+    ):not(&--hide-readonly-icon)::before {
+    top: calc(50% + 24px);
+  }
+
+  &:has(.tl-text-field__input:disabled) {
+    cursor: not-allowed;
+  }
+
+  .tl-icon {
+    background-color: var(--text-field-affix);
+
+    :has(.tl-text-field__input:disabled) & {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
+}
+
+.tl-text-field__input {
+  @include text-field-base;
+  @include detail-02;
+
+  text-align: left;
+  color: var(--text-field-text);
+  flex: 1;
+  order: 2;
+  box-shadow: inset var(--text-field-box-shadow);
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: inset var(--text-field-box-shadow-focus);
+  }
+
+  .tl-text-field:hover &:not(:focus):not(:disabled) {
+    box-shadow: inset var(--text-field-box-shadow-hover);
+  }
+
+  .tl-text-field--error & {
+    box-shadow: inset var(--text-field-box-shadow-error);
+
+    &:focus {
+      box-shadow: inset var(--text-field-box-shadow-error-focus);
+    }
+  }
+
+  .tl-text-field--error:hover &:not(:focus):not(:disabled) {
+    box-shadow: inset var(--text-field-box-shadow-error-hover);
+  }
+
+  .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    &:not(:focus) {
+    box-shadow: inset var(--text-field-box-shadow-success);
+  }
+
+  &:disabled {
+    box-shadow: none;
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
+    box-shadow: inset var(--text-field-box-shadow);
+
+    &:focus {
+      box-shadow: inset var(--text-field-box-shadow-focus);
+    }
+  }
+
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
+    &:not(:focus) {
+    box-shadow: inset var(--text-field-box-shadow-hover);
+  }
+
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
+    user-select: auto;
+    caret-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+      .tl-text-field--hide-readonly-icon
+    )
+    & {
+    padding-right: 54px;
+  }
+
+  .tl-text-field--lg & {
+    padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--md & {
+    padding: var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--sm & {
+    padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--label-inside.tl-text-field--lg & {
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+  }
+
+  .tl-text-field--label-inside.tl-text-field--md & {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+  }
+
+  .tl-text-field--label-inside.tl-text-field--sm &:not(:focus):placeholder-shown {
+    padding-top: var(--tds-spacing-element-16);
+    padding-bottom: 7px;
+  }
+
+  .tl-text-field:has(.tl-text-field__prefix--icon) & {
+    padding-left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field:has(.tl-text-field__prefix--text) & {
+    padding-left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  .tl-text-field:has(.tl-text-field__suffix--icon) & {
+    padding-right: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field:has(.tl-text-field__suffix--text) & {
+    padding-right: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  .tl-text-field--label-inside &::placeholder {
+    color: transparent !important;
+  }
+
+  // Default behavior (label outside) - disabled placeholder color
+  .tl-text-field:not(.tl-text-field--label-inside) &:disabled::placeholder {
+    color: var(--text-field-placeholder-disabled) !important;
+  }
+}
+
+.tl-text-field__label {
+  // Default behavior (label outside)
+  .tl-text-field:not(.tl-text-field--label-inside) & {
+    @include detail-05;
+
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-field-label);
+  }
+
+  .tl-text-field--label-inside & {
+    @include detail-02;
+
+    position: absolute;
+    top: 50%;
+    left: var(--text-field-label-inside-left, 16px);
+    color: var(--text-field-label-inside);
+    pointer-events: none;
+    transform: translateY(-50%);
+    transform-origin: top left;
+    transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
+    z-index: 1;
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  // Focus and filled state for lg and md
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
+    &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
+    & {
+    @include detail-07;
+
+    top: 8px;
+    transform: translateY(0);
+    transition: 0.1s ease all;
+  }
+
+  // Keep prefix offset when focused for lg and md
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
+      .tl-text-field__input:focus
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
+      .tl-text-field__input:focus
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
+      .tl-text-field__input:focus
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
+      .tl-text-field__input:focus
+    )
+    &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  // Focus and filled state for sm - label disappears
+  .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
+    & {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  // Disabled label gets disabled color but keeps same behavior
+  .tl-text-field--label-inside:has(.tl-text-field__input:disabled) & {
+    color: var(--text-field-label-disabled);
+  }
+
+  // Default behavior (label outside) - disabled state
+  .tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input:disabled) & {
+    color: var(--text-field-label-disabled);
+  }
+}
+
+.tl-text-field__bottom {
+  display: flex;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.tl-text-field__helper {
+  @include detail-05;
+
+  color: var(--text-field-helper);
+  position: relative;
+
+  :has(.tl-text-field__input:disabled) & {
+    color: var(--color-foreground-text-disabled);
+  }
+
+  .tl-text-field--error & {
+    padding-left: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: var(--text-field-error);
+      mask-image: var(--icon-error-svg);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+    }
+  }
+
+  .tl-text-field--error:has(.tl-text-field__input[readonly]) & {
+    padding-left: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
+    color: var(--text-field-error);
+  }
+
+  .tl-text-field--error:has(.tl-text-field__input:disabled) &::before {
+    background-color: var(--color-foreground-text-disabled);
+  }
+}
+
+.tl-text-field__charcounter {
+  @include detail-05;
+
+  margin-left: auto;
+  color: var(--text-field-textcounter);
+
+  :has(.tl-text-field__input:disabled) & {
+    color: var(--color-foreground-text-disabled);
+  }
+
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+      :has(.tl-text-field__input:disabled)
+    )
+    & {
+    color: var(--text-field-error);
+
+    .tl-text-field__charcounter-divider {
+      color: var(--text-field-error);
+    }
+  }
+}
+
+.tl-text-field__charcounter-divider {
+  color: var(--color-foreground-text-disabled);
+}
+
+.tl-text-field__prefix {
+  @include affix-base;
+
+  &--text,
+  &--icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(calc(-50% - 1px));
+    z-index: 1;
+  }
+
+  // Default behavior (label outside) - prefix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
+    transform: translateY(calc(-50% + 24px));
+  }
+
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
+    color: var(--text-field-affix-disabled);
+
+    > * {
+      color: var(--text-field-affix-disabled);
+    }
+
+    .tl-icon {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
+
+  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
+    background-color: var(--text-field-affix-disabled);
+  }
+}
+
+.tl-text-field__suffix {
+  @include affix-base;
+
+  &--text,
+  &--icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(calc(-50% - 1px));
+    z-index: 1;
+  }
+
+  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
+    transform: translateY(calc(-50% + 24px));
+  }
+
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
+    color: var(--text-field-affix-disabled);
+
+    > * {
+      color: var(--text-field-affix-disabled);
+    }
+
+    .tl-icon,
+    > .tl-icon {
+      background-color: var(--text-field-affix-disabled) !important;
+    }
+  }
+}
+
+.tl-text-field__suffix {
+  @include affix-base;
+
+  right: 16px;
+  padding-right: 0;
+  z-index: 1;
+
+  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
+    transform: translateY(calc(-50% + 24px));
+  }
+
+  :has(.tl-text-field__input:disabled) &--text,
+  :has(.tl-text-field__input:disabled) &--icon {
+    color: var(--text-field-affix-disabled);
+
+    > * {
+      color: var(--text-field-affix-disabled);
+    }
+
+    .tl-icon,
+    > .tl-icon {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
+
+  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
+    background-color: var(--text-field-affix-disabled);
+  }
+}
+
+@include focus-input-state {
+  @include detail-07;
+
+  top: 7.5px;
+  left: var(--text-field-label-inside-left, 16px);
+  transform: none;
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+}

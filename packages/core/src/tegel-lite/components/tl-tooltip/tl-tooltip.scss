@@ -1,0 +1,62 @@
+@use './tl-tooltip-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-tooltip {
+  @include detail-05;
+
+  position: fixed;
+  z-index: var(--tds-z-index-tooltip, 1000);
+  padding: 8px;
+  max-width: 204px;
+  width: max-content;
+  white-space: normal;
+  word-wrap: break-word;
+  background-color: var(--tooltip-background, #333);
+  color: var(--tooltip-text, #fff);
+  box-sizing: border-box;
+  line-height: var(--tl-tooltip-line-height);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  border-radius: 4px;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  // Position modifiers - remove border-radius at corner pointing to trigger
+  &--top-start {
+    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
+  }
+
+  &--top-end {
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
+  }
+
+  &--bottom-start {
+    border-radius: 0 4px 4px; // sharp corner at top-left
+  }
+
+  &--bottom-end {
+    border-radius: 4px 0 4px 4px; // sharp corner at top-right
+  }
+
+  &--left-start {
+    border-radius: 4px 0 4px 4px; // sharp corner at top-right
+  }
+
+  &--left-end {
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
+  }
+
+  &--right-start {
+    border-radius: 0 4px 4px; // sharp corner at top-left
+  }
+
+  &--right-end {
+    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
+  }
+}

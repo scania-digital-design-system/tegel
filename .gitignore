@@ -7,7 +7,7 @@ packages/core/components
 packages/angular/dist
 packages/angular-17/dist
 packages/react/dist
-packages/tegel-light/dist
+packages/tegel-lite/dist
 stencil-generated
 
 icons/dist

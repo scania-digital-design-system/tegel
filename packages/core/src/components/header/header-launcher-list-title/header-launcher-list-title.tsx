@@ -10,7 +10,7 @@ import generateUniqueId from '../../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsHeaderLauncherListTitle {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   private uuid: string = generateUniqueId();
 

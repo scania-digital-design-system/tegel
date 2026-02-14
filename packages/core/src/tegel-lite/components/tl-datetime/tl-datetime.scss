@@ -1,0 +1,304 @@
+@use './tl-datetime-vars' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-datetime {
+  display: block;
+  min-width: 208px;
+  background: unset;
+
+  &--no-min-width {
+    min-width: auto;
+  }
+
+  /* Native picker visuals */
+  input[type='datetime-local'],
+  input[type='date'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      opacity: 0;
+    }
+  }
+}
+
+.tl-datetime__label {
+  @include detail-05;
+
+  display: block;
+  margin-bottom: var(--tds-spacing-element-8);
+  color: var(--datetime-label);
+
+  .tl-datetime:has(input:disabled) & {
+    color: var(--datetime-label-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.tl-datetime__wrapper {
+  border-radius: var(--datetime-border-radius);
+  position: relative;
+  height: 56px;
+  box-sizing: border-box;
+  background-color: var(--datetime-background);
+
+  .tl-datetime--md & {
+    height: 48px;
+  }
+
+  .tl-datetime--sm & {
+    height: 40px;
+  }
+
+  .tl-datetime:has(input:disabled) & {
+    cursor: not-allowed;
+  }
+
+  /* CSS-generated icon */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 18px;
+    width: 20px;
+    height: 20px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 20px 20px;
+    background-color: var(--datetime-icon);
+    pointer-events: none;
+
+    /* Default: calendar icon for date/datetime inputs */
+    mask-image: var(--icon-calendar-svg);
+
+    /* Firefox - hide our custom icon since Firefox shows its own */
+    @supports (-moz-appearance: none) {
+      display: none;
+    }
+  }
+
+  /* Change to clock icon for time input */
+  &:has(input[type='time'])::after {
+    mask-image: var(--icon-clock-svg);
+  }
+
+  .tl-datetime--error &::after {
+    background-color: var(--datetime-icon-error);
+  }
+
+  /* Disabled state (should not override error state) */
+  .tl-datetime:has(input:disabled):not(.tl-datetime--error) &::after {
+    background-color: var(--datetime-icon-disabled);
+  }
+}
+
+.tl-datetime__input {
+  @include tds-box-sizing;
+  @include detail-02;
+
+  border-radius: var(--datetime-border-radius);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--datetime-text);
+  background-color: var(--datetime-background);
+  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  box-shadow: inset var(--datetime-box-shadow);
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: inset var(--datetime-box-shadow-focus);
+  }
+
+  .tl-datetime:hover &:not(:focus) {
+    box-shadow: inset var(--datetime-box-shadow-hover);
+  }
+
+  .tl-datetime--error & {
+    box-shadow: inset var(--datetime-box-shadow-error);
+
+    &:focus {
+      box-shadow: inset var(--datetime-box-shadow-error-focus);
+    }
+  }
+
+  .tl-datetime--error:hover &:not(:focus) {
+    box-shadow: inset var(--datetime-box-shadow-error-hover);
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--datetime-placeholder);
+  }
+
+  &:focus::placeholder {
+    color: var(--datetime-placeholder-focus);
+  }
+
+  /* WebKit datetime fields */
+  &::-webkit-datetime-edit-text {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-month-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-day-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-year-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-hour-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-minute-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-second-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-millisecond-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-meridiem-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &:disabled {
+    background-color: var(--datetime-background-disabled);
+    color: var(--datetime-text-disabled);
+    box-shadow: inset var(--datetime-box-shadow-disabled);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--datetime-placeholder-disabled);
+    }
+
+    ~ .tl-datetime__label-inside {
+      color: var(--datetime-label-disabled);
+    }
+
+    /* WebKit datetime fields - disabled state */
+    &::-webkit-datetime-edit-text {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-month-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-day-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-year-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-hour-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-minute-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-second-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-millisecond-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-meridiem-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+  }
+
+  .tl-datetime--label-inside & {
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+  }
+
+  .tl-datetime--md.tl-datetime--label-inside & {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+  }
+
+  .tl-datetime--sm & {
+    padding: var(--tds-spacing-element-16);
+  }
+}
+
+.tl-datetime__label-inside {
+  @include detail-07;
+
+  position: absolute;
+  pointer-events: none;
+  color: var(--datetime-label-inside);
+  left: 16px;
+  transition: 0.1s ease all;
+
+  .tl-datetime--lg & {
+    top: 12px;
+  }
+
+  .tl-datetime--md & {
+    top: 8px;
+  }
+
+  .tl-datetime--sm & {
+    display: none;
+  }
+}
+
+.tl-datetime__helper {
+  @include detail-05;
+
+  display: inline-flex;
+  gap: 8px;
+  padding-top: var(--tds-spacing-element-4);
+  color: var(--datetime-helper);
+
+  /* CSS-generated error icon */
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  .tl-datetime--error & {
+    color: var(--datetime-helper-error);
+
+    &::before {
+      display: inline-flex;
+      mask-image: var(--icon-error-svg);
+      background-color: var(--datetime-helper-error);
+    }
+  }
+
+  /* Disabled state (should not override error text/icon color) */
+  .tl-datetime:has(input:disabled):not(.tl-datetime--error) & {
+    color: var(--color-foreground-text-disabled);
+  }
+}

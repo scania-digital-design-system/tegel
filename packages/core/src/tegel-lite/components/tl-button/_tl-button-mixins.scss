@@ -1,0 +1,6 @@
+@mixin mode-variant($mode, $primary-background-disabled, $danger-background-disabled) {
+  .tl-button--#{$mode} {
+    --button-primary-background-disabled: var(#{$primary-background-disabled});
+    --button-danger-background-disabled: var(#{$danger-background-disabled});
+  }
+}

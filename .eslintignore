@@ -21,7 +21,7 @@ packages/core/scripts
 packages/angular
 packages/angular-17
 packages/react
-packages/tegel-light
+packages/tegel-lite
 
 packages/core/www
 packages/core/storybook-static

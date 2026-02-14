@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property       | Attribute        | Description                                 | Type               | Default     |
-| -------------- | ---------------- | ------------------------------------------- | ------------------ | ----------- |
-| `disabled`     | `disabled`       | Sets the option as disabled.                | `boolean`          | `false`     |
-| `tdsAriaLabel` | `tds-aria-label` | Defines aria-label attribute for the option | `string`           | `undefined` |
-| `value`        | `value`          | Value of the dropdown option                | `number \| string` | `undefined` |
+| Property       | Attribute        | Description                                 | Type                            | Default     |
+| -------------- | ---------------- | ------------------------------------------- | ------------------------------- | ----------- |
+| `disabled`     | `disabled`       | Sets the option as disabled.                | `boolean`                       | `false`     |
+| `tdsAriaLabel` | `tds-aria-label` | Defines aria-label attribute for the option | `string \| undefined`           | `undefined` |
+| `value`        | `value`          | Value of the dropdown option                | `number \| string \| undefined` | `undefined` |
 
 
 ## Events

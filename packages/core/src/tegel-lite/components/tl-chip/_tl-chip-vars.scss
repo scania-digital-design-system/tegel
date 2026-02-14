@@ -1,0 +1,75 @@
+.tl-chip {
+  // Chip-specific variables (used directly in component)
+  --chip-text: var(--color-foreground-text-strong);
+  --chip-text-active: var(--component-chip-foreground-inverse);
+  --chip-background: var(--component-chip-color-default);
+  --chip-background-active: var(--component-chip-color-selected);
+  --chip-background-disabled: var(--component-chip-color-disabled);
+  --chip-text-disabled: var(--color-foreground-text-disabled);
+  --chip-text-checked-disabled: var(--component-chip-foreground-foreground-disabled-selected);
+  --chip-background-active-hover: var(--component-chip-color-hover-on-selected);
+  --chip-background-hover: var(--component-chip-color-hover);
+  --chip-background-focus: var(--component-chip-color-focused);
+  --chip-border-radius: var(--component-chip-border-radius);
+  --chip-focused-on-selected: var(--component-chip-color-focused-on-selected);
+
+  // Base component-chip variables (from tokens)
+  --component-chip-color-focused-on-selected: var(--color-system-info-subtle);
+  --component-chip-color-disabled: var(--color-background-surface-100);
+  --component-chip-color-focused: var(--color-background-layer-02);
+  --component-chip-color-hover: var(--color-background-surface-600);
+  --component-chip-color-selected: var(--color-brand-primary-400);
+  --component-chip-color-disabled-selected: var(--color-brand-primary-400);
+  --component-chip-color-hover-on-selected: var(--color-system-info-default);
+  --component-chip-color-default: var(--color-background-surface-200);
+  --component-chip-foreground-inverse: var(--color-foreground-text-inverse-strong);
+  --component-chip-foreground-foreground-disabled-selected: var(
+    --color-foreground-text-inverse-subtle
+  );
+  --component-chip-border-selected-focus-border: var(--color-system-info-default);
+}
+
+:root,
+.scania {
+  .tl-chip {
+    --component-chip-border-radius: 16px;
+  }
+
+  .tds-mode-light .tl-chip {
+    --component-chip-color-hover: var(--color-background-surface-300);
+    --component-chip-foreground-foreground-disabled-selected: var(
+      --color-foreground-text-inverse-subtle
+    );
+  }
+
+  .tds-mode-dark .tl-chip {
+    --component-chip-color-default: var(--color-background-surface-400);
+    --component-chip-color-focused-on-selected: var(--color-system-info-discrete);
+    --component-chip-color-hover-on-selected: var(--color-system-info-default);
+    --component-chip-foreground-foreground-disabled-selected: var(--color-foreground-text-subtle);
+    --component-chip-foreground-inverse: var(--color-foreground-text-strong);
+  }
+}
+
+.traton {
+  .tl-chip {
+    --component-chip-border-radius: 2px;
+  }
+
+  .tds-mode-light .tl-chip {
+    --component-chip-color-default: var(--color-background-surface-200);
+    --component-chip-color-selected: var(--color-background-surface-300);
+    --component-chip-color-hover-on-selected: var(--color-background-surface-400);
+    --component-chip-foreground-inverse: var(--color-foreground-text-strong);
+    --component-chip-color-focused-on-selected: var(--component-chip-color-focused);
+    --component-chip-foreground-foreground-disabled-selected: var(--color-background-surface-200);
+  }
+
+  .tds-mode-dark .tl-chip {
+    --component-chip-color-default: var(--color-background-surface-300);
+    --component-chip-color-disabled: var(--color-background-surface-200);
+    --component-chip-foreground-inverse: var(--color-foreground-text-inverse-strong);
+    --component-chip-color-focused-on-selected: var(--color-background-surface-700);
+    --component-chip-color-hover-on-selected: var(--color-background-surface-800);
+  }
+}

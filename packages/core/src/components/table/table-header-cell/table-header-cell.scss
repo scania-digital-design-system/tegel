@@ -1,4 +1,4 @@
-@import '../../../mixins/box-sizing';
+@use '../../../mixins/box-sizing' as *;
 
 :host(.tds-table__header-cell) {
   @include tds-box-sizing;

@@ -7,14 +7,14 @@
     "strictNullChecks": true,
 
     // Class properties must be initialized or marked as possibly undefined
-    // "strictPropertyInitialization": true,
+    "strictPropertyInitialization": true,
 
     // Enable rules one by one:
     // Report error on implicit 'any' types
     // "noImplicitAny": true,
 
     // Report error on 'this' with implicit 'any'
-    // "noImplicitThis": true,
+    "noImplicitThis": true,
 
     // Ensure every file is in strict mode and add "use strict" at top
     // "alwaysStrict": true,
@@ -26,7 +26,7 @@
     // "strictFunctionTypes": true,
 
     // Catch clause variable defaults to unknown instead of any
-    // "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
 
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
@@ -35,6 +35,8 @@
     "lib": ["dom", "es2017"],
     "moduleResolution": "node",
     "module": "esnext",
+    "jsx": "react",
+    "jsxFactory": "h",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "target": "es2017",

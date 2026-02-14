@@ -1,0 +1,34 @@
+.tl-radio-button {
+  // Default colors
+  --radio-button-background-hover: var(--color-foreground-border-discrete);
+  --radio-button-background-inverse: var(--color-foreground-icon-inverse-strong);
+  --radio-button-background-disabled: var(--color-background-accent-primary-disabled);
+  --radio-button-border: var(--color-foreground-border-strong);
+  --radio-button-label: var(--color-foreground-text-strong);
+  --radio-button-label-disabled: var(--color-foreground-text-disabled);
+  --radio-button-border-disabled: var(--color-foreground-border-discrete);
+
+  // Active (checked)
+  --radio-button-focus: var(--color-foreground-border-accent-focus);
+  --radio-button-checked-disabled: var(--color-foreground-icon-disabled);
+
+  // Units
+  --radio-button-spacing-4: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
+    var(--tds-spacing-element-4);
+
+  // Focus outline
+  --radio-button-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --radio-button-focus-outline-width: 2px;
+}
+
+.scania {
+  .tl-radio-button {
+    --radio-button-focus-outline-width: 2px;
+  }
+}
+
+.traton {
+  .tl-radio-button {
+    --radio-button-focus-outline-width: 4px;
+  }
+}

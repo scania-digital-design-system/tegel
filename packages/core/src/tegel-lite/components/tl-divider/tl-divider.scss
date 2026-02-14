@@ -1,0 +1,26 @@
+@use '../../../mixins/box-sizing' as *;
+@use './tl-divider-vars' as *;
+
+.tl-divider {
+  @include tds-box-sizing;
+
+  background-color: var(--divider-background);
+
+  &--expressive {
+    background-color: var(--divider-background-strong);
+  }
+
+  &--discrete {
+    background-color: var(--divider-background-discrete);
+  }
+
+  &--horizontal {
+    width: 100%;
+    height: 1px;
+  }
+
+  &--vertical {
+    height: 100%;
+    width: 1px;
+  }
+}

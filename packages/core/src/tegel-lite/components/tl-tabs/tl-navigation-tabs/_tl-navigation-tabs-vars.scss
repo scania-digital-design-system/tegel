@@ -1,0 +1,37 @@
+.tl-navigation-tabs__tab {
+  /* tds-navigation-tab variables */
+  --navigation-tabs-tab: var(--color-foreground-text-soft);
+  --navigation-tabs-tab-selected: var(--color-foreground-text-strong);
+  --navigation-tabs-tab-hover: var(--color-foreground-text-strong);
+  --navigation-tabs-tab-focus: var(--color-foreground-text-strong);
+  --navigation-tabs-tab-disabled: var(--color-foreground-text-disabled);
+  --navigation-tabs-tab-indicator-hover: var(--color-foreground-border-discrete);
+  --navigation-tabs-tab-indicator-active: var(--color-foreground-border-accent-focus);
+}
+
+.tl-navigation-tabs {
+  /* tds-navigation-tabs variables */
+  --navigation-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
+  --navigation-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
+  --navigation-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
+  --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
+  --navigation-tabs-scroll-button-icon: var(--color-foreground-icon-strong);
+  --navigation-tabs-scroll-button-background: var(--navigation-tabs-tab-background);
+  --navigation-tabs-scroll-button-background-hover: var(--navigation-tabs-tab-background);
+  --navigation-tabs-scroll-button-background-active: var(--navigation-tabs-tab-background);
+
+  &--primary {
+    --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
+  }
+
+  &--secondary {
+    --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-secondary);
+  }
+}
+
+.traton {
+  .tl-navigation-tabs {
+    --navigation-tabs-tab-background-primary: var(--traton-color-transparent-invisible-light);
+    --navigation-tabs-tab-background-secondary: var(--traton-color-transparent-invisible-dark);
+  }
+}

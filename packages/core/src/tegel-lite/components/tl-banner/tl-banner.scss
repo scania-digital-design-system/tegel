@@ -1,0 +1,78 @@
+@use './tl-banner-vars' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-banner {
+  display: flex;
+  background-color: var(--banner-background-default);
+  padding: 16px 20px;
+  position: relative;
+
+  &--error {
+    background-color: var(--banner-background-error);
+  }
+
+  &--information {
+    background-color: var(--banner-background-info);
+  }
+
+  &--error &__icon {
+    color: var(--banner-prefix-error);
+  }
+
+  &--information &__icon {
+    color: var(--banner-prefix-info);
+  }
+}
+
+.tl-banner__icon {
+  padding-right: 12px;
+  color: var(--banner-prefix-default);
+  flex-shrink: 0;
+}
+
+.tl-banner__content {
+  color: var(--banner-text);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tl-banner__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tl-banner__header {
+  @include headline-06;
+
+  margin: 0;
+}
+
+.tl-banner__subheader {
+  display: block;
+  @include detail-02;
+
+  margin: 0;
+}
+
+.tl-banner__actions {
+  display: block;
+  width: fit-content;
+  padding-top: 12px;
+}
+
+.tl-banner__close {
+  color: var(--banner-close-icon);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+
+  &:focus-visible {
+    @include tds-focus-state;
+  }
+}

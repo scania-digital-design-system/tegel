@@ -1,0 +1,22 @@
+.tl-footer {
+  --footer-top-background-primary: var(--color-background-layer-01);
+  --footer-top-background-secondary: var(--color-background-base);
+  --footer-top-background: var(--color-background-layer-01);
+  --footer-top-divider: var(--color-foreground-border-discrete);
+  --footer-top-links-desktop: var(--color-foreground-text-subtle);
+  --footer-top-links: var(--component-footer-text-color-link-text);
+  --footer-top-links-background-hover: var(--color-background-surface-300);
+  --footer-top-button-active: var(--color-background-surface-300);
+  --footer-main-background: var(--component-footer-primary);
+  --footer-main-links: var(--color-foreground-text-accent-brand);
+  --footer-main-divider: var(--component-footer-border);
+  --footer-main-copyright: var(--component-footer-text-color-copyright);
+
+  &.tl-footer--primary {
+    --footer-top-background: var(--footer-top-background-primary);
+  }
+
+  &.tl-footer--secondary {
+    --footer-top-background: var(--footer-top-background-secondary);
+  }
+}
