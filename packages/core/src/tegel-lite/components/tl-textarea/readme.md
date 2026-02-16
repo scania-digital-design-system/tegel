@@ -71,9 +71,14 @@ Apply these classes to the `.tl-textarea` element.
 | ------------------------------------ | ------------------------------------ |
 | `.tl-textarea--label-inside`         | Positions label inside textarea      |
 | `.tl-textarea--no-min-width`         | Removes minimum width constraint     |
-| `.tl-textarea--hide-readonly-icon`   | Hides readonly edit icon             |
+| `.tl-textarea--hide-readonly-icon`   | Hides read-only edit icon             |
 
 **Note:** Label is positioned outside the textarea by default.
+
+## JavaScript Required
+
+The Textarea component requires JavaScript to handle:
+- Character counter functionality
 
 ----------------------------------------------
 
