@@ -80,8 +80,6 @@ Apply these classes to the `.tl-textarea` element.
 The Textarea component requires JavaScript to handle:
 - Character counter functionality
 
-**Note:** Label is positioned outside the textarea by default.
-
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*
