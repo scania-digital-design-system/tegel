@@ -13,7 +13,9 @@ The Text Field component provides a single-line input field with labels, helper 
     class="tl-text-field__input"
     placeholder="Enter text"
   />
-  <span class="tl-text-field__helper">Helper text</span>
+  <div class="tl-text-field__bottom">
+    <div class="tl-text-field__helper">Helper text</div>
+  </div>
 </div>
 ```
 
@@ -33,12 +35,12 @@ The Text Field component provides a single-line input field with labels, helper 
 | `.tl-text-field`                     | `<div>`      | Main container                  |
 | `.tl-text-field__label`              | `<label>`    | Label for the input             |
 | `.tl-text-field__input`              | `<input>`    | Input element                   |
-| `.tl-text-field__helper`             | `<div>`      | Helper text below input         |
-| `.tl-text-field__bottom`             | `<div>`      | Bottom wrapper for helper/counter |
 | `.tl-text-field__prefix--text`       | `<span>`     | Prefix text content             |
 | `.tl-text-field__prefix--icon`       | `<span>`     | Prefix icon content             |
 | `.tl-text-field__suffix--text`       | `<span>`     | Suffix text content             |
 | `.tl-text-field__suffix--icon`       | `<span>`     | Suffix icon content             |
+| `.tl-text-field__bottom`             | `<div>`      | Bottom wrapper for helper/counter |
+| `.tl-text-field__helper`             | `<div>`      | Helper text below input         |
 | `.tl-text-field__charcounter`        | `<span>`     | Character counter               |
 | `.tl-text-field__charcounter-divider`| `<span>`     | Divider in character counter    |
 
@@ -82,9 +84,14 @@ Apply these classes to the `.tl-text-field` element.
 | ----------------------------------- | ------------------------------------ |
 | `.tl-text-field--label-inside`      | Positions label inside input         |
 | `.tl-text-field--no-min-width`      | Removes minimum width constraint     |
-| `.tl-text-field--hide-readonly-icon`| Hides readonly edit icon             |
+| `.tl-text-field--hide-readonly-icon`| Hides read-only edit icon             |
 
 **Note:** Label is positioned outside the input by default.
+
+## JavaScript Required
+
+The Text Field component requires JavaScript to handle:
+- Character counter functionality
 
 ----------------------------------------------
 
