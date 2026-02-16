@@ -93,8 +93,6 @@ Apply these classes to the `.tl-text-field` element.
 The Text Field component requires JavaScript to handle:
 - Character counter functionality
 
-**Note:** Label is positioned outside the input by default.
-
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*
