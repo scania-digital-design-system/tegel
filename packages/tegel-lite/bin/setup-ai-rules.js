@@ -95,6 +95,9 @@ function askYesNo(rl, question) {
 /**
  * Display an interactive checkbox list in the terminal.
  * Arrow keys navigate, space toggles, enter confirms.
+ *
+ * Uses readline.emitKeypressEvents to correctly parse multi-byte
+ * escape sequences (arrow keys) across all platforms.
  */
 function showCheckboxList(items) {
   return new Promise((resolve) => {
@@ -103,17 +106,18 @@ function showCheckboxList(items) {
 
     const { stdin, stdout } = process;
 
-    // Check if we can use raw mode (not available in all environments)
+    // Non-interactive fallback (e.g. CI, piped input)
     if (!stdin.isTTY) {
       console.log('Non-interactive terminal detected. Selecting all tools.');
       resolve(items.map((_, i) => i));
       return;
     }
 
-    function render() {
-      // Move cursor up to overwrite previous render (except first time)
-      stdout.write('\x1B[?25l'); // Hide cursor
+    // ── Rendering ───────────────────────────────────────────────
 
+    let rendered = false;
+
+    function render() {
       const lines = items.map((item, i) => {
         const checkbox = selected[i] ? '\x1B[32m◉\x1B[0m' : '○';
         const pointer = i === cursor ? '\x1B[36m❯\x1B[0m ' : '  ';
@@ -127,61 +131,79 @@ function showCheckboxList(items) {
       return lines.join('\n');
     }
 
-    // Initial render
-    const output = render();
-    stdout.write(output);
-    // Position cursor at start of line after menu for consistent re-renders
-    stdout.write('\n');
+    function rerender() {
+      if (rendered) {
+        // Move up to overwrite previous output
+        // items.length + 1 (empty line) + 1 (help text) + 1 (trailing newline)
+        const lineCount = items.length + 3;
+        readline.moveCursor(stdout, 0, -lineCount);
+        readline.clearScreenDown(stdout);
+      }
 
-    stdin.setRawMode(true);
-    stdin.resume();
-    stdin.setEncoding('utf-8');
+      stdout.write(render());
+      stdout.write('\n');
+      rendered = true;
+    }
 
-    function onKeypress(key) {
-      // Ctrl+C
-      if (key === '\x03') {
-        stdin.setRawMode(false);
-        stdin.removeListener('data', onKeypress);
-        stdout.write('\x1B[?25h\n'); // Show cursor
+    // ── Cleanup ─────────────────────────────────────────────────
+
+    function cleanup() {
+      stdin.setRawMode(false);
+      stdin.removeAllListeners('keypress');
+      stdin.pause();
+      stdout.write('\x1B[?25h'); // Show cursor
+    }
+
+    // ── Keypress handler ────────────────────────────────────────
+
+    function onKeypress(_, key) {
+      if (!key) return;
+
+      // Ctrl+C → exit
+      if (key.ctrl && key.name === 'c') {
+        cleanup();
+        stdout.write('\n');
         process.exit(0);
       }
 
-      // Enter
-      if (key === '\r' || key === '\n') {
-        stdin.setRawMode(false);
-        stdin.removeListener('data', onKeypress);
-        stdout.write('\x1B[?25h\n'); // Show cursor
+      // Enter → confirm selection
+      if (key.name === 'return') {
+        cleanup();
+        stdout.write('\n');
         resolve(selected.reduce((acc, sel, i) => (sel ? [...acc, i] : acc), []));
         return;
       }
 
-      // Space — toggle
-      if (key === ' ') {
+      // Space → toggle current item
+      if (key.name === 'space') {
         selected[cursor] = !selected[cursor];
       }
 
-      // Arrow up or k
-      if (key === '\x1B[A' || key === 'k') {
+      // Up arrow or k → move cursor up
+      if (key.name === 'up' || key.name === 'k') {
         cursor = (cursor - 1 + items.length) % items.length;
       }
 
-      // Arrow down or j
-      if (key === '\x1B[B' || key === 'j') {
+      // Down arrow or j → move cursor down
+      if (key.name === 'down' || key.name === 'j') {
         cursor = (cursor + 1) % items.length;
       }
 
-      // Re-render: move up to overwrite
-      // +3 because we have: items.length + empty line + help text + our newline
-      const lineCount = items.length + 3;
-      // Move to start of line, move up lineCount lines, clear from cursor to end of screen
-      stdout.write('\r');
-      stdout.write(`\x1B[${lineCount}A`);
-      stdout.write('\x1B[0J');
-      stdout.write(render());
-      stdout.write('\n');
+      rerender();
     }
 
-    stdin.on('data', onKeypress);
+    // ── Start listening ─────────────────────────────────────────
+
+    readline.emitKeypressEvents(stdin);
+
+    stdin.setRawMode(true);
+    stdin.resume();
+
+    stdin.on('keypress', onKeypress);
+
+    // Initial render
+    stdout.write('\x1B[?25l'); // Hide cursor
+    rerender();
   });
 }
 
