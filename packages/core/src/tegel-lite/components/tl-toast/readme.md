@@ -51,7 +51,7 @@ The Toast component displays temporary notification messages with different seve
 | `.tl-toast__header`    | `<div>`      | Toast header/title              |
 | `.tl-toast__subheader` | `<div>`      | Toast message text              |
 | `.tl-toast__actions`   | `<div>`      | Action buttons/links container  |
-| `.tl-toast__close`     | `<button>`   | Close/dismiss button            |
+| `.tl-toast__close`     | `<button>`   | Close/dismiss button (optional) |
 
 ## Modifiers
 
