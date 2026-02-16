@@ -71,11 +71,11 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
     <div class="demo-wrapper">
       <div class="tl-message ${modeClass} ${variantClass} ${minimalClass} ${noIconClass}">
         <div class="tl-message__wrapper">
-          <div class="tl-message__content">
+          <div class="tl-message__text">
             <div class="tl-message__header">Message header</div>
             ${
               !minimal
-                ? `<div class="tl-message__extended-message">Longer Message text can be placed here. Longer Message text can be placed here.</div>`
+                ? `<div class="tl-message__subheader">Longer Message text can be placed here. Longer Message text can be placed here.</div>`
                 : ''
             }
           </div>
