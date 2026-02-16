@@ -47,6 +47,14 @@ const TOOLS = [
     targetFile: path.join(projectRoot, '.github', 'copilot-instructions.md'),
     mode: 'aggregated',
   },
+  {
+    id: 'claude',
+    label: 'Claude',
+    description: 'CLAUDE.md',
+    sourceFile: path.join(packageRoot, 'CLAUDE.md'),
+    targetFile: path.join(projectRoot, 'CLAUDE.md'),
+    mode: 'aggregated',
+  },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
