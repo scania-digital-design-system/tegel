@@ -26,15 +26,9 @@
     "url": "https://github.com/scania-digital-design-system/tegel/issues"
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
-  "overrides": {
-    "@stencil/core": "4.42.0",
-    "@scania/tegel": {
-      "@stencil/core": "4.42.0"
-    }
-  },
   "dependencies": {
     "@scania/tegel": "^1.47.2",
-    "@stencil/react-output-target": "^1.3.0"
+    "@stencil/react-output-target": "1.3.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
