@@ -6,9 +6,9 @@ The Navigation Tabs component provides tab-style navigation links with scrollabl
 
 ```html
 <nav class="tl-navigation-tabs">
-  <a href="#" class="tl-navigation-tabs__tab tl-navigation-tabs__tab--selected">Tab 1</a>
-  <a href="#" class="tl-navigation-tabs__tab">Tab 2</a>
-  <a href="#" class="tl-navigation-tabs__tab">Tab 3</a>
+  <button class="tl-navigation-tabs__tab tl-navigation-tabs__tab--selected">Tab 1</button>
+  <button class="tl-navigation-tabs__tab">Tab 2</button>
+  <button class="tl-navigation-tabs__tab">Tab 3</button>
 </nav>
 ```
 
@@ -18,7 +18,7 @@ The Navigation Tabs component provides tab-style navigation links with scrollabl
 
 ```
 @scania/tegel-lite/global.css
-@scania/tegel-lite/tl-navigation-tab.css
+@scania/tegel-lite/_tl-navigation-tab.css
 @scania/tegel-lite/tl-navigation-tabs.css
 ```
 
@@ -27,7 +27,7 @@ The Navigation Tabs component provides tab-style navigation links with scrollabl
 | Element                                        | HTML Element | Description                  |
 | ---------------------------------------------- | ------------ | ---------------------------- |
 | `.tl-navigation-tabs`                          | `<nav>`      | Navigation tabs container    |
-| `.tl-navigation-tabs__tab`                     | `<a>`        | Individual navigation tab    |
+| `.tl-navigation-tabs__tab`                     | `<button>`   | Individual navigation tab    |
 | `.tl-navigation-tabs__scroll-button`           | `<button>`   | Scroll button                |
 | `.tl-navigation-tabs__scroll-button--left`     | `<button>`   | Left scroll button           |
 | `.tl-navigation-tabs__scroll-button--right`    | `<button>`   | Right scroll button          |
