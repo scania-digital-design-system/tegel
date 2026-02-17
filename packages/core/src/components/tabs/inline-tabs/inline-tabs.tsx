@@ -53,7 +53,7 @@ export class TdsInlineTabs {
 
   private scrollableWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLTdsInlineTabElement> = [];
+  private tabElements: Array<HTMLTdsInlineTabElement> = [];
 
   private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
@@ -71,15 +71,15 @@ export class TdsInlineTabs {
   /** Selects a Tab based on tabindex, will not select a disabled Tab. */
   @Method()
   async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number | undefined }> {
-    if (tabIndex < 0 || tabIndex >= this.children.length) {
+    if (tabIndex < 0 || tabIndex >= this.tabElements.length) {
       throw new Error('Tab index out of bounds');
     }
 
-    this.children = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
+    this.tabElements = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
 
-    if (!this.children[tabIndex].disabled) {
-      this.children.forEach((element) => element.setSelected(false));
-      this.children = this.children.map((element, index) => {
+    if (!this.tabElements[tabIndex].disabled) {
+      this.tabElements.forEach((element) => element.setSelected(false));
+      this.tabElements = this.tabElements.map((element, index) => {
         if (index === tabIndex) {
           element.setSelected(true);
           this.selectedIndex = tabIndex;
@@ -98,13 +98,13 @@ export class TdsInlineTabs {
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate(): void {
-    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsInlineTabElement) => {
+    this.tabElements = Array.from(this.host.children).map((tabElement: HTMLTdsInlineTabElement) => {
       tabElement.setSelected(false);
       return tabElement;
     });
 
     if (this.selectedIndex) {
-      this.children[this.selectedIndex].setSelected(true);
+      this.tabElements[this.selectedIndex].setSelected(true);
     }
   }
 
@@ -157,15 +157,15 @@ export class TdsInlineTabs {
   };
 
   private addEventListenerToTabs = (): void => {
-    this.children = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
-    this.children.map((item, index) => {
+    this.tabElements = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
+    this.tabElements.map((item, index) => {
       const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
-            selectedTabIndex: this.children.indexOf(item),
+            selectedTabIndex: this.tabElements.indexOf(item),
           });
           if (!tdsChangeEvent.defaultPrevented) {
-            this.children.forEach((element) => element.setSelected(false));
+            this.tabElements.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
           }
@@ -178,7 +178,7 @@ export class TdsInlineTabs {
   };
 
   private removeEventListenerFromTabs = (): void => {
-    this.children.forEach((item) => {
+    this.tabElements.forEach((item) => {
       const clickHandler = this.clickHandlers.get(item);
       if (clickHandler) {
         item.removeEventListener('click', clickHandler);
@@ -188,23 +188,23 @@ export class TdsInlineTabs {
   };
 
   private initializeTabs(): void {
-    this.children = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
+    this.tabElements = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
     // remove first and last class from other tabs in case of initialization
-    this.children.forEach((child) => {
+    this.tabElements.forEach((child) => {
       child.classList.remove('last');
       child.classList.remove('first');
     });
-    this.children[0].classList.add('first');
-    this.children[this.children.length - 1].classList.add('last');
+    this.tabElements[0].classList.add('first');
+    this.tabElements[this.tabElements.length - 1].classList.add('last');
   }
 
   private initializeSelectedTab(): void {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
-      this.children[this.defaultSelectedIndex].setSelected(true);
+      this.tabElements[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
     } else {
-      this.children[this.selectedIndex].setSelected(true);
+      this.tabElements[this.selectedIndex].setSelected(true);
     }
     this.tdsChange.emit({
       selectedTabIndex: this.selectedIndex,
