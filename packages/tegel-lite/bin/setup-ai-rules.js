@@ -109,7 +109,7 @@ function askYesNo(rl, question) {
  */
 function showCheckboxList(items) {
   return new Promise((resolve) => {
-    const selected = items.map(() => true); // All selected by default
+    const selected = items.map(() => false); // Nothing selected by default
     let cursor = 0;
 
     const { stdin, stdout } = process;
@@ -142,14 +142,14 @@ function showCheckboxList(items) {
     function rerender() {
       if (rendered) {
         // Move up to overwrite previous output
-        // items.length + 1 (empty line) + 1 (help text) + 1 (trailing newline)
-        const lineCount = items.length + 3;
-        readline.moveCursor(stdout, 0, -lineCount);
-        readline.clearScreenDown(stdout);
+        // render() produces items.length (items) + 1 (empty line) + 1 (help text) = items.length + 2 lines
+        const lineCount = items.length + 2;
+        // Use ANSI escape codes in single write for atomic update
+        stdout.write(`\x1B[${lineCount}A\x1B[J${render()}\n`);
+      } else {
+        stdout.write(render());
+        stdout.write('\n');
       }
-
-      stdout.write(render());
-      stdout.write('\n');
       rendered = true;
     }
 
@@ -182,8 +182,8 @@ function showCheckboxList(items) {
         return;
       }
 
-      // Space → toggle current item
-      if (key.name === 'space') {
+      // Space → toggle current item (check both key.name and key.sequence for compatibility)
+      if (key.name === 'space' || key.sequence === ' ') {
         selected[cursor] = !selected[cursor];
       }
 
