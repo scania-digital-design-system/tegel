@@ -51,7 +51,7 @@ export class TdsNavigationTabs {
 
   private buttonsWidth: number = 0; // total width of all nav items combined
 
-  private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
+  private scrollableWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
   private children: Array<HTMLTdsNavigationTabElement> = [];
 
@@ -125,7 +125,7 @@ export class TdsNavigationTabs {
     if (!this.navWrapperElement) return;
 
     const scroll = this.navWrapperElement.scrollLeft;
-    this.showRightScroll = scroll <= this.scrollWidth;
+    this.showRightScroll = scroll <= this.scrollableWidth;
     this.showLeftScroll = scroll > 0;
   }
 
@@ -144,7 +144,7 @@ export class TdsNavigationTabs {
 
         this.componentWidth = componentWidth;
         this.buttonsWidth = buttonsWidth;
-        this.scrollWidth = buttonsWidth - componentWidth;
+        this.scrollableWidth = buttonsWidth - componentWidth;
 
         this.updateScrollButtons();
       });
