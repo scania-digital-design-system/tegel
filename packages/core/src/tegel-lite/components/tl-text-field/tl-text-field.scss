@@ -194,7 +194,6 @@
     @include detail-02;
 
     position: absolute;
-    top: 50%;
     left: var(--text-field-label-inside-left, 16px);
     color: var(--text-field-label-inside);
     pointer-events: none;
@@ -202,6 +201,19 @@
     transform-origin: top left;
     transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
     z-index: 1;
+  }
+
+  /* Center label in input row before focus/fill */
+  .tl-text-field--label-inside.tl-text-field--lg & {
+    top: 28px; /* half of 56px input height */
+  }
+
+  .tl-text-field--label-inside.tl-text-field--md & {
+    top: 24px; /* half of 48px input height */
+  }
+
+  .tl-text-field--label-inside.tl-text-field--sm & {
+    top: 20px; /* half of 40px input height */
   }
 
   .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
