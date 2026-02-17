@@ -250,9 +250,12 @@ export class TdsModal {
 
   /** Runs whenever the modal is opened and updates it. */
   private onOpen() {
+    // Focus immediately to preserve interaction modality for :focus-visible
+    this.focusFirstElement();
+
+    // Defer scroll reset to next frame
     requestAnimationFrame(() => {
       this.resetScrollPosition();
-      this.focusFirstElement();
     });
   }
 
