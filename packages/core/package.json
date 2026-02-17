@@ -25,6 +25,11 @@
     ".": {
       "types": "./dist/types/index.d.ts"
     },
+    "./dist/components/*.js": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts",
+      "default": "./dist/components/*.js"
+    },
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
     "./tds-accordion-item": {
       "import": "./dist/components/tds-accordion-item.js",
