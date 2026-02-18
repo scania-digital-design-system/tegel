@@ -74,7 +74,7 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
   return formatHtmlPreview(`
     <!-- Required stylesheets
       "@scania/tegel-lite/global.css"
-      "@scania/tegel-lite/tl-inline-tab.css";
+      "@scania/tegel-lite/_tl-inline-tab.css";
       "@scania/tegel-lite/tl-inline-tabs.css";
       "@scania/tegel-lite/tl-icon.css"
     -->
