@@ -18,7 +18,7 @@ The Folder Tabs component provides a folder-style tabbed navigation with primary
 
 ```
 @scania/tegel-lite/global.css
-@scania/tegel-lite/tl-folder-tab.css
+@scania/tegel-lite/_tl-folder-tab.css
 @scania/tegel-lite/tl-folder-tabs.css
 ```
 
