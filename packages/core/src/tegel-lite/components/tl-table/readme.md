@@ -77,9 +77,9 @@ The Table component displays data in a structured tabular format with support fo
 | `.tl-table__page-selector-input`     | `<input>`    | Page selector input             |
 | `.tl-icon`                           | `<span>`     | Icon element (optional)         |
 
-**Note:** `.tl-text-field` is implemented for filtering in the toolbar and for editable cells. Please refer to the documentation for Text Field to learn more about the component. <br />
-**Note:** `.tl-dropdown` is implemented for rows per page selection in the Table footer and in the batch actions toolbar. Please refer to the documentation for Dropdown to learn more about the component. <br />
-**Note:** `.tl-checkbox` is implemented for multiselect in the Table. Please refer to the documentation for Checkbox to learn more about the component.
+> **Note:** `.tl-text-field` is implemented for filtering in the toolbar and for editable cells. Please refer to the documentation for Text Field to learn more about the component. <br />
+> **Note:** `.tl-dropdown` is implemented for rows per page selection in the Table footer and in the batch actions toolbar. Please refer to the documentation for Dropdown to learn more about the component. <br />
+> **Note:** `.tl-checkbox` is implemented for multiselect in the Table. Please refer to the documentation for Checkbox to learn more about the component.
 
 ## Modifiers
 
