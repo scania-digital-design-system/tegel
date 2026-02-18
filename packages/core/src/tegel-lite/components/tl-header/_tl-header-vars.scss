@@ -7,7 +7,7 @@
 
   /* Nav-item states */
   --header-nav-item-background-hover: var(--color-background-surface-100);
-  --header-nav-item-background-selected: var(--color-background-surface-100);
+  --header-nav-item-background-selected: var(--component-header-dropdown-item-background);
   --header-nav-item-border-pressed: var(--color-foreground-border-accent-focus);
   --header-item-hover: var(--component-header-color-background-hover);
 
@@ -22,11 +22,11 @@
   --tds-header-nav-item-dropdown-opened-background-pressed: var(--tds-grey-300);
   --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
 
-  /* Basic element (“Bento”) separators & backgrounds */
+  /* Basic element ("Bento") separators & backgrounds */
   --header-basic-element-border: var(--component-header-color-background-border);
   --header-basic-element-border-open: var(--component-header-color-background-open);
-  --header-basic-element-background-pressed: var(--component-header-color-background-pressed);
-  --header-basic-element-background-selected: var(--component-header-color-background-selected);
+  --header-basic-element-background-pressed: var(--component-header-dropdown-item-background);
+  --header-basic-element-background-selected: var(--component-header-dropdown-item-background);
 
   /* Avatar dropdown */
   --header-avatar-item-background: var(--component-header-avatar-item-background);
@@ -131,13 +131,6 @@
     --header-logotype-local: var(--traton-logotype-black-svg-local);
     --header-logotype-cdn: var(--traton-logotype-black-svg);
     --component-header-space-profile-padding: 20px;
-
-    /* Background defaults to light mode - uses base from traton tokens */
-    --header-background: var(--color-background-base);
-    --header-nav-item: var(--color-foreground-icon-strong);
-    --header-item-hover: var(--color-background-layer-01);
-    --header-basic-element-border: var(--traton-color-transparent-invisible-light);
-    --header-basic-element-background-pressed: var(--color-background-base);
-    --header-basic-element-background-selected: var(--color-background-layer-01);
+    --header-background: transparent;
   }
 }
