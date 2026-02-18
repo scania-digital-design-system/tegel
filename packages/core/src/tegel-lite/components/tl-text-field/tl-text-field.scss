@@ -8,8 +8,6 @@
   position: relative;
   width: 100%;
   min-width: 208px;
-  height: 56px;
-  padding-bottom: 1px;
   border-radius: var(--text-field-border-radius);
   box-sizing: border-box;
 
@@ -17,21 +15,7 @@
     min-width: auto;
   }
 
-  &--lg {
-    height: 56px;
-  }
-
-  &--md {
-    height: 48px;
-  }
-
-  &--sm {
-    height: 40px;
-  }
-
-  &:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
-  &--hide-readonly-icon
-)::before {
+  &--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -142,14 +126,17 @@
 
   .tl-text-field--lg & {
     padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+    height: 56px;
   }
 
   .tl-text-field--md & {
     padding: var(--tds-spacing-element-16);
+    height: 48px;
   }
 
   .tl-text-field--sm & {
     padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
+    height: 40px;
   }
 
   .tl-text-field--label-inside.tl-text-field--lg & {
@@ -207,7 +194,6 @@
     @include detail-02;
 
     position: absolute;
-    top: 50%;
     left: var(--text-field-label-inside-left, 16px);
     color: var(--text-field-label-inside);
     pointer-events: none;
@@ -215,6 +201,19 @@
     transform-origin: top left;
     transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
     z-index: 1;
+  }
+
+  /* Center label in input row before focus/fill */
+  .tl-text-field--label-inside.tl-text-field--lg & {
+    top: 28px; /* half of 56px input height */
+  }
+
+  .tl-text-field--label-inside.tl-text-field--md & {
+    top: 24px; /* half of 48px input height */
+  }
+
+  .tl-text-field--label-inside.tl-text-field--sm & {
+    top: 20px; /* half of 40px input height */
   }
 
   .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
