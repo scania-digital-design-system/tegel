@@ -24,6 +24,7 @@ The Accordion component allows users to show and hide sections of related conten
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-accordion.css
+@scania/tegel-lite/tl-icon.css
 ```
 
 ## Elements
