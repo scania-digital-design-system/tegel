@@ -5,7 +5,7 @@ The Stepper component displays progress through a multi-step process with visual
 ## Usage
 
 ```html
-<div class="tl-stepper tl-stepper--horizontal tl-stepper--lg">
+<div class="tl-stepper tl-stepper--horizontal tl-stepper--label-below tl-stepper--lg">
   <ol class="tl-stepper__list">
     <li class="tl-stepper__step tl-stepper__step--success">
       <div class="tl-stepper__node"></div>
