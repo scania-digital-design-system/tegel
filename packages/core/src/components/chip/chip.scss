@@ -7,6 +7,9 @@
 }
 
 :host {
+  /* Keep chips in a row when multiple are used (host must not be block, e.g. after Stencil 4.42) */
+  display: inline-block;
+
   ::slotted([slot='label']) {
     padding-top: 2px;
   }

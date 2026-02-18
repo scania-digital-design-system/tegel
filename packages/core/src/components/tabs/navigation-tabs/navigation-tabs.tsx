@@ -51,9 +51,9 @@ export class TdsNavigationTabs {
 
   private buttonsWidth: number = 0; // total width of all nav items combined
 
-  private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
+  private scrollableWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLTdsNavigationTabElement> = [];
+  private tabElements: Array<HTMLTdsNavigationTabElement> = [];
 
   private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
@@ -71,9 +71,9 @@ export class TdsNavigationTabs {
   /** Sets the passed tabindex as the selected Tab. */
   @Method()
   async selectTab(tabIndex: number) {
-    if (!this.children[tabIndex].disabled) {
-      this.children.forEach((element) => element.setSelected(false));
-      this.children = this.children.map((element, index) => {
+    if (!this.tabElements[tabIndex].disabled) {
+      this.tabElements.forEach((element) => element.setSelected(false));
+      this.tabElements = this.tabElements.map((element, index) => {
         if (index === tabIndex) {
           element.setSelected(true);
           this.selectedIndex = tabIndex;
@@ -94,14 +94,14 @@ export class TdsNavigationTabs {
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate() {
-    this.children = Array.from(this.host.children).map(
+    this.tabElements = Array.from(this.host.children).map(
       (tabElement: HTMLTdsNavigationTabElement) => {
         tabElement.setSelected(false);
         return tabElement;
       },
     );
     if (this.selectedIndex) {
-      this.children[this.selectedIndex].setSelected(true);
+      this.tabElements[this.selectedIndex].setSelected(true);
     }
   }
 
@@ -125,7 +125,7 @@ export class TdsNavigationTabs {
     if (!this.navWrapperElement) return;
 
     const scroll = this.navWrapperElement.scrollLeft;
-    this.showRightScroll = scroll <= this.scrollWidth;
+    this.showRightScroll = scroll <= this.scrollableWidth;
     this.showLeftScroll = scroll > 0;
   }
 
@@ -144,7 +144,7 @@ export class TdsNavigationTabs {
 
         this.componentWidth = componentWidth;
         this.buttonsWidth = buttonsWidth;
-        this.scrollWidth = buttonsWidth - componentWidth;
+        this.scrollableWidth = buttonsWidth - componentWidth;
 
         this.updateScrollButtons();
       });
@@ -154,15 +154,15 @@ export class TdsNavigationTabs {
   };
 
   private addEventListenerToTabs = (): void => {
-    this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
-    this.children.map((item, index) => {
+    this.tabElements = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
+    this.tabElements.map((item, index) => {
       const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
-            selectedTabIndex: this.children.indexOf(item),
+            selectedTabIndex: this.tabElements.indexOf(item),
           });
           if (!tdsChangeEvent.defaultPrevented) {
-            this.children.forEach((element) => element.setSelected(false));
+            this.tabElements.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
           }
@@ -175,7 +175,7 @@ export class TdsNavigationTabs {
   };
 
   private removeEventListenerFromTabs = (): void => {
-    this.children.forEach((item) => {
+    this.tabElements.forEach((item) => {
       const clickHandler = this.clickHandlers.get(item);
       if (clickHandler) {
         item.removeEventListener('click', clickHandler);
@@ -185,26 +185,26 @@ export class TdsNavigationTabs {
   };
 
   private initializeTabs(): void {
-    this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
+    this.tabElements = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
     // remove first and last class from other tabs in case of initialization
-    this.children.forEach((child) => {
+    this.tabElements.forEach((child) => {
       child.classList.remove('last');
       child.classList.remove('first');
     });
 
-    if (this.children.length > 0) {
-      this.children[0].classList.add('first');
-      this.children[this.children.length - 1].classList.add('last');
+    if (this.tabElements.length > 0) {
+      this.tabElements[0].classList.add('first');
+      this.tabElements[this.tabElements.length - 1].classList.add('last');
     }
   }
 
   private initializeSelectedTab(): void {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
-      this.children[this.defaultSelectedIndex].setSelected(true);
+      this.tabElements[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
     } else {
-      this.children[this.selectedIndex].setSelected(true);
+      this.tabElements[this.selectedIndex].setSelected(true);
     }
     this.tdsChange.emit({
       selectedTabIndex: this.selectedIndex,
