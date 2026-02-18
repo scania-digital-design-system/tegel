@@ -1,4 +1,5 @@
 @use './tl-button-mixins' as *;
+@use '../../../../../../tokens/scss/component/button';
 
 .tl-button {
   // Base variables
