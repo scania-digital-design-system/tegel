@@ -18,13 +18,13 @@ export class TdsDatetime {
   /** Value of the input text */
   @Prop({ reflect: true, mutable: true }) value = '';
 
-  /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  /** Sets min value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
   @Prop() min?: string;
 
-  /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  /** Sets max value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
   @Prop() max?: string;
 
-  /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for month: YY-MM. Format for week: YY-Www  Format for date-time: YY-MM-DDTHH-MM */
+  /** Default value of the component.<br/>Format for date-time: yyyy-MM-ddTHH:mm.<br/>Format for date: yyyy-MM-dd.<br/>Format for month: yyyy-MM.<br/>Format for week: yyyy-Www.<br/>Format for time: HH:mm. */
   @Prop() defaultValue: string | 'none' = 'none';
 
   /** Set input in disabled state */
@@ -42,8 +42,8 @@ export class TdsDatetime {
   /** Name property. Uses a unique ID as fallback if not specified. */
   @Prop() name = `datetime-${generateUniqueId()}`;
 
-  /** Error state of input */
-  @Prop() state?: string;
+  /** Switches between success and error state. */
+  @Prop() state?: 'none' | 'success' | 'error';
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
@@ -54,8 +54,11 @@ export class TdsDatetime {
   /** Position of the label */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
-  /** Helper text for the component */
+  /** Default contextual helper text for the component for states = success or none */
   @Prop() helper: string = '';
+
+  /** Contextual helper text for the component for error state */
+  @Prop() helperError?: string;
 
   /** Value for the aria-label attribute */
   @Prop() tdsAriaLabel?: string;
@@ -168,6 +171,22 @@ export class TdsDatetime {
     this.focusInput = false;
   }
 
+  static parseDate = (stringDate: string) => {
+    const date = new Date(Date.parse(stringDate));
+    return date;
+  };
+
+  private validateDate = () => {
+    this.state = 'success';
+    if (
+      (this.min && this.textInput.validity.rangeUnderflow) ||
+      (this.max && this.textInput.validity.rangeOverflow) ||
+      this.textInput.validity.badInput
+    ) {
+      this.state = 'error';
+    }
+  };
+
   // Data input event in value prop
   handleInput(e: InputEvent): void {
     this.value = (e.target as HTMLInputElement).value;
@@ -188,6 +207,9 @@ export class TdsDatetime {
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleBlur(e: FocusEvent): void {
     this.textInput.blur();
+
+    this.validateDate();
+
     this.tdsBlur.emit(e);
   }
 
@@ -201,12 +223,17 @@ export class TdsDatetime {
   }
 
   render() {
+    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
+
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
       className += `${className}-md`;
     }
     if (this.size === 'sm') {
       className += `${className}-sm`;
+    }
+    if (iphone) {
+      className += ' iphone';
     }
 
     const classNames = {
@@ -224,8 +251,6 @@ export class TdsDatetime {
         this.size !== 'sm'
       ),
     };
-
-    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
 
     return (
       <div
@@ -267,7 +292,7 @@ export class TdsDatetime {
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && this.label && (
-              <label class={`tds-datetime-label-inside ${iphone && 'iphone'}`} htmlFor={this.name}>
+              <label class="tds-datetime-label-inside" htmlFor={this.name}>
                 {this.label}
               </label>
             )}
@@ -281,13 +306,24 @@ export class TdsDatetime {
             </div>
           </div>
         </div>
-
-        {this.helper && (
+        {this.state === 'error' && (
           <div class="tds-datetime-helper">
-            <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px" svgTitle="error" />}
-              {this.helper}
-            </div>
+            {(!this.textInput || !this.textInput.validity.badInput) && (
+              <div class="tds-helper">
+                <tds-icon name="error" size="16px" svgTitle="error" /> {this.helperError}
+              </div>
+            )}
+            {this.textInput && this.textInput.validity.badInput && (
+              <div class="tds-helper">
+                <tds-icon name="error" size="16px" svgTitle="error" />{' '}
+                {this.type === 'time' ? 'Invalid Time' : 'Invalid Date'}
+              </div>
+            )}
+          </div>
+        )}
+        {this.helper && this.state !== 'error' && (
+          <div class="tds-datetime-helper">
+            <div class="tds-helper">{this.helper}</div>
           </div>
         )}
       </div>

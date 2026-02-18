@@ -75,22 +75,23 @@
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+
+  &.iphone {
+    padding: 0;
+  }
 }
 
-.tds-datetime-input-md {
-  @include datetime-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-16);
-}
-
+.tds-datetime-input-md,
 .tds-datetime-input-sm {
   @include datetime-base;
 
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
+
+  &.iphone {
+    padding: 0;
+  }
 }
 
 //Container for input field and prefix/suffix
@@ -148,10 +149,6 @@
   pointer-events: none;
   color: var(--tds-datetime-label-inside-color);
   left: 16px;
-
-  &.iphone {
-    left: 8px !important;
-  }
 }
 
 @mixin label-inside-transition {
@@ -179,17 +176,13 @@
     ~ .tds-datetime-label-inside {
       top: 20px;
     }
-  }
 
-  .tds-datetime-input-md {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-
-    ~ .tds-datetime-label-inside {
-      top: 16px;
+    &.iphone {
+      padding: 0;
     }
   }
 
+  .tds-datetime-input-md,
   .tds-datetime-input-sm {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
@@ -197,16 +190,13 @@
     ~ .tds-datetime-label-inside {
       top: 16px;
     }
+
+    &.iphone {
+      padding: 0;
+    }
   }
 
-  .tds-datetime-input-sm ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
-    @include label-inside-transition;
-
-    top: 8px;
-  }
-
+  .tds-datetime-input-sm ~ .tds-datetime-label-inside,
   .tds-datetime-input-md ~ .tds-datetime-label-inside {
     font: var(--tds-detail-07);
     letter-spacing: var(--tds-detail-07-ls);
@@ -244,7 +234,7 @@
   letter-spacing: var(--tds-detail-05-ls);
   display: block;
   flex-basis: 100%;
-  padding-top: var(--tds-spacing-element-4);
+  padding: var(--tds-spacing-element-4) 0;
   color: var(--tds-datetime-helper);
 
   .tds-helper {
@@ -287,6 +277,12 @@
 .tds-form-datetime-error {
   .tds-datetime-helper {
     color: var(--tds-datetime-helper-error);
+
+    .tds-helper {
+      display: flex;
+      gap: var(--tds-spacing-element-8);
+      flex-wrap: nowrap;
+    }
   }
 
   .tds-datetime-container {

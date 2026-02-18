@@ -64,7 +64,7 @@ export default {
     defaultValue: {
       name: 'Default value',
       description:
-        'Default value of the component. Format for time: HH:MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH:MM.',
+        'Default value of the component.<br/>Format for date-time: yyyy-MM-ddTHH:mm.<br/>Format for date: yyyy-MM-dd.<br/>Format for month: yyyy-MM.<br/>Format for week: yyyy-Www.<br/>Format for time: HH:mm.',
       control: {
         type: 'radio',
       },
@@ -75,7 +75,7 @@ export default {
     },
     minValue: {
       description:
-        'Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+        'Sets min value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00"',
       name: 'Min value',
       control: {
         type: 'text',
@@ -86,7 +86,7 @@ export default {
     },
     maxValue: {
       description:
-        'Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+        'Sets max value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00"',
       name: 'Max value',
       control: {
         type: 'text',
@@ -125,9 +125,21 @@ export default {
     },
     helper: {
       name: 'Helper text',
-      description: 'Sets the helper text.',
+      description:
+        'Sets the contextual helper text. Eg: this helper text can be used to inform the user that there are minimum and maximum values.',
       control: {
         type: 'text',
+      },
+    },
+    helperError: {
+      name: 'Helper error',
+      description:
+        'Sets the contextual helper error text. Eg: this helper text is used to alert the user that the minimum and maximum values are not respected.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: undefined },
       },
     },
     disabled: {
@@ -160,6 +172,7 @@ export default {
     label: 'Label text',
     labelPosition: 'Outside',
     helper: 'Helper text',
+    helperError: 'Helper error text',
     disabled: false,
     tdsAriaLabel: 'A datetime component',
   },
@@ -177,6 +190,7 @@ const datetimeTemplate = ({
   label,
   labelPosition,
   helper,
+  helperError,
   disabled,
   tdsAriaLabel,
 }) => {
@@ -243,6 +257,7 @@ const datetimeTemplate = ({
       ${label ? `label="${label}" ` : ''}
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}" ` : ''}
+      ${helperError ? `helper-error="${helperError}" ` : ''}
       tds-aria-label="${tdsAriaLabel}"
       >
     </tds-datetime>
