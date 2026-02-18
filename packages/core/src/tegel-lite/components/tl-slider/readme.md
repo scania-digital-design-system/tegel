@@ -7,6 +7,7 @@ The Slider component provides an interactive range input control with optional v
 ```html
 <div class="tl-slider">
   <label class="tl-slider__label">Volume</label>
+  <input type="range" class="tl-slider__native-input" min="0" max="100" value="50" step="1" />
   <div class="tl-slider__track-wrapper">
     <div class="tl-slider__track">
       <div class="tl-slider__track-fill" style="width: 50%;"></div>
@@ -18,7 +19,6 @@ The Slider component provides an interactive range input control with optional v
     </div>
     <span class="tl-slider__value">50</span>
   </div>
-  <input type="range" class="tl-slider__native-input" min="0" max="100" value="50">
 </div>
 ```
 
@@ -37,6 +37,7 @@ The Slider component provides an interactive range input control with optional v
 | -------------------------------- | ------------ | ---------------------------------- |
 | `.tl-slider`                     | `<div>`      | Main container                     |
 | `.tl-slider__label`              | `<label>`    | Label for the slider               |
+| `.tl-slider__native-input`       | `<input>`    | Hidden native range input          |
 | `.tl-slider__track-wrapper`      | `<div>`      | Track and controls wrapper         |
 | `.tl-slider__track`              | `<div>`      | Track background                   |
 | `.tl-slider__track-fill`         | `<div>`      | Filled portion of track            |
@@ -52,7 +53,6 @@ The Slider component provides an interactive range input control with optional v
 | `.tl-slider__value-divider`      | `<div>`      | Individual divider mark            |
 | `.tl-slider__value-divider-line` | `<div>`      | Divider line visual                |
 | `.tl-slider__value-divider-label`| `<span>`     | Divider label text                 |
-| `.tl-slider__native-input`       | `<input>`    | Hidden native range input          |
 
 ## Modifiers
 
@@ -62,7 +62,7 @@ Apply these classes to the `.tl-slider` element.
 
 | Modifier               | Description                    |
 | ---------------------- | ------------------------------ |
-| `.tl-slider--small`    | Small size variant             |
+| `.tl-slider--small`    | Small thumb size variant             |
 
 **Note:** Use the native `disabled` and `readonly` attributes on the `<input type="range">` element for disabled and read-only states. The component will automatically style these states.
 
