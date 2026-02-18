@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Modal',
+  title: 'Tegel Lite (Beta)/Modal',
   parameters: {
     layout: 'fullscreen',
   },

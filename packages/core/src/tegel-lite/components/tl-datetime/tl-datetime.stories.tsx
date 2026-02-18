@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Datetime',
+  title: 'Tegel Lite (Beta)/Datetime',
   parameters: {
     layout: 'centered',
   },

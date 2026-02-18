@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Horizontal Scroll',
+  title: 'Tegel Lite (Beta)/Table/Horizontal Scroll',
   parameters: {
     layout: 'padded',
     docs: {

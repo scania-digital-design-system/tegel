@@ -12,21 +12,26 @@
 .tl-navigation-tabs {
   /* tds-navigation-tabs variables */
   --navigation-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
-  --navigation-tabs-tab-primary: var(--color-background-base);
-  --navigation-tabs-tab-secondary: var(--color-background-layer-01);
-  --navigation-tabs: var(--navigation-tabs-tab-primary);
+  --navigation-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
+  --navigation-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
+  --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
   --navigation-tabs-scroll-button-icon: var(--color-foreground-icon-strong);
-  --navigation-tabs-scroll-button: var(--navigation-tabs-tab-primary);
-  --navigation-tabs-scroll-button-hover: var(--navigation-tabs-tab-primary);
-  --navigation-tabs-scroll-button-active: var(--navigation-tabs-tab-primary);
+  --navigation-tabs-scroll-button-background: var(--navigation-tabs-tab-background);
+  --navigation-tabs-scroll-button-background-hover: var(--navigation-tabs-tab-background);
+  --navigation-tabs-scroll-button-background-active: var(--navigation-tabs-tab-background);
 
-  &.tds-mode-variant-primary {
-    --navigation-tabs: var(--navigation-tabs-tab-primary);
-    --navigation-tabs-scroll-button: var(--navigation-tabs-tab-primary);
+  &--primary {
+    --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
   }
 
-  &.tds-mode-variant-secondary {
-    --navigation-tabs: var(--navigation-tabs-tab-secondary);
-    --navigation-tabs-scroll-button: var(--navigation-tabs-tab-secondary);
+  &--secondary {
+    --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-secondary);
+  }
+}
+
+.traton {
+  .tl-navigation-tabs {
+    --navigation-tabs-tab-background-primary: var(--traton-color-transparent-invisible-light);
+    --navigation-tabs-tab-background-secondary: var(--traton-color-transparent-invisible-dark);
   }
 }

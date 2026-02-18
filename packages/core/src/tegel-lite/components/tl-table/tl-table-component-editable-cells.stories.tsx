@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Editable Cells',
+  title: 'Tegel Lite (Beta)/Table/Editable Cells',
   parameters: {
     docs: {
       description: {

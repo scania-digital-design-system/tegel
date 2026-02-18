@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Batch Actions',
+  title: 'Tegel Lite (Beta)/Table/Batch Actions',
   parameters: {
     docs: {
       description: {
@@ -126,11 +126,11 @@ export default {
       </div>
       <div class="tl-table__actionbar-right">
         <button
-          class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon"
+          class="tl-button tl-button--only-icon tl-button--secondary tl-button--sm tl-button--icon"
         >
           <span class="tl-icon tl-icon--settings tl-icon--16" aria-hidden="true"></span>
         </button>
-        <button class="tl-button tl-button--primary tl-button--sm">
+        <button class="tl-button tl-button--secondary tl-button--sm">
           Download
         </button>
       </div>`,

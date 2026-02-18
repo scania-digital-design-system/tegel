@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Checkbox',
+  title: 'Tegel Lite (Beta)/Checkbox',
   parameters: {
     layout: 'centered',
   },

@@ -16,7 +16,7 @@ const bodyImgSVG =
   </svg>`);
 
 export default {
-  title: 'Tegel Lite (CSS)/Card',
+  title: 'Tegel Lite (Beta)/Card',
   parameters: {
     layout: 'centered',
   },

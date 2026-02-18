@@ -53,18 +53,38 @@
           @include divider;
 
           height: 1px;
-          left: calc(50% + 24px);
+          left: calc(50% + 16px + 16px);
           right: 0;
-          top: 18px;
+          top: 16px;
         }
 
         &::before {
           @include divider;
 
           height: 1px;
-          right: calc(50% + 24px);
+          right: calc(50% + 16px + 16px);
           left: 0;
-          top: 18px;
+          top: 16px;
+        }
+
+        &.hide-labels {
+          &::after {
+            @include divider;
+
+            height: 1px;
+            left: calc(50% + 16px + 8px);
+            right: 0;
+            top: 16px;
+          }
+
+          &::before {
+            @include divider;
+
+            height: 1px;
+            right: calc(50% + 16px + 8px);
+            left: 0;
+            top: 16px;
+          }
         }
 
         &.text-aside {
@@ -73,10 +93,9 @@
               @include divider;
 
               height: 1px;
-              top: 16px;
-              width: 10px;
               left: auto;
               right: -10px;
+              width: 10px;
             }
 
             &::before {
@@ -84,9 +103,9 @@
 
               height: 1px;
               top: 16px;
-              width: 10px;
               left: -10px;
               right: auto;
+              width: 10px;
             }
           }
         }
@@ -139,7 +158,7 @@
           @include divider;
 
           height: 1px;
-          left: calc(50% + 16px + 8px);
+          left: calc(50% + 12px + 16px);
           right: 0;
           top: 13px;
         }
@@ -149,8 +168,28 @@
 
           height: 1px;
           left: 0;
-          right: calc(50% + 24px);
+          right: calc(50% + 12px + 16px);
           top: 13px;
+        }
+
+        &.hide-labels {
+          &::after {
+            @include divider;
+
+            height: 1px;
+            left: calc(50% + 12px + 8px);
+            right: 0;
+            top: 13px;
+          }
+
+          &::before {
+            @include divider;
+
+            height: 1px;
+            right: calc(50% + 12px + 8px);
+            left: 0;
+            top: 13px;
+          }
         }
 
         &.text-aside {
@@ -160,9 +199,9 @@
 
               height: 1px;
               top: 13px;
-              width: 10px;
               left: auto;
               right: -10px;
+              width: 10px;
             }
 
             &::before {
@@ -170,9 +209,9 @@
 
               height: 1px;
               top: 13px;
-              width: 10px;
               left: -10px;
               right: auto;
+              width: 10px;
             }
           }
         }
@@ -197,7 +236,7 @@
       }
 
       &.current {
-        background-color: var(--tds-stepper-background);
+        background-color: var(--tds-stepper-icon-step-border-color-current);
         color: var(--tds-stepper-color);
       }
 
@@ -231,7 +270,29 @@
 
 :host(:last-of-type) {
   [role='listitem'].horizontal {
-    padding-right: 0;
+    &.text-aside {
+      padding-right: 0;
+      padding-left: 20px;
+
+      &::before {
+        @include divider;
+
+        height: 1px;
+        width: 20px;
+        left: -10px;
+        right: auto;
+        top: 16px;
+      }
+
+      &.sm.hide-labels {
+        &::before {
+          top: 13px;
+          width: 13px;
+          left: 0;
+          right: calc(50% + 20px);
+        }
+      }
+    }
   }
 
   [role='listitem'] {
@@ -256,10 +317,6 @@
 
 :host(:first-of-type) {
   [role='listitem'] {
-    &.horizontal {
-      padding-left: 0;
-    }
-
     &.sm,
     &.lg {
       &::before {

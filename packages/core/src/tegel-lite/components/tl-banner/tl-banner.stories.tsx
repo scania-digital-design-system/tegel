@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Banner',
+  title: 'Tegel Lite (Beta)/Banner',
   parameters: {
     layout: 'fullscreen',
   },

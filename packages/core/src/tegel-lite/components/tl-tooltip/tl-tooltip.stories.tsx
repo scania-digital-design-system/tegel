@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tooltip',
+  title: 'Tegel Lite (Beta)/Tooltip',
   parameters: { layout: 'centered' },
   argTypes: {
     position: {

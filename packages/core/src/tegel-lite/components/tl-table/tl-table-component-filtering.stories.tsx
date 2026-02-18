@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Filtering',
+  title: 'Tegel Lite (Beta)/Table/Filtering',
   parameters: {
     layout: 'padded',
     docs: {

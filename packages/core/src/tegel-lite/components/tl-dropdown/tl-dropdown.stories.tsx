@@ -275,9 +275,6 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   if (error) {
     classesList.push('tl-dropdown--error');
   }
-  if (disabled) {
-    classesList.push('tl-dropdown--disabled');
-  }
   if (direction === 'Up') {
     classesList.push('tl-dropdown--dropup');
   }
@@ -352,7 +349,7 @@ const Template = (props: TemplateProps): string => {
 };
 
 export default {
-  title: 'Tegel Lite (CSS)/Dropdown',
+  title: 'Tegel Lite (Beta)/Dropdown',
   includeStories: ['Default'],
   parameters: { layout: 'centered' },
   argTypes: {

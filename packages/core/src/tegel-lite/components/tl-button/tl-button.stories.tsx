@@ -3,7 +3,7 @@ import { iconsNames } from '../../../components/icon/iconsArray';
 // import readme from './readme.md';
 
 export default {
-  title: 'Tegel Lite (CSS)/Button',
+  title: 'Tegel Lite (Beta)/Button',
   argTypes: {
     variant: {
       name: 'Variant',

@@ -9,7 +9,7 @@ const orderedIconsNames = [...iconsNames].sort((a, b) => {
 });
 
 export default {
-  title: 'Tegel Lite (CSS)/Link',
+  title: 'Tegel Lite (Beta)/Link',
   parameters: {
     layout: 'centered',
   },

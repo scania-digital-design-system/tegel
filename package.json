@@ -11,7 +11,7 @@
     "build:angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
     "build:react": "npm run build && cd packages/react && npm i && npm run build ",
     "build:all": "npm run build && (cd packages/angular-17 && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
-    "build:lte": "cd packages/core && npm run build:tegel-lite",
+    "build:tegel-lite": "cd packages/core && npm run build:tegel-lite",
     "test": "cd packages/core && npm run test",
     "test:axe": "cd packages/core && npm run test:axe",
     "test:lte": "cd packages/tegel-lite && npm run test",

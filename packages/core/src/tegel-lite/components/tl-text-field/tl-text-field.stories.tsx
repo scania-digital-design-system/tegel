@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Text Field',
+  title: 'Tegel Lite (Beta)/Text Field',
   parameters: {
     layout: 'centered',
   },
@@ -137,8 +137,6 @@ const Template = ({
     labelPosition === 'Inside' && 'tl-text-field--label-inside',
     // Note: label-outside is now the default behavior, no class needed
     noMinWidth && 'tl-text-field--no-min-width',
-    disabled && 'tl-text-field--disabled',
-    readonly && 'tl-text-field--readonly',
     hideReadonlyIcon && 'tl-text-field--hide-readonly-icon',
   ]
     .filter(Boolean)

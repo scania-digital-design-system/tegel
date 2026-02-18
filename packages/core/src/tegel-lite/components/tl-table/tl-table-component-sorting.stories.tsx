@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Sorting',
+  title: 'Tegel Lite (Beta)/Table/Sorting',
   parameters: {
     docs: {
       description: {

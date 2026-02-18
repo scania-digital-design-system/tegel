@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Table/Multiselect',
+  title: 'Tegel Lite (Beta)/Table/Multiselect',
   parameters: {
     layout: 'padded',
     docs: {

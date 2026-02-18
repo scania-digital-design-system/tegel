@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Divider',
+  title: 'Tegel Lite (Beta)/Divider',
   parameters: {
     layout: 'centered',
   },

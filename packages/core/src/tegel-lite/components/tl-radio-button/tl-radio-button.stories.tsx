@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Radio Button',
+  title: 'Tegel Lite (Beta)/Radio Button',
   parameters: {
     layout: 'centered',
   },

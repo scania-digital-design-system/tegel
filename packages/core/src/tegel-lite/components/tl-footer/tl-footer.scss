@@ -1,8 +1,10 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
-@use '../../../../../../grid-deprecated/vars' as *;
 @use './tl-footer-vars';
 @use 'footer-group';
 @use 'footer-item';
+
+// Breakpoint for responsive layout
+$breakpoint-lg: 992px;
 
 .tl-footer {
   display: block;
@@ -101,7 +103,7 @@
   }
 }
 
-@media (max-width: $grid-lg) {
+@media (max-width: $breakpoint-lg) {
   .tl-footer__top {
     display: block;
     width: 100%;
