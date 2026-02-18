@@ -9,6 +9,10 @@ figma.connect(
   'https://www.figma.com/design/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=30033-78562&m=dev',
   {
     props: {
+      theme: figma.enum('Theme', {
+        Light: 'light',
+        Dark: 'dark',
+      }),
       variant: figma.enum('Variant', {
         Primary: 'primary',
         Secondary: 'secondary',
@@ -24,9 +28,11 @@ figma.connect(
       disabled: figma.boolean('Disabled'),
     },
     example: (props) => html`
-      <tds-button variant="${props.variant}" size="${props.size}" disabled=${props.disabled}>
-        Button
-      </tds-button>
+      <div class="scania tds-mode-${props.theme || 'light'}">
+        <tds-button variant="${props.variant}" size="${props.size}" disabled=${props.disabled}>
+          Button
+        </tds-button>
+      </div>
     `,
   },
 );
