@@ -9,6 +9,7 @@ import {
   Event,
   EventEmitter,
   Listen,
+  Watch,
 } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 import generateUniqueId from '../../utils/generateUniqueId';
@@ -64,15 +65,7 @@ export class TdsModal {
   @Method()
   async showModal() {
     this.isShown = true;
-
-    // Set focus on first element when opened
-    requestAnimationFrame(() => {
-      const focusableElements = this.getFocusableElements();
-      if (focusableElements.length > 0) {
-        focusableElements[0].focus();
-        this.activeElementIndex = 0;
-      }
-    });
+    this.onOpen();
   }
 
   /** Closes the Modal. */
@@ -105,6 +98,20 @@ export class TdsModal {
     bubbles: true,
   })
   tdsOpen!: EventEmitter<void>;
+
+  /** Runs whenever the show prop changes. */
+  @Watch('show')
+  handleShowPropChange(newValue?: boolean, oldValue?: boolean) {
+    if (newValue === oldValue || newValue === undefined) return;
+
+    this.isShown = newValue;
+
+    if (newValue) {
+      this.onOpen();
+    } else {
+      this.returnFocusOnClose();
+    }
+  }
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -166,25 +173,19 @@ export class TdsModal {
       this.referenceEl ??
       (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
 
-    if (!referenceElement) {
-      return; // no element to return focus to
-    }
+    if (!referenceElement) return;
 
     const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
     const isNativeFocusable = potentialReferenceElements.includes(referenceElement.tagName);
 
-    if (isNativeFocusable) {
-      referenceElement.focus();
-    } else {
-      // If referenced element is a custom element eg: tds-button we find the interactive element inside:
-      const interactiveElement = referenceElement.querySelector<HTMLElement>(
-        potentialReferenceElements.join(','),
-      );
+    const interactiveElement = isNativeFocusable
+      ? referenceElement
+      : referenceElement.querySelector<HTMLElement>(potentialReferenceElements.join(','));
 
-      if (interactiveElement) {
-        interactiveElement.focus();
-      }
-    }
+    if (!interactiveElement) return;
+
+    interactiveElement.classList.remove('active');
+    interactiveElement.focus();
   }
 
   private getFocusableElements(): HTMLElement[] {
@@ -206,6 +207,56 @@ export class TdsModal {
 
     /** Focusable elements */
     return [...focusableInShadowRoot, ...focusableInSlots];
+  }
+
+  /** Resets the scroll position to the top. */
+  private resetScrollPosition() {
+    const root = this.host.shadowRoot;
+    const scroller =
+      root?.querySelector<HTMLElement>('.tds-modal__actions-sticky .body') ??
+      root?.querySelector<HTMLElement>('.tds-modal');
+    scroller?.scrollTo(0, 0);
+  }
+
+  private focusFirstElement() {
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    // Prioritize focusable elements in slotted content (actions/body) over shadow DOM elements (like close button)
+    const focusableInSlots = Array.from(
+      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+
+    if (focusableInSlots.length > 0) {
+      focusableInSlots[0].focus();
+      this.activeElementIndex = this.getFocusableElements().indexOf(focusableInSlots[0]);
+    } else {
+      // Fallback to shadow DOM elements if no slotted content is focusable
+      const focusableInShadowRoot = Array.from(
+        this.host.shadowRoot?.querySelectorAll<HTMLElement>(focusableSelectors) ?? [],
+      );
+      if (focusableInShadowRoot.length > 0) {
+        focusableInShadowRoot[0].focus();
+        this.activeElementIndex = 0;
+      }
+    }
+  }
+
+  /** Runs whenever the modal is opened and updates it. */
+  private onOpen() {
+    // Focus immediately to preserve interaction modality for :focus-visible
+    this.focusFirstElement();
+
+    // Defer scroll reset to next frame
+    requestAnimationFrame(() => {
+      this.resetScrollPosition();
+    });
   }
 
   @Listen('keydown', { target: 'window', capture: true })
@@ -249,20 +300,18 @@ export class TdsModal {
 
   handleClose = (event: Event) => {
     const closeEvent = this.tdsClose.emit(event);
-    this.returnFocusOnClose();
+    if (closeEvent.defaultPrevented) return;
 
-    if (closeEvent.defaultPrevented) {
-      return;
-    }
     this.isShown = false;
+    this.returnFocusOnClose();
   };
 
   handleShow = () => {
     const showEvent = this.tdsOpen.emit();
-    if (showEvent.defaultPrevented) {
-      return;
-    }
+    if (showEvent.defaultPrevented) return;
+
     this.isShown = true;
+    this.onOpen();
   };
 
   /** Checks if click on Modal is on overlay, if so it closes the Modal if prevent is not true. */
@@ -331,7 +380,10 @@ export class TdsModal {
         onClick={(event: PointerEvent) => this.handleOverlayClick(event)}
       >
         <div class="tds-modal-backdrop" />
-        <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
+        <div
+          class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}
+          tabindex="-1"
+        >
           <div id={headerId} class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
