@@ -22,6 +22,12 @@ The Navigation Tabs component provides tab-style navigation links with scrollabl
 @scania/tegel-lite/tl-navigation-tabs.css
 ```
 
+### Optional Stylesheets
+
+```
+@scania/tegel-lite/tl-icon.css (if using scroll buttons)
+```
+
 ## Elements
 
 | Element                                        | HTML Element | Description                  |
