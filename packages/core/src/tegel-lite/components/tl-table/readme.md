@@ -32,6 +32,15 @@ The Table component displays data in a structured tabular format with support fo
 @scania/tegel-lite/tl-table.css
 ```
 
+### Optional Stylesheets
+
+```
+@scania/tegel-lite/tl-icon.css
+@scania/tegel-lite/tl-text-field.css (if using table toolbar filtering)
+@scania/tegel-lite/tl-dropdown.css (if using table pagination)
+@scania/tegel-lite/tl-checkbox.css (if using table multiselect)
+```
+
 ## Elements
 
 | Element                              | HTML Element | Description                     |
@@ -62,12 +71,15 @@ The Table component displays data in a structured tabular format with support fo
 | `.tl-table__footer-cell`             | `<td>`       | Footer cell                     |
 | `.tl-table__pagination`              | `<div>`      | Pagination container            |
 | `.tl-table__row-selector`            | `<div>`      | Row selector container          |
-| `.tl-table__page-selector`           | `<div>`      | Page selector container         |
 | `.tl-table__rows-per-page`           | `<div>`      | Rows per page section           |
-| `.tl-table__rows-per-page-label`     | `<span>`     | Rows per page label             |
-| `.tl-table__rows-per-page-select`    | `<select>`   | Rows per page dropdown          |
+| `.tl-table__rows-per-page-label`     | `<p>`        | Rows per page label             |
+| `.tl-table__page-selector`           | `<div>`      | Page selector container         |
 | `.tl-table__page-selector-input`     | `<input>`    | Page selector input             |
 | `.tl-icon`                           | `<span>`     | Icon element (optional)         |
+
+**Note:** `.tl-text-field` is implemented for filtering in the toolbar and for editable cells. Please refer to the documentation for Text Field to learn more about the component. <br />
+**Note:** `.tl-dropdown` is implemented for rows per page selection in the Table footer and in the batch actions toolbar. Please refer to the documentation for Dropdown to learn more about the component. <br />
+**Note:** `.tl-checkbox` is implemented for multiselect in the Table. Please refer to the documentation for Checkbox to learn more about the component.
 
 ## Modifiers
 
@@ -102,6 +114,8 @@ Apply these classes to the `.tl-table` element.
 | ----------------------------- | ---------------------------------- |
 | `.tl-table--zebra-rows-odd`   | Stripe odd rows                    |
 | `.tl-table--zebra-rows-even`  | Stripe even rows                   |
+| `.tl-table--zebra-columns-odd`       | Stripe odd columns            |
+| `.tl-table--zebra-columns-even`      | Stripe even columns           |
 
 ### Table Text Alignment Modifiers
 
@@ -119,8 +133,6 @@ Apply these classes to the `.tl-table` element to align header and body cells.
 | `.tl-table--cell-text-align-center`  | Center-align body cell text   |
 | `.tl-table--cell-text-align-right`   | Right-align body cell text    |
 | `.tl-table--cell-text-align-end`     | End-align body cell text      |
-| `.tl-table--zebra-columns-odd`       | Stripe odd columns            |
-| `.tl-table--zebra-columns-even`      | Stripe even columns           |
 
 ### Table Interaction Modifiers
 
