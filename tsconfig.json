@@ -43,7 +43,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
   },
-  "exclude": ["**/*.d.ts", "packages/core/src/components/_beta/**"],
+  "exclude": ["**/*.d.ts", "packages/core/src/components/_beta/**", "**/*.figma.ts"],
   "include": ["packages/core/**/*"],
   "files": [
     "packages/core/src/global.d.ts"

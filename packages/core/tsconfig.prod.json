@@ -13,6 +13,6 @@
     "jsxFactory": "h",
     "types": ["node", "jest", "react"]
   },
-  "exclude": ["src/components/_beta/**", "src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
+  "exclude": ["src/components/_beta/**", "src/components/**/test/*", "**/**.stories.*", "src/stories/**", "**/*.figma.ts"],
   "include": ["src/**/*"]
 }

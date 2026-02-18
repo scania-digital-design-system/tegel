@@ -13,6 +13,6 @@
     "jsxFactory": "h",
     "types": ["node", "jest", "react", "@playwright/test"]
   },
-  "exclude": ["**/**.stories.*", "src/stories/**", "src/components/_beta/**"],
+  "exclude": ["**/**.stories.*", "src/stories/**", "src/components/_beta/**", "**/*.figma.ts"],
   "include": ["src/**/*", "types/**/*.d.ts"]
 }
