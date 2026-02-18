@@ -34,7 +34,7 @@
   &:active {
     padding-top: 2px;
     padding-bottom: 2px;
-    background-color: var(--header-basic-element-background-selected);
+    background-color: var(--component-header-color-background-pressed);
     box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
   }
 }
