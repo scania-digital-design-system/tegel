@@ -1,0 +1,474 @@
+---
+description: Display components including cards, tables, modals, messages, and steppers
+alwaysApply: true
+---
+
+# Display Components
+
+## Card
+
+**Classes**: `tl-card`
+**Variants**: `tl-card--primary`, `tl-card--secondary`, `tl-card--clickable`, `tl-card--stretch`, `tl-card--expandable`
+
+```html
+<!-- Basic card -->
+<div class="tl-card">
+  <div class="tl-card__header">
+    <div class="tl-card__headings">
+      <span class="tl-card__title">Card Title</span>
+      <span class="tl-card__subtitle">Subtitle</span>
+    </div>
+  </div>
+  <div class="tl-card__body">
+    <div class="tl-card__content">
+      <p>Card content goes here.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Card with image -->
+<div class="tl-card">
+  <img class="tl-card__image" src="image.jpg" alt="Description" />
+  <div class="tl-card__header tl-card__header--below">
+    <div class="tl-card__headings">
+      <span class="tl-card__title">Featured Card</span>
+    </div>
+  </div>
+  <div class="tl-card__body">
+    <div class="tl-card__content">
+      <p>Content below the image.</p>
+    </div>
+  </div>
+  <div class="tl-card__bottom-row">
+    <div class="tl-card__actions">
+      <button class="tl-button tl-button--primary tl-button--sm">Action</button>
+    </div>
+  </div>
+</div>
+
+<!-- Clickable card -->
+<button class="tl-card tl-card--clickable">
+  <div class="tl-card__header">
+    <div class="tl-card__headings">
+      <span class="tl-card__title">Clickable</span>
+    </div>
+  </div>
+  <div class="tl-card__body">
+    <div class="tl-card__content">Click anywhere</div>
+  </div>
+</button>
+
+<!-- Card with thumbnail -->
+<div class="tl-card">
+  <div class="tl-card__header">
+    <img class="tl-card__thumbnail" src="avatar.jpg" alt="User" />
+    <div class="tl-card__headings">
+      <span class="tl-card__title">User Name</span>
+      <span class="tl-card__subtitle">Role</span>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Accordion
+
+**Classes**: `tl-accordion`
+**Variants**: `tl-accordion--primary`, `tl-accordion--secondary`, `tl-accordion--hide-last-border`
+
+```html
+<div class="tl-accordion">
+  <!-- Expanded item -->
+  <div class="tl-accordion__item tl-accordion__item--expanded">
+    <button class="tl-accordion__header-icon-end" aria-expanded="true">
+      <span class="tl-accordion__title">Section 1</span>
+    </button>
+    <div class="tl-accordion__panel">
+      <p>Content of section 1.</p>
+    </div>
+  </div>
+
+  <!-- Collapsed item -->
+  <div class="tl-accordion__item">
+    <button class="tl-accordion__header-icon-end" aria-expanded="false">
+      <span class="tl-accordion__title">Section 2</span>
+    </button>
+    <div class="tl-accordion__panel">
+      <p>Content of section 2.</p>
+    </div>
+  </div>
+
+  <!-- Disabled item -->
+  <div class="tl-accordion__item tl-accordion__item--disabled">
+    <button
+      class="tl-accordion__header-icon-end"
+      aria-expanded="false"
+      disabled
+    >
+      <span class="tl-accordion__title">Disabled</span>
+    </button>
+    <div class="tl-accordion__panel">
+      <p>Cannot expand.</p>
+    </div>
+  </div>
+</div>
+```
+
+**Icon position**: Use `tl-accordion__header-icon-start` for chevron on left, `tl-accordion__header-icon-end` for right.
+
+---
+
+## Badge
+
+**Classes**: `tl-badge`
+**Sizes**: `tl-badge--sm` (8×8px dot), `tl-badge--lg` (20×20px), `tl-badge--pill` (auto-width)
+
+**IMPORTANT**: The badge component does NOT have built-in status variants (success, warning, danger). It only provides neutral notification badges.
+
+```html
+<!-- Notification badges (default usage) -->
+<span class="tl-badge tl-badge--sm"></span>
+<span class="tl-badge tl-badge--lg"><span class="tl-badge__text">5</span></span>
+<span class="tl-badge tl-badge--pill"
+  ><span class="tl-badge__text">New</span></span
+>
+```
+
+### Status Badges (Custom Component)
+
+**NEVER use inline styles on badges.** For status indicators (success, warning, danger), create a custom component with proper CSS classes:
+
+```css
+/* Add to your custom stylesheet */
+.status-badge {
+  display: inline-block;
+  padding: var(--dimension-space-tiny) var(--dimension-space-small);
+  border-radius: var(--dimension-radius-rounded);
+  font-size: 12px;
+  font-weight: var(--scania-font-weight-bold);
+  text-align: center;
+}
+
+.status-badge--success {
+  background-color: var(--color-system-success-discrete);
+  color: var(--color-system-success-default);
+}
+
+.status-badge--warning {
+  background-color: var(--color-system-warning-discrete);
+  color: var(--color-system-warning-default);
+}
+
+.status-badge--danger {
+  background-color: var(--color-system-danger-discrete);
+  color: var(--color-system-danger-default);
+}
+
+.status-badge--info {
+  background-color: var(--color-system-info-discrete);
+  color: var(--color-system-info-default);
+}
+```
+
+```html
+<!-- CUSTOM: Status badges using Tegel tokens -->
+<span class="status-badge status-badge--success">Active</span>
+<span class="status-badge status-badge--warning">Pending</span>
+<span class="status-badge status-badge--danger">Error</span>
+<span class="status-badge status-badge--info">Info</span>
+```
+
+---
+
+## Banner
+
+**Classes**: `tl-banner`
+**Variants**: `tl-banner--error`, `tl-banner--information`
+
+```html
+<!-- Default banner -->
+<div class="tl-banner" role="alert">
+  <span class="tl-banner__icon">
+    <span class="tl-icon tl-icon--info"></span>
+  </span>
+  <div class="tl-banner__content">
+    <div class="tl-banner__text">
+      <h6 class="tl-banner__header">Notice</h6>
+      <p class="tl-banner__subheader">System maintenance scheduled.</p>
+    </div>
+    <div class="tl-banner__actions">
+      <a href="#" class="tl-link tl-link--underline">Learn more</a>
+    </div>
+  </div>
+  <button class="tl-banner__close" aria-label="Close">
+    <span class="tl-icon tl-icon--cross"></span>
+  </button>
+</div>
+
+<!-- Error banner -->
+<div class="tl-banner tl-banner--error" role="alert">
+  <span class="tl-banner__icon">
+    <span class="tl-icon tl-icon--error"></span>
+  </span>
+  <div class="tl-banner__content">
+    <div class="tl-banner__text">
+      <h6 class="tl-banner__header">Error</h6>
+      <p class="tl-banner__subheader">Something went wrong.</p>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Message
+
+**Classes**: `tl-message`
+**Variants**: `tl-message--information`, `tl-message--success`, `tl-message--warning`, `tl-message--error`, `tl-message--minimal`
+**Mode**: `tl-message--primary`, `tl-message--secondary`, `tl-message--no-icon`
+
+```html
+<!-- Information message -->
+<div class="tl-message tl-message--information">
+  <div class="tl-message__wrapper">
+    <div class="tl-message__content">
+      <p class="tl-message__header">Information</p>
+      <p class="tl-message__extended-message">Here is some helpful context.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Error message -->
+<div class="tl-message tl-message--error">
+  <div class="tl-message__wrapper">
+    <div class="tl-message__content">
+      <p class="tl-message__header">Error occurred</p>
+      <p class="tl-message__extended-message">Please try again later.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Minimal (inline) error message -->
+<div class="tl-message tl-message--error tl-message--minimal">
+  <div class="tl-message__wrapper">
+    <div class="tl-message__content">
+      <p class="tl-message__header">Invalid input</p>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Toast
+
+**Classes**: `tl-toast`
+**Variants**: `tl-toast--information`, `tl-toast--success`, `tl-toast--error`, `tl-toast--warning`
+
+```html
+<div class="tl-toast tl-toast--success" role="alert">
+  <span class="tl-toast__icon">
+    <span class="tl-icon tl-icon--tick"></span>
+  </span>
+  <div class="tl-toast__content">
+    <div class="tl-toast__text">
+      <h6 class="tl-toast__header">Success</h6>
+      <p class="tl-toast__subheader">Item was saved.</p>
+    </div>
+  </div>
+  <button class="tl-toast__close" aria-label="Dismiss">
+    <span class="tl-icon tl-icon--cross"></span>
+  </button>
+</div>
+```
+
+Width is fixed at `348px`. Position with CSS `position: fixed`.
+
+---
+
+## Modal / Dialog
+
+**Classes**: `tl-modal`
+**Sizes**: `tl-modal--xs`, `tl-modal--sm`, `tl-modal--md`, `tl-modal--lg`
+**Modifiers**: `tl-modal--visible` (shows modal), `tl-modal--sticky` (sticky header/actions)
+
+```html
+<!-- Overlay (backdrop) -->
+<div class="tl-modal__overlay tl-modal--visible"></div>
+
+<!-- Modal -->
+<div
+  class="tl-modal tl-modal--sm tl-modal--visible tl-modal--sticky"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  <div class="tl-modal__header">
+    <h5 class="tl-modal__title" id="modal-title">Confirm Action</h5>
+    <button class="tl-modal__close" aria-label="Close">
+      <span class="tl-icon tl-icon--cross"></span>
+    </button>
+  </div>
+  <div class="tl-modal__body">
+    <p>Are you sure you want to proceed?</p>
+  </div>
+  <div class="tl-modal__actions">
+    <button class="tl-button tl-button--secondary tl-button--md">Cancel</button>
+    <button class="tl-button tl-button--primary tl-button--md">Confirm</button>
+  </div>
+</div>
+```
+
+**Responsive widths** for `tl-modal--sm`:
+
+- Mobile (320px): 100%
+- Tablet (672px): 62.5%
+- Desktop (1056px): 43.75%
+- Wide (1312px): 37.5%
+- Ultra-wide (1584px): 37.5%
+
+---
+
+## Table
+
+**Classes**: `tl-table`
+**Variants**: `tl-table--primary`, `tl-table--secondary`, `tl-table--responsive`, `tl-table--compact`
+**Modifiers**: `tl-table--zebra-rows-odd`, `tl-table--zebra-rows-even`, `tl-table--vertical-dividers`, `tl-table--horizontal-scroll`, `tl-table--clickable`
+
+```html
+<table class="tl-table tl-table--responsive">
+  <!-- Optional toolbar -->
+  <caption class="tl-table__toolbar">
+    <div class="tl-table__upper-bar">
+      <div class="tl-table__actionbar-left">
+        <span class="tl-table__title">Users</span>
+      </div>
+    </div>
+  </caption>
+
+  <thead class="tl-table__header">
+    <tr class="tl-table__row">
+      <th class="tl-table__header-cell">Name</th>
+      <th class="tl-table__header-cell">Email</th>
+      <th class="tl-table__header-cell">Role</th>
+    </tr>
+  </thead>
+
+  <tbody class="tl-table__body">
+    <tr class="tl-table__row">
+      <td class="tl-table__body-cell">John Doe</td>
+      <td class="tl-table__body-cell">john@example.com</td>
+      <td class="tl-table__body-cell">Admin</td>
+    </tr>
+    <tr class="tl-table__row">
+      <td class="tl-table__body-cell">Jane Smith</td>
+      <td class="tl-table__body-cell">jane@example.com</td>
+      <td class="tl-table__body-cell">User</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Sortable Headers
+
+```html
+<th class="tl-table__header-cell tl-table__header-cell--sortable">
+  <button class="tl-table__header-button">
+    <span class="tl-table__header-button-text">Name</span>
+    <span class="tl-table__header-button-icon tl-icon tl-icon--sorting"></span>
+  </button>
+</th>
+```
+
+---
+
+## Block (Content Section)
+
+**Classes**: `tl-block`
+**Variants**: `tl-block--primary`, `tl-block--secondary`
+
+```html
+<div class="tl-block tl-block--primary">
+  <h2>Section Title</h2>
+  <p>Body text in a block.</p>
+  <div class="tl-block">
+    <h3>Nested Block</h3>
+    <p>Nested content with alternating background.</p>
+  </div>
+</div>
+```
+
+Blocks alternate background colors automatically when nested.
+
+---
+
+## Stepper
+
+**Classes**: `tl-stepper`
+**Sizes**: `tl-stepper--lg`, `tl-stepper--sm`
+**Direction**: `tl-stepper--horizontal`, `tl-stepper--vertical`
+**Label**: `tl-stepper--label-below`, `tl-stepper--label-aside`, `tl-stepper--hide-labels`
+
+```html
+<div class="tl-stepper tl-stepper--horizontal tl-stepper--lg">
+  <ol class="tl-stepper__list">
+    <li class="tl-stepper__step tl-stepper__step--success">
+      <span class="tl-stepper__node"></span>
+      <span class="tl-stepper__label">Step 1</span>
+    </li>
+    <li class="tl-stepper__step tl-stepper__step--current">
+      <span class="tl-stepper__node">2</span>
+      <span class="tl-stepper__label">Step 2</span>
+    </li>
+    <li class="tl-stepper__step tl-stepper__step--upcoming">
+      <span class="tl-stepper__node">3</span>
+      <span class="tl-stepper__label">Step 3</span>
+    </li>
+  </ol>
+</div>
+```
+
+Step states: `tl-stepper__step--success`, `tl-stepper__step--error`, `tl-stepper__step--current`, `tl-stepper__step--upcoming`
+
+---
+
+## Spinner / Loader
+
+**Classes**: `tl-spinner`
+**Sizes**: `tl-spinner--xs` (16px), `tl-spinner--sm` (24px), `tl-spinner--md` (52px), `tl-spinner--lg` (84px)
+**Color**: `tl-spinner--default`, `tl-spinner--inverted`
+
+```html
+<svg
+  class="tl-spinner tl-spinner--md tl-spinner--default"
+  aria-label="Loading"
+  role="img"
+>
+  <circle class="tl-spinner__circle"></circle>
+</svg>
+```
+
+---
+
+## Popover Canvas
+
+**Classes**: `tl-popover-canvas`
+**Modifiers**: `tl-popover-canvas--visible`, `tl-popover-canvas--animation-fade`, `tl-popover-canvas--primary`, `tl-popover-canvas--secondary`
+
+```html
+<div
+  class="tl-popover-canvas tl-popover-canvas--visible tl-popover-canvas--animation-fade"
+>
+  <div class="tl-popover-canvas__content">
+    <h5 class="tl-popover-canvas__header">Popover Title</h5>
+    <p>Content here.</p>
+    <div class="tl-popover-canvas__actions">
+      <button class="tl-button tl-button--ghost tl-button--sm">Cancel</button>
+      <button class="tl-button tl-button--primary tl-button--sm">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+```

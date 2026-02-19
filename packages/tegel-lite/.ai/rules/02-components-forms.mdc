@@ -1,0 +1,396 @@
+---
+description: Form component patterns including buttons, inputs, checkboxes, dropdowns, and datetime
+alwaysApply: true
+---
+
+# Form Components
+
+## Button
+
+**Classes**: `tl-button`, `tl-button--primary`, `tl-button--secondary`, `tl-button--ghost`, `tl-button--danger`
+**Sizes**: `tl-button--xs` (24px), `tl-button--sm` (40px), `tl-button--md` (48px), `tl-button--lg` (56px)
+**Modifiers**: `tl-button--full-width`, `tl-button--icon`, `tl-button--only-icon`
+
+```html
+<!-- Primary button (default) -->
+<button class="tl-button tl-button--primary tl-button--md">
+  Primary Action
+</button>
+
+<!-- Secondary button -->
+<button class="tl-button tl-button--secondary tl-button--md">Secondary</button>
+
+<!-- Ghost button -->
+<button class="tl-button tl-button--ghost tl-button--sm">Ghost</button>
+
+<!-- Danger button -->
+<button class="tl-button tl-button--danger tl-button--md">Delete</button>
+
+<!-- Button with icon (text BEFORE icon) -->
+<button class="tl-button tl-button--primary tl-button--icon tl-button--md">
+  Save
+  <span class="tl-icon tl-icon--save" aria-hidden="true"></span>
+</button>
+
+<!-- Icon-only button -->
+<button
+  class="tl-button tl-button--only-icon tl-button--md"
+  aria-label="Settings"
+>
+  <span class="tl-icon tl-icon--settings"></span>
+</button>
+
+<!-- Full width -->
+<button
+  class="tl-button tl-button--primary tl-button--md tl-button--full-width"
+>
+  Full Width
+</button>
+
+<!-- Disabled -->
+<button class="tl-button tl-button--primary tl-button--md" disabled>
+  Disabled
+</button>
+```
+
+**Structure Rules**:
+
+- **Button with icon**: Text comes FIRST, then icon. Add `tl-button--icon` modifier. Icon should have `aria-hidden="true"`.
+- **Icon-only button**: Add `tl-button--only-icon` modifier and `aria-label` for accessibility.
+- **Size**: Always include a size modifier (--xs, --sm, --md, --lg).
+- **Variant**: Primary, secondary, ghost, or danger (optional, defaults to primary).
+
+**Do's**:
+
+- Always put text before icon in buttons with icons
+- Always add `aria-hidden="true"` to decorative icons in buttons with text
+- Always use `aria-label` for icon-only buttons
+
+**Don'ts**:
+
+- Never use `<div>` as a button
+- Never style buttons with custom colors
+- Never put icon before text in buttons with text
+
+---
+
+## Text Field (Input)
+
+**Classes**: `tl-text-field`, `tl-text-field--lg` (56px, default), `tl-text-field--md` (48px), `tl-text-field--sm` (40px)
+**Variants**: `tl-text-field--primary`, `tl-text-field--secondary`, `tl-text-field--label-inside`
+**States**: `tl-text-field--error`, `tl-text-field--success`
+
+```html
+<!-- Basic text field with external label -->
+<div class="tl-text-field tl-text-field--lg">
+  <label class="tl-text-field__label" for="name">Name</label>
+  <input
+    class="tl-text-field__input"
+    id="name"
+    type="text"
+    placeholder="Enter your name"
+  />
+</div>
+
+<!-- Label inside -->
+<div class="tl-text-field tl-text-field--lg tl-text-field--label-inside">
+  <label class="tl-text-field__label" for="email">Email</label>
+  <input class="tl-text-field__input" id="email" type="email" placeholder=" " />
+</div>
+
+<!-- With helper text -->
+<div class="tl-text-field tl-text-field--lg">
+  <label class="tl-text-field__label" for="phone">Phone</label>
+  <input
+    class="tl-text-field__input"
+    id="phone"
+    type="tel"
+    placeholder="+46..."
+  />
+  <div class="tl-text-field__bottom">
+    <span class="tl-text-field__helper">Include country code</span>
+  </div>
+</div>
+
+<!-- Error state -->
+<div class="tl-text-field tl-text-field--lg tl-text-field--error">
+  <label class="tl-text-field__label" for="req">Required field</label>
+  <input class="tl-text-field__input" id="req" type="text" placeholder=" " />
+  <div class="tl-text-field__bottom">
+    <span class="tl-text-field__helper">This field is required</span>
+  </div>
+</div>
+
+<!-- With prefix/suffix icons -->
+<div class="tl-text-field tl-text-field--lg">
+  <label class="tl-text-field__label" for="search">Search</label>
+  <span class="tl-text-field__prefix--icon tl-icon tl-icon--search"></span>
+  <input
+    class="tl-text-field__input"
+    id="search"
+    type="text"
+    placeholder="Search..."
+  />
+</div>
+
+<!-- With character counter -->
+<div class="tl-text-field tl-text-field--lg">
+  <label class="tl-text-field__label" for="bio">Bio</label>
+  <input
+    class="tl-text-field__input"
+    id="bio"
+    type="text"
+    placeholder=" "
+    maxlength="100"
+  />
+  <div class="tl-text-field__bottom">
+    <span class="tl-text-field__helper">Short description</span>
+    <span class="tl-text-field__charcounter">
+      0<span class="tl-text-field__charcounter-divider">/</span>100
+    </span>
+  </div>
+</div>
+
+<!-- Disabled -->
+<div class="tl-text-field tl-text-field--lg">
+  <label class="tl-text-field__label" for="dis">Disabled</label>
+  <input
+    class="tl-text-field__input"
+    id="dis"
+    type="text"
+    disabled
+    placeholder="Cannot edit"
+  />
+</div>
+```
+
+**IMPORTANT for label-inside**: The `placeholder` attribute MUST be set (even to `" "` a space) for the floating label animation to work.
+
+---
+
+## Textarea
+
+**Classes**: `tl-textarea`
+**Variants**: `tl-textarea--primary`, `tl-textarea--secondary`, `tl-textarea--label-inside`
+**States**: `tl-textarea--error`, `tl-textarea--success`
+
+```html
+<div class="tl-textarea">
+  <label class="tl-textarea__label" for="msg">Message</label>
+  <textarea
+    class="tl-textarea__input"
+    id="msg"
+    rows="4"
+    placeholder="Type here..."
+  ></textarea>
+  <div class="tl-textarea__bottom">
+    <span class="tl-textarea__helper">Max 500 characters</span>
+    <span class="tl-textarea__charcounter">
+      0<span class="tl-textarea__charcounter-divider">/</span>500
+    </span>
+  </div>
+</div>
+```
+
+---
+
+## Checkbox
+
+**Classes**: `tl-checkbox`
+
+```html
+<label class="tl-checkbox">
+  <input class="tl-checkbox__input" type="checkbox" />
+  <span class="tl-checkbox__label">Accept terms</span>
+</label>
+
+<!-- Checked -->
+<label class="tl-checkbox">
+  <input class="tl-checkbox__input" type="checkbox" checked />
+  <span class="tl-checkbox__label">Selected</span>
+</label>
+
+<!-- Disabled -->
+<label class="tl-checkbox">
+  <input class="tl-checkbox__input" type="checkbox" disabled />
+  <span class="tl-checkbox__label">Disabled</span>
+</label>
+
+<!-- Indeterminate (add class manually) -->
+<label class="tl-checkbox">
+  <input
+    class="tl-checkbox__input tl-checkbox__input--indeterminate"
+    type="checkbox"
+  />
+  <span class="tl-checkbox__label">Indeterminate</span>
+</label>
+```
+
+---
+
+## Radio Button
+
+**Classes**: `tl-radio-button`
+
+```html
+<label class="tl-radio-button">
+  <input class="tl-radio-button__input" type="radio" name="group1" value="a" />
+  <span class="tl-radio-button__label">Option A</span>
+</label>
+
+<label class="tl-radio-button">
+  <input class="tl-radio-button__input" type="radio" name="group1" value="b" />
+  <span class="tl-radio-button__label">Option B</span>
+</label>
+
+<label class="tl-radio-button">
+  <input
+    class="tl-radio-button__input"
+    type="radio"
+    name="group1"
+    value="c"
+    disabled
+  />
+  <span class="tl-radio-button__label">Disabled</span>
+</label>
+```
+
+---
+
+## Toggle / Switch
+
+**Classes**: `tl-toggle`
+**Sizes**: default (44×24px), `tl-toggle__input--sm` (28×16px)
+
+```html
+<div class="tl-toggle">
+  <span class="tl-toggle__headline">Dark mode</span>
+  <label>
+    <input class="tl-toggle__input" type="checkbox" />
+    <span class="tl-toggle__label">Enable</span>
+  </label>
+</div>
+
+<!-- Small toggle -->
+<div class="tl-toggle">
+  <label>
+    <input
+      class="tl-toggle__input tl-toggle__input--sm"
+      type="checkbox"
+      checked
+    />
+    <span class="tl-toggle__label">On</span>
+  </label>
+</div>
+```
+
+---
+
+## Dropdown / Select
+
+**Classes**: `tl-dropdown`
+**Sizes**: default (56px), `tl-dropdown--md` (48px), `tl-dropdown--sm` (40px)
+**Variants**: `tl-dropdown--primary`, `tl-dropdown--secondary`, `tl-dropdown--label-inside`
+**States**: `tl-dropdown--error`
+
+### Native Select
+
+```html
+<div class="tl-dropdown tl-dropdown--lg">
+  <label class="tl-dropdown__label" for="country">Country</label>
+  <select class="tl-dropdown__select" id="country">
+    <option value="">Select a country</option>
+    <option value="se">Sweden</option>
+    <option value="no">Norway</option>
+    <option value="dk">Denmark</option>
+  </select>
+</div>
+```
+
+### Custom Dropdown (requires JS for open/close)
+
+```html
+<div class="tl-dropdown tl-dropdown--lg">
+  <label class="tl-dropdown__label">Status</label>
+  <button
+    class="tl-dropdown__button"
+    aria-expanded="false"
+    aria-haspopup="listbox"
+  >
+    <span class="tl-dropdown__text" data-placeholder="Select status"></span>
+  </button>
+  <ul class="tl-dropdown__list" role="listbox">
+    <li class="tl-dropdown__option" role="option" tabindex="0">Active</li>
+    <li class="tl-dropdown__option" role="option" tabindex="0">Inactive</li>
+    <li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">
+      Archived
+    </li>
+  </ul>
+</div>
+```
+
+### Filterable Dropdown
+
+```html
+<div class="tl-dropdown tl-dropdown--lg">
+  <label class="tl-dropdown__label">Search items</label>
+  <div class="tl-dropdown__input-wrapper">
+    <input
+      class="tl-dropdown__input"
+      type="text"
+      placeholder="Type to filter..."
+      aria-expanded="false"
+      role="combobox"
+      autocomplete="off"
+    />
+    <button class="tl-dropdown__input-clear" aria-label="Clear">×</button>
+  </div>
+  <ul class="tl-dropdown__list" role="listbox">
+    <li class="tl-dropdown__option" role="option" tabindex="0">Item 1</li>
+    <li class="tl-dropdown__option" role="option" tabindex="0">Item 2</li>
+  </ul>
+</div>
+```
+
+---
+
+## Datetime / Date Picker
+
+**Classes**: `tl-datetime`
+**Sizes**: default lg (56px), `tl-datetime--md` (48px), `tl-datetime--sm` (40px)
+**Variants**: `tl-datetime--primary`, `tl-datetime--secondary`, `tl-datetime--label-inside`
+**States**: `tl-datetime--error`
+
+```html
+<div class="tl-datetime tl-datetime--label-inside">
+  <div class="tl-datetime__wrapper">
+    <span class="tl-datetime__label-inside">Date</span>
+    <input class="tl-datetime__input" type="date" />
+  </div>
+</div>
+
+<!-- With external label -->
+<div class="tl-datetime">
+  <label class="tl-datetime__label" for="start">Start date</label>
+  <div class="tl-datetime__wrapper">
+    <input class="tl-datetime__input" id="start" type="date" />
+  </div>
+</div>
+
+<!-- Time picker -->
+<div class="tl-datetime">
+  <label class="tl-datetime__label" for="time">Time</label>
+  <div class="tl-datetime__wrapper">
+    <input class="tl-datetime__input" id="time" type="time" />
+  </div>
+</div>
+
+<!-- Error state -->
+<div class="tl-datetime tl-datetime--error">
+  <label class="tl-datetime__label" for="due">Due date</label>
+  <div class="tl-datetime__wrapper">
+    <input class="tl-datetime__input" id="due" type="date" />
+  </div>
+  <span class="tl-datetime__helper">Date cannot be in the past</span>
+</div>
+```

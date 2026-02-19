@@ -1,0 +1,318 @@
+---
+description: Design tokens, variables, colors, spacing, typography, and layout standards
+alwaysApply: true
+---
+
+# Design Tokens & Variables
+
+## RULE: ALWAYS use design tokens instead of hardcoded values.
+
+## Primitive Color Tokens (from scania-variables.css)
+
+### Blue (Primary Brand)
+
+| Token                     | Value     |
+| ------------------------- | --------- |
+| `--scania-color-blue-50`  | `#d8dde5` |
+| `--scania-color-blue-100` | `#bacde8` |
+| `--scania-color-blue-200` | `#87afe8` |
+| `--scania-color-blue-300` | `#4a89f3` |
+| `--scania-color-blue-400` | `#2a6ecf` |
+| `--scania-color-blue-500` | `#2058a8` |
+| `--scania-color-blue-600` | `#16417f` |
+| `--scania-color-blue-700` | `#0f3263` |
+| `--scania-color-blue-800` | `#041e42` |
+| `--scania-color-blue-900` | `#001533` |
+
+### Red (Secondary Brand / Danger)
+
+| Token                    | Value     |
+| ------------------------ | --------- |
+| `--scania-color-red-50`  | `#ffdfe3` |
+| `--scania-color-red-100` | `#ffb9b8` |
+| `--scania-color-red-200` | `#fc8a88` |
+| `--scania-color-red-300` | `#ea4851` |
+| `--scania-color-red-400` | `#d1001b` |
+| `--scania-color-red-500` | `#b20018` |
+| `--scania-color-red-600` | `#8a0012` |
+| `--scania-color-red-700` | `#6c0011` |
+| `--scania-color-red-800` | `#480008` |
+| `--scania-color-red-900` | `#350004` |
+
+### Green (Success)
+
+| Token                      | Value     |
+| -------------------------- | --------- |
+| `--scania-color-green-50`  | `#d3eee7` |
+| `--scania-color-green-100` | `#9bd9c2` |
+| `--scania-color-green-200` | `#65bda5` |
+| `--scania-color-green-300` | `#009e7e` |
+| `--scania-color-green-400` | `#008064` |
+| `--scania-color-green-500` | `#00664f` |
+| `--scania-color-green-600` | `#004c3b` |
+| `--scania-color-green-700` | `#0a382e` |
+| `--scania-color-green-800` | `#00251b` |
+| `--scania-color-green-900` | `#001a12` |
+
+### Yellow (Warning)
+
+| Token                       | Value     |
+| --------------------------- | --------- |
+| `--scania-color-yellow-50`  | `#f9eec3` |
+| `--scania-color-yellow-100` | `#f8e596` |
+| `--scania-color-yellow-200` | `#f4d65d` |
+| `--scania-color-yellow-300` | `#f1c21b` |
+| `--scania-color-yellow-400` | `#eaad06` |
+| `--scania-color-yellow-500` | `#b87c14` |
+| `--scania-color-yellow-600` | `#975717` |
+| `--scania-color-yellow-700` | `#6b3b10` |
+| `--scania-color-yellow-800` | `#4d260a` |
+| `--scania-color-yellow-900` | `#361b07` |
+
+### Grey (Neutral)
+
+| Token                      | Value     |
+| -------------------------- | --------- |
+| `--scania-color-grey-00`   | `#fff`    |
+| `--scania-color-grey-50`   | `#f6f7f9` |
+| `--scania-color-grey-100`  | `#edeff3` |
+| `--scania-color-grey-150`  | `#e0e5eb` |
+| `--scania-color-grey-200`  | `#d1d7e0` |
+| `--scania-color-grey-250`  | `#b4becd` |
+| `--scania-color-grey-300`  | `#93a2b7` |
+| `--scania-color-grey-350`  | `#7e90a9` |
+| `--scania-color-grey-400`  | `#6e829f` |
+| `--scania-color-grey-500`  | `#5f728c` |
+| `--scania-color-grey-600`  | `#4e5e75` |
+| `--scania-color-grey-700`  | `#3a4554` |
+| `--scania-color-grey-800`  | `#242c37` |
+| `--scania-color-grey-850`  | `#1c222b` |
+| `--scania-color-grey-900`  | `#15181d` |
+| `--scania-color-grey-950`  | `#0e1013` |
+| `--scania-color-grey-1000` | `#000`    |
+
+## Semantic Color Tokens (Light Mode)
+
+Use these instead of primitive colors in layouts:
+
+### Backgrounds
+
+| Token                                                                      | Usage                                 |
+| -------------------------------------------------------------------------- | ------------------------------------- |
+| `--color-background-base`                                                  | Page/app base background              |
+| `--color-background-layer-01`                                              | Primary card/section background       |
+| `--color-background-layer-02`                                              | Secondary/nested background           |
+| `--color-background-layer-03`                                              | Third-level nested background         |
+| `--color-background-overlay`                                               | Modal/drawer backdrop                 |
+| `--color-background-top`                                                   | Top-level surface                     |
+| `--color-background-accent-primary-default`                                | Primary button background             |
+| `--color-background-accent-primary-hover`                                  | Primary button hover                  |
+| `--color-background-accent-primary-pressed`                                | Primary button pressed                |
+| `--color-background-accent-primary-disabled`                               | Disabled button background            |
+| `--color-background-accent-danger-default`                                 | Danger action background              |
+| `--color-background-surface-100` through `--color-background-surface-1000` | Surface levels for subtle backgrounds |
+
+### Text (Foreground)
+
+| Token                                    | Usage                  |
+| ---------------------------------------- | ---------------------- |
+| `--color-foreground-text-strong`         | Primary text, headings |
+| `--color-foreground-text-defined`        | Secondary text, labels |
+| `--color-foreground-text-soft`           | Tertiary text          |
+| `--color-foreground-text-subtle`         | Placeholder, hint text |
+| `--color-foreground-text-disabled`       | Disabled text          |
+| `--color-foreground-text-accent-default` | Link text              |
+| `--color-foreground-text-accent-visited` | Visited link           |
+| `--color-foreground-text-brand`          | Brand-colored text     |
+
+### Borders
+
+| Token                                    | Usage                  |
+| ---------------------------------------- | ---------------------- |
+| `--color-foreground-border-strong`       | Strong visible borders |
+| `--color-foreground-border-soft`         | Default input borders  |
+| `--color-foreground-border-subtle`       | Hover borders          |
+| `--color-foreground-border-discrete`     | Divider lines          |
+| `--color-foreground-border-accent-focus` | Focus ring color       |
+| `--color-foreground-border-disabled`     | Disabled borders       |
+
+### Icons
+
+| Token                              | Usage           |
+| ---------------------------------- | --------------- |
+| `--color-foreground-icon-strong`   | Primary icons   |
+| `--color-foreground-icon-defined`  | Secondary icons |
+| `--color-foreground-icon-soft`     | Tertiary icons  |
+| `--color-foreground-icon-subtle`   | Faint icons     |
+| `--color-foreground-icon-disabled` | Disabled icons  |
+
+### System / Status Colors
+
+| Token                             | Usage                     |
+| --------------------------------- | ------------------------- |
+| `--color-system-success-default`  | Success states (green)    |
+| `--color-system-success-discrete` | Success background tint   |
+| `--color-system-warning-default`  | Warning states (yellow)   |
+| `--color-system-warning-discrete` | Warning background tint   |
+| `--color-system-danger-default`   | Error/danger states (red) |
+| `--color-system-danger-discrete`  | Error background tint     |
+| `--color-system-info-default`     | Info states (blue)        |
+| `--color-system-info-discrete`    | Info background tint      |
+
+## Spacing Units
+
+| Token               | Value   |
+| ------------------- | ------- |
+| `--scania-unit-0`   | `0`     |
+| `--scania-unit-1`   | `1px`   |
+| `--scania-unit-2`   | `2px`   |
+| `--scania-unit-4`   | `4px`   |
+| `--scania-unit-8`   | `8px`   |
+| `--scania-unit-12`  | `12px`  |
+| `--scania-unit-16`  | `16px`  |
+| `--scania-unit-20`  | `20px`  |
+| `--scania-unit-24`  | `24px`  |
+| `--scania-unit-32`  | `32px`  |
+| `--scania-unit-40`  | `40px`  |
+| `--scania-unit-48`  | `48px`  |
+| `--scania-unit-56`  | `56px`  |
+| `--scania-unit-64`  | `64px`  |
+| `--scania-unit-80`  | `80px`  |
+| `--scania-unit-96`  | `96px`  |
+| `--scania-unit-120` | `120px` |
+
+## Dimension/Spacing Semantic Tokens
+
+| Token                      | Value  | Usage                   |
+| -------------------------- | ------ | ----------------------- |
+| `--dimension-space-tiny`   | `4px`  | Micro spacing           |
+| `--dimension-space-small`  | `16px` | Default element spacing |
+| `--dimension-space-medium` | `24px` | Section padding         |
+| `--dimension-space-large`  | `48px` | Large gaps              |
+| `--dimension-space-huge`   | `80px` | Hero sections           |
+
+## Border Radius Tokens
+
+| Token                                      | Value    | Usage                      |
+| ------------------------------------------ | -------- | -------------------------- |
+| `--dimension-radius-narrow`                | `4px`    | Buttons, inputs, cards     |
+| `--dimension-radius-soft`                  | `8px`    | Larger containers          |
+| `--dimension-radius-rounded`               | `32px`   | Chips, pills               |
+| `--dimension-radius-circle`                | `9999px` | Avatars, circular elements |
+| `--dimension-radius-for-surface-clickable` | `4px`    | Clickable elements         |
+| `--dimension-radius-for-surface-field`     | `4px`    | Form fields                |
+
+## Font Families
+
+| Token                                 | Value                        | Usage                   |
+| ------------------------------------- | ---------------------------- | ----------------------- |
+| `--scania-font-family-display`        | `scania sans headline`       | Display/headline text   |
+| `--scania-font-family-default`        | `scania sans`                | Body/default text       |
+| `--scania-font-family-semi-condensed` | `scania sans semi condensed` | Side menu, compact text |
+
+## Font Weights
+
+| Token                          | Value |
+| ------------------------------ | ----- |
+| `--scania-font-weight-regular` | `400` |
+| `--scania-font-weight-bold`    | `700` |
+
+## Motion/Animation Tokens
+
+| Token                               | Value                            | Usage                |
+| ----------------------------------- | -------------------------------- | -------------------- |
+| `--tds-motion-duration-fast-01`     | `100ms`                          | Micro-interactions   |
+| `--tds-motion-duration-fast-02`     | `150ms`                          | Quick transitions    |
+| `--tds-motion-duration-moderate-01` | `200ms`                          | Standard transitions |
+| `--tds-motion-duration-moderate-02` | `300ms`                          | Moderate animations  |
+| `--tds-motion-duration-slow-01`     | `400ms`                          | Complex animations   |
+| `--tds-motion-duration-slow-02`     | `500ms`                          | Full animations      |
+| `--tds-motion-easing-scania`        | `cubic-bezier(0.4, 0, 0, 1)`     | Default easing       |
+| `--tds-motion-easing-enter`         | `cubic-bezier(0.1, 0.9, 0.2, 1)` | Enter transitions    |
+| `--tds-motion-easing-exit`          | `cubic-bezier(0.7, 0, 1, 0.5)`   | Exit transitions     |
+
+---
+
+# Typography
+
+## Typography Scale (defined in scania-variables.css under `.scania`)
+
+### Display (Hero/Marketing)
+
+- **Display 01**: 216px / 183px LH / uppercase / Scania Sans Headline Bold
+- **Display 02**: 156px / 148px LH / uppercase / Scania Sans Headline Bold
+- **Display 03**: 112px / 106px LH / uppercase / Scania Sans Headline Bold
+- **Display 04**: 80px / 80px LH / uppercase / Scania Sans Headline Bold
+- **Display 05**: 56px / 56px LH / uppercase / Scania Sans Headline Bold
+
+### Headlines
+
+- **Headline 01**: 40px / 40px LH / uppercase / Scania Sans Headline Bold
+- **Headline 02**: 32px / 32px LH / Scania Sans Bold / ls: -1.28px
+- **Headline 03**: 24px / 24px LH / Scania Sans Bold / ls: -0.72px
+- **Headline 04**: 20px / 24px LH / Scania Sans Bold / ls: -0.4px
+- **Headline 05**: 16px / 24px LH / Scania Sans Bold / ls: -0.32px
+- **Headline 06**: 14px / 16px LH / uppercase / Scania Sans Bold / ls: -0.28px
+
+### Paragraphs / Body
+
+- **Paragraph 01**: 24px / 32px LH / Scania Sans Regular / ls: -0.72px
+- **Paragraph 02**: 20px / 24px LH / Scania Sans Regular / ls: -0.2px
+- **Body 01**: 16px / 24px LH / Scania Sans Regular / ls: -0.32px
+- **Body 02**: 14px / 20px LH / Scania Sans Regular / ls: -0.14px
+
+### Component Text
+
+- **Component Text 01**: 14px / 16px LH / ls: -0.14px
+- **Component Text 02**: 14px / 20px LH / ls: -0.14px
+- **Component Label 01**: 12px / 16px LH / ls: 0
+- **Component Label 02**: 10px / 8px LH / ls: 0
+- **Component Title 01**: 14px / 16px LH / ls: -0.14px
+- **Component Title 02**: 10px / 16px LH / uppercase / ls: 0.8px
+
+### Links
+
+- **Link 01**: 16px / 24px LH / ls: -0.32px
+- **Link 02**: 14px / 20px LH / ls: -0.14px
+
+## Typography Usage in Components
+
+Components use internal typography tokens like `--detail-02-*`, `--headline-07-*`, `--body-01-*` etc. These are automatically applied. Do NOT manually set font properties on Tegel components.
+
+---
+
+# Layout & Grid
+
+Tegel Lite does not include a CSS grid utility system. Use standard CSS Grid/Flexbox with Tegel tokens:
+
+```html
+<div
+  class="scania tds-mode-light"
+  style="
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--dimension-space-small);
+  padding: var(--dimension-space-medium);
+"
+>
+  <!-- Grid items -->
+</div>
+```
+
+## Layout Components
+
+- **Header** (`.tl-header`) – Full-width app bar, fixed at top
+- **Side Menu** (`.tl-side-menu`) – Navigation sidebar, collapsible
+- **Footer** (`.tl-footer`) – Multi-section page footer
+
+## Breakpoints (used in components)
+
+| Breakpoint | Value    | Usage         |
+| ---------- | -------- | ------------- |
+| xs         | `320px`  | Mobile        |
+| sm         | `384px`  | Small mobile  |
+| md         | `672px`  | Tablet        |
+| lg         | `992px`  | Desktop       |
+| xl         | `1056px` | Large desktop |
+| xxl        | `1312px` | Wide desktop  |
+| xxxl       | `1584px` | Ultra-wide    |

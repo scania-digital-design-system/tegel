@@ -1,0 +1,352 @@
+---
+description: Common page patterns and AI assistant prompt rules for code generation
+alwaysApply: true
+---
+
+# Composed Page Patterns
+
+## Login Page
+
+```html
+<body class="scania tds-mode-light">
+  <div
+    style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: var(--color-background-base);"
+  >
+    <div class="tl-card" style="width: 400px; max-width: 100%;">
+      <div class="tl-card__header">
+        <div class="tl-card__headings">
+          <span class="tl-card__title">Sign In</span>
+          <span class="tl-card__subtitle">Enter your credentials</span>
+        </div>
+      </div>
+      <div class="tl-card__body">
+        <div class="tl-card__content" style="max-inline-size: unset;">
+          <!-- Email field -->
+          <div
+            class="tl-text-field tl-text-field--lg"
+            style="margin-bottom: 16px;"
+          >
+            <label class="tl-text-field__label" for="login-email">Email</label>
+            <input
+              class="tl-text-field__input"
+              id="login-email"
+              type="email"
+              placeholder="user@scania.com"
+            />
+          </div>
+          <!-- Password field -->
+          <div
+            class="tl-text-field tl-text-field--lg"
+            style="margin-bottom: 24px;"
+          >
+            <label class="tl-text-field__label" for="login-pass"
+              >Password</label
+            >
+            <input
+              class="tl-text-field__input"
+              id="login-pass"
+              type="password"
+              placeholder="Enter password"
+            />
+          </div>
+          <button
+            class="tl-button tl-button--primary tl-button--md tl-button--full-width"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+```
+
+---
+
+## Dashboard Layout (Header + Sidebar + Content)
+
+```html
+<body class="scania tds-mode-light">
+  <!-- Header -->
+  <header class="tl-header">
+    <nav class="tl-header__nav">
+      <ul class="tl-header__list">
+        <li class="tl-header__item">
+          <a class="tl-header__item-wrapper" href="/"
+            ><span class="tl-header__brand"></span
+          ></a>
+        </li>
+        <li class="tl-header__item">
+          <div class="tl-header__title">
+            <span class="tl-header__title-text">Fleet Manager</span>
+          </div>
+        </li>
+        <li class="tl-header__middle-spacer"></li>
+        <li class="tl-header__item">
+          <button class="tl-header__item-wrapper" aria-label="Notifications">
+            <span class="tl-icon tl-icon--notification"></span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Layout -->
+  <div style="display: flex; min-height: calc(100vh - 64px);">
+    <!-- Side Menu -->
+    <nav
+      class="tl-side-menu tl-side-menu--persistent"
+      aria-label="Main navigation"
+      style="position: static; height: auto;"
+    >
+      <div class="tl-side-menu__wrapper tl-side-menu__wrapper--open">
+        <aside class="tl-side-menu__aside">
+          <div class="tl-side-menu__navigation">
+            <div class="tl-side-menu__list-wrapper">
+              <ul class="tl-side-menu__upper-list">
+                <li>
+                  <a
+                    class="tl-side-menu__item tl-side-menu__item--selected"
+                    href="/dashboard"
+                  >
+                    <span class="tl-icon tl-icon--dashboard"></span> Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a class="tl-side-menu__item" href="/vehicles">
+                    <span class="tl-icon tl-icon--truck"></span> Vehicles
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main
+      style="flex: 1; padding: var(--dimension-space-medium); background-color: var(--color-background-base);"
+    >
+      <!-- Cards grid -->
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;"
+      >
+        <div class="tl-card">
+          <div class="tl-card__header">
+            <div class="tl-card__headings">
+              <span class="tl-card__title">Total Vehicles</span>
+            </div>
+          </div>
+          <div class="tl-card__body">
+            <div
+              class="tl-card__content"
+              style="max-inline-size: unset; font-size: 32px; font-weight: 700;"
+            >
+              142
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <table class="tl-table tl-table--responsive">
+        <thead class="tl-table__header">
+          <tr class="tl-table__row">
+            <th class="tl-table__header-cell">Vehicle</th>
+            <th class="tl-table__header-cell">Status</th>
+            <th class="tl-table__header-cell">Location</th>
+          </tr>
+        </thead>
+        <tbody class="tl-table__body">
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell">SCN-2024-001</td>
+            <td class="tl-table__body-cell">Active</td>
+            <td class="tl-table__body-cell">Södertälje</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+```
+
+---
+
+## Form Page
+
+```html
+<main
+  style="max-width: 600px; margin: 0 auto; padding: var(--dimension-space-medium);"
+>
+  <h2
+    style="font-family: var(--scania-font-family-default); font-weight: var(--scania-font-weight-bold); margin-bottom: 24px;"
+  >
+    New Vehicle Registration
+  </h2>
+
+  <form>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="tl-text-field tl-text-field--lg">
+        <label class="tl-text-field__label" for="vin">VIN Number</label>
+        <input
+          class="tl-text-field__input"
+          id="vin"
+          type="text"
+          placeholder="Enter VIN"
+        />
+      </div>
+
+      <div class="tl-dropdown tl-dropdown--lg">
+        <label class="tl-dropdown__label" for="type">Vehicle Type</label>
+        <select class="tl-dropdown__select" id="type">
+          <option value="">Select type</option>
+          <option value="truck">Truck</option>
+          <option value="bus">Bus</option>
+        </select>
+      </div>
+
+      <div class="tl-datetime">
+        <label class="tl-datetime__label" for="reg-date"
+          >Registration Date</label
+        >
+        <div class="tl-datetime__wrapper">
+          <input class="tl-datetime__input" id="reg-date" type="date" />
+        </div>
+      </div>
+
+      <div class="tl-textarea">
+        <label class="tl-textarea__label" for="notes">Notes</label>
+        <textarea
+          class="tl-textarea__input"
+          id="notes"
+          rows="4"
+          placeholder="Additional details..."
+        ></textarea>
+      </div>
+
+      <label class="tl-checkbox">
+        <input class="tl-checkbox__input" type="checkbox" />
+        <span class="tl-checkbox__label"
+          >I confirm all information is correct</span
+        >
+      </label>
+
+      <div style="display: flex; gap: 16px; padding-top: 8px;">
+        <button
+          type="button"
+          class="tl-button tl-button--secondary tl-button--md"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="tl-button tl-button--primary tl-button--md"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </form>
+</main>
+```
+
+---
+
+# AI Assistant Prompt Rules
+
+## CRITICAL: NO INLINE STYLES
+
+**NEVER EVER use inline `style=""` attributes for design properties on ANY element, especially not on Tegel components.**
+
+This includes:
+
+- ❌ Colors: `style="color: ..."` or `style="background-color: ..."`
+- ❌ Spacing: `style="padding: ..."` or `style="margin: ..."`
+- ❌ Typography: `style="font-size: ..."` or `style="font-weight: ..."`
+- ❌ Any design tokens: `style="background-color: var(--color-system-success-discrete);"`
+
+**ALWAYS create CSS classes instead:**
+
+- ✅ Define class in `<style>` section with Tegel tokens
+- ✅ Use BEM naming: `.custom-component--variant`
+- ✅ Mark with comment: `<!-- CUSTOM: Description -->`
+
+**If a Tegel component doesn't have the variant you need (e.g., status badges), create a custom component with proper CSS classes, NOT inline styles.**
+
+---
+
+## Component Generation
+
+1. When the user asks for a button, ALWAYS default to `tl-button tl-button--md` (variant is optional).
+2. When the user asks for a button with icon:
+   - ALWAYS add `tl-button--icon` modifier
+   - ALWAYS put text BEFORE the icon
+   - ALWAYS add `aria-hidden="true"` to the icon
+   - Example: `<button class="tl-button tl-button--icon tl-button--md">Save<span class="tl-icon tl-icon--save" aria-hidden="true"></span></button>`
+3. When the user asks for an icon-only button:
+   - ALWAYS add `tl-button--only-icon` modifier
+   - ALWAYS add `aria-label` attribute describing the action
+   - Example: `<button class="tl-button tl-button--only-icon tl-button--md" aria-label="Settings"><span class="tl-icon tl-icon--settings"></span></button>`
+4. When the user asks for an input/text field, ALWAYS default to `tl-text-field tl-text-field--lg` with an external label.
+5. When the user asks for a card, ALWAYS include `tl-card__header` and `tl-card__body` sections.
+6. When the user asks for a table, ALWAYS include `tl-table__header` with `th.tl-table__header-cell` and `tl-table__body`.
+
+## Code Quality
+
+7. Generate ALWAYS complete, production-ready HTML – never pseudocode.
+8. Generate ALWAYS all necessary wrapper elements (e.g., `tl-card__body` > `tl-card__content`).
+9. Include ALWAYS relevant ARIA attributes for accessibility:
+   - Decorative icons in buttons with text: `aria-hidden="true"`
+   - Icon-only buttons: `aria-label="Action description"`
+   - Form labels: proper `for` and `id` attributes
+10. Comment HTML with `<!-- -->` to explain structure sections.
+11. Use ALWAYS the `scania tds-mode-light` classes on the `<body>` or root element.
+
+## Token Usage
+
+12. Use NEVER hardcoded color values – ALWAYS CSS custom properties.
+13. Use NEVER hardcoded pixel spacing – prefer Tegel spacing tokens.
+14. Use NEVER inline styles for any design properties (color, background, spacing, typography).
+    - ❌ `style="color: blue"` or `style="color: var(--color-foreground-text-accent-default)"`
+    - ✅ Create CSS class: `.custom-text { color: var(--color-foreground-text-accent-default); }`
+15. Use NEVER `style="background: #f5f5f5"` – create a CSS class instead.
+16. If a Tegel component lacks a needed variant, create a CUSTOM component with BEM classes, not inline styles.
+
+## Custom Components
+
+17. If the user requests a component that doesn't exist in Tegel Lite, build it using existing tokens and classes, and clearly mark it with a comment: `<!-- CUSTOM: Not a native Tegel Lite component -->`.
+18. Custom components should follow the BEM naming convention: `.tl-custom-{name}__element--modifier`.
+
+## File Structure
+
+19. Always import CSS files in the correct order: variables → global → components.
+20. Never modify the Tegel Lite source CSS files.
+21. Place custom overrides in a separate stylesheet loaded AFTER the Tegel files.
+
+## Dark Mode
+
+22. To switch to dark mode, replace `tds-mode-light` with `tds-mode-dark` on the wrapper element.
+23. All components automatically adapt – no additional work needed.
+24. When showing dark mode examples, add `tds-mode-dark` to the root wrapper.
+
+## Icon Usage
+
+25. Icons use the pattern `tl-icon tl-icon--{name}` and optionally `tl-icon--{size}`.
+26. Icons inherit color from parent. Use `color: var(--color-foreground-icon-strong)` on parent if needed.
+27. Decorative icons in buttons with text MUST have `aria-hidden="true"`.
+28. Icon-only interactive elements MUST have `aria-label` describing the action.
+
+## Size Convention
+
+29. Component sizes follow this convention (unless stated otherwise):
+    - `--xs` = 24px height (buttons only)
+    - `--sm` = 40px height
+    - `--md` = 48px height
+    - `--lg` = 56px height (default for inputs)
+
+## Mode Variants
+
+30. Components with `--primary` use `var(--color-background-layer-01)`.
+31. Components with `--secondary` use `var(--color-background-layer-02)`.
+32. Variant modifiers (primary, secondary, ghost, danger) are optional for buttons – use based on context.

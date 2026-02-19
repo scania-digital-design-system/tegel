@@ -87,6 +87,35 @@ dist/
 
 All components use the `tl-` prefix.
 
+## AI Coding Rules
+
+This package ships with AI-aware coding rules that help AI assistants (Cursor, Claude Code, GitHub Copilot, OpenAI Codex) write correct tegel-lite markup.
+
+After installing the package, run:
+
+```bash
+npx tegel-lite-setup-rules
+```
+
+An interactive CLI will let you choose which AI tools to configure:
+
+| AI Tool | Files installed |
+| --- | --- |
+| **Cursor** | `.cursor/rules/tegel-lite/*.mdc` |
+| **Claude Code** | `CLAUDE.md` at project root |
+| **GitHub Copilot** | `.github/copilot-instructions.md` |
+| **OpenAI Codex** | `AGENTS.md` at project root |
+
+All options are selected by default. Use arrow keys to navigate, space to toggle, and enter to confirm.
+
+To skip the interactive prompt and install all formats at once:
+
+```bash
+npx tegel-lite-setup-rules --all
+```
+
+Re-running the command will update existing rules in place (using section markers) without duplicating content.
+
 ## Documentation
 
 Full documentation: **[tegel.scania.com](https://tegel.scania.com)**
