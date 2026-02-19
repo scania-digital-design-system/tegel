@@ -8,15 +8,19 @@ The Header component provides a consistent navigation header with items, dropdow
 <header class="tl-header">
   <nav class="tl-header__nav">
     <ul class="tl-header__list">
+      <li class="tl-header__title"><h4 class="tl-header__title-text">Application Name</h4></li>
       <li class="tl-header__item">
-        <a href="#" class="tl-header__item-link">
-          <span class="tl-header__item-text">Item</span>
-        </a>
+        <button class="tl-header__item-wrapper">
+          <span class="tl-icon tl-icon--placeholder tl-icon--16" aria-hidden="true"></span>
+        </button>
       </li>
       <li class="tl-header__middle-spacer"></li>
       <li class="tl-header__dropdown">
-        <button class="tl-header__dropdown-button">
-          Dropdown
+        <button class="tl-header__dropdown-wrapper">
+          <span>Dropdown</span>
+          <div class="tl-header__dropdown-icon">
+            <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
+          </div>
         </button>
       </li>
     </ul>
@@ -53,11 +57,14 @@ The Header component provides a consistent navigation header with items, dropdow
 | `.tl-header__launcher-menu-list`          | `<ul>`       | Launcher list menu container       |
 | `.tl-header__launcher-menu-item`          | `<li>`       | Launcher menu item                 |
 | `.tl-header__launcher-menu-title`         | `<li>`       | Launcher menu section title        |
-| `.tl-header__dropdown-menu-user`          | `<li>`       | User profile menu item             |
-| `.tl-header__dropdown-menu-user-image`    | `<div>`      | User profile image container       |
-| `.tl-header__dropdown-menu-user-box`      | `<div>`      | User profile content box           |
-| `.tl-header__dropdown-menu-user-content`  | `<div>`      | User profile text content          |
-| `.tl-header__dropdown-menu-user-header`   | `<span>`     | User profile header text           |
+| `.tl-header__dropdown-wrapper-user`       | `<button>`   | User profile menu wrapper                 |
+| `.tl-header__user-menu-image`             | `<div>`      | User profile image container       |
+| `.tl-header__user-menu`                   | `<ul>`       | User profile menu                  |
+| `.tl-header__user-menu-item`              | `<li>`       | User profile menu item             |
+| `.tl-header__user-menu-box`               | `<div>`      | User profile content box           |
+| `.tl-header__user-menu-content`           | `<div>`      | User profile text content          |
+| `.tl-header__user-menu-header`            | `<span>`     | User profile header text           |
+| `.tl-header__user-menu-subheader`         | `<span>`     | User profile subheader text        |
 | `.tl-header__middle-spacer`               | `<li>`       | Spacer element for layout          |
 | `.tl-header__brand`                       | `<div>`      | Brand/logo container               |
 | `.tl-header__title`                       | `<li>`       | Title container                    |
@@ -82,7 +89,6 @@ Apply these classes to `.tl-header__dropdown-wrapper` elements.
 | Modifier                               | Description                        |
 | -------------------------------------- | ---------------------------------- |
 | `.tl-header__dropdown-wrapper--open`   | Dropdown is open                   |
-| `.tl-header__dropdown-wrapper--user`   | User profile dropdown styling      |
 | `.tl-header__dropdown-wrapper--selected` | Selected dropdown state          |
 | `.tl-header__dropdown-wrapper--pressed` | Pressed dropdown state            |
 
@@ -101,9 +107,6 @@ Apply these classes to `.tl-header__dropdown-menu` elements.
 | Modifier                                      | Description                        |
 | --------------------------------------------- | ---------------------------------- |
 | `.tl-header__dropdown-menu--open`             | Menu is visible                    |
-| `.tl-header__dropdown-menu--user`             | User profile menu styling          |
-| `.tl-header__dropdown-menu--launcher-list`    | Launcher list menu styling         |
-| `.tl-header__dropdown-menu--launcher-grid`    | Launcher grid menu styling         |
 
 ### Header Dropdown Menu Item Modifiers
 
@@ -113,16 +116,6 @@ Apply these classes to `.tl-header__dropdown-menu-item` elements.
 | ---------------------------------------------- | --------------------------------- |
 | `.tl-header__dropdown-menu-item--selected`     | Selected menu item                |
 
-## Specifications
-
-- **Header height**: 64px (var(--tds-header-height))
-- **Brand width**: Dynamic (var(--header-brand-item-width))
-- **Brand logo height**: 30px
-- **Icon size**: 20px
-- **Dropdown wrapper padding**: 0 24px (standard), custom for user profile
-- **User dropdown height**: 84px
-- **Dropdown min-width**: 190px (standard), 290px (user), 320px (launcher)
-- **Desktop breakpoint**: 992px (min-width for full navigation)
 
 ## JavaScript Required
 
@@ -130,7 +123,7 @@ The Header component requires JavaScript to handle:
 
 - Toggle dropdown menu visibility
 - Update `aria-expanded` attribute on dropdown buttons
-- Add/remove `--open` modifier on dropdown wrapper and menu
+- Add/remove `--open` modifier on dropdown wrapper and menus
 - Rotate dropdown icon (add/remove `--rotated` modifier)
 - Mobile hamburger menu toggle
 - Manage selected and pressed states
