@@ -144,16 +144,16 @@ export default {
   args: {
     modeVariant: 'Primary',
     zebraMode: 'rows-odd',
-    compact: false,
-    verticalDividers: false,
-    responsive: false,
     headerTextAlign: 'none',
     cellTextAlign: 'none',
-    clickable: false,
-    noMinWidth: false,
+    compact: false,
+    responsive: false,
     disablePadding: false,
     disableHeaderPadding: false,
+    verticalDividers: false,
     horizontalScrollWidth: '',
+    noMinWidth: false,
+    clickable: false,
   },
 };
 

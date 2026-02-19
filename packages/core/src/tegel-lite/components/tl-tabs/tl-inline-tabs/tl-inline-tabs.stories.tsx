@@ -32,6 +32,8 @@ export default {
     showRightButton: false,
     selectedIndex: 0,
     leftPadding: 32,
+    showLeftButton: false,
+    showRightButton: false,
   },
 };
 

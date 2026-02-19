@@ -165,8 +165,8 @@ export default {
     header: 'Header text',
     subheader: 'Subheader text',
     thumbnail: true,
+    imagePlacement: 'Above',
     bodyImg: false,
-    imagePlacement: 'Below',
     bodyContent: 'Lorem ipsum dummy text for printing; standard filler ever since 1500s',
     bodyDivider: false,
     cardActions:

@@ -54,8 +54,8 @@ export default {
   },
   args: {
     label: 'Label text',
-    checkedIndex: 0,
     disabled: false,
+    checkedIndex: 0,
     name: 'rb-example',
   },
 };
