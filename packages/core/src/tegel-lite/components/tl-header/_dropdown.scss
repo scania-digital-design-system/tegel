@@ -30,7 +30,7 @@
   }
 
   &:active {
-    background-color: var(--component-header-color-background-pressed);
+    background-color: var(--header-basic-element-background-selected);
     box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
@@ -81,7 +81,7 @@
   }
 
   &:active {
-    background-color: var(--component-header-color-background-pressed);
+    background-color: var(--header-basic-element-background-selected);
     box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
