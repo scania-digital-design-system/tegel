@@ -50,6 +50,12 @@ export class TdsTableHeaderCell {
   /** Aria label for the sort button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
 
+  /** Number of columns the cell should span. */
+  @Prop() colSpan?: number;
+
+  /** Number of rows the cell should span. */
+  @Prop() rowSpan?: number;
+
   @State() textAlignState: TextAlign = 'left';
 
   @State() sortingDirection: 'asc' | 'desc' | undefined;
@@ -285,6 +291,8 @@ export class TdsTableHeaderCell {
         onMouseLeave={() => this.onHeadCellHover('')}
         role="columnheader"
         aria-sort={this.getAriaSort()}
+        colspan={this.colSpan}
+        rowspan={this.rowSpan}
       >
         {this.headerCellContent()}
       </Host>

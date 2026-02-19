@@ -27,6 +27,12 @@ export class TdsTableBodyCell {
   /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
   @Prop({ reflect: true }) textAlign?: TextAlign;
 
+  /** Number of columns the cell should span. */
+  @Prop() colSpan?: number;
+
+  /** Number of rows the cell should span. */
+  @Prop() rowSpan?: number;
+
   @State() textAlignState: TextAlign | undefined = undefined;
 
   @State() activeSorting: boolean = false;
@@ -129,6 +135,8 @@ export class TdsTableBodyCell {
         }}
         style={dynamicStyles}
         role="cell"
+        colspan={this.colSpan}
+        rowspan={this.rowSpan}
       >
         {this.cellValue}
         <slot />
