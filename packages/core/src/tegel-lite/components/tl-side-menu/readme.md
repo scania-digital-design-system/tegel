@@ -9,23 +9,31 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
   <div class="tl-side-menu__wrapper">
     <div class="tl-side-menu__overlay"></div>
     <aside class="tl-side-menu__aside">
-      <div class="tl-side-menu__close">
-        <button>Close</button>
-      </div>
-      <nav class="tl-side-menu__navigation">
+      <div class="tl-side-menu__navigation">
+        <div class="tl-side-menu__close">
+          <button class="tl-side-menu__item" id="tl-close">
+            <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
+          </button>
+        </div>
         <div class="tl-side-menu__list-wrapper">
-          <ul class="tl-side-menu__list tl-side-menu__list--upper">
-            <li class="tl-side-menu__item-wrapper">
+          <ul class="tl-side-menu__upper-list">
+            <li>
               <a href="#" class="tl-side-menu__item">Item 1</a>
             </li>
-          </ul>
-          <ul class="tl-side-menu__list tl-side-menu__list--end">
-            <li class="tl-side-menu__item-wrapper">
+            <li>
               <a href="#" class="tl-side-menu__item">Item 2</a>
             </li>
           </ul>
+          <ul class="tl-side-menu__end-list">
+            <li>
+              <a href="#" class="tl-side-menu__item">Item 3</a>
+            </li>
+            <li>
+              <a href="#" class="tl-side-menu__item">Item 4</a>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
     </aside>
   </div>
 </div>
@@ -38,6 +46,11 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-side-menu.css
+```
+
+### Optional Stylesheets
+
+```
 @scania/tegel-lite/tl-icon.css
 ```
 
@@ -49,22 +62,17 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
 | `.tl-side-menu__wrapper`              | `<div>`      | Wrapper for menu content           |
 | `.tl-side-menu__overlay`              | `<div>`      | Backdrop overlay                   |
 | `.tl-side-menu__aside`                | `<aside>`    | Sidebar container                  |
+| `.tl-side-menu__navigation`           | `<div>`      | Navigation container               |
 | `.tl-side-menu__close`                | `<div>`      | Close button wrapper               |
-| `.tl-side-menu__navigation`           | `<nav>`      | Navigation container               |
 | `.tl-side-menu__list-wrapper`         | `<div>`      | List wrapper with scroll           |
-| `.tl-side-menu__list`                 | `<ul>`       | List container                     |
-| `.tl-side-menu__list--upper`          | `<ul>`       | Upper section list                 |
-| `.tl-side-menu__list--end`            | `<ul>`       | Bottom section list                |
-| `.tl-side-menu__item-wrapper`         | `<div>`      | Item wrapper                       |
+| `.tl-side-menu__upper-list`           | `<ul>`       | Upper section list                 |
+| `.tl-side-menu__end-list`             | `<ul>`       | Bottom section list                |
 | `.tl-side-menu__item`                 | `<div>`      | Menu item container                |
-| `.tl-side-menu__dropdown-wrapper`     | `<div>`      | Dropdown container                 |
 | `.tl-side-menu__dropdown`             | `<div>`      | Dropdown control wrapper           |
-| `.tl-side-menu__dropdown-header`      | `<div>`      | Dropdown header/title              |
 | `.tl-side-menu__dropdown-menu`        | `<div>`      | Dropdown submenu container         |
+| `.tl-side-menu__dropdown-header`      | `<div>`      | Dropdown header/title              |
 | `.tl-side-menu__dropdown-list`        | `<div>`      | Dropdown list container            |
-| `.tl-side-menu__dropdown-item-wrapper`| `<div>`      | Dropdown item wrapper              |
-| `.tl-side-menu__dropdown-list-item`   | `<div>`      | Dropdown list item                 |
-| `.tl-side-menu__dropdown-icon`        | `<span>`     | Dropdown chevron icon              |
+| `.tl-side-menu__dropdown-item`        | `<div>`      | Dropdown list item                 |
 | `.tl-side-menu__user`                 | `<div>`      | User profile section               |
 | `.tl-side-menu__user-image`           | `<div>`      | User profile image container       |
 | `.tl-side-menu__user-label`           | `<div>`      | User profile label/text            |
@@ -113,7 +121,7 @@ Apply these classes to `.tl-side-menu__dropdown-list-item` elements.
 
 | Modifier                                      | Description                    |
 | --------------------------------------------- | ------------------------------ |
-| `.tl-side-menu__dropdown-list-item--selected`| Selected dropdown list item    |
+| `.tl-side-menu__dropdown-item--selected`      | Selected dropdown list item    |
 
 ## JavaScript Required
 
