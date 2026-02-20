@@ -781,7 +781,7 @@ export class TdsDropdown {
             'disabled': this.disabled,
           }}
         >
-          {this.filter ? (
+          {this.filter || this.multiselect ? (
             <div
               class={{
                 filter: true,
@@ -824,6 +824,7 @@ export class TdsDropdown {
                     this.multiselect && this.isFilteringMode ? this.filterQuery : this.getValue()
                   }
                   disabled={this.disabled}
+                  readOnly={!this.filter}
                   onMouseDown={() => this.handleInputMouseDown()}
                   onInput={(event) => this.handleFilter(event)}
                   onFocus={() => this.handleFocus()}
