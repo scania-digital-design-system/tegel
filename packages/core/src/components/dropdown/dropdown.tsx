@@ -101,6 +101,8 @@ export class TdsDropdown {
 
   @State() filterQuery: string = '';
 
+  @State() isFilteringMode: boolean = false;
+
   private dropdownList!: HTMLDivElement;
 
   private inputElement!: HTMLInputElement;
@@ -439,6 +441,7 @@ export class TdsDropdown {
   handleOpenState() {
     if (this.filter && this.multiselect) {
       if (!this.open) {
+        this.isFilteringMode = false;
         this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
       }
     }
@@ -574,6 +577,23 @@ export class TdsDropdown {
     if (this.inputElement) this.inputElement.focus();
   };
 
+  private handleBeforeInput = (event: InputEvent) => {
+    /** For multiselect with filter: if showing selected values and user starts typing,
+     * enter filtering mode and set filterQuery to just what was typed */
+    if (
+      this.multiselect &&
+      !this.isFilteringMode &&
+      event.data &&
+      event.inputType === 'insertText'
+    ) {
+      event.preventDefault();
+      this.isFilteringMode = true;
+      this.filterQuery = event.data.toLowerCase();
+      /** Manually trigger filtering since preventDefault() cancels the input event */
+      this.handleFilter({ target: { value: this.filterQuery } });
+    }
+  };
+
   private handleFilter = (event) => {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
@@ -625,12 +645,18 @@ export class TdsDropdown {
     }
   };
 
+  private handleInputMouseDown = () => {
+    /** Only clear the input if user clicks on
+     * the input while the dropdown is already open. */
+    if (this.filter && this.multiselect && this.open && this.selectedOptions.length > 0) {
+      this.isFilteringMode = true;
+      this.filterQuery = '';
+    }
+  };
+
   private handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
-    if (this.inputElement) {
-      this.inputElement.value = '';
-    }
     /** Focus event is now handled by focusin listener */
     if (this.filter) {
       this.handleFilter({ target: { value: '' } });
@@ -640,6 +666,7 @@ export class TdsDropdown {
   private handleBlur = () => {
     /** Handle internal state changes when component loses focus */
     this.filterFocus = false;
+    this.isFilteringMode = false;
     if (this.inputElement) {
       this.inputElement.value = this.getValue();
     }
@@ -659,6 +686,9 @@ export class TdsDropdown {
       /** Reset filter to show all options */
       this.handleFilter({ target: { value: '' } });
     }
+
+    /** Exit filtering mode so input shows all selected labels */
+    this.isFilteringMode = false;
 
     if (this.multiselect) {
       this.updateDropdownStateFromUser([...this.selectedOptions, value]);
@@ -682,12 +712,23 @@ export class TdsDropdown {
 
     /** Initialize inert state after rendering */
     this.updateDropdownListInertState();
+
+    /** Add beforeinput listener for multiselect filter to auto-clear selected labels */
+    if (this.filter && this.multiselect && this.inputElement) {
+      this.inputElement.removeEventListener('beforeinput', this.handleBeforeInput as EventListener);
+      this.inputElement.addEventListener('beforeinput', this.handleBeforeInput as EventListener);
+    }
   }
 
   disconnectedCallback() {
     const form = this.host.closest('form');
     if (form) {
       form.removeEventListener('reset', this.resetInput);
+    }
+
+    /** Clean up beforeinput listener */
+    if (this.inputElement) {
+      this.inputElement.removeEventListener('beforeinput', this.handleBeforeInput as EventListener);
     }
   }
 
@@ -765,8 +806,11 @@ export class TdsDropdown {
                   }}
                   type="text"
                   placeholder={this.filterFocus ? '' : this.placeholder}
-                  value={this.multiselect && this.filterFocus ? this.filterQuery : this.getValue()}
+                  value={
+                    this.multiselect && this.isFilteringMode ? this.filterQuery : this.getValue()
+                  }
                   disabled={this.disabled}
+                  onMouseDown={() => this.handleInputMouseDown()}
                   onInput={(event) => this.handleFilter(event)}
                   onFocus={() => this.handleFocus()}
                   onKeyDown={(event) => {
