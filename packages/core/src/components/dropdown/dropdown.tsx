@@ -444,6 +444,12 @@ export class TdsDropdown {
         this.isFilteringMode = false;
         this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
       }
+    } else if (this.filter && !this.multiselect) {
+      if (!this.open && this.inputElement) {
+        /** Restore selected value in input when dropdown closes (e.g. on Escape) */
+        this.inputElement.value = this.getValue();
+        this.filterQuery = '';
+      }
     }
 
     /** Update the inert state of dropdown list when open state changes */
@@ -659,6 +665,11 @@ export class TdsDropdown {
     this.filterFocus = true;
     /** Focus event is now handled by focusin listener */
     if (this.filter) {
+      if (!this.multiselect && this.inputElement) {
+        /** For filter-only (no multiselect), clear input on focus so user can type immediately */
+        this.inputElement.value = '';
+        this.filterQuery = '';
+      }
       this.handleFilter({ target: { value: '' } });
     }
   };
@@ -667,6 +678,9 @@ export class TdsDropdown {
     /** Handle internal state changes when component loses focus */
     this.filterFocus = false;
     this.isFilteringMode = false;
+    if (this.filter && !this.multiselect) {
+      this.filterQuery = '';
+    }
     if (this.inputElement) {
       this.inputElement.value = this.getValue();
     }
