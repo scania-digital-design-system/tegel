@@ -33,8 +33,6 @@ Apply these classes to the `.tl-divider` element.
 
 **Orientation Modifiers (Required):**
 
-**Orientation Modifiers (Required):**
-
 | Modifier                  | Description                     |
 | ------------------------- | ------------------------------- |
 | `.tl-divider--horizontal` | Horizontal divider (full width, 1px height) |
