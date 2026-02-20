@@ -278,6 +278,22 @@ export class TdsModal {
     if (focusableElements.length === 0) return;
 
     event.preventDefault();
+
+    // Sync activeElementIndex with the actual focused element.
+    // This handles cases where focus was moved by mouse click (or programmatically)
+    // without going through the Tab key handler.
+    let currentlyFocused: HTMLElement | null;
+    if (document.activeElement === this.host) {
+      // Focus is inside the shadow root (e.g. the close button)
+      currentlyFocused = this.host.shadowRoot?.activeElement as HTMLElement | null;
+    } else {
+      currentlyFocused = document.activeElement as HTMLElement | null;
+    }
+    const currentIndex = currentlyFocused ? focusableElements.indexOf(currentlyFocused) : -1;
+    if (currentIndex !== -1) {
+      this.activeElementIndex = currentIndex;
+    }
+
     // Going backwards (Shift + Tab) on the first element => move to last
     if (event.shiftKey) {
       this.activeElementIndex -= 1;
@@ -286,7 +302,7 @@ export class TdsModal {
       }
     }
 
-    // // Going forwards (Tab) on the last element => move to first
+    // Going forwards (Tab) on the last element => move to first
     if (!event.shiftKey) {
       this.activeElementIndex += 1;
       if (this.activeElementIndex === focusableElements.length) {
