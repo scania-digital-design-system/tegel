@@ -63,8 +63,9 @@ export default {
 
 const Template = ({ size, headline, label, checked, disabled }) =>
   formatHtmlPreview(`
-    <!-- Required stylesheet 
-      "@scania/tegel-lite/tl-toggle.css";
+    <!-- Required stylesheets:
+      "@scania/tegel-lite/global.css"
+      "@scania/tegel-lite/tl-toggle.css"
     -->
 
       <div class="tl-toggle">

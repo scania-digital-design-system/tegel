@@ -13,9 +13,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['sticky', 'static'],
+      options: ['Sticky', 'Static'],
       table: {
-        defaultValue: { summary: 'static' },
+        defaultValue: { summary: 'Static' },
       },
     },
     size: {
@@ -24,9 +24,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['lg', 'md', 'sm', 'xs'],
+      options: ['Large', 'Medium', 'Small', 'Extra small'],
       table: {
-        defaultValue: { summary: 'md' },
+        defaultValue: { summary: 'Medium' },
       },
     },
     headerText: {
@@ -62,8 +62,8 @@ export default {
     },
   },
   args: {
-    actionsPosition: 'static',
-    size: 'lg',
+    actionsPosition: 'Static',
+    size: 'Large',
     headerText: 'Header text',
     bodyContent:
       '"I beg your pardon, Dr. Lanyon," he replied civilly enough. "What you say is very well founded; and my impatience has shown its heels to my politeness. I come here at the instance of your colleague, Dr. Henry Jekyll, on a piece of business of some moment; and I understood..."',
@@ -73,8 +73,22 @@ export default {
 };
 
 const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, closable }) => {
-  const actionsClass = actionsPosition === 'sticky' ? 'tl-modal--sticky' : '';
+  // Map readable names to CSS class names
+  const actionsPositionMap = {
+    Sticky: 'sticky',
+    Static: 'static',
+  };
+  const actionsClass = actionsPositionMap[actionsPosition] === 'sticky' ? 'tl-modal--sticky' : '';
   const showClass = showModal ? 'tl-modal--visible' : '';
+
+  // Map readable size names to CSS class names
+  const sizeMap = {
+    'Large': 'lg',
+    'Medium': 'md',
+    'Small': 'sm',
+    'Extra small': 'xs',
+  };
+  const sizeClass = sizeMap[size] || 'lg';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
@@ -87,7 +101,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       "@scania/tegel-lite/tl-icon.css"
     -->
     <div class="demo-wrapper">
-      <div class="tl-modal ${showClass} tl-modal--${size} ${actionsClass}">
+      <div class="tl-modal ${showClass} tl-modal--${sizeClass} ${actionsClass}">
         <div class="tl-modal__header">
           <h2 class="tl-modal__title">${headerText}</>
           ${

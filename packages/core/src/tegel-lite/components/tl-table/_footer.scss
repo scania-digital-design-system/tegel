@@ -63,29 +63,6 @@
   font-family: var(--detail-02-font-family);
 }
 
-.tl-table__rows-per-page-select {
-  background-color: var(--table-footer-page-selector-input);
-  color: var(--table-text);
-  height: 30px;
-  border: none;
-  border-radius: var(--tds-spacing-element-4);
-  padding: 0 var(--tds-spacing-element-8);
-  transition: background-color 250ms ease;
-  font-family: var(--detail-02-font-family);
-
-  &:hover {
-    background-color: var(--table-footer-page-selector-input-hover);
-  }
-
-  &:disabled {
-    color: var(--table-footer-page-selector-input-color-disabled);
-  }
-
-  .tl-table--compact & {
-    height: var(--tds-spacing-element-24);
-  }
-}
-
 .tl-table__page-selector-input {
   background-color: var(--table-footer-page-selector-input);
   border-radius: var(--tds-spacing-element-4);
