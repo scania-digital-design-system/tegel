@@ -284,10 +284,8 @@ export class TdsModal {
       if (this.activeElementIndex === -1) {
         this.activeElementIndex = focusableElements.length - 1;
       }
-    }
-
-    // // Going forwards (Tab) on the last element => move to first
-    if (!event.shiftKey) {
+    } else {
+      // Going forwards (Tab) on the last element => move to first
       this.activeElementIndex += 1;
       if (this.activeElementIndex === focusableElements.length) {
         this.activeElementIndex = 0;
