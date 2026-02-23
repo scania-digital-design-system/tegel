@@ -128,7 +128,7 @@ export class TdsSideMenuDropdown {
               )}
             </button>
           </tds-side-menu-item>
-          <div class="menu">
+          <div class="menu" tabindex={this.collapsed ? '0' : undefined}>
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}
