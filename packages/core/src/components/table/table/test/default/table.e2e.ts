@@ -55,7 +55,7 @@ test.describe.parallel(componentName, () => {
     const promises: Promise<void>[] = [];
     for (let i = 1; i <= 8; i++) {
       const tableBodyCellHasText = page
-        .locator('tds-body-cell')
+        .locator('tds-body-cell td')
         .filter({ hasText: `Test value ${i}` });
       promises.push(expect(tableBodyCellHasText).toHaveCount(3));
       promises.push(expect(tableBodyCellHasText.first()).toBeVisible());

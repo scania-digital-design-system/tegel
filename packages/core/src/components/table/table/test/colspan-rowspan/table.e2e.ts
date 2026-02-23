@@ -27,32 +27,47 @@ test.describe.parallel(componentName, () => {
     await page.goto(componentTestPath);
   });
 
-  test('header cell with colSpan has colspan attribute set to 2', async ({ page }) => {
-    const spanningHeaderCell = page.locator('tds-header-cell').first();
-    await expect(spanningHeaderCell).toHaveAttribute('colspan', '2');
+  test('header cell with colSpan has colspan on shadow th', async ({ page }) => {
+    const colSpan = await page.evaluate(() => {
+      const cell = document.querySelector('tds-header-cell');
+      return cell.shadowRoot.querySelector('th')?.getAttribute('colspan');
+    });
+    expect(colSpan).toBe('2');
   });
 
-  test('header cell without colSpan does not have a colspan attribute', async ({ page }) => {
-    const normalHeaderCell = page.locator('tds-header-cell').last();
-    await expect(normalHeaderCell).not.toHaveAttribute('colspan');
+  test('header cell without colSpan does not have colspan on shadow th', async ({ page }) => {
+    const colSpan = await page.evaluate(() => {
+      const cells = document.querySelectorAll('tds-header-cell');
+      return cells[1].shadowRoot.querySelector('th')?.getAttribute('colspan');
+    });
+    expect(colSpan).toBeNull();
   });
 
-  test('body cell with colSpan has colspan attribute set to 2', async ({ page }) => {
-    // First body cell in the fixture has col-span="2"
-    const spanningBodyCell = page.locator('tds-body-cell').first();
-    await expect(spanningBodyCell).toHaveAttribute('colspan', '2');
+  test('body cell with colSpan has colspan on shadow td', async ({ page }) => {
+    const colSpan = await page.evaluate(() => {
+      const cell = document.querySelector('tds-body-cell');
+      return cell.shadowRoot.querySelector('td')?.getAttribute('colspan');
+    });
+    expect(colSpan).toBe('2');
   });
 
-  test('body cell with rowSpan has rowspan attribute set to 2', async ({ page }) => {
-    // Third body cell in the fixture (first cell of second row) has row-span="2"
-    const spanningBodyCell = page.locator('tds-body-cell').nth(2);
-    await expect(spanningBodyCell).toHaveAttribute('rowspan', '2');
+  test('body cell with rowSpan has rowspan on shadow td', async ({ page }) => {
+    const rowSpan = await page.evaluate(() => {
+      const cells = document.querySelectorAll('tds-body-cell');
+      return cells[2].shadowRoot.querySelector('td')?.getAttribute('rowspan');
+    });
+    expect(rowSpan).toBe('2');
   });
 
-  test('body cell without colSpan or rowSpan does not have span attributes', async ({ page }) => {
-    // Second body cell (C1) has no spanning
-    const normalBodyCell = page.locator('tds-body-cell').nth(1);
-    await expect(normalBodyCell).not.toHaveAttribute('colspan');
-    await expect(normalBodyCell).not.toHaveAttribute('rowspan');
+  test('body cell without spans does not have colspan or rowspan on shadow td', async ({
+    page,
+  }) => {
+    const attrs = await page.evaluate(() => {
+      const cells = document.querySelectorAll('tds-body-cell');
+      const td = cells[1].shadowRoot.querySelector('td');
+      return { colspan: td?.getAttribute('colspan'), rowspan: td?.getAttribute('rowspan') };
+    });
+    expect(attrs.colspan).toBeNull();
+    expect(attrs.rowspan).toBeNull();
   });
 });

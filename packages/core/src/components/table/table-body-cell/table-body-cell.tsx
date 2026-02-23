@@ -133,13 +133,11 @@ export class TdsTableBodyCell {
           'tds-table--divider': this.verticalDividers,
           'tds-table--no-min-width': this.noMinWidth,
         }}
-        style={dynamicStyles}
-        role="cell"
-        colspan={this.colSpan}
-        rowspan={this.rowSpan}
       >
-        {this.cellValue}
-        <slot />
+        <td style={dynamicStyles} colSpan={this.colSpan} rowSpan={this.rowSpan}>
+          {this.cellValue}
+          <slot />
+        </td>
       </Host>
     );
   }

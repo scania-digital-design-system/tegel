@@ -286,15 +286,17 @@ export class TdsTableHeaderCell {
           'tds-table--toolbar-available': this.enableToolbarDesign,
           'tds-table--no-padding': this.disablePadding,
         }}
-        style={{ minWidth: this.customWidth }}
-        onMouseOver={() => this.onHeadCellHover(this.cellKey)}
-        onMouseLeave={() => this.onHeadCellHover('')}
-        role="columnheader"
-        aria-sort={this.getAriaSort()}
-        colspan={this.colSpan}
-        rowspan={this.rowSpan}
       >
-        {this.headerCellContent()}
+        <th
+          style={{ minWidth: this.customWidth }}
+          onMouseOver={() => this.onHeadCellHover(this.cellKey)}
+          onMouseLeave={() => this.onHeadCellHover('')}
+          aria-sort={this.getAriaSort()}
+          colSpan={this.colSpan}
+          rowSpan={this.rowSpan}
+        >
+          {this.headerCellContent()}
+        </th>
       </Host>
     );
   }
