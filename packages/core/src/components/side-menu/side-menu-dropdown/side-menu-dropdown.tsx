@@ -112,7 +112,7 @@ export class TdsSideMenuDropdown {
             }}
             aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
           >
-            <button>
+            <button tabindex={this.collapsed ? -1 : undefined}>
               <slot name="icon"></slot>
               {!this.collapsed && (
                 <Fragment>
@@ -128,7 +128,7 @@ export class TdsSideMenuDropdown {
               )}
             </button>
           </tds-side-menu-item>
-          <div class="menu" tabindex={this.collapsed ? '0' : undefined}>
+          <div class="menu" tabindex={this.collapsed ? '-1' : undefined}>
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}
