@@ -117,8 +117,8 @@ export class TdsSideMenu {
 
   @Watch('open')
   onOpenChange(newVal: boolean) {
-    if (newVal) {
-      // When menu opens, focus the first interactive element
+    if (newVal && !this.persistent) {
+      // When mobile drawer opens, focus the first interactive element
       setTimeout(() => {
         const focusableElements = this.getFocusableElements();
         if (focusableElements.length > 0) {
@@ -169,8 +169,8 @@ export class TdsSideMenu {
 
   @Listen('keydown', { target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
-    // Only trap focus if the menu is open
-    if (!this.open) return;
+    // Only trap focus if the mobile drawer is open (not for persistent desktop menus)
+    if (!this.open || this.persistent) return;
 
     // We care only about the Tab key
     if (event.key !== 'Tab') return;
