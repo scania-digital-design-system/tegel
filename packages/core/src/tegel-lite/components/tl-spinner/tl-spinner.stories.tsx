@@ -30,8 +30,8 @@ export default {
     },
   },
   args: {
-    size: 'Large',
     variant: 'Default',
+    size: 'Large',
   },
 };
 
