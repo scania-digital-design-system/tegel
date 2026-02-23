@@ -1241,12 +1241,12 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              1,
-              0.9647058844566345,
-              0.8588235378265381
+              0.9764705896377563,
+              0.9333333373069763,
+              0.7647058963775635
             ],
             "alpha": 1,
-            "hex": "#FFF6DB"
+            "hex": "#F9EEC3"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:33:85910",
@@ -1255,8 +1255,8 @@
               "SHAPE_FILL"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:e940f5e0ef58067249c80884da1b10a2e2cafe44/-1:-1",
-              "targetVariableName": "traton/color/yellow/50",
+              "targetVariableId": "VariableID:4c2032ad6d0932bb35bcdce4fd0026965b6b2d33/-1:-1",
+              "targetVariableName": "scania/color/yellow/50",
               "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
               "targetVariableSetName": "Primitive"
             },
@@ -1294,12 +1294,12 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              1,
-              0.7529411911964417,
-              0.05098039284348488
+              0.9450980424880981,
+              0.7607843279838562,
+              0.10588235408067703
             ],
             "alpha": 1,
-            "hex": "#FFC00D"
+            "hex": "#F1C21B"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:3:11",
@@ -1310,11 +1310,12 @@
               "STROKE"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:2056a458f37b88112a8da1ca02f5b970a247b7e1/-1:-1",
-              "targetVariableName": "traton/color/yellow/300",
+              "targetVariableId": "VariableID:f23fecf2fd1e0c47eef305fb586371f9a013ecb0/-1:-1",
+              "targetVariableName": "scania/color/yellow/300",
               "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
               "targetVariableSetName": "Primitive"
-            }
+            },
+            "com.figma.isOverride": true
           }
         },
         "subtle": {
