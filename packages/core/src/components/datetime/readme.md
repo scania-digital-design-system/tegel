@@ -3,11 +3,9 @@
 🚧 This component is not yet accessible. Please refer to the [Accessibility Guidelines](https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs) for more information.
 
 The tds-datetime component currently has the following limitations:
+- On iOS, the native input "calendar" does not limit the selection according to the min/max values defined. This can be seen in [MDN browser compatibility table](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date#browser_compatibility).
 
-- Users can set an invalid date (e.g., 2025-02-31) using the arrow keys.
-- The arrow keys allow navigation beyond the allowed date range, including dates earlier than the min property. This can cause unintended behavior, such as the year overflowing and becoming the maximum possible value.
-
-These issues stem from the use of the native HTML <code style="font-size: inherit !important">&lt;input&gt;</code> element with type="date", which inherits these limitations.
+This issue stems from the use of the native HTML <code style="font-size: inherit !important">&lt;input&gt;</code> element, which inherits these limitations.
 
 We are addressing these concerns in the upcoming tds-date-picker component, which will replace tds-datetime with improved validation and user experience.
 
