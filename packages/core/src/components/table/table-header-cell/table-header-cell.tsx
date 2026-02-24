@@ -258,7 +258,7 @@ export class TdsTableHeaderCell {
     );
   };
 
-  onHeadCellHover = (key) => {
+  onHeadCellHover = (key: string) => {
     this.internalTdsHover.emit({
       tableId: this.tableId,
       key,
@@ -290,7 +290,9 @@ export class TdsTableHeaderCell {
         <th
           style={{ minWidth: this.customWidth }}
           onMouseOver={() => this.onHeadCellHover(this.cellKey)}
+          onFocus={() => this.onHeadCellHover(this.cellKey)}
           onMouseLeave={() => this.onHeadCellHover('')}
+          onBlur={() => this.onHeadCellHover('')}
           aria-sort={this.getAriaSort()}
           colSpan={this.colSpan}
           rowSpan={this.rowSpan}
