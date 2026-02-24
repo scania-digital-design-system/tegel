@@ -16,76 +16,111 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('renders disabled datetime component correctly', async ({ page }) => {
-      /* Check diff on screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    test('renders error helper text in error state with red color and error icon', async ({
+      page,
+    }) => {
+      const helperText = "This is for status='error'";
+      const errorText = 'This is the error text!';
+
+      await expect(page.getByText(errorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+
+      const errorIcon = page.getByRole('img', { name: 'error' });
+      await expect(errorIcon).toBeVisible();
+
+      const css = config.theme === 'lightmode' ? 'rgb(209, 0, 27)' : 'rgb(234, 72, 81)';
+
+      await expect(page.getByText(errorText)).toHaveCSS('color', css);
     });
 
-    test('Simulate time selection and verify format', async ({ page }) => {
-      await page.click('input[type="time"]');
+    // Running these tests in Docker, the Browser is expecting a date in the format MM/dd/yyyy
+    // Running locally with `npx playwright test`, the Browser is expecting a date in the format dd/MM/yyyy
+    test('renders the error message when manually inputing an invalid date', async ({ page }) => {
+      const helperText = "Please enter a date with format 'MM/dd/yyyy'";
+      const specialErrorText = 'Invalid Date';
 
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      await expect(page.getByText(specialErrorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
 
-      // Programmatically set the input value to simulate picking a time
-      // Note: This value should be in the format the browser expects ('HH:MM'), even though your component will format it differently
-      const currentTime = new Date();
-      const formattedTimeValue = [
-        currentTime.getHours().toString().padStart(2, '0'),
-        currentTime.getMinutes().toString().padStart(2, '0'),
-      ].join(':');
-      await page.locator('input[type="time"]').fill(formattedTimeValue);
+      const datetime = page.getByLabel("DateTime component with type='date'");
+      await datetime.click();
 
-      const displayedTime = await page.locator('input[type="time"]').inputValue();
-      expect(displayedTime).toBe(formattedTimeValue);
+      await datetime.pressSequentially('02');
+      await datetime.pressSequentially('31');
+
+      await datetime.blur();
+
+      await expect(page.getByText(specialErrorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
     });
-  });
-});
 
-test.describe.parallel(componentName, () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto(componentTestPath);
-  });
+    test('renders the error message when manually selecting a date outside the min/max boundaries', async ({
+      page,
+    }) => {
+      const errorText = 'Value must be between 10/01/2026 and 31/03/2026';
 
-  test('verifies label, helper text, size, and clock icon for time component', async ({ page }) => {
-    // Check for the label text
-    const label = page.locator('.tds-datetime-label');
-    const helperText = page.locator('.tds-datetime-helper .tds-helper');
-    const clockIcon = page.locator('tds-icon[name="clock"]');
-    const dateTime = page.locator('tds-datetime');
-    const dateTimeContainer = page.locator('.tds-datetime-container');
+      const helperText = "Please enter a date with format 'MM/dd/yyyy'";
 
-    await expect(label).toBeVisible();
-    await expect(label).toHaveText('Label text');
+      await expect(page.getByText(errorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
 
-    await expect(helperText).toBeVisible();
-    await expect(helperText).toContainText('Helper text'); // Svg title also registers as text
+      const datetime = page.getByLabel("DateTime component with type='date'");
 
-    await expect(dateTime).toHaveAttribute('size', 'md');
-    await expect(dateTimeContainer).toHaveCSS('height', '48px');
-    await expect(dateTime).not.toHaveAttribute('min');
-    await expect(dateTime).not.toHaveAttribute('max');
-    await expect(clockIcon).toBeVisible();
-  });
+      await datetime.click();
 
-  test('helper text in error state has is red and has an error icon', async ({ page }) => {
-    // Check helper text color for specific shade of red
-    await expect(page.locator('.tds-datetime-helper .tds-helper')).toHaveCSS(
-      'color',
-      'rgb(209, 0, 27)',
-    );
+      await datetime.pressSequentially('01');
+      await datetime.pressSequentially('04');
 
-    const errorIcon = page.locator('tds-icon[name="error"]');
-    await expect(errorIcon).toBeVisible();
-  });
+      await datetime.blur();
 
-  test('Clock icon focuses the time input', async ({ page }) => {
-    await page.click('input[type="time"]');
+      await expect(page.getByText(errorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+    });
 
-    // Check if the time input is focused after clicking the icon
-    // This assumes the time input has a specific ID or class you can target
-    const isTimeInputFocused = await page.evaluate(
-      () => (document.activeElement as HTMLInputElement).type === 'time',
-    );
-    expect(isTimeInputFocused).toBeTruthy();
+    test('renders the error message when manually selecting a week outside the min/max boundaries', async ({
+      page,
+    }) => {
+      const errorText = 'Value must be between Week 06, 2026 and Week 10, 2026';
+      const helperText = "Please enter a week with format 'Week ww, yyyy'";
+
+      await expect(page.getByText(errorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
+
+      const datetime = page.getByLabel("DateTime component with type='week'");
+      await datetime.click();
+
+      await datetime.pressSequentially('23');
+
+      await datetime.blur();
+
+      await expect(page.getByText(errorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+    });
+
+    test('renders the error message when manually selecting a time outside the min/max boundaries', async ({
+      page,
+    }) => {
+      const errorText = 'Value must be between 08:30 and 17:30';
+      const helperText = "Please enter a week with format 'HH:mm'";
+
+      await expect(page.getByText(errorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
+
+      const datetime = page.getByLabel("DateTime component with type='time'");
+      await datetime.click();
+
+      await datetime.pressSequentially('08');
+      await datetime.pressSequentially('14');
+
+      const hour = new Date().toLocaleTimeString();
+      if (hour.includes('AM') || hour.includes('PM')) {
+        await datetime.pressSequentially('AM');
+      }
+
+      await datetime.blur();
+
+      await expect(page.getByText(errorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+    });
   });
 });

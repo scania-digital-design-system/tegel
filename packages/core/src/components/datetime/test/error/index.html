@@ -12,12 +12,55 @@
   </head>
 
   <body>
+
+    <tds-datetime
+      type="date"
+      size="md"
+      helper="This is for state='error'"
+      min="2026-01-10"
+      max="2026-03-30"
+      state="error"
+      helper-error="This is the error text!"
+      label="DateTime component with state='error'"
+      label-position="outside"
+    ></tds-datetime>
+
+    </br>
+    
+    <tds-datetime
+      type="date"
+      size="md"
+      helper="Please enter a date with format 'MM/dd/yyyy'"
+      min="2026-01-10"
+      max="2026-03-31"
+      helper-error="Value must be between 10/01/2026 and 31/03/2026"
+      label="DateTime component with type='date'"
+      label-position="outside"
+    ></tds-datetime>
+    
+    </br>
+
+    <tds-datetime
+      type="week"
+      size="md"
+      helper="Please enter a week with format 'Week ww, yyyy'"
+      min="2026-W06"
+      max="2026-W10"
+      helper-error="Value must be between Week 06, 2026 and Week 10, 2026"
+      label="DateTime component with type='week'"
+      label-position="outside"
+    ></tds-datetime>
+    
+    </br>
+  
     <tds-datetime
       type="time"
       size="md"
-      state="error"
-      helper="Helper text"
-      label="Label text"
+      helper="Please enter a week with format 'HH:mm'"
+      min="08:30"
+      max="17:30"
+      helper-error="Value must be between 08:30 and 17:30"
+      label="DateTime component with type='time'"
       label-position="outside"
     ></tds-datetime>
   </body>
