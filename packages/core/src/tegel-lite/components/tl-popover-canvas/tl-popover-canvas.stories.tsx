@@ -27,14 +27,14 @@ export default {
       name: 'Animation',
       description: 'Sets the animation style of the Popover Canvas.',
       control: { type: 'radio' },
-      options: ['none', 'fade'],
-      table: { defaultValue: { summary: 'none' } },
+      options: ['None', 'Fade'],
+      table: { defaultValue: { summary: 'None' } },
     },
   },
   args: {
     modeVariant: 'Primary',
     showPopoverCanvas: true,
-    animation: 'fade',
+    animation: 'Fade',
   },
 };
 
