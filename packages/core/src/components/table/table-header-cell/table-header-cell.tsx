@@ -258,10 +258,10 @@ export class TdsTableHeaderCell {
     );
   };
 
-  onHeadCellHover = (key: string) => {
+  onHeadCellHover = (key: string | undefined) => {
     this.internalTdsHover.emit({
       tableId: this.tableId,
-      key,
+      key: key ?? '',
     });
   };
 
