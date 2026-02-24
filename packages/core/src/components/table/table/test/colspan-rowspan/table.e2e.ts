@@ -30,7 +30,7 @@ test.describe.parallel(componentName, () => {
   test('header cell with colSpan has colspan on shadow th', async ({ page }) => {
     const colSpan = await page.evaluate(() => {
       const cell = document.querySelector('tds-header-cell');
-      return cell.shadowRoot.querySelector('th')?.getAttribute('colspan');
+      return cell?.shadowRoot?.querySelector('th')?.getAttribute('colspan') ?? null;
     });
     expect(colSpan).toBe('2');
   });
@@ -38,7 +38,7 @@ test.describe.parallel(componentName, () => {
   test('header cell without colSpan does not have colspan on shadow th', async ({ page }) => {
     const colSpan = await page.evaluate(() => {
       const cells = document.querySelectorAll('tds-header-cell');
-      return cells[1].shadowRoot.querySelector('th')?.getAttribute('colspan');
+      return cells[1]?.shadowRoot?.querySelector('th')?.getAttribute('colspan') ?? null;
     });
     expect(colSpan).toBeNull();
   });
@@ -46,7 +46,7 @@ test.describe.parallel(componentName, () => {
   test('body cell with colSpan has colspan on shadow td', async ({ page }) => {
     const colSpan = await page.evaluate(() => {
       const cell = document.querySelector('tds-body-cell');
-      return cell.shadowRoot.querySelector('td')?.getAttribute('colspan');
+      return cell?.shadowRoot?.querySelector('td')?.getAttribute('colspan') ?? null;
     });
     expect(colSpan).toBe('2');
   });
@@ -54,7 +54,7 @@ test.describe.parallel(componentName, () => {
   test('body cell with rowSpan has rowspan on shadow td', async ({ page }) => {
     const rowSpan = await page.evaluate(() => {
       const cells = document.querySelectorAll('tds-body-cell');
-      return cells[2].shadowRoot.querySelector('td')?.getAttribute('rowspan');
+      return cells[2]?.shadowRoot?.querySelector('td')?.getAttribute('rowspan') ?? null;
     });
     expect(rowSpan).toBe('2');
   });
@@ -64,8 +64,11 @@ test.describe.parallel(componentName, () => {
   }) => {
     const attrs = await page.evaluate(() => {
       const cells = document.querySelectorAll('tds-body-cell');
-      const td = cells[1].shadowRoot.querySelector('td');
-      return { colspan: td?.getAttribute('colspan'), rowspan: td?.getAttribute('rowspan') };
+      const td = cells[1]?.shadowRoot?.querySelector('td');
+      return {
+        colspan: td?.getAttribute('colspan') ?? null,
+        rowspan: td?.getAttribute('rowspan') ?? null,
+      };
     });
     expect(attrs.colspan).toBeNull();
     expect(attrs.rowspan).toBeNull();
