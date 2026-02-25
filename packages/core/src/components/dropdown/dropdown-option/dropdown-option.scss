@@ -23,7 +23,7 @@
       color: var(--tds-dropdown-option-color-disabled);
     }
 
-    & button:focus {
+    & button:focus-visible {
       @include tds-focus-state-dropdown-option;
     }
 

@@ -24,7 +24,8 @@
   .dropdown-select {
     position: relative;
 
-    button:focus {
+    &.open,
+    button:not(.icon-button):focus-visible {
       @include tds-focus-state;
 
       border-radius: 0;
@@ -55,8 +56,7 @@
       .label-inside,
       .placeholder,
       .label-inside-as-placeholder,
-      .value-wrapper,
-      .menu-icon {
+      .value-wrapper {
         color: var(--tds-dropdown-disabled-color);
       }
 
@@ -257,15 +257,27 @@
     }
   }
 
-  .menu-icon {
-    color: var(--tds-dropdown-menu-icon-color);
+  .icon-button {
+    background: none;
+    border: none;
+    padding: 0 8px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
   }
 
-  tds-icon {
-    transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+  .clear-button tds-icon {
+    color: inherit;
+  }
 
-    &.open {
-      transform: rotateZ(180deg);
-    }
+  button.menu-icon tds-icon {
+    color: var(--tds-dropdown-menu-icon-color);
+    transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+  }
+
+  button.menu-icon.open tds-icon {
+    transform: rotateZ(180deg);
   }
 }

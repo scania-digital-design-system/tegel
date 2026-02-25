@@ -2,21 +2,19 @@
 @use '../../mixins/focus-state' as *;
 
 :host {
-  .dropdown-select {
-    &:focus-within {
-      @include tds-focus-state;
-    }
-  }
-
   .filter {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 100%;
     background-color: var(--tds-dropdown-bg);
     border-bottom: 1px solid var(--tds-dropdown-border-bottom);
     padding-left: 16px;
     border-radius: 4px 4px 0 0;
+
+    .clear-button,
+    .menu-icon {
+      flex: 0 0 auto;
+    }
 
     &:hover {
       border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
@@ -35,6 +33,8 @@
 
     .value-wrapper {
       display: flex;
+      flex: 1;
+      align-items: center;
       width: 100%;
       height: 100%;
 
@@ -89,7 +89,10 @@
     }
 
     &.focus {
+      @include tds-focus-state;
+
       border-bottom: 0;
+      border-radius: 0;
 
       &:hover {
         border-bottom: 0;
@@ -118,6 +121,7 @@
       flex: 1;
       all: unset;
       width: 100%;
+      outline: none;
 
       &::placeholder {
         color: var(--tds-dropdown-placeholder-color);
@@ -135,23 +139,40 @@
     }
 
     .menu-icon {
+      background: none;
+      border: none;
+      padding: 0;
       margin-right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--tds-dropdown-menu-icon-color);
     }
 
-    .clear-icon {
-      margin: 0 8px;
-      color: var(--tds-dropdown-clear-icon-color);
+    .menu-icon:disabled {
+      cursor: not-allowed;
+    }
+
+    .clear-button {
+      background: none;
+      border: none;
       padding-right: 8px;
+      margin: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       border-right: 1px solid var(--tds-dropdown-clear-icon-color);
+      color: var(--tds-dropdown-clear-icon-color);
+    }
 
-      &:hover {
-        color: var(--tds-dropdown-clear-icon-hover-color);
-      }
+    .clear-button.hide {
+      display: none;
+    }
 
-      &.hide {
-        display: none;
-        visibility: hidden;
-      }
+    .clear-button:disabled {
+      cursor: not-allowed;
     }
   }
 }
