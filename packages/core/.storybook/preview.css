@@ -52,3 +52,9 @@ a:not(tds-link *, tds-breadcrumb *) {
   color: var(--tds-grey-100);
   background-color: var(--tds-grey-950);
 }
+
+/* Force code examples in markdown (readme/notes) to use white background with dark text */
+.sbdocs-content pre code {
+  background-color: white !important;
+  color: var(--tds-grey-950) !important;
+}
