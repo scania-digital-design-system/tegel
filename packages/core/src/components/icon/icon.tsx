@@ -75,12 +75,12 @@ export class Icon {
       if (element.name === this.name) {
         return (
           <svg
-            aria-hidden={this.tdsAriaHidden}
+            aria-hidden={this.tdsAriaHidden ? 'true' : undefined}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
             aria-labelledby={this.svgTitle ? `title-${this.name}` : undefined}
             aria-describedby={this.svgDescription ? `desc-${this.name}` : undefined}
-            role="img"
+            role={this.tdsAriaHidden ? undefined : 'img'}
             style={{ fontSize: this.size }}
             height={this.size}
             width={this.size}
