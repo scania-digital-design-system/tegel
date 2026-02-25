@@ -50,7 +50,8 @@ test.describe.parallel(componentName, () => {
   test('Check that lowercase variant input produces correct lowercase CSS classes', async ({
     page,
   }) => {
-    // Given - tags with lowercase variant values in the fixture
+    // Given - tags with lowercase variant values in a dedicated fixture
+    await page.goto('src/components/tag/test/lowercase/index.html');
 
     // When (rendering happens on page load)
 
