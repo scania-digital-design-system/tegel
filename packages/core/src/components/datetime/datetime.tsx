@@ -1,4 +1,14 @@
-import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
+import {
+  Component,
+  State,
+  h,
+  Prop,
+  Listen,
+  Event,
+  EventEmitter,
+  Method,
+  Watch,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -10,6 +20,9 @@ import generateUniqueId from '../../utils/generateUniqueId';
 export class TdsDatetime {
   /** Text-input for focus state */
   private textInput!: HTMLInputElement;
+
+  /** Boolean indicator to trigger input validation */
+  private shouldValidate: boolean = false;
 
   /** Sets an input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'month' | 'week' | 'time' =
@@ -162,6 +175,12 @@ export class TdsDatetime {
     }
   }
 
+  componentDidRender() {
+    if (!this.shouldValidate) return;
+    this.shouldValidate = false;
+    this.validateDate();
+  }
+
   // Listener if input enters focus state
   @Listen('focusin')
   handleFocusIn() {
@@ -174,7 +193,13 @@ export class TdsDatetime {
     this.focusInput = false;
   }
 
-  private validateDate = () => {
+  // Decorator to activate validation when input value changes
+  @Watch('value')
+  onValueChanged() {
+    this.shouldValidate = true;
+  }
+
+  validateDate(): void {
     this.state = 'none';
     if (
       (this.min && this.textInput.validity.rangeUnderflow) ||
@@ -182,8 +207,10 @@ export class TdsDatetime {
       this.textInput.validity.badInput
     ) {
       this.state = 'error';
+    } else {
+      this.state = 'success';
     }
-  };
+  }
 
   // Data input event in value prop
   handleInput(e: InputEvent): void {
@@ -205,8 +232,6 @@ export class TdsDatetime {
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleBlur(e: FocusEvent): void {
     this.textInput.blur();
-
-    this.validateDate();
 
     this.tdsBlur.emit(e);
   }

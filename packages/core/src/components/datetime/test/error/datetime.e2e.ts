@@ -122,5 +122,22 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page.getByText(errorText)).toBeVisible();
       await expect(page.getByText(helperText)).not.toBeVisible();
     });
+
+    test('renders the error message when programmatically setting an input value outside the min/max boundaries', async ({
+      page,
+    }) => {
+      const invalidErrorText = 'Value must be between 10/01/2026 and 31/03/2026';
+      const helperText = "Please enter a date with format 'MM/dd/yyyy'";
+
+      await expect(page.getByText(invalidErrorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
+
+      await page.evaluate(async () => {
+        (document.getElementById('date-input') as HTMLTdsDatetimeElement).setValue('2026-04-01');
+      });
+
+      await expect(page.getByText(invalidErrorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+    });
   });
 });
