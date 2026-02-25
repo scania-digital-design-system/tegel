@@ -5,18 +5,6 @@ import { iconsNames } from '../../../components/icon/iconsArray';
 export default {
   title: 'Tegel Lite (Beta)/Button',
   argTypes: {
-    modeVariant: {
-      name: 'Mode variant',
-      description:
-        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: {
-        defaultValue: { summary: 'Inherit from parent' },
-      },
-    },
     variant: {
       name: 'Variant',
       description:
