@@ -268,12 +268,12 @@ export class TdsDropdown {
   /** Method that forces focus on the input element. */
   @Method()
   async focusElement() {
-    if (this.filter) {
+    if (this.filter || this.multiselect) {
       /** For filter mode, focus the input element */
       this.focusInputElement();
     } else {
       /** For non-filter mode, focus the button element */
-      const button = this.host.shadowRoot?.querySelector('button');
+      const button = this.host.shadowRoot?.querySelector<HTMLButtonElement>('.toggle-button');
       if (button) {
         button.focus();
       }
@@ -759,6 +759,11 @@ export class TdsDropdown {
   render() {
     appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
 
+    const usesInputLayout = this.filter || this.multiselect;
+    const showClearButton =
+      !this.disabled && (this.filterQuery.length > 0 || this.selectedOptions.length > 0);
+    const clearLabel = this.filterQuery.length > 0 ? 'Clear filter' : 'Clear selection';
+
     /** Generate unique IDs for associating labels and helpers with the input/button */
     const labelId = this.label ? `dropdown-label-${this.name || generateUniqueId()}` : undefined;
     const helperId = this.helper ? `dropdown-helper-${this.name || generateUniqueId()}` : undefined;
@@ -779,9 +784,10 @@ export class TdsDropdown {
             'dropdown-select': true,
             [this.size]: true,
             'disabled': this.disabled,
+            'open': this.open,
           }}
         >
-          {this.filter || this.multiselect ? (
+          {usesInputLayout ? (
             <div
               class={{
                 filter: true,
@@ -826,7 +832,9 @@ export class TdsDropdown {
                   disabled={this.disabled}
                   readOnly={!this.filter}
                   onMouseDown={() => this.handleInputMouseDown()}
-                  onInput={(event) => this.handleFilter(event)}
+                  onInput={(event) => {
+                    if (this.filter) this.handleFilter(event);
+                  }}
                   onFocus={() => this.handleFocus()}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
@@ -835,46 +843,35 @@ export class TdsDropdown {
                   }}
                 />
               </div>
-              <tds-icon
-                tabIndex={0}
-                role="button"
-                aria-label={this.filterQuery.length > 0 ? 'Clear filter' : 'Clear selection'}
-                svgTitle={this.filterQuery.length > 0 ? 'Clear filter' : 'Clear selection'}
+              <button
+                type="button"
+                aria-label={clearLabel}
+                disabled={this.disabled}
                 onClick={this.handleFilterReset}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    this.handleFilterReset();
-                  }
-                }}
                 class={{
-                  'clear-icon': true,
-                  'hide': !(this.filterQuery.length > 0 || this.selectedOptions.length > 0),
+                  'clear-button': true,
+                  'hide': !showClearButton,
                 }}
-                name="cross"
-                size="16px"
-              ></tds-icon>
-              <tds-icon
-                tdsAriaHidden
-                role="button"
+              >
+                <tds-icon tdsAriaHidden name="cross" size="16px" />
+              </button>
+              <button
+                type="button"
                 aria-label="Open/Close dropdown"
-                svgTitle="Open/Close dropdown"
+                aria-expanded={this.open ? 'true' : 'false'}
+                disabled={this.disabled}
                 onClick={this.handleToggleOpen}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    this.handleToggleOpen();
-                  }
-                }}
-                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
-                name="chevron_down"
-                size="16px"
-              ></tds-icon>
+                class={`icon-button menu-icon toggle-button ${this.open ? 'open' : 'closed'}`}
+              >
+                <tds-icon tdsAriaHidden name="chevron_down" size="16px"></tds-icon>
+              </button>
             </div>
           ) : (
             <button
-              aria-label={this.tdsAriaLabel}
+              aria-label="Open/Close dropdown"
               aria-labelledby={labelId}
+              aria-expanded={this.open ? 'true' : 'false'}
               aria-describedby={helperId}
-              aria-disabled={this.disabled}
               onClick={() => this.handleToggleOpen()}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
@@ -883,9 +880,10 @@ export class TdsDropdown {
               }}
               class={`
                 ${this.selectedOptions.length ? 'value' : 'placeholder'}
-                ${this.open ? 'open' : 'closed'}
                 ${this.error ? 'error' : ''}
-                `}
+                menu-icon
+                ${this.open ? 'open' : ''}
+              `}
               disabled={this.disabled}
             >
               <div class={`value-wrapper ${this.size}`}>
@@ -909,13 +907,7 @@ export class TdsDropdown {
                 <div class={`placeholder ${this.size}`}>
                   {this.selectedOptions.length ? this.getValue() : this.placeholder}
                 </div>
-                <tds-icon
-                  aria-label="Open/Close dropdown"
-                  svgTitle="Open/Close dropdown"
-                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
-                  name="chevron_down"
-                  size="16px"
-                ></tds-icon>
+                <tds-icon tdsAriaHidden name="chevron_down" size="16px"></tds-icon>
               </div>
             </button>
           )}

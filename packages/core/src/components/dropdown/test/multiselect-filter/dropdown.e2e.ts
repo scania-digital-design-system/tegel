@@ -18,7 +18,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
     test('When focusing on the input it should clear itself', async ({ page }) => {
       // Click the dropdown button
-      const dropdownButton = page.locator('tds-icon[aria-label="Open/Close dropdown"]');
+      const dropdownButton = page.getByRole('button', { name: 'Open/Close dropdown' });
       await dropdownButton.click();
 
       // Get the input element

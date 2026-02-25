@@ -29,8 +29,11 @@ testConfigurations.withModeVariants.forEach((config) => {
     }) => {
       /* click the dropdown button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
-      await dropdownButton.click();
+      const toggleButton = dropdown.getByRole('button', {
+        name: 'Open/Close dropdown',
+      });
+      await toggleButton.click();
+      const dropdownInput = dropdown.getByRole('textbox');
 
       /* Click the Option 1 button */
       const dropdownListElementOneButton = page
@@ -41,7 +44,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(dropdownListElementOneButton).toBeVisible();
 
       // Check that the dropdown button now has the text "Option 1"
-      await expect(dropdownButton).toHaveText(/Option 1/);
+      await expect(dropdownInput).toHaveValue(/Option 1/);
 
       /* also check screenshot diff to make sure it says Option 1 */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -52,8 +55,8 @@ testConfigurations.withModeVariants.forEach((config) => {
     }) => {
       /* click the button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
-      await dropdownButton.click();
+      const dropdownInput = dropdown.getByRole('textbox');
+      await dropdownInput.click();
 
       /* get all checkboxes */
       const dropdownListElementOneButton = dropdown
@@ -77,19 +80,19 @@ testConfigurations.withModeVariants.forEach((config) => {
       await dropdownListElementOneButton.click();
 
       // Check that the dropdown button now has the text "Option 1"
-      await expect(dropdownButton).toHaveText(/Option 1/);
+      await expect(dropdownInput).toHaveValue(/Option 1/);
 
       await dropdownListElementTwoButton.click();
       // Option 2 is disabled, so clicking it shouldn't change the text
-      await expect(dropdownButton).toHaveText(/Option 1/);
+      await expect(dropdownInput).toHaveValue(/Option 1/);
 
       await dropdownListElementThreeButton.click();
       // Now the button should show "Option 1, Option 3"
-      await expect(dropdownButton).toHaveText(/Option 1, Option 3/);
+      await expect(dropdownInput).toHaveValue(/Option 1, Option 3/);
 
       await dropdownListElementFourButton.click();
       // Now the button should show "Option 1, Option 3, Option 4"
-      await expect(dropdownButton).toHaveText(/Option 1, Option 3, Option 4/);
+      await expect(dropdownInput).toHaveValue(/Option 1, Option 3, Option 4/);
 
       /* also check screenshot diff to make sure */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });

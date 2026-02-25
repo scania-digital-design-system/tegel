@@ -129,7 +129,7 @@ testConfigurations.withModeVariants.forEach((config) => {
         .locator('tds-dropdown-option')
         .filter({ hasText: /Option 2/ });
 
-      const dropdownButton = page.locator('tds-icon[aria-label="Open/Close dropdown"]');
+      const dropdownButton = page.getByRole('button', { name: 'Open/Close dropdown' });
 
       // Focus on the input element and start typing
       await expect(dropdownListElementTwoButton).toBeHidden();
