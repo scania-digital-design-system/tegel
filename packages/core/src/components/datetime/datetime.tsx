@@ -174,11 +174,6 @@ export class TdsDatetime {
     this.focusInput = false;
   }
 
-  static parseDate = (stringDate: string) => {
-    const date = new Date(Date.parse(stringDate));
-    return date;
-  };
-
   private validateDate = () => {
     this.state = 'success';
     if (
