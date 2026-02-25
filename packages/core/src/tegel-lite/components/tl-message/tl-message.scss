@@ -83,7 +83,7 @@
   }
 }
 
-.tl-message__content {
+.tl-message__text {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -103,7 +103,7 @@
   }
 }
 
-.tl-message__extended-message {
+.tl-message__subheader {
   @include detail-02;
 
   color: var(--message-main-text-color);

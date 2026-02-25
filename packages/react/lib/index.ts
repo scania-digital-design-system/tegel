@@ -1,2 +1,2 @@
-export * from './components/stencil-generated';
+export * from './components/stencil-generated/components';
 export { defineCustomElements } from '@scania/tegel/loader';

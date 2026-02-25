@@ -1,11 +1,13 @@
+@use '../../../../../../tokens/scss/component/header';
+
+//Needs updating with variables. Didn't work with original in test project
 .tl-header {
-  /* Base background & text */
-  --header-background: var(--component-header-color-background);
+  /* Base text */
   --header-nav-item: var(--component-header-color-foreground-strong);
 
   /* Nav-item states */
   --header-nav-item-background-hover: var(--color-background-surface-100);
-  --header-nav-item-background-selected: var(--color-background-surface-100);
+  --header-nav-item-background-selected: var(--component-header-dropdown-item-background);
   --header-nav-item-border-pressed: var(--color-foreground-border-accent-focus);
   --header-item-hover: var(--component-header-color-background-hover);
 
@@ -20,11 +22,11 @@
   --tds-header-nav-item-dropdown-opened-background-pressed: var(--tds-grey-300);
   --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
 
-  /* Basic element (“Bento”) separators & backgrounds */
+  /* Basic element ("Bento") separators & backgrounds */
   --header-basic-element-border: var(--component-header-color-background-border);
   --header-basic-element-border-open: var(--component-header-color-background-open);
-  --header-basic-element-background-pressed: var(--component-header-color-background-pressed);
-  --header-basic-element-background-selected: var(--component-header-color-background-selected);
+  --header-basic-element-background-pressed: var(--component-header-dropdown-item-background);
+  --header-basic-element-background-selected: var(--component-header-dropdown-item-background);
 
   /* Avatar dropdown */
   --header-avatar-item-background: var(--component-header-avatar-item-background);
@@ -57,27 +59,78 @@
   --header-dropdown-box-shadow: var(--component-header-dropdown-box-shadow);
 }
 
-.scania .tl-header {
-  /* Brand logo */
-  --header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
-  --header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
-  --component-header-space-profile-padding: 16px;
+.scania {
+  /* Light mode - explicit light mode class */
+  .tds-mode-light .tl-header {
+    --header-background: var(--color-brand-primary-800);
+    --header-nav-item: var(--color-foreground-icon-inverse-strong);
+    --header-item-hover: var(--color-brand-primary-700);
+    --header-basic-element-border: var(--color-brand-primary-700);
+    --header-basic-element-background-pressed: var(--color-brand-neutral-white);
+    --header-basic-element-background-selected: var(--color-brand-primary-700);
+  }
+
+  /* Dark mode - override with dark colors */
+  .tds-mode-dark .tl-header {
+    --header-background: var(--color-brand-primary-900);
+    --header-nav-item: var(--color-foreground-icon-strong);
+    --header-item-hover: var(--color-brand-primary-800);
+    --header-basic-element-border: var(--color-brand-primary-800);
+    --header-basic-element-background-pressed: var(--color-brand-primary-800);
+    --header-basic-element-background-selected: var(--color-brand-primary-800);
+  }
+
+  /* Default .tl-header (works for no mode specified - defaults to light) */
+  .tl-header {
+    /* Brand logo */
+    --header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+    --header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+    --component-header-space-profile-padding: 16px;
+
+    /* Background defaults to light mode */
+    --header-background: var(--color-brand-primary-800);
+    --header-nav-item: var(--color-foreground-icon-inverse-strong);
+    --header-item-hover: var(--color-brand-primary-700);
+    --header-basic-element-border: var(--color-brand-primary-700);
+    --header-basic-element-background-pressed: var(--color-brand-neutral-white);
+    --header-basic-element-background-selected: var(--color-brand-primary-700);
+  }
 }
 
 .traton {
   .tds-mode-dark .tl-header {
-    /* Brand logo */
+    /* Brand logo - White for dark mode */
     --header-logotype-local: var(--traton-logotype-white-svg-local);
     --header-logotype-cdn: var(--traton-logotype-white-svg);
+
+    /* Background - uses base from traton tokens */
+    --header-background: var(--color-background-base);
+    --header-nav-item: var(--color-foreground-icon-strong);
+    --header-item-hover: var(--color-background-layer-01);
+    --header-basic-element-border: var(--traton-color-transparent-invisible-light);
+    --header-basic-element-background-pressed: var(--color-background-base);
+    --header-basic-element-background-selected: var(--color-background-surface-100);
   }
 
   .tds-mode-light .tl-header {
-    /* Brand logo */
+    /* Brand logo - Black for light mode */
     --header-logotype-local: var(--traton-logotype-black-svg-local);
     --header-logotype-cdn: var(--traton-logotype-black-svg);
+
+    /* Background - uses base from traton tokens */
+    --header-background: var(--color-background-base);
+    --header-nav-item: var(--color-foreground-icon-strong);
+    --header-item-hover: var(--color-background-layer-01);
+    --header-basic-element-border: var(--traton-color-transparent-invisible-light);
+    --header-basic-element-background-pressed: var(--color-background-base);
+    --header-basic-element-background-selected: var(--color-background-layer-01);
   }
 
   .tl-header {
+    /* Brand logo - Black as default (for no mode specified) */
+    --header-logotype-local: var(--traton-logotype-black-svg-local);
+    --header-logotype-cdn: var(--traton-logotype-black-svg);
     --component-header-space-profile-padding: 20px;
+    --header-background: transparent;
   }
 }

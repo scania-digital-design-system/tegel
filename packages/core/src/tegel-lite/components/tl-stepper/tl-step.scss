@@ -51,8 +51,8 @@
   }
 
   .tl-stepper--horizontal.tl-stepper--sm.tl-stepper--label-aside.tl-stepper--hide-labels
-    .tl-stepper__list
-    > & {
+  .tl-stepper__list
+  > & {
     min-inline-size: 48px;
   }
 

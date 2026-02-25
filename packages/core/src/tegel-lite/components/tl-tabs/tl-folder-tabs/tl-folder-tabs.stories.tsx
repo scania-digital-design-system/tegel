@@ -29,9 +29,9 @@ export default {
   },
   args: {
     modeVariant: 'Primary',
+    selectedIndex: 0,
     showLeftButton: false,
     showRightButton: false,
-    selectedIndex: 0,
   },
 };
 
