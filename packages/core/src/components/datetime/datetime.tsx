@@ -220,6 +220,8 @@ export class TdsDatetime {
     this.value = value;
   }
 
+  // iOS native date picker doesn't support min/max in the UI; we rely on validation + error message.
+  // The .iphone class enables iOS-specific styling for error/success states.
   render() {
     const iphone = navigator.userAgent.toLowerCase().includes('iphone');
 
