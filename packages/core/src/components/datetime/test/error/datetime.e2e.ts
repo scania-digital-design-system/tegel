@@ -37,7 +37,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     // Running locally with `npx playwright test`, the Browser is expecting a date in the format dd/MM/yyyy
     test('renders the error message when manually inputing an invalid date', async ({ page }) => {
       const helperText = "Please enter a date with format 'MM/dd/yyyy'";
-      const specialErrorText = 'Invalid Date';
+      const specialErrorText = 'This date is invalid';
 
       await expect(page.getByText(specialErrorText)).not.toBeVisible();
       await expect(page.getByText(helperText)).toBeVisible();

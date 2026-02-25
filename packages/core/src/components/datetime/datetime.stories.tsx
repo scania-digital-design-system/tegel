@@ -142,6 +142,17 @@ export default {
         defaultValue: { summary: undefined },
       },
     },
+    helperErrorInvalid: {
+      name: 'Helper error for invalid values',
+      description:
+        'Sets the contextual helper error text when the input is invalid. Eg: If the user enters 2026-11-31 this message alerts them.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'Invalid input' },
+      },
+    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the component.',
@@ -173,6 +184,7 @@ export default {
     labelPosition: 'Outside',
     helper: 'Helper text',
     helperError: 'Helper error text',
+    helperErrorInvalid: 'Helper error text for invalid input',
     disabled: false,
     tdsAriaLabel: 'A datetime component',
   },
@@ -191,6 +203,7 @@ const datetimeTemplate = ({
   labelPosition,
   helper,
   helperError,
+  helperErrorInvalid,
   disabled,
   tdsAriaLabel,
 }) => {
@@ -258,6 +271,7 @@ const datetimeTemplate = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}" ` : ''}
       ${helperError ? `helper-error="${helperError}" ` : ''}
+      ${helperErrorInvalid ? `helper-error-invalid="${helperErrorInvalid}" ` : ''}
       tds-aria-label="${tdsAriaLabel}"
       >
     </tds-datetime>

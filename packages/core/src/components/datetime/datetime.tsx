@@ -60,6 +60,9 @@ export class TdsDatetime {
   /** Contextual helper text for the component for error state */
   @Prop() helperError?: string;
 
+  /** Contextual helper text for the component when input is invalid */
+  @Prop() helperErrorInvalid?: string = 'Invalid input';
+
   /** Value for the aria-label attribute */
   @Prop() tdsAriaLabel?: string;
 
@@ -315,8 +318,7 @@ export class TdsDatetime {
             )}
             {this.textInput && this.textInput.validity.badInput && (
               <div class="tds-helper">
-                <tds-icon name="error" size="16px" svgTitle="error" />{' '}
-                {this.type === 'time' ? 'Invalid Time' : 'Invalid Date'}
+                <tds-icon name="error" size="16px" svgTitle="error" /> {this.helperErrorInvalid}
               </div>
             )}
           </div>
