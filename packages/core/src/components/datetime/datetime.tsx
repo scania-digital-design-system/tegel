@@ -43,7 +43,7 @@ export class TdsDatetime {
   @Prop() name = `datetime-${generateUniqueId()}`;
 
   /** Switches between success and error state. */
-  @Prop() state?: 'none' | 'success' | 'error';
+  @Prop({ mutable: true }) state?: 'none' | 'success' | 'error';
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
@@ -175,7 +175,7 @@ export class TdsDatetime {
   }
 
   private validateDate = () => {
-    this.state = 'success';
+    this.state = 'none';
     if (
       (this.min && this.textInput.validity.rangeUnderflow) ||
       (this.max && this.textInput.validity.rangeOverflow) ||
