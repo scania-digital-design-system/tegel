@@ -4,6 +4,8 @@
 :host {
   @include tds-box-sizing;
 
+  --padding-left: 0; // Default value for left padding
+
   display: flex;
   background-color: var(--tds-inline-tabs-background);
   position: relative;
@@ -26,6 +28,7 @@
     overflow-x: scroll;
     scrollbar-width: none;
     gap: 16px; // Adds a consistent gap between the tab items
+    padding-left: var(--padding-left);
 
     &::-webkit-scrollbar {
       display: none;
@@ -38,7 +41,7 @@
   }
 
   .scroll-left-button {
-    left: 0;
+    left: calc(0px - var(--padding-left));
     z-index: 1;
   }
 
