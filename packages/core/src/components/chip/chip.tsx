@@ -172,22 +172,20 @@ export class TdsChip {
 
     return (
       <Host>
-        <div class="component">
-          <div class={chipClasses}>
-            <input
-              type={this.type}
-              id={this.chipId}
-              aria-checked={this.type === 'button' ? undefined : String(this.checked)}
-              role={this.type}
-              aria-label={this.tdsAriaLabel}
-              {...inputAttributes}
-            ></input>
-            <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
-              {hasPrefixSlot && <slot name="prefix" />}
-              {hasLabelSlot && <slot name="label" />}
-              {hasSuffixSlot && <slot name="suffix" />}
-            </label>
-          </div>
+        <div class={chipClasses}>
+          <input
+            type={this.type}
+            id={this.chipId}
+            aria-checked={this.type === 'button' ? undefined : String(this.checked)}
+            role={this.type}
+            aria-label={this.tdsAriaLabel}
+            {...inputAttributes}
+          ></input>
+          <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
+            {hasPrefixSlot && <slot name="prefix" />}
+            {hasLabelSlot && <slot name="label" />}
+            {hasSuffixSlot && <slot name="suffix" />}
+          </label>
         </div>
       </Host>
     );
