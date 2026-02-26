@@ -48,6 +48,8 @@ $local-assets: './assets' !default;
 // Beta components
 @use '../components/_beta/date-picker/date-picker-single/date-picker-vars' as *;
 
+@use 'shame' as *;
+
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -89,5 +91,3 @@ body {
     background-color: var(--tds-grey-900);
   }
 }
-
-@use 'shame' as *;

@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/side-menu';
+
 .tl-side-menu {
   --side-menu-background-cover: var(--color-background-base);
   --side-menu-item-state-hover: var(--color-background-layer-01);
