@@ -440,7 +440,7 @@ export class TdsDropdown {
     if (this.filter) {
       if (!this.open) {
         this.filterQuery = '';
-        this.handleFilter({ target: { value: '' } });
+        this.resetFilterVisibility();
         if (this.inputElement) {
           this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
         }
@@ -578,10 +578,7 @@ export class TdsDropdown {
   };
 
   private handleFilter = (event) => {
-    const isRealInputEvent = event instanceof InputEvent || event?.inputType !== undefined;
-
     if (
-      isRealInputEvent &&
       this.multiselect &&
       this.filterQuery.length === 0 &&
       this.selectedOptions.length > 0 &&
@@ -604,10 +601,9 @@ export class TdsDropdown {
     }
 
     this.tdsInput.emit(event);
-    const query =
-      isRealInputEvent && this.inputElement
-        ? this.inputElement.value.toLowerCase()
-        : event.target.value.toLowerCase();
+    const query = this.inputElement
+      ? this.inputElement.value.toLowerCase()
+      : event.target.value.toLowerCase();
     this.filterQuery = query;
 
     /** Check if the query is empty, and if so, show all options */
@@ -642,7 +638,7 @@ export class TdsDropdown {
       if (this.filterQuery.length > 0) {
         const clearedValue = this.filterQuery;
         this.filterQuery = '';
-        this.handleFilter({ target: { value: '' } });
+        this.resetFilterVisibility();
         if (this.inputElement) {
           this.inputElement.value = this.getValue();
           this.inputElement.focus();
@@ -663,7 +659,7 @@ export class TdsDropdown {
       if (this.filterQuery.length > 0) {
         clearedParts.push(this.filterQuery);
         this.filterQuery = '';
-        this.handleFilter({ target: { value: '' } });
+        this.resetFilterVisibility();
       }
       if (this.selectedOptions.length > 0) {
         clearedParts.push(this.selectedOptions.join(','));
@@ -677,6 +673,15 @@ export class TdsDropdown {
         this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
       }
     }
+  };
+
+  private resetFilterVisibility = () => {
+    this.filterQuery = '';
+    const children = this.getChildren();
+    children.forEach((element) => {
+      element.removeAttribute('hidden');
+    });
+    this.filterResult = null;
   };
 
   private handleMultiselectClear = () => {
@@ -698,7 +703,7 @@ export class TdsDropdown {
       this.inputElement.value = '';
     }
     if (this.filter) {
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
   };
 
@@ -710,7 +715,7 @@ export class TdsDropdown {
     }
     /** Reset filter to show all options for next open */
     if (this.filter) {
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
   };
 
@@ -720,7 +725,7 @@ export class TdsDropdown {
       if (this.inputElement) {
         this.inputElement.value = '';
       }
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
   };
 
@@ -733,7 +738,7 @@ export class TdsDropdown {
     if (this.filter && this.filterQuery.length > 0) {
       this.filterQuery = '';
       /** Reset filter to show all options */
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
 
     if (this.multiselect) {
