@@ -17,7 +17,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
-      const dropdownButtonIcon = page.locator('tds-icon');
+      const dropdownButtonIcon = page.locator('tds-icon[name="chevron_down"]');
 
       const dropdownListElementOne = page
         .locator('tds-dropdown-option')
