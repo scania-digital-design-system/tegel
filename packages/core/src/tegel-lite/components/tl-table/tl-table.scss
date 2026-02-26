@@ -425,8 +425,8 @@
 }
 
 .tl-table__actionbar-right
-.tl-text-field:not(.tl-text-field--input-visible)
-.tl-text-field__suffix--icon {
+  .tl-text-field:not(.tl-text-field--input-visible)
+  .tl-text-field__suffix--icon {
   position: absolute;
   right: 16px;
   top: 50%;
