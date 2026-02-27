@@ -27,6 +27,12 @@ export class TdsTableBodyCell {
   /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
   @Prop({ reflect: true }) textAlign?: TextAlign;
 
+  /** Number of columns the cell should span. */
+  @Prop() colSpan?: number;
+
+  /** Number of rows the cell should span. */
+  @Prop() rowSpan?: number;
+
   @State() textAlignState: TextAlign | undefined = undefined;
 
   @State() activeSorting: boolean = false;
@@ -127,11 +133,11 @@ export class TdsTableBodyCell {
           'tds-table--divider': this.verticalDividers,
           'tds-table--no-min-width': this.noMinWidth,
         }}
-        style={dynamicStyles}
-        role="cell"
       >
-        {this.cellValue}
-        <slot />
+        <td style={dynamicStyles} colSpan={this.colSpan} rowSpan={this.rowSpan}>
+          {this.cellValue}
+          <slot />
+        </td>
       </Host>
     );
   }
