@@ -96,7 +96,7 @@ Stencil reads this nonce and sets it as the `nonce` attribute on every injected 
 
 ### Build-time CSP guard
 
-`packages/core/scripts/verify-csp.mjs` runs automatically after every production build (`npm run build`). It scans the generated JS files in `www/build/`, `dist/esm/`, `dist/cjs/`, and `loader/` for the known CSP-violating patterns and fails the build if any are found.
+`packages/core/scripts/verify-csp.mjs` runs automatically after every production build (`npm run build`). It scans the generated JS files in `www/build/`, `dist/esm/`, `dist/cjs/`, and `loader/` for inline event handler patterns (e.g. `onload` attributes and assignments) and fails the build if any are found. Note that `media="print"` on its own is not a violation — it is a legitimate non-blocking CSS loading technique. Only the inline `onload` handler that older Stencil versions paired with it constitutes a CSP violation.
 
 This acts as a regression guard: if a Stencil upgrade re-introduces an inline event handler pattern, the build will fail with details rather than silently shipping a CSP violation.
 

@@ -29,6 +29,11 @@ const packageRoot = path.resolve(path.dirname(currentFilePath), '..');
 /**
  * Known CSP-violating patterns from Stencil's older lazy-loading CSS mechanism.
  * Each entry describes a distinct violation to detect.
+ *
+ * Note: .media = "print" on its own is NOT a CSP violation — it is a legitimate
+ * non-blocking CSS loading technique. The CSP issue only arises when it is combined
+ * with an inline onload handler (e.g. onload="this.media='all'"), which executes
+ * inline script. Only the inline event handler patterns are checked here.
  */
 const VIOLATION_PATTERNS = [
   {
@@ -42,10 +47,6 @@ const VIOLATION_PATTERNS = [
   {
     regex: /setAttribute\(\s*['"]onload['"]/g,
     description: 'Dynamic onload attribute via setAttribute("onload", ...)',
-  },
-  {
-    regex: /\.media\s*=\s*['"]print['"]/g,
-    description: 'media="print" set on dynamically created link element',
   },
 ];
 
