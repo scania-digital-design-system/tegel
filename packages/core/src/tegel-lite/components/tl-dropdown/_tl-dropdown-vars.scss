@@ -10,6 +10,9 @@
 }
 
 .tl-dropdown {
+  // Colors - Base
+  --dropdown-background: var(--color-background-layer-01);
+
   &--primary {
     --dropdown-background: var(--color-background-layer-01);
   }
@@ -17,9 +20,6 @@
   &--secondary {
     --dropdown-background: var(--color-background-layer-02);
   }
-
-  // Colors - Base
-  --dropdown-background: var(--color-background-layer-01);
 
   // Colors - Label/Placeholder/Helper
   --dropdown-text: var(--color-foreground-text-strong);
