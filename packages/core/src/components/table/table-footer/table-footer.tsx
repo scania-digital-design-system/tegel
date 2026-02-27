@@ -8,12 +8,15 @@ import {
   EventEmitter,
   Prop,
   Element,
+  Watch,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'horizontalScrollWidth',
+  'multiselect',
+  'expandableRows',
 ];
 
 function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
@@ -49,6 +52,12 @@ export class TdsTableFooter {
 
   /* Sets the footer to use compact design. */
   @State() compactDesign: boolean = false;
+
+  /* State to track if multiselect is enabled on parent table. */
+  @State() multiselect: boolean = false;
+
+  /* State to track if expandableRows is enabled on parent table. */
+  @State() expandableRows: boolean = false;
 
   @State() lastCorrectValue: number = 1;
 
@@ -93,6 +102,40 @@ export class TdsTableFooter {
     }
   }
 
+  @Watch('cols')
+  colsChanged(newValue: number | null) {
+    if (newValue !== null) {
+      this.columnsNumber = newValue;
+    } else {
+      this.updateColumnsNumber();
+    }
+  }
+
+  @Watch('multiselect')
+  @Watch('expandableRows')
+  updateColumnsNumber() {
+    if (this.cols) {
+      return;
+    }
+
+    const numberOfColumns =
+      this.host.parentElement?.querySelector('tds-table-header')?.childElementCount ?? 0;
+
+    let totalColumns = numberOfColumns;
+
+    // Add 1 for multiselect checkbox column
+    if (this.multiselect) {
+      totalColumns += 1;
+    }
+
+    // Add 1 for expandable rows column
+    if (this.expandableRows) {
+      totalColumns += 1;
+    }
+
+    this.columnsNumber = totalColumns;
+  }
+
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
@@ -111,7 +154,20 @@ export class TdsTableFooter {
     if (this.cols) {
       this.columnsNumber = this.cols;
     } else {
-      this.columnsNumber = numberOfColumns;
+      // Calculate total columns including multiselect and expandable columns
+      let totalColumns = numberOfColumns;
+
+      // Add 1 for multiselect checkbox column
+      if (this.multiselect) {
+        totalColumns += 1;
+      }
+
+      // Add 1 for expandable rows column
+      if (this.expandableRows) {
+        totalColumns += 1;
+      }
+
+      this.columnsNumber = totalColumns;
     }
   }
 
@@ -225,11 +281,9 @@ export class TdsTableFooter {
                         defaultValue={`${this.rowsPerPageValues[0]}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                       >
-                        {this.rowsPerPageValues.map((value) => {
-                          return (
-                            <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
-                          );
-                        })}
+                        {this.rowsPerPageValues.map((value) => (
+                          <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
+                        ))}
                       </tds-dropdown>
                     </div>
                   )}
