@@ -29,7 +29,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     }) => {
       /* click the dropdown button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
+      const dropdownButton = dropdown.locator('button:not(.clear-icon)');
       await dropdownButton.click();
 
       /* Click the Option 1 button */
@@ -52,7 +52,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     }) => {
       /* click the button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
+      const dropdownButton = dropdown.locator('button:not(.clear-icon)');
       await dropdownButton.click();
 
       /* get all checkboxes */

@@ -437,13 +437,16 @@ export class TdsDropdown {
   this sets the value of the dropdown to the current selection labels or null if no selection is made. */
   @Watch('open')
   handleOpenState() {
-    if (this.filter && this.multiselect) {
+    if (this.filter) {
       if (!this.open) {
-        this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
+        this.filterQuery = '';
+        this.resetFilterVisibility();
+        if (this.inputElement) {
+          this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
+        }
       }
     }
 
-    /** Update the inert state of dropdown list when open state changes */
     this.updateDropdownListInertState();
   }
 
@@ -575,9 +578,34 @@ export class TdsDropdown {
   };
 
   private handleFilter = (event) => {
+    if (
+      this.multiselect &&
+      this.filterQuery.length === 0 &&
+      this.selectedOptions.length > 0 &&
+      this.inputElement
+    ) {
+      const displayValue = this.getValue();
+      const rawValue: string = event.target.value;
+
+      if (rawValue.length <= displayValue.length + 1) {
+        let typed: string;
+        if (rawValue.startsWith(displayValue)) {
+          typed = rawValue.slice(displayValue.length);
+        } else if (rawValue.endsWith(displayValue)) {
+          typed = rawValue.slice(0, rawValue.length - displayValue.length);
+        } else {
+          typed = rawValue;
+        }
+        this.inputElement.value = typed;
+      }
+    }
+
     this.tdsInput.emit(event);
-    const query = event.target.value.toLowerCase();
+    const query = this.inputElement
+      ? this.inputElement.value.toLowerCase()
+      : event.target.value.toLowerCase();
     this.filterQuery = query;
+
     /** Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
 
@@ -605,43 +633,99 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
-    /** If a filter is present, clear only the filter text */
-    if (this.filterQuery.length > 0) {
-      const clearedValue = this.filterQuery;
-      this.filterQuery = '';
-      this.inputElement.value = '';
-      this.handleFilter({ target: { value: '' } });
-      this.inputElement.focus();
-      this.tdsClear.emit({ clearedValue });
-    } else if (this.selectedOptions.length > 0) {
-      /** If no filter but selections exist, clear all selected values */
-      const clearedValue = this.selectedOptions.join(',');
-      this.updateDropdownStateFromUser([]);
+    if (this.multiselect) {
+      /** Multiselect + filter: two-step clear */
+      if (this.filterQuery.length > 0) {
+        const clearedValue = this.filterQuery;
+        this.filterQuery = '';
+        this.resetFilterVisibility();
+        if (this.inputElement) {
+          this.inputElement.value = this.getValue();
+          this.inputElement.focus();
+        }
+        this.tdsClear.emit({ clearedValue });
+      } else if (this.selectedOptions.length > 0) {
+        const clearedValue = this.selectedOptions.join(',');
+        this.updateDropdownStateFromUser([]);
+        if (this.inputElement) {
+          this.inputElement.value = '';
+          this.inputElement.focus();
+        }
+        this.tdsClear.emit({ clearedValue });
+      }
+    } else {
+      /** Single select + filter: clear everything immediately */
+      const clearedParts: string[] = [];
+      if (this.filterQuery.length > 0) {
+        clearedParts.push(this.filterQuery);
+        this.filterQuery = '';
+        this.resetFilterVisibility();
+      }
+      if (this.selectedOptions.length > 0) {
+        clearedParts.push(this.selectedOptions.join(','));
+        this.updateDropdownStateFromUser([]);
+      }
       if (this.inputElement) {
         this.inputElement.value = '';
         this.inputElement.focus();
       }
-      this.tdsClear.emit({ clearedValue });
+      if (clearedParts.length > 0) {
+        this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
+      }
     }
+  };
+
+  private resetFilterVisibility = () => {
+    this.filterQuery = '';
+    const children = this.getChildren();
+    children.forEach((element) => {
+      element.removeAttribute('hidden');
+    });
+    this.filterResult = null;
+  };
+
+  private handleMultiselectClear = () => {
+    const clearedValue = this.selectedOptions.join(',');
+    this.updateDropdownStateFromUser([]);
+    this.tdsClear.emit({ clearedValue });
   };
 
   private handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
-    if (this.inputElement) {
+    if (this.multiselect && this.filter) {
+      /** For multiselect+filter, show selected labels on focus.
+       *  Clearing happens on click via handleInputClick. */
+      if (this.inputElement) {
+        this.inputElement.value = this.getValue();
+      }
+    } else if (this.inputElement) {
       this.inputElement.value = '';
     }
-    /** Focus event is now handled by focusin listener */
     if (this.filter) {
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
   };
 
   private handleBlur = () => {
-    /** Handle internal state changes when component loses focus */
     this.filterFocus = false;
+    this.filterQuery = '';
     if (this.inputElement) {
       this.inputElement.value = this.getValue();
+    }
+    /** Reset filter to show all options for next open */
+    if (this.filter) {
+      this.resetFilterVisibility();
+    }
+  };
+
+  private handleInputClick = () => {
+    if (this.multiselect && this.filter) {
+      this.filterQuery = '';
+      if (this.inputElement) {
+        this.inputElement.value = '';
+      }
+      this.resetFilterVisibility();
     }
   };
 
@@ -653,17 +737,19 @@ export class TdsDropdown {
     /** Clear filter query when an option is selected */
     if (this.filter && this.filterQuery.length > 0) {
       this.filterQuery = '';
-      if (this.inputElement) {
-        this.inputElement.value = '';
-      }
       /** Reset filter to show all options */
-      this.handleFilter({ target: { value: '' } });
+      this.resetFilterVisibility();
     }
 
     if (this.multiselect) {
       this.updateDropdownStateFromUser([...this.selectedOptions, value]);
     } else {
       this.updateDropdownStateFromUser([value]);
+    }
+
+    /** After selection, show all selected labels in the input */
+    if (this.filter && this.multiselect && this.inputElement) {
+      this.inputElement.value = this.getValue();
     }
   }
 
@@ -758,17 +844,21 @@ export class TdsDropdown {
                   aria-labelledby={labelId}
                   aria-describedby={helperId}
                   aria-disabled={this.disabled}
-                  // eslint-disable-next-line no-return-assign
-                  ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
+                  ref={(inputEl) => {
+                    this.inputElement = inputEl as HTMLInputElement;
+                    if (this.inputElement && !this.filterFocus) {
+                      this.inputElement.value = this.getValue();
+                    }
+                  }}
                   class={{
                     placeholder: this.labelPosition === 'inside',
                   }}
                   type="text"
                   placeholder={this.filterFocus ? '' : this.placeholder}
-                  value={this.multiselect && this.filterFocus ? this.filterQuery : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onFocus={() => this.handleFocus()}
+                  onClick={() => this.handleInputClick()}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;
@@ -823,10 +913,10 @@ export class TdsDropdown {
                 }
               }}
               class={`
-                ${this.selectedOptions.length ? 'value' : 'placeholder'}
-                ${this.open ? 'open' : 'closed'}
-                ${this.error ? 'error' : ''}
-                `}
+              ${this.selectedOptions.length ? 'value' : 'placeholder'}
+              ${this.open ? 'open' : 'closed'}
+              ${this.error ? 'error' : ''}
+              `}
               disabled={this.disabled}
             >
               <div class={`value-wrapper ${this.size}`}>
@@ -850,14 +940,37 @@ export class TdsDropdown {
                 <div class={`placeholder ${this.size}`}>
                   {this.selectedOptions.length ? this.getValue() : this.placeholder}
                 </div>
-                <tds-icon
-                  aria-label="Open/Close dropdown"
-                  svgTitle="Open/Close dropdown"
-                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
-                  name="chevron_down"
-                  size="16px"
-                ></tds-icon>
               </div>
+              <tds-icon
+                tabIndex={0}
+                role="button"
+                aria-label="Clear selection"
+                svgTitle="Clear selection"
+                onClick={(event: MouseEvent) => {
+                  event.stopPropagation();
+                  this.handleMultiselectClear();
+                }}
+                onKeyDown={(event: KeyboardEvent) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.stopPropagation();
+                    event.preventDefault();
+                    this.handleMultiselectClear();
+                  }
+                }}
+                class={{
+                  'clear-icon': true,
+                  'hide': !(this.multiselect && this.selectedOptions.length > 0),
+                }}
+                name="cross"
+                size="16px"
+              ></tds-icon>
+              <tds-icon
+                aria-label="Open/Close dropdown"
+                svgTitle="Open/Close dropdown"
+                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                name="chevron_down"
+                size="16px"
+              ></tds-icon>
             </button>
           )}
         </div>

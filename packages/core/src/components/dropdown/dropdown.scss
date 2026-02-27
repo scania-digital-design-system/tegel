@@ -261,6 +261,25 @@
     color: var(--tds-dropdown-menu-icon-color);
   }
 
+  .clear-icon {
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+    margin-right: 8px;
+    color: var(--tds-dropdown-clear-icon-color);
+    padding-right: 8px;
+    border-right: 1px solid var(--tds-dropdown-clear-icon-color);
+
+    &:hover {
+      color: var(--tds-dropdown-clear-icon-hover-color);
+    }
+
+    &.hide {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
   tds-icon {
     transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
