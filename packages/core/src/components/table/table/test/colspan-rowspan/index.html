@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Table - Colspan and Rowspan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-table vertical-dividers="false" compact-design="false" responsive="false">
+      <tds-table-header>
+        <tds-header-cell cell-value="Spanning header" col-span="2"></tds-header-cell>
+        <tds-header-cell cell-value="Column C"></tds-header-cell>
+      </tds-table-header>
+      <tds-table-body>
+        <tds-table-body-row>
+          <tds-body-cell cell-value="Spans two columns" col-span="2"></tds-body-cell>
+          <tds-body-cell cell-value="C1"></tds-body-cell>
+        </tds-table-body-row>
+        <tds-table-body-row>
+          <tds-body-cell cell-value="Spans two rows" row-span="2"></tds-body-cell>
+          <tds-body-cell cell-value="B2"></tds-body-cell>
+          <tds-body-cell cell-value="C2"></tds-body-cell>
+        </tds-table-body-row>
+        <tds-table-body-row>
+          <tds-body-cell cell-value="B3"></tds-body-cell>
+          <tds-body-cell cell-value="C3"></tds-body-cell>
+        </tds-table-body-row>
+      </tds-table-body>
+    </tds-table>
+  </body>
+</html>

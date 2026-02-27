@@ -57,10 +57,6 @@
       transform: rotate(180deg);
     }
   }
-
-  ::slotted(tds-header-cell:hover) {
-    background-color: var(--tds-table-header-background-hover);
-  }
 }
 
 :host(.tds-table--compact) {
