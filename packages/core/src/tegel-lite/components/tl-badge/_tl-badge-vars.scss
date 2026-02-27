@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/badge';
+
 .tl-badge {
   --badge-background-color: var(--component-badge-background);
   --badge-color-text: var(--component-badge-text);

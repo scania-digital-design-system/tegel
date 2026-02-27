@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/footer';
+
 .tl-footer {
   --footer-top-background-primary: var(--color-background-layer-01);
   --footer-top-background-secondary: var(--color-background-base);
