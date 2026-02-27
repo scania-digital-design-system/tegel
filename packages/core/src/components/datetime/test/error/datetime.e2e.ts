@@ -19,7 +19,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('renders error helper text in error state with red color and error icon', async ({
       page,
     }) => {
-      const helperText = "This is for status='error'";
+      const helperText = "This is for state='error'";
       const errorText = 'This is the error text!';
 
       await expect(page.getByText(errorText)).toBeVisible();
@@ -101,7 +101,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       page,
     }) => {
       const errorText = 'Value must be between 08:30 and 17:30';
-      const helperText = "Please enter a week with format 'HH:mm'";
+      const helperText = "Please enter a time with format 'HH:mm'";
 
       await expect(page.getByText(errorText)).not.toBeVisible();
       await expect(page.getByText(helperText)).toBeVisible();
