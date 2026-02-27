@@ -22,18 +22,18 @@ export class TdsTag {
 
   /** Sets the variant mode of the tag */
   @Prop() variant:
-    | 'Success'
-    | 'Warning'
-    | 'New'
-    | 'Neutral'
-    | 'Information'
-    | 'Error'
     | 'success'
     | 'warning'
     | 'new'
     | 'neutral'
     | 'information'
-    | 'error' = 'Neutral';
+    | 'error'
+    | 'Success'
+    | 'Warning'
+    | 'New'
+    | 'Neutral'
+    | 'Information'
+    | 'Error' = 'Neutral';
 
   render() {
     const hasPrefixSlot = hasSlot('prefix', this.host);
