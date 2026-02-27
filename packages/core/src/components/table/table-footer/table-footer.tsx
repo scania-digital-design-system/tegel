@@ -114,7 +114,6 @@ export class TdsTableFooter {
   @Watch('multiselect')
   @Watch('expandableRows')
   updateColumnsNumber() {
-    // Don't update if cols is manually set
     if (this.cols) {
       return;
     }
