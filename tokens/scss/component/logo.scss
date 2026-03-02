@@ -2,13 +2,11 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-logo,
-tds-logo {
+.scania .tds-mode-dark .tl-logo,
+.scania .tds-mode-dark tds-logo {
   --component-logo-fill: var(--color-brand-neutral-white);
-  --component-logo-visibility-Footer-Right-Logo: true;
-  --component-logo-visibility-TRA-Left-Logo: false;
-  --component-logo-visibility-TDS-Right-Logo: true;
-  --component-logo-visibility-TRA-Right-Logo: false;
-  --component-logo-visibility-TDS-Left-Logo: true;
   --component-logo-string-wordmark: scania;
+  --component-logo-visibility-TDS-Left-Logo: 1;
+  --component-logo-visibility-TDS-Right-Logo: 1;
+  --component-logo-visibility-Footer-Right-Logo: 1;
 }

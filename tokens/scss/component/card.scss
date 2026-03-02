@@ -2,9 +2,16 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-card,
-tds-card {
-  --component-card-secondary: var(--color-background-layer-02);
-  --component-card-primary: var(--color-background-layer-01);
-  --component-card-padding-padding: var(--scania-unit-16);
+.scania .tds-mode-dark {
+  --component-card-background-primary: var(--color-background-layer-01);
+  --component-card-background-secondary: var(--color-background-layer-02);
+  --component-card-border-radius-default: var(--scania-unit-4);
+  --component-card-space-padding-default: var(--scania-unit-16);
+}
+
+.traton .tds-mode-dark {
+  --component-card-background-primary: var(--traton-color-transparent-invisible-dark);
+  --component-card-background-secondary: var(--traton-color-transparent-invisible-dark);
+  --component-card-border-radius-default: var(--traton-unit-0);
+  --component-card-space-padding-default: var(--traton-unit-0);
 }

@@ -2,7 +2,10 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-stepper,
-tds-stepper {
+.scania .tds-mode-dark {
+  --component-stepper-success: var(--color-system-success-default);
+}
+
+.traton .tds-mode-dark {
   --component-stepper-success: var(--color-system-success-default);
 }
