@@ -1,20 +1,68 @@
 import { execSync } from 'child_process';
 import StyleDictionary from 'style-dictionary';
 import { register } from '@tokens-studio/sd-transforms';
-import config from './style-dictionary.config.mjs';
-import { mkdirSync } from 'fs';
-import { join } from 'path';
+import config from './style-dictionary.config.simple.mjs';
+import { main as normalizeTokens } from './figma-to-tokens.mjs';
+import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, renameSync, readdirSync } from 'fs';
+import { join, dirname } from 'path';
 
 // Create component directory if it doesn't exist
 const componentDir = join(process.cwd(), 'build', 'scss', 'component');
 mkdirSync(componentDir, { recursive: true });
 
-// Transform tokens to remove 'cy' from font family names
-console.log('Transforming tokens...');
-// Import and execute the transform directly instead of using execSync
-import('./transform-tokens.mjs');
+// Normalize tokens from Figma export to Style Dictionary format
+console.log('Normalizing tokens from Figma export...\n');
+normalizeTokens();
 
 register(StyleDictionary);
+
+// List of files that should always exist (even if empty)
+const filesToPreserve = [
+  'tokens/scss/component/dropdown.scss',
+  'tokens/scss/component/side-menu.scss',
+  'tokens/scss/component/text.scss',
+  'tokens/scss/scania/typography.scss',
+  'tokens/scss/traton/typography.scss',
+  'tokens/scss/scania/dimension.scss',
+  'tokens/scss/traton/dimension.scss',
+  'tokens/scss/scania/scania-icons.scss',
+  'tokens/scss/scania/scania-icons-primitive.scss',
+  'tokens/scss/traton/traton-icons.scss',
+  'tokens/scss/traton/traton-icons-primitive.scss',
+];
+
+// Helper function to create empty file with header
+function createEmptyFile(filePath) {
+  const fullPath = join(process.cwd(), filePath);
+  const dir = dirname(fullPath);
+  mkdirSync(dir, { recursive: true });
+  
+  // Determine format based on file path
+  let content = '/**\n * Do not edit directly, this file was auto-generated.\n */\n\n';
+  
+  if (filePath.includes('component/')) {
+    // Component format
+    const componentName = filePath.split('/').pop().replace('.scss', '');
+    content += `.${componentName} {\n}\n`;
+  } else if (filePath.includes('typography')) {
+    // Typography format - use brand selector
+    const brand = filePath.includes('scania') ? 'scania' : 'traton';
+    content += `.${brand} {\n}\n`;
+  } else if (filePath.includes('dimension')) {
+    // Dimension format - use brand selector
+    const brand = filePath.includes('scania') ? 'scania' : 'traton';
+    content += `.${brand} {\n}\n`;
+  } else if (filePath.includes('icons')) {
+    // Icons format - use brand selector
+    const brand = filePath.includes('scania') ? 'scania' : 'traton';
+    content += `.${brand} {\n}\n`;
+  } else {
+    // Default format
+    content += ':root {\n}\n';
+  }
+  
+  writeFileSync(fullPath, content, 'utf8');
+}
 
 // Build primitive tokens
 const primitiveSD = new StyleDictionary({
@@ -23,14 +71,199 @@ const primitiveSD = new StyleDictionary({
 });
 primitiveSD.buildAllPlatforms();
 
+// Build component tokens (silent logging - collisions are expected and harmless
+// since non-component tokens from multiple brand/theme files share paths but get filtered out)
+console.log('Building component...');
+const componentSD = new StyleDictionary({
+  ...config.component,
+  log: { verbosity: 'default' }
+});
+componentSD.buildAllPlatforms();
+
 // Build theme-specific tokens
+// Group by brand to handle files that are written by multiple themes (e.g., typography.scss)
+const themeGroups = {};
 Object.entries(config)
-  .filter(([key]) => key !== 'primitive') // Skip primitive config
+  .filter(([key]) => key !== 'primitive' && key !== 'component')
   .forEach(([themeName, themeConfig]) => {
-    console.log(`Building ${themeName}...`);
-    const themeSD = new StyleDictionary({
-      ...themeConfig,
-      log: { verbosity: 'verbose' }
-    });
-    themeSD.buildAllPlatforms();
-  }); 
+    const brand = themeName.split('-')[0]; // Extract brand name
+    if (!themeGroups[brand]) {
+      themeGroups[brand] = [];
+    }
+    themeGroups[brand].push([themeName, themeConfig]);
+  });
+
+// Generic function to clean SCSS files - filter tokens by prefix
+const cleanScssFile = (filePath, keepToken) => {
+  if (!existsSync(filePath)) {
+    return { kept: 0, removed: 0 };
+  }
+  
+  const content = readFileSync(filePath, 'utf8');
+  const cleanedLines = [];
+  let kept = 0, removed = 0;
+  
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim();
+    
+    // Keep structure: empty lines, comments, selectors, braces
+    if (!trimmed || /^[/*]/.test(trimmed) || trimmed === '{' || trimmed === '}' ||
+        trimmed.startsWith('.') || trimmed.startsWith(':')) {
+      cleanedLines.push(line);
+      continue;
+    }
+    
+    // For tokens, check if we should keep them
+    if (trimmed.startsWith('--')) {
+      const varName = trimmed.split(':')[0].trim();
+      if (keepToken(varName)) {
+        cleanedLines.push(line);
+        kept++;
+      } else {
+        removed++;
+      }
+      continue;
+    }
+    
+    cleanedLines.push(line);
+  }
+  
+  writeFileSync(filePath, cleanedLines.join('\n'), 'utf8');
+  return { kept, removed };
+};
+
+// Convert dimension file: fix raw values and wrong-brand references
+const convertDimensionFile = (brand) => {
+  const dimensionPath = join(process.cwd(), 'tokens', 'scss', brand, 'dimension.scss');
+  if (!existsSync(dimensionPath)) {
+    return false;
+  }
+  
+  const content = readFileSync(dimensionPath, 'utf8');
+  let converted = false;
+  
+  const lines = content.split('\n').map(line => {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('--dimension-')) return line;
+    
+    const indent = line.match(/^(\s*)/)?.[1] || '';
+    const varName = trimmed.split(':')[0].trim();
+    
+    // Fix wrong-brand unit references
+    const wrongBrand = trimmed.match(/var\(--(scania|traton)-unit-(\d+)\)/);
+    if (wrongBrand && wrongBrand[1] !== brand) {
+      converted = true;
+      return `${indent}${varName}: var(--${brand}-unit-${wrongBrand[2]});`;
+    }
+    
+    // Fix raw numeric values
+    const rawValue = trimmed.match(/^--dimension-[^:]+:\s*(\d+)\s*;?\s*$/);
+    if (rawValue) {
+      converted = true;
+      return `${indent}${varName}: var(--${brand}-unit-${rawValue[1]});`;
+    }
+    
+    return line;
+  });
+  
+  if (converted) {
+    writeFileSync(dimensionPath, lines.join('\n'), 'utf8');
+  }
+  return converted;
+};
+
+// Extract typography tokens from a temp file, clean names, return unique tokens
+const extractTypographyTokens = (filePath) => {
+  if (!existsSync(filePath)) return [];
+  
+  const tokens = [];
+  for (const line of readFileSync(filePath, 'utf8').split('\n')) {
+    const trimmed = line.trim();
+    // Only collect --type-* tokens with valid values
+    if (trimmed.startsWith('--type-') && !trimmed.includes(': undefined')) {
+      // Remove brand/theme prefix: --type-scania-light-display-01 -> --type-display-01
+      const cleaned = trimmed.replace(/^--type-(scania|traton)-(light|dark)-/, '--type-');
+      tokens.push(cleaned);
+    }
+  }
+  unlinkSync(filePath);
+  return tokens;
+};
+
+// Build themes, handling typography deduplication across light/dark themes
+const buildThemes = async () => {
+  for (const [brand, themes] of Object.entries(themeGroups)) {
+    const typographyPath = join(process.cwd(), 'tokens', 'scss', brand, 'typography.scss');
+    mkdirSync(dirname(typographyPath), { recursive: true });
+    
+    // Use Set to deduplicate tokens across themes (light/dark have same typography)
+    const typographyTokens = new Set();
+    
+    for (const [themeName, themeConfig] of themes) {
+      console.log(`Building ${themeName}...`);
+      
+      // Redirect typography output to temp file
+      const tempFile = `typography.${themeName}.tmp.scss`;
+      const modifiedConfig = {
+        ...themeConfig,
+        platforms: {
+          ...themeConfig.platforms,
+          scss: {
+            ...themeConfig.platforms.scss,
+            files: themeConfig.platforms.scss.files.map(file => 
+              file.destination === 'typography.scss' ? { ...file, destination: tempFile } : file
+            )
+          }
+        }
+      };
+      
+      await new StyleDictionary({ ...modifiedConfig, log: { verbosity: 'verbose' } }).buildAllPlatforms();
+      
+      // Extract tokens and add to set
+      const tempPath = join(process.cwd(), 'tokens', 'scss', brand, tempFile);
+      const tokens = extractTypographyTokens(tempPath);
+      tokens.forEach(t => typographyTokens.add(t));
+      console.log(`  Collected ${tokens.length} typography tokens from ${themeName}`);
+    }
+    
+    // Write merged typography file
+    const header = '/**\n * Do not edit directly, this file was auto-generated.\n */\n\n';
+    const selector = brand === 'scania' ? '.scania' : '.traton';
+    writeFileSync(typographyPath, `${header}${selector} {\n${[...typographyTokens].join('\n')}\n}`, 'utf8');
+    console.log(`  Wrote typography.scss for ${brand} with ${typographyTokens.size} unique tokens`);
+  
+    // Clean up dimension.scss - keep dimension tokens and brand-specific unit tokens
+    const dimensionPath = join(process.cwd(), 'tokens', 'scss', brand, 'dimension.scss');
+    const dimResult = cleanScssFile(dimensionPath, name => 
+      name.startsWith('--dimension-') || (name.includes('-unit-') && name.startsWith(`--${brand}-`))
+    );
+    console.log(`  Cleaned dimension.scss for ${brand} - kept ${dimResult.kept} tokens, removed ${dimResult.removed} unwanted tokens`);
+    
+    // Clean up color-dark.scss and color-light.scss - keep semantic color tokens only
+    for (const themeType of ['dark', 'light']) {
+      const colorPath = join(process.cwd(), 'tokens', 'scss', brand, `color-${themeType}.scss`);
+      const colorResult = cleanScssFile(colorPath, name => name.startsWith('--color-'));
+      console.log(`  Cleaned color-${themeType}.scss for ${brand} - kept ${colorResult.kept} tokens, removed ${colorResult.removed} unwanted tokens`);
+    }
+  }
+
+  // Ensure all files that should exist are created (even if empty)
+  filesToPreserve.forEach(filePath => {
+    const fullPath = join(process.cwd(), filePath);
+    if (!existsSync(fullPath)) {
+      console.log(`Creating empty file: ${filePath}`);
+      createEmptyFile(filePath);
+    }
+  });
+
+  // Final pass: Convert dimension files (fix raw values and wrong-brand references)
+  console.log('\nConverting dimension files...');
+  ['scania', 'traton'].forEach(brand => {
+    if (convertDimensionFile(brand)) {
+      console.log(`  ✓ Converted ${brand} dimension file to use var() references`);
+    }
+  });
+};
+
+// Run the async build
+buildThemes(); 
