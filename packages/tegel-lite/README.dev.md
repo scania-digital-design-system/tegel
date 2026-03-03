@@ -179,7 +179,7 @@ Set the brand on `<html>` and mode on `<body>`:
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scania"> {/* or "traton" */}
-      <body className={isDarkMode ? "tds-mode-dark" : ""}>
+      <body className={isDarkMode ? "tl-mode-dark" : ""}>
         {children}
       </body>
     </html>
@@ -189,7 +189,7 @@ export default function RootLayout({ children }) {
 
 **Important:** 
 - Brand class (`.scania` or `.traton`) goes on the `<html>` element
-- Mode class (`.tds-mode-dark`) goes on the `<body>` element for dark mode
+- Mode class (`.tl-mode-dark`) goes on the `<body>` element for dark mode
 - Light mode is the default and doesn't require a class
 
 Checkout the Tegel Storybook documentation for more examples and usage.

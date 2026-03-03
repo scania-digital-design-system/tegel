@@ -25,7 +25,7 @@ for (const name of components) {
       await page.goto(pagePath);
       await page.evaluate(() => {
         document.documentElement.className = 'scania';
-        document.body.className = 'tds-mode-light';
+        document.body.className = 'tl-mode-light';
       });
       await page.waitForTimeout(50);
       await expect(page).toHaveScreenshot(name);
@@ -35,7 +35,7 @@ for (const name of components) {
       await page.goto(pagePath);
       await page.evaluate(() => {
         document.documentElement.className = 'scania';
-        document.body.className = 'tds-mode-dark';
+        document.body.className = 'tl-mode-dark';
       });
       await page.waitForTimeout(50);
       await expect(page).toHaveScreenshot(name);
@@ -46,7 +46,7 @@ for (const name of components) {
       await page.goto(pagePath);
       await page.evaluate(() => {
         document.documentElement.className = 'traton';
-        document.body.className = 'tds-mode-light';
+        document.body.className = 'tl-mode-light';
       });
       await page.waitForTimeout(50);
       await expect(page).toHaveScreenshot(name);
@@ -56,7 +56,7 @@ for (const name of components) {
       await page.goto(pagePath);
       await page.evaluate(() => {
         document.documentElement.className = 'traton';
-        document.body.className = 'tds-mode-dark';
+        document.body.className = 'tl-mode-dark';
       });
       await page.waitForTimeout(50);
       await expect(page).toHaveScreenshot(name);
