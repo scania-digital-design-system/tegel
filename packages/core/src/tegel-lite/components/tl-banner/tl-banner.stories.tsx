@@ -74,6 +74,11 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-banner.css"
+      "@scania/tegel-lite/tl-icon.css"
+    -->
+
+    <!-- Optional stylesheets:
+      "@scania/tegel-lite/tl-link.css"
     -->
     <div class="tl-banner ${variantClass}">
       ${iconElement}
