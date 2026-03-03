@@ -1,5 +1,12 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
+const validators = {
+  'Always valid': (_value: string) => true,
+  'Always invalid': (_value: string) => false,
+  'Summer months are valid': (value: string) =>
+    ['06', '07', '08', '09'].includes(value.split('-')[1]),
+};
+
 export default {
   title: 'Components/Datetime',
   parameters: {
@@ -142,6 +149,17 @@ export default {
         defaultValue: { summary: undefined },
       },
     },
+    customValidator: {
+      name: 'Custom validator',
+      description:
+        'User defined function for additional validation based on business rules. Should return true if valid and false otherwise. <br/>Four options are presented as examples for custom validations.',
+      control: { type: 'select' },
+      options: Object.keys(validators),
+      mapping: validators,
+      table: {
+        defaultValue: { summary: undefined },
+      },
+    },
     helperErrorInvalid: {
       name: 'Helper error for invalid values',
       description:
@@ -187,6 +205,7 @@ export default {
     helperErrorInvalid: 'Helper error text for invalid input',
     disabled: false,
     tdsAriaLabel: 'A datetime component',
+    customValidator: undefined,
   },
 };
 
@@ -206,6 +225,7 @@ const datetimeTemplate = ({
   helperErrorInvalid,
   disabled,
   tdsAriaLabel,
+  customValidator,
 }) => {
   const typeLookup = {
     Datetime: 'datetime-local',
@@ -280,6 +300,9 @@ const datetimeTemplate = ({
     <script>
     /* DEMO Code: Used only for Storybook demo purposes */
       datetimeElement = document.querySelector('tds-datetime');
+
+      datetimeElement.customValidator = ${customValidator};
+
       datetimeElement.addEventListener('tdsChange', (event) => {
         console.log(event);
       });

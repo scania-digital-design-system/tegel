@@ -139,5 +139,25 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page.getByText(invalidErrorText)).toBeVisible();
       await expect(page.getByText(helperText)).not.toBeVisible();
     });
+
+    test('renders the error message when providing a custom validator', async ({ page }) => {
+      const helperText = 'This is for the customValidator';
+      const errorText = 'This is always wrong!';
+
+      await expect(page.getByText(errorText)).not.toBeVisible();
+      await expect(page.getByText(helperText)).toBeVisible();
+
+      const datetime = page.getByLabel('DateTime component with customValidator');
+      await datetime.click();
+
+      await datetime.pressSequentially('03');
+      await datetime.pressSequentially('03');
+      await datetime.pressSequentially('2026');
+
+      await datetime.blur();
+
+      await expect(page.getByText(errorText)).toBeVisible();
+      await expect(page.getByText(helperText)).not.toBeVisible();
+    });
   });
 });

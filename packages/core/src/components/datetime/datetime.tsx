@@ -79,6 +79,9 @@ export class TdsDatetime {
   /** Value for the aria-label attribute */
   @Prop() tdsAriaLabel?: string;
 
+  /** Function for additional validation based on business rules */
+  @Prop() customValidator?: (value: string) => boolean;
+
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
 
@@ -143,6 +146,14 @@ export class TdsDatetime {
     }
   }
 
+  nativeValidation = () => {
+    return (
+      (this.min && this.textInput.validity.rangeUnderflow) ||
+      (this.max && this.textInput.validity.rangeOverflow) ||
+      this.textInput.validity.badInput
+    );
+  };
+
   getDefaultValue = () => {
     const dateTimeObj = {
       year: this.defaultValue.slice(0, 4),
@@ -202,9 +213,8 @@ export class TdsDatetime {
   validateDate(): void {
     this.state = 'none';
     if (
-      (this.min && this.textInput.validity.rangeUnderflow) ||
-      (this.max && this.textInput.validity.rangeOverflow) ||
-      this.textInput.validity.badInput
+      this.nativeValidation() ||
+      (this.customValidator && !this.customValidator(this.textInput.value))
     ) {
       this.state = 'error';
     } else {

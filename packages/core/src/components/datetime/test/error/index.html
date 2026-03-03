@@ -65,5 +65,23 @@
       label="DateTime component with type='time'"
       label-position="outside"
     ></tds-datetime>
+
+    <br/>
+
+    <tds-datetime
+      id="datetime-custom-validator"
+      type="date"
+      size="md"
+      helper="This is for the customValidator"
+      helper-error="This is always wrong!"
+      label="DateTime component with customValidator"
+      label-position="outside"
+    ></tds-datetime>
+
+      <script >
+      // Add a custom validator that will always consider the input as invalid
+      datetimeElement = document.getElementById("datetime-custom-validator");
+      datetimeElement.customValidator = (value) => false;
+    </script>
   </body>
 </html>
