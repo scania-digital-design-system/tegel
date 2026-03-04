@@ -33,7 +33,7 @@
 @use 'shame' as *;
 
 body {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-family: var(--body-01-font-family);
   font-size: 14px;
   margin: 0;
   flex: 1;
