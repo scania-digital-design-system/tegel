@@ -2,6 +2,13 @@
 
 //Needs updating with variables. Didn't work with original in test project
 .tl-header {
+  /* Layout */
+  --tds-header-height: 64px;
+  --tds-header-list-item-md-height: 48px;
+
+  /* App launcher dropdown background */
+  --tds-header-app-launcher-menu-background: var(--header-app-launcher-menu-background);
+
   /* Base text */
   --header-nav-item: var(--component-header-color-foreground-strong);
 
