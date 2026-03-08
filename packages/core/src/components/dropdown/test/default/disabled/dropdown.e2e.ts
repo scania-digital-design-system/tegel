@@ -17,7 +17,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
-      const dropdownButtonIcon = page.locator('tds-icon[name="chevron_down"]');
+      const dropdownButton = page.getByRole('button', { name: 'Disabled dropdown' });
 
       const dropdownListElementOne = page
         .locator('tds-dropdown-option')
@@ -25,7 +25,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       await expect(dropdownListElementOne).toBeHidden();
       /* force a click on the icon. Since the icon is inside of a disabled button playwright will error if it is not forced */
-      await dropdownButtonIcon.click({
+      await dropdownButton.click({
         force: true,
       });
 
@@ -35,7 +35,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
     test('clicking the dropdown button does not open the dropdown-list', async ({ page }) => {
-      const dropdownButton = page.getByRole('button').first();
+      const dropdownButton = page.getByRole('button', { name: 'Disabled dropdown' });
 
       /* check that the icon is inside of a disabled element */
       await expect(dropdownButton).toBeDisabled();

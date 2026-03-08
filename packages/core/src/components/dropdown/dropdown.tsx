@@ -577,7 +577,8 @@ export class TdsDropdown {
     if (this.inputElement) this.inputElement.focus();
   };
 
-  private handleFilter = (event) => {
+  private handleFilter = (event: InputEvent): void => {
+    const input = event.currentTarget as HTMLInputElement;
     if (
       this.multiselect &&
       this.filterQuery.length === 0 &&
@@ -585,7 +586,7 @@ export class TdsDropdown {
       this.inputElement
     ) {
       const displayValue = this.getValue();
-      const rawValue: string = event.target.value;
+      const rawValue: string = input.value;
 
       if (rawValue.length <= displayValue.length + 1) {
         let typed: string;
@@ -603,7 +604,7 @@ export class TdsDropdown {
     this.tdsInput.emit(event);
     const query = this.inputElement
       ? this.inputElement.value.toLowerCase()
-      : event.target.value.toLowerCase();
+      : input.value.toLowerCase();
     this.filterQuery = query;
 
     /** Check if the query is empty, and if so, show all options */
@@ -937,7 +938,12 @@ export class TdsDropdown {
                     {this.label}
                   </div>
                 )}
-                <div class={`placeholder ${this.size}`}>
+                <div
+                  aria-label={
+                    this.tdsAriaLabel ? `Selected options for ${this.tdsAriaLabel}` : undefined
+                  }
+                  class={`placeholder ${this.size}`}
+                >
                   {this.selectedOptions.length ? this.getValue() : this.placeholder}
                 </div>
               </div>
