@@ -41,6 +41,9 @@ export class TdsTableFooter {
   /** Set available rows per page values */
   @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
+  /** Sets the controlled value for rows per page. When provided, the component will reflect this value and emit tdsPagination when the user changes it. */
+  @Prop() rowsPerPage?: number;
+
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = 0;
 
@@ -65,7 +68,7 @@ export class TdsTableFooter {
 
   @State() horizontalScrollWidth: string | null = null;
 
-  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
+  @State() rowsPerPageValue: number = this.rowsPerPage ?? this.rowsPerPageValues[0];
 
   @Element() host!: HTMLElement;
 
@@ -100,6 +103,11 @@ export class TdsTableFooter {
           this[changedProp] = event.detail[changedProp];
         });
     }
+  }
+
+  @Watch('rowsPerPage')
+  rowsPerPagePropChanged(newValue: number) {
+    this.rowsPerPageValue = newValue;
   }
 
   @Watch('cols')
@@ -278,7 +286,7 @@ export class TdsTableFooter {
                         id="rows-dropdown"
                         class="page-dropdown"
                         size="xs"
-                        defaultValue={`${this.rowsPerPageValues[0]}`}
+                        value={`${this.rowsPerPageValue}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                       >
                         {this.rowsPerPageValues.map((value) => (
