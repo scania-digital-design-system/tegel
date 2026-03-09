@@ -1,13 +1,12 @@
 # tds-datetime
 
-🚧 This component is not yet accessible. Please refer to the [Accessibility Guidelines](https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs) for more information.
-
 The tds-datetime component currently has the following limitations:
 - On iOS, the native input "calendar" does not limit the selection according to the min/max values defined. This can be seen in [MDN browser compatibility table](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date#browser_compatibility).
+- Depending on the Operating System, browser and locale/region the user is in, the value displayed to the user, for the input type "date", "time", or "datetime-local" may differ in their patterns (eg: time may use AM/PM or not, date may be `DD-MM-YYYY` or `MM-DD-YYYY`, and the separator may alter between dash `-` a forward slash `/`). 
 
-This issue stems from the use of the native HTML <code style="font-size: inherit !important">&lt;input&gt;</code> element, which inherits these limitations.
+Despite the visual discrepancies, the value used internally for handling dates is always in the ISO 8601 format, ie, `YYYY-MM-DD`.
 
-We are addressing these concerns in the upcoming tds-date-picker component, which will replace tds-datetime with improved validation and user experience.
+These issues stem from the use of the native HTML <code style="font-size: inherit !important">&lt;input&gt;</code> element, which inherits these limitations.
 
 <br>
 
