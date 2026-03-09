@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.48.0",
+  "version": "1.49.1",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -430,7 +430,7 @@
     "sass": "^1.87.0",
     "serve": "^14.2.4",
     "stencil-playwright": "0.3.0",
-    "storybook": "9.1.17"
+    "storybook": "9.1.19"
   },
   "license": "MIT"
 }

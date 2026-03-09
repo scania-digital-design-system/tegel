@@ -47,7 +47,7 @@
     margin-left: 0;
   }
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -133,7 +133,7 @@
   flex-shrink: 0;
   align-self: center;
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -216,7 +216,7 @@
     display: block;
   }
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     display: none;
   }
 }
@@ -281,7 +281,7 @@
     }
   }
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
     cursor: not-allowed;
 
@@ -318,7 +318,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
   }
 }
@@ -337,7 +337,7 @@
   user-select: none;
   color: var(--slider-divider-values);
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     color: var(--slider-disabled-text);
   }
 }
@@ -351,7 +351,7 @@
   top: -1px;
   z-index: 1;
 
-  :has(input[type='range']:disabled) & {
+  .tl-slider:has(input[type='range']:disabled) & {
     background-color: var(--slider-disabled);
   }
 }

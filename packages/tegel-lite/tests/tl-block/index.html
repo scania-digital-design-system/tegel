@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Block</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-block.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+      <!-- primary -->
+      <div class="variant-wrapper">
+
+        <div class="tl-block tl-block--primary">
+            <section>
+              <h2>Semantic Block</h2>
+              <p>
+                This block is now structured using a
+                <code>&lt;section&gt;</code>
+                element for better accessibility.
+              </p>
+            </section>
+          </div>
+
+          <div class="tl-block tl-block--primary">
+            <h2>Outer Block</h2>
+            <p>Nested blocks automatically alternate backgrounds and adjust typography.</p>
+            <div class="tl-block">
+              <h3>Middle Block (div)</h3>
+              <p>
+                Nested content inside a
+                <code>&lt;div&gt;</code>
+                element.
+              </p>
+              <article class="tl-block">
+                <h4>Inner Block (Article)</h4>
+                <p>Ensuring meaningful content structure with semantic HTML.</p>
+              </article>
+            </div>
+          </div>
+
+      </div>
+
+      <!-- Secondary -->
+      <div class="variant-wrapper">
+      
+        <div class="tl-block tl-block--secondary">
+            <section>
+              <h2>Semantic Block</h2>
+              <p>
+                This block is now structured using a
+                <code>&lt;section&gt;</code>
+                element for better accessibility.
+              </p>
+            </section>
+          </div>
+
+          <div class="tl-block tl-block--secondary">
+            <h2>Outer Block</h2>
+            <p>Nested blocks automatically alternate backgrounds and adjust typography.</p>
+            <div class="tl-block">
+              <h3>Middle Block (div)</h3>
+              <p>
+                Nested content inside a
+                <code>&lt;div&gt;</code>
+                element.
+              </p>
+              <article class="tl-block">
+                <h4>Inner Block (Article)</h4>
+                <p>Ensuring meaningful content structure with semantic HTML.</p>
+              </article>
+            </div>
+          </div>
+
+      </div> 
+    
+    </div>
+  </body>
+  <style>
+      .tds-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .variant-wrapper {
+        display: flex;
+        width: 380px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+  </style>
+</html>
+

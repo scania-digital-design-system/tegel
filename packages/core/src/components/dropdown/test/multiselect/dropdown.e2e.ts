@@ -24,72 +24,60 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('clicking the dropdown opens the dropdown-list, then click Option 1, should not close it', async ({
+    test('opens dropdown, selects Option 1, keeps list open, and shows selected label', async ({
       page,
     }) => {
-      /* click the dropdown button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
-      await dropdownButton.click();
+      const triggerButton = dropdown.getByRole('button', { name: 'Label text' });
 
-      /* Click the Option 1 button */
-      const dropdownListElementOneButton = page
-        .locator('tds-dropdown-option')
-        .filter({ hasText: /Option 1/ });
-      await dropdownListElementOneButton.click();
+      /* Initial state: user sees placeholder text in the trigger */
+      await expect(triggerButton).toContainText('Placeholder');
 
-      await expect(dropdownListElementOneButton).toBeVisible();
+      /* Open the dropdown */
+      await triggerButton.click();
 
-      // Check that the dropdown button now has the text "Option 1"
-      await expect(dropdownButton).toHaveText(/Option 1/);
+      /* Click Option 1 */
+      await page.locator('tds-dropdown-option[value="option-1"]').click();
+
+      /* Check that the selected text now shows "Option 1" */
+      await expect(page.getByRole('checkbox', { name: 'Option 1' })).toBeChecked();
+
+      /* Trigger now displays the selected label */
+      const valueText = dropdown.locator('div.placeholder');
+      await expect(valueText).toHaveText('Option 1');
 
       /* also check screenshot diff to make sure it says Option 1 */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('clicking the dropdown opens the dropdown-list, then click on all the options', async ({
+    test('opens dropdown and selects multiple options; disabled option does not change selection', async ({
       page,
     }) => {
-      /* click the button */
       const dropdown = page.getByTestId('tds-dropdown-testid');
-      const dropdownButton = dropdown.getByRole('button');
-      await dropdownButton.click();
+      const triggerButton = dropdown.getByRole('button', { name: 'Label text' });
+      await triggerButton.click();
 
-      /* get all checkboxes */
-      const dropdownListElementOneButton = dropdown
-        .getByText(/Option 1/)
-        .filter({ has: page.getByRole('checkbox') });
-      const dropdownListElementTwoButton = dropdown
-        .getByText(/Option 2/)
-        .filter({ has: page.getByRole('checkbox') });
-      const dropdownListElementThreeButton = dropdown
-        .getByText(/Option 3/)
-        .filter({ has: page.getByRole('checkbox') });
-      const dropdownListElementFourButton = dropdown
-        .getByText(/Option 4/)
-        .filter({ has: page.getByRole('checkbox') });
-      await expect(dropdownListElementOneButton).toHaveCount(1);
-      await expect(dropdownListElementTwoButton).toHaveCount(1);
-      await expect(dropdownListElementThreeButton).toHaveCount(1);
-      await expect(dropdownListElementFourButton).toHaveCount(1);
+      /* Click Option 1 */
+      const option1 = page.locator('tds-dropdown-option[value="option-1"]');
+      await option1.click();
+      await expect(page.getByRole('checkbox', { name: 'Option 1' })).toBeChecked();
+      const valueText = dropdown.locator('div.placeholder');
+      await expect(valueText).toHaveText('Option 1');
 
-      /* check each one and see that it updates correctly */
-      await dropdownListElementOneButton.click();
+      /* Click Option 2 (disabled, should not change selection) */
+      await page.locator('tds-dropdown-option[value="option-2"]').click();
+      await expect(page.getByRole('checkbox', { name: 'Option 2' })).not.toBeChecked();
+      await expect(valueText).not.toContainText('Option 2');
 
-      // Check that the dropdown button now has the text "Option 1"
-      await expect(dropdownButton).toHaveText(/Option 1/);
+      /* Click Option 3 */
+      await page.locator('tds-dropdown-option[value="option-3"]').click();
+      await expect(page.getByRole('checkbox', { name: 'Option 3' })).toBeChecked();
+      await expect(valueText).toHaveText('Option 1, Option 3');
 
-      await dropdownListElementTwoButton.click();
-      // Option 2 is disabled, so clicking it shouldn't change the text
-      await expect(dropdownButton).toHaveText(/Option 1/);
-
-      await dropdownListElementThreeButton.click();
-      // Now the button should show "Option 1, Option 3"
-      await expect(dropdownButton).toHaveText(/Option 1, Option 3/);
-
-      await dropdownListElementFourButton.click();
-      // Now the button should show "Option 1, Option 3, Option 4"
-      await expect(dropdownButton).toHaveText(/Option 1, Option 3, Option 4/);
+      /* Click Option 4 */
+      await page.locator('tds-dropdown-option[value="option-4"]').click();
+      await expect(page.getByRole('checkbox', { name: 'Option 4' })).toBeChecked();
+      await expect(valueText).toHaveText('Option 1, Option 3, Option 4');
 
       /* also check screenshot diff to make sure */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
