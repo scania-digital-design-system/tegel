@@ -22,6 +22,22 @@ function hasValueChanged(newValue: string[], currentValue: string[]): boolean {
   return newValue.some((val) => !currentValue.includes(val));
 }
 
+function getTypedQuery(rawValue: string, displayValue: string): string {
+  if (rawValue.length <= displayValue.length + 1) {
+    return rawValue;
+  }
+
+  if (rawValue.startsWith(displayValue)) {
+    return rawValue.slice(displayValue.length);
+  }
+
+  if (rawValue.endsWith(displayValue)) {
+    return rawValue.slice(0, rawValue.length - displayValue.length);
+  }
+
+  return rawValue;
+}
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
  */
@@ -588,15 +604,8 @@ export class TdsDropdown {
       const displayValue = this.getValue();
       const rawValue: string = input.value;
 
-      if (rawValue.length <= displayValue.length + 1) {
-        let typed: string;
-        if (rawValue.startsWith(displayValue)) {
-          typed = rawValue.slice(displayValue.length);
-        } else if (rawValue.endsWith(displayValue)) {
-          typed = rawValue.slice(0, rawValue.length - displayValue.length);
-        } else {
-          typed = rawValue;
-        }
+      const typed = getTypedQuery(rawValue, displayValue);
+      if (typed !== rawValue) {
         this.inputElement.value = typed;
       }
     }
