@@ -2,16 +2,50 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-badge,
-tds-badge {
-  --component-badge-text: var(--color-brand-neutral-white);
-  --component-badge-background: var(--color-system-danger-subtle);
+.scania .tds-mode-light {
+  --component-badge-border-radius-none: var(--scania-unit-0);
+  --component-badge-border-radius-default: var(--scania-unit-24);
+  --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-color-background-default: var(--color-system-danger-default);
+  --component-badge-type-system-label-01-font-family: var(--scania-font-family-semi condensed);
+  --component-badge-type-system-label-01-font-weight: var(--scania-font-weight-bold);
+  --component-badge-type-system-label-01-font-size: 12;
+  --component-badge-type-system-label-01-line-height: 16;
+  --component-badge-type-system-label-01-text-transform: none;
 }
 
-.traton {
-  .tl-badge,
-  tds-badge {
-    --component-badge-text: var(--color-brand-neutral-black);
-    --component-badge-background: var(--color-system-warning-subtle);
-  }
+.traton .tds-mode-light {
+  --component-badge-border-radius-none: var(--traton-unit-0);
+  --component-badge-border-radius-default: var(--traton-unit-24);
+  --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-color-background-default: var(--traton-color-yellow-300);
+  --component-badge-type-system-label-01-font-family: var(--traton-font-family-default);
+  --component-badge-type-system-label-01-font-weight: var(--traton-font-weight-semi-bold);
+  --component-badge-type-system-label-01-font-size: 12;
+  --component-badge-type-system-label-01-line-height: 17;
+  --component-badge-type-system-label-01-text-transform: none;
+}
+
+.scania .tds-mode-dark {
+  --component-badge-border-radius-none: var(--scania-unit-0);
+  --component-badge-border-radius-default: var(--scania-unit-24);
+  --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-color-background-default: var(--color-system-danger-subtle);
+  --component-badge-type-system-label-01-font-family: var(--scania-font-family-semi condensed);
+  --component-badge-type-system-label-01-font-weight: var(--scania-font-weight-bold);
+  --component-badge-type-system-label-01-font-size: 12;
+  --component-badge-type-system-label-01-line-height: 16;
+  --component-badge-type-system-label-01-text-transform: none;
+}
+
+.traton .tds-mode-dark {
+  --component-badge-border-radius-none: var(--traton-unit-0);
+  --component-badge-border-radius-default: var(--traton-unit-24);
+  --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-color-background-default: var(--traton-color-yellow-300);
+  --component-badge-type-system-label-01-font-family: var(--traton-font-family-default);
+  --component-badge-type-system-label-01-font-weight: var(--traton-font-weight-semi-bold);
+  --component-badge-type-system-label-01-font-size: 12;
+  --component-badge-type-system-label-01-line-height: 17;
+  --component-badge-type-system-label-01-text-transform: none;
 }
