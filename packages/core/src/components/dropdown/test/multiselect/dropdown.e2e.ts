@@ -57,9 +57,6 @@ testConfigurations.withModeVariants.forEach((config) => {
       const triggerButton = dropdown.getByRole('button', { name: 'Label text' });
       await triggerButton.click();
 
-      /* Open the dropdown */
-      // await page.getByRole('button', { name: 'Label text' }).click();
-
       /* Click Option 1 */
       const option1 = page.locator('tds-dropdown-option[value="option-1"]');
       await option1.click();
