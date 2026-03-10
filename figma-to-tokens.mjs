@@ -87,6 +87,16 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
         return null; // Skip this entire token
       }
 
+      // Round numeric values to a sensible precision so that we avoid
+      // floating point noise in the generated tokens (for example,
+      // letter-spacing 0.4000000059604645 -> 0.4). This applies to both
+      // semantic and primitive tokens.
+      if (typeof value === 'number' && Number.isFinite(value)) {
+        const rounded = Number(value.toFixed(4));
+        normalized[key] = rounded;
+        continue;
+      }
+
       // Preserve other values as-is
       normalized[key] = value;
       continue;

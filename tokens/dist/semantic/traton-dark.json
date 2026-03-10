@@ -320,7 +320,7 @@
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 1.0800000429153442
+          "$value": 1.08
         },
         "text-transform": {
           "$type": "string",
@@ -346,7 +346,7 @@
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 0.7799999713897705
+          "$value": 0.78
         },
         "text-transform": {
           "$type": "string",
@@ -372,7 +372,7 @@
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 0.5600000023841858
+          "$value": 0.56
         },
         "text-transform": {
           "$type": "string",
@@ -398,7 +398,7 @@
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 0.4000000059604645
+          "$value": 0.4
         },
         "text-transform": {
           "$type": "string",
@@ -424,7 +424,7 @@
         },
         "letter-spacing": {
           "$type": "number",
-          "$value": 0.2800000011920929
+          "$value": 0.28
         },
         "text-transform": {
           "$type": "string",
@@ -745,7 +745,7 @@
           },
           "letter-spacing": {
             "$type": "number",
-            "$value": 0.4000000059604645
+            "$value": 0.4
           },
           "text-transform": {
             "$type": "string",
