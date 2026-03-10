@@ -4,7 +4,7 @@ import { register } from '@tokens-studio/sd-transforms';
 import config, {
   getComponentConfigForTheme,
   componentThemeNames,
-} from './style-dictionary.config.simple.mjs';
+} from './style-dictionary.config.mjs';
 import { main as normalizeTokens } from './figma-to-tokens.mjs';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, renameSync, readdirSync, rmdirSync } from 'fs';
 import { join, dirname } from 'path';
