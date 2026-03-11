@@ -34,9 +34,9 @@
   }
 
   .tl-slider:has(.tl-slider__control-minus, .tl-slider__control-plus):has(
-  .tl-slider__value-divider-label
-)
-  & {
+      .tl-slider__value-divider-label
+    )
+    & {
     margin-bottom: 20px;
     padding-left: 11px;
     margin-left: 0;
@@ -148,8 +148,8 @@
   border-radius: var(--slider-border-radius);
 
   &.tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input[readonly]):not(
-  :has(.tl-text-field__input:disabled)
-)::before {
+      :has(.tl-text-field__input:disabled)
+    )::before {
     width: 16px;
     height: 16px;
     right: 16px;
@@ -165,6 +165,7 @@
   appearance: textfield;
   border: none;
   background-color: var(--slider-input-background);
+  color: var(--slider-input-value);
   border-radius: var(--slider-border-radius);
   box-shadow: inset var(--slider-input-box-shadow);
 
@@ -180,9 +181,9 @@
 }
 
 .tl-slider__input-wrapper:has(.tl-text-field__input[readonly]):not(
-:has(.tl-text-field__input:disabled)
-)
-.tl-slider__input-field[readonly] {
+    :has(.tl-text-field__input:disabled)
+  )
+  .tl-slider__input-field[readonly] {
   width: 74px;
   padding-right: 39px;
 }
