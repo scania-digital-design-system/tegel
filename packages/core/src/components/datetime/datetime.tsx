@@ -147,7 +147,7 @@ export class TdsDatetime {
   }
 
   nativeValidation = () => {
-    return (
+    return !(
       (this.min && this.textInput.validity.rangeUnderflow) ||
       (this.max && this.textInput.validity.rangeOverflow) ||
       this.textInput.validity.badInput
@@ -201,6 +201,8 @@ export class TdsDatetime {
   // Listener if input leaves focus state
   @Listen('focusout')
   handleFocusOut() {
+    this.validateDate();
+
     this.focusInput = false;
   }
 
@@ -212,12 +214,13 @@ export class TdsDatetime {
 
   validateDate(): void {
     this.state = 'none';
+
     if (
-      this.nativeValidation() ||
+      !this.nativeValidation() ||
       (this.customValidator && !this.customValidator(this.textInput.value))
     ) {
       this.state = 'error';
-    } else {
+    } else if (this.textInput.value) {
       this.state = 'success';
     }
   }
