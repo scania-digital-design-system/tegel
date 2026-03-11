@@ -53,7 +53,11 @@ function getComponentValueFromSemanticJson(brand, themeKey, rawParts) {
   }
   const refValue = node.$value;
   if (typeof refValue === 'string' && refValue.startsWith('{') && refValue.endsWith('}')) {
-    const refPath = refValue.slice(1, -1).split('.').join('-');
+    const refPath = refValue
+      .slice(1, -1)
+      .split('.')
+      .join('-')
+      .replace(/\s+/g, '-');
     return `var(--${refPath})`;
   }
   return refValue;
@@ -106,7 +110,11 @@ StyleDictionary.registerFormat({
       if (token.original && token.original.$value) {
         const refValue = token.original.$value;
         if (typeof refValue === 'string' && refValue.startsWith('{')) {
-          const refPath = refValue.slice(1, -1).split('.').join('-');
+          const refPath = refValue
+            .slice(1, -1)
+            .split('.')
+            .join('-')
+            .replace(/\s+/g, '-');
           value = `var(--${refPath})`;
         } else {
           value = refValue;

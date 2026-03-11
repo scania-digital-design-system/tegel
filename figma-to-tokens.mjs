@@ -107,12 +107,6 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
       continue;
     }
 
-    // Check for hiddenFromPublishing flag (only filter for semantic tokens)
-    // Note: Primitives may have hiddenFromPublishing but we keep them (they're needed for references)
-    if (key === '$extensions' && !isPrimitive && value?.['com.figma.hiddenFromPublishing'] === true) {
-      return null; // Skip this entire token
-    }
-
     // Recursively process nested objects
     const normalizedValue = normalizeToken(value, currentPath, isPrimitive);
     if (normalizedValue !== null) {
