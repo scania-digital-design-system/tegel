@@ -1,0 +1,1471 @@
+{
+  "color": {
+    "background": {
+      "base": {
+        "$type": "color",
+        "$value": "{traton.color.blue.1000}"
+      },
+      "layer-01": {
+        "$type": "color",
+        "$value": "{traton.color.blue.950}"
+      },
+      "layer-02": {
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
+      },
+      "layer-03": {
+        "$type": "color",
+        "$value": "{traton.color.blue.850}"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.scrim.dark}"
+      },
+      "top": {
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
+      },
+      "inverse": {
+        "base": {
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
+        },
+        "layer-01": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "layer-02": {
+          "$type": "color",
+          "$value": "{traton.color.blue.150}"
+        },
+        "layer-03": {
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.scrim.dark}"
+        },
+        "top": {
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
+        }
+      }
+    },
+    "border": {
+      "strong": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.950}"
+      },
+      "defined": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.700}"
+      },
+      "soft": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.600}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.500}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.400}"
+      },
+      "discrete": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.200}"
+      },
+      "inverse": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.200}"
+        }
+      }
+    },
+    "icon": {
+      "strong": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.950}"
+      },
+      "defined": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.700}"
+      },
+      "soft": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.600}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.500}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.400}"
+      },
+      "discrete": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.200}"
+      },
+      "inverse": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.200}"
+        }
+      }
+    },
+    "system": {
+      "info": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.blue.850}"
+        }
+      },
+      "success": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.green.50}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.green.200}"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.green.300}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.green.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.green.850}"
+        }
+      },
+      "warning": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.100}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}"
+        }
+      },
+      "danger": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.red.50}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.red.100}"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.red.300}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.red.500}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.red.850}"
+        }
+      }
+    },
+    "text": {
+      "strong": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.950}"
+      },
+      "defined": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.700}"
+      },
+      "soft": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.600}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.500}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.400}"
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "{traton.color.base.neutral-white}"
+      },
+      "inverse": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}"
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}"
+        }
+      }
+    }
+  },
+  "type": {
+    "display": {
+      "01": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 216
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 227
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 1.08
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "uppercase"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 156
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 164
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.78
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "uppercase"
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 112
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 118
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.56
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "uppercase"
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 80
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 84
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.4
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "uppercase"
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 56
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 59
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.28
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "uppercase"
+        }
+      }
+    },
+    "headline": {
+      "01": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 40
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 42
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 32
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 40
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 24
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 30
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 20
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 25
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.default}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.semi-bold}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "06": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.default}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.semi-bold}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 14
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      }
+    },
+    "paragraph": {
+      "01": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 24
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 30
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.display}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 20
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 25
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      }
+    },
+    "body": {
+      "01": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.default}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "string",
+          "$value": "{traton.font.family.default}"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 14
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "none"
+        }
+      }
+    },
+    "system": {
+      "title": {
+        "01": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.semi-bold}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 18
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.semi-bold}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 10
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 14
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0.4
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "label": {
+        "01": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 12
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 17
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 10
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 14
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "body": {
+        "01": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 16
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 20
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      }
+    }
+  },
+  "component": {
+    "--input-field": {
+      "border": {
+        "focus": {
+          "top": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "right": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          }
+        },
+        "radius": {
+          "top-left": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "top-right": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "bottom-left": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "bottom-right": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          }
+        },
+        "width": {
+          "top": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "right": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          }
+        }
+      }
+    },
+    "--shadow": {
+      "base-modifier": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "dragged": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      }
+    },
+    "badge": {
+      "border": {
+        "radius": {
+          "none": {
+            "$type": "number",
+            "$value": "{traton.unit.0}"
+          },
+          "default": {
+            "$type": "number",
+            "$value": "{traton.unit.24}"
+          },
+          "full": {
+            "$type": "number",
+            "$value": "{traton.unit.9999}"
+          }
+        }
+      },
+      "color": {
+        "background": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.300}"
+          }
+        },
+        "text": {}
+      },
+      "type": {
+        "system": {
+          "label-01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}"
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.semi-bold}"
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 12
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 17
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        }
+      }
+    },
+    "button": {
+      "color": {
+        "text": {
+          "primary": {}
+        }
+      }
+    },
+    "cookie": {},
+    "card": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.0}"
+        }
+      },
+      "space": {
+        "padding-default": {
+          "$type": "number",
+          "$value": "{traton.unit.0}"
+        }
+      }
+    },
+    "chip": {
+      "border": {},
+      "color": {},
+      "foreground": {
+        "inverse": {
+          "$type": "color",
+          "$value": "{color.text.inverse.strong}"
+        },
+        "foreground disabled selected": {
+          "$type": "color",
+          "$value": "{color.text.inverse.subtle}"
+        }
+      }
+    },
+    "dropdown": {
+      "hover": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "secondary": {
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.layer-03}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      },
+      "list item": {
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "secondary": {
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-03}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
+          }
+        }
+      }
+    },
+    "footer": {
+      "border": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.light}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{traton.color.blue.1000}"
+      },
+      "text color": {
+        "link-text": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "copyright": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
+        }
+      }
+    },
+    "header": {
+      "color": {
+        "popovers": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "icon": {
+          "strong": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{color.icon.defined}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        },
+        "background": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          }
+        },
+        "expressive mobile menu": {
+          "primary": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
+          },
+          "selected expressive": {
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
+          }
+        }
+      },
+      "text": {
+        "application name": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.display}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 16
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        },
+        "items": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 16
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          },
+          "profile text": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}"
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.semi-bold}"
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 12
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 18
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "sub item selected": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.semi-bold}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 18
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      },
+      "space": {
+        "profile padding": {
+          "$type": "number",
+          "$value": "{traton.unit.20}"
+        },
+        "profile size": {
+          "$type": "number",
+          "$value": "{traton.unit.24}"
+        }
+      }
+    },
+    "side-menu": {
+      "color": {
+        "divider": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        }
+      },
+      "size": {
+        "icon": {
+          "$type": "number",
+          "$value": "{traton.unit.16}"
+        },
+        "close icon size": {
+          "$type": "number",
+          "$value": "{traton.unit.20}"
+        }
+      },
+      "space": {
+        "top level": {
+          "top": {
+            "$type": "number",
+            "$value": 14
+          },
+          "bottom collapsible": {
+            "$type": "number",
+            "$value": "{traton.unit.16}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.16}"
+          },
+          "horizontal gap padding": {
+            "$type": "number",
+            "$value": "{traton.unit.16}"
+          },
+          "vertical gap padding": {
+            "$type": "number",
+            "$value": "{traton.unit.16}"
+          }
+        },
+        "sub menu item": {
+          "top and bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.8}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.12}"
+          },
+          "chevron right padding": {
+            "$type": "number",
+            "$value": "{traton.unit.12}"
+          },
+          "selected marker height": {
+            "$type": "number",
+            "$value": "{traton.unit.40}"
+          },
+          "profile": {
+            "left": {
+              "$type": "number",
+              "$value": "{traton.unit.8}"
+            },
+            "gap": {
+              "$type": "number",
+              "$value": "{traton.unit.8}"
+            },
+            "top + bottom": {
+              "$type": "number",
+              "$value": "{traton.unit.4}"
+            }
+          }
+        },
+        "sub page": {
+          "top + bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.8}"
+          },
+          "left with icon": {
+            "$type": "number",
+            "$value": "{traton.unit.40}"
+          },
+          "left no icon": {
+            "$type": "number",
+            "$value": 14
+          },
+          "left profile": {
+            "$type": "number",
+            "$value": "{traton.unit.48}"
+          },
+          "top group": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "selected marker height": {
+            "$type": "number",
+            "$value": 34
+          },
+          "selected marker width": {
+            "$type": "number",
+            "$value": "{traton.unit.8}"
+          }
+        },
+        "collapsed item": {
+          "left + right inner icon padding": {
+            "$type": "number",
+            "$value": "{traton.unit.12}"
+          },
+          "top + bottom inner icon padding": {
+            "$type": "number",
+            "$value": "{traton.unit.12}"
+          }
+        }
+      },
+      "radius": {
+        "corner": {
+          "$type": "number",
+          "$value": "{traton.unit.8}"
+        }
+      },
+      "text": {
+        "items": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{traton.font.family.default}"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 18
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none"
+          }
+        }
+      }
+    },
+    "spinner": {
+      "fill": {
+        "$type": "color",
+        "$value": "{traton.color.grey.300}"
+      }
+    },
+    "stepper": {
+      "success": {
+        "$type": "color",
+        "$value": "{color.system.success.default}"
+      }
+    },
+    "table": {
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "pagination": {
+        "dropdown": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        }
+      },
+      "secondary": {
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      }
+    }
+  }
+}

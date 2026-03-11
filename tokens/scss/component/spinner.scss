@@ -2,7 +2,18 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-spinner,
-tds-spinner {
-  --component-spinner-color: var(--color-system-info-default);
+.scania .tds-mode-light {
+  --component-spinner-fill: var(--color-system-info-default);
+}
+
+.traton .tds-mode-light {
+  --component-spinner-fill: var(--traton-color-blue-800);
+}
+
+.scania .tds-mode-dark {
+  --component-spinner-fill: var(--color-system-info-default);
+}
+
+.traton .tds-mode-dark {
+  --component-spinner-fill: var(--traton-color-grey-300);
 }
