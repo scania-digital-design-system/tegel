@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import StyleDictionary from 'style-dictionary';
 import { register } from '@tokens-studio/sd-transforms';
 import config, {
@@ -6,8 +5,8 @@ import config, {
   componentThemeNames,
 } from './style-dictionary.config.mjs';
 import { main as normalizeTokens } from './figma-to-tokens.mjs';
-import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, renameSync, readdirSync, rmdirSync } from 'fs';
-import { join, dirname } from 'path';
+import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 
 // List of files that should always exist (even if empty)
 const filesToPreserve = [
@@ -37,16 +36,12 @@ function createEmptyFile(filePath) {
     // Component format
     const componentName = filePath.split('/').pop().replace('.scss', '');
     content += `.${componentName} {\n}\n`;
-  } else if (filePath.includes('typography')) {
-    // Typography format - use brand selector
-    const brand = filePath.includes('scania') ? 'scania' : 'traton';
-    content += `.${brand} {\n}\n`;
-  } else if (filePath.includes('dimension')) {
-    // Dimension format - use brand selector
-    const brand = filePath.includes('scania') ? 'scania' : 'traton';
-    content += `.${brand} {\n}\n`;
-  } else if (filePath.includes('icons')) {
-    // Icons format - use brand selector
+  } else if (
+    filePath.includes('typography') ||
+    filePath.includes('dimension') ||
+    filePath.includes('icons')
+  ) {
+    // Brand-scoped format (typography, dimension, icons)
     const brand = filePath.includes('scania') ? 'scania' : 'traton';
     content += `.${brand} {\n}\n`;
   } else {
