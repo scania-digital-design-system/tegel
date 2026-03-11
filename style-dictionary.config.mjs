@@ -315,6 +315,7 @@ const COMPONENT_FILE_LIST = [
   ['badge', 'exact'],
   ['button', 'exact'],
   ['chip', 'exact'],
+   ['tag', 'exact'],
   ['logo', 'exact'],
   ['shadow', 'exact'],
   ['cookie', 'exact'],

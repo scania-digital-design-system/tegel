@@ -63,9 +63,14 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
         }
       }
 
-      // Handle color objects - convert to hex string
+      // Handle color objects - convert to hex string (preserve alpha when present)
       if (obj.$type === 'color' && typeof value === 'object' && value.hex) {
-        normalized[key] = value.hex;
+        if (value.alpha !== undefined && value.alpha < 1) {
+          const alphaHex = Math.round(value.alpha * 255).toString(16).padStart(2, '0');
+          normalized[key] = `${value.hex}${alphaHex}`;
+        } else {
+          normalized[key] = value.hex;
+        }
         continue;
       }
 
