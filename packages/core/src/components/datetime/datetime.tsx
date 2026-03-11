@@ -346,7 +346,7 @@ export class TdsDatetime {
         </div>
         {this.state === 'error' && (
           <div class="tds-datetime-helper">
-            {(!this.textInput || !this.textInput.validity.badInput) && (
+            {!this.textInput?.validity?.badInput && (
               <div class="tds-helper">
                 <tds-icon name="error" size="16px" svgTitle="error" /> {this.helperError}
               </div>
