@@ -7,8 +7,8 @@
  * can focus purely on output generation.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
-import { join, dirname } from 'path';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const SEMANTIC_SOURCE_DIR = join(process.cwd(), 'tokens', 'json', 'semantic');
 const PRIMITIVE_SOURCE_DIR = join(process.cwd(), 'tokens', 'json', 'primitive');
@@ -24,7 +24,7 @@ const PRIMITIVE_DIST_DIR = join(process.cwd(), 'tokens', 'dist', 'primitive');
  * @param {boolean} isPrimitive - Whether we're processing primitive tokens (no alias resolution needed)
  */
 function normalizeToken(obj, path = [], isPrimitive = false) {
-  if (typeof obj !== 'object' || obj === null) {
+  if (obj == null || typeof obj !== 'object') {
     return obj;
   }
 
@@ -82,7 +82,7 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
         const fullPath = [...path, key].join('.');
         // Check if path includes 'scania.font.family' (the path would be like 'scania.font.family.default')
         if (fullPath.includes('scania.font.family') || path.join('.').includes('scania.font.family')) {
-          normalized[key] = value.replace(/ cy/g, '');
+          normalized[key] = value.replaceAll(' cy', '');
           continue;
         }
       }

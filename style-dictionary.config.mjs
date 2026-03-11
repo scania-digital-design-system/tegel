@@ -236,9 +236,9 @@ ${variables}
     
     if (tokensByTheme.has('dark')) {
       const darkTokens = tokensByTheme.get('dark');
-      
+
       const darkByBrand = new Map();
-      
+
       darkTokens.forEach((brandMap, variableName) => {
         brandMap.forEach((value, brand) => {
           if (!darkByBrand.has(brand)) {
@@ -247,10 +247,15 @@ ${variables}
           darkByBrand.get(brand).set(variableName, value);
         });
       });
-      
-      const darkBrandsToEmit = brandOnly !== null
-        ? (darkByBrand.has(brandOnly) ? [brandOnly] : [])
-        : Array.from(darkByBrand.keys());
+
+      let darkBrandsToEmit;
+      if (brandOnly == null) {
+        darkBrandsToEmit = Array.from(darkByBrand.keys());
+      } else if (darkByBrand.has(brandOnly)) {
+        darkBrandsToEmit = [brandOnly];
+      } else {
+        darkBrandsToEmit = [];
+      }
 
       darkBrandsToEmit.forEach(brand => {
         const tokens = darkByBrand.get(brand);
