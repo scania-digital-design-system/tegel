@@ -188,8 +188,8 @@ async function generateIcons() {
       '',
       ':root {',
       ...iconsNamesArray.map((icon) => {
-        const safeName = icon.replace(/\s+/g, '-');
-        const safeFile = icon.replace(/\s+/g, '-');
+        const safeName = icon.replace(/\s+/g, '_');
+        const safeFile = icon.replace(/\s+/g, '_');
         return `  --${brand}-icon-${safeName}-svg: url(#{$local-assets}/icons/${brand}/${safeFile}.svg);`;
       }),
       '}',

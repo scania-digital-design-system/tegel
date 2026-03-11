@@ -110,7 +110,7 @@ export type ScaniaIconNames =
   | 'fuel_gauge'
   | 'fuel_inactive'
   | 'fuel'
-  | 'gift-inactive'
+  | 'gift_inactive'
   | 'gift'
   | 'global'
   | 'guided_tour_inactive'
