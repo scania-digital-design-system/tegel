@@ -14,23 +14,14 @@ on:
         default: '22.12.0'
         type: string
 
-      tag:
-        description: 'NPM tag'
-        required: true
-        default: 'latest'
-        type: choice
-        options:
-          - latest
-          - beta
-
       betaVersionSuffix:
-        description: 'Beta version suffix (e.g., beta.0, beta.1) — only used when tag is beta'
-        required: false
+        description: 'Beta version suffix (e.g., beta.0, beta.1)'
+        required: true
         default: 'beta.0'
         type: string
 
 jobs:
-  release-tegel-lite:
+  beta-release-tegel-lite:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -51,7 +42,6 @@ jobs:
           git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Validate beta version suffix
-        if: ${{ inputs.tag == 'beta' }}
         env:
           INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
         run: |
@@ -68,36 +58,36 @@ jobs:
         working-directory: packages/core
         run: npm install
 
-      - name: Build Tegel Lite package
-        run: npm run build:tegel-lite
-
-      - name: Update package version for beta
-        if: ${{ inputs.tag == 'beta' }}
+      - name: Update Tegel Lite package version
+        id: set-version
         working-directory: packages/tegel-lite
         run: |
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
           new_version="${current_version}-${BETA_VERSION_SUFFIX}"
-          echo "Updating package.json version to $new_version"
+          echo "Setting new version: $new_version"
           jq ".version = \"$new_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
+          echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Build Tegel Lite package
+        run: npm run build:tegel-lite
 
       - name: Check if Tegel Lite version already exists
         id: check-version
         working-directory: packages/tegel-lite
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
-          PACKAGE_VERSION=$(jq -r '.version' package.json)
+          PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
           if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_OUTPUT
           else
             echo "VERSION_EXISTS=false" >> $GITHUB_OUTPUT
           fi
-          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
       - name: Publish Tegel Lite package to NPM
         if: steps.check-version.outputs.VERSION_EXISTS != 'true'
         working-directory: packages/tegel-lite
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --tag ${{ inputs.tag }}
+        run: npm publish --access public --tag beta
