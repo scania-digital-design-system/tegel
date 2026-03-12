@@ -95,9 +95,9 @@ StyleDictionary.registerFormat({
         .map(part =>
           part
             .trim()
-            .replaceAll(/\s+/g, '-')
-            .replaceAll(/[^a-zA-Z0-9-]/g, '')
-            .replaceAll(/^[-]+/, '')
+            .replace(/\s+/g, '-')
+            .replace(/[^a-zA-Z0-9-]/g, '')
+            .replace(/^[-]+/, '')
         )
         .filter(part => part.length > 0);
       const variableName = ['component', ...pathParts].join('-');
@@ -115,7 +115,7 @@ StyleDictionary.registerFormat({
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replaceAll(/\s+/g, '-');
+            .replace(/\s+/g, '-');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
@@ -351,7 +351,8 @@ function createComponentFile(componentName, matchType = 'exact') {
       return false;
     }
     // Handle component names with -- prefix (e.g., --shadow, --input-field)
-    const actualComponentName = token.path[1]?.replaceAll(/^--/, '') || '';
+    const rawComponentName = token.path[1] || '';
+    const actualComponentName = rawComponentName.replace(/^--/, '');
     if (matchFn === 'includes') {
       return actualComponentName.includes(componentName);
     }

@@ -30,6 +30,55 @@ function shouldSkipEntry(key, isPrimitive) {
   return false;
 }
 
+function tryNormalizeAlias(obj, value, isPrimitive) {
+  if (isPrimitive) return { handled: false, value };
+  const aliasData = obj.$extensions?.['com.figma.aliasData'];
+  if (!aliasData?.targetVariableName) return { handled: false, value };
+  const targetPath = aliasData.targetVariableName;
+  const referencePath = targetPath.split('/').join('.');
+  return { handled: true, value: `{${referencePath}}` };
+}
+
+function tryNormalizeColor(obj, value) {
+  if (obj.$type !== 'color' || typeof value !== 'object' || !value.hex) {
+    return { handled: false, value };
+  }
+  if (value.alpha !== undefined && value.alpha < 1) {
+    const alphaHex = Math.round(value.alpha * 255).toString(16).padStart(2, '0');
+    return { handled: true, value: `${value.hex}${alphaHex}` };
+  }
+  return { handled: true, value: value.hex };
+}
+
+function tryNormalizeFontFamily(obj, value, path, isPrimitive) {
+  const isFontToken =
+    isPrimitive && (obj.$type === 'text' || obj.$type === 'string') && typeof value === 'string';
+  if (!isFontToken) {
+    return { handled: false, value };
+  }
+  const fullPath = [...path, '$value'].join('.');
+  const isScaniaFontFamily =
+    fullPath.includes('scania.font.family') || path.join('.').includes('scania.font.family');
+  if (!isScaniaFontFamily) {
+    return { handled: false, value };
+  }
+  return { handled: true, value: value.replaceAll(' cy', '') };
+}
+
+function tryNormalizeInternalReference(value, isPrimitive) {
+  if (isPrimitive || typeof value !== 'string' || !value.includes('INTERNAL.')) {
+    return { handled: false, value };
+  }
+  return { handled: true, value: null }; // Signal drop token
+}
+
+function tryNormalizeNumber(value) {
+  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    return { handled: false, value };
+  }
+  return { handled: true, value: Number(value.toFixed(4)) };
+}
+
 /**
  * Normalize a single `$value` entry for a token.
  * Returns:
@@ -37,49 +86,22 @@ function shouldSkipEntry(key, isPrimitive) {
  * - any other value to be assigned to `$value`
  */
 function normalizeValueForToken(obj, value, path, isPrimitive) {
-  // Handle alias resolution (only for semantic tokens)
-  if (!isPrimitive) {
-    const aliasData = obj.$extensions?.['com.figma.aliasData'];
-    if (aliasData?.targetVariableName) {
-      // Convert Figma path format to Style Dictionary reference format
-      // "scania/color/grey/950" -> "{scania.color.grey.950}"
-      const targetPath = aliasData.targetVariableName;
-      const referencePath = targetPath.split('/').join('.');
-      return `{${referencePath}}`;
-    }
-  }
+  let result;
 
-  // Handle color objects - convert to hex string (preserve alpha when present)
-  if (obj.$type === 'color' && typeof value === 'object' && value.hex) {
-    if (value.alpha !== undefined && value.alpha < 1) {
-      const alphaHex = Math.round(value.alpha * 255).toString(16).padStart(2, '0');
-      return `${value.hex}${alphaHex}`;
-    }
-    return value.hex;
-  }
+  result = tryNormalizeAlias(obj, value, isPrimitive);
+  if (result.handled) return result.value;
 
-  // Handle font family transformation for primitive tokens
-  // Remove ' cy' from Scania font family names
-  // Check both 'text' and 'string' types (font family tokens can use either)
-  if (isPrimitive && (obj.$type === 'text' || obj.$type === 'string') && typeof value === 'string') {
-    const fullPath = [...path, '$value'].join('.');
-    if (fullPath.includes('scania.font.family') || path.join('.').includes('scania.font.family')) {
-      return value.replaceAll(' cy', '');
-    }
-  }
+  result = tryNormalizeColor(obj, value);
+  if (result.handled) return result.value;
 
-  // Handle INTERNAL references in values (only for semantic tokens)
-  if (!isPrimitive && typeof value === 'string' && value.includes('INTERNAL.')) {
-    return null; // Skip this entire token
-  }
+  result = tryNormalizeFontFamily(obj, value, path, isPrimitive);
+  if (result.handled) return result.value;
 
-  // Round numeric values to a sensible precision so that we avoid floating
-  // point noise in the generated tokens (for example,
-  // letter-spacing 0.4000000059604645 -> 0.4). This applies to both semantic
-  // and primitive tokens.
-  if (typeof value === 'number' && Number.isFinite(value)) {
-    return Number(value.toFixed(4));
-  }
+  result = tryNormalizeInternalReference(value, isPrimitive);
+  if (result.handled) return null;
+
+  result = tryNormalizeNumber(value);
+  if (result.handled) return result.value;
 
   // Preserve other values as-is
   return value;
