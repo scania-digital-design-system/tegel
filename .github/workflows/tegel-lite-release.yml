@@ -1,0 +1,103 @@
+name: Tegel Lite Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to use'
+        required: true
+        default: 'develop'
+
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '22.12.0'
+        type: string
+
+      tag:
+        description: 'NPM tag'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+
+      betaVersionSuffix:
+        description: 'Beta version suffix (e.g., beta.0, beta.1) — only used when tag is beta'
+        required: false
+        default: 'beta.0'
+        type: string
+
+jobs:
+  release-tegel-lite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Validate beta version suffix
+        if: ${{ inputs.tag == 'beta' }}
+        env:
+          INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
+        run: |
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
+            exit 1
+          fi
+          echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install Core dependencies
+        working-directory: packages/core
+        run: npm install
+
+      - name: Build Tegel Lite package
+        run: npm run build:tegel-lite
+
+      - name: Update package version for beta
+        if: ${{ inputs.tag == 'beta' }}
+        working-directory: packages/tegel-lite
+        run: |
+          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          new_version="${current_version}-${BETA_VERSION_SUFFIX}"
+          echo "Updating package.json version to $new_version"
+          jq ".version = \"$new_version\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+
+      - name: Check if Tegel Lite version already exists
+        id: check-version
+        working-directory: packages/tegel-lite
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=$(jq -r '.version' package.json)
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+            echo "VERSION_EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Publish Tegel Lite package to NPM
+        if: steps.check-version.outputs.VERSION_EXISTS != 'true'
+        working-directory: packages/tegel-lite
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --tag ${{ inputs.tag }}
