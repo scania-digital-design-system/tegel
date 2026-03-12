@@ -8,8 +8,8 @@
 
 import StyleDictionary from 'style-dictionary';
 import { register } from '@tokens-studio/sd-transforms';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 register(StyleDictionary); // Register Token Studio transforms
 

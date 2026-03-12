@@ -52,6 +52,62 @@ function createEmptyFile(filePath) {
   writeFileSync(fullPath, content, 'utf8');
 }
 
+function combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, themeOrder) {
+  const byBase = new Map();
+  if (existsSync(componentBuildPath)) {
+    for (const file of readdirSync(componentBuildPath)) {
+      if (!file.endsWith('.scss')) continue;
+      const namePart = file.slice(0, -5);
+      const parts = namePart.split('-');
+      if (parts.length < 3) continue;
+      const themeName = parts.slice(-2).join('-');
+      const baseName = parts.slice(0, -2).join('-');
+      if (!themeOrder.includes(themeName)) continue;
+      if (!byBase.has(baseName)) byBase.set(baseName, new Map());
+      byBase.get(baseName).set(themeName, join(componentBuildPath, file));
+    }
+  }
+
+  for (const [baseName, themeFiles] of byBase) {
+    const sections = [];
+    for (const themeName of themeOrder) {
+      const path = themeFiles.get(themeName);
+      if (!path || !existsSync(path)) continue;
+      const content = readFileSync(path, 'utf8');
+      const afterComment = content.split('*/')[1];
+      if (afterComment) sections.push(afterComment.trim());
+    }
+    if (sections.length > 0) {
+      const outPath = join(finalComponentDir, `${baseName}.scss`);
+      writeFileSync(outPath, componentHeader + sections.join('\n\n'), 'utf8');
+    }
+  }
+}
+
+function cleanupComponentBuildDir(componentBuildPath) {
+  if (!existsSync(componentBuildPath)) {
+    return;
+  }
+  for (const file of readdirSync(componentBuildPath)) {
+    unlinkSync(join(componentBuildPath, file));
+  }
+  rmdirSync(componentBuildPath);
+}
+
+function buildThemeGroups(configObject) {
+  const themeGroups = {};
+  Object.entries(configObject)
+    .filter(([key]) => key !== 'primitive' && key !== 'component')
+    .forEach(([themeName, themeConfig]) => {
+      const brand = themeName.split('-')[0];
+      if (!themeGroups[brand]) {
+        themeGroups[brand] = [];
+      }
+      themeGroups[brand].push([themeName, themeConfig]);
+    });
+  return themeGroups;
+}
+
 async function runBuild() {
   // Normalize tokens from Figma export to Style Dictionary format
   console.log('Normalizing tokens from Figma export...\n');
@@ -90,58 +146,13 @@ async function runBuild() {
 
 `;
 
-  const byBase = new Map();
-  if (existsSync(componentBuildPath)) {
-    for (const file of readdirSync(componentBuildPath)) {
-      if (!file.endsWith('.scss')) continue;
-      const namePart = file.slice(0, -5);
-      const parts = namePart.split('-');
-      if (parts.length < 3) continue;
-      const themeName = parts.slice(-2).join('-');
-      const baseName = parts.slice(0, -2).join('-');
-      if (!THEME_ORDER.includes(themeName)) continue;
-      if (!byBase.has(baseName)) byBase.set(baseName, new Map());
-      byBase.get(baseName).set(themeName, join(componentBuildPath, file));
-    }
-  }
-
-  for (const [baseName, themeFiles] of byBase) {
-    const sections = [];
-    for (const themeName of THEME_ORDER) {
-      const path = themeFiles.get(themeName);
-      if (!path || !existsSync(path)) continue;
-      const content = readFileSync(path, 'utf8');
-      const afterComment = content.split('*/')[1];
-      if (afterComment) sections.push(afterComment.trim());
-    }
-    if (sections.length > 0) {
-      const outPath = join(finalComponentDir, `${baseName}.scss`);
-      writeFileSync(outPath, componentHeader + sections.join('\n\n'), 'utf8');
-    }
-  }
+  combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, THEME_ORDER);
 
   // Remove intermediate per-theme files (only final combined files are kept in tokens/scss/component/)
-  if (existsSync(componentBuildPath)) {
-    for (const file of readdirSync(componentBuildPath)) {
-      unlinkSync(join(componentBuildPath, file));
-    }
-    rmdirSync(componentBuildPath);
-  }
+  cleanupComponentBuildDir(componentBuildPath);
 
-  // Build theme-specific tokens
-  // Group by brand to handle files that are written by multiple themes (e.g., typography.scss)
-  const themeGroups = {};
-  Object.entries(config)
-    .filter(([key]) => key !== 'primitive' && key !== 'component')
-    .forEach(([themeName, themeConfig]) => {
-      const brand = themeName.split('-')[0]; // Extract brand name
-      if (!themeGroups[brand]) {
-        themeGroups[brand] = [];
-      }
-      themeGroups[brand].push([themeName, themeConfig]);
-    });
-
-  // Build themes, handling typography deduplication across light/dark themes
+  // Build theme-specific tokens, grouped by brand so typography.scss is shared across modes
+  const themeGroups = buildThemeGroups(config);
   await buildThemes(themeGroups);
 }
 
@@ -317,7 +328,9 @@ const buildThemes = async (themeGroups) => {
   });
 };
 
-runBuild().catch((err) => {
+try {
+  await runBuild();
+} catch (err) {
   console.error(err);
   process.exit(1);
-});
+}
