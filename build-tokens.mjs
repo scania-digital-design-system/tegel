@@ -52,7 +52,7 @@ function createEmptyFile(filePath) {
   writeFileSync(fullPath, content, 'utf8');
 }
 
-function combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, themeOrder) {
+function indexComponentThemeFiles(componentBuildPath, themeOrder) {
   const byBase = new Map();
   if (existsSync(componentBuildPath)) {
     for (const file of readdirSync(componentBuildPath)) {
@@ -67,16 +67,25 @@ function combineComponentThemeFiles(componentBuildPath, finalComponentDir, compo
       byBase.get(baseName).set(themeName, join(componentBuildPath, file));
     }
   }
+  return byBase;
+}
 
+function collectComponentSections(themeFiles, themeOrder) {
+  const sections = [];
+  for (const themeName of themeOrder) {
+    const path = themeFiles.get(themeName);
+    if (!path || !existsSync(path)) continue;
+    const content = readFileSync(path, 'utf8');
+    const afterComment = content.split('*/')[1];
+    if (afterComment) sections.push(afterComment.trim());
+  }
+  return sections;
+}
+
+function combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, themeOrder) {
+  const byBase = indexComponentThemeFiles(componentBuildPath, themeOrder);
   for (const [baseName, themeFiles] of byBase) {
-    const sections = [];
-    for (const themeName of themeOrder) {
-      const path = themeFiles.get(themeName);
-      if (!path || !existsSync(path)) continue;
-      const content = readFileSync(path, 'utf8');
-      const afterComment = content.split('*/')[1];
-      if (afterComment) sections.push(afterComment.trim());
-    }
+    const sections = collectComponentSections(themeFiles, themeOrder);
     if (sections.length > 0) {
       const outPath = join(finalComponentDir, `${baseName}.scss`);
       writeFileSync(outPath, componentHeader + sections.join('\n\n'), 'utf8');
