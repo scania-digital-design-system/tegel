@@ -15,7 +15,26 @@
     min-width: auto;
   }
 
-  &--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
+  &:has(.tl-text-field__input:disabled) {
+    cursor: not-allowed;
+  }
+
+  .tl-icon {
+    background-color: var(--text-field-affix);
+
+    :has(.tl-text-field__input:disabled) & {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
+}
+
+.tl-text-field__input-wrapper {
+  position: relative;
+
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+  .tl-text-field--hide-readonly-icon
+)
+  &::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -29,25 +48,6 @@
     mask-position: center;
     transform: translateY(-50%);
     z-index: 1;
-  }
-
-  // Outside label - readonly icon position adjustment (only when label exists)
-  &:not(&--label-inside):has(.tl-text-field__label):has(.tl-text-field__input[readonly]):not(
-      :has(.tl-text-field__input:disabled)
-    ):not(&--hide-readonly-icon)::before {
-    top: calc(50% + 24px);
-  }
-
-  &:has(.tl-text-field__input:disabled) {
-    cursor: not-allowed;
-  }
-
-  .tl-icon {
-    background-color: var(--text-field-affix);
-
-    :has(.tl-text-field__input:disabled) & {
-      background-color: var(--text-field-affix-disabled);
-    }
   }
 }
 
@@ -83,9 +83,9 @@
   }
 
   .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
-      :has(.tl-text-field__input:disabled)
-    )
-    &:not(:focus) {
+  :has(.tl-text-field__input:disabled)
+)
+  &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
@@ -106,7 +106,7 @@
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
-    &:not(:focus) {
+  &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -118,9 +118,9 @@
   }
 
   .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
-      .tl-text-field--hide-readonly-icon
-    )
-    & {
+  .tl-text-field--hide-readonly-icon
+)
+  & {
     padding-right: 54px;
   }
 
@@ -194,6 +194,7 @@
     @include detail-02;
 
     position: absolute;
+    top: 50%;
     left: var(--text-field-label-inside-left, 16px);
     color: var(--text-field-label-inside);
     pointer-events: none;
@@ -201,19 +202,6 @@
     transform-origin: top left;
     transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
     z-index: 1;
-  }
-
-  /* Center label in input row before focus/fill */
-  .tl-text-field--label-inside.tl-text-field--lg & {
-    top: 28px; /* half of 56px input height */
-  }
-
-  .tl-text-field--label-inside.tl-text-field--md & {
-    top: 24px; /* half of 48px input height */
-  }
-
-  .tl-text-field--label-inside.tl-text-field--sm & {
-    top: 20px; /* half of 40px input height */
   }
 
   .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
@@ -227,10 +215,10 @@
   // Focus and filled state for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
-    &,
+  &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
-    & {
+  & {
     @include detail-07;
 
     top: 8px;
@@ -240,47 +228,47 @@
 
   // Keep prefix offset when focused for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-      .tl-text-field__input:focus
-    )
-    &,
+  .tl-text-field__input:focus
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-      .tl-text-field__input:not(:placeholder-shown)
-    )
-    &,
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-      .tl-text-field__input:focus
-    )
-    &,
+  .tl-text-field__input:focus
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-      .tl-text-field__input:not(:placeholder-shown)
-    )
-    & {
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  & {
     left: calc(16px + 20px + 8px);
   }
 
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-      .tl-text-field__input:focus
-    )
-    &,
+  .tl-text-field__input:focus
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-      .tl-text-field__input:not(:placeholder-shown)
-    )
-    &,
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-      .tl-text-field__input:focus
-    )
-    &,
+  .tl-text-field__input:focus
+)
+  &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-      .tl-text-field__input:not(:placeholder-shown)
-    )
-    & {
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   // Focus and filled state for sm - label disappears
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
-    & {
+  & {
     opacity: 0;
     visibility: hidden;
   }
@@ -339,9 +327,9 @@
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
-      :has(.tl-text-field__input:disabled)
-    )
-    & {
+  :has(.tl-text-field__input:disabled)
+)
+  & {
     color: var(--text-field-error);
   }
 
@@ -361,9 +349,9 @@
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
-      :has(.tl-text-field__input:disabled)
-    )
-    & {
+  :has(.tl-text-field__input:disabled)
+)
+  & {
     color: var(--text-field-error);
 
     .tl-text-field__charcounter-divider {
@@ -384,14 +372,8 @@
     position: absolute;
     left: 16px;
     top: 50%;
-    transform: translateY(calc(-50% - 1px));
+    transform: translateY(-50%);
     z-index: 1;
-  }
-
-  // Default behavior (label outside) - prefix position adjustment (only when a label element exists)
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
-    transform: translateY(calc(-50% + 24px));
   }
 
   :has(.tl-text-field__input:disabled) &--text,
@@ -420,14 +402,8 @@
     position: absolute;
     right: 16px;
     top: 50%;
-    transform: translateY(calc(-50% - 1px));
+    transform: translateY(-50%);
     z-index: 1;
-  }
-
-  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
-    transform: translateY(calc(-50% + 24px));
   }
 
   :has(.tl-text-field__input:disabled) &--text,
@@ -441,34 +417,6 @@
     .tl-icon,
     > .tl-icon {
       background-color: var(--text-field-affix-disabled) !important;
-    }
-  }
-}
-
-.tl-text-field__suffix {
-  @include affix-base;
-
-  right: 16px;
-  padding-right: 0;
-  z-index: 1;
-
-  // Default behavior (label outside) - suffix position adjustment (only when a label element exists)
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--text,
-  .tl-text-field:has(.tl-text-field__label):not(.tl-text-field--label-inside) &--icon {
-    transform: translateY(calc(-50% + 24px));
-  }
-
-  :has(.tl-text-field__input:disabled) &--text,
-  :has(.tl-text-field__input:disabled) &--icon {
-    color: var(--text-field-affix-disabled);
-
-    > * {
-      color: var(--text-field-affix-disabled);
-    }
-
-    .tl-icon,
-    > .tl-icon {
-      background-color: var(--text-field-affix-disabled);
     }
   }
 
