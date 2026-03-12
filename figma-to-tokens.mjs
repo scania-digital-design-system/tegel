@@ -18,6 +18,74 @@ const PRIMITIVE_DIST_DIR = join(process.cwd(), 'tokens', 'dist', 'primitive');
 // Directories will be created in main()
 
 /**
+ * Determine whether an entry in the token object should be skipped entirely.
+ */
+function shouldSkipEntry(key, isPrimitive) {
+  if (key === '$extensions') {
+    return true; // Skip Figma metadata
+  }
+  if (key === 'INTERNAL' && !isPrimitive) {
+    return true; // Skip INTERNAL namespace tokens (only in semantic tokens)
+  }
+  return false;
+}
+
+/**
+ * Normalize a single `$value` entry for a token.
+ * Returns:
+ * - `null` to indicate the entire token should be dropped
+ * - any other value to be assigned to `$value`
+ */
+function normalizeValueForToken(obj, value, path, isPrimitive) {
+  // Handle alias resolution (only for semantic tokens)
+  if (!isPrimitive) {
+    const aliasData = obj.$extensions?.['com.figma.aliasData'];
+    if (aliasData?.targetVariableName) {
+      // Convert Figma path format to Style Dictionary reference format
+      // "scania/color/grey/950" -> "{scania.color.grey.950}"
+      const targetPath = aliasData.targetVariableName;
+      const referencePath = targetPath.split('/').join('.');
+      return `{${referencePath}}`;
+    }
+  }
+
+  // Handle color objects - convert to hex string (preserve alpha when present)
+  if (obj.$type === 'color' && typeof value === 'object' && value.hex) {
+    if (value.alpha !== undefined && value.alpha < 1) {
+      const alphaHex = Math.round(value.alpha * 255).toString(16).padStart(2, '0');
+      return `${value.hex}${alphaHex}`;
+    }
+    return value.hex;
+  }
+
+  // Handle font family transformation for primitive tokens
+  // Remove ' cy' from Scania font family names
+  // Check both 'text' and 'string' types (font family tokens can use either)
+  if (isPrimitive && (obj.$type === 'text' || obj.$type === 'string') && typeof value === 'string') {
+    const fullPath = [...path, '$value'].join('.');
+    if (fullPath.includes('scania.font.family') || path.join('.').includes('scania.font.family')) {
+      return value.replaceAll(' cy', '');
+    }
+  }
+
+  // Handle INTERNAL references in values (only for semantic tokens)
+  if (!isPrimitive && typeof value === 'string' && value.includes('INTERNAL.')) {
+    return null; // Skip this entire token
+  }
+
+  // Round numeric values to a sensible precision so that we avoid floating
+  // point noise in the generated tokens (for example,
+  // letter-spacing 0.4000000059604645 -> 0.4). This applies to both semantic
+  // and primitive tokens.
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return Number(value.toFixed(4));
+  }
+
+  // Preserve other values as-is
+  return value;
+}
+
+/**
  * Recursively process a token object to normalize it
  * @param {object} obj - Token object to normalize
  * @param {string[]} path - Current path in the token tree
@@ -36,74 +104,19 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
   const normalized = {};
 
   for (const [key, value] of Object.entries(obj)) {
-    // Skip Figma metadata
-    if (key === '$extensions') {
-      continue; // Skip entire extensions object
-    }
-
-    // Skip INTERNAL namespace tokens (only in semantic tokens)
-    if (key === 'INTERNAL' && !isPrimitive) {
-      continue; // Skip entire INTERNAL namespace
+    if (shouldSkipEntry(key, isPrimitive)) {
+      continue;
     }
 
     const currentPath = [...path, key];
 
     // Check if this is a token with $type and $value
     if (key === '$value' && obj.$type) {
-      // Handle alias resolution (only for semantic tokens)
-      if (!isPrimitive) {
-        const aliasData = obj.$extensions?.['com.figma.aliasData'];
-        if (aliasData?.targetVariableName) {
-          // Convert Figma path format to Style Dictionary reference format
-          // "scania/color/grey/950" -> "{scania.color.grey.950}"
-          const targetPath = aliasData.targetVariableName;
-          const referencePath = targetPath.split('/').join('.');
-          normalized[key] = `{${referencePath}}`;
-          continue;
-        }
-      }
-
-      // Handle color objects - convert to hex string (preserve alpha when present)
-      if (obj.$type === 'color' && typeof value === 'object' && value.hex) {
-        if (value.alpha !== undefined && value.alpha < 1) {
-          const alphaHex = Math.round(value.alpha * 255).toString(16).padStart(2, '0');
-          normalized[key] = `${value.hex}${alphaHex}`;
-        } else {
-          normalized[key] = value.hex;
-        }
-        continue;
-      }
-
-      // Handle font family transformation for primitive tokens
-      // Remove ' cy' from Scania font family names
-      // Check both 'text' and 'string' types (font family tokens can use either)
-      if (isPrimitive && (obj.$type === 'text' || obj.$type === 'string') && typeof value === 'string') {
-        // Build the full path including current key to check
-        const fullPath = [...path, key].join('.');
-        // Check if path includes 'scania.font.family' (the path would be like 'scania.font.family.default')
-        if (fullPath.includes('scania.font.family') || path.join('.').includes('scania.font.family')) {
-          normalized[key] = value.replaceAll(' cy', '');
-          continue;
-        }
-      }
-
-      // Handle INTERNAL references in values (only for semantic tokens)
-      if (!isPrimitive && typeof value === 'string' && value.includes('INTERNAL.')) {
+      const normalizedValue = normalizeValueForToken(obj, value, path, isPrimitive);
+      if (normalizedValue === null) {
         return null; // Skip this entire token
       }
-
-      // Round numeric values to a sensible precision so that we avoid
-      // floating point noise in the generated tokens (for example,
-      // letter-spacing 0.4000000059604645 -> 0.4). This applies to both
-      // semantic and primitive tokens.
-      if (typeof value === 'number' && Number.isFinite(value)) {
-        const rounded = Number(value.toFixed(4));
-        normalized[key] = rounded;
-        continue;
-      }
-
-      // Preserve other values as-is
-      normalized[key] = value;
+      normalized[key] = normalizedValue;
       continue;
     }
 
