@@ -88,7 +88,10 @@ function combineComponentThemeFiles(componentBuildPath, finalComponentDir, compo
     const sections = collectComponentSections(themeFiles, themeOrder);
     if (sections.length > 0) {
       const outPath = join(finalComponentDir, `${baseName}.scss`);
-      writeFileSync(outPath, componentHeader + sections.join('\n\n'), 'utf8');
+      // Ensure file ends with a trailing newline so subsequent runs don't
+      // cause spurious diffs (stylelint/prettier also enforce this).
+      const body = sections.join('\n\n');
+      writeFileSync(outPath, `${componentHeader}${body}\n`, 'utf8');
     }
   }
 }
