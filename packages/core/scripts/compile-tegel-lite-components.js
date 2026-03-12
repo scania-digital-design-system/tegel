@@ -11,7 +11,7 @@ const dirName = path.dirname(fileName);
 const componentsDir = path.resolve(dirName, '../src/tegel-lite/components'); // Source SCSS directory
 const outputCssDir = path.resolve(dirName, '../../tegel-lite/dist'); // Output compiled CSS directory
 // Define paths for global styles
-const globalScss = path.resolve(dirName, '../src/global/core.scss'); // Source global SCSS
+const globalScss = path.resolve(dirName, '../src/global/tegel-lite-global.scss'); // Source global SCSS
 const globalCss = path.resolve(dirName, '../../tegel-lite/dist/global.css'); // Output compiled global CSS
 
 // Define paths for Scania specific vars

@@ -47,6 +47,25 @@ test.describe.parallel(componentName, () => {
     await expect(tag).toHaveClass(/neutral/);
   });
 
+  test('Check that lowercase variant input produces correct lowercase CSS classes', async ({
+    page,
+  }) => {
+    // Given - tags with lowercase variant values in a dedicated fixture
+    await page.goto('src/components/tag/test/lowercase/index.html');
+
+    // When (rendering happens on page load)
+
+    // Then - each lowercase variant should produce its corresponding lowercase CSS class
+    await expect(page.getByTestId('tds-tag-testid-lowercase-neutral')).toHaveClass(/neutral/);
+    await expect(page.getByTestId('tds-tag-testid-lowercase-success')).toHaveClass(/success/);
+    await expect(page.getByTestId('tds-tag-testid-lowercase-warning')).toHaveClass(/warning/);
+    await expect(page.getByTestId('tds-tag-testid-lowercase-new')).toHaveClass(/new/);
+    await expect(page.getByTestId('tds-tag-testid-lowercase-information')).toHaveClass(
+      /information/,
+    );
+    await expect(page.getByTestId('tds-tag-testid-lowercase-error')).toHaveClass(/error/);
+  });
+
   test('Check that tag content structure is correct', async ({ page }) => {
     const tag = page.getByTestId('tds-tag-testid-default');
     const tagContent = tag.locator('.tds-tag__content');

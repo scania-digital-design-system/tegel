@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/card';
+
 .tl-card {
   --card-background: var(--tds-white);
   --card-background-primary: var(--component-card-primary);

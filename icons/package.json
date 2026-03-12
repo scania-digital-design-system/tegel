@@ -20,7 +20,7 @@
     "gulp": "^5.0.0",
     "gulp-iconfont": "^11.0.1",
     "gulp-iconfont-css": "^3.0.0",
-    "svgo": "^2.8.0",
+    "svgo": "^2.8.2",
     "svgson": "^5.2.1"
   }
 }

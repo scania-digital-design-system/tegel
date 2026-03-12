@@ -40,7 +40,12 @@ export default {
 
 const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
   const modeClass = `tl-popover-canvas--${modeVariant.toLowerCase()}`;
-  const animationClass = animation === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
+  const animationMap = {
+    None: 'none',
+    Fade: 'fade',
+  };
+  const animationClass =
+    animationMap[animation] === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 
   return formatHtmlPreview(`

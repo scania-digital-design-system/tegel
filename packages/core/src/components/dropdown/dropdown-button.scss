@@ -1,21 +1,30 @@
 :host {
   button {
     all: unset;
+    display: flex;
+    align-items: center;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
     background-color: var(--tds-dropdown-bg);
     border-bottom: 1px solid var(--tds-dropdown-border-bottom);
     border-radius: var(--tds-dropdown-border-radius);
+    padding: 0 16px;
 
     &:hover {
       border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
     }
 
     .value-wrapper {
-      padding: 0 16px;
+      flex: 1;
+      min-width: 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      padding: 0;
+    }
+
+    .menu-icon {
+      margin-right: 16px;
     }
 
     &.placeholder {

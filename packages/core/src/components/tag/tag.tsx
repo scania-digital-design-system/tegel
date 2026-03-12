@@ -21,14 +21,26 @@ export class TdsTag {
   @Prop() size: 'lg' | 'sm' = 'lg';
 
   /** Sets the variant mode of the tag */
-  @Prop() variant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' = 'Neutral';
+  @Prop() variant:
+    | 'success'
+    | 'warning'
+    | 'new'
+    | 'neutral'
+    | 'information'
+    | 'error'
+    | 'Success'
+    | 'Warning'
+    | 'New'
+    | 'Neutral'
+    | 'Information'
+    | 'Error' = 'Neutral';
 
   render() {
     const hasPrefixSlot = hasSlot('prefix', this.host);
 
     const getTagClasses = () => ({
       [`${this.size.toLowerCase()}`]: true,
-      [`${this.variant.toLowerCase()}`]: true,
+      [this.variant.toLowerCase()]: true,
     });
 
     return (

@@ -1,5 +1,4 @@
 @use '../../../mixins/tl-scrollbar' as *;
-@use '../../../mixins/z-index' as *;
 @use '../../../mixins/box-sizing' as *;
 @use './tl-header-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
@@ -38,7 +37,6 @@
     background-color: var(--component-header-color-background-pressed);
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
-    z-index: calc(var(--tds-z-index-header) + 1);
 
     &:hover {
       background-color: var(--component-header-color-background-pressed);
@@ -89,7 +87,6 @@
     background-color: var(--component-header-color-background-pressed);
     color: var(--header-nav-item-dropdown-opened);
     position: relative;
-    z-index: calc(var(--tds-z-index-header) + 1);
 
     &:hover {
       background-color: var(--component-header-color-background-pressed);
@@ -129,7 +126,7 @@
   min-width: 190px;
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
-  z-index: var(--tds-z-index-header);
+
   @include tl-scrollbar;
 
   @media all and (max-width: $media-fullwidth) {
@@ -154,7 +151,6 @@
   min-width: 290px;
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
-  z-index: var(--tds-z-index-header);
   border-radius: 4px;
   @include tl-scrollbar;
 
@@ -176,7 +172,7 @@
   min-width: 320px;
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
-  z-index: var(--tds-z-index-header);
+
   @include tl-scrollbar;
 
   &--open {
@@ -197,7 +193,6 @@
   min-width: 320px;
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
-  z-index: var(--tds-z-index-header);
   border-radius: 4px;
   @include tl-scrollbar;
 

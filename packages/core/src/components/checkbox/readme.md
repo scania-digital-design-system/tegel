@@ -65,6 +65,7 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
  - [tds-dropdown-option](../dropdown/dropdown-option)
  - [tds-table-body-row](../table/table-body-row)
+ - [tds-table-body-row-expandable](../table/table-body-row-expandable)
  - [tds-table-header](../table/table-header)
 
 ### Graph
@@ -72,6 +73,7 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 graph TD;
   tds-dropdown-option --> tds-checkbox
   tds-table-body-row --> tds-checkbox
+  tds-table-body-row-expandable --> tds-checkbox
   tds-table-header --> tds-checkbox
   style tds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```

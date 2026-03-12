@@ -19,6 +19,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
   'modeVariant',
+  'multiselect',
 ];
 
 /**
@@ -56,6 +57,12 @@ export class TdsTableBodyRowExpandable {
   /** Aria label for the expand button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelExpandButton: string = '';
 
+  /** Marks the row as selected, used for multiselect table. */
+  @Prop({ reflect: true }) selected: boolean = false;
+
+  /** Marks the row as disabled, used for multiselect table. */
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
@@ -70,6 +77,8 @@ export class TdsTableBodyRowExpandable {
   @State() noMinWidth: boolean = false;
 
   @State() modeVariant: 'primary' | 'secondary' | null = null;
+
+  @State() multiselect: boolean = false;
 
   @Element() host!: HTMLElement;
 
@@ -95,6 +104,19 @@ export class TdsTableBodyRowExpandable {
     rowId: string;
     isExpanded: boolean;
     tableId: string | undefined;
+  }>;
+
+  /** Event emitted when a row is selected/deselected. */
+  @Event({
+    eventName: 'tdsSelect',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsSelect!: EventEmitter<{
+    tableId: string | undefined;
+    checked: boolean;
+    selectedRows: object[] | undefined;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -172,7 +194,18 @@ export class TdsTableBodyRowExpandable {
     } else {
       const header = this.tableEl?.querySelector('tds-table-header');
       if (header) {
-        this.columnsNumber = header.childElementCount + 1;
+        // Start with the number of data columns (header cells from slot)
+        let totalColumns = header.childElementCount;
+
+        // Add 1 for the expandable row control column
+        totalColumns += 1;
+
+        // Add 1 if multiselect is enabled (checkbox column)
+        if (this.multiselect) {
+          totalColumns += 1;
+        }
+
+        this.columnsNumber = totalColumns;
       }
     }
   }
@@ -185,6 +218,15 @@ export class TdsTableBodyRowExpandable {
   onChangeHandler(event) {
     this.isExpanded = event.currentTarget.checked === true;
     this.sendValue();
+  }
+
+  async handleCheckboxChange(event) {
+    this.selected = event.detail.checked;
+    this.tdsSelect.emit({
+      tableId: this.tableId,
+      checked: this.selected,
+      selectedRows: await this.tableEl?.getSelectedRows(),
+    });
   }
 
   render() {
@@ -202,9 +244,19 @@ export class TdsTableBodyRowExpandable {
           class={{
             'tds-table__row': true,
             'tds-table__row--expanded': this.isExpanded,
+            'tds-table__row--selected': this.selected,
           }}
           part="row"
         >
+          {this.multiselect && (
+            <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">
+              <tds-checkbox
+                onTdsChange={(event) => this.handleCheckboxChange(event)}
+                checked={this.selected}
+                disabled={this.disabled}
+              ></tds-checkbox>
+            </td>
+          )}
           <td
             class={{
               'tds-table__cell-expand': true,

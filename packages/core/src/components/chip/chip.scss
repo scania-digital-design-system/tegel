@@ -16,116 +16,114 @@
 }
 
 /* Component styling */
+.tds-chip-component {
+  display: inline-flex;
 
-.component {
-  .tds-chip-component {
+  label {
+    box-sizing: content-box;
+    background-color: var(--tds-chips-background);
+    color: var(--tds-chips-color);
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
     display: inline-flex;
+    align-items: center;
+    border-radius: 32px;
+    border: 1px solid var(--tds-chips-border);
+    cursor: pointer;
+    white-space: nowrap;
 
+    &:hover {
+      background-color: var(--tds-chips-background-hover);
+      border-color: var(--tds-chips-border-hover);
+    }
+  }
+
+  &.disabled {
     label {
-      background-color: var(--tds-chips-background);
-      color: var(--tds-chips-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      display: inline-flex;
-      align-items: center;
-      border-radius: 32px;
-      border: 1px solid var(--tds-chips-border);
-      cursor: pointer;
-      white-space: nowrap;
-
-      &:hover {
-        background-color: var(--tds-chips-background-hover);
-        border-color: var(--tds-chips-border-hover);
-      }
-    }
-
-    &.disabled {
-      label {
-        background-color: var(--tds-chips-background-disabled);
-        color: var(--tds-chips-text-disabled);
-        border-color: transparent;
-        cursor: default;
-        pointer-events: none;
-      }
-
-      input {
-        pointer-events: none; // Ensure input does not respond to interactions
-      }
-
-      input[type='radio']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active-disabled);
-        color: var(--tds-chips-text-checked-disabled);
-        border-color: transparent;
-      }
-
-      input[type='checkbox']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active-disabled);
-        color: var(--tds-chips-text-checked-disabled);
-        border-color: transparent;
-      }
-    }
-
-    // Base size styles
-    &.lg label {
-      height: 16px;
-      padding: 8px 16px;
-      gap: 6px;
-    }
-
-    &.sm label {
-      height: 16px;
-      padding: 4px 12px;
-      gap: 4px;
-    }
-
-    // Prefix/suffix overrides
-    &.sm.prefix label {
-      padding: 4px 12px 4px 8px;
-    }
-
-    &.sm.suffix label {
-      padding: 4px 8px 4px 12px;
-    }
-
-    &.lg.prefix label {
-      padding: 8px 16px 8px 10px;
-    }
-
-    &.lg.suffix label {
-      padding: 8px 10px 8px 16px;
-    }
-
-    // Combined prefix + suffix
-    &.sm.prefix.suffix label {
-      padding: 4px 8px;
-    }
-
-    &.lg.prefix.suffix label {
-      padding: 8px 10px;
+      background-color: var(--tds-chips-background-disabled);
+      color: var(--tds-chips-text-disabled);
+      border-color: transparent;
+      cursor: default;
+      pointer-events: none;
     }
 
     input {
-      opacity: 0;
-      position: absolute;
-      z-index: -1;
+      pointer-events: none; // Ensure input does not respond to interactions
     }
 
-    input:focus-visible + label {
-      @include tds-focus-state;
-
-      background-color: var(--tds-chips-background-focus);
+    input[type='radio']:checked:disabled + label {
+      background-color: var(--tds-chips-background-active-disabled);
+      color: var(--tds-chips-text-checked-disabled);
       border-color: transparent;
     }
 
-    input:checked + label {
-      background-color: var(--tds-chips-background-active);
-      color: var(--tds-chips-color-active);
-      border-color: var(--tds-chips-background-active);
+    input[type='checkbox']:checked:disabled + label {
+      background-color: var(--tds-chips-background-active-disabled);
+      color: var(--tds-chips-text-checked-disabled);
+      border-color: transparent;
+    }
+  }
 
-      &:hover {
-        background-color: var(--tds-chips-background-active-hover);
-        border-color: var(--tds-chips-border-selected-hover);
-      }
+  // Base size styles
+  &.lg label {
+    height: 16px;
+    padding: 8px 16px;
+    gap: 6px;
+  }
+
+  &.sm label {
+    height: 16px;
+    padding: 4px 12px;
+    gap: 4px;
+  }
+
+  // Prefix/suffix overrides
+  &.sm.prefix label {
+    padding: 4px 12px 4px 8px;
+  }
+
+  &.sm.suffix label {
+    padding: 4px 8px 4px 12px;
+  }
+
+  &.lg.prefix label {
+    padding: 8px 16px 8px 10px;
+  }
+
+  &.lg.suffix label {
+    padding: 8px 10px 8px 16px;
+  }
+
+  // Combined prefix + suffix
+  &.sm.prefix.suffix label {
+    padding: 4px 8px;
+  }
+
+  &.lg.prefix.suffix label {
+    padding: 8px 10px;
+  }
+
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  input:focus-visible + label {
+    @include tds-focus-state;
+
+    background-color: var(--tds-chips-background-focus);
+    border-color: transparent;
+  }
+
+  input:checked + label {
+    background-color: var(--tds-chips-background-active);
+    color: var(--tds-chips-color-active);
+    border-color: var(--tds-chips-background-active);
+
+    &:hover {
+      background-color: var(--tds-chips-background-active-hover);
+      border-color: var(--tds-chips-border-selected-hover);
     }
   }
 }
