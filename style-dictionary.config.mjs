@@ -57,7 +57,7 @@ function getComponentValueFromSemanticJson(brand, themeKey, rawParts) {
       .slice(1, -1)
       .split('.')
       .join('-')
-      .replace(/\s+/g, '-');
+      .replaceAll(/\s+/g, '-');
     return `var(--${refPath})`;
   }
   return refValue;
@@ -95,9 +95,9 @@ StyleDictionary.registerFormat({
         .map(part =>
           part
             .trim()
-            .replace(/\s+/g, '-')
-            .replace(/[^a-zA-Z0-9-]/g, '')
-            .replace(/^[-]+/, '')
+            .replaceAll(/\s+/g, '-')
+            .replaceAll(/[^a-zA-Z0-9-]/g, '')
+            .replaceAll(/^[-]+/, '')
         )
         .filter(part => part.length > 0);
       const variableName = ['component', ...pathParts].join('-');
@@ -107,14 +107,15 @@ StyleDictionary.registerFormat({
       
       let value = null;
       
-      if (token.original && token.original.$value) {
-        const refValue = token.original.$value;
+      const originalValue = token.original?.$value;
+      if (originalValue) {
+        const refValue = originalValue;
         if (typeof refValue === 'string' && refValue.startsWith('{')) {
           const refPath = refValue
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replace(/\s+/g, '-');
+            .replaceAll(/\s+/g, '-');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
@@ -224,9 +225,14 @@ StyleDictionary.registerFormat({
         }
       });
 
-      const lightBrandsToEmit = brandOnly !== null
-        ? (lightBrands.has(brandOnly) ? [brandOnly] : [])
-        : BRANDS.filter(b => lightBrands.has(b));
+      let lightBrandsToEmit;
+      if (brandOnly == null) {
+        lightBrandsToEmit = BRANDS.filter(b => lightBrands.has(b));
+      } else if (lightBrands.has(brandOnly)) {
+        lightBrandsToEmit = [brandOnly];
+      } else {
+        lightBrandsToEmit = [];
+      }
 
       lightBrandsToEmit.forEach(brand => {
         const merged = new Map([...lightBaseTokens, ...(lightByBrand.get(brand) || new Map())]);
@@ -345,7 +351,7 @@ function createComponentFile(componentName, matchType = 'exact') {
       return false;
     }
     // Handle component names with -- prefix (e.g., --shadow, --input-field)
-    const actualComponentName = token.path[1]?.replace(/^--/, '') || '';
+    const actualComponentName = token.path[1]?.replaceAll(/^--/, '') || '';
     if (matchFn === 'includes') {
       return actualComponentName.includes(componentName);
     }
@@ -375,7 +381,7 @@ export const componentThemeNames = Array.from(brands.values()).flatMap(brand =>
 // Helper to create component file config for per-theme build (writes to build/scss/component/<name>-<theme>.scss)
 function createComponentFileForTheme(componentName, themeName, matchType = 'exact') {
   const base = createComponentFile(componentName, matchType);
-  const safeName = componentName.replace(/\s+/g, '-');
+  const safeName = componentName.replaceAll(/\s+/g, '-');
   return {
     ...base,
     destination: `component/${safeName}-${themeName}.scss`,
@@ -458,13 +464,18 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
     const themeType = themeName.split('-')[1]; // light or dark
     
     // Special selector for color tokens
-    const colorTokensSelector = brand.name === 'scania'
-      ? themeType === 'light'
-        ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
-        : `.tds-mode-dark,\n.scania .tds-mode-dark`
-      : themeType === 'light'
-        ? `.traton,\n.traton .tds-mode-light`
-        : `.traton .tds-mode-dark`;
+    let colorTokensSelector;
+    if (brand.name === 'scania') {
+      colorTokensSelector =
+        themeType === 'light'
+          ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
+          : `.tds-mode-dark,\n.scania .tds-mode-dark`;
+    } else {
+      colorTokensSelector =
+        themeType === 'light'
+          ? `.traton,\n.traton .tds-mode-light`
+          : `.traton .tds-mode-dark`;
+    }
 
     configs[themeName] = {
       source: [
