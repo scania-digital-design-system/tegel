@@ -304,7 +304,10 @@ const buildThemes = async (themeGroups) => {
     // Write merged typography file
     const header = '/**\n * Do not edit directly, this file was auto-generated.\n */\n\n';
     const selector = brand === 'scania' ? '.scania' : '.traton';
-    writeFileSync(typographyPath, `${header}${selector} {\n${[...typographyTokens].join('\n')}\n}`, 'utf8');
+    const tokenLines = [...typographyTokens].map(token => `  ${token}`);
+    const body = `${selector} {\n${tokenLines.join('\n')}\n}`;
+    // Ensure trailing newline and indentation to align with stylelint/prettier
+    writeFileSync(typographyPath, `${header}${body}\n`, 'utf8');
     console.log(`  Wrote typography.scss for ${brand} with ${typographyTokens.size} unique tokens`);
   
     // Clean up dimension.scss - keep dimension tokens and brand-specific unit tokens
