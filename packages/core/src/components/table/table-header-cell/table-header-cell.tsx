@@ -50,6 +50,12 @@ export class TdsTableHeaderCell {
   /** Aria label for the sort button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
 
+  /** Number of columns the cell should span. */
+  @Prop() colSpan?: number;
+
+  /** Number of rows the cell should span. */
+  @Prop() rowSpan?: number;
+
   @State() textAlignState: TextAlign = 'left';
 
   @State() sortingDirection: 'asc' | 'desc' | undefined;
@@ -252,10 +258,10 @@ export class TdsTableHeaderCell {
     );
   };
 
-  onHeadCellHover = (key) => {
+  onHeadCellHover = (key: string | undefined) => {
     this.internalTdsHover.emit({
       tableId: this.tableId,
-      key,
+      key: key ?? '',
     });
   };
 
@@ -280,13 +286,19 @@ export class TdsTableHeaderCell {
           'tds-table--toolbar-available': this.enableToolbarDesign,
           'tds-table--no-padding': this.disablePadding,
         }}
-        style={{ minWidth: this.customWidth }}
-        onMouseOver={() => this.onHeadCellHover(this.cellKey)}
-        onMouseLeave={() => this.onHeadCellHover('')}
-        role="columnheader"
-        aria-sort={this.getAriaSort()}
       >
-        {this.headerCellContent()}
+        <th
+          style={{ minWidth: this.customWidth }}
+          onMouseOver={() => this.onHeadCellHover(this.cellKey)}
+          onFocus={() => this.onHeadCellHover(this.cellKey)}
+          onMouseLeave={() => this.onHeadCellHover('')}
+          onBlur={() => this.onHeadCellHover('')}
+          aria-sort={this.getAriaSort()}
+          colSpan={this.colSpan}
+          rowSpan={this.rowSpan}
+        >
+          {this.headerCellContent()}
+        </th>
       </Host>
     );
   }

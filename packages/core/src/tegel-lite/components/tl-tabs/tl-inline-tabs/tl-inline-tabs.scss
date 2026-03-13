@@ -1,6 +1,7 @@
 @use '../../../../mixins/focus-state' as *;
 @use '../../../../mixins/box-sizing' as *;
 @use './tl-inline-tabs-vars' as *;
+@use './_tl-inline-tab' as *;
 
 .tl-inline-tabs {
   @include tds-box-sizing;

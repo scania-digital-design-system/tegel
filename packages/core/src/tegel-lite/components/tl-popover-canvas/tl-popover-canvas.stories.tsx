@@ -27,20 +27,25 @@ export default {
       name: 'Animation',
       description: 'Sets the animation style of the Popover Canvas.',
       control: { type: 'radio' },
-      options: ['none', 'fade'],
-      table: { defaultValue: { summary: 'none' } },
+      options: ['None', 'Fade'],
+      table: { defaultValue: { summary: 'None' } },
     },
   },
   args: {
     modeVariant: 'Primary',
     showPopoverCanvas: true,
-    animation: 'fade',
+    animation: 'Fade',
   },
 };
 
 const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
   const modeClass = `tl-popover-canvas--${modeVariant.toLowerCase()}`;
-  const animationClass = animation === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
+  const animationMap = {
+    None: 'none',
+    Fade: 'fade',
+  };
+  const animationClass =
+    animationMap[animation] === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 
   return formatHtmlPreview(`

@@ -78,7 +78,7 @@ export const config: Config = {
     },
     reactOutputTarget({
       componentCorePackage: '@scania/tegel',
-      proxiesFile: '../react/lib/components/stencil-generated/index.ts',
+      outDir: '../react/lib/components/stencil-generated',
     }),
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',

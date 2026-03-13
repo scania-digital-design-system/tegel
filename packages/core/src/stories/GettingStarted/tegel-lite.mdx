@@ -66,30 +66,30 @@ Tegel Lite supports both **Scania** and **Traton** themes with light and dark mo
 Set the active theme on the `<html>` element and mode on the `<body>` element:
 
 ```html
-<!-- Scania light mode (default) -->
+<!-- Scania light mode -->
 <html class="scania">
-  <body>
+  <body class="tl-mode-light">
     <!-- Your content -->
   </body>
 </html>
 
 <!-- Scania dark mode -->
 <html class="scania">
-  <body class="tds-mode-dark">
+  <body class="tl-mode-dark">
     <!-- Your content -->
   </body>
 </html>
 
-<!-- Traton light mode (default) -->
+<!-- Traton light mode -->
 <html class="traton">
-  <body>
+  <body class="tl-mode-light">
     <!-- Your content -->
   </body>
 </html>
 
 <!-- Traton dark mode -->
 <html class="traton">
-  <body class="tds-mode-dark">
+  <body class="tl-mode-dark">
     <!-- Your content -->
   </body>
 </html>
@@ -97,7 +97,7 @@ Set the active theme on the `<html>` element and mode on the `<body>` element:
 
 **Important:** 
 - Place the brand class (`.scania` or `.traton`) on the `<html>` element
-- Place the mode class (`.tds-mode-dark`) on the `<body>` element for dark mode
+- Place the mode class (`.tl-mode-dark`) on the `<body>` element for dark mode
 - Light mode is the default and doesn't require a class
 
 ## Usage
@@ -126,7 +126,7 @@ For vanilla HTML projects, link to the CSS files:
   <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/components.css">
 </head>
 <body>
-  <!-- Add class="tds-mode-dark" to body for dark mode -->
+  <!-- Add class="tl-mode-dark" to body for dark mode -->
   <button class="tl-button tl-button--primary tl-button--md">
     <span class="tl-button__label">Click me!</span>
   </button>

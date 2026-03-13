@@ -158,7 +158,7 @@ const Template = ({
       prefixContent = '<span class="tl-text-field__prefix--text">$</span>';
     } else {
       prefixContent =
-        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__prefix--icon"></span>';
+        '<span class="tl-icon tl-icon--placeholder tl-icon--20 tl-text-field__prefix--icon"></span>';
     }
   }
 
@@ -168,7 +168,7 @@ const Template = ({
       suffixContent = '<span class="tl-text-field__suffix--text">$</span>';
     } else {
       suffixContent =
-        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__suffix--icon"></span>';
+        '<span class="tl-icon tl-icon--placeholder tl-icon--20 tl-text-field__suffix--icon"></span>';
     }
   }
 
@@ -199,10 +199,13 @@ const Template = ({
       "@scania/tegel-lite/tl-icon.css"
     -->
     <div class="${componentClasses}"${styleAttr}>
-      ${labelContent}
-      <input class="tl-text-field__input" ${inputAttrs} />
-      ${prefixContent}
-      ${suffixContent}
+      ${labelPosition === 'Outside' ? labelContent : ''}
+      <div class="tl-text-field__input-wrapper">
+        ${labelPosition === 'Inside' ? labelContent : ''}
+        <input class="tl-text-field__input" ${inputAttrs} />
+        ${prefixContent}
+        ${suffixContent}
+      </div>
       ${helperWrapperContent}
     </div>
 

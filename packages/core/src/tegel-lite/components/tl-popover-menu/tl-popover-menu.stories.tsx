@@ -35,8 +35,8 @@ export default {
       name: 'Animation',
       description: 'Sets the animation style of the Popover Menu.',
       control: { type: 'radio' },
-      options: ['none', 'fade'],
-      table: { defaultValue: { summary: 'none' } },
+      options: ['None', 'Fade'],
+      table: { defaultValue: { summary: 'None' } },
     },
     showIcon: {
       name: 'Show icon',
@@ -57,17 +57,23 @@ export default {
   args: {
     modeVariant: 'Primary',
     showPopoverMenu: false,
-    fluidWidth: false,
-    animation: 'none',
     showIcon: false,
     icon: 'share',
+    fluidWidth: false,
+    animation: 'none',
   },
 };
 
 const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIcon, icon }) => {
   const modeClass = `tl-popover-menu--${modeVariant.toLowerCase()}`;
   const fluidClass = fluidWidth ? 'tl-popover-menu--fluid' : '';
-  const animationClass = animation === 'fade' ? 'tl-popover-menu--animation-fade' : '';
+
+  const animationMap = {
+    None: 'none',
+    Fade: 'fade',
+  };
+  const animationClass =
+    animationMap[animation] === 'fade' ? 'tl-popover-menu--animation-fade' : '';
   const showPopoverClass = showPopoverMenu ? 'tl-popover-menu--visible' : '';
 
   const iconHtml = showIcon

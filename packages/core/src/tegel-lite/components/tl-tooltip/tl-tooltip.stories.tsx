@@ -57,8 +57,8 @@ export default {
       'Multiple lines of tooltip - This is a tooltip that need a set of words to be able to formulate a sentence, that will be placed on multiple rows.',
     trigger: 'Hover',
     triggerElement: 'tl-button',
-    offsetSkidding: 0,
     offsetDistance: 8,
+    offsetSkidding: 0,
   },
 };
 

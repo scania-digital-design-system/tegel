@@ -1,6 +1,7 @@
 @use '../../../../mixins/focus-state' as *;
 @use '../../../../mixins/box-sizing' as *;
 @use './tl-navigation-tabs-vars' as *;
+@use './_tl-navigation-tab' as *;
 
 .tl-navigation-tabs {
   @include tds-box-sizing;

@@ -45,9 +45,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Neutral', 'Success', 'Warning', 'New', 'Information', 'Error'],
+      options: ['neutral', 'success', 'warning', 'new', 'information', 'error'],
       table: {
-        defaultValue: { summary: 'Neutral' },
+        defaultValue: { summary: 'neutral' },
       },
     },
     prefix: {
@@ -63,7 +63,7 @@ export default {
   args: {
     text: 'Tag Label',
     size: 'lg',
-    variant: 'Neutral',
+    variant: 'neutral',
   },
 };
 

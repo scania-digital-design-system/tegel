@@ -44,7 +44,7 @@ export class TdsDropdownOption {
 
   @State() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  private parentElement: HTMLTdsDropdownElement | null = null;
+  private parentDropdown: HTMLTdsDropdownElement | null = null;
 
   // @ts-expect-error - label property is used internally for text content tracking
   // eslint-disable-next-line no-unused-vars,
@@ -99,14 +99,14 @@ export class TdsDropdownOption {
     if (!this.host.parentElement) {
       return;
     }
-    this.parentElement =
+    this.parentDropdown =
       this.host.parentElement?.tagName === 'TDS-DROPDOWN'
         ? (this.host.parentElement as HTMLTdsDropdownElement)
         : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
 
-    if (this.parentElement) {
-      this.multiselect = this.parentElement.multiselect ?? false;
-      this.size = this.parentElement.size || 'lg';
+    if (this.parentDropdown) {
+      this.multiselect = this.parentDropdown.multiselect ?? false;
+      this.size = this.parentDropdown.size || 'lg';
     }
     this.label = this.host.textContent?.trim() || '';
   };
@@ -114,8 +114,8 @@ export class TdsDropdownOption {
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement?.appendValue(this.internalValue);
-      this.parentElement?.close();
+      this.parentDropdown?.appendValue(this.internalValue);
+      this.parentDropdown?.close();
       this.tdsSelect.emit({
         value: this.internalValue,
         selected: this.selected,
@@ -128,14 +128,14 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement?.appendValue(this.internalValue);
+        this.parentDropdown?.appendValue(this.internalValue);
         this.selected = true;
         this.tdsSelect.emit({
           value: this.internalValue,
           selected: this.selected,
         });
       } else {
-        this.parentElement?.removeValue(this.internalValue);
+        this.parentDropdown?.removeValue(this.internalValue);
         this.selected = false;
         this.tdsSelect.emit({
           value: this.internalValue,
@@ -149,7 +149,7 @@ export class TdsDropdownOption {
   handleFocus = (event) => {
     // Focus events are now handled by the parent dropdown component
     // Only emit if this is a standalone option (not within a dropdown)
-    if (!this.parentElement) {
+    if (!this.parentDropdown) {
       this.tdsFocus.emit(event);
     }
   };
@@ -157,7 +157,7 @@ export class TdsDropdownOption {
   handleBlur = (event) => {
     // Blur events are now handled by the parent dropdown component
     // Only emit if this is a standalone option (not within a dropdown)
-    if (!this.parentElement) {
+    if (!this.parentDropdown) {
       this.tdsBlur.emit(event);
     }
   };
@@ -177,7 +177,7 @@ export class TdsDropdownOption {
               class="multiselect"
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
-                  this.parentElement?.close();
+                  this.parentDropdown?.close();
                 }
               }}
             >

@@ -9,6 +9,7 @@ import {
   Element,
   Prop,
 } from '@stencil/core';
+
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [

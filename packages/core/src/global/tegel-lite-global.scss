@@ -4,19 +4,9 @@
 * Once the Web Components imports are removed from the global.scss file, that file can be used for Tegel Lite as well.
 */
 
-$local-assets: './assets' !default;
-
-/* Multibrand tokens: Scania colors */
-@use '../../../../color/scania-color-primitives' as *;
-@use '../../../../color/scania-brand-usage' as *;
-
-/* Multibrand tokens: Scania typography */
-@use '../../../../typography/tokens/typography-scania' as *;
-
-/* Multibrand tokens: Scania spacing */
+// Spacing (brand-agnostic base units)
 @use '../../../../spacing/units' as *;
 @use '../../../../spacing/radius' as *;
-@use '../../../../spacing/scania-units' as *;
 
 // Motion
 @use '../../../../motion' as *;
@@ -30,14 +20,6 @@ $local-assets: './assets' !default;
 // Grid new
 @use '../../../../grid/grid' as *;
 
-// Typography
-@use '../../../../typography/scania-fonts' as *;
-@use '../../../../typography/scania-fonts-vars' as *;
-@use '../../../../typography/scania-fonts-selectors' as *;
-
-// Logos
-@use '../../../../logotype/logotype-scania' as *;
-
 // Vars
 @use '_variables' as *;
 @use 'tl-scrollbar-vars' as *;
@@ -48,46 +30,71 @@ $local-assets: './assets' !default;
 // Beta components
 @use '../components/_beta/date-picker/date-picker-single/date-picker-vars' as *;
 
+@use 'shame' as *;
+
 body {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-family: var(--body-01-font-family);
   font-size: 14px;
   margin: 0;
   flex: 1;
 }
 
+// Override hardcoded Scania font values from scania-variables (_scania-fonts-selectors.scss) with brand-agnostic tokens
+h1 {
+  font-family: var(--headline-01-font-family);
+}
+
+h2 {
+  font-family: var(--headline-02-font-family);
+}
+
+h3 {
+  font-family: var(--headline-03-font-family);
+}
+
+h4 {
+  font-family: var(--headline-04-font-family);
+}
+
+h5 {
+  font-family: var(--headline-05-font-family);
+}
+
+h6 {
+  font-family: var(--headline-06-font-family);
+}
+
 :root,
-.tds-mode-light {
-  color: var(--tds-grey-958);
-  background-color: var(--tds-white);
+.tl-mode-light {
+  color: var(--color-foreground-text-strong);
+  background-color: var(--color-background-base);
 
-  &.tds-mode-variant-primary,
-  & .tds-mode-variant-primary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-white);
+  &.tl-mode-variant-primary,
+  & .tl-mode-variant-primary {
+    color: var(--color-foreground-text-strong);
+    background-color: var(--color-background-base);
   }
 
-  &.tds-mode-variant-secondary,
-  & .tds-mode-variant-secondary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-grey-50);
-  }
-}
-
-.tds-mode-dark {
-  color: var(--tds-grey-100);
-  background-color: var(--tds-grey-958);
-
-  &.tds-mode-variant-primary,
-  & .tds-mode-variant-primary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-958);
-  }
-
-  &.tds-mode-variant-secondary,
-  & .tds-mode-variant-secondary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-900);
+  &.tl-mode-variant-secondary,
+  & .tl-mode-variant-secondary {
+    color: var(--color-foreground-text-strong);
+    background-color: var(--color-background-layer-01);
   }
 }
 
-@use 'shame' as *;
+.tl-mode-dark {
+  color: var(--color-foreground-text-strong);
+  background-color: var(--color-background-base);
+
+  &.tl-mode-variant-primary,
+  & .tl-mode-variant-primary {
+    color: var(--color-foreground-text-strong);
+    background-color: var(--color-background-base);
+  }
+
+  &.tl-mode-variant-secondary,
+  & .tl-mode-variant-secondary {
+    color: var(--color-foreground-text-strong);
+    background-color: var(--color-background-layer-01);
+  }
+}

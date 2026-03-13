@@ -1,11 +1,14 @@
 @use '../../../mixins/box-sizing' as *;
 
-:host(.tds-table__header-cell) {
+:host {
+  display: contents;
+}
+
+:host(.tds-table__header-cell) th {
   @include tds-box-sizing;
 
   font: var(--tds-headline-07);
   letter-spacing: var(--tds-headline-07-ls);
-  display: table-cell;
   text-align: left;
   color: var(--tds-table-color);
   background-color: var(--tds-table-header-background);
@@ -28,7 +31,11 @@
   }
 }
 
-:host(.tds-table__header-cell--sortable) {
+:host(.tds-table__header-cell) th:hover {
+  background-color: var(--tds-table-header-background-hover);
+}
+
+:host(.tds-table__header-cell--sortable) th {
   .tds-table__header-button {
     display: flex;
     align-items: center;
@@ -78,7 +85,7 @@
   }
 }
 
-:host(.tds-table__header-cell--is-sorted) {
+:host(.tds-table__header-cell--is-sorted) th {
   .tds-table__header-button {
     background-color: var(--tds-table-header-btn-background);
 
@@ -96,52 +103,52 @@
   }
 }
 
-:host(.tds-table--compact) {
+:host(.tds-table--compact) th {
   height: 33px;
 }
 
-:host(.tds-table--divider) {
+:host(.tds-table--divider) th {
   border-right: 1px solid var(--tds-table-divider);
 }
 
-:host(.tds-table--divider:last-of-type) {
+:host(.tds-table--divider:last-of-type) th {
   border-right: none;
 }
 
-:host(.tds-table--no-min-width) {
+:host(.tds-table--no-min-width) th {
   min-width: unset;
 }
 
-:host(.tds-table--no-padding) {
+:host(.tds-table--no-padding) th {
   height: unset;
 }
 
 // border-radius style control
-// it depends id multiselect si on or off, same for if toolbar is there or not
-:host(.tds-table__header-cell:first-of-type) {
+// it depends if multiselect is on or off, same for if toolbar is there or not
+:host(.tds-table__header-cell:first-of-type) th {
   border-top-left-radius: 4px;
 }
 
-:host(.tds-table__header-cell:last-of-type) {
+:host(.tds-table__header-cell:last-of-type) th {
   border-top-right-radius: 4px;
 }
 
-:host(.tds-table--extra-column:first-of-type) {
+:host(.tds-table--extra-column:first-of-type) th {
   border-top-left-radius: 0;
 }
 
-:host(.tds-table--toolbar-available) {
+:host(.tds-table--toolbar-available) th {
   border-radius: 0;
 }
 
-:host(.tds-table--extra-column.tds-table--toolbar-available) {
+:host(.tds-table--extra-column.tds-table--toolbar-available) th {
   border-radius: 0;
 }
 
-:host(.tds-table__header-cell.tds-table--toolbar-available:first-of-type) {
+:host(.tds-table__header-cell.tds-table--toolbar-available:first-of-type) th {
   border-top-left-radius: 0;
 }
 
-:host(.tds-table__header-cell.tds-table--toolbar-available:last-of-type) {
+:host(.tds-table__header-cell.tds-table--toolbar-available:last-of-type) th {
   border-top-right-radius: 0;
 }

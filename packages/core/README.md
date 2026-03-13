@@ -164,6 +164,10 @@ export class AppModule {}
 
 See all available components in the [Tegel Design System](https://tegel.scania.com/components/overview).
 
+## Development notes
+
+When adding or editing Stencil components, **do not use DOM property names for instance fields** (e.g. `private` or `@State()`). Custom elements extend `HTMLElement`, so names like `children`, `parentElement`, `scrollWidth`, `childNodes`, `firstChild`, `tagName`, `shadowRoot` are read-only getters on the prototype. Assigning to them (e.g. `this.children = ...`) throws "Cannot set property X which has only a getter", especially when the component is used from React. Use alternative names (e.g. `tabElements` instead of `children`, `parentDropdown` instead of `parentElement`, `scrollableWidth` instead of `scrollWidth`).
+
 ## Browser support
 
 See the browser support section on [the Tegel website](https://tegel.scania.com/development/getting-started-development/introduction#browser-support).

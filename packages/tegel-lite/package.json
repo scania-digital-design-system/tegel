@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
@@ -84,7 +84,7 @@
     "test": "npx playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^24.3.1",
     "serve": "^14.2.5"
   },

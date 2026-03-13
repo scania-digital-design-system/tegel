@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Chip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-chip.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+        <button class="tl-chip tl-chip--lg tl-chip--selected">Label 1</button>
+        <button class="tl-chip tl-chip--lg">Label 2</button>
+
+        <button class="tl-chip tl-chip--sm tl-chip--selected">Label 1</button>
+        <button class="tl-chip tl-chip--sm">Label 2</button>
+
+        <button class="tl-chip tl-chip--lg tl-chip--selected tl-chip--prefix">
+            <span class="tl-icon tl-icon--arrow_right tl-icon--16"></span>
+            Label 1
+        </button>
+        <button class="tl-chip tl-chip--lg tl-chip--prefix">
+            <span class="tl-icon tl-icon--arrow_right tl-icon--16"></span>
+            Label 2
+        </button>
+
+        <button class="tl-chip tl-chip--sm tl-chip--selected tl-chip--suffix">
+            Label 1
+            <span class="tl-icon tl-icon--arrow_right tl-icon--16"></span>
+        </button>
+        <button class="tl-chip tl-chip--sm tl-chip--suffix">
+            Label 2
+            <span class="tl-icon tl-icon--arrow_right tl-icon--16"></span>
+        </button>
+
+        <button class="tl-chip tl-chip--sm tl-chip--selected" disabled>Label 1</button>
+        <button class="tl-chip tl-chip--sm" disabled>Label 2</button>
+    
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .variant-wrapper {
+        display: flex;
+        width: 380px;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+  </style>
+</html>
+

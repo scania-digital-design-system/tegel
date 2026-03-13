@@ -31,18 +31,11 @@
     box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
-  .tl-header__item--pressed & {
+  &:active {
     padding-top: 2px;
     padding-bottom: 2px;
     background-color: var(--header-basic-element-background-selected);
     box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
-  }
-
-  .tl-header__item--selected:not(.tl-header__item--pressed) & {
-    padding-top: 4px;
-    border-bottom-style: solid;
-    border-bottom-width: 4px;
-    border-bottom-color: var(--header-nav-item-border-pressed);
   }
 }
 

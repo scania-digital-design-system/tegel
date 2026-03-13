@@ -13,14 +13,14 @@
   --tds-stepper-icon-step-background-success: var(--tds-green-400);
 
   // Current
-  --tds-stepper-icon-step-border-color-current: var(--tds-grey-950);
+  --tds-stepper-icon-step-border-color-current: var(--tds-grey-750);
 
   // Upcoming
   --tds-stepper-label-text-color-upcoming: var(--tds-blue-950);
   --tds-stepper-label-border-color-upcoming: var(--tds-blue-750);
 
   // Divider
-  --tds-stepper-divider-line: var(--tds-grey-700);
+  --tds-stepper-divider-line: var(--tds-grey-750);
 }
 
 .tds-mode-dark {
@@ -35,6 +35,9 @@
   // Success
   --tds-stepper-icon-step-border-color-success: var(--tds-green-300);
   --tds-stepper-icon-step-background-success: var(--tds-green-300);
+
+  // Current
+  --tds-stepper-icon-step-border-color-current: var(--tds-grey-150);
 
   // Upcoming
   --tds-stepper-label-text-color-upcoming: var(--tds-grey-50);
