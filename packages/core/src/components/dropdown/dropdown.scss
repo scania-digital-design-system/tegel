@@ -67,17 +67,19 @@
 
     .label-inside {
       position: absolute;
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
       color: var(--tds-dropdown-label-inside-color);
+      left: 16px;
+      transition: all 0.2s ease-in-out;
 
       &.lg {
-        top: 12px;
+        top: 20px;
         left: 16px;
       }
 
       &.md {
-        top: 8px;
+        top: 16px;
         left: 16px;
       }
 
@@ -91,6 +93,19 @@
 
       & + .placeholder:not(.sm) {
         margin-top: 8px;
+      }
+
+      &.floated {
+        font: var(--tds-detail-07);
+        letter-spacing: var(--tds-detail-05-ls);
+
+        &.lg {
+          top: 12px;
+        }
+
+        &.md {
+          top: 8px;
+        }
       }
     }
 

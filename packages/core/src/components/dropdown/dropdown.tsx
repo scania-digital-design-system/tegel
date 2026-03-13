@@ -123,6 +123,8 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
+  private readonly uuid = generateUniqueId();
+
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
     /** Normalize to array */
@@ -801,8 +803,28 @@ export class TdsDropdown {
     appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
 
     /** Generate unique IDs for associating labels and helpers with the input/button */
-    const labelId = this.label ? `dropdown-label-${this.name || generateUniqueId()}` : undefined;
-    const helperId = this.helper ? `dropdown-helper-${this.name || generateUniqueId()}` : undefined;
+    const baseId = this.name || this.uuid;
+    const inputId = `dropdown-input-${baseId}`;
+    const labelId = this.label ? `dropdown-label-${baseId}` : undefined;
+    const helperId = this.helper ? `dropdown-helper-${baseId}` : undefined;
+    const hasSelection = this.selectedOptions.length > 0;
+    const hasTyped = this.filterQuery.length > 0;
+    const isFloated = this.filterFocus || hasSelection || hasTyped;
+    const isFloatedButton = this.open || hasSelection;
+    const showPlaceholderInside = this.filterFocus && !hasTyped && !hasSelection;
+    const showPlaceholderButton = this.labelPosition !== 'inside' || isFloatedButton;
+    const fallbackAriaLabel = this.label ? undefined : 'Dropdown';
+    const ariaLabel = this.tdsAriaLabel ?? fallbackAriaLabel;
+    let derivedPlaceholder = this.placeholder ?? '';
+    if (this.labelPosition === 'inside') {
+      derivedPlaceholder = showPlaceholderInside ? this.placeholder ?? '' : '';
+    }
+    let buttonText = '';
+    if (this.selectedOptions.length > 0) {
+      buttonText = this.getValue();
+    } else if (showPlaceholderButton) {
+      buttonText = this.placeholder ?? '';
+    }
 
     return (
       <Host
@@ -832,25 +854,21 @@ export class TdsDropdown {
               }}
             >
               <div class="value-wrapper">
-                {this.label && this.labelPosition === 'inside' && this.placeholder && (
-                  <div id={labelId} class={`label-inside ${this.size}`}>
-                    {this.label}
-                  </div>
-                )}
-                {this.label && this.labelPosition === 'inside' && !this.placeholder && (
-                  <div
+                {this.label && this.labelPosition === 'inside' && (
+                  <label
                     id={labelId}
-                    class={`
-                    label-inside-as-placeholder
-                    ${this.size}
-                    ${this.selectedOptions.length ? 'selected' : ''}
-                    `}
+                    htmlFor={inputId}
+                    class={{
+                      'label-inside': true,
+                      [this.size]: true,
+                      'floated': isFloated,
+                    }}
                   >
                     {this.label}
-                  </div>
+                  </label>
                 )}
                 <input
-                  aria-label={this.tdsAriaLabel}
+                  aria-label={ariaLabel}
                   aria-labelledby={labelId}
                   aria-describedby={helperId}
                   aria-disabled={this.disabled}
@@ -863,8 +881,9 @@ export class TdsDropdown {
                   class={{
                     placeholder: this.labelPosition === 'inside',
                   }}
+                  id={inputId}
                   type="text"
-                  placeholder={this.filterFocus ? '' : this.placeholder}
+                  placeholder={derivedPlaceholder}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onFocus={() => this.handleFocus()}
@@ -930,30 +949,26 @@ export class TdsDropdown {
               disabled={this.disabled}
             >
               <div class={`value-wrapper ${this.size}`}>
-                {this.label && this.labelPosition === 'inside' && this.placeholder && (
-                  <div id={labelId} class={`label-inside ${this.size}`}>
-                    {this.label}
-                  </div>
-                )}
-                {this.label && this.labelPosition === 'inside' && !this.placeholder && (
+                {this.label && this.labelPosition === 'inside' && (
                   <div
                     id={labelId}
-                    class={`
-                    label-inside-as-placeholder
-                    ${this.size}
-                    ${this.selectedOptions.length ? 'selected' : ''}
-                    `}
+                    class={{
+                      'label-inside': true,
+                      [this.size]: true,
+                      'floated': isFloatedButton,
+                    }}
                   >
                     {this.label}
                   </div>
                 )}
+
                 <div
                   aria-label={
                     this.tdsAriaLabel ? `Selected options for ${this.tdsAriaLabel}` : undefined
                   }
                   class={`placeholder ${this.size}`}
                 >
-                  {this.selectedOptions.length ? this.getValue() : this.placeholder}
+                  {buttonText}
                 </div>
               </div>
               <tds-icon
