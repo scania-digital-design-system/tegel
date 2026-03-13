@@ -57,7 +57,7 @@ function getComponentValueFromSemanticJson(brand, themeKey, rawParts) {
       .slice(1, -1)
       .split('.')
       .join('-')
-      .replaceAll(/\s+/g, '-');
+      .replace(/\s+/g, '-');
     return `var(--${refPath})`;
   }
   return refValue;
@@ -84,12 +84,12 @@ StyleDictionary.registerFormat({
 
     const tokenByThemeAndBrand = new Map();
     const variableMeta = new Map();
-    
-    dictionary.allTokens.forEach(token => {
-      if (token.path[0] !== 'component') {
-        return;
-      }
 
+    const componentTokens = dictionary.allTokens.filter(
+      token => token.path[0] === 'component'
+    );
+
+    componentTokens.forEach(token => {
       const rawParts = token.path.slice(1);
       const pathParts = rawParts
         .map(part =>
@@ -115,7 +115,7 @@ StyleDictionary.registerFormat({
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replaceAll(/\s+/g, '-');
+            .replace(/\s+/g, '-');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
@@ -351,8 +351,8 @@ function createComponentFile(componentName, matchType = 'exact') {
       return false;
     }
     // Handle component names with -- prefix (e.g., --shadow, --input-field)
-    const rawComponentName = token.path[1] || '';
-    const actualComponentName = rawComponentName.replaceAll(/^--/, '');
+  const rawComponentName = token.path[1] || '';
+  const actualComponentName = rawComponentName.replace(/^--/, '');
     if (matchFn === 'includes') {
       return actualComponentName.includes(componentName);
     }
@@ -382,7 +382,7 @@ export const componentThemeNames = Array.from(brands.values()).flatMap(brand =>
 // Helper to create component file config for per-theme build (writes to build/scss/component/<name>-<theme>.scss)
 function createComponentFileForTheme(componentName, themeName, matchType = 'exact') {
   const base = createComponentFile(componentName, matchType);
-  const safeName = componentName.replaceAll(/\s+/g, '-');
+  const safeName = componentName.replace(/\s+/g, '-');
   return {
     ...base,
     destination: `component/${safeName}-${themeName}.scss`,
