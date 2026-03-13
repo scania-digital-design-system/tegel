@@ -1,0 +1,35 @@
+name: Test workflow for npm status
+on:
+  push:
+    branches:
+      - chore/CDEP-2022-check-npm-status
+  workflow_dispatch:
+
+jobs:
+  check-npm-status:
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.availability.conclusion }}
+    steps:
+      - id: availability
+        name: Check npm status availability
+        run: |
+          if [[ $(curl --silent https://status.npmjs.org/api/v2/status.json | grep -o "All Systems Operational") != "All Systems Operational" ]] ; then 
+            exit 1
+          fi
+
+  on-failure:
+    needs: check-npm-status
+    if: needs.check-npm-status.outputs.status != 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say failureeee
+        run: echo "Failuuuuure"
+
+  on-success:
+    needs: check-npm-status
+    if: needs.check-npm-status.outputs.status == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hi to the world
+        run: echo "Helloooooowwww"
