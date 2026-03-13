@@ -1,5 +1,8 @@
 name: Test workflow for npm status
 on:
+  push:
+    branches:
+      - chore/CDEP-2022-check-npm-status
   workflow_dispatch:
 
 jobs:
