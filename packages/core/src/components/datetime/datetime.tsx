@@ -1,4 +1,14 @@
-import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
+import {
+  Component,
+  State,
+  h,
+  Prop,
+  Listen,
+  Event,
+  EventEmitter,
+  Method,
+  Watch,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -11,6 +21,9 @@ export class TdsDatetime {
   /** Text-input for focus state */
   private textInput!: HTMLInputElement;
 
+  /** Boolean indicator to trigger input validation */
+  private shouldValidate: boolean = false;
+
   /** Sets an input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'month' | 'week' | 'time' =
     'datetime-local';
@@ -18,13 +31,13 @@ export class TdsDatetime {
   /** Value of the input text */
   @Prop({ reflect: true, mutable: true }) value = '';
 
-  /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  /** Sets min value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
   @Prop() min?: string;
 
-  /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  /** Sets max value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
   @Prop() max?: string;
 
-  /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for month: YY-MM. Format for week: YY-Www  Format for date-time: YY-MM-DDTHH-MM */
+  /** Default value of the component.<br/>Format for date-time: yyyy-MM-ddTHH:mm.<br/>Format for date: yyyy-MM-dd.<br/>Format for month: yyyy-MM.<br/>Format for week: yyyy-Www.<br/>Format for time: HH:mm. */
   @Prop() defaultValue: string | 'none' = 'none';
 
   /** Set input in disabled state */
@@ -42,8 +55,8 @@ export class TdsDatetime {
   /** Name property. Uses a unique ID as fallback if not specified. */
   @Prop() name = `datetime-${generateUniqueId()}`;
 
-  /** Error state of input */
-  @Prop() state?: string;
+  /** Switches between success and error state. */
+  @Prop({ mutable: true }) state?: 'none' | 'success' | 'error';
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
@@ -54,11 +67,20 @@ export class TdsDatetime {
   /** Position of the label */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
-  /** Helper text for the component */
+  /** Default contextual helper text for the component for states = success or none */
   @Prop() helper: string = '';
+
+  /** Contextual helper text for the component for error state */
+  @Prop() helperError?: string;
+
+  /** Contextual helper text for the component when input is invalid */
+  @Prop() helperErrorInvalid?: string = 'Invalid input';
 
   /** Value for the aria-label attribute */
   @Prop() tdsAriaLabel?: string;
+
+  /** Function for additional validation based on business rules */
+  @Prop() customValidator?: (value: string) => boolean;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
@@ -124,6 +146,14 @@ export class TdsDatetime {
     }
   }
 
+  nativeValidation = () => {
+    return !(
+      (this.min && this.textInput.validity.rangeUnderflow) ||
+      (this.max && this.textInput.validity.rangeOverflow) ||
+      this.textInput.validity.badInput
+    );
+  };
+
   getDefaultValue = () => {
     const dateTimeObj = {
       year: this.defaultValue.slice(0, 4),
@@ -156,6 +186,12 @@ export class TdsDatetime {
     }
   }
 
+  componentDidRender() {
+    if (!this.shouldValidate) return;
+    this.shouldValidate = false;
+    this.validateDate();
+  }
+
   // Listener if input enters focus state
   @Listen('focusin')
   handleFocusIn() {
@@ -165,7 +201,28 @@ export class TdsDatetime {
   // Listener if input leaves focus state
   @Listen('focusout')
   handleFocusOut() {
+    this.validateDate();
+
     this.focusInput = false;
+  }
+
+  // Decorator to activate validation when input value changes
+  @Watch('value')
+  onValueChanged() {
+    this.shouldValidate = true;
+  }
+
+  validateDate(): void {
+    this.state = 'none';
+
+    if (
+      !this.nativeValidation() ||
+      (this.customValidator && !this.customValidator(this.textInput.value))
+    ) {
+      this.state = 'error';
+    } else if (this.textInput.value) {
+      this.state = 'success';
+    }
   }
 
   // Data input event in value prop
@@ -188,6 +245,7 @@ export class TdsDatetime {
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleBlur(e: FocusEvent): void {
     this.textInput.blur();
+
     this.tdsBlur.emit(e);
   }
 
@@ -200,13 +258,20 @@ export class TdsDatetime {
     this.value = value;
   }
 
+  // iOS native date picker doesn't support min/max in the UI; we rely on validation + error message.
+  // The .iphone class enables iOS-specific styling for error/success states.
   render() {
+    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
+
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
       className += `${className}-md`;
     }
     if (this.size === 'sm') {
       className += `${className}-sm`;
+    }
+    if (iphone) {
+      className += ' iphone';
     }
 
     const classNames = {
@@ -224,8 +289,6 @@ export class TdsDatetime {
         this.size !== 'sm'
       ),
     };
-
-    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
 
     return (
       <div
@@ -267,7 +330,7 @@ export class TdsDatetime {
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && this.label && (
-              <label class={`tds-datetime-label-inside ${iphone && 'iphone'}`} htmlFor={this.name}>
+              <label class="tds-datetime-label-inside" htmlFor={this.name}>
                 {this.label}
               </label>
             )}
@@ -281,13 +344,23 @@ export class TdsDatetime {
             </div>
           </div>
         </div>
-
-        {this.helper && (
+        {this.state === 'error' && (
           <div class="tds-datetime-helper">
-            <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px" svgTitle="error" />}
-              {this.helper}
-            </div>
+            {!this.textInput?.validity?.badInput && (
+              <div class="tds-helper">
+                <tds-icon name="error" size="16px" svgTitle="error" /> {this.helperError}
+              </div>
+            )}
+            {this.textInput && this.textInput.validity.badInput && (
+              <div class="tds-helper">
+                <tds-icon name="error" size="16px" svgTitle="error" /> {this.helperErrorInvalid}
+              </div>
+            )}
+          </div>
+        )}
+        {this.helper && this.state !== 'error' && (
+          <div class="tds-datetime-helper">
+            <div class="tds-helper">{this.helper}</div>
           </div>
         )}
       </div>
