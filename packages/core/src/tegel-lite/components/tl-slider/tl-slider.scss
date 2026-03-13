@@ -145,6 +145,7 @@
   min-width: auto;
   margin-left: 0;
   align-self: center;
+  border-radius: var(--slider-border-radius);
 
   &.tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input[readonly]):not(
       :has(.tl-text-field__input:disabled)
@@ -162,6 +163,11 @@
   padding: 12px;
   text-align: center;
   appearance: textfield;
+  border: none;
+  background-color: var(--slider-input-background);
+  color: var(--slider-input-value);
+  border-radius: var(--slider-border-radius);
+  box-shadow: inset var(--slider-input-box-shadow);
 
   &--decimal {
     width: 56px;
