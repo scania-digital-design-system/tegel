@@ -97,7 +97,7 @@ StyleDictionary.registerFormat({
             .trim()
             .replace(/\s+/g, '-')
             .replace(/[^a-zA-Z0-9-]/g, '')
-            .replace(/^[-]+/, '')
+            .replace(/^-+/, '')
         )
         .filter(part => part.length > 0);
       const variableName = ['component', ...pathParts].join('-');
@@ -115,7 +115,7 @@ StyleDictionary.registerFormat({
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replace(/\s+/g, '-');
+            .replaceAll(/\s+/g, '-');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
@@ -352,7 +352,7 @@ function createComponentFile(componentName, matchType = 'exact') {
     }
     // Handle component names with -- prefix (e.g., --shadow, --input-field)
     const rawComponentName = token.path[1] || '';
-    const actualComponentName = rawComponentName.replace(/^--/, '');
+    const actualComponentName = rawComponentName.replaceAll(/^--/, '');
     if (matchFn === 'includes') {
       return actualComponentName.includes(componentName);
     }
