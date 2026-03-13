@@ -76,6 +76,37 @@ For users that can't access our CDN there is a [script](https://github.com/scani
 
 Refer to our [Testing Guide](./docs/TESTING_GUIDE.md) for best practices on writing unit tests for components in our design system.
 
+## CSP Compliance
+
+Tegel is built on Stencil.js. Older versions of Stencil (2.x) injected `<link>` elements with inline `onload` event handlers to perform non-blocking CSS loading, which violates strict Content Security Policies that disallow `script-src 'unsafe-inline'`.
+
+**Stencil 4.x (used in this project) has eliminated this pattern.** The runtime now loads component styles using:
+- [Constructable StyleSheets](https://web.dev/constructable-stylesheets/) (`new CSSStyleSheet()` + `adoptedStyleSheets`) in supported browsers — no event handlers, fully CSP-safe.
+- `<style>` element injection with `textContent` as a fallback for older browsers.
+
+### Inline style injection and nonces
+
+The `<style>` element fallback does require your CSP to allow inline styles. The recommended approach is a **nonce**. Add a meta tag to your HTML before the Stencil loader initialises:
+
+```html
+<meta name="csp-nonce" content="{your-server-generated-nonce}">
+```
+
+Stencil reads this nonce and sets it as the `nonce` attribute on every injected `<style>` element, allowing a strict `style-src 'nonce-{value}'` policy without `'unsafe-inline'`.
+
+### Build-time CSP guard
+
+`packages/core/scripts/verify-csp.mjs` runs automatically after every production build (`npm run build`). It scans the generated JS files in `www/build/`, `dist/esm/`, `dist/cjs/`, and `loader/` for the known CSP-violating patterns and fails the build if any are found.
+
+This acts as a regression guard: if a Stencil upgrade re-introduces an inline event handler pattern, the build will fail with details rather than silently shipping a CSP violation.
+
+You can also run it standalone:
+```bash
+node packages/core/scripts/verify-csp.mjs
+```
+
+**If the guard fails after a Stencil upgrade:** inspect the new runtime output for changed patterns, update `VIOLATION_PATTERNS` in `verify-csp.mjs` accordingly, and file an issue if the new pattern is CSP-unsafe.
+
 ## License
 
 All CSS, HTML and JS code are available under the MIT license. The Scania brand identity, logos and photographs found in this repository are copyrighted Scania CV AB and are not available on an open source basis or to be used as examples or in any other way, if not specifically ordered by Scania CV AB.
