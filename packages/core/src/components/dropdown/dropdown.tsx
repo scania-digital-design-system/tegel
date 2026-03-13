@@ -123,7 +123,7 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
-  private uuid: string = generateUniqueId();
+  private readonly uuid = generateUniqueId();
 
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
@@ -813,6 +813,8 @@ export class TdsDropdown {
     const isFloatedButton = this.open || hasSelection;
     const showPlaceholderInside = this.filterFocus && !hasTyped && !hasSelection;
     const showPlaceholderButton = this.labelPosition !== 'inside' || isFloatedButton;
+    const fallbackAriaLabel = this.label ? undefined : 'Dropdown';
+    const ariaLabel = this.tdsAriaLabel ?? fallbackAriaLabel;
     let derivedPlaceholder = this.placeholder ?? '';
     if (this.labelPosition === 'inside') {
       derivedPlaceholder = showPlaceholderInside ? this.placeholder ?? '' : '';
@@ -866,7 +868,7 @@ export class TdsDropdown {
                   </label>
                 )}
                 <input
-                  aria-label={this.tdsAriaLabel || (!this.label ? 'Dropdown' : undefined)}
+                  aria-label={ariaLabel}
                   aria-labelledby={labelId}
                   aria-describedby={helperId}
                   aria-disabled={this.disabled}
