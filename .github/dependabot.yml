@@ -8,3 +8,10 @@ updates:
       labels:
         - 'dependencies'
       pull_request_template: 'DEPENDABOT_PULL_REQUEST_TEMPLATE.md'
+    ignore:
+      - dependency-name: '@angular-devkit/build-angular'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@angular/cli'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ng-packagr'
+        update-types: ['version-update:semver-major']
