@@ -195,10 +195,8 @@ export class TdsDropdown {
   }
 
   private validateValues(values: string[]): string[] {
-    /** Make sure we have children before validation */
     const children = this.getChildren();
     if (!children || children.length === 0) {
-      console.warn('No dropdown options found');
       return values; /** Return original values if no children yet */
     }
 
@@ -207,7 +205,7 @@ export class TdsDropdown {
         (element) => convertToString(element.value) === convertToString(val),
       );
       if (!isValid) {
-        console.warn(`Option with value "${val}" does not exist`);
+        console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
       }
       return isValid;
     });
@@ -496,7 +494,11 @@ export class TdsDropdown {
 
   /** Method to handle slot changes */
   private handleSlotChange() {
-    this.setDefaultOption();
+    if (this.selectedOptions.length > 0) {
+      this.updateDropdownStateInternal([...this.selectedOptions]);
+    } else if (this.internalDefaultValue) {
+      this.setDefaultOption();
+    }
   }
 
   /** Method to check if we should normalize text */
@@ -515,17 +517,10 @@ export class TdsDropdown {
     }
   };
 
-  private getChildren = () => {
-    const tdsDropdownOptions = Array.from(this.host.children).filter(
+  private getChildren = () =>
+    Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
-
-    if (tdsDropdownOptions.length === 0) {
-      console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
-    }
-
-    return tdsDropdownOptions;
-  };
 
   private getSelectedChildren = () => {
     if (this.selectedOptions.length === 0) return [];
