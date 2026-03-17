@@ -35,7 +35,7 @@ export class TdsTableToolbar {
   @Prop({ reflect: true }) filter: boolean = false;
 
   /** Aria label for the search input, providing an accessible description */
-  @Prop() tdsSearchAriaLabel: string = '';
+  @Prop({ reflect: true }) tdsSearchAriaLabel: string = '';
 
   @State() verticalDividers: boolean = false;
 

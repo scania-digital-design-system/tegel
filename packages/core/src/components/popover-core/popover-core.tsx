@@ -26,41 +26,41 @@ export class TdsPopoverCore {
   @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector?: string;
+  @Prop({ reflect: true }) selector?: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultShow: boolean = false;
+  @Prop({ reflect: true }) defaultShow: boolean = false;
 
   /** Whether the popover should animate when being opened/closed or not */
-  @Prop() animation: 'none' | 'fade' | string = 'none';
+  @Prop({ reflect: true }) animation: 'none' | 'fade' | string = 'none';
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean | null = null;
+  @Prop({ reflect: true }) show: boolean | null = null;
 
   /** Decides the placement of the Popover Menu */
-  @Prop() placement: Placement = 'auto';
+  @Prop({ reflect: true }) placement: Placement = 'auto';
 
   /** Sets the offset skidding */
-  @Prop() offsetSkidding: number = 0;
+  @Prop({ reflect: true }) offsetSkidding: number = 0;
 
   /** Sets the offset distance */
-  @Prop() offsetDistance: number = 8;
+  @Prop({ reflect: true }) offsetDistance: number = 8;
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: object[] = [];
 
   /** What triggers the popover to show */
-  @Prop() trigger: 'click' | 'hover' | 'hover-popover' = 'click';
+  @Prop({ reflect: true }) trigger: 'click' | 'hover' | 'hover-popover' = 'click';
 
   /** Decides if the popover should hide automatically.
    * Alternatevly it can be hidden externally based on emitted events. */
-  @Prop() autoHide: boolean = true;
+  @Prop({ reflect: true }) autoHide: boolean = true;
 
   @State() renderedShowValue: boolean = false;
 

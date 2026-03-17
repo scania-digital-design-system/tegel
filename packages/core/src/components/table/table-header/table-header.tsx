@@ -39,7 +39,7 @@ export class TdsTableHeaderRow {
   @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
 
   /** Prop for controlling the indeterminate state of the "All selected"-checkbox. */
-  @Prop() indeterminate: boolean = false;
+  @Prop({ reflect: true }) indeterminate: boolean = false;
 
   @State() multiselect: boolean = false;
 

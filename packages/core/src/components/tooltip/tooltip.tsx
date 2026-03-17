@@ -16,37 +16,37 @@ export class TdsTooltip {
   @Element() host!: HTMLTdsTooltipElement;
 
   /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
-  @Prop() text: string = '';
+  @Prop({ reflect: true }) text: string = '';
 
   /** The CSS-selector for an element that will trigger the Tooltip */
-  @Prop() selector?: string;
+  @Prop({ reflect: true }) selector?: string;
 
   /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultShow: boolean = false;
+  @Prop({ reflect: true }) defaultShow: boolean = false;
 
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
-  @Prop() mouseOverTooltip: boolean = false;
+  @Prop({ reflect: true }) mouseOverTooltip: boolean = false;
 
   /** What triggers the popover to show */
-  @Prop() trigger: 'click' | 'hover' = 'hover';
+  @Prop({ reflect: true }) trigger: 'click' | 'hover' = 'hover';
 
   /** Prop in control of showing and hiding prop. Takes precedence over `defaultOpen` prop. */
-  @Prop({ mutable: true }) show: boolean | null = null;
+  @Prop({ reflect: true, mutable: true }) show: boolean | null = null;
 
   /** Placement of Tooltip. */
-  @Prop() placement: Placement = 'bottom';
+  @Prop({ reflect: true }) placement: Placement = 'bottom';
 
   /** Sets the offset skidding */
-  @Prop() offsetSkidding: number = 0;
+  @Prop({ reflect: true }) offsetSkidding: number = 0;
 
   /** Sets the offset distance */
-  @Prop() offsetDistance: number = 8;
+  @Prop({ reflect: true }) offsetDistance: number = 8;
 
   /** Sets the aria-describedby attribute */
-  @Prop() tdsAriaDescribedby?: string;
+  @Prop({ reflect: true }) tdsAriaDescribedby?: string;
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {

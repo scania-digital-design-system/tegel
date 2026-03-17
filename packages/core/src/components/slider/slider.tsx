@@ -20,58 +20,58 @@ export class TdsSlider {
   @Element() host!: HTMLElement;
 
   /** Text for label */
-  @Prop() label: string = '';
+  @Prop({ reflect: true }) label: string = '';
 
   /** Initial value */
-  @Prop({ mutable: true }) value: string = '0';
+  @Prop({ reflect: true, mutable: true }) value: string = '0';
 
   /** Minimum value */
-  @Prop() min: string = '0';
+  @Prop({ reflect: true }) min: string = '0';
 
   /** Maximum value */
-  @Prop() max: string = '100';
+  @Prop({ reflect: true }) max: string = '100';
 
   /** Number of tick markers (tick for min- and max-value will be added automatically) */
-  @Prop() ticks: string = '0';
+  @Prop({ reflect: true }) ticks: string = '0';
 
   /** Decide to show numbers above the tick markers or not  */
-  @Prop() showTickNumbers: boolean = false;
+  @Prop({ reflect: true }) showTickNumbers: boolean = false;
 
   /** Decide to show the tooltip or not */
-  @Prop() tooltip: boolean = false;
+  @Prop({ reflect: true }) tooltip: boolean = false;
 
   /** Sets the disabled state for the whole component  */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Sets the read only state for the whole component  */
-  @Prop() readOnly: boolean = false;
+  @Prop({ reflect: true }) readOnly: boolean = false;
 
   /** Decide to show the controls or not */
-  @Prop() controls: boolean = false;
+  @Prop({ reflect: true }) controls: boolean = false;
 
   /** Decide to show the input field or not */
-  @Prop() input: boolean = false;
+  @Prop({ reflect: true }) input: boolean = false;
 
   /** Defines how much to increment/decrement the value when using controls */
-  @Prop() step: string = '1';
+  @Prop({ reflect: true }) step: string = '1';
 
   /** Name property (will be inherited by the native slider component) */
-  @Prop() name: string = '';
+  @Prop({ reflect: true }) name: string = '';
 
   /** Sets the size of the thumb */
-  @Prop() thumbSize: 'sm' | 'lg' = 'lg';
+  @Prop({ reflect: true }) thumbSize: 'sm' | 'lg' = 'lg';
 
   /** Snap to the tick's grid */
-  @Prop() snap: boolean = false;
+  @Prop({ reflect: true }) snap: boolean = false;
 
   /** Sets the aria-label for the slider control. */
-  @Prop() tdsAriaLabel: string = '';
+  @Prop({ reflect: true }) tdsAriaLabel: string = '';
 
   /** ID for the Slider's input element, randomly generated if not specified. */
-  @Prop() sliderId: string = generateUniqueId();
+  @Prop({ reflect: true }) sliderId: string = generateUniqueId();
 
   /** Sets the read only aria label for the input field */
-  @Prop() tdsReadOnlyAriaLabel: string = '';
+  @Prop({ reflect: true }) tdsReadOnlyAriaLabel: string = '';
 
   private wrapperElement: HTMLElement | null = null;
 

@@ -14,28 +14,28 @@ export class TdsRadioButton {
   @Element() host!: HTMLElement;
 
   /** Name of Radio Button, used for reference. */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** Value of input. */
-  @Prop() value?: string;
+  @Prop({ reflect: true }) value?: string;
 
   /** Unique Radio Button identifier. */
-  @Prop() radioId: string = generateUniqueId();
+  @Prop({ reflect: true }) radioId: string = generateUniqueId();
 
   /** Decides if the Radio Button is checked or not. */
   @Prop({ reflect: true }) checked: boolean = false;
 
   /** Decides if the Radio Button is required or not. */
-  @Prop() required: boolean = false;
+  @Prop({ reflect: true }) required: boolean = false;
 
   /** Decides if the Radio Button is disabled or not. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Provides an accessible name for the component */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Provides a tabindex used when radio buttons are grouped */
-  @Prop() tdsTabIndex?: number;
+  @Prop({ reflect: true }) tdsTabIndex?: number;
 
   private inputElement!: HTMLInputElement;
 

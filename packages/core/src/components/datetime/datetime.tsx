@@ -19,46 +19,46 @@ export class TdsDatetime {
   @Prop({ reflect: true, mutable: true }) value = '';
 
   /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
-  @Prop() min?: string;
+  @Prop({ reflect: true }) min?: string;
 
   /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
-  @Prop() max?: string;
+  @Prop({ reflect: true }) max?: string;
 
   /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for month: YY-MM. Format for week: YY-Www  Format for date-time: YY-MM-DDTHH-MM */
-  @Prop() defaultValue: string | 'none' = 'none';
+  @Prop({ reflect: true }) defaultValue: string | 'none' = 'none';
 
   /** Set input in disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Size of the input */
-  @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Resets min width rule */
-  @Prop() noMinWidth: boolean = false;
+  @Prop({ reflect: true }) noMinWidth: boolean = false;
 
   /** Set the variant of the Datetime component. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Name property. Uses a unique ID as fallback if not specified. */
-  @Prop() name = `datetime-${generateUniqueId()}`;
+  @Prop({ reflect: true }) name = `datetime-${generateUniqueId()}`;
 
   /** Error state of input */
-  @Prop() state?: string;
+  @Prop({ reflect: true }) state?: string;
 
   /** Autofocus for input */
-  @Prop() autofocus: boolean = false;
+  @Prop({ reflect: true }) autofocus: boolean = false;
 
   /** Label text for the component */
-  @Prop() label: string = '';
+  @Prop({ reflect: true }) label: string = '';
 
   /** Position of the label */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Helper text for the component */
-  @Prop() helper: string = '';
+  @Prop({ reflect: true }) helper: string = '';
 
   /** Value for the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;

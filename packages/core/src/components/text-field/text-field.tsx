@@ -25,70 +25,70 @@ export class TdsTextField {
   @Prop({ reflect: true }) type: 'text' | 'password' | 'number' | 'email' | 'tel' = 'text';
 
   /** Position of the label for the Text Field. */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Label text */
-  @Prop() label: string = '';
+  @Prop({ reflect: true }) label: string = '';
 
   /** Min allowed value for input type number */
-  @Prop() min?: string | number;
+  @Prop({ reflect: true }) min?: string | number;
 
   /** Max allowed value for input type number */
-  @Prop() max?: string | number;
+  @Prop({ reflect: true }) max?: string | number;
 
   /** Step value for input type number */
-  @Prop() step?: string | number;
+  @Prop({ reflect: true }) step?: string | number;
 
   /** Helper text */
-  @Prop() helper?: string;
+  @Prop({ reflect: true }) helper?: string;
 
   /** Placeholder text */
-  @Prop() placeholder: string = '';
+  @Prop({ reflect: true }) placeholder: string = '';
 
   /** Value of the input text */
   @Prop({ reflect: true }) value: string = '';
 
   /** Set input in disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Set input in readonly state */
-  @Prop() readOnly: boolean = false;
+  @Prop({ reflect: true }) readOnly: boolean = false;
 
   /** Hides the read-only icon in the Text Field. Requires Read Only to be enabled. */
-  @Prop() hideReadOnlyIcon: boolean = false;
+  @Prop({ reflect: true }) hideReadOnlyIcon: boolean = false;
 
   /** Size of the input */
-  @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Mode variant of the Text Field */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Unset minimum width of 208px. */
-  @Prop() noMinWidth: boolean = false;
+  @Prop({ reflect: true }) noMinWidth: boolean = false;
 
   /** Name property */
-  @Prop() name = '';
+  @Prop({ reflect: true }) name = '';
 
   /** Error state of input */
-  @Prop() state: 'error' | 'success' | 'default' = 'default';
+  @Prop({ reflect: true }) state: 'error' | 'success' | 'default' = 'default';
 
   /** Max length of input */
-  @Prop() maxLength?: number;
+  @Prop({ reflect: true }) maxLength?: number;
 
   /** Autofocus for input */
-  @Prop() autofocus: boolean = false;
+  @Prop({ reflect: true }) autofocus: boolean = false;
 
   /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Makes the text field required */
-  @Prop() required: boolean = false;
+  @Prop({ reflect: true }) required: boolean = false;
 
   /** Value to be used for the text field's autocomplete attribute */
-  @Prop() autocomplete: string = 'off';
+  @Prop({ reflect: true }) autocomplete: string = 'off';
 
   /** Hides the native arrows on number input type */
-  @Prop() hideNumberArrows: boolean = false;
+  @Prop({ reflect: true }) hideNumberArrows: boolean = false;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;

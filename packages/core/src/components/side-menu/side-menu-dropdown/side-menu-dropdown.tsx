@@ -15,17 +15,17 @@ export class TdsSideMenuDropdown {
   @Element() host!: HTMLElement;
 
   /** If the dropdown should be open from the start. */
-  @Prop() defaultOpen: boolean = false;
+  @Prop({ reflect: true }) defaultOpen: boolean = false;
 
   /** The label of the button that opens the dropdown.
    * This is an alternative to the label slot. */
-  @Prop() buttonLabel?: string;
+  @Prop({ reflect: true }) buttonLabel?: string;
 
   /** If the button that opens the dropdown should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Toggle open state programmatically */
-  @Prop() open: boolean = false;
+  @Prop({ reflect: true }) open: boolean = false;
 
   @State() hoverState: { isHovered: boolean; updatedAt: number } = {
     isHovered: false,

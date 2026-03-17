@@ -16,7 +16,7 @@ export class TdsPopoverMenu {
   @Element() host!: HTMLTdsPopoverMenuElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector?: string;
+  @Prop({ reflect: true }) selector?: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -25,28 +25,28 @@ export class TdsPopoverMenu {
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean | null = null;
+  @Prop({ reflect: true }) show: boolean | null = null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultShow: boolean = false;
+  @Prop({ reflect: true }) defaultShow: boolean = false;
 
   /** Decides the placement of the Popover Menu */
-  @Prop() placement: Placement = 'auto';
+  @Prop({ reflect: true }) placement: Placement = 'auto';
 
   /** Whether the popover should animate when being opened/closed or not */
-  @Prop() animation: 'none' | 'fade' | string = 'none';
+  @Prop({ reflect: true }) animation: 'none' | 'fade' | string = 'none';
 
   /** Sets the offset skidding */
-  @Prop() offsetSkidding: number = 0;
+  @Prop({ reflect: true }) offsetSkidding: number = 0;
 
   /** Sets the offset distance */
-  @Prop() offsetDistance: number = 8;
+  @Prop({ reflect: true }) offsetDistance: number = 8;
 
   /** If true this unsets the width (160px) of the Popover Menu */
-  @Prop() fluidWidth: boolean = false;
+  @Prop({ reflect: true }) fluidWidth: boolean = false;
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Property for closing popover programmatically */
   @Method() async close() {

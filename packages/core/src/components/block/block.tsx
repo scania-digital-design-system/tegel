@@ -17,7 +17,7 @@ export class TdsBlock {
   @Element() host!: HTMLElement;
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Specifies the HTML tag to be used for the component wrapper. */
   @Prop() componentTag:

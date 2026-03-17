@@ -7,16 +7,16 @@ import { Component, h, Prop, Watch, State } from '@stencil/core';
 })
 export class TdsBadge {
   /** Value shown in Badge */
-  @Prop() value: string = '';
+  @Prop({ reflect: true }) value: string = '';
 
   /** Changes visibility of Badge */
   @Prop({ reflect: true }) hidden: boolean = false;
 
   /** Sets component size. */
-  @Prop() size: 'lg' | 'sm' = 'lg';
+  @Prop({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Defines aria-live attribute */
-  @Prop() tdsAriaLive: 'off' | 'polite' | 'assertive' = 'polite';
+  @Prop({ reflect: true }) tdsAriaLive: 'off' | 'polite' | 'assertive' = 'polite';
 
   @State() tdsAriaLabel: string = '';
 

@@ -23,10 +23,10 @@ export class TdsNavigationTabs {
   @Element() host!: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
-  @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = 'primary';
 
   /** Sets the default selected Tab. */
-  @Prop() defaultSelectedIndex: number = 0;
+  @Prop({ reflect: true }) defaultSelectedIndex: number = 0;
 
   /** Sets the selected Tab.
    * If this is set, all Tab changes need to be handled by the user. */
@@ -36,10 +36,10 @@ export class TdsNavigationTabs {
   @Prop({ reflect: true }) leftPadding: number = 32;
 
   /** Defines aria-label on left scroll button */
-  @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
+  @Prop({ reflect: true }) tdsScrollLeftAriaLabel: string = 'Scroll left';
 
   /** Defines aria-label on right scroll button */
-  @Prop() tdsScrollRightAriaLabel: string = 'Scroll right';
+  @Prop({ reflect: true }) tdsScrollRightAriaLabel: string = 'Scroll right';
 
   @State() showLeftScroll: boolean = false;
 

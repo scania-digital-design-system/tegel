@@ -15,10 +15,10 @@ export class TdsTag {
   @Element() host!: HTMLElement;
 
   /** The title text to display in the tag */
-  @Prop() text!: string;
+  @Prop({ reflect: true }) text!: string;
 
   /** Sets the size of the tag */
-  @Prop() size: 'lg' | 'sm' = 'lg';
+  @Prop({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Sets the variant mode of the tag */
   @Prop() variant:
