@@ -20,9 +20,10 @@ const SKIP_TYPE_PATTERNS = [
   /HTMLElement/,
   /\bobject\b/,
   /\bDate\b/,
-  /number\[\]/,
-  /\(string\s*\|\s*number\)\[\]/,
-  /string\s*\|\s*number\s*\|\s*\(/,
+  /number\[]/,
+  /\(string *\| *number\)\[]/,
+  /string *\| *number *\| *\(/,
+  /=>/,  // function types e.g. (value: string) => boolean
 ];
 
 function findTsxFiles(dir) {
@@ -56,9 +57,10 @@ function extractPropType(lines, startIndex) {
   let rest = firstLine.slice(colonIndex + 1);
 
   // Remove default value assignment and trailing semicolons
-  const equalsIndex = rest.indexOf('=');
-  if (equalsIndex !== -1) rest = rest.slice(0, equalsIndex);
-  rest = rest.replace(/;?\s*$/, '');
+  // Use " =" (space before equals) to avoid matching "=>" in arrow functions
+  const equalsMatch = rest.match(/ =(?!>)/);
+  if (equalsMatch) rest = rest.slice(0, equalsMatch.index);
+  rest = rest.replace(/;? *$/, '');
   type += rest;
 
   // If the line ends with | or starts with |, it's a multiline type
@@ -71,7 +73,7 @@ function extractPropType(lines, startIndex) {
           type += ' ' + nextLine.slice(0, eqIdx);
           break;
         }
-        type += ' ' + nextLine.replace(/;?\s*$/, '');
+        type += ' ' + nextLine.replace(/;? *$/, '');
         if (!nextLine.endsWith('|')) break;
       } else {
         break;
@@ -93,13 +95,13 @@ for (const file of files) {
     const line = lines[i];
 
     // Match @Prop(...) propName
-    const match = line.match(/@Prop\(([^)]*)\)\s+(\w+)/);
+    const match = line.match(/@Prop\(([^)]*)\) +(\w+)/);
     if (!match) continue;
 
     const [, decoratorArgs, propName] = match;
 
     // Skip if already has reflect: true
-    if (/reflect\s*:\s*true/.test(decoratorArgs)) continue;
+    if (/reflect *: *true/.test(decoratorArgs)) continue;
 
     // Skip excluded prop names
     if (SKIP_PROP_NAMES.includes(propName)) continue;
