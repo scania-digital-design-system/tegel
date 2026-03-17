@@ -20,7 +20,7 @@ export class TdsBlock {
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Specifies the HTML tag to be used for the component wrapper. */
-  @Prop() componentTag:
+  @Prop({ reflect: true }) componentTag:
     | 'section'
     | 'div'
     | 'article'

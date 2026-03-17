@@ -27,7 +27,8 @@
     "lint:css:tl:fix": "stylelint \"packages/core/src/tegel-lite/**/*.scss\" --fix",
     "lint": "npx eslint ./",
     "tsc": "npx tsc --noEmit",
-    "lint:check": "npm run lint && npm run tsc"
+    "lint:prop-reflect": "node scripts/check-prop-reflect.mjs",
+    "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect"
   },
   "repository": {
     "type": "git",

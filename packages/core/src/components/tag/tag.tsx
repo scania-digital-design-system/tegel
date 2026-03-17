@@ -21,7 +21,7 @@ export class TdsTag {
   @Prop({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Sets the variant mode of the tag */
-  @Prop() variant:
+  @Prop({ reflect: true }) variant:
     | 'success'
     | 'warning'
     | 'new'
