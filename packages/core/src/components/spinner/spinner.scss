@@ -93,6 +93,7 @@
 
   &-standard {
     stroke: var(--spinner-background);
+    stroke-width: var(--spinner-stroke-width);
   }
 
   &-inverted {
