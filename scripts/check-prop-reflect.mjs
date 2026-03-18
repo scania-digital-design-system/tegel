@@ -15,15 +15,13 @@ const COMPONENTS_DIR = path.resolve(__dirname, '../packages/core/src/components'
 // Props that should NOT be reflected (produce invalid attributes like aria-level-value)
 const SKIP_PROP_NAMES = ['ariaLevelValue'];
 
-// Types that should NOT be reflected (complex types)
-const SKIP_TYPE_PATTERNS = [
-  /HTMLElement/,
-  /\bobject\b/,
-  /\bDate\b/,
-  /number\[]/,
-  /\(string *\| *number\)\[]/,
-  /string *\| *number *\| *\(/,
-  /=>/,  // function types e.g. (value: string) => boolean
+// Type substrings that indicate complex types which should NOT be reflected
+const SKIP_TYPE_SUBSTRINGS = [
+  'HTMLElement',
+  'object',
+  'Date',
+  '[]',   // any array type
+  '=>',   // function types
 ];
 
 function findTsxFiles(dir) {
@@ -40,40 +38,67 @@ function findTsxFiles(dir) {
 }
 
 function isComplexType(type) {
-  return SKIP_TYPE_PATTERNS.some((p) => p.test(type));
+  return SKIP_TYPE_SUBSTRINGS.some((s) => type.includes(s));
+}
+
+/**
+ * Parse a @Prop decorator line and return { decoratorArgs, propName } or null.
+ */
+function parsePropLine(line) {
+  const propStart = line.indexOf('@Prop(');
+  if (propStart === -1) return null;
+
+  // Find the closing paren of @Prop(...)
+  const argsStart = propStart + 6; // after "@Prop("
+  const argsEnd = line.indexOf(')', argsStart);
+  if (argsEnd === -1) return null;
+
+  const decoratorArgs = line.slice(argsStart, argsEnd);
+
+  // After ") " comes the prop name (word characters until ? ! : or space)
+  const afterDecorator = line.slice(argsEnd + 1).trimStart();
+  let propName = '';
+  for (const ch of afterDecorator) {
+    if (ch === '?' || ch === '!' || ch === ':' || ch === ' ' || ch === ';') break;
+    propName += ch;
+  }
+
+  if (!propName) return null;
+  return { decoratorArgs, propName };
 }
 
 /**
  * Extract the full type for a @Prop, handling multiline type unions.
  */
 function extractPropType(lines, startIndex) {
-  let type = '';
   const firstLine = lines[startIndex];
 
-  // Get everything after the colon
+  // Find the colon after the prop name (first colon on the line)
   const colonIndex = firstLine.indexOf(':');
   if (colonIndex === -1) return '';
 
   let rest = firstLine.slice(colonIndex + 1);
 
-  // Remove default value assignment and trailing semicolons
-  // Use " =" (space before equals) to avoid matching "=>" in arrow functions
-  const equalsMatch = rest.match(/ =(?!>)/);
-  if (equalsMatch) rest = rest.slice(0, equalsMatch.index);
-  rest = rest.replace(/;? *$/, '');
-  type += rest;
+  // Remove default value assignment (look for " =" but not "=>")
+  const eqIndex = findAssignmentEquals(rest);
+  if (eqIndex !== -1) rest = rest.slice(0, eqIndex);
 
-  // If the line ends with | or starts with |, it's a multiline type
-  if (rest.trim().endsWith('|') || !rest.trim()) {
+  // Remove trailing semicolons and spaces
+  rest = trimTrailing(rest);
+
+  let type = rest;
+
+  // Handle multiline type unions
+  if (rest.trimEnd().endsWith('|') || !rest.trim()) {
     for (let j = startIndex + 1; j < lines.length; j++) {
       const nextLine = lines[j].trim();
       if (nextLine.startsWith('|') || nextLine.startsWith("'")) {
-        const eqIdx = nextLine.indexOf('=');
-        if (eqIdx !== -1) {
-          type += ' ' + nextLine.slice(0, eqIdx);
+        const nextEq = nextLine.indexOf('=');
+        if (nextEq !== -1) {
+          type += ' ' + nextLine.slice(0, nextEq);
           break;
         }
-        type += ' ' + nextLine.replace(/;? *$/, '');
+        type += ' ' + trimTrailing(nextLine);
         if (!nextLine.endsWith('|')) break;
       } else {
         break;
@@ -84,6 +109,43 @@ function extractPropType(lines, startIndex) {
   return type.trim();
 }
 
+/**
+ * Find index of " =" (assignment) that is NOT part of "=>" (arrow).
+ * Returns -1 if not found.
+ */
+function findAssignmentEquals(str) {
+  let i = 0;
+  while (i < str.length) {
+    i = str.indexOf('=', i);
+    if (i === -1) return -1;
+
+    // Skip "=>" (arrow functions)
+    if (str[i + 1] === '>') {
+      i += 2;
+      continue;
+    }
+
+    // Must have a space before "=" to be an assignment
+    if (i > 0 && str[i - 1] === ' ') {
+      return i - 1; // return position of the space before "="
+    }
+
+    i += 1;
+  }
+  return -1;
+}
+
+/**
+ * Remove trailing semicolons and spaces from a string.
+ */
+function trimTrailing(str) {
+  let end = str.length;
+  while (end > 0 && (str[end - 1] === ' ' || str[end - 1] === ';')) {
+    end--;
+  }
+  return str.slice(0, end);
+}
+
 const files = findTsxFiles(COMPONENTS_DIR);
 const violations = [];
 
@@ -92,16 +154,13 @@ for (const file of files) {
   const lines = content.split('\n');
 
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+    const parsed = parsePropLine(lines[i]);
+    if (!parsed) continue;
 
-    // Match @Prop(...) propName
-    const match = line.match(/@Prop\(([^)]*)\) +(\w+)/);
-    if (!match) continue;
-
-    const [, decoratorArgs, propName] = match;
+    const { decoratorArgs, propName } = parsed;
 
     // Skip if already has reflect: true
-    if (/reflect *: *true/.test(decoratorArgs)) continue;
+    if (decoratorArgs.includes('reflect') && decoratorArgs.includes('true')) continue;
 
     // Skip excluded prop names
     if (SKIP_PROP_NAMES.includes(propName)) continue;
@@ -122,9 +181,9 @@ for (const file of files) {
 }
 
 if (violations.length > 0) {
-  console.error(`\n❌ Found ${violations.length} @Prop(s) missing reflect: true:\n`);
+  console.error(`\nFound ${violations.length} @Prop(s) missing reflect: true:\n`);
   for (const v of violations) {
-    console.error(`  ${v.file}:${v.line} — ${v.prop}: ${v.type}`);
+    console.error(`  ${v.file}:${v.line} -- ${v.prop}: ${v.type}`);
   }
   console.error(
     '\nAll primitive/enum @Prop() decorators must include reflect: true.',
@@ -132,5 +191,5 @@ if (violations.length > 0) {
   );
   process.exit(1);
 } else {
-  console.log('✅ All primitive/enum @Prop() decorators have reflect: true.');
+  console.log('All primitive/enum @Prop() decorators have reflect: true.');
 }
