@@ -109,7 +109,7 @@ function tryNormalizeInternalReference(value, isPrimitive, root) {
   }
 
   const refPath = extractReferencePath(value);
-  if (!refPath || !refPath.startsWith('INTERNAL.')) {
+  if (!refPath?.startsWith('INTERNAL.')) {
     return { handled: false, value };
   }
 
