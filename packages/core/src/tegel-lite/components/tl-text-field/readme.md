@@ -7,12 +7,14 @@ The Text Field component provides a single-line input field with labels, helper 
 ```html
 <div class="tl-text-field">
   <label class="tl-text-field__label" for="input1">Label</label>
-  <input 
-    type="text" 
-    id="input1"
-    class="tl-text-field__input"
-    placeholder="Enter text"
-  />
+  <div class="tl-text-field__input-wrapper">
+    <input
+      type="text"
+      id="input1"
+      class="tl-text-field__input"
+      placeholder="Enter text"
+    />
+  </div>
   <div class="tl-text-field__bottom">
     <div class="tl-text-field__helper">Helper text</div>
   </div>
@@ -34,6 +36,7 @@ The Text Field component provides a single-line input field with labels, helper 
 | ------------------------------------ | ------------ | ------------------------------- |
 | `.tl-text-field`                     | `<div>`      | Main container                  |
 | `.tl-text-field__label`              | `<label>`    | Label for the input             |
+| `.tl-text-field__input-wrapper`      | `<div>`      | Wrapper around input, prefix/suffix, and inside-label |
 | `.tl-text-field__input`              | `<input>`    | Input element                   |
 | `.tl-text-field__prefix--text`       | `<span>`     | Prefix text content             |
 | `.tl-text-field__prefix--icon`       | `<span>`     | Prefix icon content             |

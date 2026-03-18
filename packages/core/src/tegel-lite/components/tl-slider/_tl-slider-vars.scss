@@ -11,6 +11,8 @@
   --slider-disabled-text: var(--color-foreground-text-disabled);
   --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
   --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
+  --slider-input-background: var(--color-background-layer-01);
+  --slider-input-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
 }
 
 .tl-slider,
@@ -20,4 +22,5 @@
 
 .traton .tl-slider {
   --slider-border-radius: 4px;
+  --slider-input-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
 }
