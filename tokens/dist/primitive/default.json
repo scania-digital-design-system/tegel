@@ -1,6 +1,16 @@
 {
   "scania": {
     "color": {
+      "base": {
+        "black": {
+          "$type": "color",
+          "$value": "{scania.color.grey.1000}"
+        },
+        "white": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}"
+        }
+      },
       "transparent": {
         "200": {
           "$type": "color",
@@ -28,12 +38,12 @@
         },
         "950": {
           "$type": "color",
-          "$value": "#0E1013"
+          "$value": "{scania.color.grey.950}"
         },
         "inverse": {
           "50": {
             "$type": "color",
-            "$value": "#F6F7F9"
+            "$value": "{scania.color.grey.50}"
           },
           "200": {
             "$type": "color",
@@ -360,7 +370,7 @@
           "$type": "string",
           "$value": "scania sans headline"
         },
-        "semi condensed": {
+        "semi-condensed": {
           "$type": "string",
           "$value": "scania sans semi condensed"
         }
@@ -374,6 +384,28 @@
           "$type": "number",
           "$value": 400
         }
+      }
+    },
+    "opacity": {
+      "0%": {
+        "$type": "number",
+        "$value": 0
+      },
+      "25%": {
+        "$type": "number",
+        "$value": 25
+      },
+      "50%": {
+        "$type": "number",
+        "$value": 50
+      },
+      "75%": {
+        "$type": "number",
+        "$value": 75
+      },
+      "100%": {
+        "$type": "number",
+        "$value": 100
       }
     },
     "unit": {
@@ -454,17 +486,17 @@
   "traton": {
     "color": {
       "base": {
-        "warm-white": {
+        "black": {
           "$type": "color",
-          "$value": "#FCFBF7"
+          "$value": "#000000"
         },
-        "neutral-white": {
+        "white": {
           "$type": "color",
           "$value": "#FFFFFF"
         },
-        "neutral-black": {
+        "white-warm": {
           "$type": "color",
-          "$value": "#000000"
+          "$value": "#FCFBF7"
         }
       },
       "transparent": {
@@ -490,7 +522,7 @@
         },
         "950": {
           "$type": "color",
-          "$value": "#001D21"
+          "$value": "{traton.color.blue.950}"
         },
         "inverse": {
           "200": {
@@ -515,7 +547,7 @@
           },
           "950": {
             "$type": "color",
-            "$value": "#FFFFFF"
+            "$value": "{traton.color.base.white}"
           }
         },
         "invisible": {
@@ -830,6 +862,54 @@
         }
       }
     },
+    "opacity": {
+      "0%": {
+        "$type": "number",
+        "$value": 0
+      },
+      "25%": {
+        "$type": "number",
+        "$value": 25
+      },
+      "50%": {
+        "$type": "number",
+        "$value": 50
+      },
+      "75%": {
+        "$type": "number",
+        "$value": 75
+      },
+      "100%": {
+        "$type": "number",
+        "$value": 100
+      }
+    },
+    "font": {
+      "family": {
+        "default": {
+          "$type": "string",
+          "$value": "traton type text"
+        },
+        "display": {
+          "$type": "string",
+          "$value": "traton type display"
+        }
+      },
+      "weight": {
+        "semi-bold": {
+          "$type": "number",
+          "$value": 600
+        },
+        "medium": {
+          "$type": "number",
+          "$value": 500
+        },
+        "regular": {
+          "$type": "number",
+          "$value": 400
+        }
+      }
+    },
     "unit": {
       "0": {
         "$type": "number",
@@ -902,32 +982,6 @@
       "9999": {
         "$type": "number",
         "$value": 9999
-      }
-    },
-    "font": {
-      "family": {
-        "display": {
-          "$type": "string",
-          "$value": "traton type display"
-        },
-        "default": {
-          "$type": "string",
-          "$value": "traton type text"
-        }
-      },
-      "weight": {
-        "semi-bold": {
-          "$type": "number",
-          "$value": 600
-        },
-        "medium": {
-          "$type": "number",
-          "$value": 500
-        },
-        "regular": {
-          "$type": "number",
-          "$value": 400
-        }
       }
     }
   }

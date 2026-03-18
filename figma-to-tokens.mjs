@@ -65,11 +65,61 @@ function tryNormalizeFontFamily(obj, value, path, isPrimitive) {
   return { handled: true, value: value.replaceAll(' cy', '') };
 }
 
-function tryNormalizeInternalReference(value, isPrimitive) {
-  if (isPrimitive || typeof value !== 'string' || !value.includes('INTERNAL.')) {
+function getTokenByPath(root, pathParts) {
+  let current = root;
+  for (const part of pathParts) {
+    if (current == null || typeof current !== 'object' || !(part in current)) return undefined;
+    current = current[part];
+  }
+  return current;
+}
+
+function extractReferencePath(value) {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (!trimmed.startsWith('{') || !trimmed.endsWith('}')) return null;
+  return trimmed.slice(1, -1);
+}
+
+function resolveInternalReferenceToValue(root, refPath, depth = 0) {
+  if (!refPath?.startsWith('INTERNAL.')) return undefined;
+  if (depth > 10) return undefined;
+
+  const token = getTokenByPath(root, refPath.split('.'));
+  if (!token || typeof token !== 'object' || token.$value === undefined) return undefined;
+
+  // Prefer resolving INTERNAL colors to hex so consumers don't depend on INTERNAL vars.
+  const maybeColor = tryNormalizeColor(token, token.$value);
+  if (maybeColor.handled) return maybeColor.value;
+
+  // If INTERNAL points to another INTERNAL ref, follow it.
+  const nextRef = extractReferencePath(token.$value);
+  if (nextRef?.startsWith('INTERNAL.')) {
+    const resolved = resolveInternalReferenceToValue(root, nextRef, depth + 1);
+    if (resolved !== undefined) return resolved;
+  }
+
+  // Fallback: keep the value as-is (string/number/etc.)
+  return token.$value;
+}
+
+function tryNormalizeInternalReference(value, isPrimitive, root) {
+  if (isPrimitive) {
     return { handled: false, value };
   }
-  return { handled: true, value: null }; // Signal drop token
+
+  const refPath = extractReferencePath(value);
+  if (!refPath || !refPath.startsWith('INTERNAL.')) {
+    return { handled: false, value };
+  }
+
+  const resolved = resolveInternalReferenceToValue(root, refPath);
+  if (resolved === undefined) {
+    return { handled: true, value: null }; // Signal drop token when INTERNAL target can't be resolved
+  }
+
+  // Normalize resolved value (e.g. alpha colors / rounding), but do not treat it as primitive.
+  return { handled: true, value: resolved };
 }
 
 function tryNormalizeNumber(value) {
@@ -85,7 +135,7 @@ function tryNormalizeNumber(value) {
  * - `null` to indicate the entire token should be dropped
  * - any other value to be assigned to `$value`
  */
-function normalizeValueForToken(obj, value, path, isPrimitive) {
+function normalizeValueForToken(obj, value, path, isPrimitive, root) {
   let result;
 
   result = tryNormalizeAlias(obj, value, isPrimitive);
@@ -97,8 +147,8 @@ function normalizeValueForToken(obj, value, path, isPrimitive) {
   result = tryNormalizeFontFamily(obj, value, path, isPrimitive);
   if (result.handled) return result.value;
 
-  result = tryNormalizeInternalReference(value, isPrimitive);
-  if (result.handled) return null;
+  result = tryNormalizeInternalReference(value, isPrimitive, root);
+  if (result.handled) return result.value;
 
   result = tryNormalizeNumber(value);
   if (result.handled) return result.value;
@@ -113,7 +163,7 @@ function normalizeValueForToken(obj, value, path, isPrimitive) {
  * @param {string[]} path - Current path in the token tree
  * @param {boolean} isPrimitive - Whether we're processing primitive tokens (no alias resolution needed)
  */
-function normalizeToken(obj, path = [], isPrimitive = false) {
+function normalizeToken(obj, path = [], isPrimitive = false, root = obj) {
   if (obj == null || typeof obj !== 'object') {
     return obj;
   }
@@ -134,7 +184,7 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
 
     // Check if this is a token with $type and $value
     if (key === '$value' && obj.$type) {
-      const normalizedValue = normalizeValueForToken(obj, value, path, isPrimitive);
+      const normalizedValue = normalizeValueForToken(obj, value, path, isPrimitive, root);
       if (normalizedValue === null) {
         return null; // Skip this entire token
       }
@@ -143,7 +193,7 @@ function normalizeToken(obj, path = [], isPrimitive = false) {
     }
 
     // Recursively process nested objects
-    const normalizedValue = normalizeToken(value, currentPath, isPrimitive);
+    const normalizedValue = normalizeToken(value, currentPath, isPrimitive, root);
     if (normalizedValue !== null) {
       normalized[key] = normalizedValue;
     }

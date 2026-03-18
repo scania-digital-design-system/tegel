@@ -3,49 +3,33 @@
  */
 
 .scania .tds-mode-light {
+  --component-badge-background-default: var(--color-system-danger-default);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
-  --component-badge-color-background-default: var(--color-system-danger-default);
-  --component-badge-type-system-label-01-font-family: var(--scania-font-family-semi-condensed);
-  --component-badge-type-system-label-01-font-weight: var(--scania-font-weight-bold);
-  --component-badge-type-system-label-01-font-size: 12;
-  --component-badge-type-system-label-01-line-height: 16;
-  --component-badge-type-system-label-01-text-transform: none;
+  --component-badge-text-default: var(--color-text-inverse-base);
 }
 
 .traton .tds-mode-light {
+  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
-  --component-badge-color-background-default: var(--traton-color-yellow-300);
-  --component-badge-type-system-label-01-font-family: var(--traton-font-family-default);
-  --component-badge-type-system-label-01-font-weight: var(--traton-font-weight-semi-bold);
-  --component-badge-type-system-label-01-font-size: 12;
-  --component-badge-type-system-label-01-line-height: 17;
-  --component-badge-type-system-label-01-text-transform: none;
+  --component-badge-text-default: var(--traton-color-base-black);
 }
 
 .scania .tds-mode-dark {
+  --component-badge-background-default: var(--color-system-danger-subtle);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
-  --component-badge-color-background-default: var(--color-system-danger-subtle);
-  --component-badge-type-system-label-01-font-family: var(--scania-font-family-semi-condensed);
-  --component-badge-type-system-label-01-font-weight: var(--scania-font-weight-bold);
-  --component-badge-type-system-label-01-font-size: 12;
-  --component-badge-type-system-label-01-line-height: 16;
-  --component-badge-type-system-label-01-text-transform: none;
+  --component-badge-text-default: var(--color-text-base);
 }
 
 .traton .tds-mode-dark {
+  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
-  --component-badge-color-background-default: var(--traton-color-yellow-300);
-  --component-badge-type-system-label-01-font-family: var(--traton-font-family-default);
-  --component-badge-type-system-label-01-font-weight: var(--traton-font-weight-semi-bold);
-  --component-badge-type-system-label-01-font-size: 12;
-  --component-badge-type-system-label-01-line-height: 17;
-  --component-badge-type-system-label-01-text-transform: none;
+  --component-badge-text-default: var(--traton-color-base-black);
 }

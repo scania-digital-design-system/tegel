@@ -109,7 +109,7 @@ function cleanupComponentBuildDir(componentBuildPath) {
 function buildThemeGroups(configObject) {
   const themeGroups = {};
   Object.entries(configObject)
-    .filter(([key]) => key !== 'primitive' && key !== 'component')
+    .filter(([key]) => key !== 'primitive' && key !== 'component' && key !== 'log')
     .forEach(([themeName, themeConfig]) => {
       const brand = themeName.split('-')[0];
       if (!themeGroups[brand]) {
@@ -130,7 +130,6 @@ async function runBuild() {
   // Build primitive tokens
   const primitiveSD = new StyleDictionary({
     ...config.primitive,
-    log: { verbosity: 'verbose' }
   });
   await primitiveSD.buildAllPlatforms();
 
@@ -144,7 +143,7 @@ async function runBuild() {
   for (const themeName of componentThemeNames) {
     console.log(`  ${themeName}...`);
     const themeConfig = getComponentConfigForTheme(themeName);
-    await new StyleDictionary({ ...themeConfig, log: { verbosity: 'default' } }).buildAllPlatforms();
+    await new StyleDictionary({ ...themeConfig }).buildAllPlatforms();
   }
 
   // Combine per-theme component files into final tokens/scss/component/<name>.scss
@@ -292,7 +291,7 @@ const buildThemes = async (themeGroups) => {
         }
       };
       
-      await new StyleDictionary({ ...modifiedConfig, log: { verbosity: 'verbose' } }).buildAllPlatforms();
+      await new StyleDictionary({ ...modifiedConfig }).buildAllPlatforms();
       
       // Extract tokens and add to set
       const tempPath = join(process.cwd(), 'tokens', 'scss', brand, tempFile);

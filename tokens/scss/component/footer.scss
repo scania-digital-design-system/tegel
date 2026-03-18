@@ -5,26 +5,27 @@
 .scania .tds-mode-light {
   --component-footer-border: var(--scania-color-blue-700);
   --component-footer-primary: var(--scania-color-blue-800);
-  --component-footer-text-color-link-text: var(--color-text-brand);
-  --component-footer-text-color-copyright: var(--color-text-inverse-soft);
+  --component-footer-color-text-link-default: var(--color-text-brand);
+  --component-footer-color-text-copyright-default: var(--color-text-inverse-soft);
 }
 
 .traton .tds-mode-light {
   --component-footer-border: var(--traton-color-transparent-invisible-light);
   --component-footer-primary: var(--traton-color-grey-50);
-  --component-footer-text-color-link-text: var(--color-text-strong);
-  --component-footer-text-color-copyright: var(--traton-color-transparent-600);
+  --component-footer-color-text-link-default: var(--color-text-strong);
+  --component-footer-color-text-copyright-default: var(--traton-color-transparent-600);
 }
 
 .scania .tds-mode-dark {
   --component-footer-border: var(--scania-color-blue-800);
   --component-footer-primary: var(--scania-color-blue-900);
-  --component-footer-text-color-copyright: var(--color-text-soft);
+  --component-footer-color-text-link-default: #d8dde5;
+  --component-footer-color-text-copyright-default: var(--color-text-soft);
 }
 
 .traton .tds-mode-dark {
   --component-footer-border: var(--traton-color-transparent-invisible-light);
   --component-footer-primary: var(--traton-color-blue-1000);
-  --component-footer-text-color-link-text: var(--color-text-strong);
-  --component-footer-text-color-copyright: var(--traton-color-transparent-inverse-600);
+  --component-footer-color-text-link-default: var(--color-text-strong);
+  --component-footer-color-text-copyright-default: var(--traton-color-transparent-inverse-600);
 }

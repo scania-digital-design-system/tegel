@@ -2,10 +2,25 @@
  * Do not edit directly, this file was auto-generated.
  */
 
+.scania .tds-mode-light {
+  --component-dropdown-hover: #edeff3;
+  --component-dropdown-focus: #edeff3;
+  --component-dropdown-secondary-hover: #edeff3;
+  --component-dropdown-secondary-focus: #edeff3;
+  --component-dropdown-list-item-hover: #edeff3;
+  --component-dropdown-list-item-focus: #edeff3;
+  --component-dropdown-list-item-secondary-hover: #edeff3;
+  --component-dropdown-list-item-secondary-focus: #edeff3;
+}
+
 .traton .tds-mode-light {
+  --component-dropdown-hover: #ebe7dd;
   --component-dropdown-focus: var(--color-background-layer-01);
+  --component-dropdown-secondary-hover: #ebe7dd;
   --component-dropdown-secondary-focus: var(--color-background-layer-02);
+  --component-dropdown-list-item-hover: #ebe7dd;
   --component-dropdown-list-item-focus: var(--color-background-layer-01);
+  --component-dropdown-list-item-secondary-hover: #ebe7dd;
   --component-dropdown-list-item-secondary-focus: var(--color-background-layer-02);
 }
 

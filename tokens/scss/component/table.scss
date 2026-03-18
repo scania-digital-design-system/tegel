@@ -4,24 +4,32 @@
 
 .scania .tds-mode-light {
   --component-table-cell: var(--color-background-layer-01);
+  --component-table-cell-hover: #edeff3;
+  --component-table-pagination-base: #e0e5eb;
   --component-table-pagination-dropdown: var(--color-background-base);
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
 .traton .tds-mode-light {
   --component-table-cell: var(--color-background-layer-01);
+  --component-table-cell-hover: #d6d4c9;
+  --component-table-pagination-base: #d6d4c9;
   --component-table-pagination-dropdown: var(--color-background-base);
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
 .scania .tds-mode-dark {
   --component-table-cell: var(--color-background-layer-01);
+  --component-table-cell-hover: #1c222b;
+  --component-table-pagination-base: #242c37;
   --component-table-pagination-dropdown: var(--color-background-layer-01);
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
 .traton .tds-mode-dark {
   --component-table-cell: var(--color-background-layer-01);
+  --component-table-cell-hover: #003137;
+  --component-table-pagination-base: #004852;
   --component-table-pagination-dropdown: var(--color-background-layer-01);
   --component-table-secondary-cell: var(--color-background-layer-02);
 }

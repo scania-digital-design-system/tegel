@@ -323,7 +323,7 @@ function extractBrandInfo(themes) {
 // List of [componentName, matchType] for component token files (used for both merged and per-theme builds)
 const COMPONENT_FILE_LIST = [
   ['header', 'includes'],
-  ['side menu', 'includes'],
+  ['side-menu', 'includes'],
   ['card', 'includes'],
   ['input-field', 'includes'],
   ['table', 'exact'],
@@ -619,8 +619,10 @@ const componentConfig = {
 };
 
 // Export the configurations
-export default {
+const config = {
   primitive: primitiveConfig,
   component: componentConfig,
-  ...themeConfigs
+  ...themeConfigs,
 };
+
+export default config;
