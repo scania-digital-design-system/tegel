@@ -123,6 +123,8 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
+  private hasSlotChanged: boolean = false;
+
   private readonly uuid = generateUniqueId();
 
   @Watch('value')
@@ -204,10 +206,10 @@ export class TdsDropdown {
       const isValid = children.some(
         (element) => convertToString(element.value) === convertToString(val),
       );
-      if (!isValid) {
+      if (!isValid && this.hasSlotChanged) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
       }
-      return isValid;
+      return isValid || !this.hasSlotChanged;
     });
   }
 
@@ -494,6 +496,8 @@ export class TdsDropdown {
 
   /** Method to handle slot changes */
   private handleSlotChange() {
+    this.hasSlotChanged = true;
+
     if (this.selectedOptions.length > 0) {
       this.updateDropdownStateInternal([...this.selectedOptions]);
     } else if (this.internalDefaultValue) {
