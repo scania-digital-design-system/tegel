@@ -89,8 +89,8 @@
     background-color: var(--datetime-icon-error);
   }
 
-  /* Disabled state (should not override error state) */
-  .tl-datetime:has(input:disabled):not(.tl-datetime--error) &::after {
+  /* Disabled state */
+  .tl-datetime:has(input:disabled) &::after {
     background-color: var(--datetime-icon-disabled);
   }
 }
@@ -116,7 +116,7 @@
     box-shadow: inset var(--datetime-box-shadow-focus);
   }
 
-  .tl-datetime:hover &:not(:focus) {
+  .tl-datetime:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--datetime-box-shadow-hover);
   }
 
@@ -128,8 +128,12 @@
     }
   }
 
-  .tl-datetime--error:hover &:not(:focus) {
+  .tl-datetime--error:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--datetime-box-shadow-error-hover);
+  }
+
+  .tl-datetime--error &:disabled {
+    box-shadow: inset var(--datetime-box-shadow-error);
   }
 
   &::placeholder {

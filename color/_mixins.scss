@@ -1,8 +1,10 @@
+@use 'sass:map';
+
 @function map-collect($maps...) {
   $collection: ();
 
   @each $map in $maps {
-    $collection: map-merge($collection, $map);
+    $collection: map.merge($collection, $map);
   }
   @return $collection;
 }

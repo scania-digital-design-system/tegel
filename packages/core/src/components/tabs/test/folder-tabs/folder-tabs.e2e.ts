@@ -43,6 +43,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 test.describe.parallel(componentName, () => {
   let folderTabs;
   let firstTab;
+  let firstTabDiv;
   let secondTab;
   let secondTabDiv;
   let thirdTab;
@@ -59,6 +60,7 @@ test.describe.parallel(componentName, () => {
     thirdTab = page.locator('button', { hasText: 'Third Tab' });
     fourthTab = page.locator('button', { hasText: 'Fourth Tab' });
     // Divs inside tabs specifically for click interactions
+    firstTabDiv = page.locator('tds-folder-tab:has-text("First tab") >> div');
     secondTabDiv = page.locator('tds-folder-tab:has-text("Second tab is much longer") >> div');
     thirdTabDiv = page.locator('tds-folder-tab:has-text("Third Tab") >> div');
   });
@@ -99,5 +101,19 @@ test.describe.parallel(componentName, () => {
     await expect(folderTabs).toHaveAttribute('selected-index', '2', { timeout: 5000 });
     await expect(secondTabDiv).not.toHaveClass(/selected/);
     await expect(thirdTabDiv).toHaveClass(/selected/);
+  });
+
+  test('Switching from second tab back to first tab shows first tab as selected', async () => {
+    // Given
+    await secondTabDiv.click({ force: true });
+    await expect(folderTabs).toHaveAttribute('selected-index', '1', { timeout: 5000 });
+
+    // When
+    await firstTabDiv.click({ force: true });
+
+    // Then
+    await expect(folderTabs).toHaveAttribute('selected-index', '0', { timeout: 5000 });
+    await expect(firstTabDiv).toHaveClass(/selected/);
+    await expect(secondTabDiv).not.toHaveClass(/selected/);
   });
 });

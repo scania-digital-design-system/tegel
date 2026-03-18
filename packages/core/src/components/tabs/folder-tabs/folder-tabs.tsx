@@ -102,7 +102,7 @@ export class TdsFolderTabs {
       return tabElement;
     });
 
-    if (this.selectedIndex) {
+    if (this.selectedIndex !== undefined) {
       this.tabElements[this.selectedIndex].setSelected(true);
     }
   }
