@@ -123,7 +123,7 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
-  private hasSlotChanged: boolean = false;
+  private isInitialLoad: boolean = true;
 
   private readonly uuid = generateUniqueId();
 
@@ -206,10 +206,10 @@ export class TdsDropdown {
       const isValid = children.some(
         (element) => convertToString(element.value) === convertToString(val),
       );
-      if (!isValid && this.hasSlotChanged) {
+      if (!isValid && !this.isInitialLoad) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
       }
-      return isValid || !this.hasSlotChanged;
+      return isValid || !this.isInitialLoad;
     });
   }
 
@@ -494,10 +494,12 @@ export class TdsDropdown {
     }
   }
 
+  componentDidLoad() {
+    this.isInitialLoad = false;
+  }
+
   /** Method to handle slot changes */
   private handleSlotChange() {
-    this.hasSlotChanged = true;
-
     if (this.selectedOptions.length > 0) {
       this.updateDropdownStateInternal([...this.selectedOptions]);
     } else if (this.internalDefaultValue) {
