@@ -12,7 +12,6 @@ import { join, dirname } from 'node:path';
 const filesToPreserve = [
   'tokens/scss/component/dropdown.scss',
   'tokens/scss/component/side-menu.scss',
-  'tokens/scss/component/text.scss',
   'tokens/scss/scania/typography.scss',
   'tokens/scss/traton/typography.scss',
   'tokens/scss/scania/dimension.scss',
