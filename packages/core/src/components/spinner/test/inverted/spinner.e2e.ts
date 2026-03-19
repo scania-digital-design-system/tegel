@@ -6,16 +6,20 @@ const componentTestPath = 'src/components/spinner/test/inverted/index.html';
 const componentName = 'tds-spinner';
 const testDescription = 'tds-spinner-inverted';
 
-const spinnerTestConfiguration = [
+const brands = ['scania', 'traton'];
+
+const spinnerTestConfiguration = brands.flatMap((brand) => [
   {
     theme: 'lightmode',
     backgroundColor: 'var(--tds-grey-50)',
+    brand,
   },
   {
     theme: 'darkmode',
     backgroundColor: 'var(--tds-grey-958)',
+    brand,
   },
-];
+]);
 
 spinnerTestConfiguration.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
