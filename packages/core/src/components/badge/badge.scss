@@ -8,7 +8,7 @@
 
 .tds-badge {
   display: block;
-  border-radius: calc(var(--tds-badge-border-radius) * 1px);
+  border-radius: var(--tds-badge-border-radius);
   background-color: var(--tds-badge-background-color);
   text-align: center;
 

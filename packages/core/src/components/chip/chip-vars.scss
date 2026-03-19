@@ -14,7 +14,7 @@ tds-chip {
   --tds-chips-border-selected: var(--component-chip-border-selected-default);
   --tds-chips-border-selected-hover: var(--component-chip-border-selected-hover);
   --tds-chips-border-selected-active: var(--component-chip-border-selected-active);
-  --tds-chips-border-radius: var(--component-chip-border-radius-default);
+  --tds-chips-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
   --tds-chips-opacity-disabled: var(--component-chip-opacity-disabled);
   --tds-chips-icon-fill: var(--component-chip-text-default);
   --tds-chips-icon-fill-active: var(--component-chip-text-selected-default);
