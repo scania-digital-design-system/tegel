@@ -1,13 +1,20 @@
-import { expect } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
-const themeClasses = {
+interface TestConfig {
+  theme: 'lightmode' | 'darkmode';
+  backgroundColor: string;
+  modeVariant?: 'primary' | 'secondary';
+  brand?: string;
+}
+
+const themeClasses: Record<string, string> = {
   lightmode: 'tds-mode-light',
   darkmode: 'tds-mode-dark',
 };
 
 const brands = ['scania', 'traton'];
 
-const withBrands = (configs) =>
+const withBrands = (configs: TestConfig[]): TestConfig[] =>
   brands.flatMap((brand) => configs.map((config) => ({ ...config, brand })));
 
 export const testConfigurations = {
@@ -77,7 +84,12 @@ export const testConfigurations = {
   ]),
 };
 
-export const setupPage = async (page, config, componentTestPath, componentName) => {
+export const setupPage = async (
+  page: Page,
+  config: TestConfig,
+  componentTestPath: string,
+  componentName: string,
+) => {
   await page.goto(componentTestPath);
 
   const evaluateData = {
@@ -106,15 +118,17 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
 
     const elements = await elementLocator.all();
 
-    elements.forEach(async (element) => {
-      await element.evaluate((elem, modeVariant) => {
-        elem.setAttribute('mode-variant', modeVariant);
-      }, config.modeVariant);
-    });
+    await Promise.all(
+      elements.map((element) =>
+        element.evaluate((elem: Element, modeVariant: string) => {
+          elem.setAttribute('mode-variant', modeVariant);
+        }, config.modeVariant!),
+      ),
+    );
   }
 };
 
-export const getTestDescribeText = (config, testDescription) => {
+export const getTestDescribeText = (config: TestConfig, testDescription: string): string => {
   const brandSuffix = config.brand ? `-${config.brand}` : '';
   return config.modeVariant
     ? `${testDescription}-${config.modeVariant}-${config.theme}${brandSuffix}`

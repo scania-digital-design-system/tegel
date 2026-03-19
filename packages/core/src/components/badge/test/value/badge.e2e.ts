@@ -17,9 +17,11 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     });
 
     test('renders value badge correctly', async ({ page }) => {
-      (await page.locator('tds-badge').all()).forEach(async (element) => {
-        await expect(element).toHaveClass(/hydrated/);
-      });
+      await Promise.all(
+        (
+          await page.locator('tds-badge').all()
+        ).map((element) => expect(element).toHaveClass(/hydrated/)),
+      );
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
