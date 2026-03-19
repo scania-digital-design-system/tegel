@@ -21,13 +21,14 @@ jobs:
         working-directory: packages/core
         run: npm run build
 
-      - name: Install Playwright Browsers
+      - name: Run Playwright tests in Docker
         working-directory: packages/core
-        run: npx playwright install --with-deps
-
-      - name: Run Playwright tests
-        working-directory: packages/core
-        run: npx playwright test
+        run: >
+          docker run --rm --network host
+          -v ${{ github.workspace }}/packages/core:/work/
+          -w /work/
+          mcr.microsoft.com/playwright:v1.56.1-jammy
+          /bin/bash -c "npx playwright test"
 
       - uses: daun/playwright-report-summary@v3
         if: always()
