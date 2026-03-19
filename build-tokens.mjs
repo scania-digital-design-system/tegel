@@ -248,10 +248,14 @@ const convertDimensionFile = (brand) => {
     }
     
     // Fix raw numeric values
-    const rawValue = trimmed.match(/^--dimension-[^:]+:\s*(\d+)\s*;?\s*$/);
-    if (rawValue) {
+    // Avoid regexes that can backtrack heavily; parse and validate cheaply instead.
+    const parts = trimmed.split(':');
+    if (parts.length >= 2) {
+      const rhs = parts.slice(1).join(':').trim().replace(/;$/, '').trim();
+      if (/^\d+$/.test(rhs)) {
       converted = true;
-      return `${indent}${varName}: var(--${brand}-unit-${rawValue[1]});`;
+        return `${indent}${varName}: var(--${brand}-unit-${rhs});`;
+      }
     }
     
     return line;
