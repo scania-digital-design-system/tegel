@@ -27,7 +27,7 @@
     letter-spacing: var(--tds-detail-02-ls);
     display: inline-flex;
     align-items: center;
-    border-radius: 32px;
+    border-radius: var(--tds-chips-border-radius);
     border: 1px solid var(--tds-chips-border);
     cursor: pointer;
     white-space: nowrap;
@@ -39,28 +39,15 @@
   }
 
   &.disabled {
+    opacity: var(--tds-chips-opacity-disabled);
+
     label {
-      background-color: var(--tds-chips-background-disabled);
-      color: var(--tds-chips-text-disabled);
-      border-color: transparent;
       cursor: default;
       pointer-events: none;
     }
 
     input {
-      pointer-events: none; // Ensure input does not respond to interactions
-    }
-
-    input[type='radio']:checked:disabled + label {
-      background-color: var(--tds-chips-background-active-disabled);
-      color: var(--tds-chips-text-checked-disabled);
-      border-color: transparent;
-    }
-
-    input[type='checkbox']:checked:disabled + label {
-      background-color: var(--tds-chips-background-active-disabled);
-      color: var(--tds-chips-text-checked-disabled);
-      border-color: transparent;
+      pointer-events: none;
     }
   }
 

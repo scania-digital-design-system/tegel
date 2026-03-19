@@ -61,13 +61,7 @@
   &:disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background-color: var(--chip-background-disabled);
-    color: var(--chip-text-disabled);
-  }
-
-  &:disabled#{&}--selected {
-    background-color: var(--chip-background-active);
-    color: var(--chip-text-checked-disabled);
+    opacity: var(--chip-opacity-disabled);
   }
 
   &--lg.tl-chip--prefix:not(.tl-chip--suffix) {
