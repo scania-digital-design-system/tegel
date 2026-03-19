@@ -5,6 +5,11 @@ const themeClasses = {
   darkmode: 'tds-mode-dark',
 };
 
+const brands = ['scania', 'traton'];
+
+const withBrands = (configs) =>
+  brands.flatMap((brand) => configs.map((config) => ({ ...config, brand })));
+
 export const testConfigurations = {
   withModeVariants: [
     {
@@ -38,6 +43,38 @@ export const testConfigurations = {
       backgroundColor: 'var(--tds-grey-958)',
     },
   ],
+  withModeVariantsAndBrands: withBrands([
+    {
+      modeVariant: 'primary',
+      theme: 'lightmode',
+      backgroundColor: 'white',
+    },
+    {
+      modeVariant: 'primary',
+      theme: 'darkmode',
+      backgroundColor: 'var(--tds-grey-958)',
+    },
+    {
+      modeVariant: 'secondary',
+      theme: 'lightmode',
+      backgroundColor: 'var(--tds-grey-50)',
+    },
+    {
+      modeVariant: 'secondary',
+      theme: 'darkmode',
+      backgroundColor: 'var(--tds-grey-900)',
+    },
+  ]),
+  basicWithBrandVariants: withBrands([
+    {
+      theme: 'lightmode',
+      backgroundColor: 'white',
+    },
+    {
+      theme: 'darkmode',
+      backgroundColor: 'var(--tds-grey-958)',
+    },
+  ]),
 };
 
 export const setupPage = async (page, config, componentTestPath, componentName) => {
@@ -46,9 +83,11 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
   const evaluateData = {
     className: themeClasses[config.theme],
     backgroundColor: config.backgroundColor,
+    brand: config.brand || 'scania',
   };
 
-  await page.evaluate(({ className, backgroundColor }) => {
+  await page.evaluate(({ className, backgroundColor, brand }) => {
+    document.documentElement.classList.add(brand);
     document.body.classList.add(className);
 
     const currentStyle = document.body.getAttribute('style');
@@ -75,7 +114,9 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
   }
 };
 
-export const getTestDescribeText = (config, testDescription) =>
-  config.modeVariant
-    ? `${testDescription}-${config.modeVariant}-${config.theme}`
-    : `${testDescription}-${config.theme}`;
+export const getTestDescribeText = (config, testDescription) => {
+  const brandSuffix = config.brand ? `-${config.brand}` : '';
+  return config.modeVariant
+    ? `${testDescription}-${config.modeVariant}-${config.theme}${brandSuffix}`
+    : `${testDescription}-${config.theme}${brandSuffix}`;
+};
