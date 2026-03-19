@@ -1,13 +1,6 @@
 @use '../../mixins/box-sizing' as *;
 
-// This component does not have dark version so all css is in this file
-
 :host {
-  // Variables
-  --tds-badge-background-color: var(--tds-red-400);
-  --tds-badge-color-text: var(--tds-white);
-
-  // Styling
   @include tds-box-sizing;
 
   display: block;
@@ -15,7 +8,7 @@
 
 .tds-badge {
   display: block;
-  border-radius: 12px;
+  border-radius: calc(var(--tds-badge-border-radius) * 1px);
   background-color: var(--tds-badge-background-color);
   text-align: center;
 

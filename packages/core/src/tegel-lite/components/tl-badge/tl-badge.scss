@@ -6,7 +6,7 @@
   @include tds-box-sizing;
 
   display: block;
-  border-radius: 12px;
+  border-radius: calc(var(--badge-border-radius) * 1px);
   background-color: var(--badge-background-color);
   text-align: center;
 
