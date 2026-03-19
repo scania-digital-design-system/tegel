@@ -7,6 +7,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-jammy
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -21,13 +23,11 @@ jobs:
         working-directory: packages/core
         run: npm run build
 
-      - name: Install Playwright Browsers
-        working-directory: packages/core
-        run: npx playwright install --with-deps
-
       - name: Run Playwright tests
         working-directory: packages/core
         run: npx playwright test
+        env:
+          HOME: /root
 
       - uses: daun/playwright-report-summary@v3
         if: always()
