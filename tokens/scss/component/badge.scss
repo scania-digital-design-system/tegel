@@ -2,16 +2,34 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-badge,
-tds-badge {
-  --component-badge-text: var(--color-brand-neutral-white);
-  --component-badge-background: var(--color-system-danger-subtle);
+.scania .tds-mode-light {
+  --component-badge-background-default: var(--color-system-danger-default);
+  --component-badge-border-radius-none: var(--scania-unit-0);
+  --component-badge-border-radius-default: var(--scania-unit-24);
+  --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-text-default: var(--color-text-inverse-base);
 }
 
-.traton {
-  .tl-badge,
-  tds-badge {
-    --component-badge-text: var(--color-brand-neutral-black);
-    --component-badge-background: var(--color-system-warning-subtle);
-  }
+.traton .tds-mode-light {
+  --component-badge-background-default: var(--color-system-warning-default);
+  --component-badge-border-radius-none: var(--traton-unit-0);
+  --component-badge-border-radius-default: var(--traton-unit-24);
+  --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-text-default: var(--traton-color-base-black);
+}
+
+.scania .tds-mode-dark {
+  --component-badge-background-default: var(--color-system-danger-subtle);
+  --component-badge-border-radius-none: var(--scania-unit-0);
+  --component-badge-border-radius-default: var(--scania-unit-24);
+  --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-text-default: var(--color-text-base);
+}
+
+.traton .tds-mode-dark {
+  --component-badge-background-default: var(--color-system-warning-default);
+  --component-badge-border-radius-none: var(--traton-unit-0);
+  --component-badge-border-radius-default: var(--traton-unit-24);
+  --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-text-default: var(--traton-color-base-black);
 }

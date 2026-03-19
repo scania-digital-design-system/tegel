@@ -2,7 +2,18 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-cookie,
-tds-cookie {
-  --component-cookie-primary-text-inverse: var(--color-brand-neutral-white);
+.scania .tds-mode-light {
+  --component-cookie-color-text-primary-inverse: #fff;
+}
+
+.traton .tds-mode-light {
+  --component-cookie-color-text-primary-inverse: #000;
+}
+
+.scania .tds-mode-dark {
+  --component-cookie-color-text-primary-inverse: #fff;
+}
+
+.traton .tds-mode-dark {
+  --component-cookie-color-text-primary-inverse: #fff;
 }
