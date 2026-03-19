@@ -115,7 +115,8 @@ function formatGeneratedScss() {
     execFileSync('npx', ['prettier', '--write', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
   } catch (err) {
     // Formatting is best-effort; build outputs are still valid even if this fails.
-    console.warn('Warning: formatting generated SCSS failed.');
+    const message = err instanceof Error ? err.message : String(err);
+    console.warn(`Warning: formatting generated SCSS failed. ${message}`);
   }
 }
 
