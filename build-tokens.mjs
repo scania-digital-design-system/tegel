@@ -8,6 +8,9 @@ import { main as normalizeTokens } from './figma-to-tokens.mjs';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 
 // List of files that should always exist (even if empty)
 const filesToPreserve = [
@@ -111,8 +114,27 @@ function formatGeneratedScss() {
   // Lint-staged runs `stylelint --fix` + `prettier --write` on `**/*.scss`, so we do the same
   // here for the generated token outputs to avoid "always dirty after build" diffs.
   try {
-    execFileSync('npx', ['stylelint', '--fix', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
-    execFileSync('npx', ['prettier', '--write', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
+    const resolvePackageBin = (packageName) => {
+      const packageJsonPath = require.resolve(`${packageName}/package.json`);
+      const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+      const binField = packageJson.bin;
+      const binRelative =
+        typeof binField === 'string' ? binField : Object.values(binField || {})[0];
+      if (!binRelative) {
+        throw new Error(`Could not resolve bin for package: ${packageName}`);
+      }
+      return join(dirname(packageJsonPath), binRelative);
+    };
+
+    const stylelintCli = resolvePackageBin('stylelint');
+    const prettierCli = resolvePackageBin('prettier');
+
+    execFileSync(process.execPath, [stylelintCli, '--fix', 'tokens/scss/**/*.scss'], {
+      stdio: 'inherit',
+    });
+    execFileSync(process.execPath, [prettierCli, '--write', 'tokens/scss/**/*.scss'], {
+      stdio: 'inherit',
+    });
   } catch (err) {
     // Formatting is best-effort; build outputs are still valid even if this fails.
     const message = err instanceof Error ? err.message : String(err);
