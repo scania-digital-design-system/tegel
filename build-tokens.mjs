@@ -7,6 +7,7 @@ import config, {
 import { main as normalizeTokens } from './figma-to-tokens.mjs';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 // List of files that should always exist (even if empty)
 const filesToPreserve = [
@@ -105,6 +106,19 @@ function cleanupComponentBuildDir(componentBuildPath) {
   rmdirSync(componentBuildPath);
 }
 
+function formatGeneratedScss() {
+  // Keep generated SCSS aligned with what gets committed.
+  // Lint-staged runs `stylelint --fix` + `prettier --write` on `**/*.scss`, so we do the same
+  // here for the generated token outputs to avoid "always dirty after build" diffs.
+  try {
+    execFileSync('npx', ['stylelint', '--fix', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
+    execFileSync('npx', ['prettier', '--write', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
+  } catch (err) {
+    // Formatting is best-effort; build outputs are still valid even if this fails.
+    console.warn('Warning: formatting generated SCSS failed.');
+  }
+}
+
 function buildThemeGroups(configObject) {
   const themeGroups = {};
   Object.entries(configObject)
@@ -164,6 +178,9 @@ async function runBuild() {
   // Build theme-specific tokens, grouped by brand so typography.scss is shared across modes
   const themeGroups = buildThemeGroups(config);
   await buildThemes(themeGroups);
+
+  // Final formatting pass so subsequent builds + lint-staged see identical output.
+  formatGeneratedScss();
 }
 
 // Generic function to clean SCSS files - filter tokens by prefix
