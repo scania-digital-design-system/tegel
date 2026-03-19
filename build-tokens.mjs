@@ -7,47 +7,49 @@ import config, {
 import { main as normalizeTokens } from './figma-to-tokens.mjs';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { execFileSync } from 'node:child_process';
 
-function normalizeHexLiteral(hex) {
-  const h = hex.toLowerCase();
-  if (h.length === 4) {
-    // #rgb -> #rrggbb
-    return `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}`;
-  }
-  if (h.length === 5) {
-    // #rgba -> #rrggbbaa
-    return `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}${h[4]}${h[4]}`;
-  }
-  return h;
-}
+// List of files that should always exist (even if empty)
+const filesToPreserve = [
+  'tokens/scss/component/dropdown.scss',
+  'tokens/scss/component/side-menu.scss',
+  'tokens/scss/component/text.scss',
+  'tokens/scss/scania/typography.scss',
+  'tokens/scss/traton/typography.scss',
+  'tokens/scss/scania/dimension.scss',
+  'tokens/scss/traton/dimension.scss',
+  'tokens/scss/scania/scania-icons.scss',
+  'tokens/scss/scania/scania-icons-primitive.scss',
+  'tokens/scss/traton/traton-icons.scss',
+  'tokens/scss/traton/traton-icons-primitive.scss',
+];
 
-function normalizeHexInScss(content) {
-  // Normalize hex literals in output to avoid cross-env diffs (#fff0 vs #FFFFFF00, casing, etc).
-  return content.replace(/#[0-9a-fA-F]{3,8}\b/g, (match) => normalizeHexLiteral(match));
-}
-
-function normalizeHexInFile(filePath) {
-  if (!existsSync(filePath)) return;
-  const original = readFileSync(filePath, 'utf8');
-  const normalized = normalizeHexInScss(original);
-  if (normalized !== original) {
-    writeFileSync(filePath, normalized, 'utf8');
+// Helper function to create empty file with header
+function createEmptyFile(filePath) {
+  const fullPath = join(process.cwd(), filePath);
+  const dir = dirname(fullPath);
+  mkdirSync(dir, { recursive: true });
+  
+  // Determine format based on file path
+  let content = '/**\n * Do not edit directly, this file was auto-generated.\n */\n\n';
+  
+  if (filePath.includes('component/')) {
+    // Component format
+    const componentName = filePath.split('/').pop().replace('.scss', '');
+    content += `.${componentName} {\n}\n`;
+  } else if (
+    filePath.includes('typography') ||
+    filePath.includes('dimension') ||
+    filePath.includes('icons')
+  ) {
+    // Brand-scoped format (typography, dimension, icons)
+    const brand = filePath.includes('scania') ? 'scania' : 'traton';
+    content += `.${brand} {\n}\n`;
+  } else {
+    // Default format
+    content += ':root {\n}\n';
   }
-}
-
-function formatGeneratedScss() {
-  // Keep generated SCSS aligned with what gets committed.
-  // This repo runs `stylelint --fix` + `prettier --write` via lint-staged on `**/*.scss`.
-  // If we don't format here, a "clean commit → build" can produce diffs due to formatting
-  // differences (e.g. wrapping long `var(...)` declarations).
-  try {
-    execFileSync('npx', ['stylelint', '--fix', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
-    execFileSync('npx', ['prettier', '--write', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
-  } catch (err) {
-    // Best-effort; build outputs are still usable.
-    console.warn('Warning: formatting generated SCSS failed.');
-  }
+  
+  writeFileSync(fullPath, content, 'utf8');
 }
 
 function indexComponentThemeFiles(componentBuildPath, themeOrder) {
@@ -130,24 +132,8 @@ async function runBuild() {
     ...config.primitive,
   });
   await primitiveSD.buildAllPlatforms();
-  // Stabilize hex formatting in generated primitives.
-  normalizeHexInFile(join(process.cwd(), 'tokens', 'scss', 'scania', 'primitive.scss'));
-  normalizeHexInFile(join(process.cwd(), 'tokens', 'scss', 'traton', 'primitive.scss'));
 
-  /**
-   * Component tokens: per-theme build + combine.
-   *
-   * Why this exists:
-   * - We want to ship ONE SCSS file per component in `tokens/scss/component/<name>.scss` that contains
-   *   the theme-specific sections for all supported themes (scania/traton × light/dark).
-   * - With the current Style Dictionary setup, the simplest way to achieve this is to run one build per
-   *   theme (writing intermediate files) and then stitch them together in a deterministic order.
-   *
-   * Future simplification:
-   * - If Style Dictionary can output the final combined component SCSS in a single run (multi-theme input → one file),
-   *   or if it becomes acceptable to ship per-theme component files, we can remove the combine step and the
-   *   intermediate `build/scss/component/*-<theme>.scss` outputs.
-   */
+  // Build component tokens per theme (one run per theme so light + dark both get emitted)
   const componentBuildPath = join(process.cwd(), 'build', 'scss', 'component');
   mkdirSync(componentBuildPath, { recursive: true });
 
@@ -172,14 +158,6 @@ async function runBuild() {
 `;
 
   combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, THEME_ORDER);
-  // Stabilize hex formatting in combined component outputs.
-  if (existsSync(finalComponentDir)) {
-    for (const file of readdirSync(finalComponentDir)) {
-      if (file.endsWith('.scss')) {
-        normalizeHexInFile(join(finalComponentDir, file));
-      }
-    }
-  }
 
   // Remove intermediate per-theme files (only final combined files are kept in tokens/scss/component/)
   cleanupComponentBuildDir(componentBuildPath);
@@ -189,21 +167,7 @@ async function runBuild() {
   await buildThemes(themeGroups);
 }
 
-  /**
- * Post-build SCSS cleanup.
- *
- * Why this exists:
- * - Style Dictionary outputs are produced with a combination of `filter` + `outputReferences`.
- *   With our current token structure, this can yield:
- *   - extra variables we don't want to ship in certain files, and/or
- *   - references to tokens that were filtered out (Style Dictionary warns: "filtered out token references").
- * - We run a final pass to keep only the expected variable prefixes per file (e.g. `--color-*`,
- *   `--dimension-*`, and brand unit tokens) to stabilize outputs.
- *
- * Future simplification:
- * - If Style Dictionary can emit exactly the desired SCSS (no extra vars, and all references kept/inlined
- *   without warnings), this entire cleanup pass can be removed.
- */
+// Generic function to clean SCSS files - filter tokens by prefix
 const cleanScssFile = (filePath, keepToken) => {
   if (!existsSync(filePath)) {
     return { kept: 0, removed: 0 };
@@ -360,6 +324,15 @@ const buildThemes = async (themeGroups) => {
     }
   }
 
+  // Ensure all files that should exist are created (even if empty)
+  filesToPreserve.forEach(filePath => {
+    const fullPath = join(process.cwd(), filePath);
+    if (!existsSync(fullPath)) {
+      console.log(`Creating empty file: ${filePath}`);
+      createEmptyFile(filePath);
+    }
+  });
+
   // Final pass: Convert dimension files (fix raw values and wrong-brand references)
   console.log('\nConverting dimension files...');
   ['scania', 'traton'].forEach(brand => {
@@ -367,9 +340,6 @@ const buildThemes = async (themeGroups) => {
       console.log(`  ✓ Converted ${brand} dimension file to use var() references`);
     }
   });
-
-  // Final formatting pass to ensure deterministic diffs across environments/commit hooks.
-  formatGeneratedScss();
 };
 
 try {

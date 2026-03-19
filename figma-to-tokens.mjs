@@ -18,18 +18,7 @@ const PRIMITIVE_DIST_DIR = join(process.cwd(), 'tokens', 'dist', 'primitive');
 // Directories will be created in main()
 
 /**
- * Figma export clean-up (structure + metadata).
- *
- * Why this exists:
- * - Figma exports include `$extensions` metadata we don't want in `tokens/dist/**`.
- * - Figma exports aliases via `$extensions.com.figma.aliasData.targetVariableName`, not as
- *   Style Dictionary references, so we rewrite those to `{path.like.this}`.
- *
- * Future simplification:
- * - If Figma exports omit `$extensions` AND already express aliases as SD references
- *   (e.g. `{color.foo.bar}`), you can remove:
- *   - `$extensions` stripping in `shouldSkipEntry()`
- *   - alias rewriting in `tryNormalizeAlias()`
+ * Determine whether an entry in the token object should be skipped entirely.
  */
 function shouldSkipEntry(key, isPrimitive) {
   if (key === '$extensions') {
@@ -50,18 +39,6 @@ function tryNormalizeAlias(obj, value, isPrimitive) {
   return { handled: true, value: `{${referencePath}}` };
 }
 
-/**
- * Color normalization.
- *
- * Why this exists:
- * - Figma exports colors as objects (including `hex` + optional `alpha`), but Style Dictionary
- *   consumption is simpler/more consistent when `$value` is a hex string.
- * - If alpha is present (< 1), we append it as `#RRGGBBAA`.
- *
- * Future simplification:
- * - If Figma exports always emit colors directly as hex strings (including alpha),
- *   this function can be removed.
- */
 function tryNormalizeColor(obj, value) {
   if (obj.$type !== 'color' || typeof value !== 'object' || !value.hex) {
     return { handled: false, value };
@@ -73,16 +50,6 @@ function tryNormalizeColor(obj, value) {
   return { handled: true, value: value.hex };
 }
 
-/**
- * Font family cleanup (primitive only).
- *
- * Why this exists:
- * - Some Figma exports include unwanted suffixes in Scania font family names (e.g. " cy"),
- *   which we strip to match our expected naming in code.
- *
- * Future simplification:
- * - If Figma exports font family names exactly as desired, this function can be removed.
- */
 function tryNormalizeFontFamily(obj, value, path, isPrimitive) {
   const isFontToken =
     isPrimitive && (obj.$type === 'text' || obj.$type === 'string') && typeof value === 'string';
@@ -98,27 +65,6 @@ function tryNormalizeFontFamily(obj, value, path, isPrimitive) {
   return { handled: true, value: value.replaceAll(' cy', '') };
 }
 
-/**
- * INTERNAL token handling (semantic only).
- *
- * Why this exists:
- * - Some Figma exports reference semantic values via `{INTERNAL.*}` indirection
- *   (e.g. `{INTERNAL.color__wip.brand.neutral.white}`).
- * - The `INTERNAL` namespace is not meant to be consumed as public variables in outputs,
- *   but values in it are still resolvable to concrete values (often hex).
- *
- * What we do:
- * - Resolve `{INTERNAL.*}` references to concrete values (prefer hex for colors),
- *   so downstream Style Dictionary runs don’t fail due to missing references.
- *
- * Future simplification:
- * - Prefer fixing this at the source: Figma should not emit `{INTERNAL.*}` references for
- *   consumer-facing semantic tokens. Instead, export a concrete value (hex) or reference a
- *   real public primitive token path.
- * - If Figma stops outputting `{INTERNAL.*}` references (or exports resolved values directly),
- *   this whole block can be removed:
- *   `extractReferencePath` / `resolveInternalReferenceToValue` / `tryNormalizeInternalReference`.
- */
 function getTokenByPath(root, pathParts) {
   let current = root;
   for (const part of pathParts) {
