@@ -13,6 +13,48 @@ import { join } from 'node:path';
 
 register(StyleDictionary); // Register Token Studio transforms
 
+/**
+ * Deterministic hex output.
+ *
+ * Why this exists:
+ * - Some environments end up emitting different hex casing/length (e.g. `#fff0` vs `#FFFFFF00`),
+ *   which causes generated SCSS files to appear "changed" on every build across machines.
+ *
+ * What we do:
+ * - Normalize hex strings to lowercase and expand shorthand forms:
+ *   - `#rgb`  -> `#rrggbb`
+ *   - `#rgba` -> `#rrggbbaa`
+ *   - `#rrggbb` and `#rrggbbaa` are preserved (lowercased)
+ */
+function normalizeHexString(value) {
+  if (typeof value !== 'string') return value;
+  const v = value.trim();
+  if (!v.startsWith('#')) return value;
+  const hex = v.slice(1);
+  const isHex = /^[0-9a-fA-F]+$/.test(hex);
+  if (!isHex) return value;
+
+  const lower = hex.toLowerCase();
+  if (lower.length === 3) {
+    return `#${lower[0]}${lower[0]}${lower[1]}${lower[1]}${lower[2]}${lower[2]}`;
+  }
+  if (lower.length === 4) {
+    return `#${lower[0]}${lower[0]}${lower[1]}${lower[1]}${lower[2]}${lower[2]}${lower[3]}${lower[3]}`;
+  }
+  if (lower.length === 6 || lower.length === 8) {
+    return `#${lower}`;
+  }
+
+  return value;
+}
+
+StyleDictionary.registerTransform({
+  name: 'tegel/color/normalize-hex',
+  type: 'value',
+  matcher: (token) => typeof token.value === 'string' && token.value.trim().startsWith('#'),
+  transform: (token) => normalizeHexString(token.value),
+});
+
 // Brand+mode only: component tokens use .${brand} .tds-mode-${theme} (no component host selectors).
 const BRANDS = ['scania', 'traton'];
 const getBrandModeSelector = (brand, theme) => `.${brand} .tds-mode-${theme}`;
@@ -320,6 +362,20 @@ function extractBrandInfo(themes) {
   return brands;
 }
 
+/**
+ * Component token file mapping.
+ *
+ * Why this exists:
+ * - Our component tokens are grouped under `component.<componentName>...`, but the exported token
+ *   structure isn't always perfectly consistent (naming, prefixing, or nested group names).
+ * - We therefore keep an explicit list of component "file buckets" and matching strategies
+ *   (`exact` vs `includes`) to get stable output files in `tokens/scss/component/*.scss`.
+ *
+ * Future simplification:
+ * - If the Figma token structure stabilizes so every component consistently exports under a
+ *   predictable `component.<name>...` path, this list and the matching logic can shrink to
+ *   a simple 1:1 mapping (or be generated automatically from the token tree).
+ */
 // List of [componentName, matchType] for component token files (used for both merged and per-theme builds)
 const COMPONENT_FILE_LIST = [
   ['header', 'includes'],
@@ -341,6 +397,13 @@ const COMPONENT_FILE_LIST = [
   ['text', 'exact'],
 ];
 
+/**
+ * Create component file configuration (filtering by token path/name).
+ *
+ * Future simplification:
+ * - If token paths are consistent, we can drop the special-casing (e.g. `--` prefixes) and use
+ *   a simpler filter like `token.path[0] === 'component' && token.path[1] === componentName`.
+ */
 // Helper function to create component file configuration
 function createComponentFile(componentName, matchType = 'exact') {
   const destination = `component/${componentName}.scss`;
@@ -398,6 +461,18 @@ export function getComponentConfigForTheme(themeName) {
     ],
     platforms: {
       component: {
+        /**
+         * Transforms.
+         *
+         * Why this exists:
+         * - Figma exports (and our normalization) don’t always land in the exact formats we want to
+         *   ship (px sizes, resolved math, hex/rgba strings, etc.). These transforms bridge that gap.
+         *
+         * Future simplification:
+         * - If the Figma JSON export improves so values already match their final output format
+         *   (e.g. px strings, resolved colors, resolved math), we can remove several of these
+         *   transforms and rely more on plain `css/variables`.
+         */
         transforms: [
           'ts/descriptionToComment',
           'ts/resolveMath',
@@ -407,6 +482,7 @@ export function getComponentConfigForTheme(themeName) {
           'ts/typography/fontWeight',
           'ts/color/modifiers',
           'ts/color/css/hexrgba',
+          'tegel/color/normalize-hex',
           'ts/size/css/letterspacing',
           'attribute/cti',
           'name/kebab',
@@ -427,6 +503,7 @@ const primitiveConfig = {
   source: ['tokens/dist/primitive/**/*.json'],
   platforms: {
     scss: {
+      // See "Transforms" note above. These can shrink as exported values stabilize.
       transforms: [
         'ts/descriptionToComment',
         'ts/opacity',
@@ -434,6 +511,7 @@ const primitiveConfig = {
         'ts/typography/fontWeight',
         'ts/color/modifiers',
         'ts/color/css/hexrgba',
+        'tegel/color/normalize-hex',
         'ts/size/css/letterspacing',
         'ts/shadow/innerShadow',
         'attribute/cti',
@@ -459,6 +537,19 @@ const primitiveConfig = {
 // ============================================================================
 // THEME CONFIGURATIONS (Color, Dimension, Typography)
 // ============================================================================
+/**
+ * Theme config generation.
+ *
+ * Why this exists:
+ * - We generate per-brand/per-theme outputs (light/dark) with different selectors and filters.
+ * - We also merge sources (primitive + semantic) per theme to allow semantic tokens to reference
+ *   primitives during build.
+ *
+ * Future simplification:
+ * - If Figma exports a predictable per-theme structure where primitives + semantic live together
+ *   (or if we no longer need to merge them here), we can simplify `source` arrays and reduce the
+ *   amount of theme-config generation and per-file filtering.
+ */
 const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
   brand.themes.forEach(theme => {
     const themeName = theme.name;
@@ -494,6 +585,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
             'ts/typography/fontWeight',
             'ts/color/modifiers',
             'ts/color/css/hexrgba',
+            'tegel/color/normalize-hex',
             'ts/size/css/letterspacing',
             'ts/shadow/innerShadow',
             'attribute/cti',
@@ -599,6 +691,7 @@ const componentConfig = {
   ],
   platforms: {
     component: {
+      // See "Transforms" note above. These can shrink as exported values stabilize.
       transforms: [
         'ts/descriptionToComment',
         'ts/resolveMath',
@@ -608,6 +701,7 @@ const componentConfig = {
         'ts/typography/fontWeight',
         'ts/color/modifiers',
         'ts/color/css/hexrgba',
+        'tegel/color/normalize-hex',
         'ts/size/css/letterspacing',
         'attribute/cti',
         'name/kebab',

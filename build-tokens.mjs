@@ -23,6 +23,33 @@ const filesToPreserve = [
   'tokens/scss/traton/traton-icons-primitive.scss',
 ];
 
+function normalizeHexLiteral(hex) {
+  const h = hex.toLowerCase();
+  if (h.length === 4) {
+    // #rgb -> #rrggbb
+    return `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}`;
+  }
+  if (h.length === 5) {
+    // #rgba -> #rrggbbaa
+    return `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}${h[4]}${h[4]}`;
+  }
+  return h;
+}
+
+function normalizeHexInScss(content) {
+  // Normalize hex literals in output to avoid cross-env diffs (#fff0 vs #FFFFFF00, casing, etc).
+  return content.replace(/#[0-9a-fA-F]{3,8}\b/g, (match) => normalizeHexLiteral(match));
+}
+
+function normalizeHexInFile(filePath) {
+  if (!existsSync(filePath)) return;
+  const original = readFileSync(filePath, 'utf8');
+  const normalized = normalizeHexInScss(original);
+  if (normalized !== original) {
+    writeFileSync(filePath, normalized, 'utf8');
+  }
+}
+
 // Helper function to create empty file with header
 function createEmptyFile(filePath) {
   const fullPath = join(process.cwd(), filePath);
@@ -132,8 +159,24 @@ async function runBuild() {
     ...config.primitive,
   });
   await primitiveSD.buildAllPlatforms();
+  // Stabilize hex formatting in generated primitives.
+  normalizeHexInFile(join(process.cwd(), 'tokens', 'scss', 'scania', 'primitive.scss'));
+  normalizeHexInFile(join(process.cwd(), 'tokens', 'scss', 'traton', 'primitive.scss'));
 
-  // Build component tokens per theme (one run per theme so light + dark both get emitted)
+  /**
+   * Component tokens: per-theme build + combine.
+   *
+   * Why this exists:
+   * - We want to ship ONE SCSS file per component in `tokens/scss/component/<name>.scss` that contains
+   *   the theme-specific sections for all supported themes (scania/traton × light/dark).
+   * - With the current Style Dictionary setup, the simplest way to achieve this is to run one build per
+   *   theme (writing intermediate files) and then stitch them together in a deterministic order.
+   *
+   * Future simplification:
+   * - If Style Dictionary can output the final combined component SCSS in a single run (multi-theme input → one file),
+   *   or if it becomes acceptable to ship per-theme component files, we can remove the combine step and the
+   *   intermediate `build/scss/component/*-<theme>.scss` outputs.
+   */
   const componentBuildPath = join(process.cwd(), 'build', 'scss', 'component');
   mkdirSync(componentBuildPath, { recursive: true });
 
@@ -158,6 +201,14 @@ async function runBuild() {
 `;
 
   combineComponentThemeFiles(componentBuildPath, finalComponentDir, componentHeader, THEME_ORDER);
+  // Stabilize hex formatting in combined component outputs.
+  if (existsSync(finalComponentDir)) {
+    for (const file of readdirSync(finalComponentDir)) {
+      if (file.endsWith('.scss')) {
+        normalizeHexInFile(join(finalComponentDir, file));
+      }
+    }
+  }
 
   // Remove intermediate per-theme files (only final combined files are kept in tokens/scss/component/)
   cleanupComponentBuildDir(componentBuildPath);
@@ -167,7 +218,21 @@ async function runBuild() {
   await buildThemes(themeGroups);
 }
 
-// Generic function to clean SCSS files - filter tokens by prefix
+  /**
+ * Post-build SCSS cleanup.
+ *
+ * Why this exists:
+ * - Style Dictionary outputs are produced with a combination of `filter` + `outputReferences`.
+ *   With our current token structure, this can yield:
+ *   - extra variables we don't want to ship in certain files, and/or
+ *   - references to tokens that were filtered out (Style Dictionary warns: "filtered out token references").
+ * - We run a final pass to keep only the expected variable prefixes per file (e.g. `--color-*`,
+ *   `--dimension-*`, and brand unit tokens) to stabilize outputs.
+ *
+ * Future simplification:
+ * - If Style Dictionary can emit exactly the desired SCSS (no extra vars, and all references kept/inlined
+ *   without warnings), this entire cleanup pass can be removed.
+ */
 const cleanScssFile = (filePath, keepToken) => {
   if (!existsSync(filePath)) {
     return { kept: 0, removed: 0 };
