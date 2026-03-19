@@ -7,21 +7,7 @@ import config, {
 import { main as normalizeTokens } from './figma-to-tokens.mjs';
 import { mkdirSync, writeFileSync, existsSync, readFileSync, unlinkSync, readdirSync, rmdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-
-// List of files that should always exist (even if empty)
-const filesToPreserve = [
-  'tokens/scss/component/dropdown.scss',
-  'tokens/scss/component/side-menu.scss',
-  'tokens/scss/component/text.scss',
-  'tokens/scss/scania/typography.scss',
-  'tokens/scss/traton/typography.scss',
-  'tokens/scss/scania/dimension.scss',
-  'tokens/scss/traton/dimension.scss',
-  'tokens/scss/scania/scania-icons.scss',
-  'tokens/scss/scania/scania-icons-primitive.scss',
-  'tokens/scss/traton/traton-icons.scss',
-  'tokens/scss/traton/traton-icons-primitive.scss',
-];
+import { execFileSync } from 'node:child_process';
 
 function normalizeHexLiteral(hex) {
   const h = hex.toLowerCase();
@@ -50,33 +36,18 @@ function normalizeHexInFile(filePath) {
   }
 }
 
-// Helper function to create empty file with header
-function createEmptyFile(filePath) {
-  const fullPath = join(process.cwd(), filePath);
-  const dir = dirname(fullPath);
-  mkdirSync(dir, { recursive: true });
-  
-  // Determine format based on file path
-  let content = '/**\n * Do not edit directly, this file was auto-generated.\n */\n\n';
-  
-  if (filePath.includes('component/')) {
-    // Component format
-    const componentName = filePath.split('/').pop().replace('.scss', '');
-    content += `.${componentName} {\n}\n`;
-  } else if (
-    filePath.includes('typography') ||
-    filePath.includes('dimension') ||
-    filePath.includes('icons')
-  ) {
-    // Brand-scoped format (typography, dimension, icons)
-    const brand = filePath.includes('scania') ? 'scania' : 'traton';
-    content += `.${brand} {\n}\n`;
-  } else {
-    // Default format
-    content += ':root {\n}\n';
+function formatGeneratedScss() {
+  // Keep generated SCSS aligned with what gets committed.
+  // This repo runs `stylelint --fix` + `prettier --write` via lint-staged on `**/*.scss`.
+  // If we don't format here, a "clean commit → build" can produce diffs due to formatting
+  // differences (e.g. wrapping long `var(...)` declarations).
+  try {
+    execFileSync('npx', ['stylelint', '--fix', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
+    execFileSync('npx', ['prettier', '--write', 'tokens/scss/**/*.scss'], { stdio: 'inherit' });
+  } catch (err) {
+    // Best-effort; build outputs are still usable.
+    console.warn('Warning: formatting generated SCSS failed.');
   }
-  
-  writeFileSync(fullPath, content, 'utf8');
 }
 
 function indexComponentThemeFiles(componentBuildPath, themeOrder) {
@@ -389,15 +360,6 @@ const buildThemes = async (themeGroups) => {
     }
   }
 
-  // Ensure all files that should exist are created (even if empty)
-  filesToPreserve.forEach(filePath => {
-    const fullPath = join(process.cwd(), filePath);
-    if (!existsSync(fullPath)) {
-      console.log(`Creating empty file: ${filePath}`);
-      createEmptyFile(filePath);
-    }
-  });
-
   // Final pass: Convert dimension files (fix raw values and wrong-brand references)
   console.log('\nConverting dimension files...');
   ['scania', 'traton'].forEach(brand => {
@@ -405,6 +367,9 @@ const buildThemes = async (themeGroups) => {
       console.log(`  ✓ Converted ${brand} dimension file to use var() references`);
     }
   });
+
+  // Final formatting pass to ensure deterministic diffs across environments/commit hooks.
+  formatGeneratedScss();
 };
 
 try {
