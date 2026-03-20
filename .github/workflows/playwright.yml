@@ -55,35 +55,46 @@ jobs:
                 const browser = await chromium.launch();
                 const page = await browser.newPage();
 
-                // Capture console messages and errors
-                const logs = [];
-                page.on(\"console\", msg => logs.push({ type: msg.type(), text: msg.text() }));
-                page.on(\"pageerror\", err => logs.push({ type: \"pageerror\", text: err.message }));
-
+                // Replicate exact test flow: goto + setupPage
                 await page.goto(\"http://localhost:3333/src/components/chip/test/radio/index.html\");
 
-                // Wait for potential hydration
-                await page.waitForTimeout(3000);
-
-                const debug = await page.evaluate(() => {
-                  const chip = document.querySelector(\"tds-chip\");
-                  return {
-                    url: window.location.href,
-                    chipExists: !!chip,
-                    chipTagName: chip?.tagName,
-                    chipHasShadowRoot: !!chip?.shadowRoot,
-                    customElementDefined: !!customElements.get(\"tds-chip\"),
-                    allCustomElements: document.querySelectorAll(\"tds-chip\").length,
-                    chipInnerHTML: chip?.innerHTML?.substring(0, 200),
-                    chipOuterHTML: chip?.outerHTML?.substring(0, 300),
-                    scriptsLoaded: Array.from(document.querySelectorAll(\"script\")).map(s => ({ type: s.type, src: s.src || \"inline\" })),
-                  };
+                // Replicate setupPage for scania lightmode
+                await page.evaluate(() => {
+                  document.documentElement.classList.add(\"scania\");
+                  document.body.classList.add(\"tds-mode-light\");
+                  const currentStyle = document.body.getAttribute(\"style\");
+                  document.body.setAttribute(\"style\", (currentStyle || \"\") + \"; background-color: white; padding-top: 20px; padding-bottom: 20px;\");
                 });
 
-                console.log(\"=== Page state ===\");
+                // Same wait as test: check text exists
+                const chip1 = page.getByText(\"Label 1\", { exact: true });
+                await chip1.waitFor({ state: \"visible\", timeout: 5000 });
+
+                // Dump computed styles on the label (scoped CSS, no shadow root)
+                const debug = await page.evaluate(() => {
+                  const chip = document.querySelector(\"tds-chip\");
+                  const label = chip?.querySelector(\"label\");
+                  const labelStyle = label ? getComputedStyle(label) : null;
+                  return {
+                    chipHydrated: chip?.classList.contains(\"hydrated\"),
+                    labelExists: !!label,
+                    labelBg: labelStyle?.backgroundColor,
+                    labelBorder: labelStyle?.borderColor,
+                    labelBorderRadius: labelStyle?.borderRadius,
+                    labelBorderWidth: labelStyle?.borderWidth,
+                    labelPadding: labelStyle?.padding,
+                    chipVarOnLabel: labelStyle?.getPropertyValue(\"--tds-chips-background\").trim(),
+                    fullInlineStyleCount: document.querySelectorAll(\"style\").length,
+                    inlineStyleContents: Array.from(document.querySelectorAll(\"style\")).map(s => s.textContent.substring(0, 200)),
+                  };
+                });
+                console.log(\"=== Label computed styles ===\");
                 console.log(JSON.stringify(debug, null, 2));
-                console.log(\"=== Console logs ===\");
-                logs.forEach(l => console.log(l.type + \": \" + l.text));
+
+                // Take debug screenshot
+                await page.screenshot({ path: \"/work/test-results/output/debug-chip-radio.png\", fullPage: true });
+                console.log(\"Debug screenshot saved to /work/test-results/output/debug-chip-radio.png\");
+
                 await browser.close();
               })().catch(e => { console.error(e); process.exit(1); });
               "
@@ -106,7 +117,7 @@ jobs:
           report-file: ./packages/core/results.json
 
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
           name: playwright-output
           path: ./packages/core/test-results/output ## Folder used in playwright.config.js `outputDir`
