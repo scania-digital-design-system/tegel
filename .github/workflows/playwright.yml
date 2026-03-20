@@ -46,27 +46,31 @@ jobs:
             -w /work/ \
             mcr.microsoft.com/playwright:v1.56.1-jammy \
             /bin/bash -c '
-              echo "=== Verify tegel.css exists in Docker ==="
-              ls -lh /work/dist/tegel/tegel.css
-              grep -c "component-chip-background-default" /work/dist/tegel/tegel.css
-
-              echo "=== Start serve and test CSS loading ==="
-              npx serve -p 3333 &
+              echo "=== Start serve (default, with clean URLs) ==="
+              npx serve -p 3334 &
               sleep 2
 
-              echo "=== Test CSS URL from serve ==="
-              curl -s -o /dev/null -w "HTTP %{http_code} Size: %{size_download} bytes\n" http://localhost:3333/dist/tegel/tegel.css
+              echo "=== What HTML does serve return at the redirected URL? ==="
+              echo "--- Direct index.html request (follows redirects): ---"
+              curl -sL http://localhost:3334/src/components/chip/test/radio/index.html | head -15
+              echo ""
+              echo "--- Final URL after redirects: ---"
+              curl -sL -o /dev/null -w "%{url_effective}\n" http://localhost:3334/src/components/chip/test/radio/index.html
+              echo ""
+              echo "--- CSS link resolution from final URL: ---"
+              echo "From /src/components/chip/test/radio (no trailing slash):"
+              echo "  ../../../../../dist/tegel/tegel.css resolves to what?"
+              curl -sL -o /dev/null -w "CSS at resolved path: HTTP %{http_code}, %{size_download} bytes\n" http://localhost:3334/dist/tegel/tegel.css
 
-              echo "=== Check chip tokens in served CSS ==="
-              curl -s http://localhost:3333/dist/tegel/tegel.css | grep -c "component-chip-background-default" || echo "0 matches"
+              echo ""
+              echo "=== Now test with --no-clean-urls ==="
+              npx serve -p 3335 --no-clean-urls &
+              sleep 2
+              echo "--- index.html request (no clean URLs): ---"
+              curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:3335/src/components/chip/test/radio/index.html
+              curl -s http://localhost:3335/src/components/chip/test/radio/index.html | head -15
 
-              echo "=== Test HTML fixture ==="
-              curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:3333/src/components/chip/test/radio/index.html
-
-              echo "=== Check computed styles with Playwright ==="
-              npx playwright test --grep "renders radio chips correctly" --reporter=list 2>&1 | head -30 || true
-
-              kill %1 2>/dev/null || true
+              kill %1 %2 2>/dev/null || true
             '
 
       - name: Run Playwright tests in Docker
