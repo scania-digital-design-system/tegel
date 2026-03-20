@@ -54,59 +54,36 @@ jobs:
               (async () => {
                 const browser = await chromium.launch();
                 const page = await browser.newPage();
+
+                // Capture console messages and errors
+                const logs = [];
+                page.on(\"console\", msg => logs.push({ type: msg.type(), text: msg.text() }));
+                page.on(\"pageerror\", err => logs.push({ type: \"pageerror\", text: err.message }));
+
                 await page.goto(\"http://localhost:3333/src/components/chip/test/radio/index.html\");
 
-                // Simulate setupPage: add brand and theme classes
-                await page.evaluate(() => {
-                  document.documentElement.classList.add(\"scania\");
-                  document.body.classList.add(\"tds-mode-light\");
-                  document.body.setAttribute(\"style\", \"background-color: white; padding: 20px;\");
-                });
-
-                // Wait a moment for styles to apply
-                await page.waitForTimeout(1000);
+                // Wait for potential hydration
+                await page.waitForTimeout(3000);
 
                 const debug = await page.evaluate(() => {
-                  const html = document.documentElement;
-                  const body = document.body;
                   const chip = document.querySelector(\"tds-chip\");
-                  const label = chip ? chip.shadowRoot?.querySelector(\"label\") : null;
-
-                  const getVars = (el) => {
-                    if (!el) return \"element not found\";
-                    const cs = getComputedStyle(el);
-                    return {
-                      // Figma primitive
-                      \"--scania-color-grey-150\": cs.getPropertyValue(\"--scania-color-grey-150\").trim(),
-                      // Figma semantic
-                      \"--color-border-subtle\": cs.getPropertyValue(\"--color-border-subtle\").trim(),
-                      // Component token
-                      \"--component-chip-background-default\": cs.getPropertyValue(\"--component-chip-background-default\").trim(),
-                      // Component var
-                      \"--tds-chips-background\": cs.getPropertyValue(\"--tds-chips-background\").trim(),
-                      \"--tds-chips-border\": cs.getPropertyValue(\"--tds-chips-border\").trim(),
-                      \"--tds-chips-border-radius\": cs.getPropertyValue(\"--tds-chips-border-radius\").trim(),
-                      // Computed
-                      backgroundColor: cs.backgroundColor,
-                      borderColor: cs.borderColor,
-                    };
-                  };
-
                   return {
-                    htmlClasses: html.className,
-                    bodyClasses: body.className,
+                    url: window.location.href,
                     chipExists: !!chip,
+                    chipTagName: chip?.tagName,
                     chipHasShadowRoot: !!chip?.shadowRoot,
-                    labelExists: !!label,
-                    stylesheetsLoaded: document.styleSheets.length,
-                    stylesheetHrefs: Array.from(document.styleSheets).map(s => s.href || \"inline\"),
-                    bodyVars: getVars(body),
-                    chipVars: getVars(chip),
-                    labelVars: getVars(label),
+                    customElementDefined: !!customElements.get(\"tds-chip\"),
+                    allCustomElements: document.querySelectorAll(\"tds-chip\").length,
+                    chipInnerHTML: chip?.innerHTML?.substring(0, 200),
+                    chipOuterHTML: chip?.outerHTML?.substring(0, 300),
+                    scriptsLoaded: Array.from(document.querySelectorAll(\"script\")).map(s => ({ type: s.type, src: s.src || \"inline\" })),
                   };
                 });
 
+                console.log(\"=== Page state ===\");
                 console.log(JSON.stringify(debug, null, 2));
+                console.log(\"=== Console logs ===\");
+                logs.forEach(l => console.log(l.type + \": \" + l.text));
                 await browser.close();
               })().catch(e => { console.error(e); process.exit(1); });
               "
