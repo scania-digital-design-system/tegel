@@ -21,6 +21,23 @@ jobs:
         working-directory: packages/core
         run: npm run build
 
+      - name: Verify CSS tokens in build output
+        working-directory: packages/core
+        run: |
+          echo "=== Checking tegel.css for Figma token definitions ==="
+          echo "component-chip tokens: $(grep -c 'component-chip-background-default' dist/tegel/tegel.css || echo 0)"
+          echo "component-badge tokens: $(grep -c 'component-badge' dist/tegel/tegel.css || echo 0)"
+          echo "component-spinner tokens: $(grep -c 'component-spinner' dist/tegel/tegel.css || echo 0)"
+          echo "component-tag tokens: $(grep -c 'component-tag' dist/tegel/tegel.css || echo 0)"
+          echo "scania primitive tokens: $(grep -c 'scania-color-grey-150' dist/tegel/tegel.css || echo 0)"
+          echo "tds-chip vars: $(grep -c 'tds-chips-background' dist/tegel/tegel.css || echo 0)"
+          echo "=== tegel.css file size ==="
+          ls -lh dist/tegel/tegel.css
+          if ! grep -q 'component-chip-background-default' dist/tegel/tegel.css; then
+            echo "::error::CRITICAL: Figma component tokens missing from tegel.css - Sass compilation likely failed to resolve token imports"
+            exit 1
+          fi
+
       - name: Run Playwright tests in Docker
         working-directory: packages/core
         run: >
