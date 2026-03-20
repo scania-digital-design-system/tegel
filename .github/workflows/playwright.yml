@@ -38,7 +38,7 @@ jobs:
             exit 1
           fi
 
-      - name: Debug CSS loading in Docker
+      - name: Debug computed styles in Docker
         working-directory: packages/core
         run: |
           docker run --rm --network host \
@@ -46,31 +46,72 @@ jobs:
             -w /work/ \
             mcr.microsoft.com/playwright:v1.56.1-jammy \
             /bin/bash -c '
-              echo "=== Start serve (default, with clean URLs) ==="
-              npx serve -p 3334 &
+              npx serve -p 3333 &
               sleep 2
 
-              echo "=== What HTML does serve return at the redirected URL? ==="
-              echo "--- Direct index.html request (follows redirects): ---"
-              curl -sL http://localhost:3334/src/components/chip/test/radio/index.html | head -15
-              echo ""
-              echo "--- Final URL after redirects: ---"
-              curl -sL -o /dev/null -w "%{url_effective}\n" http://localhost:3334/src/components/chip/test/radio/index.html
-              echo ""
-              echo "--- CSS link resolution from final URL: ---"
-              echo "From /src/components/chip/test/radio (no trailing slash):"
-              echo "  ../../../../../dist/tegel/tegel.css resolves to what?"
-              curl -sL -o /dev/null -w "CSS at resolved path: HTTP %{http_code}, %{size_download} bytes\n" http://localhost:3334/dist/tegel/tegel.css
+              node -e "
+              const { chromium } = require(\"playwright\");
+              (async () => {
+                const browser = await chromium.launch();
+                const page = await browser.newPage();
+                await page.goto(\"http://localhost:3333/src/components/chip/test/radio/index.html\");
 
-              echo ""
-              echo "=== Now test with --no-clean-urls ==="
-              npx serve -p 3335 --no-clean-urls &
-              sleep 2
-              echo "--- index.html request (no clean URLs): ---"
-              curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:3335/src/components/chip/test/radio/index.html
-              curl -s http://localhost:3335/src/components/chip/test/radio/index.html | head -15
+                // Simulate setupPage: add brand and theme classes
+                await page.evaluate(() => {
+                  document.documentElement.classList.add(\"scania\");
+                  document.body.classList.add(\"tds-mode-light\");
+                  document.body.setAttribute(\"style\", \"background-color: white; padding: 20px;\");
+                });
 
-              kill %1 %2 2>/dev/null || true
+                // Wait a moment for styles to apply
+                await page.waitForTimeout(1000);
+
+                const debug = await page.evaluate(() => {
+                  const html = document.documentElement;
+                  const body = document.body;
+                  const chip = document.querySelector(\"tds-chip\");
+                  const label = chip ? chip.shadowRoot?.querySelector(\"label\") : null;
+
+                  const getVars = (el) => {
+                    if (!el) return \"element not found\";
+                    const cs = getComputedStyle(el);
+                    return {
+                      // Figma primitive
+                      \"--scania-color-grey-150\": cs.getPropertyValue(\"--scania-color-grey-150\").trim(),
+                      // Figma semantic
+                      \"--color-border-subtle\": cs.getPropertyValue(\"--color-border-subtle\").trim(),
+                      // Component token
+                      \"--component-chip-background-default\": cs.getPropertyValue(\"--component-chip-background-default\").trim(),
+                      // Component var
+                      \"--tds-chips-background\": cs.getPropertyValue(\"--tds-chips-background\").trim(),
+                      \"--tds-chips-border\": cs.getPropertyValue(\"--tds-chips-border\").trim(),
+                      \"--tds-chips-border-radius\": cs.getPropertyValue(\"--tds-chips-border-radius\").trim(),
+                      // Computed
+                      backgroundColor: cs.backgroundColor,
+                      borderColor: cs.borderColor,
+                    };
+                  };
+
+                  return {
+                    htmlClasses: html.className,
+                    bodyClasses: body.className,
+                    chipExists: !!chip,
+                    chipHasShadowRoot: !!chip?.shadowRoot,
+                    labelExists: !!label,
+                    stylesheetsLoaded: document.styleSheets.length,
+                    stylesheetHrefs: Array.from(document.styleSheets).map(s => s.href || \"inline\"),
+                    bodyVars: getVars(body),
+                    chipVars: getVars(chip),
+                    labelVars: getVars(label),
+                  };
+                });
+
+                console.log(JSON.stringify(debug, null, 2));
+                await browser.close();
+              })().catch(e => { console.error(e); process.exit(1); });
+              "
+
+              kill %1 2>/dev/null || true
             '
 
       - name: Run Playwright tests in Docker
