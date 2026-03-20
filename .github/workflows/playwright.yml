@@ -38,6 +38,37 @@ jobs:
             exit 1
           fi
 
+      - name: Debug CSS loading in Docker
+        working-directory: packages/core
+        run: |
+          docker run --rm --network host \
+            -v ${{ github.workspace }}/packages/core:/work/ \
+            -w /work/ \
+            mcr.microsoft.com/playwright:v1.56.1-jammy \
+            /bin/bash -c '
+              echo "=== Verify tegel.css exists in Docker ==="
+              ls -lh /work/dist/tegel/tegel.css
+              grep -c "component-chip-background-default" /work/dist/tegel/tegel.css
+
+              echo "=== Start serve and test CSS loading ==="
+              npx serve -p 3333 &
+              sleep 2
+
+              echo "=== Test CSS URL from serve ==="
+              curl -s -o /dev/null -w "HTTP %{http_code} Size: %{size_download} bytes\n" http://localhost:3333/dist/tegel/tegel.css
+
+              echo "=== Check chip tokens in served CSS ==="
+              curl -s http://localhost:3333/dist/tegel/tegel.css | grep -c "component-chip-background-default" || echo "0 matches"
+
+              echo "=== Test HTML fixture ==="
+              curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:3333/src/components/chip/test/radio/index.html
+
+              echo "=== Check computed styles with Playwright ==="
+              npx playwright test --grep "renders radio chips correctly" --reporter=list 2>&1 | head -30 || true
+
+              kill %1 2>/dev/null || true
+            '
+
       - name: Run Playwright tests in Docker
         working-directory: packages/core
         run: >
