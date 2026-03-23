@@ -512,7 +512,7 @@ export class TdsDropdown {
     return this.normalizeText ? text.normalize('NFD').replace(/\p{Diacritic}/gu, '') : text;
   }
 
-  private setDefaultOption = () => {
+  private readonly setDefaultOption = () => {
     if (this.internalDefaultValue) {
       /** Convert the internal default value to an array if it's not already */
       const defaultValues = this.multiselect
@@ -523,12 +523,12 @@ export class TdsDropdown {
     }
   };
 
-  private getChildren = () =>
+  private readonly getChildren = () =>
     Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
 
-  private getSelectedChildren = () => {
+  private readonly getSelectedChildren = () => {
     if (this.selectedOptions.length === 0) return [];
 
     return this.selectedOptions
@@ -542,12 +542,12 @@ export class TdsDropdown {
       .filter(Boolean);
   };
 
-  private getSelectedChildrenLabels = () =>
+  private readonly getSelectedChildrenLabels = () =>
     this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
       element.textContent?.trim(),
     );
 
-  private getValue = () => {
+  private readonly getValue = () => {
     const labels = this.getSelectedChildrenLabels();
     if (!labels) {
       return '';
@@ -555,7 +555,7 @@ export class TdsDropdown {
     return labels?.join(', ');
   };
 
-  private setValueAttribute = () => {
+  private readonly setValueAttribute = () => {
     if (this.selectedOptions.length === 0) {
       this.host.removeAttribute('value');
     } else {
@@ -563,7 +563,7 @@ export class TdsDropdown {
     }
   };
 
-  private getOpenDirection = () => {
+  private readonly getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
       const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
       const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
@@ -576,7 +576,7 @@ export class TdsDropdown {
     return this.openDirection;
   };
 
-  private handleToggleOpen = () => {
+  private readonly handleToggleOpen = () => {
     if (!this.disabled) {
       this.open = !this.open;
       if (this.open) {
@@ -592,11 +592,11 @@ export class TdsDropdown {
     }
   };
 
-  private focusInputElement = () => {
+  private readonly focusInputElement = () => {
     if (this.inputElement) this.inputElement.focus();
   };
 
-  private handleFilter = (event: InputEvent): void => {
+  private readonly handleFilter = (event: InputEvent): void => {
     const input = event.currentTarget as HTMLInputElement;
     if (
       this.multiselect &&
@@ -645,7 +645,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleFilterReset = () => {
+  private readonly handleFilterReset = () => {
     if (this.multiselect) {
       /** Multiselect + filter: two-step clear */
       if (this.filterQuery.length > 0) {
@@ -688,7 +688,7 @@ export class TdsDropdown {
     }
   };
 
-  private resetFilterVisibility = () => {
+  private readonly resetFilterVisibility = () => {
     this.filterQuery = '';
     const children = this.getChildren();
     children.forEach((element) => {
@@ -697,13 +697,13 @@ export class TdsDropdown {
     this.filterResult = null;
   };
 
-  private handleMultiselectClear = () => {
+  private readonly handleMultiselectClear = () => {
     const clearedValue = this.selectedOptions.join(',');
     this.updateDropdownStateFromUser([]);
     this.tdsClear.emit({ clearedValue });
   };
 
-  private handleFocus = () => {
+  private readonly handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
     if (this.multiselect && this.filter) {
@@ -720,7 +720,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleBlur = () => {
+  private readonly handleBlur = () => {
     this.filterFocus = false;
     this.filterQuery = '';
     if (this.inputElement) {
@@ -732,7 +732,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleInputClick = () => {
+  private readonly handleInputClick = () => {
     if (this.multiselect && this.filter) {
       this.filterQuery = '';
       if (this.inputElement) {
@@ -766,7 +766,7 @@ export class TdsDropdown {
     }
   }
 
-  private resetInput = () => {
+  private readonly resetInput = () => {
     const inputEl = this.host.querySelector('input');
     if (inputEl) {
       this.reset();
