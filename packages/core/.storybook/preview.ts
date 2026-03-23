@@ -4,6 +4,7 @@ import { defineCustomElements } from '../loader';
 import type { Preview, Decorator } from '@storybook/html';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
+import '../src/global/tegel-lite-components.scss';
 import './preview.css';
 import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 
@@ -22,28 +23,23 @@ try {
   console.warn('Storybook channel not available:', error);
 }
 
-// DEV env for traton styles
-const isDev = import.meta.env.VITE_STORYBOOK_ENV === 'dev';
-
 // Toggle Brand
-const toggleBrandTool = isDev
-  ? {
-      brand: {
-        name: 'Brand',
-        description: 'Switch between Scania and Traton themes',
-        defaultValue: 'scania',
-        toolbar: {
-          icon: 'globe',
-          items: [
-            { value: 'scania', title: 'Scania' },
-            { value: 'traton', title: 'TRATON' },
-          ],
-          showName: true,
-          dynamicTitle: true,
-        },
-      },
-    }
-  : undefined;
+const toggleBrandTool = {
+  brand: {
+    name: 'Brand',
+    description: 'Switch between Scania and Traton themes',
+    defaultValue: 'scania',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'scania', title: 'Scania' },
+        { value: 'traton', title: 'TRATON' },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
+};
 
 // Toggle mode variant
 const modeVariantTool = {
