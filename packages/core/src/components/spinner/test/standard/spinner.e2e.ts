@@ -1,21 +1,25 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
-import { getTestDescribeText, setupPage } from '../../../../utils/testConfiguration';
+import { getTestDescribeText, setupPage, TestConfig } from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/spinner/test/standard/index.html';
 const componentName = 'tds-spinner';
 const testDescription = 'tds-spinner-standard';
 
-const spinnerTestConfiguration = [
+const brands = ['scania', 'traton'];
+
+const spinnerTestConfiguration: TestConfig[] = brands.flatMap((brand) => [
   {
     theme: 'lightmode',
     backgroundColor: 'var(--tds-grey-50)',
+    brand,
   },
   {
     theme: 'darkmode',
     backgroundColor: 'var(--tds-grey-958)',
+    brand,
   },
-];
+]);
 
 spinnerTestConfiguration.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
