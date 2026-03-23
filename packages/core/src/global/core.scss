@@ -34,6 +34,7 @@
 
 //Web component theme variables
 @use '../components/accordion/accordion-vars' as *;
+@use '../components/badge/badge-vars' as *;
 @use '../components/banner/banner-vars' as *;
 @use '../components/block/block-vars' as *;
 @use '../components/breadcrumbs/breadcrumbs-vars' as *;
@@ -58,6 +59,7 @@
 @use '../components/side-menu/side-menu-item/side-menu-item-global' as *;
 @use '../components/side-menu/side-menu-vars' as *;
 @use '../components/slider/slider-vars' as *;
+@use '../components/spinner/spinner-vars' as *;
 @use '../components/stepper/stepper-vars' as *;
 @use '../components/tag/tag-vars' as *;
 @use '../components/tabs/folder-tabs/folder-tabs-vars' as *;
