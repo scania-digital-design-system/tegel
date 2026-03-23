@@ -39,7 +39,7 @@ export const testConfigurations = {
       theme: 'darkmode',
       backgroundColor: 'var(--tds-grey-900)',
     },
-  ],
+  ] as TestConfig[],
   basic: [
     {
       theme: 'lightmode',
@@ -49,7 +49,7 @@ export const testConfigurations = {
       theme: 'darkmode',
       backgroundColor: 'var(--tds-grey-958)',
     },
-  ],
+  ] as TestConfig[],
   withModeVariantsAndBrands: withBrands([
     {
       modeVariant: 'primary',
