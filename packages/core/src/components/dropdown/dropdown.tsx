@@ -404,52 +404,67 @@ export class TdsDropdown {
 
   @Listen('keydown')
   async onKeyDown(event: KeyboardEvent) {
-    /** Get the active element */
     const { activeElement } = document;
     if (!activeElement) {
       return;
     }
 
-    const children = this.getChildren();
-    if (event.key === 'ArrowDown') {
-      /** Get the index of the current focus index, if there is no
-      nextElementSibling return the index for the first child in our Dropdown.  */
-
-      const startingIndex = activeElement.nextElementSibling
-        ? children.findIndex((element) => element === activeElement.nextElementSibling)
-        : 0;
-
-      if (children.length > 0) {
-        const elementIndex = findNextFocusableElement(children, startingIndex);
-        const target = typeof elementIndex === 'number' ? children[elementIndex] : children[0];
-        target?.focus();
-      }
-    } else if (event.key === 'ArrowUp') {
-      /** Get the index of the current focus index, if there is no
-      previousElementSibling return the index for the first last in our Dropdown.  */
-      const startingIndex = activeElement.nextElementSibling
-        ? this.getChildren().findIndex(
-            (element) => element === activeElement.previousElementSibling,
-          )
-        : 0;
-
-      if (children.length > 0) {
-        const elementIndex = findPreviousFocusableElement(children, startingIndex);
-        const target =
-          typeof elementIndex === 'number' ? children[elementIndex] : children[children.length - 1];
-        target?.focus();
-      }
-    } else if (event.key === 'Escape') {
-      this.open = false;
-      /** Return focus to input/button when Escape key is used */
-      if (this.filter) {
-        this.inputElement?.focus();
-      } else {
-        const button = this.host.shadowRoot?.querySelector('button');
-        button?.focus();
-      }
+    switch (event.key) {
+      case 'ArrowDown':
+        this.handleArrowDown(activeElement);
+        break;
+      case 'ArrowUp':
+        this.handleArrowUp(activeElement);
+        break;
+      case 'Escape':
+        this.handleEscape();
+        break;
+      default:
+        break;
     }
   }
+
+  private readonly handleArrowDown = (activeElement: Element) => {
+    const children = this.getChildren();
+    /** Get the index of the current focus index, if there is no
+    nextElementSibling return the index for the first child in our Dropdown.  */
+    const startingIndex = activeElement.nextElementSibling
+      ? children.findIndex((element) => element === activeElement.nextElementSibling)
+      : 0;
+
+    if (children.length > 0) {
+      const elementIndex = findNextFocusableElement(children, startingIndex);
+      const target = typeof elementIndex === 'number' ? children[elementIndex] : children[0];
+      target?.focus();
+    }
+  };
+
+  private readonly handleArrowUp = (activeElement: Element) => {
+    const children = this.getChildren();
+    /** Get the index of the current focus index, if there is no
+    previousElementSibling return the index for the first last in our Dropdown.  */
+    const startingIndex = activeElement.nextElementSibling
+      ? children.findIndex((element) => element === activeElement.previousElementSibling)
+      : 0;
+
+    if (children.length > 0) {
+      const elementIndex = findPreviousFocusableElement(children, startingIndex);
+      const target =
+        typeof elementIndex === 'number' ? children[elementIndex] : children[children.length - 1];
+      target?.focus();
+    }
+  };
+
+  private readonly handleEscape = () => {
+    this.open = false;
+    /** Return focus to input/button when Escape key is used */
+    if (this.filter) {
+      this.inputElement?.focus();
+    } else {
+      const button = this.host.shadowRoot?.querySelector('button');
+      button?.focus();
+    }
+  };
 
   /** If the Dropdown gets closed,
   this sets the value of the dropdown to the current selection labels or null if no selection is made. */
@@ -645,46 +660,52 @@ export class TdsDropdown {
     }
   };
 
+  private readonly focusInput = (value: string) => {
+    if (this.inputElement) {
+      this.inputElement.value = value;
+      this.inputElement.focus();
+    }
+  };
+
   private readonly handleFilterReset = () => {
     if (this.multiselect) {
-      /** Multiselect + filter: two-step clear */
-      if (this.filterQuery.length > 0) {
-        const clearedValue = this.filterQuery;
-        this.filterQuery = '';
-        this.resetFilterVisibility();
-        if (this.inputElement) {
-          this.inputElement.value = this.getValue();
-          this.inputElement.focus();
-        }
-        this.tdsClear.emit({ clearedValue });
-      } else if (this.selectedOptions.length > 0) {
-        const clearedValue = this.selectedOptions.join(',');
-        this.updateDropdownStateFromUser([]);
-        if (this.inputElement) {
-          this.inputElement.value = '';
-          this.inputElement.focus();
-        }
-        this.tdsClear.emit({ clearedValue });
-      }
+      this.handleMultiselectFilterReset();
     } else {
-      /** Single select + filter: clear everything immediately */
-      const clearedParts: string[] = [];
-      if (this.filterQuery.length > 0) {
-        clearedParts.push(this.filterQuery);
-        this.filterQuery = '';
-        this.resetFilterVisibility();
-      }
-      if (this.selectedOptions.length > 0) {
-        clearedParts.push(this.selectedOptions.join(','));
-        this.updateDropdownStateFromUser([]);
-      }
-      if (this.inputElement) {
-        this.inputElement.value = '';
-        this.inputElement.focus();
-      }
-      if (clearedParts.length > 0) {
-        this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
-      }
+      this.handleSingleFilterReset();
+    }
+  };
+
+  /** Multiselect + filter: two-step clear */
+  private readonly handleMultiselectFilterReset = () => {
+    if (this.filterQuery.length > 0) {
+      const clearedValue = this.filterQuery;
+      this.filterQuery = '';
+      this.resetFilterVisibility();
+      this.focusInput(this.getValue());
+      this.tdsClear.emit({ clearedValue });
+    } else if (this.selectedOptions.length > 0) {
+      const clearedValue = this.selectedOptions.join(',');
+      this.updateDropdownStateFromUser([]);
+      this.focusInput('');
+      this.tdsClear.emit({ clearedValue });
+    }
+  };
+
+  /** Single select + filter: clear everything immediately */
+  private readonly handleSingleFilterReset = () => {
+    const clearedParts: string[] = [];
+    if (this.filterQuery.length > 0) {
+      clearedParts.push(this.filterQuery);
+      this.filterQuery = '';
+      this.resetFilterVisibility();
+    }
+    if (this.selectedOptions.length > 0) {
+      clearedParts.push(this.selectedOptions.join(','));
+      this.updateDropdownStateFromUser([]);
+    }
+    this.focusInput('');
+    if (clearedParts.length > 0) {
+      this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
     }
   };
 
