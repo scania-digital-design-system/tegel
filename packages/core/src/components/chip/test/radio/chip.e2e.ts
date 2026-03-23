@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/chip/test/radio/index.html';
 const componentName = 'tds-chip';
 const testDescription = 'tds-chip-radio';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
