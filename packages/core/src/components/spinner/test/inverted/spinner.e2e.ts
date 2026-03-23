@@ -1,6 +1,6 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
-import { getTestDescribeText, setupPage } from '../../../../utils/testConfiguration';
+import { getTestDescribeText, setupPage, TestConfig } from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/spinner/test/inverted/index.html';
 const componentName = 'tds-spinner';
@@ -8,7 +8,7 @@ const testDescription = 'tds-spinner-inverted';
 
 const brands = ['scania', 'traton'];
 
-const spinnerTestConfiguration = brands.flatMap((brand) => [
+const spinnerTestConfiguration: TestConfig[] = brands.flatMap((brand) => [
   {
     theme: 'lightmode',
     backgroundColor: 'var(--tds-grey-50)',

@@ -1,6 +1,6 @@
 import { Page, expect } from '@playwright/test';
 
-interface TestConfig {
+export interface TestConfig {
   theme: 'lightmode' | 'darkmode';
   backgroundColor: string;
   modeVariant?: 'primary' | 'secondary';
