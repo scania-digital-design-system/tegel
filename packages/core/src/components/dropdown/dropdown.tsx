@@ -123,7 +123,7 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
-  private pendingInvalidValues: Set<string> = new Set();
+  private readonly pendingInvalidValues: Set<string> = new Set();
 
   private readonly uuid = generateUniqueId();
 
