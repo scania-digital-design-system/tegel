@@ -26,60 +26,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Using Tegel with zoneless Angular
 
-Angular 21 supports running without `zone.js` (zoneless). Tegel web components work with zoneless Angular, but since they emit custom events outside of Angular's zone, you need to handle change detection manually.
+Angular 21 is zoneless by default — `zone.js` is no longer included and no extra configuration is needed to enable zoneless change detection. However, Tegel web components dispatch custom DOM events (e.g. `tdsChange`, `tdsClick`, `tdsToggle`) that Angular's zoneless change detection does not automatically pick up. You need to explicitly notify Angular when these events update component state.
 
-### 1. Enable zoneless change detection
-
-In `main.ts`, replace `zone.js` with Angular's experimental zoneless provider:
-
-```ts
-import { provideExperimentalZonelessChangeDetection } from "@angular/core";
-
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideExperimentalZonelessChangeDetection(),
-    // ... other providers
-  ],
-});
-```
-
-### 2. Remove zone.js
-
-Remove `zone.js` from `angular.json` polyfills:
-
-```json
-"polyfills": []
-```
-
-And uninstall the package:
-
-```bash
-npm uninstall zone.js
-```
-
-### 3. Trigger change detection for Tegel events
-
-Tegel web components dispatch custom DOM events (e.g. `tdsChange`, `tdsClick`, `tdsToggle`) that Angular's zoneless change detection does not automatically pick up. You need to explicitly notify Angular when these events update component state.
-
-**Option A: Inject `ChangeDetectorRef` and call `markForCheck()`**
-
-```ts
-import { ChangeDetectorRef, Component } from "@angular/core";
-
-@Component({ ... })
-export class MyComponent {
-  value = "";
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  onTdsChange(event: any) {
-    this.value = event.detail.value;
-    this.cdr.markForCheck();
-  }
-}
-```
-
-**Option B: Use Angular signals (recommended)**
+### Option A: Use Angular signals (recommended)
 
 Signals are natively tracked by Angular's zoneless change detection, so no manual calls are needed:
 
@@ -101,10 +50,20 @@ export class MyComponent {
 }
 ```
 
-### Summary
+### Option B: Inject `ChangeDetectorRef` and call `markForCheck()`
 
-| Step | What to do |
-| --- | --- |
-| Enable zoneless | Add `provideExperimentalZonelessChangeDetection()` to providers |
-| Remove zone.js | Remove from polyfills and uninstall the package |
-| Handle Tegel events | Use signals or call `ChangeDetectorRef.markForCheck()` in event handlers |
+```ts
+import { ChangeDetectorRef, Component } from "@angular/core";
+
+@Component({ ... })
+export class MyComponent {
+  value = "";
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  onTdsChange(event: any) {
+    this.value = event.detail.value;
+    this.cdr.markForCheck();
+  }
+}
+```
