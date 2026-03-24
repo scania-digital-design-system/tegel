@@ -123,7 +123,7 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
-  private isInitialLoad: boolean = true;
+  private pendingInvalidValues: Set<string> = new Set();
 
   private readonly uuid = generateUniqueId();
 
@@ -134,7 +134,7 @@ export class TdsDropdown {
 
     /** Only update if actually changed */
     if (hasValueChanged(normalizedValue, this.selectedOptions)) {
-      this.updateDropdownStateFromUser(normalizedValue);
+      this.updateDropdownStateInternal(normalizedValue);
     }
   }
 
@@ -171,8 +171,8 @@ export class TdsDropdown {
   }
 
   private updateDropdownState(values: string[], emitChange: boolean = true) {
-    /** Validate the values first */
-    const validValues = this.validateValues(values);
+    /** Validate the values - only filter out invalid values for user-triggered changes */
+    const validValues = this.validateValues(values, emitChange);
 
     /** Update internal state */
     this.selectedOptions = [...validValues];
@@ -196,7 +196,7 @@ export class TdsDropdown {
     this.setValueAttribute();
   }
 
-  private validateValues(values: string[]): string[] {
+  private validateValues(values: string[], strict: boolean = false): string[] {
     const children = this.getChildren();
     if (!children || children.length === 0) {
       return values; /** Return original values if no children yet */
@@ -206,10 +206,10 @@ export class TdsDropdown {
       const isValid = children.some(
         (element) => convertToString(element.value) === convertToString(val),
       );
-      if (!isValid && !this.isInitialLoad) {
+      if (!isValid && strict) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
       }
-      return isValid || !this.isInitialLoad;
+      return isValid || !strict;
     });
   }
 
@@ -509,17 +509,54 @@ export class TdsDropdown {
     }
   }
 
-  componentDidLoad() {
-    this.isInitialLoad = false;
-  }
-
   /** Method to handle slot changes */
   private handleSlotChange() {
+    /**
+     * Warn for values that were pending from a previous slot change
+     * and are still invalid now that new options have arrived.
+     */
+    this.warnAndClearPending();
+
     if (this.selectedOptions.length > 0) {
       this.updateDropdownStateInternal([...this.selectedOptions]);
     } else if (this.internalDefaultValue) {
       this.setDefaultOption();
     }
+
+    /** Track currently unmatched values as pending for the next slot change */
+    this.updatePendingInvalidValues();
+  }
+
+  /** Warn for pending values that are still not matched, then clear pending */
+  private warnAndClearPending() {
+    const children = this.getChildren();
+    if (!children || children.length === 0 || this.pendingInvalidValues.size === 0) return;
+
+    this.pendingInvalidValues.forEach((val) => {
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
+      if (!isValid) {
+        console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
+      }
+    });
+    this.pendingInvalidValues.clear();
+  }
+
+  /** Track unmatched selected values as pending for deferred warning */
+  private updatePendingInvalidValues() {
+    const children = this.getChildren();
+    if (!children || children.length === 0) return;
+
+    this.pendingInvalidValues.clear();
+    this.selectedOptions.forEach((val) => {
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
+      if (!isValid) {
+        this.pendingInvalidValues.add(val);
+      }
+    });
   }
 
   /** Method to check if we should normalize text */
