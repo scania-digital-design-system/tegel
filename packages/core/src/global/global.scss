@@ -114,18 +114,18 @@ body {
 
 :root,
 .tds-mode-light {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 
   &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-base);
   }
 
   &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-layer-01);
   }
 
@@ -136,18 +136,18 @@ body {
 }
 
 .tds-mode-dark {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 
   &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-base);
   }
 
   &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-layer-01);
   }
 

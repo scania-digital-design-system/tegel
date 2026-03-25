@@ -44,7 +44,7 @@ a:not(tds-link *, tds-breadcrumb *) {
 
 :root,
 .tds-mode-light .docs-story {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 }
 
@@ -53,7 +53,7 @@ a:not(tds-link *, tds-breadcrumb *) {
 }
 
 .tds-mode-dark .docs-story {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 }
 
