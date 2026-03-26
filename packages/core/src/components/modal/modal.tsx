@@ -128,16 +128,18 @@ export class TdsModal {
         "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
       );
     }
+  }
 
+  componentWillLoad() {
+    this.initializeModal();
+  }
+
+  componentDidLoad() {
     if (!this.selector && !this.referenceEl) {
       console.warn(
         'Tegel Modal: Missing focus origin. Please provide either a "referenceEl" or a "selector" to ensure focus returns to the element that opened the modal. If the modal is opened programmatically, this message can be ignored.',
       );
     }
-  }
-
-  componentWillLoad() {
-    this.initializeModal();
   }
 
   disconnectedCallback() {
