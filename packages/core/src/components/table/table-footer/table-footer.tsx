@@ -41,6 +41,9 @@ export class TdsTableFooter {
   /** Set available rows per page values */
   @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
+  /** Set rows per page dropdown open direction */
+  @Prop() rowsPerPageDropdownOpenDirection: 'up' | 'down' | 'auto' = 'auto';
+
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = 0;
 
@@ -280,6 +283,7 @@ export class TdsTableFooter {
                         size="xs"
                         defaultValue={`${this.rowsPerPageValues[0]}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
+                        openDirection={this.rowsPerPageDropdownOpenDirection}
                       >
                         {this.rowsPerPageValues.map((value) => (
                           <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
