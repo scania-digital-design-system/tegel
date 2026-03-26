@@ -1,5 +1,12 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
+const validators = {
+  'Always valid': (_value: string) => true,
+  'Always invalid': (_value: string) => false,
+  'Summer months are valid': (value: string) =>
+    ['06', '07', '08', '09'].includes(value.split('-')[1]),
+};
+
 export default {
   title: 'Components/Datetime',
   parameters: {
@@ -64,7 +71,7 @@ export default {
     defaultValue: {
       name: 'Default value',
       description:
-        'Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
+        'Default value of the component.<br/>Format for date-time: yyyy-MM-ddTHH:mm.<br/>Format for date: yyyy-MM-dd.<br/>Format for month: yyyy-MM.<br/>Format for week: yyyy-Www.<br/>Format for time: HH:mm.',
       control: {
         type: 'radio',
       },
@@ -75,7 +82,7 @@ export default {
     },
     minValue: {
       description:
-        'Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+        'Sets min value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00"',
       name: 'Min value',
       control: {
         type: 'text',
@@ -86,7 +93,7 @@ export default {
     },
     maxValue: {
       description:
-        'Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+        'Sets max value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00"',
       name: 'Max value',
       control: {
         type: 'text',
@@ -125,9 +132,43 @@ export default {
     },
     helper: {
       name: 'Helper text',
-      description: 'Sets the helper text.',
+      description:
+        'Sets the contextual helper text. Eg: this helper text can be used to inform the user that there are minimum and maximum values.',
       control: {
         type: 'text',
+      },
+    },
+    helperError: {
+      name: 'Helper error',
+      description:
+        'Sets the contextual helper error text. Eg: this helper text is used to alert the user that the minimum and maximum values are not respected.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: undefined },
+      },
+    },
+    customValidator: {
+      name: 'Custom validator',
+      description:
+        'User defined function for additional validation based on business rules. Should return true if valid and false otherwise. <br/>Four options are presented as examples for custom validations.',
+      control: { type: 'select' },
+      options: Object.keys(validators),
+      mapping: validators,
+      table: {
+        defaultValue: { summary: undefined },
+      },
+    },
+    helperErrorInvalid: {
+      name: 'Helper error for invalid values',
+      description:
+        'Sets the contextual helper error text when the input is invalid. Eg: If the user enters 2026-11-31 this message alerts them.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'Invalid input' },
       },
     },
     disabled: {
@@ -160,8 +201,11 @@ export default {
     label: 'Label text',
     labelPosition: 'Outside',
     helper: 'Helper text',
+    helperError: 'Helper error text',
+    helperErrorInvalid: 'Helper error text for invalid input',
     disabled: false,
     tdsAriaLabel: 'A datetime component',
+    customValidator: undefined,
   },
 };
 
@@ -177,8 +221,11 @@ const datetimeTemplate = ({
   label,
   labelPosition,
   helper,
+  helperError,
+  helperErrorInvalid,
   disabled,
   tdsAriaLabel,
+  customValidator,
 }) => {
   const typeLookup = {
     Datetime: 'datetime-local',
@@ -243,6 +290,8 @@ const datetimeTemplate = ({
       ${label ? `label="${label}" ` : ''}
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}" ` : ''}
+      ${helperError ? `helper-error="${helperError}" ` : ''}
+      ${helperErrorInvalid ? `helper-error-invalid="${helperErrorInvalid}" ` : ''}
       tds-aria-label="${tdsAriaLabel}"
       >
     </tds-datetime>
@@ -251,6 +300,9 @@ const datetimeTemplate = ({
     <script>
     /* DEMO Code: Used only for Storybook demo purposes */
       datetimeElement = document.querySelector('tds-datetime');
+
+      datetimeElement.customValidator = ${customValidator};
+
       datetimeElement.addEventListener('tdsChange', (event) => {
         console.log(event);
       });

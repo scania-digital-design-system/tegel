@@ -52,8 +52,8 @@ export default {
       description: 'List of rows per page values',
       control: {
         type: 'select',
-        options: ['[5,10,15]', '[20,30,40]', '[100, 220, 303]'],
       },
+      options: ['[5,10,15]', '[20,30,40]', '[100, 220, 303]'],
     },
     pages: {
       name: 'Pages',
@@ -73,6 +73,18 @@ export default {
       table: {
         defaultValue: { summary: true },
       },
+    },
+    rowsPerPageDropdownOpenDirection: {
+      name: 'Rows per page dropdown open direction',
+      description: 'Controls opening direction for rows per page dropdown',
+      control: {
+        type: 'select',
+      },
+      options: ['auto', 'up', 'down'],
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+      if: { arg: 'rowsPerPage', eq: true },
     },
     noMinWidth: {
       name: 'No minimum width',
@@ -126,6 +138,7 @@ export default {
     verticalDivider: false,
     rowsPerPage: true,
     rowsPerPageValues: '[10,25,50]',
+    rowsPerPageDropdownOpenDirection: 'auto',
     pages: 4,
     noMinWidth: false,
     column1Width: '',
@@ -142,6 +155,7 @@ const PaginationTemplate = ({
   verticalDivider,
   rowsPerPage,
   rowsPerPageValues,
+  rowsPerPageDropdownOpenDirection,
   pages,
   noMinWidth,
   column1Width,
@@ -210,7 +224,12 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
           </tds-table-body>
-          <tds-table-footer pages="${pages}" pagination rowsperpage="${rowsPerPage}"></tds-table-footer>
+          <tds-table-footer
+            pages="${pages}"
+            pagination
+            rowsperpage="${rowsPerPage}"
+            rows-per-page-dropdown-open-direction="${rowsPerPageDropdownOpenDirection}"
+          ></tds-table-footer>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
@@ -226,7 +245,7 @@ const PaginationTemplate = ({
     <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
   </div>
 
-  
+
 
   <script>
     document.querySelector("tds-table-footer").rowsPerPageValues = ${rowsPerPageValues}
@@ -235,7 +254,7 @@ const PaginationTemplate = ({
       document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
     });
   </script>
-  
+
   `);
 
 export const Default = PaginationTemplate.bind({});

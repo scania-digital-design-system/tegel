@@ -84,6 +84,10 @@
 
 @use 'shame' as *;
 
+@use 'scania-variables' as *;
+@use 'traton-variables' as *;
+@use 'core' as *;
+
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
   font-size: 14px;

@@ -51,6 +51,8 @@ export class TdsSideMenu {
    * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tdsCollapse event. */
   @Prop({ mutable: true }) collapsed: boolean = false;
 
+  @State() isMobile: boolean = false;
+
   @State() isUpperSlotEmpty: boolean = false;
 
   @State() isCollapsed: boolean = false;
@@ -64,18 +66,19 @@ export class TdsSideMenu {
   private matchesLgBreakpointMq!: MediaQueryList;
 
   handleMatchesLgBreakpointChange: (e: MediaQueryListEvent) => void = (e) => {
-    const isBelowLg = !e.matches;
-    if (isBelowLg) {
+    const isMobile = !e.matches;
+    this.isMobile = isMobile;
+    if (isMobile) {
       this.collapsed = false;
     } else {
-      this.collapsed = this.initialCollapsedState;
       this.open = false;
+      this.collapsed = this.initialCollapsedState;
     }
   };
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Escape' && this.open) {
+    if (event.key === 'Escape' && this.isMobile && this.open) {
       this.open = false;
     }
   }
@@ -83,6 +86,7 @@ export class TdsSideMenu {
   connectedCallback() {
     this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
     this.matchesLgBreakpointMq.addEventListener('change', this.handleMatchesLgBreakpointChange);
+    this.isMobile = !this.matchesLgBreakpointMq.matches;
     this.isCollapsed = this.collapsed;
     this.initialCollapsedState = this.collapsed;
   }
@@ -95,13 +99,18 @@ export class TdsSideMenu {
     if (!hasUpperSlotElements) {
       this.isUpperSlotEmpty = true;
     }
-    if (window.innerWidth < GRID_LG_BREAKPOINT) {
+    if (this.isMobile) {
       this.collapsed = false;
     }
   }
 
   disconnectedCallback() {
-    this.matchesLgBreakpointMq.removeEventListener('change', this.handleMatchesLgBreakpointChange);
+    if (this.matchesLgBreakpointMq) {
+      this.matchesLgBreakpointMq.removeEventListener(
+        'change',
+        this.handleMatchesLgBreakpointChange,
+      );
+    }
   }
 
   @Watch('collapsed')
@@ -117,6 +126,10 @@ export class TdsSideMenu {
 
   @Watch('open')
   onOpenChange(newVal: boolean) {
+    if (!this.isMobile) {
+      if (newVal) this.open = false;
+      return;
+    }
     if (newVal) {
       // When menu opens, focus the first interactive element
       setTimeout(() => {
@@ -170,7 +183,7 @@ export class TdsSideMenu {
   @Listen('keydown', { target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
     // Only trap focus if the menu is open
-    if (!this.open) return;
+    if (!this.open || !this.isMobile) return;
 
     // We care only about the Tab key
     if (event.key !== 'Tab') return;
@@ -243,7 +256,7 @@ export class TdsSideMenu {
           'menu-persistent': this.persistent,
           'menu-collapsed': this.collapsed,
         }}
-        aria-expanded={!this.collapsed ? 'true' : 'false'}
+        aria-expanded={(this.isMobile ? this.open : !this.collapsed) ? 'true' : 'false'}
       >
         <div
           class={{

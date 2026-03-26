@@ -10,7 +10,6 @@
 **/*.config.ts
 **/_beta
 
-build-tokens.js
 build-css.js
 
 
