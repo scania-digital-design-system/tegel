@@ -2,7 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+.scania .tds-mode-light,
+.scania .tl-mode-light {
   --component-table-cell: var(--color-background-layer-01);
   --component-table-cell-hover: #edeff3;
   --component-table-pagination-base: #e0e5eb;
@@ -10,7 +11,8 @@
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --component-table-cell: var(--color-background-layer-01);
   --component-table-cell-hover: #d6d4c9;
   --component-table-pagination-base: #d6d4c9;
@@ -18,7 +20,8 @@
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
-.scania .tds-mode-dark {
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --component-table-cell: var(--color-background-layer-01);
   --component-table-cell-hover: #1c222b;
   --component-table-pagination-base: #242c37;
@@ -26,7 +29,8 @@
   --component-table-secondary-cell: var(--color-background-layer-02);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   --component-table-cell: var(--color-background-layer-01);
   --component-table-cell-hover: #003137;
   --component-table-pagination-base: #004852;
