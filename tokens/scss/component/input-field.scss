@@ -2,7 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+.scania .tds-mode-light,
+.scania .tl-mode-light {
   --component-input-field-border-focus-top: var(--scania-unit-0);
   --component-input-field-border-focus-right: var(--scania-unit-0);
   --component-input-field-border-focus-bottom: var(--scania-unit-2);
@@ -17,7 +18,8 @@
   --component-input-field-border-width-left: var(--scania-unit-0);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --component-input-field-border-focus-top: var(--traton-unit-2);
   --component-input-field-border-focus-right: var(--traton-unit-2);
   --component-input-field-border-focus-bottom: var(--traton-unit-2);
@@ -32,7 +34,8 @@
   --component-input-field-border-width-left: var(--traton-unit-1);
 }
 
-.scania .tds-mode-dark {
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --component-input-field-border-focus-top: var(--scania-unit-0);
   --component-input-field-border-focus-right: var(--scania-unit-0);
   --component-input-field-border-focus-bottom: var(--scania-unit-2);
@@ -47,7 +50,8 @@
   --component-input-field-border-width-left: var(--scania-unit-0);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   --component-input-field-border-focus-top: var(--traton-unit-2);
   --component-input-field-border-focus-right: var(--traton-unit-2);
   --component-input-field-border-focus-bottom: var(--traton-unit-2);
