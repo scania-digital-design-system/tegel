@@ -2,7 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+.scania .tds-mode-light,
+.scania .tl-mode-light {
   --component-chip-background-default: var(--scania-color-grey-150);
   --component-chip-background-hover: var(--scania-color-grey-200);
   --component-chip-background-selected-default: var(--color-system-info-default);
@@ -25,7 +26,8 @@
   --component-chip-text-selected-active: var(--color-text-strong);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --component-chip-background-default: var(--traton-color-grey-200);
   --component-chip-background-hover: var(--traton-color-grey-400);
   --component-chip-background-selected-default: var(--traton-color-grey-300);
@@ -48,7 +50,8 @@
   --component-chip-text-selected-active: var(--color-text-strong);
 }
 
-.scania .tds-mode-dark {
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --component-chip-background-default: var(--scania-color-grey-800);
   --component-chip-background-hover: var(--scania-color-grey-750);
   --component-chip-background-selected-default: var(--color-system-info-subtle);
@@ -71,7 +74,8 @@
   --component-chip-text-selected-active: var(--color-text-inverse-strong);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   --component-chip-background-default: var(--traton-color-blue-800);
   --component-chip-background-hover: var(--traton-color-blue-600);
   --component-chip-background-selected-default: var(--traton-color-blue-400);

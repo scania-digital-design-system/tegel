@@ -2,7 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+.scania .tds-mode-light,
+.scania .tl-mode-light {
   --component-badge-background-default: var(--color-system-danger-default);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
@@ -10,7 +11,8 @@
   --component-badge-text-default: var(--color-text-inverse-base);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
@@ -18,7 +20,8 @@
   --component-badge-text-default: var(--traton-color-base-black);
 }
 
-.scania .tds-mode-dark {
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --component-badge-background-default: var(--color-system-danger-subtle);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
@@ -26,7 +29,8 @@
   --component-badge-text-default: var(--color-text-base);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
