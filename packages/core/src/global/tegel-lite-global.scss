@@ -8,29 +8,18 @@
 @use '../../../../spacing/units' as *;
 @use '../../../../spacing/radius' as *;
 
+// Spacing vars
+@use '../../../../spacing/spacing-vars' as *;
+
 // Motion
 @use '../../../../motion' as *;
 
 // Colors
 @use '../../../../color/color' as *;
 
-// Grid (Deprecated - will be removed in version 2.0)
-@use '../../../../grid-deprecated/grid-deprecated' as *;
-
-// Grid new
-@use '../../../../grid/grid' as *;
-
 // Vars
 @use '_variables' as *;
 @use 'tl-scrollbar-vars' as *;
-
-// Utility classes
-@use '_utility-classes' as *;
-
-// Beta components
-@use '../components/_beta/date-picker/date-picker-single/date-picker-vars' as *;
-
-@use 'shame' as *;
 
 body {
   font-family: var(--body-01-font-family);

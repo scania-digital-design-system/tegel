@@ -469,13 +469,13 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
     if (brand.name === 'scania') {
       colorTokensSelector =
         themeType === 'light'
-          ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
-          : `.tds-mode-dark,\n.scania .tds-mode-dark`;
+          ? `:root,\n.tds-mode-light,\n.tl-mode-light,\n.scania .tds-mode-light,\n.scania .tl-mode-light`
+          : `.tds-mode-dark,\n.tl-mode-dark,\n.scania .tds-mode-dark,\n.scania .tl-mode-dark`;
     } else {
       colorTokensSelector =
         themeType === 'light'
-          ? `.traton,\n.traton .tds-mode-light`
-          : `.traton .tds-mode-dark`;
+          ? `.traton,\n.traton .tds-mode-light,\n.traton .tl-mode-light`
+          : `.traton .tds-mode-dark,\n.traton .tl-mode-dark`;
     }
 
     configs[themeName] = {
