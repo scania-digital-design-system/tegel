@@ -15,7 +15,6 @@
 @use '../../../../tokens/scss/component/stepper' as *;
 @use '../../../../tokens/scss/component/table' as *;
 @use '../../../../tokens/scss/component/tag' as *;
-@use '../../../../tokens/scss/component/text' as *;
 
 // Motion
 @use '../../../../motion' as *;
@@ -84,19 +83,19 @@ body {
 
 :root,
 .tds-mode-light {
-  color: var(--tds-grey-958);
-  background-color: var(--tds-white);
+  color: var(--color-text-strong);
+  background-color: var(--color-background-base);
 
   &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-white);
+    color: var(--color-text-strong);
+    background-color: var(--color-background-base);
   }
 
   &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-grey-50);
+    color: var(--color-text-strong);
+    background-color: var(--color-background-layer-01);
   }
 
   & tds-button.tds-mode-variant-primary,
@@ -106,19 +105,19 @@ body {
 }
 
 .tds-mode-dark {
-  color: var(--tds-grey-100);
-  background-color: var(--tds-grey-958);
+  color: var(--color-text-strong);
+  background-color: var(--color-background-base);
 
   &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-958);
+    color: var(--color-text-strong);
+    background-color: var(--color-background-base);
   }
 
   &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-900);
+    color: var(--color-text-strong);
+    background-color: var(--color-background-layer-01);
   }
 
   & tds-button.tds-mode-variant-primary,

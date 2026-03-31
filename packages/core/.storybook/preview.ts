@@ -4,38 +4,9 @@ import { defineCustomElements } from '../loader';
 import type { Preview, Decorator } from '@storybook/html';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
+import '../src/global/tegel-lite-components.scss';
 import './preview.css';
 import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
-
-const applyBackgroundColor = (brand: string, modeVariant: string, isDarkMode: boolean) => {
-  const body = document.body;
-
-  const backgrounds = {
-    scania: {
-      light: {
-        primary: '#FFFFFF', // grey-00
-        secondary: '#F6F7F9', // grey-50
-      },
-      dark: {
-        primary: '#0B0C0F', // grey-950
-        secondary: '#15181D', // grey-900
-      },
-    },
-    traton: {
-      light: {
-        primary: '#FCFBF7',
-        secondary: '#F6F3E9',
-      },
-      dark: {
-        primary: '#001214',
-        secondary: '#001D21',
-      },
-    },
-  };
-
-  const brandColors = backgrounds[brand]?.[isDarkMode ? 'dark' : 'light'];
-  body.style.backgroundColor = brandColors?.[modeVariant] || '';
-};
 
 // Initialize dark mode listener after Storybook is ready
 try {
@@ -43,41 +14,32 @@ try {
 
   channel.on('DARK_MODE', (isDarkMode) => {
     const body = document.body;
-    const brand = document.documentElement.classList.contains('traton') ? 'traton' : 'scania';
-    const modeVariant = body.classList.contains('tds-mode-secondary') ? 'secondary' : 'primary';
 
     body.classList.remove('tds-mode-light', 'tds-mode-dark');
     body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
-
-    applyBackgroundColor(brand, modeVariant, isDarkMode);
   });
 } catch (error) {
   // Channel might not be available during initial load
   console.warn('Storybook channel not available:', error);
 }
 
-// DEV env for traton styles
-const isDev = import.meta.env.VITE_STORYBOOK_ENV === 'dev';
-
 // Toggle Brand
-const toggleBrandTool = isDev
-  ? {
-      brand: {
-        name: 'Brand',
-        description: 'Switch between Scania and Traton themes',
-        defaultValue: 'scania',
-        toolbar: {
-          icon: 'globe',
-          items: [
-            { value: 'scania', title: 'Scania' },
-            { value: 'traton', title: 'TRATON' },
-          ],
-          showName: true,
-          dynamicTitle: true,
-        },
-      },
-    }
-  : undefined;
+const toggleBrandTool = {
+  brand: {
+    name: 'Brand',
+    description: 'Switch between Scania and Traton themes',
+    defaultValue: 'scania',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'scania', title: 'Scania' },
+        { value: 'traton', title: 'TRATON' },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
+};
 
 // Toggle mode variant
 const modeVariantTool = {
@@ -104,13 +66,18 @@ const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   html.classList.remove('scania', 'traton');
   html.classList.add(brand);
 
-  document.body.classList.remove('tds-mode-primary', 'tds-mode-secondary');
-  document.body.classList.add(`tds-mode-${modeVariant}`);
+  document.body.classList.remove('tds-mode-variant-primary', 'tds-mode-variant-secondary');
+  document.body.classList.add(`tds-mode-variant-${modeVariant}`);
 
-  const isDarkMode = document.body.classList.contains('tds-mode-dark');
-  applyBackgroundColor(brand, modeVariant, isDarkMode);
-
-  return StoryFn();
+  const story = StoryFn();
+  const wrapper = document.createElement('div');
+  wrapper.classList.add(`tds-mode-variant-${modeVariant}`);
+  if (typeof story === 'string') {
+    wrapper.innerHTML = story;
+  } else {
+    wrapper.appendChild(story);
+  }
+  return wrapper;
 };
 
 const tegelViewports = {

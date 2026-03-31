@@ -44,13 +44,21 @@ a:not(tds-link *, tds-breadcrumb *) {
 
 :root,
 .tds-mode-light .docs-story {
-  color: var(--tds-grey-950);
-  background-color: var(--tds-white);
+  color: var(--color-text-strong);
+  background-color: var(--color-background-base);
+}
+
+.tds-mode-light.tds-mode-variant-secondary .docs-story {
+  background-color: var(--color-background-layer-01);
 }
 
 .tds-mode-dark .docs-story {
-  color: var(--tds-grey-100);
-  background-color: var(--tds-grey-950);
+  color: var(--color-text-strong);
+  background-color: var(--color-background-base);
+}
+
+.tds-mode-dark.tds-mode-variant-secondary .docs-story {
+  background-color: var(--color-background-layer-01);
 }
 
 /* Force code examples in markdown (readme/notes) to use white background with dark text */
