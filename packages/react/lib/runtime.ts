@@ -59,7 +59,7 @@ export const createComponent = <I extends HTMLElement, E extends EventNames = {}
   defineCustomElement?: () => void;
   transformTag?: (tag: string) => string;
 }): any => {
-  if (typeof defineCustomElement !== 'undefined') {
+  if (defineCustomElement !== undefined) {
     defineCustomElement();
   }
 

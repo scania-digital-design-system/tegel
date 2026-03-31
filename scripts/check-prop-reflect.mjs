@@ -5,15 +5,15 @@
  * Exits with code 1 if any violations are found.
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const COMPONENTS_DIR = path.resolve(__dirname, '../packages/core/src/components');
 
 // Props that should NOT be reflected (produce invalid attributes like aria-level-value)
-const SKIP_PROP_NAMES = ['ariaLevelValue'];
+const SKIP_PROP_NAMES = new Set(['ariaLevelValue']);
 
 // Type substrings that indicate complex types which should NOT be reflected
 const SKIP_TYPE_SUBSTRINGS = [
@@ -68,42 +68,44 @@ function parsePropLine(line) {
 }
 
 /**
+ * Collect continuation lines for a multiline type union starting after startIndex.
+ */
+function collectMultilineType(lines, startIndex) {
+  let extra = '';
+  for (let j = startIndex + 1; j < lines.length; j++) {
+    const nextLine = lines[j].trim();
+    if (!nextLine.startsWith('|') && !nextLine.startsWith("'")) break;
+
+    const nextEq = nextLine.indexOf('=');
+    if (nextEq !== -1) {
+      extra += ' ' + nextLine.slice(0, nextEq);
+      break;
+    }
+    extra += ' ' + trimTrailing(nextLine);
+    if (!nextLine.endsWith('|')) break;
+  }
+  return extra;
+}
+
+/**
  * Extract the full type for a @Prop, handling multiline type unions.
  */
 function extractPropType(lines, startIndex) {
   const firstLine = lines[startIndex];
 
-  // Find the colon after the prop name (first colon on the line)
   const colonIndex = firstLine.indexOf(':');
   if (colonIndex === -1) return '';
 
   let rest = firstLine.slice(colonIndex + 1);
 
-  // Remove default value assignment (look for " =" but not "=>")
   const eqIndex = findAssignmentEquals(rest);
   if (eqIndex !== -1) rest = rest.slice(0, eqIndex);
 
-  // Remove trailing semicolons and spaces
   rest = trimTrailing(rest);
 
   let type = rest;
-
-  // Handle multiline type unions
   if (rest.trimEnd().endsWith('|') || !rest.trim()) {
-    for (let j = startIndex + 1; j < lines.length; j++) {
-      const nextLine = lines[j].trim();
-      if (nextLine.startsWith('|') || nextLine.startsWith("'")) {
-        const nextEq = nextLine.indexOf('=');
-        if (nextEq !== -1) {
-          type += ' ' + nextLine.slice(0, nextEq);
-          break;
-        }
-        type += ' ' + trimTrailing(nextLine);
-        if (!nextLine.endsWith('|')) break;
-      } else {
-        break;
-      }
-    }
+    type += collectMultilineType(lines, startIndex);
   }
 
   return type.trim();
@@ -163,7 +165,7 @@ for (const file of files) {
     if (decoratorArgs.includes('reflect') && decoratorArgs.includes('true')) continue;
 
     // Skip excluded prop names
-    if (SKIP_PROP_NAMES.includes(propName)) continue;
+    if (SKIP_PROP_NAMES.has(propName)) continue;
 
     // Get the full type (handles multiline)
     const propType = extractPropType(lines, i);
