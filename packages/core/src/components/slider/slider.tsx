@@ -568,7 +568,7 @@ export class TdsSlider {
 
   componentDidLoad() {
     this.calculateInputSizeFromMax();
-    if (!this.resizeObserverAdded) {
+    if (!this.resizeObserverAdded && typeof ResizeObserver !== 'undefined') {
       this.resizeObserverAdded = true;
 
       const resizeObserver = new ResizeObserver(() => {

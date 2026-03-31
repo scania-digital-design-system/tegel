@@ -132,6 +132,7 @@ export class TdsFolderTabs {
   }
 
   private addResizeObserver = (): void => {
+    if (typeof ResizeObserver === 'undefined') return;
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
