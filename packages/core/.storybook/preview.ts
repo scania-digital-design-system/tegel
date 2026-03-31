@@ -69,7 +69,15 @@ const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   document.body.classList.remove('tds-mode-variant-primary', 'tds-mode-variant-secondary');
   document.body.classList.add(`tds-mode-variant-${modeVariant}`);
 
-  return StoryFn();
+  const story = StoryFn();
+  const wrapper = document.createElement('div');
+  wrapper.classList.add(`tds-mode-variant-${modeVariant}`);
+  if (typeof story === 'string') {
+    wrapper.innerHTML = story;
+  } else {
+    wrapper.appendChild(story);
+  }
+  return wrapper;
 };
 
 const tegelViewports = {
