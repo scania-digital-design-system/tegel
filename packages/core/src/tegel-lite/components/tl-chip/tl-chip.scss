@@ -9,7 +9,7 @@
   gap: 8px;
   padding: 8px 16px;
   border-radius: var(--chip-border-radius);
-  border: 1px solid var(--chip-border);
+  border: none;
   background-color: var(--chip-background);
   color: var(--chip-text);
   cursor: pointer;
@@ -21,7 +21,6 @@
 
   &:hover {
     background-color: var(--chip-background-hover);
-    border-color: var(--chip-border-hover);
   }
 
   &:focus-visible {
@@ -46,11 +45,9 @@
   &--selected {
     background-color: var(--chip-background-active);
     color: var(--chip-text-active);
-    border-color: var(--chip-border-selected);
 
     &:hover {
       background-color: var(--chip-background-active-hover);
-      border-color: var(--chip-border-selected-hover);
     }
 
     &:focus-visible {
