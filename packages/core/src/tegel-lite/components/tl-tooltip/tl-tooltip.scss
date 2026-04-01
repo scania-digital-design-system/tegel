@@ -11,15 +11,14 @@
   width: max-content;
   white-space: normal;
   word-wrap: break-word;
-  background-color: var(--tooltip-background, #333);
-  color: var(--tooltip-text, #fff);
+  background-color: var(--tooltip-background);
+  color: var(--tooltip-text);
   box-sizing: border-box;
-  line-height: var(--tl-tooltip-line-height);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s ease, visibility 0.2s ease;
-  border-radius: 4px;
+  border-radius: var(--tooltip-border-radius);
 
   &--visible {
     opacity: 1;
@@ -29,34 +28,38 @@
 
   // Position modifiers - remove border-radius at corner pointing to trigger
   &--top-start {
-    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
+    border-radius: var(--tooltip-border-radius) var(--tooltip-border-radius)
+      var(--tooltip-border-radius) 0;
   }
 
   &--top-end {
-    border-radius: 4px 4px 0; // sharp corner at bottom-right
+    border-radius: var(--tooltip-border-radius) var(--tooltip-border-radius) 0;
   }
 
   &--bottom-start {
-    border-radius: 0 4px 4px; // sharp corner at top-left
+    border-radius: 0 var(--tooltip-border-radius) var(--tooltip-border-radius);
   }
 
   &--bottom-end {
-    border-radius: 4px 0 4px 4px; // sharp corner at top-right
+    border-radius: var(--tooltip-border-radius) 0 var(--tooltip-border-radius)
+      var(--tooltip-border-radius);
   }
 
   &--left-start {
-    border-radius: 4px 0 4px 4px; // sharp corner at top-right
+    border-radius: var(--tooltip-border-radius) 0 var(--tooltip-border-radius)
+      var(--tooltip-border-radius);
   }
 
   &--left-end {
-    border-radius: 4px 4px 0; // sharp corner at bottom-right
+    border-radius: var(--tooltip-border-radius) var(--tooltip-border-radius) 0;
   }
 
   &--right-start {
-    border-radius: 0 4px 4px; // sharp corner at top-left
+    border-radius: 0 var(--tooltip-border-radius) var(--tooltip-border-radius);
   }
 
   &--right-end {
-    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
+    border-radius: var(--tooltip-border-radius) var(--tooltip-border-radius)
+      var(--tooltip-border-radius) 0;
   }
 }
