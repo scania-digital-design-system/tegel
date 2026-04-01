@@ -5,7 +5,7 @@
 
   display: inline-flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--tds-tag-border-radius);
   background-color: var(--tds-tag-neutral-background);
   color: var(--tds-tag-neutral-color);
   gap: 4px;
