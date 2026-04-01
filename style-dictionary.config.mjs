@@ -335,11 +335,12 @@ const COMPONENT_FILE_LIST = [
   ['badge', 'exact'],
   ['button', 'exact'],
   ['chip', 'exact'],
-   ['tag', 'exact'],
+  ['tag', 'exact'],
   ['logo', 'exact'],
   ['shadow', 'exact'],
   ['cookie', 'exact'],
   ['text', 'exact'],
+  ['tooltip', 'exact'],
 ];
 
 // Helper function to create component file configuration
