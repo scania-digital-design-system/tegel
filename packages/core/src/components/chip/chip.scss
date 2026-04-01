@@ -106,7 +106,7 @@
   input:checked + label {
     background-color: var(--tds-chips-background-active);
     color: var(--tds-chips-color-active);
-    border-color: var(--tds-chips-background-active);
+    border-color: var(--tds-chips-border-selected);
 
     &:hover {
       background-color: var(--tds-chips-background-active-hover);
