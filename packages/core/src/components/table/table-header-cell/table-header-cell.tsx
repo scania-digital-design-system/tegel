@@ -39,7 +39,7 @@ export class TdsTableHeaderCell {
   @Prop({ reflect: true }) customWidth?: string;
 
   /** Enables sorting on that column */
-  @Prop() sortable: boolean = false;
+  @Prop({ reflect: true }) sortable: boolean = false;
 
   /** Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". */
   @Prop({ reflect: true }) textAlign: TextAlign = 'left';
@@ -51,10 +51,10 @@ export class TdsTableHeaderCell {
   @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
 
   /** Number of columns the cell should span. */
-  @Prop() colSpan?: number;
+  @Prop({ reflect: true }) colSpan?: number;
 
   /** Number of rows the cell should span. */
-  @Prop() rowSpan?: number;
+  @Prop({ reflect: true }) rowSpan?: number;
 
   @State() textAlignState: TextAlign = 'left';
 

@@ -10,7 +10,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
 })
 export class TdsBreadcrumb {
   /** Boolean for the current link */
-  @Prop() current: boolean = false;
+  @Prop({ reflect: true }) current: boolean = false;
 
   render() {
     return (

@@ -7,10 +7,11 @@ import { Component, Prop, Host, h } from '@stencil/core';
 })
 export class Divider {
   /** Orientation of the Divider, horizontal if not specified. */
-  @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @Prop({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Variant of the Divider, subtle if not specified. */
-  @Prop() variant: 'discrete' | 'subtle' | 'soft' | 'defined' | 'dark-blue' = 'subtle';
+  @Prop({ reflect: true }) variant: 'discrete' | 'subtle' | 'soft' | 'defined' | 'dark-blue' =
+    'subtle';
 
   render() {
     return (

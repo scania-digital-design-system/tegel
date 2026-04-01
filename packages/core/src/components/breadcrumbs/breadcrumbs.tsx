@@ -12,7 +12,7 @@ export class TdsBreadcrumbs {
   @Element() host!: HTMLElement;
 
   /** The value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');

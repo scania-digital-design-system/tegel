@@ -36,13 +36,13 @@ export class Icon {
   @Prop({ reflect: true }) size: string = '16px';
 
   /** Override the default title for the svg. Also used by aria-labelledby. */
-  @Prop() svgTitle?: string;
+  @Prop({ reflect: true }) svgTitle?: string;
 
   /** Set aria-hidden attribute on svg */
-  @Prop() tdsAriaHidden: boolean = false;
+  @Prop({ reflect: true }) tdsAriaHidden: boolean = false;
 
   /** Set description for the svg. Also used by aria-describedby. */
-  @Prop() svgDescription?: string;
+  @Prop({ reflect: true }) svgDescription?: string;
 
   @State() icons_object: string = '';
 

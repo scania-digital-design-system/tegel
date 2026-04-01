@@ -13,13 +13,13 @@ export class TdsTableHeaderInputWrapper {
   @Element() host!: HTMLElement;
 
   /** Controls if the search icon is shown */
-  @Prop() showIcon: boolean = true;
+  @Prop({ reflect: true }) showIcon: boolean = true;
 
   @State() renderSlot: boolean = true;
 
   @State() inputFocused: boolean = false;
 
-  @Prop() compactDesign: boolean = false;
+  @Prop({ reflect: true }) compactDesign: boolean = false;
 
   @State() tableId: string | null = '';
 

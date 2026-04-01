@@ -12,10 +12,10 @@ export class TdsHeaderLauncherButton {
 
   /** If the button should appear active. Can be used when the button is
    * triggering a dropdown, and the dropdown is open, for example. */
-  @Prop() active = false;
+  @Prop({ reflect: true }) active = false;
 
   /** Value to be used by the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   private ariaAttributes!: Attributes;
 

@@ -11,10 +11,10 @@ export class DatepickerYear {
   @Prop() year?: Date;
 
   /** Marks the Year as selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Marks the Year as selected. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   render() {
     const date = format(this.year, 'yyyy');

@@ -32,52 +32,52 @@ export class TdsDatetime {
   @Prop({ reflect: true, mutable: true }) value = '';
 
   /** Sets min value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
-  @Prop() min?: string;
+  @Prop({ reflect: true }) min?: string;
 
   /** Sets max value.<br/>Example for different types:<br/>datetime="2023-01-31T00:00"<br/>date="2023-01-01"<br/>month="2023-01"<br/>week="2023-W02"<br/>time="15:00" */
-  @Prop() max?: string;
+  @Prop({ reflect: true }) max?: string;
 
   /** Default value of the component.<br/>Format for date-time: yyyy-MM-ddTHH:mm.<br/>Format for date: yyyy-MM-dd.<br/>Format for month: yyyy-MM.<br/>Format for week: yyyy-Www.<br/>Format for time: HH:mm. */
-  @Prop() defaultValue: string | 'none' = 'none';
+  @Prop({ reflect: true }) defaultValue: string | 'none' = 'none';
 
   /** Set input in disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Size of the input */
-  @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Resets min width rule */
-  @Prop() noMinWidth: boolean = false;
+  @Prop({ reflect: true }) noMinWidth: boolean = false;
 
   /** Set the variant of the Datetime component. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Name property. Uses a unique ID as fallback if not specified. */
-  @Prop() name = `datetime-${generateUniqueId()}`;
+  @Prop({ reflect: true }) name = `datetime-${generateUniqueId()}`;
 
   /** Switches between success and error state. */
-  @Prop({ mutable: true }) state?: 'none' | 'success' | 'error';
+  @Prop({ reflect: true, mutable: true }) state?: 'none' | 'success' | 'error';
 
   /** Autofocus for input */
-  @Prop() autofocus: boolean = false;
+  @Prop({ reflect: true }) autofocus: boolean = false;
 
   /** Label text for the component */
-  @Prop() label: string = '';
+  @Prop({ reflect: true }) label: string = '';
 
   /** Position of the label */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Default contextual helper text for the component for states = success or none */
-  @Prop() helper: string = '';
+  @Prop({ reflect: true }) helper: string = '';
 
   /** Contextual helper text for the component for error state */
-  @Prop() helperError?: string;
+  @Prop({ reflect: true }) helperError?: string;
 
   /** Contextual helper text for the component when input is invalid */
-  @Prop() helperErrorInvalid?: string = 'Invalid input';
+  @Prop({ reflect: true }) helperErrorInvalid?: string = 'Invalid input';
 
   /** Value for the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Function for additional validation based on business rules */
   @Prop() customValidator?: (value: string) => boolean;
