@@ -64,6 +64,12 @@ tds-button {
   --tds-btn-ghost-border-color-focus: var(--component-button-border-standard-tertiary-hover);
   --tds-btn-icon-ghost-fill: var(--component-button-icon-standard-tertiary-default);
   --tds-btn-icon-ghost-color: var(--component-button-icon-standard-tertiary-default);
+  --tds-btn-icon-ghost-fill-hover: var(--component-button-icon-standard-tertiary-hover);
+  --tds-btn-icon-ghost-color-hover: var(--component-button-icon-standard-tertiary-hover);
+  --tds-btn-icon-ghost-fill-active: var(--component-button-icon-standard-tertiary-active);
+  --tds-btn-icon-ghost-color-active: var(--component-button-icon-standard-tertiary-active);
+  --tds-btn-icon-ghost-fill-focus: var(--component-button-icon-standard-tertiary-hover);
+  --tds-btn-icon-ghost-color-focus: var(--component-button-icon-standard-tertiary-hover);
 
   // Danger (= danger-primary)
   --tds-btn-danger-background: var(--component-button-background-danger-primary-default);
@@ -80,4 +86,10 @@ tds-button {
   --tds-btn-danger-border-color-focus: var(--component-button-border-danger-primary-hover);
   --tds-btn-icon-danger-fill: var(--component-button-icon-danger-primary-default);
   --tds-btn-icon-danger-color: var(--component-button-icon-danger-primary-default);
+  --tds-btn-icon-danger-fill-hover: var(--component-button-icon-danger-primary-hover);
+  --tds-btn-icon-danger-color-hover: var(--component-button-icon-danger-primary-hover);
+  --tds-btn-icon-danger-fill-active: var(--component-button-icon-danger-primary-active);
+  --tds-btn-icon-danger-color-active: var(--component-button-icon-danger-primary-active);
+  --tds-btn-icon-danger-fill-focus: var(--component-button-icon-danger-primary-hover);
+  --tds-btn-icon-danger-color-focus: var(--component-button-icon-danger-primary-hover);
 }
