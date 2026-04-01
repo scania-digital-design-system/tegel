@@ -12,7 +12,7 @@ export class TdsHeaderDropdownListItem {
   @Element() host!: HTMLElement;
 
   /** If the link should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** The size of the component. */
   @Prop({ reflect: true }) size: 'md' | 'lg' = 'md';

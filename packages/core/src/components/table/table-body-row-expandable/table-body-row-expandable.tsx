@@ -39,7 +39,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 export class TdsTableBodyRowExpandable {
   /** In case that automatic count of columns does not work, user can manually set this one.
    *  Take in mind that expandable control is column too */
-  @Prop() colSpan: number | null = null;
+  @Prop({ reflect: true }) colSpan: number | null = null;
 
   /** ID for the table row. Randomly generated if not specified. */
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
@@ -52,7 +52,7 @@ export class TdsTableBodyRowExpandable {
 
   /** Sets isExpanded state to true or false internally */
   /** Enables auto-collapse of other expandable rows when one row is expanded */
-  @Prop() autoCollapse: boolean = false;
+  @Prop({ reflect: true }) autoCollapse: boolean = false;
 
   /** Aria label for the expand button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelExpandButton: string = '';

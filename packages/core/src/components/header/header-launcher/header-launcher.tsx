@@ -21,7 +21,7 @@ export class TdsHeaderLauncher {
   @State() hasListTypeMenu = false;
 
   /** Value to be used by the aria-label attribute of the launcher button */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   private uuid: string = generateUniqueId();
 

@@ -18,12 +18,12 @@ const propToStateMap = {
 })
 export class TdsStep {
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
-  @Prop() index?: string;
+  @Prop({ reflect: true }) index?: string;
 
   /** State of the Step */
-  @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
+  @Prop({ reflect: true }) state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
-  @Prop() tdsAriaCurrent?: string;
+  @Prop({ reflect: true }) tdsAriaCurrent?: string;
 
   @State() hideLabels?: boolean;
 

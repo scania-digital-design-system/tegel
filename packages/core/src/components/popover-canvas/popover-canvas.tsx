@@ -16,40 +16,40 @@ export class TdsPopoverCanvas {
   @Element() host!: HTMLTdsPopoverCanvasElement;
 
   /** The CSS-selector for an element that will trigger the Popover */
-  @Prop() selector?: string;
+  @Prop({ reflect: true }) selector?: string;
 
   /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultShow: boolean = false;
+  @Prop({ reflect: true }) defaultShow: boolean = false;
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean | null = null;
+  @Prop({ reflect: true }) show: boolean | null = null;
 
   /** Decides the placement of the Popover Canvas. See https://popper.js.org/docs/v2/constructors/#placement */
-  @Prop() placement: Placement = 'auto';
+  @Prop({ reflect: true }) placement: Placement = 'auto';
 
   /** Sets the offset skidding */
-  @Prop() offsetSkidding: number = 0;
+  @Prop({ reflect: true }) offsetSkidding: number = 0;
 
   /** Whether the popover should animate when being opened/closed or not */
-  @Prop() animation: 'none' | 'fade' | string = 'none';
+  @Prop({ reflect: true }) animation: 'none' | 'fade' | string = 'none';
 
   /** Sets the offset distance */
-  @Prop() offsetDistance: number = 8;
+  @Prop({ reflect: true }) offsetDistance: number = 8;
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: object[] = [];
 
   /** Role of the popover canvas component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
-  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+  @Prop({ reflect: true }) tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Property for closing popover programmatically */
   @Method() async close() {

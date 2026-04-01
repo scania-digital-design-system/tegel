@@ -11,16 +11,16 @@ import { Component, h, Host, Prop } from '@stencil/core';
 })
 export class TdsSideMenuUser {
   /** The heading text. */
-  @Prop() heading!: string;
+  @Prop({ reflect: true }) heading!: string;
 
   /** The subheading text. */
-  @Prop() subheading?: string;
+  @Prop({ reflect: true }) subheading?: string;
 
   /** The image source. */
-  @Prop() imgSrc?: string;
+  @Prop({ reflect: true }) imgSrc?: string;
 
   /** The image alt text. */
-  @Prop() imgAlt?: string;
+  @Prop({ reflect: true }) imgAlt?: string;
 
   render() {
     return (

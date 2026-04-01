@@ -10,25 +10,25 @@ export class DatepickerDate {
   @Element() host!: HTMLDatePickerDayElement;
 
   /** Marks the date as not part of the currently displayed month. */
-  @Prop() notCurrentMonth?: boolean;
+  @Prop({ reflect: true }) notCurrentMonth?: boolean;
 
   /** The Date. */
   @Prop() date?: Date;
 
   /** Marks the Date as selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Marks the Date as disabled. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Marks the Date as in range. */
-  @Prop({ mutable: true }) inRange: boolean = false;
+  @Prop({ reflect: true, mutable: true }) inRange: boolean = false;
 
   /** Marks the Date as the last date in range. */
-  @Prop({ mutable: true }) lastInRange: boolean = false;
+  @Prop({ reflect: true, mutable: true }) lastInRange: boolean = false;
 
   /** Marks the Date as the first date in range. */
-  @Prop({ mutable: true }) firstInRange: boolean = false;
+  @Prop({ reflect: true, mutable: true }) firstInRange: boolean = false;
 
   /** If the Start Date is after the End Date reversed is true. */
   @State() reverse: boolean = false;

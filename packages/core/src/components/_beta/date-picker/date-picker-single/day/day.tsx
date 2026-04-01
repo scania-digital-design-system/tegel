@@ -8,16 +8,16 @@ import { isToday, format } from 'date-fns';
 })
 export class DatepickerDate {
   /** Marks the date as not part of the currently displayed month. */
-  @Prop() notCurrentMonth?: boolean;
+  @Prop({ reflect: true }) notCurrentMonth?: boolean;
 
   /** The Date. */
   @Prop() date?: Date;
 
   /** Marks the Date as selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Marks the Date as disabled. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   render() {
     const date = format(this.date, 'd');

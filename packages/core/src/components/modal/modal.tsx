@@ -28,32 +28,32 @@ export class TdsModal {
   @Element() host!: HTMLElement;
 
   /** Sets the header of the Modal. */
-  @Prop() header?: string;
+  @Prop({ reflect: true }) header?: string;
 
   /** Disables closing Modal on clicking on overlay area. */
-  @Prop() prevent: boolean = false;
+  @Prop({ reflect: true }) prevent: boolean = false;
 
   /** Size of Modal  */
-  @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
+  @Prop({ reflect: true }) size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
 
   /** Changes the position behaviour of the actions slot.  */
-  @Prop() actionsPosition: 'sticky' | 'static' = 'static';
+  @Prop({ reflect: true }) actionsPosition: 'sticky' | 'static' = 'static';
 
   /** CSS selector for the element that will show the Modal. */
-  @Prop() selector?: string;
+  @Prop({ reflect: true }) selector?: string;
 
   /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Controls whether the Modal is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. */
-  @Prop() show?: boolean;
+  @Prop({ reflect: true }) show?: boolean;
 
   /** Shows or hides the close [X] button. */
-  @Prop() closable: boolean = true;
+  @Prop({ reflect: true }) closable: boolean = true;
 
   /** Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
-  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+  @Prop({ reflect: true }) tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
 
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
