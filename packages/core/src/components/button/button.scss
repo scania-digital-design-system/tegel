@@ -37,10 +37,6 @@ button {
   padding: var(--tds-spacing-element-20);
   border: 1px solid transparent;
 
-  &:focus {
-    outline: 1px solid var(--scania-blue-400);
-  }
-
   &:focus-visible {
     @include tds-focus-state;
   }
