@@ -12,7 +12,7 @@ $btn-sm-only-icon-padding: 11px;
 $btn-md-only-icon-padding: 13px;
 $btn-lg-only-icon-padding: 17px;
 $types: (primary, secondary, ghost, danger);
-$props: (background, border-color, color, outline-color);
+$props: (background, border-color, color);
 $iconProps: (fill, color);
 
 @mixin button-base {
@@ -22,7 +22,7 @@ $iconProps: (fill, color);
   letter-spacing: var(--tds-detail-02-ls);
   display: inline-flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--tds-btn-border-radius);
   border: none;
   box-shadow: none;
   position: relative;
@@ -49,7 +49,6 @@ button {
     padding: var(--tds-spacing-element-4) var(--tds-spacing-element-8);
     height: $btn-xs-height;
     font-size: 12px;
-    border-radius: 2px;
   }
 
   &.sm {
@@ -160,9 +159,8 @@ button {
 
       &.disabled,
       &:disabled {
-        @each $prop in $props {
-          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-disabled);
-        }
+        opacity: var(--tds-btn-opacity-disabled);
+        pointer-events: none;
       }
     }
   }
