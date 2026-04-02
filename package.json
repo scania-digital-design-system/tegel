@@ -43,7 +43,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^20.5.0",
     "@types/node": "^22.10.7",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
     "@typescript-eslint/parser": "^6.21.0",
     "commitizen": "^4.3.0",
     "commitlint": "^20.5.0",
