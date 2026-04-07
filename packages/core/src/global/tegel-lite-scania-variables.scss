@@ -1,0 +1,12 @@
+// Tegel Lite Scania variables
+// Includes base Scania variables + icon tokens
+
+@use 'scania-variables' as *;
+
+/* Scania primitive icon tokens */
+@use '../../../../tokens/scss/scania/scania-icons-primitive' with (
+  $local-assets: './assets'
+);
+
+/* Scania icon tokens */
+@use '../../../../tokens/scss/scania/scania-icons' as *;
