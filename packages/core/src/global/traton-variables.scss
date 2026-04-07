@@ -25,11 +25,3 @@
 @use '../../../../typography/tokens/typography-traton' as *;
 @use '../../../../spacing/traton-units' as *;
 @use '../../../../typography/traton-fonts' as *;
-
-/* Traton primitive icon tokens */
-@use '../../../../tokens/scss/traton/traton-icons-primitive' with (
-  $local-assets: './assets'
-);
-
-/* Traton icon tokens */
-@use '../../../../tokens/scss/traton/traton-icons' as *;
