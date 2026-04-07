@@ -1,5 +1,15 @@
 @use 'tl-scrollbar-vars' as *;
 
+/* Icon tokens for Storybook (in production Tegel Lite these come from the brand variable CSS files) */
+@use '../../../../tokens/scss/scania/scania-icons-primitive' with (
+  $local-assets: '../dist/tegel/assets'
+);
+@use '../../../../tokens/scss/scania/scania-icons' as *;
+@use '../../../../tokens/scss/traton/traton-icons-primitive' with (
+  $local-assets: '../dist/tegel/assets'
+);
+@use '../../../../tokens/scss/traton/traton-icons' as *;
+
 @use '../tegel-lite/components/tl-button/tl-button' as *;
 @use '../tegel-lite/components/tl-header/tl-header' as *;
 @use '../tegel-lite/components/tl-message/tl-message' as *;
