@@ -67,10 +67,10 @@
 // Utility classes
 @use '_utility-classes' as *;
 
-//Web component theme variables
+// Web component theme variables
 @use '../components/accordion/accordion-vars' as *;
 @use '../components/banner/banner-vars' as *;
-@use '../components/badge/badge-vars.scss' as *;
+@use '../components/badge/badge-vars' as *;
 @use '../components/spinner/spinner-vars.scss' as *;
 @use '../components/block/block-vars' as *;
 @use '../components/breadcrumbs/breadcrumbs-vars' as *;
