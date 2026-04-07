@@ -58,7 +58,8 @@ function getComponentValueFromSemanticJson(brand, themeKey, rawParts) {
       .slice(1, -1)
       .split('.')
       .join('-')
-      .replace(/\s+/g, '-');
+      .replace(/\s+/g, '-')
+      .replace(/[^a-zA-Z0-9-]/g, '');
     return `var(--${refPath})`;
   }
   return refValue;
@@ -116,7 +117,8 @@ StyleDictionary.registerFormat({
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replace(/\s+/g, '-');
+            .replace(/\s+/g, '-')
+            .replace(/[^a-zA-Z0-9-]/g, '');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
