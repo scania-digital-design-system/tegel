@@ -10,10 +10,10 @@ import { Component, h, Host, Prop } from '@stencil/core';
 })
 export class TdsAccordion {
   /** Set the variant of the Accordion. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Removes the bottom border of the last Accordion item. */
-  @Prop() hideLastBorder: boolean = false;
+  @Prop({ reflect: true }) hideLastBorder: boolean = false;
 
   render() {
     return (

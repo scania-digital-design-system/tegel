@@ -79,14 +79,14 @@ export class TdsTable {
   /** Width of the table, used as the constraint for horizontal scrolling.
    * **NOTE**: this will disable usage of the responsive flag
    * */
-  @Prop() horizontalScrollWidth?: string | null = null;
+  @Prop({ reflect: true }) horizontalScrollWidth?: string | null = null;
 
   /** ID used for internal Table functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table,
    * as the default ID is random and will be different every time.
    */
-  @Prop() tableId: string = generateUniqueId();
+  @Prop({ reflect: true }) tableId: string = generateUniqueId();
 
   @State() enableHorizontalScrollToolbarDesign: boolean = false;
 

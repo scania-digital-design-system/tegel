@@ -27,7 +27,8 @@
     "lint:css:tl:fix": "stylelint \"packages/core/src/tegel-lite/**/*.scss\" --fix",
     "lint": "npx eslint ./",
     "tsc": "npx tsc --noEmit",
-    "lint:check": "npm run lint && npm run tsc"
+    "lint:prop-reflect": "node scripts/check-prop-reflect.mjs",
+    "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect"
   },
   "repository": {
     "type": "git",
@@ -58,9 +59,9 @@
     "lint-staged": "^12.3.7",
     "prettier": "^3.8.1",
     "style-dictionary": "^5.0.0",
-    "stylelint": "^14.6.1",
-    "stylelint-config-prettier-scss": "^0.0.1",
-    "stylelint-config-standard": "^25.0.0",
+    "stylelint": "^17.6.0",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "^5.8.3"
   },

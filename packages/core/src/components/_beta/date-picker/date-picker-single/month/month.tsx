@@ -13,13 +13,13 @@ export class DatepickerMonth {
   @Prop() month?: Date;
 
   /** Marks the Month as selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Marks the Month as disabled. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Locale for displaying months in a differnet language than enlish. Currently available: English, Swedish, German. */
-  @Prop() locale: 'en' | 'sv' | 'de' = 'en';
+  @Prop({ reflect: true }) locale: 'en' | 'sv' | 'de' = 'en';
 
   /** Returns a Locale object based on this.locale. */
   private getLocale = (): Locale => {

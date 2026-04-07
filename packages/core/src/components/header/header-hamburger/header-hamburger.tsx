@@ -10,7 +10,7 @@ export class TdsHeaderHamburger {
   @Element() host!: HTMLElement;
 
   /** Value to be used by the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   render() {
     const inheritedButtonProps = {

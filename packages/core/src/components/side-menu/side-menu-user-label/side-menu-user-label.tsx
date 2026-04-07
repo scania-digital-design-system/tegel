@@ -7,10 +7,10 @@ import { Component, h, Host, Prop } from '@stencil/core';
 })
 export class TdsSideMenuUserLabel {
   /** The heading text. */
-  @Prop() heading!: string;
+  @Prop({ reflect: true }) heading!: string;
 
   /** The subheading text. */
-  @Prop() subheading?: string;
+  @Prop({ reflect: true }) subheading?: string;
 
   render() {
     return (

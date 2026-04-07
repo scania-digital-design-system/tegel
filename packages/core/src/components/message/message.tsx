@@ -12,25 +12,25 @@ import generateUniqueId from '../../utils/generateUniqueId';
 })
 export class TdsMessage {
   /** Header text for the component. */
-  @Prop() header?: string;
+  @Prop({ reflect: true }) header?: string;
 
   /** Variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Variant of Message. */
-  @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
+  @Prop({ reflect: true }) variant: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Removes the icon in the Message. */
-  @Prop() noIcon: boolean = false;
+  @Prop({ reflect: true }) noIcon: boolean = false;
 
   /** Minimal Message styling. */
-  @Prop() minimal: boolean = false;
+  @Prop({ reflect: true }) minimal: boolean = false;
 
   /** Role of the message component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
-  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+  @Prop({ reflect: true }) tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
 
   /** Provides an accessible name for the message component when no header is present. This ensures proper screen reader support for dialog/alertdialog roles. */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   getIconName = () => {
     switch (this.variant) {

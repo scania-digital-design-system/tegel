@@ -17,32 +17,32 @@ export class TdsChip {
   @Element() host!: HTMLElement;
 
   /** Type of Chip, depends on usage */
-  @Prop() type: 'button' | 'radio' | 'checkbox' = 'button';
+  @Prop({ reflect: true }) type: 'button' | 'radio' | 'checkbox' = 'button';
 
   /** Size of the Chip component */
-  @Prop() size: 'sm' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** ID used for internal Chip functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,
    * as the default ID is random and will be different every time.
    */
-  @Prop() chipId: string = generateUniqueId();
+  @Prop({ reflect: true }) chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
   @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio. */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** Value of input. Valid only for type checkbox and radio. */
-  @Prop() value?: string;
+  @Prop({ reflect: true }) value?: string;
 
   /** Sets the Chip in a disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
    * Valid only for type checkbox and radio.

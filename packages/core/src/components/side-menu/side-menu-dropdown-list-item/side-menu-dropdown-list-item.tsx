@@ -13,7 +13,7 @@ export class TdsSideMenuDropdownListItem {
   @Element() host!: HTMLElement;
 
   /** If the item should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   @State() dropdownHasIcon: boolean = false;
 

@@ -12,13 +12,13 @@ export class TdsLink {
   @Element() host!: HTMLElement;
 
   /** Disables the Link */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Displays the Link with an underline. */
-  @Prop() underline: boolean = true;
+  @Prop({ reflect: true }) underline: boolean = true;
 
   /** Displays the Link as a standalone component. Not part of a paragraph. */
-  @Prop() standalone: boolean = false;
+  @Prop({ reflect: true }) standalone: boolean = false;
 
   connectedCallback() {
     const links = this.host.querySelectorAll('a');

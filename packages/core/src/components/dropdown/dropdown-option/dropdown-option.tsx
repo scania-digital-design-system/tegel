@@ -27,16 +27,16 @@ export class TdsDropdownOption {
   @Element() host!: HTMLElement;
 
   /** Value of the dropdown option */
-  @Prop() value?: string | number;
+  @Prop({ reflect: true }) value?: string | number;
 
   /** Internal value storage that's always a string */
   @State() internalValue: string = '';
 
   /** Sets the option as disabled. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Defines aria-label attribute for the option */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   @State() selected: boolean = false;
 
