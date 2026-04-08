@@ -15,7 +15,8 @@ register(StyleDictionary); // Register Token Studio transforms
 
 // Brand+mode only: component tokens use .${brand} .tds-mode-${theme} (no component host selectors).
 const BRANDS = ['scania', 'traton'];
-const getBrandModeSelector = (brand, theme) => `.${brand} .tds-mode-${theme}`;
+const getBrandModeSelector = (brand, theme) =>
+  `.${brand} .tds-mode-${theme},\n.${brand} .tl-mode-${theme}`;
 
 // Cache for semantic theme JSON files so we can recover brand-specific
 // component values even when Style Dictionary has merged tokens.
@@ -57,7 +58,8 @@ function getComponentValueFromSemanticJson(brand, themeKey, rawParts) {
       .slice(1, -1)
       .split('.')
       .join('-')
-      .replace(/\s+/g, '-');
+      .replace(/\s+/g, '-')
+      .replace(/[^a-zA-Z0-9-]/g, '');
     return `var(--${refPath})`;
   }
   return refValue;
@@ -115,7 +117,8 @@ StyleDictionary.registerFormat({
             .slice(1, -1)
             .split('.')
             .join('-')
-            .replace(/\s+/g, '-');
+            .replace(/\s+/g, '-')
+            .replace(/[^a-zA-Z0-9-]/g, '');
           value = `var(--${refPath})`;
         } else {
           value = refValue;
