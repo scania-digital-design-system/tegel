@@ -10,13 +10,15 @@ const componentTestPath = 'src/components/breadcrumbs/test/default/index.html';
 const componentName = 'tds-breadcrumbs';
 const testDescription = 'tds-breadcrumbs-default';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
     test('renders default breadcrumbs correctly', async ({ page }) => {
+      const el = page.locator('tds-breadcrumbs');
+      await expect(el).toHaveClass(/hydrated/);
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
