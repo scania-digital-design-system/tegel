@@ -2,7 +2,7 @@
   "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "defaultSeverity": "warning",
   "rules": {
-    "indentation": 2,
+    "indentation": null,
     "alpha-value-notation": null,
     "color-function-notation": ["legacy"],
     "at-rule-disallowed-list": [["import"], { "severity": "error", "message": "@import is deprecated. Use @use/@forward instead." }]
