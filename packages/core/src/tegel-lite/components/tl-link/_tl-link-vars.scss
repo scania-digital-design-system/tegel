@@ -1,12 +1,12 @@
 /* Component variables */
 
 .tl-link {
-  --link: var(--color-foreground-text-accent-default);
-  --link-hover: var(--color-foreground-text-accent-default);
+  --link: var(--color-system-info-default);
+  --link-hover: var(--color-system-info-default);
   --link-focus-outline-width: 2px;
-  --link-visited: var(--color-foreground-text-accent-visited);
-  --link-disabled: var(--color-foreground-text-disabled);
-  --link-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --link-visited: var(--color-system-info-defined);
+  --link-disabled: var(--color-text-disabled);
+  --link-focus-outline-color: var(--color-system-info-default);
 }
 
 .tl-banner .tl-link {
@@ -15,7 +15,7 @@
 
 .tl-toast .tl-link {
   --link: var(--color-system-info-default);
-  --link-hover: var(--color-foreground-text-accent-default);
+  --link-hover: var(--color-system-info-default);
 }
 
 .traton .tl-link {
