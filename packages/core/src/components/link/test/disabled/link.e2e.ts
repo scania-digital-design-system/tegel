@@ -10,15 +10,15 @@ const componentTestPath = 'src/components/link/test/disabled/index.html';
 const componentName = 'tds-link';
 const testDescription = 'tds-link-disabled';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
     test('disabled link is rendered correctly', async ({ page }) => {
-      const tdsLink = page.getByTestId('tds-link-testid');
-      await expect(tdsLink).toHaveCount(1);
+      const el = page.locator('tds-link');
+      await expect(el).toHaveClass(/hydrated/);
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
