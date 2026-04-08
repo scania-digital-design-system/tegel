@@ -10,15 +10,15 @@ const componentTestPath = 'src/components/footer/test/default/index.html';
 const componentName = 'tds-footer';
 const testDescription = 'tds-footer-default';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
     test('renders default footer correctly', async ({ page }) => {
-      const footerComponent = page.locator('footer');
-      await expect(footerComponent).toHaveCount(1);
+      const el = page.locator('tds-footer');
+      await expect(el).toHaveClass(/hydrated/);
 
       /** Check screenshot diff */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
