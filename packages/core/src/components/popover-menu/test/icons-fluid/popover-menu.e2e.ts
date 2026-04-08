@@ -16,11 +16,17 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('renders icons-fluid popover-menu correctly', async ({ page }) => {
+    test('renders icons-fluid popover-menu correctly with keyboard', async ({ page }) => {
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('renders icons-fluid popover-menu correctly with click', async ({ page }) => {
       const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
       await triggerButton.click();
 
-      /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });

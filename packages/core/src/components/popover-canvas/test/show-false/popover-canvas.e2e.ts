@@ -17,10 +17,9 @@ testConfigurations.basic.forEach((config) => {
     });
 
     test('renders show=false popover-canvas correctly', async ({ page }) => {
-      const triggerButton = page.getByRole('button');
-      await triggerButton.click();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-      /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });

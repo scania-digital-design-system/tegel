@@ -17,16 +17,13 @@ testConfigurations.basic.forEach((config) => {
     });
 
     test('renders show=true popover-canvas correctly', async ({ page }) => {
-      const triggerButton = page.getByRole('button');
-      await triggerButton.click();
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
 
-      // get popover element
       const popover = page.locator('tds-popover-core');
 
-      // wait for it to be visible
       await popover.waitFor({ state: 'visible' });
 
-      /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
     });
   });

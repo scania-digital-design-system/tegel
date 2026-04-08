@@ -19,16 +19,36 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('Should appears on button click', async ({ page }) => {
-      // Select the button that triggers the tooltip on click
+    test('Should appear on button click', async ({ page }) => {
       const button = page.locator('tds-button#button-3');
-
       await button.click();
 
       const tooltipText = page.locator('text=Text inside Tooltip');
-
-      // Assert that the tooltip is visible after clicking the button
       await expect(tooltipText).toBeVisible();
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('Should appear on keyboard activation', async ({ page }) => {
+      /* Click to open the tooltip */
+      const button = page.locator('tds-button#button-3');
+      await button.click();
+
+      const tooltipText = page.locator('text=Text inside Tooltip');
+      await expect(tooltipText).toBeVisible();
+
+      /* Insert a hidden focusable element before the button and focus it,
+         then Tab to the button — this is the only reliable way to get
+         :focus-visible in Chromium (requires real keyboard Tab event) */
+      await page.evaluate(() => {
+        const anchor = document.createElement('a');
+        anchor.href = '#';
+        anchor.style.cssText = 'position:absolute;opacity:0;pointer-events:none;';
+        const tdsButton = document.querySelector('tds-button#button-3');
+        tdsButton?.parentElement?.insertBefore(anchor, tdsButton);
+        anchor.focus();
+      });
+      await page.keyboard.press('Tab');
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
