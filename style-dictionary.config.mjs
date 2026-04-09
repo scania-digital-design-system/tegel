@@ -17,7 +17,7 @@ register(StyleDictionary); // Register Token Studio transforms
 // Scania light includes :root as fallback so components work without a brand class.
 const BRANDS = ['scania', 'traton'];
 const getBrandModeSelector = (brand, theme) => {
-  const base = `.${brand} .tds-mode-${theme},\n.${brand} .tl-mode-${theme}`;
+  const base = `.${brand} .tds-mode-${theme},\n.${brand}.tds-mode-${theme},\n.${brand} .tl-mode-${theme},\n.${brand}.tl-mode-${theme}`;
   if (brand === 'scania' && theme === 'light') {
     return `:root,\n.tds-mode-${theme},\n${base}`;
   }
