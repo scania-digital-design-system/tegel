@@ -5,7 +5,9 @@
 :root,
 .tds-mode-light,
 .scania .tds-mode-light,
-.scania .tl-mode-light {
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-spinner-background-default: var(--color-system-info-default);
   --component-spinner-background-default-inverse: var(--scania-color-grey-00);
   --component-spinner-size-large: 84;
@@ -19,7 +21,9 @@
 }
 
 .traton .tds-mode-light,
-.traton .tl-mode-light {
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-spinner-background-default: var(--traton-color-blue-800);
   --component-spinner-background-default-inverse: var(--traton-color-transparent-inverse-950);
   --component-spinner-size-large: 84;
@@ -34,7 +38,9 @@
 
 .tds-mode-dark,
 .scania .tds-mode-dark,
-.scania .tl-mode-dark {
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-spinner-background-default: var(--color-system-info-default);
   --component-spinner-background-default-inverse: var(--scania-color-grey-00);
   --component-spinner-size-large: 84;
@@ -48,7 +54,9 @@
 }
 
 .traton .tds-mode-dark,
-.traton .tl-mode-dark {
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-spinner-background-default: var(--traton-color-grey-300);
   --component-spinner-background-default-inverse: var(--traton-color-transparent-inverse-950);
   --component-spinner-size-large: 84;

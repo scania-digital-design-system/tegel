@@ -5,7 +5,9 @@
 :root,
 .tds-mode-light,
 .scania .tds-mode-light,
-.scania .tl-mode-light {
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-dropdown-hover: #edeff3;
   --component-dropdown-focus: #edeff3;
   --component-dropdown-secondary-hover: #edeff3;
@@ -17,7 +19,9 @@
 }
 
 .traton .tds-mode-light,
-.traton .tl-mode-light {
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-dropdown-hover: #ebe7dd;
   --component-dropdown-focus: var(--color-background-layer-01);
   --component-dropdown-secondary-hover: #ebe7dd;
@@ -30,7 +34,9 @@
 
 .tds-mode-dark,
 .scania .tds-mode-dark,
-.scania .tl-mode-dark {
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-dropdown-hover: var(--color-background-layer-02);
   --component-dropdown-focus: var(--color-background-layer-02);
   --component-dropdown-secondary-hover: var(--color-background-layer-03);
@@ -42,7 +48,9 @@
 }
 
 .traton .tds-mode-dark,
-.traton .tl-mode-dark {
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-dropdown-hover: var(--color-background-layer-02);
   --component-dropdown-focus: var(--color-background-layer-01);
   --component-dropdown-secondary-hover: var(--color-background-layer-03);

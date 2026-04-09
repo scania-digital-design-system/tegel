@@ -5,7 +5,9 @@
 :root,
 .tds-mode-light,
 .scania .tds-mode-light,
-.scania .tl-mode-light {
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-tag-background-error-default: var(--scania-color-red-100);
   --component-tag-background-featured-default: var(--scania-color-blue-100);
   --component-tag-background-information-default: var(--scania-color-blue-200);
@@ -28,7 +30,9 @@
 }
 
 .traton .tds-mode-light,
-.traton .tl-mode-light {
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-tag-background-error-default: var(--scania-color-red-100);
   --component-tag-background-featured-default: var(--scania-color-blue-100);
   --component-tag-background-information-default: var(--scania-color-blue-200);
@@ -52,7 +56,9 @@
 
 .tds-mode-dark,
 .scania .tds-mode-dark,
-.scania .tl-mode-dark {
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-tag-background-error-default: var(--scania-color-red-200);
   --component-tag-background-featured-default: var(--scania-color-blue-100);
   --component-tag-background-information-default: var(--scania-color-blue-200);
@@ -75,7 +81,9 @@
 }
 
 .traton .tds-mode-dark,
-.traton .tl-mode-dark {
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-tag-background-error-default: var(--scania-color-red-200);
   --component-tag-background-featured-default: var(--scania-color-blue-100);
   --component-tag-background-information-default: var(--scania-color-blue-200);
