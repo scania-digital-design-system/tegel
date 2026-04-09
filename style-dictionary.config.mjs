@@ -14,9 +14,18 @@ import { join } from 'node:path';
 register(StyleDictionary); // Register Token Studio transforms
 
 // Brand+mode only: component tokens use .${brand} .tds-mode-${theme} (no component host selectors).
+// Scania light includes :root as fallback so components work without a brand class.
 const BRANDS = ['scania', 'traton'];
-const getBrandModeSelector = (brand, theme) =>
-  `.${brand} .tds-mode-${theme},\n.${brand} .tl-mode-${theme}`;
+const getBrandModeSelector = (brand, theme) => {
+  const base = `.${brand} .tds-mode-${theme},\n.${brand} .tl-mode-${theme}`;
+  if (brand === 'scania' && theme === 'light') {
+    return `:root,\n.tds-mode-${theme},\n${base}`;
+  }
+  if (brand === 'scania') {
+    return `.tds-mode-${theme},\n${base}`;
+  }
+  return base;
+};
 
 // Cache for semantic theme JSON files so we can recover brand-specific
 // component values even when Style Dictionary has merged tokens.
