@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-header-color-popovers: var(--color-background-layer-02);
@@ -92,6 +93,7 @@
   --component-header-space-profile-size: var(--traton-unit-24);
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-header-color-popovers: var(--color-background-layer-02);

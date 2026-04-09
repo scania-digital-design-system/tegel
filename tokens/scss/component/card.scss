@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-card-background-primary: #fff;
@@ -19,6 +20,7 @@
   --component-card-space-padding-default: var(--traton-unit-0);
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-card-background-primary: var(--color-background-layer-01);

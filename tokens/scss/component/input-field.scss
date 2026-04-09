@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-input-field-border-focus-top: var(--scania-unit-0);
@@ -35,6 +36,7 @@
   --component-input-field-border-width-left: var(--traton-unit-1);
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-input-field-border-focus-top: var(--scania-unit-0);

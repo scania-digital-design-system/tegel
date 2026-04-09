@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-side-menu-color-divider: var(--color-border-discrete);
@@ -76,6 +77,7 @@
   --component-side-menu-text-items-text-transform: none;
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-side-menu-color-divider: var(--color-border-discrete);

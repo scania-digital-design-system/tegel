@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-stepper-success: var(--color-system-success-default);
@@ -13,6 +14,7 @@
   --component-stepper-success: var(--color-system-success-default);
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-stepper-success: var(--color-system-success-default);

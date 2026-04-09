@@ -3,6 +3,7 @@
  */
 
 :root,
+.tds-mode-light,
 .scania .tds-mode-light,
 .scania .tl-mode-light {
   --component-chip-background-default: var(--scania-color-grey-150);
@@ -51,6 +52,7 @@
   --component-chip-text-selected-active: var(--color-text-strong);
 }
 
+.tds-mode-dark,
 .scania .tds-mode-dark,
 .scania .tl-mode-dark {
   --component-chip-background-default: var(--scania-color-grey-800);

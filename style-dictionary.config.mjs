@@ -19,7 +19,10 @@ const BRANDS = ['scania', 'traton'];
 const getBrandModeSelector = (brand, theme) => {
   const base = `.${brand} .tds-mode-${theme},\n.${brand} .tl-mode-${theme}`;
   if (brand === 'scania' && theme === 'light') {
-    return `:root,\n${base}`;
+    return `:root,\n.tds-mode-${theme},\n${base}`;
+  }
+  if (brand === 'scania') {
+    return `.tds-mode-${theme},\n${base}`;
   }
   return base;
 };
