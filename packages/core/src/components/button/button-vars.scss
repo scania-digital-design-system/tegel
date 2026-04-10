@@ -1,4 +1,6 @@
 tds-button {
+  --tds-btn-border-radius: calc(var(--component-button-border-radius-default) * 1px);
+
   // Primary
   --tds-btn-primary-background: var(--component-button-background-standard-primary-default);
   --tds-btn-primary-background-hover: var(--component-button-background-standard-primary-hover);
