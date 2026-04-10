@@ -1,5 +1,22 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
+const positionLookup: Record<string, string> = {
+  'Bottom-start': 'bottom-start',
+  'Bottom': 'bottom',
+  'Bottom-end': 'bottom-end',
+  'Top-start': 'top-start',
+  'Top': 'top',
+  'Top-end': 'top-end',
+  'Left-start': 'left-start',
+  'Left': 'left',
+  'Left-end': 'left-end',
+  'Right-start': 'right-start',
+  'Right': 'right',
+  'Right-end': 'right-end',
+};
+
+let tooltipAC: AbortController | null = null;
+
 export default {
   title: 'Tegel Lite (Beta)/Tooltip',
   parameters: { layout: 'centered' },
@@ -7,20 +24,7 @@ export default {
     position: {
       name: 'Position',
       control: { type: 'select' },
-      options: [
-        'Bottom-start',
-        'Bottom',
-        'Bottom-end',
-        'Top-start',
-        'Top',
-        'Top-end',
-        'Left-start',
-        'Left',
-        'Left-end',
-        'Right-start',
-        'Right',
-        'Right-end',
-      ],
+      options: Object.keys(positionLookup),
       table: { defaultValue: { summary: 'Top-start' } },
     },
     label: {
@@ -60,21 +64,113 @@ export default {
     offsetDistance: 8,
     offsetSkidding: 0,
   },
-};
+  decorators: [
+    (story: () => unknown, { args }: { args: Record<string, unknown> }) => {
+      tooltipAC?.abort();
+      tooltipAC = new AbortController();
+      const { signal } = tooltipAC;
 
-const positionLookup = {
-  'Bottom-start': 'bottom-start',
-  'Bottom': 'bottom',
-  'Bottom-end': 'bottom-end',
-  'Top-start': 'top-start',
-  'Top': 'top',
-  'Top-end': 'top-end',
-  'Left-start': 'left-start',
-  'Left': 'left',
-  'Left-end': 'left-end',
-  'Right-start': 'right-start',
-  'Right': 'right',
-  'Right-end': 'right-end',
+      // story() returns the HTML string — build DOM element ourselves so we
+      // have a stable reference to query after Storybook mounts it.
+      const html = story() as string;
+      const el = document.createElement('div');
+      el.innerHTML = html;
+
+      setTimeout(() => {
+        const triggerEl = el.querySelector<HTMLElement>('.tl-tooltip-trigger');
+        const tooltip = el.querySelector<HTMLElement>('#tooltip-id');
+        if (!triggerEl || !tooltip) return;
+
+        const position = positionLookup[args.position as string] ?? 'top-start';
+        const offset = (args.offsetDistance as number) ?? 8;
+        const skidding = (args.offsetSkidding as number) ?? 0;
+
+        const positionTooltip = () => {
+          const tr = triggerEl.getBoundingClientRect();
+          const tt = tooltip.getBoundingClientRect();
+          let top = 0;
+          let left = 0;
+
+          if (position.startsWith('top')) {
+            top = tr.top - tt.height - offset;
+            if (position === 'top') left = tr.left + tr.width / 2 - tt.width / 2;
+            else if (position === 'top-start') left = tr.left + skidding;
+            else if (position === 'top-end') left = tr.right - tt.width + skidding;
+          } else if (position.startsWith('bottom')) {
+            top = tr.bottom + offset;
+            if (position === 'bottom') left = tr.left + tr.width / 2 - tt.width / 2;
+            else if (position === 'bottom-start') left = tr.left + skidding;
+            else if (position === 'bottom-end') left = tr.right - tt.width + skidding;
+          } else if (position.startsWith('left')) {
+            left = tr.left - tt.width - offset;
+            if (position === 'left') top = tr.top + tr.height / 2 - tt.height / 2;
+            else if (position === 'left-start') top = tr.top + skidding;
+            else if (position === 'left-end') top = tr.bottom - tt.height + skidding;
+          } else if (position.startsWith('right')) {
+            left = tr.right + offset;
+            if (position === 'right') top = tr.top + tr.height / 2 - tt.height / 2;
+            else if (position === 'right-start') top = tr.top + skidding;
+            else if (position === 'right-end') top = tr.bottom - tt.height + skidding;
+          }
+
+          tooltip.style.top = `${top}px`;
+          tooltip.style.left = `${left}px`;
+        };
+
+        const show = () => {
+          positionTooltip();
+          tooltip.classList.add('tl-tooltip--visible');
+        };
+        const hide = () => tooltip.classList.remove('tl-tooltip--visible');
+
+        if ((args.trigger as string).toLowerCase() === 'click') {
+          let open = false;
+          triggerEl.addEventListener(
+            'click',
+            (e) => {
+              e.preventDefault();
+              open = !open;
+              if (open) show();
+              else hide();
+            },
+            { signal },
+          );
+          document.addEventListener(
+            'click',
+            (e) => {
+              if (!triggerEl.contains(e.target as Node) && !tooltip.contains(e.target as Node)) {
+                open = false;
+                hide();
+              }
+            },
+            { signal },
+          );
+        } else {
+          triggerEl.addEventListener('mouseenter', show, { signal });
+          triggerEl.addEventListener('mouseleave', hide, { signal });
+          triggerEl.addEventListener('focus', show, { signal });
+          triggerEl.addEventListener('blur', hide, { signal });
+        }
+
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (tooltip.classList.contains('tl-tooltip--visible')) positionTooltip();
+          },
+          { signal },
+        );
+        window.addEventListener(
+          'resize',
+          () => {
+            if (tooltip.classList.contains('tl-tooltip--visible')) positionTooltip();
+          },
+          { signal },
+        );
+      }, 0);
+
+      return el;
+    },
+  ],
 };
 
 const renderTrigger = (type: string, isClick: boolean) => {
@@ -86,7 +182,7 @@ const renderTrigger = (type: string, isClick: boolean) => {
       return `<a href="#" class="tl-link tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</a>`;
     case 'tl-icon':
       return `
-        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id"> 
+        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id">
           <span class="tl-icon tl-icon--info" ></span>
         </div>`;
     case 'tl-button':
@@ -106,9 +202,9 @@ const Template = ({ position, label, trigger, triggerElement, offsetSkidding, of
       "@scania/tegel-lite/tl-button.css" (if using button as trigger)
       "@scania/tegel-lite/tl-link.css" (if using link as trigger)
     -->
-      
+
       ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
-      
+
       <div
         id="tooltip-id"
         class="tl-tooltip tl-tooltip--${positionLookup[position]}"
@@ -132,11 +228,10 @@ const Template = ({ position, label, trigger, triggerElement, offsetSkidding, of
           const position = '${positionLookup[position]}';
           const offset = ${offsetDistance};
           const skidding = ${offsetSkidding};
-          
+
           let top = 0;
           let left = 0;
 
-          // Calculate position based on modifier
           if (position.startsWith('top')) {
             top = triggerRect.top - tooltipRect.height - offset;
             if (position === 'top') {
