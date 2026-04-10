@@ -1,11 +1,10 @@
 @use '../../../mixins/focus-state' as *;
-@use '../../../../../../typography/mixins/type-styles' as *;
 
 :host([role='listitem']) div {
   ::slotted(a),
   ::slotted(button) {
-    @include headline-07;
-
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     color: var(--tds-footer-main-links);
     text-decoration: none;
   }
@@ -23,8 +22,8 @@
   &.top-part-child {
     ::slotted(a),
     ::slotted(button) {
-      @include headline-07;
-
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
       color: var(--tds-footer-top-links);
     }
 

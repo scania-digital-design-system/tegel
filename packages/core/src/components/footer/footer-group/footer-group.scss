@@ -1,12 +1,11 @@
 @use '../../../mixins/focus-state' as *;
-@use '../../../../../../typography/mixins/type-styles' as *;
 
 :host {
   display: block;
 
   .footer-top-title {
-    @include headline-07;
-
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     color: var(--tds-footer-top-links-header);
     padding-bottom: 8px;
 
@@ -19,8 +18,8 @@
   button.footer-top-title-button {
     border: none;
     width: 100%;
-    @include headline-07;
-
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     color: var(--tds-footer-top-links);
     background-color: transparent;
     text-align: left;
