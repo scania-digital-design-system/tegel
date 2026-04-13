@@ -16,16 +16,16 @@ export class TdsHeaderDropdown {
 
   /** The label of the button that opens the dropdown.
    * This is an alternative to the label slot. */
-  @Prop() label?: string;
+  @Prop({ reflect: true }) label?: string;
 
   /** If the dropdown icon (downwards chevron) should be hidden. */
-  @Prop() noDropdownIcon: boolean = false;
+  @Prop({ reflect: true }) noDropdownIcon: boolean = false;
 
   /** If the button that opens the dropdown should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** Value to be used by the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   @State() open: boolean = false;
 

@@ -50,58 +50,58 @@ export class TdsDropdown {
   @Element() host!: HTMLElement;
 
   /** Name for the Dropdowns input element. */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** Sets the Dropdown in a disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Helper text for the Dropdown. */
-  @Prop() helper?: string;
+  @Prop({ reflect: true }) helper?: string;
 
   /** Label text for the Dropdown. */
-  @Prop() label?: string;
+  @Prop({ reflect: true }) label?: string;
 
   /** Label text position */
-  @Prop() labelPosition?: 'inside' | 'outside';
+  @Prop({ reflect: true }) labelPosition?: 'inside' | 'outside';
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** The direction the Dropdown should open, auto if not specified. */
-  @Prop() openDirection: 'up' | 'down' | 'auto' = 'auto';
+  @Prop({ reflect: true }) openDirection: 'up' | 'down' | 'auto' = 'auto';
 
   /** Placeholder text for the Dropdown. */
-  @Prop() placeholder?: string;
+  @Prop({ reflect: true }) placeholder?: string;
 
   /** The size of the Dropdown. */
-  @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  @Prop() animation: 'none' | 'slide' = 'slide';
+  @Prop({ reflect: true }) animation: 'none' | 'slide' = 'slide';
 
   /** Sets the Dropdown in an error state */
-  @Prop() error: boolean = false;
+  @Prop({ reflect: true }) error: boolean = false;
 
   /** Enables multiselect in the Dropdown. */
-  @Prop() multiselect: boolean = false;
+  @Prop({ reflect: true }) multiselect: boolean = false;
 
   /** Enables filtration in the Dropdown. */
-  @Prop() filter: boolean = false;
+  @Prop({ reflect: true }) filter: boolean = false;
 
   /** Normalizes input text for fuzzier search */
-  @Prop() normalizeText: boolean = true;
+  @Prop({ reflect: true }) normalizeText: boolean = true;
 
   /** Text that is displayed if filter is used and there are no options that matches the search.
    * Setting it to an empty string disables message from showing up. */
-  @Prop() noResultText?: string = 'No result';
+  @Prop({ reflect: true }) noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
-  @Prop() defaultValue?: string | number;
+  @Prop({ reflect: true }) defaultValue?: string | number;
 
   /** Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number. */
   @Prop({ mutable: true }) value: string | number | (string | number)[] | null = null;
 
   /** Defines aria-label attribute for input */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   @State() open: boolean = false;
 

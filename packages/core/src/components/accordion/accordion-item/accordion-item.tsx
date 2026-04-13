@@ -13,19 +13,19 @@ import generateUniqueId from '../../../utils/generateUniqueId';
 })
 export class TdsAccordionItem {
   /** The header gives users the context about the additional information available inside the panel */
-  @Prop() header: string = '';
+  @Prop({ reflect: true }) header: string = '';
 
   /** Changes position of the expand icon. */
-  @Prop() expandIconPosition: 'start' | 'end' = 'end';
+  @Prop({ reflect: true }) expandIconPosition: 'start' | 'end' = 'end';
 
   /** Disabled option in `boolean`. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Set to true to expand panel open */
   @Prop({ reflect: true }) expanded: boolean = false;
 
   /** When true, 16px on right padding instead of 64px */
-  @Prop() paddingReset: boolean = false;
+  @Prop({ reflect: true }) paddingReset: boolean = false;
 
   /** Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. */
   @Prop() ariaLevelValue: '1' | '2' | '3' | '4' | '5' | '6' = '6';

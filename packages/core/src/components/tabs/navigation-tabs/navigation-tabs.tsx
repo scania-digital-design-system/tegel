@@ -23,10 +23,10 @@ export class TdsNavigationTabs {
   @Element() host!: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
-  @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = 'primary';
 
   /** Sets the default selected Tab. */
-  @Prop() defaultSelectedIndex: number = 0;
+  @Prop({ reflect: true }) defaultSelectedIndex: number = 0;
 
   /** Sets the selected Tab.
    * If this is set, all Tab changes need to be handled by the user. */
@@ -36,10 +36,10 @@ export class TdsNavigationTabs {
   @Prop({ reflect: true }) leftPadding: number = 32;
 
   /** Defines aria-label on left scroll button */
-  @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
+  @Prop({ reflect: true }) tdsScrollLeftAriaLabel: string = 'Scroll left';
 
   /** Defines aria-label on right scroll button */
-  @Prop() tdsScrollRightAriaLabel: string = 'Scroll right';
+  @Prop({ reflect: true }) tdsScrollRightAriaLabel: string = 'Scroll right';
 
   @State() showLeftScroll: boolean = false;
 
@@ -130,6 +130,7 @@ export class TdsNavigationTabs {
   }
 
   private addResizeObserver = (): void => {
+    if (typeof ResizeObserver === 'undefined') return;
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
@@ -220,19 +221,12 @@ export class TdsNavigationTabs {
     }
   }
 
-  private applyCustomLeftPadding(): void {
-    if (this.navWrapperElement) {
-      this.navWrapperElement.style.paddingLeft = `${this.leftPadding}px`;
-    }
-  }
-
   private handleSlotChange(): void {
     this.initializeTabs();
     this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
-    this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
   }
 
   connectedCallback(): void {
@@ -257,13 +251,13 @@ export class TdsNavigationTabs {
       <Host
         role="tablist"
         class={{ [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null }}
+        style={{ '--padding-left': `${this.leftPadding}px` }}
       >
         <div
           class="wrapper"
           ref={(el) => {
             this.navWrapperElement = el as HTMLElement;
           }}
-          style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
             aria-label={this.tdsScrollLeftAriaLabel}

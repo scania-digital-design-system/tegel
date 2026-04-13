@@ -15,37 +15,37 @@ export class TdsButton {
   @Element() host!: HTMLElement;
 
   /** Text displayed inside the Button */
-  @Prop() text?: string;
+  @Prop({ reflect: true }) text?: string;
 
   /** Button's type */
-  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
+  @Prop({ reflect: true }) type: 'button' | 'submit' | 'reset' = 'button';
 
   /** Variation of Button's design */
-  @Prop() variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
+  @Prop({ reflect: true }) variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
 
   /** Size of a Button */
-  @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
   /** Control for disabled state of a component */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** When enabled, the Button takes 100% width */
-  @Prop() fullbleed: boolean = false;
+  @Prop({ reflect: true }) fullbleed: boolean = false;
 
   /** Set the mode variant of the Button. */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Determines if and how the button should animate. */
-  @Prop() animation: 'none' | 'fade' = 'none';
+  @Prop({ reflect: true }) animation: 'none' | 'fade' = 'none';
 
   /** The value to be used for the aria-label attribute if onlyIcon is set to true */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** The name attribute allows for different ways of accessing the button element */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** The value attribute can be used when handling a form submission */
-  @Prop() value?: string;
+  @Prop({ reflect: true }) value?: string;
 
   @State() onlyIcon: boolean = false;
 

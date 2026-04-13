@@ -25,26 +25,26 @@ export class TdsStepper {
   @Element() host!: HTMLElement;
 
   /** The orientation the Steps */
-  @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @Prop({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Text position, only available on a direction: horizontal */
-  @Prop() labelPosition: 'aside' | 'below' = 'below';
+  @Prop({ reflect: true }) labelPosition: 'aside' | 'below' = 'below';
 
   /** Size of the component and it's children. */
-  @Prop() size: 'sm' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** Hides the label for the child components if true. */
-  @Prop() hideLabels: boolean = false;
+  @Prop({ reflect: true }) hideLabels: boolean = false;
 
   /** ID used for internal Stepper functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for Stepper events, you need to set this ID yourself to identify the Stepper,
    * as the default ID is random and will be different every time.
    */
-  @Prop() stepperId: string = generateUniqueId();
+  @Prop({ reflect: true }) stepperId: string = generateUniqueId();
 
   /** Label for the stepper component, for screen reader users */
-  @Prop() tdsAriaLabel: string = 'Progress steps';
+  @Prop({ reflect: true }) tdsAriaLabel: string = 'Progress steps';
 
   componentWillLoad() {
     if (this.orientation === 'vertical') {

@@ -14,10 +14,10 @@ export class TdsHeaderItem {
 
   /** If the button should appear active. Can be used when the button is
    * triggering a dropdown, and the dropdown is open, for example. */
-  @Prop() active: boolean = false;
+  @Prop({ reflect: true }) active: boolean = false;
 
   /** If the button should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   private slotEl: HTMLSlotElement | null | undefined;
 

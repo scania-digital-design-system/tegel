@@ -7,10 +7,10 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class TdsSpinner {
   /** Size of the Spinner */
-  @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
   /** Variant of the Spinner */
-  @Prop() variant: 'standard' | 'inverted' = 'standard';
+  @Prop({ reflect: true }) variant: 'standard' | 'inverted' = 'standard';
 
   render() {
     return (

@@ -24,31 +24,31 @@ export class TdsCheckbox {
   @Element() host!: HTMLElement;
 
   /** Name for the Checkbox's input element. */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** ID for the Checkbox's input element. Randomly generated if not specified. */
-  @Prop() checkboxId: string = generateUniqueId();
+  @Prop({ reflect: true }) checkboxId: string = generateUniqueId();
 
   /** Sets the Checkbox in a disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Make the Checkbox required */
-  @Prop() required: boolean = false;
+  @Prop({ reflect: true }) required: boolean = false;
 
   /** Sets the Checkbox as checked */
   @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Sets the Checkbox as indeterminate */
-  @Prop({ mutable: true }) indeterminate: boolean = false;
+  @Prop({ reflect: true, mutable: true }) indeterminate: boolean = false;
 
   /** Value for the Checkbox */
-  @Prop() value?: string;
+  @Prop({ reflect: true }) value?: string;
 
   /** Value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Value to be used for the aria-describedby attribute */
-  @Prop() tdsAriaDescribedby?: string;
+  @Prop({ reflect: true }) tdsAriaDescribedby?: string;
 
   private inputElement!: HTMLInputElement;
 

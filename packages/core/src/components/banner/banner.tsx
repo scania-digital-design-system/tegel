@@ -17,23 +17,23 @@ export class TdsBanner {
   @Element() host!: HTMLElement;
 
   /** Name of the icon for the component. For error and information variant, the icon is predefined. */
-  @Prop() icon?: IconNames;
+  @Prop({ reflect: true }) icon?: IconNames;
 
   /** Header text. */
-  @Prop() header?: string;
+  @Prop({ reflect: true }) header?: string;
 
   /** Subheader text. */
-  @Prop() subheader?: string;
+  @Prop({ reflect: true }) subheader?: string;
 
   /** Variant of Banner */
-  @Prop() variant: 'error' | 'information' | 'default' = 'default';
+  @Prop({ reflect: true }) variant: 'error' | 'information' | 'default' = 'default';
 
   /** ID used for internal table functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for Banner close events, you need to set this ID yourself to identify the Banner,
    * as the default ID is random and will be different every time.
    */
-  @Prop() bannerId: string = generateUniqueId();
+  @Prop({ reflect: true }) bannerId: string = generateUniqueId();
 
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
@@ -41,7 +41,7 @@ export class TdsBanner {
   /** Defines the ARIA role of the banner. Defaults to "banner" for global use,
    * but can be set to "region" or "alert" if used differently.
    */
-  @Prop() roleType: 'banner' | 'region' | 'alert' = 'banner';
+  @Prop({ reflect: true }) roleType: 'banner' | 'region' | 'alert' = 'banner';
 
   /** Sends a unique Banner identifier when the close button is pressed. */
   @Event({

@@ -46,47 +46,47 @@ export class TdsDatePicker {
   };
 
   /** Set the variant of the Datepicker. */
-  @Prop() modeVariant?: 'primary' | 'secondary';
+  @Prop({ reflect: true }) modeVariant?: 'primary' | 'secondary';
 
   /** The selected date of the Datepicker */
-  @Prop({ mutable: true }) value: string = null;
+  @Prop({ reflect: true, mutable: true }) value: string = null;
 
   /** Minimum selectable date. */
-  @Prop() min?: string;
+  @Prop({ reflect: true }) min?: string;
 
   /** Maximim selectable date. */
-  @Prop() max?: string;
+  @Prop({ reflect: true }) max?: string;
 
   /** The variant of the Datepicker */
-  @Prop() variant: 'day' | 'month' | 'year' = 'day';
+  @Prop({ reflect: true }) variant: 'day' | 'month' | 'year' = 'day';
 
   /** ID used for internal Date Picker functionality and events, must be unique. */
-  @Prop() datePickerId: string = generateUniqueId();
+  @Prop({ reflect: true }) datePickerId: string = generateUniqueId();
 
   /** State of the Date Picker */
-  @Prop() state: 'error' | 'success' | 'default' = 'default';
+  @Prop({ reflect: true }) state: 'error' | 'success' | 'default' = 'default';
 
   /** Helper text for the Date Picker */
-  @Prop() helper?: string;
+  @Prop({ reflect: true }) helper?: string;
 
   /** Label text */
-  @Prop() label?: string;
+  @Prop({ reflect: true }) label?: string;
 
   /** Position of the label for the Text Field. */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Locale for displaying Months in a differnet language than enlish. Currently available: English, Swedish, German. */
-  @Prop() locale: 'en' | 'sv' | 'de' = 'en';
+  @Prop({ reflect: true }) locale: 'en' | 'sv' | 'de' = 'en';
 
   /** Sets which day the week starts on,  1 = Monday.
    * If this is used, you will also need to set a custom
    * weekDayLabels prop to correspond with this this
    * update.
    */
-  @Prop() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
+  @Prop({ reflect: true }) weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
 
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
-  @Prop() weekDayLabels: string = 'MTWTFSS';
+  @Prop({ reflect: true }) weekDayLabels: string = 'MTWTFSS';
 
   /** The currently displayed month (used for variant="day"). */
   @State() currentMonth = format(

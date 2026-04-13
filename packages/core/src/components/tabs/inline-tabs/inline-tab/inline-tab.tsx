@@ -12,7 +12,7 @@ export class TdsInlineTab {
   @Element() host!: HTMLElement;
 
   /** Disables the Tab. */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   @State() selected: boolean = false;
 

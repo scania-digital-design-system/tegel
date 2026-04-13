@@ -7,7 +7,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class TdsPopoverMenuItem {
   /** Disables the Popover Menu Item */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   render() {
     return (

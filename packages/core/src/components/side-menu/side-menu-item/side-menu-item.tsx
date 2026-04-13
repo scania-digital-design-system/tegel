@@ -14,11 +14,11 @@ export class TdsSideMenuItem {
   @Element() host!: HTMLTdsSideMenuItemElement;
 
   /** If the item should appear selected. */
-  @Prop() selected: boolean = false;
+  @Prop({ reflect: true }) selected: boolean = false;
 
   /** If the item should appear active. Can be used when the item is
    * triggering a dropdown, and the dropdown is open, for example. */
-  @Prop() active: boolean = false;
+  @Prop({ reflect: true }) active: boolean = false;
 
   @State() collapsed: boolean = false;
 
