@@ -1,11 +1,12 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
 
   display: inline-flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--tds-tag-border-radius);
   background-color: var(--tds-tag-neutral-background);
   color: var(--tds-tag-neutral-color);
   gap: 4px;
@@ -16,9 +17,10 @@
   }
 
   &.sm {
-    border-radius: 2px;
+    border-radius: var(--tds-tag-border-radius);
     padding: 2px 4px;
-    font: var(--tds-detail-05);
+
+    @include detail-05;
   }
 
   // Variant mode colors
