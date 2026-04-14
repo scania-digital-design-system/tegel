@@ -23,7 +23,7 @@
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
-  --component-badge-text-default: var(--traton-color-base-black);
+  --component-badge-text-default: var(--color-text-base);
 }
 
 .tds-mode-dark,
@@ -46,5 +46,5 @@
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
-  --component-badge-text-default: var(--traton-color-base-black);
+  --component-badge-text-default: var(--color-text-inverse-base);
 }

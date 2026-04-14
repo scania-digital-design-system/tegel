@@ -387,23 +387,23 @@
       }
     },
     "opacity": {
-      "0%": {
+      "0": {
         "$type": "number",
         "$value": 0
       },
-      "25%": {
+      "25": {
         "$type": "number",
         "$value": 25
       },
-      "50%": {
+      "50": {
         "$type": "number",
         "$value": 50
       },
-      "75%": {
+      "75": {
         "$type": "number",
         "$value": 75
       },
-      "100%": {
+      "100": {
         "$type": "number",
         "$value": 100
       }
@@ -862,28 +862,6 @@
         }
       }
     },
-    "opacity": {
-      "0%": {
-        "$type": "number",
-        "$value": 0
-      },
-      "25%": {
-        "$type": "number",
-        "$value": 25
-      },
-      "50%": {
-        "$type": "number",
-        "$value": 50
-      },
-      "75%": {
-        "$type": "number",
-        "$value": 75
-      },
-      "100%": {
-        "$type": "number",
-        "$value": 100
-      }
-    },
     "font": {
       "family": {
         "default": {
@@ -908,6 +886,28 @@
           "$type": "number",
           "$value": 400
         }
+      }
+    },
+    "opacity": {
+      "0": {
+        "$type": "number",
+        "$value": 0
+      },
+      "25": {
+        "$type": "number",
+        "$value": 25
+      },
+      "50": {
+        "$type": "number",
+        "$value": 50
+      },
+      "75": {
+        "$type": "number",
+        "$value": 75
+      },
+      "100": {
+        "$type": "number",
+        "$value": 100
       }
     },
     "unit": {
