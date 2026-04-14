@@ -1,21 +1,21 @@
 tds-chip {
-  --tds-chips-color: var(--component-chip-text-default);
-  --tds-chips-color-hover: var(--component-chip-text-hover);
+  --tds-chips-color: var(--component-chip-text-standard-default);
+  --tds-chips-color-hover: var(--component-chip-text-standard-hover);
   --tds-chips-color-active: var(--component-chip-text-selected-default);
   --tds-chips-color-active-hover: var(--component-chip-text-selected-hover);
-  --tds-chips-background: var(--component-chip-background-default);
-  --tds-chips-background-hover: var(--component-chip-background-hover);
-  --tds-chips-background-focus: var(--component-chip-background-hover);
+  --tds-chips-background: var(--component-chip-background-standard-default);
+  --tds-chips-background-hover: var(--component-chip-background-standard-hover);
+  --tds-chips-background-focus: var(--component-chip-background-standard-hover);
   --tds-chips-background-active: var(--component-chip-background-selected-default);
   --tds-chips-background-active-hover: var(--component-chip-background-selected-hover);
-  --tds-chips-border: var(--component-chip-border-default);
-  --tds-chips-border-hover: var(--component-chip-border-hover);
-  --tds-chips-border-active: var(--component-chip-border-active);
+  --tds-chips-border: var(--component-chip-border-standard-default);
+  --tds-chips-border-hover: var(--component-chip-border-standard-hover);
+  --tds-chips-border-active: var(--component-chip-border-standard-active);
   --tds-chips-border-selected: var(--component-chip-border-selected-default);
   --tds-chips-border-selected-hover: var(--component-chip-border-selected-hover);
   --tds-chips-border-selected-active: var(--component-chip-border-selected-active);
   --tds-chips-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
-  --tds-chips-opacity-disabled: var(--component-chip-opacity-disabled);
-  --tds-chips-icon-fill: var(--component-chip-text-default);
-  --tds-chips-icon-fill-active: var(--component-chip-text-selected-default);
+  --tds-chips-opacity-disabled: calc(var(--component-chip-opacity-disabled) / 100);
+  --tds-chips-icon-fill: var(--component-chip-icon-default);
+  --tds-chips-icon-fill-active: var(--component-chip-icon-selected-default);
 }
