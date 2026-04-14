@@ -7,15 +7,16 @@
 
 ## Properties
 
-| Property                           | Attribute                               | Description                                                                                                                | Type                       | Default        |
-| ---------------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------- | -------------- |
-| `cols`                             | `cols`                                  | <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. | `null \| number`           | `null`         |
-| `pages`                            | `pages`                                 | Sets the number of pages.                                                                                                  | `number`                   | `0`            |
-| `pagination`                       | `pagination`                            | Enable pagination and show pagination controls                                                                             | `boolean`                  | `false`        |
-| `paginationValue`                  | `pagination-value`                      | Sets the pagination number.                                                                                                | `number`                   | `1`            |
-| `rowsPerPageDropdownOpenDirection` | `rows-per-page-dropdown-open-direction` | Set rows per page dropdown open direction                                                                                  | `"auto" \| "down" \| "up"` | `'auto'`       |
-| `rowsPerPageValues`                | --                                      | Set available rows per page values                                                                                         | `number[]`                 | `[10, 25, 50]` |
-| `rowsperpage`                      | `rowsperpage`                           | Enable rows per page dropdown                                                                                              | `boolean`                  | `true`         |
+| Property                           | Attribute                               | Description                                                                                                                | Type                       | Default                     |
+| ---------------------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------- |
+| `cols`                             | `cols`                                  | <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. | `null \| number`           | `null`                      |
+| `pages`                            | `pages`                                 | Sets the number of pages.                                                                                                  | `number`                   | `0`                         |
+| `pagination`                       | `pagination`                            | Enable pagination and show pagination controls                                                                             | `boolean`                  | `false`                     |
+| `paginationValue`                  | `pagination-value`                      | Sets the pagination number.                                                                                                | `number`                   | `1`                         |
+| `rowsPerPageDropdownOpenDirection` | `rows-per-page-dropdown-open-direction` | Set rows per page dropdown open direction                                                                                  | `"auto" \| "down" \| "up"` | `'auto'`                    |
+| `rowsPerPageValue`                 | `rows-per-page-value`                   |                                                                                                                            | `number`                   | `this.rowsPerPageValues[0]` |
+| `rowsPerPageValues`                | --                                      | Set available rows per page values                                                                                         | `number[]`                 | `[10, 25, 50]`              |
+| `rowsperpage`                      | `rowsperpage`                           | Enable rows per page dropdown                                                                                              | `boolean`                  | `true`                      |
 
 
 ## Events

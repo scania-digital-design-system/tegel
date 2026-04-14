@@ -64,6 +64,14 @@ export default {
         max: 1000,
       },
     },
+    rowsPerPageValue: {
+      name: 'Rows per page value',
+      description:
+        'Number of rows displayed in a page as selected in the dropdown list of "Rows per page values"',
+      control: {
+        type: 'number',
+      },
+    },
     rowsPerPage: {
       name: 'Rows per page',
       description: 'Show/hide rows per page dropdown in footer',

@@ -50,6 +50,9 @@ export class TdsTableFooter {
   /** <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. */
   @Prop() cols: number | null = null;
 
+  /* Sets the number of rows that should appear per page. */
+  @Prop({ mutable: true }) rowsPerPageValue: number = this.rowsPerPageValues[0];
+
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
   @State() columnsNumber: number = 0;
 
@@ -67,8 +70,6 @@ export class TdsTableFooter {
   @State() tableId: string | undefined = '';
 
   @State() horizontalScrollWidth: string | null = null;
-
-  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
   @Element() host!: HTMLElement;
 
@@ -148,6 +149,8 @@ export class TdsTableFooter {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
+
+    this.rowsPerPageValue = this.rowsPerPageValues[0];
 
     this.storeLastCorrectValue(this.paginationValue);
 
@@ -243,11 +246,16 @@ export class TdsTableFooter {
     this.storeLastCorrectValue(this.paginationValue);
   }
 
+  @Watch('pages')
+  pagesChange(newValue: number) {
+    if (this.paginationValue > newValue) {
+      this.paginationValue = this.pages;
+      this.emitTdsPagination();
+    }
+  }
+
   private rowsPerPageChange(event) {
     this.rowsPerPageValue = parseInt(event.detail.value);
-    if (this.paginationValue > this.pages) {
-      this.paginationValue = this.pages;
-    }
     this.emitTdsPagination();
   }
 
@@ -281,7 +289,7 @@ export class TdsTableFooter {
                         id="rows-dropdown"
                         class="page-dropdown"
                         size="xs"
-                        defaultValue={`${this.rowsPerPageValues[0]}`}
+                        defaultValue={`${this.rowsPerPageValue}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                         openDirection={this.rowsPerPageDropdownOpenDirection}
                       >
