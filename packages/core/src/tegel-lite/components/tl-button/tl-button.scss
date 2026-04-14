@@ -34,11 +34,8 @@
     }
 
     &:disabled {
-      background-color: var(--button-primary-background-disabled);
-      color: var(--button-primary-color-disabled);
-      border-color: var(--button-primary-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -69,11 +66,8 @@
     }
 
     &:disabled {
-      background-color: var(--button-secondary-background-disabled);
-      color: var(--button-secondary-color-disabled);
-      border-color: var(--button-secondary-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -102,9 +96,8 @@
     }
 
     &:disabled {
-      color: var(--button-ghost-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -133,11 +126,8 @@
     }
 
     &:disabled {
-      background-color: var(--button-danger-background-disabled);
-      color: var(--button-danger-color-disabled);
-      border-color: var(--button-danger-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {

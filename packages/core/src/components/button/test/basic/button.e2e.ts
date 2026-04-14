@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/button/test/basic/index.html';
 const componentName = 'tds-button';
 const testDescription = 'tds-button-basic';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
