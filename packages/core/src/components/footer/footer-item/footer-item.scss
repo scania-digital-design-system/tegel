@@ -34,7 +34,7 @@
   }
 }
 
-@media all and (max-width: 992px) {
+@media all and (width <= 992px) {
   :host([role='listitem']) div.top-part-child {
     border-bottom: 1px solid var(--tds-footer-top-divider);
 
