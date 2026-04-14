@@ -17,25 +17,25 @@ export class TdsToggle {
   @Prop({ reflect: true }) checked: boolean = false;
 
   /** Make the Toggle required */
-  @Prop() required: boolean = false;
+  @Prop({ reflect: true }) required: boolean = false;
 
   /** Size of the Toggle */
-  @Prop() size: 'sm' | 'lg' = 'lg';
+  @Prop({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** Name of the toggle's input element */
-  @Prop() name?: string;
+  @Prop({ reflect: true }) name?: string;
 
   /** Headline for the Toggle */
-  @Prop() headline?: string;
+  @Prop({ reflect: true }) headline?: string;
 
   /** Sets the Toggle in a disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** ID of the Toggle's input element, if not specified, it's randomly generated */
-  @Prop() toggleId: string = generateUniqueId();
+  @Prop({ reflect: true }) toggleId: string = generateUniqueId();
 
   /** Defines aria-label attribute for input */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   private labelSlot!: HTMLElement | null;
 

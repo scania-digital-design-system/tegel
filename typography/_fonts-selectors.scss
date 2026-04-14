@@ -1,0 +1,109 @@
+@use 'mixins/type-styles' as *;
+
+.tds-headline-01 {
+  @include headline-01;
+}
+
+.tds-headline-02 {
+  @include headline-02;
+}
+
+.tds-headline-03 {
+  @include headline-03;
+}
+
+.tds-headline-04 {
+  @include headline-04;
+}
+
+.tds-headline-05 {
+  @include headline-05;
+}
+
+.tds-headline-06 {
+  @include headline-06;
+}
+
+.tds-headline-07 {
+  @include headline-07;
+}
+
+.tds-paragraph-01 {
+  @include paragraph-01;
+}
+
+.tds-paragraph-02 {
+  @include paragraph-02;
+}
+
+.tds-body-01 {
+  @include body-01;
+}
+
+.tds-body-02 {
+  @include body-02;
+}
+
+.tds-detail-01 {
+  @include detail-01;
+}
+
+.tds-detail-02 {
+  @include detail-02;
+}
+
+.tds-detail-03 {
+  @include detail-03;
+}
+
+.tds-detail-04 {
+  @include detail-04;
+}
+
+.tds-detail-05 {
+  @include detail-05;
+}
+
+.tds-detail-06 {
+  @include detail-06;
+}
+
+.tds-detail-07 {
+  @include detail-07;
+}
+
+.tds-expressive-headline-01 {
+  @include expressive-headline-01;
+}
+
+.tds-expressive-headline-02 {
+  @include expressive-headline-02;
+}
+
+h1 {
+  @include headline-01;
+}
+
+h2 {
+  @include headline-02;
+}
+
+h3 {
+  @include headline-03;
+}
+
+h4 {
+  @include headline-04;
+}
+
+h5 {
+  @include headline-05;
+}
+
+h6 {
+  @include headline-06;
+}
+
+.h7 {
+  @include headline-07;
+}

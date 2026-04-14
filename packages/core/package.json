@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.49.2",
+  "version": "1.51.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -379,7 +379,8 @@
   "scripts": {
     "build:css": "node scripts/build-css.js",
     "watch:css": "node scripts/build-css.js --watch",
-    "build:core": "stencil build && stencil build --docs && npm run build:css",
+    "verify:csp": "node scripts/verify-csp.mjs",
+    "build:core": "stencil build && stencil build --docs && npm run build:css && npm run verify:csp",
     "build": "npm run build:core && npm run build:tegel-lite",
     "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
@@ -403,7 +404,7 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
-    "@stencil/core": "4.42.0",
+    "@stencil/core": "4.43.0",
     "date-fns": "2.30.0",
     "vite": "^7.2.0"
   },

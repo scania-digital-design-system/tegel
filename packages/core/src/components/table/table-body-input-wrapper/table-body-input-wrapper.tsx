@@ -12,7 +12,7 @@ export class TdsTableBodyInputWrapper {
   @Element() host!: HTMLElement;
 
   /** Controls if the edit icon is shown */
-  @Prop() showIcon: boolean = true;
+  @Prop({ reflect: true }) showIcon: boolean = true;
 
   @State() renderSlot: boolean = true;
 

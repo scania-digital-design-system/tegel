@@ -24,12 +24,4 @@
 @use '../../../../typography/tokens/typography-scania' as *;
 @use '../../../../typography/scania-fonts' as *;
 @use '../../../../typography/scania-fonts-vars' as *;
-@use '../../../../typography/scania-fonts-selectors' as *;
-
-/* Scania primitive icon tokens */
-@use '../../../../tokens/scss/scania/scania-icons-primitive' with (
-  $local-assets: './assets'
-);
-
-/* Scania icon tokens */
-@use '../../../../tokens/scss/scania/scania-icons' as *;
+@use '../../../../typography/fonts-selectors' as *;

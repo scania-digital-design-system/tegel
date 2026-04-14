@@ -14,10 +14,10 @@ export class TdsFooterGroup {
   @Element() host!: HTMLElement;
 
   /** Title text for the link group, only valid on top part of Footer. */
-  @Prop() titleText?: string;
+  @Prop({ reflect: true }) titleText?: string;
 
   /** Value to be used for the aria-label attribute for the nav element wrapping the list. Should be unique for accessibility. */
-  @Prop() tdsListAriaLabel?: string;
+  @Prop({ reflect: true }) tdsListAriaLabel?: string;
 
   /** In mobile, this indicates when the group (if it's in the top part) is opened/closed. */
   @State() open: boolean = false;

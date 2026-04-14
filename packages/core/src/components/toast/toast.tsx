@@ -16,31 +16,31 @@ export class TdsToast {
   @Element() host!: HTMLElement;
 
   /** ID for the Toast. Randomly generated if not specified. */
-  @Prop() toastId: string = generateUniqueId();
+  @Prop({ reflect: true }) toastId: string = generateUniqueId();
 
   /** Header text for the component. */
-  @Prop() header?: string;
+  @Prop({ reflect: true }) header?: string;
 
   /** Subheader text for the component. */
-  @Prop() subheader?: string;
+  @Prop({ reflect: true }) subheader?: string;
 
   /** Type of Toast. */
-  @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
+  @Prop({ reflect: true }) variant: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Hides the Toast. */
   @Prop({ reflect: true }) hidden: boolean = false;
 
   /** Enables the close button. */
-  @Prop() closable: boolean = true;
+  @Prop({ reflect: true }) closable: boolean = true;
 
   /** ARIA role for the Toast. */
-  @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
+  @Prop({ reflect: true }) toastRole: 'alert' | 'log' | 'status' = 'alert';
 
   /** Provides an accessible name for the components close button */
-  @Prop() tdsCloseAriaLabel?: string;
+  @Prop({ reflect: true }) tdsCloseAriaLabel?: string;
 
   /** ARIA live for the Toast. */
-  @Prop() tdsAriaLive: 'polite' | 'assertive' = 'polite';
+  @Prop({ reflect: true }) tdsAriaLive: 'polite' | 'assertive' = 'polite';
 
   /** Hides the Toast. */
   @Method()

@@ -32,50 +32,50 @@ export class TdsDateRangePicker {
   private format = 'yyyy-MM-dd';
 
   /** Set the variant of the Datepicker. */
-  @Prop() modeVariant?: 'primary' | 'secondary';
+  @Prop({ reflect: true }) modeVariant?: 'primary' | 'secondary';
 
   /** The selected start date for the Date Range Picker */
-  @Prop({ mutable: true }) startValue: string = null;
+  @Prop({ reflect: true, mutable: true }) startValue: string = null;
 
   /** The selected end date for the Date Range Picker */
-  @Prop({ mutable: true }) endValue?: string;
+  @Prop({ reflect: true, mutable: true }) endValue?: string;
 
   /** Label text for the Start Date */
-  @Prop() startDateLabel: string = format(startOfToday(), this.format);
+  @Prop({ reflect: true }) startDateLabel: string = format(startOfToday(), this.format);
 
   /** Label text for the End Date */
-  @Prop() endDateLabel?: string;
+  @Prop({ reflect: true }) endDateLabel?: string;
 
   /** Position of the label for the Text Fields. TODO: Should it be granular enough to chose differnet for each Text Field */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Helper text for the Start Date */
-  @Prop() startDateHelper?: string;
+  @Prop({ reflect: true }) startDateHelper?: string;
 
   /** Helper text for the End Date */
-  @Prop() endDateHelper?: string;
+  @Prop({ reflect: true }) endDateHelper?: string;
 
   /** Minimum selectable date. */
-  @Prop() min?: string;
+  @Prop({ reflect: true }) min?: string;
 
   /** Maximim selectable date. */
-  @Prop() max?: string;
+  @Prop({ reflect: true }) max?: string;
 
   /** ID used for internal Date Range Picker functionality and events, must be unique. */
-  @Prop() datePickerId: string = generateUniqueId();
+  @Prop({ reflect: true }) datePickerId: string = generateUniqueId();
 
   /** Sets which day the week starts on,  1 = Monday.
    * If this is used, you will also need to set a custom
    * weekDayLabels prop to correspond with this this
    * update.
    */
-  @Prop() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
+  @Prop({ reflect: true }) weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
 
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
-  @Prop() weekDayLabels: string = 'MTWTFSS';
+  @Prop({ reflect: true }) weekDayLabels: string = 'MTWTFSS';
 
   /** State of the Date Range Picker */
-  @Prop() state: 'error' | 'success' | 'default' = 'default';
+  @Prop({ reflect: true }) state: 'error' | 'success' | 'default' = 'default';
 
   /** The currently displayed month. */
   @State() currentMonth = format(

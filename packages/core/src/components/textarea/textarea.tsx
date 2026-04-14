@@ -17,55 +17,55 @@ export class TdsTextarea {
   private uuid: string = generateUniqueId();
 
   /** Label text */
-  @Prop() label: string = '';
+  @Prop({ reflect: true }) label: string = '';
 
   /** Name attribute */
-  @Prop() name: string = '';
+  @Prop({ reflect: true }) name: string = '';
 
   /** Helper text */
-  @Prop() helper?: string;
+  @Prop({ reflect: true }) helper?: string;
 
   /** Textarea cols attribute */
-  @Prop() cols?: number;
+  @Prop({ reflect: true }) cols?: number;
 
   /** Textarea rows attribute */
-  @Prop() rows?: number;
+  @Prop({ reflect: true }) rows?: number;
 
   /** Position of the label for the Textarea. */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+  @Prop({ reflect: true }) labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Placeholder text */
-  @Prop() placeholder: string = '';
+  @Prop({ reflect: true }) placeholder: string = '';
 
   /** Value of the input text */
-  @Prop() value: string = '';
+  @Prop({ reflect: true }) value: string = '';
 
   /** Set input in disabled state */
-  @Prop() disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean = false;
 
   /** Set input in readonly state */
-  @Prop() readOnly: boolean = false;
+  @Prop({ reflect: true }) readOnly: boolean = false;
 
   /** Hide the readonly icon */
-  @Prop() hideReadOnlyIcon: boolean = false;
+  @Prop({ reflect: true }) hideReadOnlyIcon: boolean = false;
 
   /** Error state of input */
-  @Prop() state: 'error' | 'success' | 'default' = 'default';
+  @Prop({ reflect: true }) state: 'error' | 'success' | 'default' = 'default';
 
   /** Max length of input */
-  @Prop() maxLength?: number;
+  @Prop({ reflect: true }) maxLength?: number;
 
   /** Mode variant of the Textarea */
-  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Control of autofocus */
-  @Prop() autofocus: boolean = false;
+  @Prop({ reflect: true }) autofocus: boolean = false;
 
   /** Unset minimum width of 208px. */
-  @Prop() noMinWidth: boolean = false;
+  @Prop({ reflect: true }) noMinWidth: boolean = false;
 
   /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
-  @Prop() tdsAriaLabel?: string;
+  @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;

@@ -1,0 +1,17 @@
+tds-spinner {
+  --spinner-background: var(--component-spinner-background-default);
+  --spinner-background-inverted: var(--component-spinner-background-default-inverse);
+  --spinner-speed: 1.8s;
+  --spinner-speed-lg: 2s;
+  --spinner-radius-xs: calc(var(--component-spinner-size-extra-small) / 2 * 1px);
+  --spinner-radius-sm: calc(var(--component-spinner-size-small) / 2 * 1px);
+  --spinner-radius-md: calc(var(--component-spinner-size-medium) / 2 * 1px);
+  --spinner-radius-lg: calc(var(--component-spinner-size-large) / 2 * 1px);
+  --spinner-radius: var(--spinner-radius-lg);
+  --spinner-stroke-width-xs: calc(var(--component-spinner-stroke-extra-small) * 1px);
+  --spinner-stroke-width-sm: calc(var(--component-spinner-stroke-small) * 1px);
+  --spinner-stroke-width-md: calc(var(--component-spinner-stroke-medium) * 1px);
+  --spinner-stroke-width-lg: calc(var(--component-spinner-stroke-large) * 1px);
+  --spinner-stroke-width: var(--spinner-stroke-width-lg);
+  --PI: 3.14159265358979;
+}

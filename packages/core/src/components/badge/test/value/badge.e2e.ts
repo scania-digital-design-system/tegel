@@ -1,14 +1,29 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
-test.describe('tds-badge', () => {
-  test('renders value badge correctly', async ({ page }) => {
-    await page.goto('src/components/badge/test/value/index.html');
+const componentTestPath = 'src/components/badge/test/value/index.html';
+const componentName = 'tds-badge';
+const testDescription = 'tds-badge';
 
-    (await page.locator('tds-badge').all()).forEach(async (element) => {
-      await expect(element).toHaveClass(/hydrated/);
+testConfigurations.basicWithBrandVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
     });
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    test('renders value badge correctly', async ({ page }) => {
+      await Promise.all(
+        (
+          await page.locator('tds-badge').all()
+        ).map((element) => expect(element).toHaveClass(/hydrated/)),
+      );
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
   });
 });
