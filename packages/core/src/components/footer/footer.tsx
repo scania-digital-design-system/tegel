@@ -18,13 +18,17 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
-  copyrightText: string = `Copyright © ${new Date().getFullYear()} Scania`;
+  private getBrandName(): string {
+    return document.documentElement.classList.contains('traton') ? 'Traton' : 'Scania';
+  }
 
   render() {
     const usesTopSlot = hasSlot('top', this.host);
     const usesStartSlot = hasSlot('start', this.host);
     const usesEndSlot = hasSlot('end', this.host);
     const usesCopyrightSlot = hasSlot('copyright', this.host);
+    const brandName = this.getBrandName();
+    const copyrightText = `Copyright © ${new Date().getFullYear()} ${brandName}`;
     return (
       <Host
         class={{
@@ -42,10 +46,10 @@ export class TdsFooter {
             )}
             <div class="footer-main-bottom">
               <small class="copyright">
-                {usesCopyrightSlot ? <slot name="copyright"></slot> : this.copyrightText}
+                {usesCopyrightSlot ? <slot name="copyright"></slot> : copyrightText}
               </small>
               <div class="brand">
-                <p>Scania</p>
+                <p>{brandName}</p>
               </div>
             </div>
           </div>

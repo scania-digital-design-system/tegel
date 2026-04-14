@@ -16,6 +16,10 @@ tds-footer {
   --tds-footer-main-divider: var(--component-footer-border-divider-default);
   --tds-footer-main-copyright: var(--component-footer-text-copyright-default);
 
+  // Logotype — default to Scania (white wordmark on dark footer background)
+  --tds-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  --tds-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+
   &.tds-mode-variant-primary {
     --tds-footer-top-background: var(--tds-footer-top-background-primary);
   }
@@ -23,4 +27,22 @@ tds-footer {
   &.tds-mode-variant-secondary {
     --tds-footer-top-background: var(--tds-footer-top-background-secondary);
   }
+}
+
+// Traton logotype — adapts to mode (light bg → black logo, dark bg → white logo)
+.traton tds-footer {
+  --tds-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --tds-footer-logotype-cdn: var(--traton-logotype-black-svg);
+}
+
+.traton .tds-mode-light tds-footer,
+.traton.tds-mode-light tds-footer {
+  --tds-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --tds-footer-logotype-cdn: var(--traton-logotype-black-svg);
+}
+
+.traton .tds-mode-dark tds-footer,
+.traton.tds-mode-dark tds-footer {
+  --tds-footer-logotype-local: var(--traton-logotype-white-svg-local);
+  --tds-footer-logotype-cdn: var(--traton-logotype-white-svg);
 }

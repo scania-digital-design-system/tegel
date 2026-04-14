@@ -22,3 +22,25 @@
     --footer-top-background: var(--footer-top-background-secondary);
   }
 }
+
+// Scania logotype (white wordmark — footer background is always dark blue)
+.scania .tl-footer {
+  --component-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  --component-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+}
+
+// Traton logotype — adapts to mode (light bg → black logo, dark bg → white logo)
+.traton .tl-mode-dark .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-white-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-white-svg);
+}
+
+.traton .tl-mode-light .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
+}
+
+.traton .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
+}
