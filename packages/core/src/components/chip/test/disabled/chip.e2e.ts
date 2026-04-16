@@ -9,7 +9,7 @@ import {
 const componentTestPath = 'src/components/chip/test/disabled/index.html';
 const componentName = 'tds-chip';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, 'tds-chip-checkbox'), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -31,7 +31,7 @@ testConfigurations.basic.forEach((config) => {
   });
 });
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, 'tds-chip-radio'), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -53,7 +53,7 @@ testConfigurations.basic.forEach((config) => {
   });
 });
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, 'tds-chip-button'), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
