@@ -289,6 +289,7 @@ export class TdsTableFooter {
                         id="rows-dropdown"
                         class="page-dropdown"
                         size="xs"
+                        tdsAriaLabel="Select rows per page"
                         defaultValue={`${this.rowsPerPageValue}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                         openDirection={this.rowsPerPageDropdownOpenDirection}
