@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/chip/test/checkbox/index.html';
 const componentName = 'tds-chip';
 const testDescription = 'tds-chip-checkbox';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

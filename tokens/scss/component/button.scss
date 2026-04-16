@@ -2,7 +2,12 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-button-background-standard-primary-default: var(--scania-color-blue-600);
   --component-button-background-standard-primary-hover: var(--scania-color-blue-700);
   --component-button-background-standard-primary-active: var(--scania-color-blue-700);
@@ -64,7 +69,7 @@
   --component-button-icon-danger-tertiary-default: var(--color-system-danger-default);
   --component-button-icon-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-tertiary-active: var(--scania-color-red-600);
-  --component-button-opacity-disabled: var(--scania-opacity-25%);
+  --component-button-opacity-disabled: var(--scania-opacity-25);
   --component-button-text-standard-primary-default: var(--color-text-inverse-brand);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
@@ -91,7 +96,10 @@
   --component-button-text-danger-tertiary-active: var(--scania-color-red-600);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-button-background-standard-primary-default: #004852;
   --component-button-background-standard-primary-hover: #003137;
   --component-button-background-standard-primary-active: #002429;
@@ -161,7 +169,7 @@
   --component-button-icon-danger-tertiary-active: var(
     --component-button-text-danger-tertiary-default
   );
-  --component-button-opacity-disabled: var(--traton-opacity-25%);
+  --component-button-opacity-disabled: var(--traton-opacity-25);
   --component-button-text-standard-primary-default: #fff;
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
@@ -196,7 +204,11 @@
   );
 }
 
-.scania .tds-mode-dark {
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-button-background-standard-primary-default: var(--scania-color-blue-400);
   --component-button-background-standard-primary-hover: var(--scania-color-blue-500);
   --component-button-background-standard-primary-active: var(--scania-color-blue-600);
@@ -258,7 +270,7 @@
   --component-button-icon-danger-tertiary-default: var(--color-system-danger-default);
   --component-button-icon-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-tertiary-active: var(--scania-color-red-600);
-  --component-button-opacity-disabled: var(--scania-opacity-25%);
+  --component-button-opacity-disabled: var(--scania-opacity-25);
   --component-button-text-standard-primary-default: var(--color-text-brand);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
@@ -285,7 +297,10 @@
   --component-button-text-danger-tertiary-active: var(--scania-color-red-600);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-button-background-standard-primary-default: #c2bfb6;
   --component-button-background-standard-primary-hover: #d6d4c9;
   --component-button-background-standard-primary-active: #a6a49c;
@@ -355,7 +370,7 @@
   --component-button-icon-danger-tertiary-active: var(
     --component-button-text-danger-tertiary-default
   );
-  --component-button-opacity-disabled: var(--traton-opacity-25%);
+  --component-button-opacity-disabled: var(--traton-opacity-25);
   --component-button-text-standard-primary-default: #000;
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default

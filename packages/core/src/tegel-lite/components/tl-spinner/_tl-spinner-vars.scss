@@ -1,19 +1,17 @@
-@use '../../../../../../tokens/scss/component/spinner';
-
 /* Component variables  */
 .tl-spinner {
-  --tl-spinner-background: var(--component-spinner-color);
-  --tl-spinner-background-inverted: var(--color-brand-neutral-white);
+  --tl-spinner-background: var(--component-spinner-background-default);
+  --tl-spinner-background-inverted: var(--component-spinner-background-default-inverse);
   --tl-spinner-speed: 1.8s;
   --tl-spinner-speed-lg: 2s;
-  --tl-spinner-radius-xs: 8px;
-  --tl-spinner-radius-sm: 12px;
-  --tl-spinner-radius-md: 26px;
-  --tl-spinner-radius-lg: 42px;
-  --tl-spinner-stroke-width-xs: 3px;
-  --tl-spinner-stroke-width-sm: 4px;
-  --tl-spinner-stroke-width-md: 6px;
-  --tl-spinner-stroke-width-lg: 8px;
+  --tl-spinner-radius-xs: calc(var(--component-spinner-size-extra-small) / 2 * 1px);
+  --tl-spinner-radius-sm: calc(var(--component-spinner-size-small) / 2 * 1px);
+  --tl-spinner-radius-md: calc(var(--component-spinner-size-medium) / 2 * 1px);
+  --tl-spinner-radius-lg: calc(var(--component-spinner-size-large) / 2 * 1px);
+  --tl-spinner-stroke-width-xs: calc(var(--component-spinner-stroke-extra-small) * 1px);
+  --tl-spinner-stroke-width-sm: calc(var(--component-spinner-stroke-small) * 1px);
+  --tl-spinner-stroke-width-md: calc(var(--component-spinner-stroke-medium) * 1px);
+  --tl-spinner-stroke-width-lg: calc(var(--component-spinner-stroke-large) * 1px);
   --tl-spinner-PI: 3.14159265358979;
   --tl-spinner-radius: var(--tl-spinner-radius-lg);
   --tl-spinner-stroke-width: var(--tl-spinner-stroke-width-lg);
