@@ -123,6 +123,8 @@ export class TdsDropdown {
 
   private hasFocus: boolean = false;
 
+  private readonly pendingInvalidValues: Set<string> = new Set();
+
   private readonly uuid = generateUniqueId();
 
   @Watch('value')
@@ -132,7 +134,7 @@ export class TdsDropdown {
 
     /** Only update if actually changed */
     if (hasValueChanged(normalizedValue, this.selectedOptions)) {
-      this.updateDropdownStateFromUser(normalizedValue);
+      this.updateDropdownStateInternal(normalizedValue);
     }
   }
 
@@ -169,8 +171,8 @@ export class TdsDropdown {
   }
 
   private updateDropdownState(values: string[], emitChange: boolean = true) {
-    /** Validate the values first */
-    const validValues = this.validateValues(values);
+    /** Validate the values - only filter out invalid values for user-triggered changes */
+    const validValues = this.validateValues(values, emitChange);
 
     /** Update internal state */
     this.selectedOptions = [...validValues];
@@ -194,11 +196,9 @@ export class TdsDropdown {
     this.setValueAttribute();
   }
 
-  private validateValues(values: string[]): string[] {
-    /** Make sure we have children before validation */
+  private validateValues(values: string[], strict: boolean = false): string[] {
     const children = this.getChildren();
     if (!children || children.length === 0) {
-      console.warn('No dropdown options found');
       return values; /** Return original values if no children yet */
     }
 
@@ -206,10 +206,10 @@ export class TdsDropdown {
       const isValid = children.some(
         (element) => convertToString(element.value) === convertToString(val),
       );
-      if (!isValid) {
-        console.warn(`Option with value "${val}" does not exist`);
+      if (!isValid && strict) {
+        console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
       }
-      return isValid;
+      return isValid || !strict;
     });
   }
 
@@ -404,52 +404,67 @@ export class TdsDropdown {
 
   @Listen('keydown')
   async onKeyDown(event: KeyboardEvent) {
-    /** Get the active element */
     const { activeElement } = document;
     if (!activeElement) {
       return;
     }
 
-    const children = this.getChildren();
-    if (event.key === 'ArrowDown') {
-      /** Get the index of the current focus index, if there is no
-      nextElementSibling return the index for the first child in our Dropdown.  */
-
-      const startingIndex = activeElement.nextElementSibling
-        ? children.findIndex((element) => element === activeElement.nextElementSibling)
-        : 0;
-
-      if (children.length > 0) {
-        const elementIndex = findNextFocusableElement(children, startingIndex);
-        const target = typeof elementIndex === 'number' ? children[elementIndex] : children[0];
-        target?.focus();
-      }
-    } else if (event.key === 'ArrowUp') {
-      /** Get the index of the current focus index, if there is no
-      previousElementSibling return the index for the first last in our Dropdown.  */
-      const startingIndex = activeElement.nextElementSibling
-        ? this.getChildren().findIndex(
-            (element) => element === activeElement.previousElementSibling,
-          )
-        : 0;
-
-      if (children.length > 0) {
-        const elementIndex = findPreviousFocusableElement(children, startingIndex);
-        const target =
-          typeof elementIndex === 'number' ? children[elementIndex] : children[children.length - 1];
-        target?.focus();
-      }
-    } else if (event.key === 'Escape') {
-      this.open = false;
-      /** Return focus to input/button when Escape key is used */
-      if (this.filter) {
-        this.inputElement?.focus();
-      } else {
-        const button = this.host.shadowRoot?.querySelector('button');
-        button?.focus();
-      }
+    switch (event.key) {
+      case 'ArrowDown':
+        this.handleArrowDown(activeElement);
+        break;
+      case 'ArrowUp':
+        this.handleArrowUp(activeElement);
+        break;
+      case 'Escape':
+        this.handleEscape();
+        break;
+      default:
+        break;
     }
   }
+
+  private readonly handleArrowDown = (activeElement: Element) => {
+    const children = this.getChildren();
+    /** Get the index of the current focus index, if there is no
+    nextElementSibling return the index for the first child in our Dropdown.  */
+    const startingIndex = activeElement.nextElementSibling
+      ? children.findIndex((element) => element === activeElement.nextElementSibling)
+      : 0;
+
+    if (children.length > 0) {
+      const elementIndex = findNextFocusableElement(children, startingIndex);
+      const target = typeof elementIndex === 'number' ? children[elementIndex] : children[0];
+      target?.focus();
+    }
+  };
+
+  private readonly handleArrowUp = (activeElement: Element) => {
+    const children = this.getChildren();
+    /** Get the index of the current focus index, if there is no
+    previousElementSibling return the index for the first last in our Dropdown.  */
+    const startingIndex = activeElement.nextElementSibling
+      ? children.findIndex((element) => element === activeElement.previousElementSibling)
+      : 0;
+
+    if (children.length > 0) {
+      const elementIndex = findPreviousFocusableElement(children, startingIndex);
+      const target =
+        typeof elementIndex === 'number' ? children[elementIndex] : children[children.length - 1];
+      target?.focus();
+    }
+  };
+
+  private readonly handleEscape = () => {
+    this.open = false;
+    /** Return focus to input/button when Escape key is used */
+    if (this.filter) {
+      this.inputElement?.focus();
+    } else {
+      const button = this.host.shadowRoot?.querySelector('button');
+      button?.focus();
+    }
+  };
 
   /** If the Dropdown gets closed,
   this sets the value of the dropdown to the current selection labels or null if no selection is made. */
@@ -496,7 +511,52 @@ export class TdsDropdown {
 
   /** Method to handle slot changes */
   private handleSlotChange() {
-    this.setDefaultOption();
+    /**
+     * Warn for values that were pending from a previous slot change
+     * and are still invalid now that new options have arrived.
+     */
+    this.warnAndClearPending();
+
+    if (this.selectedOptions.length > 0) {
+      this.updateDropdownStateInternal([...this.selectedOptions]);
+    } else if (this.internalDefaultValue) {
+      this.setDefaultOption();
+    }
+
+    /** Track currently unmatched values as pending for the next slot change */
+    this.updatePendingInvalidValues();
+  }
+
+  /** Warn for pending values that are still not matched, then clear pending */
+  private warnAndClearPending() {
+    const children = this.getChildren();
+    if (!children || children.length === 0 || this.pendingInvalidValues.size === 0) return;
+
+    this.pendingInvalidValues.forEach((val) => {
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
+      if (!isValid) {
+        console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
+      }
+    });
+    this.pendingInvalidValues.clear();
+  }
+
+  /** Track unmatched selected values as pending for deferred warning */
+  private updatePendingInvalidValues() {
+    const children = this.getChildren();
+    if (!children || children.length === 0) return;
+
+    this.pendingInvalidValues.clear();
+    this.selectedOptions.forEach((val) => {
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
+      if (!isValid) {
+        this.pendingInvalidValues.add(val);
+      }
+    });
   }
 
   /** Method to check if we should normalize text */
@@ -504,7 +564,7 @@ export class TdsDropdown {
     return this.normalizeText ? text.normalize('NFD').replace(/\p{Diacritic}/gu, '') : text;
   }
 
-  private setDefaultOption = () => {
+  private readonly setDefaultOption = () => {
     if (this.internalDefaultValue) {
       /** Convert the internal default value to an array if it's not already */
       const defaultValues = this.multiselect
@@ -515,19 +575,12 @@ export class TdsDropdown {
     }
   };
 
-  private getChildren = () => {
-    const tdsDropdownOptions = Array.from(this.host.children).filter(
+  private readonly getChildren = () =>
+    Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
 
-    if (tdsDropdownOptions.length === 0) {
-      console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
-    }
-
-    return tdsDropdownOptions;
-  };
-
-  private getSelectedChildren = () => {
+  private readonly getSelectedChildren = () => {
     if (this.selectedOptions.length === 0) return [];
 
     return this.selectedOptions
@@ -541,12 +594,12 @@ export class TdsDropdown {
       .filter(Boolean);
   };
 
-  private getSelectedChildrenLabels = () =>
+  private readonly getSelectedChildrenLabels = () =>
     this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
       element.textContent?.trim(),
     );
 
-  private getValue = () => {
+  private readonly getValue = () => {
     const labels = this.getSelectedChildrenLabels();
     if (!labels) {
       return '';
@@ -554,7 +607,7 @@ export class TdsDropdown {
     return labels?.join(', ');
   };
 
-  private setValueAttribute = () => {
+  private readonly setValueAttribute = () => {
     if (this.selectedOptions.length === 0) {
       this.host.removeAttribute('value');
     } else {
@@ -562,7 +615,7 @@ export class TdsDropdown {
     }
   };
 
-  private getOpenDirection = () => {
+  private readonly getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
       const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
       const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
@@ -575,7 +628,7 @@ export class TdsDropdown {
     return this.openDirection;
   };
 
-  private handleToggleOpen = () => {
+  private readonly handleToggleOpen = () => {
     if (!this.disabled) {
       this.open = !this.open;
       if (this.open) {
@@ -591,11 +644,11 @@ export class TdsDropdown {
     }
   };
 
-  private focusInputElement = () => {
+  private readonly focusInputElement = () => {
     if (this.inputElement) this.inputElement.focus();
   };
 
-  private handleFilter = (event: InputEvent): void => {
+  private readonly handleFilter = (event: InputEvent): void => {
     const input = event.currentTarget as HTMLInputElement;
     if (
       this.multiselect &&
@@ -644,50 +697,56 @@ export class TdsDropdown {
     }
   };
 
-  private handleFilterReset = () => {
-    if (this.multiselect) {
-      /** Multiselect + filter: two-step clear */
-      if (this.filterQuery.length > 0) {
-        const clearedValue = this.filterQuery;
-        this.filterQuery = '';
-        this.resetFilterVisibility();
-        if (this.inputElement) {
-          this.inputElement.value = this.getValue();
-          this.inputElement.focus();
-        }
-        this.tdsClear.emit({ clearedValue });
-      } else if (this.selectedOptions.length > 0) {
-        const clearedValue = this.selectedOptions.join(',');
-        this.updateDropdownStateFromUser([]);
-        if (this.inputElement) {
-          this.inputElement.value = '';
-          this.inputElement.focus();
-        }
-        this.tdsClear.emit({ clearedValue });
-      }
-    } else {
-      /** Single select + filter: clear everything immediately */
-      const clearedParts: string[] = [];
-      if (this.filterQuery.length > 0) {
-        clearedParts.push(this.filterQuery);
-        this.filterQuery = '';
-        this.resetFilterVisibility();
-      }
-      if (this.selectedOptions.length > 0) {
-        clearedParts.push(this.selectedOptions.join(','));
-        this.updateDropdownStateFromUser([]);
-      }
-      if (this.inputElement) {
-        this.inputElement.value = '';
-        this.inputElement.focus();
-      }
-      if (clearedParts.length > 0) {
-        this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
-      }
+  private readonly focusInput = (value: string) => {
+    if (this.inputElement) {
+      this.inputElement.value = value;
+      this.inputElement.focus();
     }
   };
 
-  private resetFilterVisibility = () => {
+  private readonly handleFilterReset = () => {
+    if (this.multiselect) {
+      this.handleMultiselectFilterReset();
+    } else {
+      this.handleSingleFilterReset();
+    }
+  };
+
+  /** Multiselect + filter: two-step clear */
+  private readonly handleMultiselectFilterReset = () => {
+    if (this.filterQuery.length > 0) {
+      const clearedValue = this.filterQuery;
+      this.filterQuery = '';
+      this.resetFilterVisibility();
+      this.focusInput(this.getValue());
+      this.tdsClear.emit({ clearedValue });
+    } else if (this.selectedOptions.length > 0) {
+      const clearedValue = this.selectedOptions.join(',');
+      this.updateDropdownStateFromUser([]);
+      this.focusInput('');
+      this.tdsClear.emit({ clearedValue });
+    }
+  };
+
+  /** Single select + filter: clear everything immediately */
+  private readonly handleSingleFilterReset = () => {
+    const clearedParts: string[] = [];
+    if (this.filterQuery.length > 0) {
+      clearedParts.push(this.filterQuery);
+      this.filterQuery = '';
+      this.resetFilterVisibility();
+    }
+    if (this.selectedOptions.length > 0) {
+      clearedParts.push(this.selectedOptions.join(','));
+      this.updateDropdownStateFromUser([]);
+    }
+    this.focusInput('');
+    if (clearedParts.length > 0) {
+      this.tdsClear.emit({ clearedValue: clearedParts.join(',') });
+    }
+  };
+
+  private readonly resetFilterVisibility = () => {
     this.filterQuery = '';
     const children = this.getChildren();
     children.forEach((element) => {
@@ -696,13 +755,13 @@ export class TdsDropdown {
     this.filterResult = null;
   };
 
-  private handleMultiselectClear = () => {
+  private readonly handleMultiselectClear = () => {
     const clearedValue = this.selectedOptions.join(',');
     this.updateDropdownStateFromUser([]);
     this.tdsClear.emit({ clearedValue });
   };
 
-  private handleFocus = () => {
+  private readonly handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
     if (this.multiselect && this.filter) {
@@ -719,7 +778,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleBlur = () => {
+  private readonly handleBlur = () => {
     this.filterFocus = false;
     this.filterQuery = '';
     if (this.inputElement) {
@@ -731,7 +790,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleInputClick = () => {
+  private readonly handleInputClick = () => {
     if (this.multiselect && this.filter) {
       this.filterQuery = '';
       if (this.inputElement) {
@@ -765,7 +824,7 @@ export class TdsDropdown {
     }
   }
 
-  private resetInput = () => {
+  private readonly resetInput = () => {
     const inputEl = this.host.querySelector('input');
     if (inputEl) {
       this.reset();
