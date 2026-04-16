@@ -1,7 +1,7 @@
 tds-breadcrumbs {
-  --tds-breadcrumb-color: var(--color-text-strong);
-  --tds-breadcrumb-color-hover: var(--color-text-strong);
+  --tds-breadcrumb-color: var(--component-breadcrumbs-text-link-default);
+  --tds-breadcrumb-color-hover: var(--component-breadcrumbs-text-link-hover);
   --tds-breadcrumb-color-focus: var(--color-text-strong);
-  --tds-breadcrumb-color-current: var(--color-text-soft);
-  --tds-breadcrumb-separator-color: var(--color-text-strong);
+  --tds-breadcrumb-color-current: var(--component-breadcrumbs-text-current-default);
+  --tds-breadcrumb-separator-color: var(--component-breadcrumbs-text-separator-default);
 }

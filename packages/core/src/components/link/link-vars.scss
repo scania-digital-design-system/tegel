@@ -1,9 +1,10 @@
 tds-link {
-  --tds-link: var(--color-system-info-default);
-  --tds-link-hover: var(--color-system-info-default);
+  --tds-link: var(--component-link-text-accent-default);
+  --tds-link-hover: var(--component-link-text-accent-hover);
   --tds-link-focus: var(--color-system-info-default);
-  --tds-link-visited: var(--color-system-info-defined);
+  --tds-link-visited: var(--component-link-text-accent-visited);
   --tds-link-disabled: var(--color-text-disabled);
+  --tds-link-opacity-disabled: calc(var(--component-link-opacity-disabled) / 100);
 
   tds-icon {
     padding-bottom: 4px;
