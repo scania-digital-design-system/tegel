@@ -88,6 +88,7 @@ const valueMissing = (el: HTMLInputElement) => el.validity.valueMissing;
 test.describe.parallel('form-test', () => {
   test('fill-form-and-reset', async ({ page }) => {
     await page.goto(componentTestPath);
+    await page.evaluate(() => document.documentElement.classList.add('scania'));
 
     const submitButton = page.locator('tds-button[type="submit"]');
     const resetButton = page.locator('tds-button[type="reset"]');
@@ -113,6 +114,7 @@ test.describe.parallel('form-test', () => {
 
   test('click-submit-with-missing-required-inputs', async ({ page }) => {
     await page.goto(componentTestPath);
+    await page.evaluate(() => document.documentElement.classList.add('scania'));
     const submitButton = page.locator('tds-button[type="submit"]');
     await submitButton.click();
 
