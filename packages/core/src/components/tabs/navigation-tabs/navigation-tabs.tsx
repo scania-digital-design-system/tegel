@@ -221,19 +221,12 @@ export class TdsNavigationTabs {
     }
   }
 
-  private applyCustomLeftPadding(): void {
-    if (this.navWrapperElement) {
-      this.navWrapperElement.style.paddingLeft = `${this.leftPadding}px`;
-    }
-  }
-
   private handleSlotChange(): void {
     this.initializeTabs();
     this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
-    this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
   }
 
   connectedCallback(): void {
@@ -258,13 +251,13 @@ export class TdsNavigationTabs {
       <Host
         role="tablist"
         class={{ [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null }}
+        style={{ '--padding-left': `${this.leftPadding}px` }}
       >
         <div
           class="wrapper"
           ref={(el) => {
             this.navWrapperElement = el as HTMLElement;
           }}
-          style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
             aria-label={this.tdsScrollLeftAriaLabel}

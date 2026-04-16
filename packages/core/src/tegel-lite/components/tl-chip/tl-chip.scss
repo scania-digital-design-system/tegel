@@ -9,18 +9,21 @@
   gap: 8px;
   padding: 8px 16px;
   border-radius: var(--chip-border-radius);
-  border: none;
+  border: 1px solid var(--chip-border);
   background-color: var(--chip-background);
   color: var(--chip-text);
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out,
+  transition:
+    background-color 0.15s ease-in-out,
+    color 0.15s ease-in-out,
     outline-color 0.15s ease-in-out;
 
   &:hover {
     background-color: var(--chip-background-hover);
+    border-color: var(--chip-border-hover);
   }
 
   &:focus-visible {
@@ -45,9 +48,11 @@
   &--selected {
     background-color: var(--chip-background-active);
     color: var(--chip-text-active);
+    border-color: var(--chip-border-selected);
 
     &:hover {
       background-color: var(--chip-background-active-hover);
+      border-color: var(--chip-border-selected-hover);
     }
 
     &:focus-visible {
@@ -61,13 +66,7 @@
   &:disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background-color: var(--chip-background-disabled);
-    color: var(--chip-text-disabled);
-  }
-
-  &:disabled#{&}--selected {
-    background-color: var(--chip-background-active);
-    color: var(--chip-text-checked-disabled);
+    opacity: var(--chip-opacity-disabled);
   }
 
   &--lg.tl-chip--prefix:not(.tl-chip--suffix) {
