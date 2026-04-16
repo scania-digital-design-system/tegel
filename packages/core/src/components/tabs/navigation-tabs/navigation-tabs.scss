@@ -4,6 +4,8 @@
 :host {
   @include tds-box-sizing;
 
+  --padding-left: 0;
+
   display: flex;
   background-color: var(--tds-navigation-tabs-background);
   position: relative;
@@ -26,6 +28,7 @@
     overflow-x: scroll;
     scrollbar-width: none;
     gap: 16px;
+    padding-left: var(--padding-left);
 
     &::-webkit-scrollbar {
       display: none;
@@ -38,7 +41,7 @@
   }
 
   .scroll-left-button {
-    left: 0;
+    left: calc(0px - var(--padding-left));
     z-index: 1;
   }
 
@@ -74,10 +77,7 @@
     &:focus::before {
       content: '';
       position: absolute;
-      left: 3px;
-      right: 3px;
-      top: 3px;
-      bottom: 3px;
+      inset: 3px;
       @include tds-focus-state;
     }
 

@@ -2,28 +2,43 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-card-background-primary: #fff;
   --component-card-background-secondary: #fff;
   --component-card-border-radius-default: var(--scania-unit-4);
   --component-card-space-padding-default: var(--scania-unit-16);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-card-background-primary: var(--traton-color-transparent-invisible-light);
   --component-card-background-secondary: var(--traton-color-transparent-invisible-light);
   --component-card-border-radius-default: var(--traton-unit-0);
   --component-card-space-padding-default: var(--traton-unit-0);
 }
 
-.scania .tds-mode-dark {
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-card-background-primary: var(--color-background-layer-01);
   --component-card-background-secondary: var(--color-background-layer-02);
   --component-card-border-radius-default: var(--scania-unit-4);
   --component-card-space-padding-default: var(--scania-unit-16);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-card-background-primary: var(--traton-color-transparent-invisible-dark);
   --component-card-background-secondary: var(--traton-color-transparent-invisible-dark);
   --component-card-border-radius-default: var(--traton-unit-0);

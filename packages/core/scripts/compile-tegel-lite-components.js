@@ -15,11 +15,11 @@ const globalScss = path.resolve(dirName, '../src/global/tegel-lite-global.scss')
 const globalCss = path.resolve(dirName, '../../tegel-lite/dist/global.css'); // Output compiled global CSS
 
 // Define paths for Scania specific vars
-const scaniaVarsScss = path.resolve(dirName, '../src/global/scania-variables.scss'); // Source Scania vars SCSS
+const scaniaVarsScss = path.resolve(dirName, '../src/global/tegel-lite-scania-variables.scss'); // Source Scania vars SCSS
 const scaniaVarsCss = path.resolve(dirName, '../../tegel-lite/dist/scania-variables.css'); // Output compiled Scania vars CSS
 
 // Define paths for Traton specific vars
-const tratonVarsScss = path.resolve(dirName, '../src/global/traton-variables.scss'); // Source Traton vars SCSS
+const tratonVarsScss = path.resolve(dirName, '../src/global/tegel-lite-traton-variables.scss'); // Source Traton vars SCSS
 const tratonVarsCss = path.resolve(dirName, '../../tegel-lite/dist/traton-variables.css'); // Output compiled Traton vars CSS
 
 // Define paths for all components bundle
