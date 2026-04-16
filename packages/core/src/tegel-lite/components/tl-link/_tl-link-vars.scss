@@ -1,11 +1,14 @@
+@use '../../../../../../tokens/scss/component/link';
+
 /* Component variables */
 
 .tl-link {
-  --link: var(--color-system-info-default);
-  --link-hover: var(--color-system-info-default);
+  --link: var(--component-link-text-accent-default);
+  --link-hover: var(--component-link-text-accent-hover);
   --link-focus-outline-width: 2px;
-  --link-visited: var(--color-system-info-defined);
+  --link-visited: var(--component-link-text-accent-visited);
   --link-disabled: var(--color-text-disabled);
+  --link-opacity-disabled: calc(var(--component-link-opacity-disabled) / 100);
   --link-focus-outline-color: var(--color-system-info-default);
 }
 
