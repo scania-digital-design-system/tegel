@@ -1,38 +1,21 @@
-:root,
-.tds-mode-light {
-  --tds-chips-color: var(--tds-grey-950);
-  --tds-chips-color-active: var(--tds-white);
-  --tds-chips-background: var(--tds-grey-150);
-  --tds-chips-border: var(--tds-grey-350);
-  --tds-chips-border-hover: var(--tds-grey-800);
-  --tds-chips-border-selected-hover: var(--tds-grey-650);
-  --tds-chips-background-active: var(--tds-blue-400);
-  --tds-chips-background-disabled: var(--tds-grey-150);
-  --tds-chips-text-disabled: var(--tds-grey-250);
-  --tds-chips-text-checked-disabled: var(--tds-grey-300);
-  --tds-chips-background-active-disabled: var(--tds-blue-100);
-  --tds-chips-background-active-hover: var(--tds-blue-500);
-  --tds-chips-background-hover: var(--tds-grey-200);
-  --tds-chips-background-focus: var(--tds-grey-200);
-  --tds-chips-icon-fill: var(--tds-grey-950);
-  --tds-chips-icon-fill-active: var(--tds-white);
-}
-
-.tds-mode-dark {
-  --tds-chips-color: var(--tds-white);
-  --tds-chips-color-active: var(--tds-white);
-  --tds-chips-background: var(--tds-grey-800);
-  --tds-chips-border: var(--tds-grey-400);
-  --tds-chips-border-hover: var(--tds-grey-150);
-  --tds-chips-border-selected-hover: var(--tds-grey-200);
-  --tds-chips-background-active: var(--tds-blue-400);
-  --tds-chips-background-disabled: var(--tds-grey-850);
-  --tds-chips-text-disabled: var(--tds-grey-500);
-  --tds-chips-text-checked-disabled: var(--tds-grey-500);
-  --tds-chips-background-active-disabled: var(--tds-blue-700);
-  --tds-chips-background-active-hover: var(--tds-blue-500);
-  --tds-chips-background-hover: var(--tds-grey-750);
-  --tds-chips-background-focus: var(--tds-grey-750);
-  --tds-chips-icon-fill: var(--tds-white);
-  --tds-chips-icon-fill-active: var(--tds-white);
+tds-chip {
+  --tds-chips-color: var(--component-chip-text-default);
+  --tds-chips-color-hover: var(--component-chip-text-hover);
+  --tds-chips-color-active: var(--component-chip-text-selected-default);
+  --tds-chips-color-active-hover: var(--component-chip-text-selected-hover);
+  --tds-chips-background: var(--component-chip-background-default);
+  --tds-chips-background-hover: var(--component-chip-background-hover);
+  --tds-chips-background-focus: var(--component-chip-background-hover);
+  --tds-chips-background-active: var(--component-chip-background-selected-default);
+  --tds-chips-background-active-hover: var(--component-chip-background-selected-hover);
+  --tds-chips-border: var(--component-chip-border-default);
+  --tds-chips-border-hover: var(--component-chip-border-hover);
+  --tds-chips-border-active: var(--component-chip-border-active);
+  --tds-chips-border-selected: var(--component-chip-border-selected-default);
+  --tds-chips-border-selected-hover: var(--component-chip-border-selected-hover);
+  --tds-chips-border-selected-active: var(--component-chip-border-selected-active);
+  --tds-chips-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
+  --tds-chips-opacity-disabled: var(--component-chip-opacity-disabled);
+  --tds-chips-icon-fill: var(--component-chip-text-default);
+  --tds-chips-icon-fill-active: var(--component-chip-text-selected-default);
 }

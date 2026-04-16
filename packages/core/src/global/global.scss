@@ -6,6 +6,31 @@
 @use '../../../../color/scania-color-primitives' as *;
 @use '../../../../color/scania-brand-usage' as *;
 
+/* Figma design tokens: primitives + semantic colors */
+@use '../../../../tokens/scss/scania/primitive' as *;
+@use '../../../../tokens/scss/scania/color-light' as *;
+@use '../../../../tokens/scss/scania/color-dark' as *;
+@use '../../../../tokens/scss/traton/color-light' as *;
+@use '../../../../tokens/scss/traton/color-dark' as *;
+
+/* Figma design tokens: component tokens */
+@use '../../../../tokens/scss/component/badge' as *;
+@use '../../../../tokens/scss/component/button' as *;
+@use '../../../../tokens/scss/component/card' as *;
+@use '../../../../tokens/scss/component/chip' as *;
+@use '../../../../tokens/scss/component/cookie' as *;
+@use '../../../../tokens/scss/component/dropdown' as *;
+@use '../../../../tokens/scss/component/footer' as *;
+@use '../../../../tokens/scss/component/header' as *;
+@use '../../../../tokens/scss/component/input-field' as *;
+@use '../../../../tokens/scss/component/logo' as *;
+@use '../../../../tokens/scss/component/shadow' as *;
+@use '../../../../tokens/scss/component/side-menu' as *;
+@use '../../../../tokens/scss/component/spinner' as *;
+@use '../../../../tokens/scss/component/stepper' as *;
+@use '../../../../tokens/scss/component/table' as *;
+@use '../../../../tokens/scss/component/tag' as *;
+
 /* Multibrand tokens: Scania typography */
 @use '../../../../typography/tokens/typography-scania' as *;
 
@@ -29,7 +54,7 @@
 // Typography
 @use '../../../../typography/scania-fonts' as *;
 @use '../../../../typography/scania-fonts-vars' as *;
-@use '../../../../typography/scania-fonts-selectors' as *;
+@use '../../../../typography/fonts-selectors' as *;
 
 // Logos
 @use '../../../../logotype/logotype-scania' as *;
@@ -42,9 +67,11 @@
 // Utility classes
 @use '_utility-classes' as *;
 
-//Web component theme variables
+// Web component theme variables
 @use '../components/accordion/accordion-vars' as *;
 @use '../components/banner/banner-vars' as *;
+@use '../components/badge/badge-vars' as *;
+@use '../components/spinner/spinner-vars.scss' as *;
 @use '../components/block/block-vars' as *;
 @use '../components/breadcrumbs/breadcrumbs-vars' as *;
 @use '../components/button/button-vars' as *;

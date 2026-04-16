@@ -2,7 +2,12 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania .tds-mode-light {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
   --component-header-color-popovers: var(--color-background-layer-02);
   --component-header-color-icon-strong: var(--color-icon-inverse-strong);
   --component-header-color-icon-defined: var(--color-text-inverse-defined);
@@ -46,7 +51,10 @@
   --component-header-space-profile-size: var(--scania-unit-32);
 }
 
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
   --component-header-color-popovers: var(--color-background-layer-01);
   --component-header-color-icon-strong: var(--color-icon-strong);
   --component-header-color-icon-defined: var(--color-icon-defined);
@@ -89,7 +97,11 @@
   --component-header-space-profile-size: var(--traton-unit-24);
 }
 
-.scania .tds-mode-dark {
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
   --component-header-color-popovers: var(--color-background-layer-02);
   --component-header-color-icon-strong: var(--color-icon-strong);
   --component-header-color-icon-defined: var(--color-text-defined);
@@ -133,7 +145,10 @@
   --component-header-space-profile-size: var(--scania-unit-32);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
   --component-header-color-popovers: var(--color-background-layer-01);
   --component-header-color-icon-strong: var(--color-icon-strong);
   --component-header-color-icon-defined: var(--color-icon-defined);
