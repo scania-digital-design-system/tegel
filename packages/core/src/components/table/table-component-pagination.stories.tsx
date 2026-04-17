@@ -47,9 +47,15 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    pagination: {
+      name: 'Pagination',
+      description: 'Pagination enabled on the table footer',
+      control: 'boolean',
+    },
     rowsPerPageValues: {
       name: 'Rows per page values',
-      description: 'List of rows per page values',
+      description:
+        'List of rows per page values to populate the dropdown, If pagination is enabled, this array must be defined and controlled by the consumer of Tegel',
       control: {
         type: 'select',
       },
@@ -57,7 +63,8 @@ export default {
     },
     pages: {
       name: 'Pages',
-      description: 'Number of pages',
+      description:
+        'Number of pages. If pagination is enabled, this value must be defined and controlled by the consumer of Tegel',
       control: {
         type: 'number',
         min: 1,
@@ -67,9 +74,12 @@ export default {
     rowsPerPageValue: {
       name: 'Rows per page value',
       description:
-        'Number of rows displayed in a page as selected in the dropdown list of "Rows per page values"',
+        'Number of rows displayed in a page as selected in the dropdown list of "Rows per page values". If pagination is enabled, this value must be defined and controlled by the consumer of Tegel. Otherwise, it will default to the first element of the "rowsPerPageValues"',
       control: {
         type: 'number',
+      },
+      table: {
+        defaultValue: 5,
       },
     },
     rowsPerPage: {
@@ -144,10 +154,12 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
+    pagination: true,
+    pages: 4,
     rowsPerPage: true,
     rowsPerPageValues: '[10,25,50]',
+    rowsPerPageValue: 10,
     rowsPerPageDropdownOpenDirection: 'auto',
-    pages: 4,
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -161,10 +173,12 @@ const PaginationTemplate = ({
   compactDesign,
   responsiveDesign,
   verticalDivider,
+  pagination,
+  pages,
   rowsPerPage,
   rowsPerPageValues,
+  rowsPerPageValue,
   rowsPerPageDropdownOpenDirection,
-  pages,
   noMinWidth,
   column1Width,
   column2Width,
@@ -172,6 +186,12 @@ const PaginationTemplate = ({
   column4Width,
 }) =>
   formatHtmlPreview(`
+    <h1>⚠️ Warning ⚠️</h1>
+    <p>This pagination demo is not fully functional. It shows the base elements expected for the pagination, but the consumer of Tegel is responsible for handling the pagination events.</p>
+    <p>For a functional example, please refer to our 
+    <tds-link><a href="https://react-demo.tegel.scania.com/">React</a></tds-link> and 
+    <tds-link><a href="https://angular-17-demo.tegel.scania.com/">Angular</a></tds-link> Demo pages.</p> 
+    <br/> 
     <tds-table
       table-id='pagination-table'
       vertical-dividers="${verticalDivider}"
@@ -234,11 +254,15 @@ const PaginationTemplate = ({
           </tds-table-body>
           <tds-table-footer
             pages="${pages}"
-            pagination
+            pagination="${pagination}"
             rowsperpage="${rowsPerPage}"
+            rows-per-page-value="${rowsPerPageValue}"
             rows-per-page-dropdown-open-direction="${rowsPerPageDropdownOpenDirection}"
           ></tds-table-footer>
   </tds-table>
+
+  <br/> 
+
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
     <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>

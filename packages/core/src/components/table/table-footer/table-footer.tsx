@@ -38,20 +38,20 @@ export class TdsTableFooter {
   /** Enable rows per page dropdown */
   @Prop({ reflect: true }) rowsperpage: boolean = true;
 
-  /** Set available rows per page values */
+  /** Set available rows per page values. <br/> If pagination is enabled, this array must be defined and controlled by the consumer of Tegel */
   @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
   /** Set rows per page dropdown open direction */
   @Prop() rowsPerPageDropdownOpenDirection: 'up' | 'down' | 'auto' = 'auto';
 
-  /** Sets the number of pages. */
+  /** Sets the number of pages. <br/> If pagination is enabled, this value must be defined and controlled by the consumer of Tegel. */
   @Prop({ reflect: true }) pages: number = 0;
 
   /** <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. */
   @Prop({ reflect: true }) cols: number | null = null;
 
-  /* Sets the number of rows that should appear per page. */
-  @Prop({ mutable: true }) rowsPerPageValue: number = this.rowsPerPageValues[0];
+  /** Sets the number of rows that should appear per page. <br/> If pagination is enabled, this value must be defined and controlled by the consumer of Tegel. <br/> Otherwise, it will default to the first element of the "rowsPerPageValues". */
+  @Prop({ mutable: true }) rowsPerPageValue?: number;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
   @State() columnsNumber: number = 0;
@@ -150,7 +150,9 @@ export class TdsTableFooter {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
 
-    this.rowsPerPageValue = this.rowsPerPageValues[0];
+    if (!this.rowsPerPageValue) {
+      this.rowsPerPageValue = this.rowsPerPageValues[0];
+    }
 
     this.storeLastCorrectValue(this.paginationValue);
 
