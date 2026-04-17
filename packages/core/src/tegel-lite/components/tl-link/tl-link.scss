@@ -39,15 +39,9 @@
   }
 
   &--disabled {
-    color: var(--link-disabled);
-    text-decoration-color: var(--link-disabled);
+    opacity: var(--link-opacity-disabled);
     pointer-events: none;
     cursor: not-allowed;
-
-    &:visited {
-      color: var(--link-disabled);
-      text-decoration-color: var(--link-disabled);
-    }
   }
 
   &--underline {

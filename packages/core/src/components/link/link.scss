@@ -51,8 +51,7 @@
 .disabled {
   ::slotted(*),
   ::slotted(*:visited) {
-    color: var(--tds-link-disabled);
-    text-decoration-color: var(--tds-link-disabled);
+    opacity: var(--tds-link-opacity-disabled);
     pointer-events: none;
   }
 }
