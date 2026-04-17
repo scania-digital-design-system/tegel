@@ -27,16 +27,28 @@
   &.success {
     background-color: var(--tds-tag-success-background);
     color: var(--tds-tag-success-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-success-icon-color);
+    }
   }
 
   &.warning {
     background-color: var(--tds-tag-warning-background);
     color: var(--tds-tag-warning-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-warning-icon-color);
+    }
   }
 
   &.new {
     background-color: var(--tds-tag-new-background);
     color: var(--tds-tag-new-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-new-icon-color);
+    }
   }
 
   &.neutral {
@@ -47,11 +59,19 @@
   &.information {
     background-color: var(--tds-tag-information-background);
     color: var(--tds-tag-information-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-information-icon-color);
+    }
   }
 
   &.error {
     background-color: var(--tds-tag-error-background);
     color: var(--tds-tag-error-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-error-icon-color);
+    }
   }
 }
 

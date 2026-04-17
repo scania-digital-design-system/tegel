@@ -22,6 +22,7 @@
   --button-primary-border-color: var(--component-button-border-standard-primary-default);
   --button-primary-border-color-focus: var(--component-button-border-standard-primary-hover);
   --button-primary-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-primary-icon-color: var(--component-button-icon-standard-primary-default);
 
   // Secondary (standard-secondary)
   --button-secondary-background: var(--component-button-background-standard-secondary-default);
@@ -35,6 +36,7 @@
   --button-secondary-border-color-active: var(--component-button-border-standard-secondary-active);
   --button-secondary-border-color-focus: var(--component-button-border-standard-secondary-hover);
   --button-secondary-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-secondary-icon-color: var(--component-button-icon-standard-secondary-default);
 
   // Ghost (standard-tertiary)
   --button-ghost-background: var(--component-button-background-standard-tertiary-default);
@@ -46,6 +48,7 @@
   --button-ghost-border-color-active: var(--component-button-border-standard-tertiary-active);
   --button-ghost-border-color-focus: var(--component-button-border-standard-tertiary-hover);
   --button-ghost-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-ghost-icon-color: var(--component-button-icon-standard-tertiary-default);
 
   // Danger (danger-primary)
   --button-danger-background: var(--component-button-background-danger-primary-default);
@@ -58,6 +61,7 @@
   --button-danger-border-color-active: var(--component-button-border-danger-primary-active);
   --button-danger-border-color-focus: var(--component-button-border-danger-primary-hover);
   --button-danger-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-danger-icon-color: var(--component-button-icon-danger-primary-default);
 }
 
 .scania {

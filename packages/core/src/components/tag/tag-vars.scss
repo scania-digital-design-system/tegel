@@ -5,14 +5,17 @@ tds-tag {
   // Success
   --tds-tag-success-background: var(--component-tag-background-success-default);
   --tds-tag-success-color: var(--component-tag-text-success-default);
+  --tds-tag-success-icon-color: var(--component-tag-icon-success-default);
 
   // Warning
   --tds-tag-warning-background: var(--component-tag-background-warning-default);
   --tds-tag-warning-color: var(--component-tag-text-warning-default);
+  --tds-tag-warning-icon-color: var(--component-tag-icon-warning-default);
 
   // New (featured)
   --tds-tag-new-background: var(--component-tag-background-featured-default);
   --tds-tag-new-color: var(--component-tag-text-featured-default);
+  --tds-tag-new-icon-color: var(--component-tag-icon-featured-default);
 
   // Neutral
   --tds-tag-neutral-background: var(--component-tag-background-neutral-default);
@@ -21,8 +24,10 @@ tds-tag {
   // Information
   --tds-tag-information-background: var(--component-tag-background-information-default);
   --tds-tag-information-color: var(--component-tag-text-information-default);
+  --tds-tag-information-icon-color: var(--component-tag-icon-information-default);
 
   // Error
   --tds-tag-error-background: var(--component-tag-background-error-default);
   --tds-tag-error-color: var(--component-tag-text-error-default);
+  --tds-tag-error-icon-color: var(--component-tag-icon-error-default);
 }
