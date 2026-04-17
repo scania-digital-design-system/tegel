@@ -355,6 +355,9 @@ const COMPONENT_FILE_LIST = [
   ['cookie', 'exact'],
   ['tooltip', 'exact'],
   ['text', 'exact'],
+  ['overlay', 'exact'],
+  ['modal', 'exact'],
+  ['scrollbar', 'exact'],
 ];
 
 // Helper function to create component file configuration
