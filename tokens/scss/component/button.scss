@@ -10,14 +10,14 @@
 .scania.tl-mode-light {
   --component-button-background-standard-primary-default: var(--scania-color-blue-600);
   --component-button-background-standard-primary-hover: var(--scania-color-blue-700);
-  --component-button-background-standard-primary-active: var(--scania-color-blue-700);
+  --component-button-background-standard-primary-active: var(--scania-color-blue-800);
   --component-button-background-standard-secondary-default: var(--color-background-none);
   --component-button-background-standard-secondary-hover: var(--color-background-none);
   --component-button-background-standard-secondary-active: var(--color-background-none);
   --component-button-background-standard-tertiary-default: var(--color-background-none);
   --component-button-background-standard-tertiary-hover: var(--color-background-none);
   --component-button-background-standard-tertiary-active: var(--color-background-none);
-  --component-button-background-danger-primary-default: var(--color-system-danger-default);
+  --component-button-background-danger-primary-default: var(--scania-color-red-400);
   --component-button-background-danger-primary-hover: var(--scania-color-red-500);
   --component-button-background-danger-primary-active: var(--scania-color-red-600);
   --component-button-background-danger-secondary-default: var(--color-background-none);
@@ -39,59 +39,68 @@
   --component-button-border-danger-primary-default: var(--color-border-none);
   --component-button-border-danger-primary-hover: var(--color-border-none);
   --component-button-border-danger-primary-active: var(--color-border-none);
-  --component-button-border-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-border-danger-secondary-default: var(--scania-color-red-400);
   --component-button-border-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-border-danger-secondary-active: var(--scania-color-red-600);
   --component-button-border-danger-tertiary-default: var(--color-border-none);
   --component-button-border-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-border-danger-tertiary-active: var(--scania-color-red-600);
-  --component-button-icon-standard-primary-default: var(--color-text-inverse-brand);
+  --component-button-focus-ring-radius-default: var(--component--focus-ring-radius-extra-large);
+  --component-button-icon-standard-primary-default: var(--scania-color-base-white);
   --component-button-icon-standard-primary-hover: var(
-    --component-button-text-standard-primary-default
+    --component-button-icon-standard-primary-default
   );
   --component-button-icon-standard-primary-active: var(
-    --component-button-text-standard-primary-default
+    --component-button-icon-standard-primary-default
   );
-  --component-button-icon-standard-secondary-default: var(--color-text-strong);
-  --component-button-icon-standard-secondary-hover: var(--color-text-strong);
-  --component-button-icon-standard-secondary-active: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-default: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-active: var(--color-text-strong);
-  --component-button-icon-danger-primary-default: var(--color-text-inverse-strong);
-  --component-button-icon-danger-primary-hover: var(--component-button-text-danger-primary-default);
+  --component-button-icon-standard-secondary-default: var(--scania-color-base-black);
+  --component-button-icon-standard-secondary-hover: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-secondary-active: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-tertiary-default: var(--scania-color-base-black);
+  --component-button-icon-standard-tertiary-hover: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-standard-tertiary-active: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-danger-primary-default: var(--scania-color-base-white);
+  --component-button-icon-danger-primary-hover: var(--component-button-icon-danger-primary-default);
   --component-button-icon-danger-primary-active: var(
-    --component-button-text-danger-primary-default
+    --component-button-icon-danger-primary-default
   );
-  --component-button-icon-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-icon-danger-secondary-default: var(--scania-color-red-400);
   --component-button-icon-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-secondary-active: var(--scania-color-red-600);
-  --component-button-icon-danger-tertiary-default: var(--color-system-danger-default);
+  --component-button-icon-danger-tertiary-default: var(--scania-color-red-400);
   --component-button-icon-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-tertiary-active: var(--scania-color-red-600);
   --component-button-opacity-disabled: var(--scania-opacity-25);
-  --component-button-text-standard-primary-default: var(--color-text-inverse-brand);
+  --component-button-text-standard-primary-default: var(--scania-color-base-white);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
   --component-button-text-standard-primary-active: var(
     --component-button-text-standard-primary-default
   );
-  --component-button-text-standard-secondary-default: var(--color-text-strong);
-  --component-button-text-standard-secondary-hover: var(--color-text-strong);
-  --component-button-text-standard-secondary-active: var(--color-text-strong);
-  --component-button-text-standard-tertiary-default: var(--color-text-strong);
-  --component-button-text-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-text-standard-tertiary-active: var(--color-text-strong);
-  --component-button-text-danger-primary-default: var(--color-text-inverse-strong);
+  --component-button-text-standard-secondary-default: var(--scania-color-base-black);
+  --component-button-text-standard-secondary-hover: var(--scania-color-base-black);
+  --component-button-text-standard-secondary-active: var(--scania-color-base-black);
+  --component-button-text-standard-tertiary-default: var(--scania-color-base-black);
+  --component-button-text-standard-tertiary-hover: var(--scania-color-base-black);
+  --component-button-text-standard-tertiary-active: var(--scania-color-base-black);
+  --component-button-text-danger-primary-default: var(--scania-color-base-white);
   --component-button-text-danger-primary-hover: var(--component-button-text-danger-primary-default);
   --component-button-text-danger-primary-active: var(
     --component-button-text-danger-primary-default
   );
-  --component-button-text-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-text-danger-secondary-default: var(--scania-color-red-400);
   --component-button-text-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-text-danger-secondary-active: var(--scania-color-red-600);
-  --component-button-text-danger-tertiary-default: var(--color-system-danger-default);
+  --component-button-text-danger-tertiary-default: var(--scania-color-red-400);
   --component-button-text-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-text-danger-tertiary-active: var(--scania-color-red-600);
 }
@@ -137,23 +146,32 @@
   --component-button-border-danger-tertiary-default: var(--color-border-none);
   --component-button-border-danger-tertiary-hover: var(--traton-color-red-400);
   --component-button-border-danger-tertiary-active: var(--traton-color-red-500);
-  --component-button-icon-standard-primary-default: #fff;
+  --component-button-focus-ring-radius-default: var(--component--focus-ring-radius-full);
+  --component-button-icon-standard-primary-default: var(--traton-color-base-white);
   --component-button-icon-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
   --component-button-icon-standard-primary-active: var(
     --component-button-text-standard-primary-default
   );
-  --component-button-icon-standard-secondary-default: var(--color-text-strong);
-  --component-button-icon-standard-secondary-hover: var(--color-text-strong);
-  --component-button-icon-standard-secondary-active: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-default: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-active: var(--color-text-strong);
-  --component-button-icon-danger-primary-default: var(--color-text-inverse-strong);
-  --component-button-icon-danger-primary-hover: var(--component-button-text-danger-primary-default);
+  --component-button-icon-standard-secondary-default: var(--traton-color-base-black);
+  --component-button-icon-standard-secondary-hover: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-secondary-active: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-tertiary-default: var(--traton-color-base-black);
+  --component-button-icon-standard-tertiary-hover: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-standard-tertiary-active: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-danger-primary-default: var(--traton-color-base-white);
+  --component-button-icon-danger-primary-hover: var(--component-button-icon-danger-primary-default);
   --component-button-icon-danger-primary-active: var(
-    --component-button-text-danger-primary-default
+    --component-button-icon-danger-primary-default
   );
   --component-button-icon-danger-secondary-default: var(--color-system-danger-default);
   --component-button-icon-danger-secondary-hover: var(
@@ -170,7 +188,7 @@
     --component-button-text-danger-tertiary-default
   );
   --component-button-opacity-disabled: var(--traton-opacity-25);
-  --component-button-text-standard-primary-default: #fff;
+  --component-button-text-standard-primary-default: var(--traton-color-base-white);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
@@ -183,7 +201,7 @@
   --component-button-text-standard-tertiary-default: var(--color-text-strong);
   --component-button-text-standard-tertiary-hover: var(--color-text-strong);
   --component-button-text-standard-tertiary-active: var(--color-text-strong);
-  --component-button-text-danger-primary-default: var(--color-text-inverse-strong);
+  --component-button-text-danger-primary-default: var(--traton-color-base-white);
   --component-button-text-danger-primary-hover: var(--component-button-text-danger-primary-default);
   --component-button-text-danger-primary-active: var(
     --component-button-text-danger-primary-default
@@ -218,7 +236,7 @@
   --component-button-background-standard-tertiary-default: var(--color-background-none);
   --component-button-background-standard-tertiary-hover: var(--color-background-none);
   --component-button-background-standard-tertiary-active: var(--color-background-none);
-  --component-button-background-danger-primary-default: var(--color-system-danger-subtle);
+  --component-button-background-danger-primary-default: var(--scania-color-red-400);
   --component-button-background-danger-primary-hover: var(--scania-color-red-500);
   --component-button-background-danger-primary-active: var(--scania-color-red-600);
   --component-button-background-danger-secondary-default: var(--color-background-none);
@@ -240,59 +258,68 @@
   --component-button-border-danger-primary-default: var(--color-border-none);
   --component-button-border-danger-primary-hover: var(--color-border-none);
   --component-button-border-danger-primary-active: var(--color-border-none);
-  --component-button-border-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-border-danger-secondary-default: var(--scania-color-red-400);
   --component-button-border-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-border-danger-secondary-active: var(--scania-color-red-600);
   --component-button-border-danger-tertiary-default: var(--color-border-none);
   --component-button-border-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-border-danger-tertiary-active: var(--scania-color-red-600);
-  --component-button-icon-standard-primary-default: var(--color-text-inverse-brand);
+  --component-button-focus-ring-radius-default: var(--component--focus-ring-radius-extra-large);
+  --component-button-icon-standard-primary-default: var(--scania-color-base-white);
   --component-button-icon-standard-primary-hover: var(
-    --component-button-text-standard-primary-default
+    --component-button-icon-standard-primary-default
   );
   --component-button-icon-standard-primary-active: var(
-    --component-button-text-standard-primary-default
+    --component-button-icon-standard-primary-default
   );
-  --component-button-icon-standard-secondary-default: var(--color-text-strong);
-  --component-button-icon-standard-secondary-hover: var(--color-text-strong);
-  --component-button-icon-standard-secondary-active: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-default: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-active: var(--color-text-strong);
-  --component-button-icon-danger-primary-default: var(--color-text-strong);
+  --component-button-icon-standard-secondary-default: var(--scania-color-base-white);
+  --component-button-icon-standard-secondary-hover: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-secondary-active: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-tertiary-default: var(--scania-color-base-white);
+  --component-button-icon-standard-tertiary-hover: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-standard-tertiary-active: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-danger-primary-default: var(--scania-color-base-white);
   --component-button-icon-danger-primary-hover: var(--component-button-icon-danger-primary-default);
   --component-button-icon-danger-primary-active: var(
     --component-button-icon-danger-primary-default
   );
-  --component-button-icon-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-icon-danger-secondary-default: var(--scania-color-red-400);
   --component-button-icon-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-secondary-active: var(--scania-color-red-600);
-  --component-button-icon-danger-tertiary-default: var(--color-system-danger-default);
+  --component-button-icon-danger-tertiary-default: var(--scania-color-red-400);
   --component-button-icon-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-icon-danger-tertiary-active: var(--scania-color-red-600);
   --component-button-opacity-disabled: var(--scania-opacity-25);
-  --component-button-text-standard-primary-default: var(--color-text-brand);
+  --component-button-text-standard-primary-default: var(--scania-color-base-white);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
   --component-button-text-standard-primary-active: var(
     --component-button-text-standard-primary-default
   );
-  --component-button-text-standard-secondary-default: var(--color-text-strong);
-  --component-button-text-standard-secondary-hover: var(--color-text-strong);
-  --component-button-text-standard-secondary-active: var(--color-text-strong);
-  --component-button-text-standard-tertiary-default: var(--color-text-strong);
-  --component-button-text-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-text-standard-tertiary-active: var(--color-text-strong);
-  --component-button-text-danger-primary-default: var(--color-text-strong);
+  --component-button-text-standard-secondary-default: var(--scania-color-base-white);
+  --component-button-text-standard-secondary-hover: var(--scania-color-base-white);
+  --component-button-text-standard-secondary-active: var(--scania-color-base-white);
+  --component-button-text-standard-tertiary-default: var(--scania-color-base-white);
+  --component-button-text-standard-tertiary-hover: var(--scania-color-base-white);
+  --component-button-text-standard-tertiary-active: var(--scania-color-base-white);
+  --component-button-text-danger-primary-default: var(--scania-color-base-white);
   --component-button-text-danger-primary-hover: var(--component-button-text-danger-primary-default);
   --component-button-text-danger-primary-active: var(
     --component-button-text-danger-primary-default
   );
-  --component-button-text-danger-secondary-default: var(--color-system-danger-default);
+  --component-button-text-danger-secondary-default: var(--scania-color-red-400);
   --component-button-text-danger-secondary-hover: var(--scania-color-red-500);
   --component-button-text-danger-secondary-active: var(--scania-color-red-600);
-  --component-button-text-danger-tertiary-default: var(--color-system-danger-default);
+  --component-button-text-danger-tertiary-default: var(--scania-color-red-400);
   --component-button-text-danger-tertiary-hover: var(--scania-color-red-500);
   --component-button-text-danger-tertiary-active: var(--scania-color-red-600);
 }
@@ -338,20 +365,29 @@
   --component-button-border-danger-tertiary-default: var(--color-border-none);
   --component-button-border-danger-tertiary-hover: var(--traton-color-red-400);
   --component-button-border-danger-tertiary-active: var(--traton-color-red-500);
-  --component-button-icon-standard-primary-default: #000;
+  --component-button-focus-ring-radius-default: var(--component--focus-ring-radius-full);
+  --component-button-icon-standard-primary-default: var(--traton-color-base-black);
   --component-button-icon-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
   --component-button-icon-standard-primary-active: var(
     --component-button-text-standard-primary-default
   );
-  --component-button-icon-standard-secondary-default: var(--color-text-strong);
-  --component-button-icon-standard-secondary-hover: var(--color-text-strong);
-  --component-button-icon-standard-secondary-active: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-default: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-hover: var(--color-text-strong);
-  --component-button-icon-standard-tertiary-active: var(--color-text-strong);
-  --component-button-icon-danger-primary-default: var(--color-text-strong);
+  --component-button-icon-standard-secondary-default: var(--traton-color-base-white);
+  --component-button-icon-standard-secondary-hover: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-secondary-active: var(
+    --component-button-icon-standard-secondary-default
+  );
+  --component-button-icon-standard-tertiary-default: var(--traton-color-base-white);
+  --component-button-icon-standard-tertiary-hover: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-standard-tertiary-active: var(
+    --component-button-icon-standard-tertiary-default
+  );
+  --component-button-icon-danger-primary-default: var(--scania-color-base-white);
   --component-button-icon-danger-primary-hover: var(--component-button-icon-danger-primary-default);
   --component-button-icon-danger-primary-active: var(
     --component-button-icon-danger-primary-default
@@ -371,7 +407,7 @@
     --component-button-text-danger-tertiary-default
   );
   --component-button-opacity-disabled: var(--traton-opacity-25);
-  --component-button-text-standard-primary-default: #000;
+  --component-button-text-standard-primary-default: var(--traton-color-base-black);
   --component-button-text-standard-primary-hover: var(
     --component-button-text-standard-primary-default
   );
@@ -384,7 +420,7 @@
   --component-button-text-standard-tertiary-default: var(--color-text-strong);
   --component-button-text-standard-tertiary-hover: var(--color-text-strong);
   --component-button-text-standard-tertiary-active: var(--color-text-strong);
-  --component-button-text-danger-primary-default: var(--color-text-strong);
+  --component-button-text-danger-primary-default: var(--traton-color-base-white);
   --component-button-text-danger-primary-hover: var(--component-button-text-danger-primary-default);
   --component-button-text-danger-primary-active: var(
     --component-button-text-danger-primary-default

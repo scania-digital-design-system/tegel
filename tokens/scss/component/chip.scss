@@ -8,23 +8,30 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-chip-background-default: var(--scania-color-grey-150);
-  --component-chip-background-hover: var(--scania-color-grey-200);
+  --component-chip-background-standard-default: var(--scania-color-grey-150);
+  --component-chip-background-standard-hover: var(--scania-color-grey-200);
   --component-chip-background-selected-default: var(--color-system-info-default);
   --component-chip-background-selected-hover: var(--color-system-info-defined);
-  --component-chip-border-default: var(--color-border-subtle);
-  --component-chip-border-hover: var(--color-border-subtle);
-  --component-chip-border-active: var(--color-border-none);
+  --component-chip-border-radius-full: var(--scania-unit-24);
+  --component-chip-border-radius-none: var(--scania-unit-0);
+  --component-chip-border-radius-default: var(--scania-unit-24);
   --component-chip-border-selected-default: var(--color-border-soft);
   --component-chip-border-selected-hover: var(--color-border-strong);
   --component-chip-border-selected-active: var(--color-border-none);
-  --component-chip-border-radius-none: var(--scania-unit-0);
-  --component-chip-border-radius-default: var(--scania-unit-24);
-  --component-chip-border-radius-full: var(--scania-unit-9999);
+  --component-chip-border-standard-default: var(--color-border-subtle);
+  --component-chip-border-standard-hover: var(--color-border-subtle);
+  --component-chip-border-standard-active: var(--color-border-none);
+  --component-chip-focus-ring-radius-default: var(--component--focus-ring-radius-full);
+  --component-chip-icon-default: var(--color-icon-strong);
+  --component-chip-icon-hover: var(--component-chip-icon-default);
+  --component-chip-icon-active: var(--component-chip-icon-default);
+  --component-chip-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-chip-icon-selected-hover: var(--component-chip-icon-selected-default);
+  --component-chip-icon-selected-active: var(--component-chip-icon-selected-default);
   --component-chip-opacity-disabled: var(--scania-opacity-25);
-  --component-chip-text-default: var(--color-text-strong);
-  --component-chip-text-hover: var(--color-text-strong);
-  --component-chip-text-active: var(--color-text-strong);
+  --component-chip-text-standard-default: var(--color-text-strong);
+  --component-chip-text-standard-hover: var(--color-text-strong);
+  --component-chip-text-standard-active: var(--color-text-strong);
   --component-chip-text-selected-default: var(--color-text-inverse-strong);
   --component-chip-text-selected-hover: var(--color-text-strong);
   --component-chip-text-selected-active: var(--color-text-strong);
@@ -34,23 +41,30 @@
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-chip-background-default: var(--traton-color-grey-200);
-  --component-chip-background-hover: var(--traton-color-grey-400);
+  --component-chip-background-standard-default: var(--traton-color-grey-200);
+  --component-chip-background-standard-hover: var(--traton-color-grey-400);
   --component-chip-background-selected-default: var(--traton-color-grey-300);
   --component-chip-background-selected-hover: var(--traton-color-grey-400);
-  --component-chip-border-default: var(--color-border-none);
-  --component-chip-border-hover: var(--color-border-none);
-  --component-chip-border-active: var(--color-border-none);
+  --component-chip-border-radius-full: var(--traton-unit-24);
+  --component-chip-border-radius-none: var(--traton-unit-0);
+  --component-chip-border-radius-default: var(--traton-unit-2);
   --component-chip-border-selected-default: var(--color-border-none);
   --component-chip-border-selected-hover: var(--color-border-none);
   --component-chip-border-selected-active: var(--color-border-none);
-  --component-chip-border-radius-none: var(--traton-unit-0);
-  --component-chip-border-radius-default: var(--traton-unit-2);
-  --component-chip-border-radius-full: var(--traton-unit-24);
+  --component-chip-border-standard-default: var(--color-border-none);
+  --component-chip-border-standard-hover: var(--color-border-none);
+  --component-chip-border-standard-active: var(--color-border-none);
+  --component-chip-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-chip-icon-default: var(--color-icon-strong);
+  --component-chip-icon-hover: var(--component-chip-icon-default);
+  --component-chip-icon-active: var(--component-chip-icon-default);
+  --component-chip-icon-selected-default: var(--color-icon-strong);
+  --component-chip-icon-selected-hover: var(--component-chip-icon-selected-default);
+  --component-chip-icon-selected-active: var(--component-chip-icon-selected-default);
   --component-chip-opacity-disabled: var(--traton-opacity-25);
-  --component-chip-text-default: var(--color-text-strong);
-  --component-chip-text-hover: var(--color-text-strong);
-  --component-chip-text-active: var(--color-text-strong);
+  --component-chip-text-standard-default: var(--color-text-strong);
+  --component-chip-text-standard-hover: var(--color-text-strong);
+  --component-chip-text-standard-active: var(--color-text-strong);
   --component-chip-text-selected-default: var(--color-text-strong);
   --component-chip-text-selected-hover: var(--color-text-strong);
   --component-chip-text-selected-active: var(--color-text-strong);
@@ -61,23 +75,30 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-chip-background-default: var(--scania-color-grey-800);
-  --component-chip-background-hover: var(--scania-color-grey-750);
+  --component-chip-background-standard-default: var(--scania-color-grey-800);
+  --component-chip-background-standard-hover: var(--scania-color-grey-750);
   --component-chip-background-selected-default: var(--color-system-info-subtle);
   --component-chip-background-selected-hover: var(--scania-color-blue-500);
-  --component-chip-border-default: var(--color-border-subtle);
-  --component-chip-border-hover: var(--color-border-subtle);
-  --component-chip-border-active: var(--color-border-none);
+  --component-chip-border-radius-full: var(--scania-unit-24);
+  --component-chip-border-radius-none: var(--scania-unit-0);
+  --component-chip-border-radius-default: var(--scania-unit-24);
   --component-chip-border-selected-default: var(--color-border-soft);
   --component-chip-border-selected-hover: var(--color-border-strong);
   --component-chip-border-selected-active: var(--color-border-none);
-  --component-chip-border-radius-none: var(--scania-unit-0);
-  --component-chip-border-radius-default: var(--scania-unit-24);
-  --component-chip-border-radius-full: var(--scania-unit-9999);
+  --component-chip-border-standard-default: var(--color-border-subtle);
+  --component-chip-border-standard-hover: var(--color-border-subtle);
+  --component-chip-border-standard-active: var(--color-border-none);
+  --component-chip-focus-ring-radius-default: var(--component--focus-ring-radius-full);
+  --component-chip-icon-default: var(--color-icon-strong);
+  --component-chip-icon-hover: var(--component-chip-icon-default);
+  --component-chip-icon-active: var(--component-chip-icon-default);
+  --component-chip-icon-selected-default: var(--color-icon-strong);
+  --component-chip-icon-selected-hover: var(--component-chip-icon-selected-default);
+  --component-chip-icon-selected-active: var(--component-chip-icon-selected-default);
   --component-chip-opacity-disabled: var(--scania-opacity-25);
-  --component-chip-text-default: var(--color-text-strong);
-  --component-chip-text-hover: var(--color-text-strong);
-  --component-chip-text-active: var(--color-text-strong);
+  --component-chip-text-standard-default: var(--color-text-strong);
+  --component-chip-text-standard-hover: var(--color-text-strong);
+  --component-chip-text-standard-active: var(--color-text-strong);
   --component-chip-text-selected-default: var(--color-text-strong);
   --component-chip-text-selected-hover: var(--color-text-inverse-strong);
   --component-chip-text-selected-active: var(--color-text-inverse-strong);
@@ -87,23 +108,30 @@
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-chip-background-default: var(--traton-color-blue-800);
-  --component-chip-background-hover: var(--traton-color-blue-600);
+  --component-chip-background-standard-default: var(--traton-color-blue-800);
+  --component-chip-background-standard-hover: var(--traton-color-blue-600);
   --component-chip-background-selected-default: var(--traton-color-blue-400);
   --component-chip-background-selected-hover: var(--traton-color-blue-300);
-  --component-chip-border-default: var(--color-border-none);
-  --component-chip-border-hover: var(--color-border-none);
-  --component-chip-border-active: var(--color-border-none);
+  --component-chip-border-radius-full: var(--traton-unit-24);
+  --component-chip-border-radius-none: var(--traton-unit-0);
+  --component-chip-border-radius-default: var(--traton-unit-2);
   --component-chip-border-selected-default: var(--color-border-none);
   --component-chip-border-selected-hover: var(--color-border-none);
   --component-chip-border-selected-active: var(--color-border-none);
-  --component-chip-border-radius-none: var(--traton-unit-0);
-  --component-chip-border-radius-default: var(--traton-unit-2);
-  --component-chip-border-radius-full: var(--traton-unit-24);
+  --component-chip-border-standard-default: var(--color-border-none);
+  --component-chip-border-standard-hover: var(--color-border-none);
+  --component-chip-border-standard-active: var(--color-border-none);
+  --component-chip-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-chip-icon-default: var(--color-icon-strong);
+  --component-chip-icon-hover: var(--component-chip-icon-default);
+  --component-chip-icon-active: var(--component-chip-icon-default);
+  --component-chip-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-chip-icon-selected-hover: var(--component-chip-icon-selected-default);
+  --component-chip-icon-selected-active: var(--component-chip-icon-selected-default);
   --component-chip-opacity-disabled: var(--traton-opacity-25);
-  --component-chip-text-default: var(--color-text-strong);
-  --component-chip-text-hover: var(--color-text-strong);
-  --component-chip-text-active: var(--color-text-strong);
+  --component-chip-text-standard-default: var(--color-text-strong);
+  --component-chip-text-standard-hover: var(--color-text-strong);
+  --component-chip-text-standard-active: var(--color-text-strong);
   --component-chip-text-selected-default: var(--color-text-inverse-strong);
   --component-chip-text-selected-hover: var(--color-text-inverse-strong);
   --component-chip-text-selected-active: var(--color-text-inverse-strong);

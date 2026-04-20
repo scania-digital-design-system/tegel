@@ -29,16 +29,17 @@
     color: var(--button-primary-color);
     border-color: var(--button-primary-border-color);
 
+    .tl-icon {
+      color: var(--button-primary-icon-color);
+    }
+
     &:hover:not(:disabled) {
       background-color: var(--button-primary-background-hover);
     }
 
     &:disabled {
-      background-color: var(--button-primary-background-disabled);
-      color: var(--button-primary-color-disabled);
-      border-color: var(--button-primary-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -64,16 +65,17 @@
     color: var(--button-secondary-color);
     border-color: var(--button-secondary-border-color);
 
+    .tl-icon {
+      color: var(--button-secondary-icon-color);
+    }
+
     &:hover:not(:disabled) {
       border-color: var(--button-secondary-border-color-hover);
     }
 
     &:disabled {
-      background-color: var(--button-secondary-background-disabled);
-      color: var(--button-secondary-color-disabled);
-      border-color: var(--button-secondary-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -97,14 +99,17 @@
     color: var(--button-ghost-color);
     border-color: var(--button-ghost-border-color);
 
+    .tl-icon {
+      color: var(--button-ghost-icon-color);
+    }
+
     &:hover:not(:disabled) {
       border-color: var(--button-ghost-border-color-hover);
     }
 
     &:disabled {
-      color: var(--button-ghost-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {
@@ -128,16 +133,17 @@
     color: var(--button-danger-color);
     border-color: var(--button-danger-border-color);
 
+    .tl-icon {
+      color: var(--button-danger-icon-color);
+    }
+
     &:hover:not(:disabled) {
       background-color: var(--button-danger-background-hover);
     }
 
     &:disabled {
-      background-color: var(--button-danger-background-disabled);
-      color: var(--button-danger-color-disabled);
-      border-color: var(--button-danger-border-color-disabled);
       cursor: not-allowed;
-      opacity: 0.6;
+      opacity: var(--button-opacity-disabled);
     }
 
     &:focus-visible:not(:disabled) {

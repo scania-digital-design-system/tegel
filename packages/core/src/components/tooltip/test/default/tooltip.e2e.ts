@@ -9,7 +9,7 @@ import {
 const componentTestPath = 'src/components/tooltip/test/default/index.html';
 const componentName = 'tds-tooltip';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
