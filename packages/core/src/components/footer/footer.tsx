@@ -19,7 +19,7 @@ export class TdsFooter {
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   private getBrandName(): string {
-    return document.documentElement.classList.contains('traton') ? 'Traton' : 'Scania';
+    return this.host.closest('.traton') ? 'Traton' : 'Scania';
   }
 
   render() {
