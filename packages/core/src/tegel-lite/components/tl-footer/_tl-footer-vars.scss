@@ -1,18 +1,18 @@
 @use '../../../../../../tokens/scss/component/footer';
 
 .tl-footer {
-  --footer-top-background-primary: var(--color-background-layer-01);
-  --footer-top-background-secondary: var(--color-background-base);
-  --footer-top-background: var(--color-background-layer-01);
-  --footer-top-divider: var(--color-foreground-border-discrete);
-  --footer-top-links-desktop: var(--color-foreground-text-subtle);
-  --footer-top-links: var(--component-footer-text-color-link-text);
-  --footer-top-links-background-hover: var(--color-background-surface-300);
-  --footer-top-button-active: var(--color-background-surface-300);
-  --footer-main-background: var(--component-footer-primary);
-  --footer-main-links: var(--color-foreground-text-accent-brand);
-  --footer-main-divider: var(--component-footer-border);
-  --footer-main-copyright: var(--component-footer-text-color-copyright);
+  --footer-top-background-primary: var(--component-footer-background-top-default);
+  --footer-top-background-secondary: var(--component-footer-background-top-secondary);
+  --footer-top-background: var(--component-footer-background-top-default);
+  --footer-top-divider: var(--color-border-discrete);
+  --footer-top-links-desktop: var(--component-footer-text-title-default);
+  --footer-top-links: var(--component-footer-text-link-default);
+  --footer-top-links-background-hover: var(--component-footer-background-list-item-active);
+  --footer-top-button-active: var(--component-footer-background-list-item-active);
+  --footer-main-background: var(--component-footer-background-main-default);
+  --footer-main-links: var(--component-footer-text-inverse-link-default);
+  --footer-main-divider: var(--component-footer-border-divider-default);
+  --footer-main-copyright: var(--component-footer-text-copyright-default);
 
   &.tl-footer--primary {
     --footer-top-background: var(--footer-top-background-primary);
@@ -21,4 +21,26 @@
   &.tl-footer--secondary {
     --footer-top-background: var(--footer-top-background-secondary);
   }
+}
+
+// Scania logotype (white wordmark — footer background is always dark blue)
+.scania .tl-footer {
+  --component-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  --component-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+}
+
+// Traton logotype — adapts to mode (light bg → black logo, dark bg → white logo)
+.traton .tl-mode-dark .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-white-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-white-svg);
+}
+
+.traton .tl-mode-light .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
+}
+
+.traton .tl-footer {
+  --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
 }

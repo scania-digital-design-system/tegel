@@ -1,5 +1,11 @@
+@use '../../../../../../tokens/scss/component/divider';
+
 .tl-divider {
-  --divider-background: var(--color-foreground-border-discrete);
-  --divider-background-strong: var(--color-foreground-border-strong);
-  --divider-background-discrete: var(--color-foreground-border-discrete);
+  --divider-background: var(--component-divider-border-discrete-default);
+  --divider-background-discrete: var(--component-divider-border-discrete-default);
+  --divider-background-subtle: var(--component-divider-border-subtle-default);
+  --divider-background-soft: var(--component-divider-border-soft-default);
+  --divider-background-defined: var(--component-divider-border-defined-default);
+  --divider-background-strong: var(--component-divider-border-strong-default);
+  --divider-background-expressive: var(--component-divider-border-expressive-default);
 }

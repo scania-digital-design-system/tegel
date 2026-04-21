@@ -1,9 +1,11 @@
+@use '../../../../../../tokens/scss/component/breadcrumbs';
+
 .tl-breadcrumbs {
   // Colors
-  --breadcrumb-label: var(--color-foreground-text-strong);
-  --breadcrumb-hover: var(--color-foreground-text-strong);
-  --breadcrumb-current: var(--color-foreground-text-subtle);
-  --breadcrumb-separator-color: var(--color-foreground-text-strong);
+  --breadcrumb-label: var(--component-breadcrumbs-text-link-default);
+  --breadcrumb-hover: var(--component-breadcrumbs-text-link-hover);
+  --breadcrumb-current: var(--component-breadcrumbs-text-current-default);
+  --breadcrumb-separator-color: var(--component-breadcrumbs-text-separator-default);
 
   // Spacing
   --breadcrumb-separator-margin: 4px;
@@ -11,6 +13,6 @@
   --breadcrumb-separator-height: 8px;
 
   // Focus
-  --breadcrumb-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --breadcrumb-focus-outline-color: var(--color-system-info-default);
   --breadcrumb-focus-outline-width: 2px;
 }

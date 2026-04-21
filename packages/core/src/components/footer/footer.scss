@@ -1,3 +1,5 @@
+@use '../../../../../typography/mixins/type-styles' as *;
+
 :host {
   display: block;
 
@@ -36,6 +38,7 @@
 
   slot[name='end'] {
     margin-left: auto;
+    color: var(--tds-footer-main-social-icon);
   }
 
   .footer-main-bottom {
@@ -46,14 +49,13 @@
 
     small.copyright {
       margin: 0;
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
+
       color: var(--tds-footer-main-copyright);
     }
 
     .brand {
-      background-image: var(--tds-background-image-scania-wordmark-white-svg-local),
-        var(--tds-background-image-scania-wordmark-white-svg);
+      background-image: var(--tds-footer-logotype-local), var(--tds-footer-logotype-cdn);
       background-repeat: no-repeat;
       background-size: 117px;
       background-position: right;

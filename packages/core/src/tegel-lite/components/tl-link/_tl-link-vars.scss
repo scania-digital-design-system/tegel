@@ -1,12 +1,14 @@
+@use '../../../../../../tokens/scss/component/link';
+
 /* Component variables */
 
 .tl-link {
-  --link: var(--color-foreground-text-accent-default);
-  --link-hover: var(--color-foreground-text-accent-default);
+  --link: var(--component-link-text-accent-default);
+  --link-hover: var(--component-link-text-accent-hover);
   --link-focus-outline-width: 2px;
-  --link-visited: var(--color-foreground-text-accent-visited);
-  --link-disabled: var(--color-foreground-text-disabled);
-  --link-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --link-visited: var(--component-link-text-accent-visited);
+  --link-opacity-disabled: calc(var(--component-link-opacity-disabled) / 100);
+  --link-focus-outline-color: var(--color-system-info-default);
 }
 
 .tl-banner .tl-link {
@@ -15,9 +17,9 @@
 
 .tl-toast .tl-link {
   --link: var(--color-system-info-default);
-  --link-hover: var(--color-foreground-text-accent-default);
+  --link-hover: var(--color-system-info-default);
 }
 
 .traton .tl-link {
-  --link-focus-outline-width: 4px;
+  --link-focus-outline-width: 2px;
 }

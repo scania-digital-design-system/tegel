@@ -8,6 +8,7 @@
 
 /* Figma design tokens: primitives + semantic colors */
 @use '../../../../tokens/scss/scania/primitive' as *;
+@use '../../../../tokens/scss/traton/primitive' as *;
 @use '../../../../tokens/scss/scania/color-light' as *;
 @use '../../../../tokens/scss/scania/color-dark' as *;
 @use '../../../../tokens/scss/traton/color-light' as *;
@@ -15,14 +16,17 @@
 
 /* Figma design tokens: component tokens */
 @use '../../../../tokens/scss/component/badge' as *;
+@use '../../../../tokens/scss/component/breadcrumbs' as *;
 @use '../../../../tokens/scss/component/button' as *;
 @use '../../../../tokens/scss/component/card' as *;
 @use '../../../../tokens/scss/component/chip' as *;
 @use '../../../../tokens/scss/component/cookie' as *;
+@use '../../../../tokens/scss/component/divider' as *;
 @use '../../../../tokens/scss/component/dropdown' as *;
 @use '../../../../tokens/scss/component/footer' as *;
 @use '../../../../tokens/scss/component/header' as *;
 @use '../../../../tokens/scss/component/input-field' as *;
+@use '../../../../tokens/scss/component/link' as *;
 @use '../../../../tokens/scss/component/logo' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
 @use '../../../../tokens/scss/component/side-menu' as *;
@@ -117,14 +121,17 @@
 
 /* Component tokens */
 @use '../../../../tokens/scss/component/badge' as *;
+@use '../../../../tokens/scss/component/breadcrumbs' as *;
 @use '../../../../tokens/scss/component/button' as *;
 @use '../../../../tokens/scss/component/card' as *;
 @use '../../../../tokens/scss/component/chip' as *;
 @use '../../../../tokens/scss/component/cookie' as *;
+@use '../../../../tokens/scss/component/divider' as *;
 @use '../../../../tokens/scss/component/dropdown' as *;
 @use '../../../../tokens/scss/component/footer' as *;
 @use '../../../../tokens/scss/component/header' as *;
 @use '../../../../tokens/scss/component/input-field' as *;
+@use '../../../../tokens/scss/component/link' as *;
 @use '../../../../tokens/scss/component/logo' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
 @use '../../../../tokens/scss/component/side-menu' as *;
@@ -135,7 +142,7 @@
 @use '../../../../tokens/scss/component/tooltip' as *;
 
 body {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-family: var(--detail-02-font-family);
   font-size: 14px;
   margin: 0;
   flex: 1;

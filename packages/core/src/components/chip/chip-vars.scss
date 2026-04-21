@@ -16,6 +16,6 @@ tds-chip {
   --tds-chips-border-selected-active: var(--component-chip-border-selected-active);
   --tds-chips-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
   --tds-chips-opacity-disabled: calc(var(--component-chip-opacity-disabled) / 100);
-  --tds-chips-icon-fill: var(--component-chip-icon-default);
-  --tds-chips-icon-fill-active: var(--component-chip-icon-selected-default);
+  --tds-chips-icon-fill: var(--component-chip-text-standard-default);
+  --tds-chips-icon-fill-active: var(--component-chip-text-selected-default);
 }

@@ -9,7 +9,7 @@
     text-decoration: none;
 
     &:focus-visible {
-      outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
+      outline: var(--dimension-radius-focus-width) solid var(--color-system-info-default);
       box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
       outline-offset: 1px;
       z-index: 1;

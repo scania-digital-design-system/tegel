@@ -1,18 +1,18 @@
 .tl-chip {
-  --chip-text: var(--component-chip-text-default);
+  --chip-text: var(--component-chip-text-standard-default);
   --chip-text-active: var(--component-chip-text-selected-default);
-  --chip-background: var(--component-chip-background-default);
-  --chip-background-hover: var(--component-chip-background-hover);
-  --chip-background-focus: var(--component-chip-background-hover);
+  --chip-background: var(--component-chip-background-standard-default);
+  --chip-background-hover: var(--component-chip-background-standard-hover);
+  --chip-background-focus: var(--component-chip-background-standard-hover);
   --chip-background-active: var(--component-chip-background-selected-default);
   --chip-background-active-hover: var(--component-chip-background-selected-hover);
   --chip-focused-on-selected: var(--component-chip-background-selected-default);
-  --chip-border: var(--component-chip-border-default);
-  --chip-border-hover: var(--component-chip-border-hover);
+  --chip-border: var(--component-chip-border-standard-default);
+  --chip-border-hover: var(--component-chip-border-standard-hover);
   --chip-border-selected: var(--component-chip-border-selected-default);
   --chip-border-selected-hover: var(--component-chip-border-selected-hover);
   --chip-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
-  --chip-opacity-disabled: var(--component-chip-opacity-disabled);
-  --chip-icon-fill: var(--component-chip-text-default);
+  --chip-opacity-disabled: calc(var(--component-chip-opacity-disabled) / 100);
+  --chip-icon-fill: var(--component-chip-text-standard-default);
   --chip-icon-fill-active: var(--component-chip-text-selected-default);
 }

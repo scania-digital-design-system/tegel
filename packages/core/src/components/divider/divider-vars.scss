@@ -1,22 +1,9 @@
-:root,
-.tds-mode-light {
-  --tds-divider-background-discrete: var(--tds-grey-200);
-  --tds-divider-background-subtle: var(--tds-grey-350);
-  --tds-divider-background-soft: var(--tds-grey-500);
-  --tds-divider-background-defined: var(--tds-grey-650);
-  --tds-divider-background-dark-blue: var(--tds-blue-700);
-
-  /* Default variant */
-  --tds-divider-background: var(--tds-divider-background-subtle);
-}
-
-.tds-mode-dark {
-  --tds-divider-background-discrete: var(--tds-grey-600);
-  --tds-divider-background-subtle: var(--tds-grey-400);
-  --tds-divider-background-soft: var(--tds-grey-300);
-  --tds-divider-background-defined: var(--tds-grey-200);
-  --tds-divider-background-dark-blue: var(--tds-blue-800);
-
-  /* Default variant */
+tds-divider {
+  --tds-divider-background-discrete: var(--component-divider-border-discrete-default);
+  --tds-divider-background-subtle: var(--component-divider-border-subtle-default);
+  --tds-divider-background-soft: var(--component-divider-border-soft-default);
+  --tds-divider-background-defined: var(--component-divider-border-defined-default);
+  --tds-divider-background-strong: var(--component-divider-border-strong-default);
+  --tds-divider-background-dark-blue: var(--component-divider-border-expressive-default);
   --tds-divider-background: var(--tds-divider-background-subtle);
 }
