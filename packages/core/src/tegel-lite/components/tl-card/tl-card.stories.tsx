@@ -167,7 +167,8 @@ export default {
     thumbnail: true,
     imagePlacement: 'Above',
     bodyImg: false,
-    bodyContent: 'Lorem ipsum dummy text for printing; standard filler ever since 1500s',
+    bodyContent:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
     bodyDivider: false,
     cardActions:
       '<button class="tl-button tl-button--primary tl-button--md">Button text</button><button class="tl-button tl-button--secondary tl-button--md">Button text</button>',

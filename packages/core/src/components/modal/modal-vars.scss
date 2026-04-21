@@ -1,10 +1,12 @@
-:root,
-.tds-mode-light {
-  --tds-modal-backdrop-background: rgba(0, 0, 0, 0.6);
-  --tds-modal-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
-}
-
-.tds-mode-dark {
-  --tds-modal-backdrop-background: rgba(21, 24, 29, 0.84);
+tds-modal {
+  --tds-modal-backdrop-background: color-mix(
+    in srgb,
+    var(--component-overlay-background-default) calc(var(--component-overlay-opacity-default) * 1%),
+    transparent
+  );
+  --tds-modal-background: var(--component-modal-background-default);
+  --tds-modal-border-radius: calc(var(--component-modal-border-radius-default) * 1px);
+  --tds-modal-text-color: var(--component-modal-text-title-default);
+  --tds-modal-icon-color: var(--component-modal-icon-dismiss-default);
   --tds-modal-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
 }

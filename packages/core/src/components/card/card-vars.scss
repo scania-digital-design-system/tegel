@@ -1,48 +1,34 @@
-:root,
-.tds-mode-light {
-  --tds-card-background: var(--tds-white);
+tds-card {
+  --tds-card-background: var(--component-card-background-primary-default);
+  --tds-card-border-radius: calc(var(--component-card-border-radius-default) * 1px);
   --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
   --tds-card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
   --tds-card-box: var(--tds-card-box-primary);
   --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --tds-card-headline: var(--tds-grey-950);
-  --tds-card-sub-headline: var(--tds-grey-500);
-  --tds-card-body-color: var(--tds-grey-500);
-  --tds-card-divider: var(--tds-grey-300);
-  --tds-card-icon-color: var(--tds-grey-950);
-
-  .tds-mode-variant-primary {
-    --tds-card-box: var(--tds-card-box-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-card-box: var(--tds-card-box-secondary);
-  }
+  --tds-card-headline: var(--component-card-text-title-default);
+  --tds-card-sub-headline: var(--component-card-text-subtitle-default);
+  --tds-card-body-color: var(--component-card-text-body-default);
+  --tds-card-divider: var(--color-border-soft);
+  --tds-card-icon-color: var(--component-card-text-title-default);
 }
 
-.tds-mode-dark {
-  --tds-card-background-primary: var(--tds-grey-900);
-  --tds-card-background-secondary: var(--tds-grey-850);
-  --tds-card-background: var(--tds-card-background-primary);
+.tds-mode-dark tds-card {
   --tds-card-box-primary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
   --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
+}
+
+.tds-mode-variant-primary tds-card {
   --tds-card-box: var(--tds-card-box-primary);
-  --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
-  --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --tds-card-headline: var(--tds-grey-50);
-  --tds-card-sub-headline: var(--tds-grey-300);
-  --tds-card-body-color: var(--tds-grey-300);
-  --tds-card-divider: var(--tds-grey-700);
-  --tds-card-icon-color: var(--tds-grey-50);
+  --tds-card-background: var(--component-card-background-primary-default);
+}
 
-  .tds-mode-variant-primary {
-    --tds-card-box: var(--tds-card-box-primary);
-    --tds-card-background: var(--tds-card-background-primary);
-  }
+.tds-mode-variant-secondary tds-card {
+  --tds-card-box: var(--tds-card-box-secondary);
+  --tds-card-background: var(--component-card-background-secondary-default);
+}
 
-  .tds-mode-variant-secondary {
-    --tds-card-box: var(--tds-card-box-secondary);
-    --tds-card-background: var(--tds-card-background-secondary);
-  }
+.traton tds-card {
+  --tds-card-box-primary: none;
+  --tds-card-box-secondary: none;
 }
