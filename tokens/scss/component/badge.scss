@@ -8,10 +8,10 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-badge-background-default: var(--color-system-danger-default);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-background-default: var(--color-system-danger-default);
   --component-badge-text-default: var(--color-text-inverse-base);
 }
 
@@ -19,10 +19,10 @@
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-text-default: var(--color-text-base);
 }
 
@@ -31,10 +31,10 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-badge-background-default: var(--color-system-danger-subtle);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
+  --component-badge-background-default: var(--color-system-danger-subtle);
   --component-badge-text-default: var(--color-text-base);
 }
 
@@ -42,9 +42,9 @@
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
+  --component-badge-background-default: var(--color-system-warning-default);
   --component-badge-text-default: var(--color-text-inverse-base);
 }
