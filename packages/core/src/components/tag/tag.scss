@@ -1,11 +1,12 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
 
   display: inline-flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--tds-tag-border-radius);
   background-color: var(--tds-tag-neutral-background);
   color: var(--tds-tag-neutral-color);
   gap: 4px;
@@ -16,25 +17,38 @@
   }
 
   &.sm {
-    border-radius: 2px;
+    border-radius: var(--tds-tag-border-radius);
     padding: 2px 4px;
-    font: var(--tds-detail-05);
+
+    @include detail-05;
   }
 
   // Variant mode colors
   &.success {
     background-color: var(--tds-tag-success-background);
     color: var(--tds-tag-success-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-success-icon-color);
+    }
   }
 
   &.warning {
     background-color: var(--tds-tag-warning-background);
     color: var(--tds-tag-warning-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-warning-icon-color);
+    }
   }
 
   &.new {
     background-color: var(--tds-tag-new-background);
     color: var(--tds-tag-new-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-new-icon-color);
+    }
   }
 
   &.neutral {
@@ -45,11 +59,19 @@
   &.information {
     background-color: var(--tds-tag-information-background);
     color: var(--tds-tag-information-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-information-icon-color);
+    }
   }
 
   &.error {
     background-color: var(--tds-tag-error-background);
     color: var(--tds-tag-error-color);
+
+    [slot='prefix'] {
+      color: var(--tds-tag-error-icon-color);
+    }
   }
 }
 

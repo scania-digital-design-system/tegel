@@ -353,6 +353,7 @@ const COMPONENT_FILE_LIST = [
   ['logo', 'exact'],
   ['shadow', 'exact'],
   ['cookie', 'exact'],
+  ['tooltip', 'exact'],
   ['text', 'exact'],
 ];
 

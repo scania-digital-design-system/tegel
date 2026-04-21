@@ -15,6 +15,7 @@
 @use '../../../../tokens/scss/component/stepper' as *;
 @use '../../../../tokens/scss/component/table' as *;
 @use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/tooltip' as *;
 
 // Motion
 @use '../../../../motion' as *;
@@ -32,7 +33,7 @@
 // Utility classes
 @use '_utility-classes' as *;
 
-//Web component theme variables
+// Web component theme variables
 @use '../components/accordion/accordion-vars' as *;
 @use '../components/badge/badge-vars' as *;
 @use '../components/banner/banner-vars' as *;

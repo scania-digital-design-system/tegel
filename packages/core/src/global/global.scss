@@ -34,6 +34,7 @@
 @use '../../../../tokens/scss/component/stepper' as *;
 @use '../../../../tokens/scss/component/table' as *;
 @use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/tooltip' as *;
 
 /* Multibrand tokens: Scania typography */
 @use '../../../../typography/tokens/typography-scania' as *;
@@ -138,6 +139,7 @@
 @use '../../../../tokens/scss/component/stepper' as *;
 @use '../../../../tokens/scss/component/table' as *;
 @use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/tooltip' as *;
 
 body {
   font-family: var(--detail-02-font-family);
