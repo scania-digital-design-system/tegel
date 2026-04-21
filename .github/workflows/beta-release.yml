@@ -11,7 +11,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '22.12.0'
+        default: '22.13.0'
         type: string
 
       betaVersionSuffix:
