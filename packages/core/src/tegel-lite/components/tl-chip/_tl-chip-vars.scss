@@ -12,7 +12,7 @@
   --chip-border-selected: var(--component-chip-border-selected-default);
   --chip-border-selected-hover: var(--component-chip-border-selected-hover);
   --chip-border-radius: calc(var(--component-chip-border-radius-default) * 1px);
-  --chip-opacity-disabled: var(--component-chip-opacity-disabled);
+  --chip-opacity-disabled: calc(var(--component-chip-opacity-disabled) / 100);
   --chip-icon-fill: var(--component-chip-text-standard-default);
   --chip-icon-fill-active: var(--component-chip-text-selected-default);
 }
