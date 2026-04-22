@@ -1,6 +1,13 @@
 @use '../../../../tokens/scss/component/scrollbar';
 
-:root {
+:root,
+.tl-mode-light,
+.tds-mode-light {
   --tl-scrollbar-track-color: transparent;
+  --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
+}
+
+.tl-mode-dark,
+.tds-mode-dark {
   --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
 }
