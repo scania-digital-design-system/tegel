@@ -1,24 +1,26 @@
+@use '../../../../../../tokens/scss/component/message';
+
 .tl-message {
-  --message-main-background: var(--color-background-layer-01);
-  --message-mode-primary-background: var(--color-background-layer-01);
-  --message-mode-secondary-background: var(--color-background-layer-02);
-  --message-main-text-color: var(--color-foreground-text-strong);
+  --message-main-background: var(--component-message-background-primary);
+  --message-mode-primary-background: var(--component-message-background-primary);
+  --message-mode-secondary-background: var(--component-message-background-secondary);
+  --message-main-text-color: var(--color-text-strong);
 
   /* Info */
-  --message-info-border-color: var(--color-system-info-subtle);
-  --message-info-icon-color: var(--color-system-info-default);
+  --message-info-border-color: var(--component-message-border-information-default);
+  --message-info-icon-color: var(--component-message-icon-information-default);
 
   /* Success */
-  --message-success-border-color: var(--color-system-success-subtle);
-  --message-success-icon-color: var(--color-system-success-default);
+  --message-success-border-color: var(--component-message-border-success-default);
+  --message-success-icon-color: var(--component-message-icon-success-default);
 
   /* Error */
-  --message-error-background: var(--color-system-danger-discrete);
-  --message-error-border-color: var(--color-system-danger-subtle);
-  --message-error-icon-color: var(--color-system-danger-default);
-  --message-error-header-text-color: var(--color-system-danger-default);
+  --message-error-background: var(--component-message-background-error-default);
+  --message-error-border-color: var(--component-message-border-error-default);
+  --message-error-icon-color: var(--component-message-icon-error-default);
+  --message-error-header-text-color: var(--component-message-text-error-highlight-default);
 
   /* Warning */
-  --message-warning-border-color: var(--color-system-warning-subtle);
-  --message-warning-icon-color: var(--color-system-warning-default);
+  --message-warning-border-color: var(--component-message-border-warning-default);
+  --message-warning-icon-color: var(--component-message-icon-warning-default);
 }

@@ -1,102 +1,23 @@
-/* Component variables */
 tds-message {
-  --message-main-background: var(--color-background-layer-03);
-  --message-mode-primary-background: var(--color-background-layer-03);
-  --message-mode-secondary-background: var(--color-background-layer-02);
-  --message-main-text-color: var(--color-text-strong);
-
-  /* Info */
-  --message-info-border-color: var(--color-system-info-subtle);
-  --message-info-icon-color: var(--color-system-info-subtle);
-
-  /* Success */
-  --message-success-border-color: var(--color-system-success-subtle);
-  --message-success-icon-color: var(--color-system-success-subtle);
-
-  /* Error */
-  --message-error-background: var(--color-system-danger-discrete);
-  --message-error-border-color: var(--color-system-danger-subtle);
-  --message-error-icon-color: var(--color-system-danger-subtle);
-  --message-error-header-text-color: var(--color-system-danger-default);
-
-  /* Warning */
-  --message-warning-border-color: var(--color-system-warning-subtle);
-  --message-warning-icon-color: var(--color-system-warning-subtle);
+  --tds-message-background: var(--component-message-background-primary);
+  --tds-message-background-error: var(--component-message-background-error-default);
+  --tds-message-background-warning: var(--component-message-background-warning-default);
+  --tds-message-background-success: var(--component-message-background-success-default);
+  --tds-message-border-info: var(--component-message-border-information-default);
+  --tds-message-icon-info: var(--component-message-icon-information-default);
+  --tds-message-border-success: var(--component-message-border-success-default);
+  --tds-message-icon-success: var(--component-message-icon-success-default);
+  --tds-message-border-error: var(--component-message-border-error-default);
+  --tds-message-icon-error: var(--component-message-icon-error-default);
+  --tds-message-minimal-header-error: var(--component-message-text-error-highlight-default);
+  --tds-message-border-warning: var(--component-message-border-warning-default);
+  --tds-message-icon-warning: var(--component-message-icon-warning-default);
+  --tds-message-border-radius: calc(var(--component-message-border-radius-default) * 1px);
+  --tds-message-border-width: calc(var(--component-message-border-width-default) * 1px);
 }
 
-:root,
-.tds-mode-light {
-  /* Background values */
-  --tds-message-background: var(--tds-grey-50);
-  --tds-message-background-error: var(--tds-red-50);
-  --tds-message-background-warning: var(--tds-grey-50);
-  --tds-message-background-success: var(--tds-grey-50);
-
-  /* Info */
-  --tds-message-border-info: var(--tds-blue-400);
-  --tds-message-icon-info: var(--tds-blue-400);
-
-  /* Success */
-  --tds-message-border-success: var(--tds-green-400);
-  --tds-message-icon-success: var(--tds-green-400);
-
-  /* Error */
-  --tds-message-border-error: var(--tds-red-400);
-  --tds-message-icon-error: var(--tds-red-400);
-  --tds-message-minimal-header-error: var(--tds-red-400);
-
-  /* Warning */
-  --tds-message-border-warning: var(--tds-yellow-400);
-  --tds-message-icon-warning: var(--tds-yellow-500);
-
-  /* Variant values */
-  .tds-mode-variant-primary {
-    --tds-message-background: var(--tds-grey-50);
-    --tds-message-background-warning: var(--tds-grey-50);
-    --tds-message-background-success: var(--tds-grey-50);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-message-background: var(--tds-white);
-    --tds-message-background-warning: var(--tds-white);
-    --tds-message-background-success: var(--tds-white);
-  }
-}
-
-.tds-mode-dark {
-  /* Background values */
-  --tds-message-background: var(--tds-grey-900);
-  --tds-message-background-error: var(--tds-red-900);
-  --tds-message-background-warning: var(--tds-grey-900);
-  --tds-message-background-success: var(--tds-grey-900);
-
-  /* Info */
-  --tds-message-border-info: var(--tds-blue-300);
-  --tds-message-icon-info: var(--tds-blue-300);
-
-  /* Success */
-  --tds-message-border-success: var(--tds-green-300);
-  --tds-message-icon-success: var(--tds-green-300);
-
-  /* Error */
-  --tds-message-border-error: var(--tds-red-300);
-  --tds-message-icon-error: var(--tds-red-300);
-  --tds-message-minimal-header-error: var(--tds-red-300);
-
-  /* Warning */
-  --tds-message-border-warning: var(--tds-yellow-300);
-  --tds-message-icon-warning: var(--tds-yellow-300);
-
-  /* Variant values */
-  .tds-mode-variant-primary {
-    --tds-message-background: var(--tds-grey-900);
-    --tds-message-background-warning: var(--tds-grey-900);
-    --tds-message-background-success: var(--tds-grey-900);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-message-background: var(--tds-grey-850);
-    --tds-message-background-warning: var(--tds-grey-850);
-    --tds-message-background-success: var(--tds-grey-850);
-  }
+tds-message.tds-mode-variant-secondary {
+  --tds-message-background: var(--component-message-background-secondary);
+  --tds-message-background-warning: var(--component-message-background-secondary);
+  --tds-message-background-success: var(--component-message-background-secondary);
 }

@@ -13,10 +13,10 @@
     display: flex;
     width: calc(352px - 4px);
     background-color: var(--tds-toast-background-color);
-    border-radius: 4px;
+    border-radius: var(--tds-toast-border-radius);
 
     &.information {
-      border-left: 4px solid var(--tds-toast-color-info);
+      border-left: var(--tds-toast-border-width) solid var(--tds-toast-color-info);
 
       tds-icon {
         color: var(--tds-toast-color-info);
@@ -24,7 +24,7 @@
     }
 
     &.success {
-      border-left: 4px solid var(--tds-toast-color-success);
+      border-left: var(--tds-toast-border-width) solid var(--tds-toast-color-success);
 
       tds-icon {
         color: var(--tds-toast-color-success);
@@ -32,7 +32,7 @@
     }
 
     &.error {
-      border-left: 4px solid var(--tds-toast-color-error);
+      border-left: var(--tds-toast-border-width) solid var(--tds-toast-color-error);
 
       tds-icon {
         color: var(--tds-toast-color-error);
@@ -40,7 +40,7 @@
     }
 
     &.warning {
-      border-left: 4px solid var(--tds-toast-color-warning);
+      border-left: var(--tds-toast-border-width) solid var(--tds-toast-color-warning);
 
       tds-icon {
         color: var(--tds-toast-icon-color-warning);

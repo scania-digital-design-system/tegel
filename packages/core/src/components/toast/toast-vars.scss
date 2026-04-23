@@ -1,26 +1,14 @@
-:root,
-.tds-mode-light {
-  --tds-toast-background-color: var(--tds-grey-950);
-  --tds-toast-headline-color: var(--tds-grey-50);
-  --tds-toast-subheadline-color: var(--tds-grey-50);
-  --tds-toast-link-color: var(--tds-grey-50);
-  --tds-toast-dissmiss-color: var(--tds-grey-50);
-  --tds-toast-color-error: var(--tds-red-300);
-  --tds-toast-color-success: var(--tds-green-300);
-  --tds-toast-color-warning: var(--tds-yellow-300);
-  --tds-toast-icon-color-warning: var(--tds-yellow-300);
-  --tds-toast-color-info: var(--tds-blue-300);
-}
-
-.tds-mode-dark {
-  --tds-toast-background-color: var(--tds-grey-50);
-  --tds-toast-headline-color: var(--tds-grey-950);
-  --tds-toast-subheadline-color: var(--tds-grey-950);
-  --tds-toast-link-color: var(--tds-grey-950);
-  --tds-toast-dissmiss-color: var(--tds-grey-950);
-  --tds-toast-color-error: var(--tds-red-400);
-  --tds-toast-color-success: var(--tds-green-400);
-  --tds-toast-color-warning: var(--tds-yellow-400);
-  --tds-toast-icon-color-warning: var(--tds-yellow-500);
-  --tds-toast-color-info: var(--tds-blue-400);
+tds-toast {
+  --tds-toast-background-color: var(--component-toast-background-information-default);
+  --tds-toast-headline-color: var(--component-toast-text-title-default);
+  --tds-toast-subheadline-color: var(--component-toast-text-body-default);
+  --tds-toast-link-color: var(--component-toast-text-link-default);
+  --tds-toast-dissmiss-color: var(--component-toast-icon-dismiss-default);
+  --tds-toast-color-info: var(--component-toast-border-information-default);
+  --tds-toast-color-success: var(--component-toast-border-success-default);
+  --tds-toast-color-warning: var(--component-toast-border-warning-default);
+  --tds-toast-color-error: var(--component-toast-border-error-default);
+  --tds-toast-icon-color-warning: var(--component-toast-icon-warning-default);
+  --tds-toast-border-radius: calc(var(--component-toast-border-radius-default) * 1px);
+  --tds-toast-border-width: calc(var(--component-toast-border-width-default) * 1px);
 }
