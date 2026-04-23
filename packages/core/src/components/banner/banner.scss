@@ -1,6 +1,7 @@
 @use '../../mixins/z-index' as *;
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/focus-state' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 :host(.hide) {
   display: none;
@@ -56,15 +57,13 @@
 
   .header,
   slot[name='header'] {
-    font: var(--tds-headline-06);
-    letter-spacing: var(--tds-headline-06-ls);
+    @include headline-06;
   }
 
   .subheader,
   slot[name='subheader'] {
     display: block;
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
   }
 
   slot[name='actions'] {
