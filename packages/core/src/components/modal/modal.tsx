@@ -360,19 +360,17 @@ export class TdsModal {
     });
   }
 
+  private headerId = `tds-modal-header-${generateUniqueId()}`;
+  private bodyId = `tds-modal-body-${generateUniqueId()}`;
+
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
-    const headerId = this.header ? `tds-modal-header-${generateUniqueId()}` : undefined;
-    const bodyId = `tds-modal-body-${generateUniqueId()}`;
+    const hasLabel = this.header || usesHeaderSlot;
 
     return (
       <Host
-        role={this.tdsAlertDialog}
-        aria-modal="true"
-        aria-describedby={bodyId}
-        aria-labelledby={headerId}
         class={{
           show: this.isShown,
           hide: !this.isShown,
@@ -381,11 +379,19 @@ export class TdsModal {
       >
         <div class="tds-modal-backdrop" />
         <div
+          role={this.tdsAlertDialog}
+          aria-modal="true"
+          aria-describedby={this.bodyId}
+          aria-labelledby={hasLabel ? this.headerId : undefined}
           class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}
           tabindex="-1"
         >
-          <div id={headerId} class="header">
-            {this.header && <div class="header-text">{this.header}</div>}
+          <div class="header">
+            {this.header && (
+              <h1 id={this.headerId} class="header-text">
+                {this.header}
+              </h1>
+            )}
             {usesHeaderSlot && <slot name="header" />}
 
             {this.closable && (
@@ -399,7 +405,7 @@ export class TdsModal {
             )}
           </div>
 
-          <div id={bodyId} class="body">
+          <div id={this.bodyId} class="body">
             <slot name="body" />
           </div>
 
