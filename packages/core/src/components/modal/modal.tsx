@@ -255,7 +255,6 @@ export class TdsModal {
 
   /** Runs whenever the modal is opened and updates it. */
   private onOpen() {
-    console.log('onOpen running...');
     // Focus immediately to preserve interaction modality for :focus-visible
     this.focusFirstElement();
 
@@ -313,11 +312,9 @@ export class TdsModal {
   };
 
   handleShow = () => {
-    console.log('handleShow running...');
     const showEvent = this.tdsOpen.emit();
     if (showEvent.defaultPrevented) return;
 
-    console.log('handleShow, after if -> return...');
     this.isShown = true;
     this.onOpen();
   };
