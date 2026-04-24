@@ -54,10 +54,22 @@ export class Icon {
 
   private detectAndSetBrand() {
     const brandClasses = Object.keys(brandIconMap);
-    const matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
 
-    // Set the icons_object based on the found brand or default to scania
-    this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;
+    // Walk up the DOM tree, piercing shadow boundaries, to find a brand class
+    let element: Element | null = this.host;
+    while (element) {
+      const currentElement = element;
+      const matchingBrand = brandClasses.find((brand) => currentElement.closest(`.${brand}`));
+      if (matchingBrand) {
+        this.icons_object = brandIconMap[matchingBrand];
+        this.arrayDataWatcher(this.icons_object);
+        return;
+      }
+      const root = element.getRootNode();
+      element = root instanceof ShadowRoot ? root.host : null;
+    }
+
+    this.icons_object = scaniaIcons;
     this.arrayDataWatcher(this.icons_object);
   }
 

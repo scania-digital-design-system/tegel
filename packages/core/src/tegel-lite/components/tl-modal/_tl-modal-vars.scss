@@ -3,7 +3,7 @@
 @use '../../../../../../tokens/scss/component/overlay';
 
 .tl-modal,
-:root {
+.tl-modal__overlay {
   --modal-background: var(--component-modal-background-default);
   --modal-backdrop: color-mix(
     in srgb,
