@@ -83,10 +83,7 @@ $modals: (
 
 @mixin modal-position {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
 }
 
 /* MODAL STYLING */
@@ -137,7 +134,7 @@ $modals: (
   }
 }
 
-//Width of Modals in different breakpoints
+// Width of Modals in different breakpoints
 @each $screen, $modals in $modals {
   @media (min-width: $screen) {
     @each $modal, $value in $modals {
@@ -164,11 +161,10 @@ $modals: (
 
 .header {
   @include modal-header;
-}
 
-.header,
-slot[name='header']::slotted(*) {
-  @include modal-header-title;
+  .header-text {
+    @include modal-header-title;
+  }
 }
 
 .body {
