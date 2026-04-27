@@ -1,5 +1,4 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { processHtmlForScreenReader } from '../../utils/accessibility';
 
 export default {
   title: 'Components/Tooltip',
@@ -139,8 +138,6 @@ const ComponentTooltip = ({
   offsetDistance,
   offsetSkidding,
 }) => {
-  const screenReaderText = processHtmlForScreenReader(slot);
-
   return formatHtmlPreview(
     `
     <style>
@@ -173,7 +170,7 @@ const ComponentTooltip = ({
       ${slot}
     </tds-tooltip>
     <div id="for-screen-reader-text" class="visually-hidden">
-      ${screenReaderText}
+      ${slot}
     </div>
     <!-- Demo button for presentation purposes -->
     <tds-button 
