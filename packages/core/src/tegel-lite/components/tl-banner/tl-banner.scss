@@ -76,3 +76,11 @@
     @include tds-focus-state;
   }
 }
+
+.tl-banner .tl-link {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
