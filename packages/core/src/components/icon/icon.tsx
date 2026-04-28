@@ -1,23 +1,36 @@
 // Check status of webFont solution
 
-import { Component, h, Prop, State, Host, Element } from '@stencil/core';
+import { Component, h, Prop, State, Host } from '@stencil/core';
 import { iconsCollection as scaniaIcons } from './scaniaIconsArray';
 import { iconsCollection as tratonIcons } from './tratonIconsArray';
 import { IconNames } from '../../types/Icons';
 
-// Map of brand classes to their respective icon collections
 type IconDefinition = {
   name: string;
   definition: string;
 };
-const brandIconMap: {
-  scania: IconDefinition[];
-  traton: IconDefinition[];
-} = {
-  scania: scaniaIcons,
-  traton: tratonIcons,
+type Brand = 'scania' | 'traton';
+
+// `iconsCollection` is exported as a JSON string by the icons build pipeline
+// (see icons/gulpfile.js). Parse once per brand at module load.
+const parseIcons = (raw: unknown): IconDefinition[] =>
+  typeof raw === 'string' ? JSON.parse(raw) : (raw as IconDefinition[]);
+
+const brandIconMap: Record<Brand, IconDefinition[]> = {
+  scania: parseIcons(scaniaIcons),
+  traton: parseIcons(tratonIcons),
   // Add new brands here in the future
-  // Example: newBrand: newBrandIcons,
+  // Example: newBrand: parseIcons(newBrandIcons),
+};
+
+// Brand is expected to be set at the app root (e.g. <html class="traton"> or
+// <body class="traton">). For per-icon overrides, pass the `brand` prop.
+const getDocumentBrand = (): Brand => {
+  if (typeof document === 'undefined') return 'scania';
+  const isTraton =
+    document.documentElement?.classList.contains('traton') ||
+    document.body?.classList.contains('traton');
+  return isTraton ? 'traton' : 'scania';
 };
 
 @Component({
@@ -26,8 +39,6 @@ const brandIconMap: {
   shadow: true,
 })
 export class Icon {
-  @Element() host!: HTMLTdsIconElement;
-
   /** Pass the name of the icon.
    * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
   @Prop({ reflect: true }) name: IconNames = 'truck';
@@ -44,30 +55,15 @@ export class Icon {
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop({ reflect: true }) svgDescription?: string;
 
-  @State() icons_object: string = '';
+  /** Pass the brand to use the correct icon set. If omitted, the brand is read
+   * from a `traton` class on `<html>` or `<body>`, defaulting to 'scania'. */
+  @Prop({ reflect: true }) brand?: Brand;
 
-  @State() arrayOfIcons = [];
+  @State() arrayOfIcons: IconDefinition[] = [];
 
   componentWillLoad() {
-    this.detectAndSetBrand();
-  }
-
-  private detectAndSetBrand() {
-    const brandClasses = Object.keys(brandIconMap);
-    const matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
-
-    // Set the icons_object based on the found brand or default to scania
-    this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;
-    this.arrayDataWatcher(this.icons_object);
-  }
-
-  private arrayDataWatcher(newValue: string) {
-    if (typeof newValue === 'string') {
-      this.arrayOfIcons = JSON.parse(newValue);
-    } else {
-      this.arrayOfIcons = newValue;
-    }
-    this.arrayOfIcons = [...this.arrayOfIcons];
+    const brand = this.brand ?? getDocumentBrand();
+    this.arrayOfIcons = brandIconMap[brand] ?? brandIconMap.scania;
   }
 
   setIcons = () =>
