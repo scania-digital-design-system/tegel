@@ -90,23 +90,16 @@ export const setupPage = async (
   componentTestPath: string,
   componentName: string,
 ) => {
-  const brand = config.brand || 'scania';
-
-  // Inject brand class before page scripts run so componentWillLoad picks it up
-  await page.addInitScript((brandClass: string) => {
-    document.documentElement.classList.add(brandClass);
-  }, brand);
-
   await page.goto(componentTestPath);
 
   const evaluateData = {
     className: themeClasses[config.theme],
     backgroundColor: config.backgroundColor,
-    brand,
+    brand: config.brand || 'scania',
   };
 
-  await page.evaluate(({ className, backgroundColor, brand: brandClass }) => {
-    document.documentElement.classList.add(brandClass);
+  await page.evaluate(({ className, backgroundColor, brand }) => {
+    document.documentElement.classList.add(brand);
     document.body.classList.add(className);
 
     const currentStyle = document.body.getAttribute('style');
