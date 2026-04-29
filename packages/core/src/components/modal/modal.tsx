@@ -45,8 +45,9 @@ export class TdsModal {
   /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
-  /** Controls whether the Modal is shown or not. If this is set hiding and showing
-   * will be decided by this prop and will need to be controlled from the outside. */
+  /** Controls whether the Modal is shown or not. <br/> This prop allows the consumer of Tegel to control
+   * the open/close interaction or set the modal visibility when opening the page. If it is not set, then
+   * the modal has a fallback state for that interaction, defaulting to false. */
   @Prop({ reflect: true }) show?: boolean;
 
   /** Shows or hides the close [X] button. */
@@ -113,7 +114,7 @@ export class TdsModal {
     }
   }
 
-  connectedCallback() {
+  private initializeWithProps() {
     if (this.closable === undefined) {
       this.closable = true;
     }
@@ -136,8 +137,12 @@ export class TdsModal {
     }
   }
 
+  connectedCallback() {
+    this.initializeWithProps();
+  }
+
   componentWillLoad() {
-    this.initializeModal();
+    this.initializeWithProps();
   }
 
   disconnectedCallback() {
