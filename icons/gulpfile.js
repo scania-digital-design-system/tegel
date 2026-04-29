@@ -74,7 +74,7 @@ function clean() {
 // Initialize required folders
 function initFolders(cb) {
   // Create main folders
-  [outputFolder, tempFolder].map((folder) => {
+  [outputFolder, tempFolder].forEach((folder) => {
     fs.mkdirSync(folder, { recursive: true });
   });
 
