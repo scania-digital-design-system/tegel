@@ -50,7 +50,11 @@ if (!scaniaPlaceholder || !tratonPlaceholder) {
   throw new Error('Both brands must define a "placeholder" icon to use as fallback.');
 }
 
-const allNames = [...new Set([...scaniaByName.keys(), ...tratonByName.keys()])].sort();
+// Explicit codepoint comparator (matches the default lexicographic sort but
+// satisfies sonar's "always provide a compare function" rule).
+const allNames = [...new Set([...scaniaByName.keys(), ...tratonByName.keys()])].sort((a, b) =>
+  a < b ? -1 : a > b ? 1 : 0,
+);
 
 function buildPathBlock(selectors, brandName, byName, placeholder) {
   const lines = [`  --tds-brand-name: '${brandName}';`];
