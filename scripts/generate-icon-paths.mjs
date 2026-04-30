@@ -3,6 +3,11 @@
  * tokens/scss/component/icon.scss with --tds-icon-<name>-d variables
  * (CSS path() values) scoped to .scania and .traton, so the cascade
  * picks the right icon set without JS brand detection.
+ *
+ * Each brand block defines the union of icon names across both brands,
+ * so e.g. an icon that only exists in Scania falls back to the
+ * placeholder path under .traton instead of cascading through from
+ * :root and silently rendering the Scania version.
  */
 
 import { writeFileSync } from 'node:fs';
@@ -22,8 +27,24 @@ const tratonModule = await import(
 const scaniaIcons = JSON.parse(scaniaModule.iconsCollection);
 const tratonIcons = JSON.parse(tratonModule.iconsCollection);
 
-function buildBlock(selectors, icons) {
-  const lines = icons.map(({ name, definition }) => {
+function indexByName(icons) {
+  return new Map(icons.map((i) => [i.name, i.definition]));
+}
+
+const scaniaByName = indexByName(scaniaIcons);
+const tratonByName = indexByName(tratonIcons);
+
+const scaniaPlaceholder = scaniaByName.get('placeholder');
+const tratonPlaceholder = tratonByName.get('placeholder');
+if (!scaniaPlaceholder || !tratonPlaceholder) {
+  throw new Error('Both brands must define a "placeholder" icon to use as fallback.');
+}
+
+const allNames = [...new Set([...scaniaByName.keys(), ...tratonByName.keys()])].sort();
+
+function buildBlock(selectors, byName, placeholder) {
+  const lines = allNames.map((name) => {
+    const definition = byName.get(name) ?? placeholder;
     if (definition.includes('"')) {
       throw new Error(`Icon "${name}" path data contains a double quote; needs escaping logic.`);
     }
@@ -33,13 +54,16 @@ function buildBlock(selectors, icons) {
 }
 
 const header = `/**\n * Do not edit directly, this file was auto-generated.\n */\n\n`;
-const scaniaBlock = buildBlock([':root', '.scania'], scaniaIcons);
-const tratonBlock = buildBlock(['.traton'], tratonIcons);
+const scaniaBlock = buildBlock([':root', '.scania'], scaniaByName, scaniaPlaceholder);
+const tratonBlock = buildBlock(['.traton'], tratonByName, tratonPlaceholder);
 
 const output = `${header}${scaniaBlock}\n\n${tratonBlock}\n`;
 const outPath = join(repoRoot, 'tokens/scss/component/icon.scss');
 writeFileSync(outPath, output, 'utf8');
 
+const tratonFallbacks = allNames.filter((n) => !tratonByName.has(n)).length;
+const scaniaFallbacks = allNames.filter((n) => !scaniaByName.has(n)).length;
 console.log(
-  `Wrote ${outPath} (${scaniaIcons.length} scania + ${tratonIcons.length} traton icons)`,
+  `Wrote ${outPath} (${allNames.length} icon names; ` +
+    `${scaniaFallbacks} scania placeholders, ${tratonFallbacks} traton placeholders)`,
 );
