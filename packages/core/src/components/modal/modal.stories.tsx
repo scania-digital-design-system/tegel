@@ -57,7 +57,8 @@ export default {
     },
     showModal: {
       name: 'Show Modal',
-      description: 'Toggles if the Modal is displayed.',
+      description:
+        'Allows the consumer of Tegel to control the open/close interaction or set the modal visibility when opening the page. If it is not set, then the modal has a fallback state for that interaction, defaulting to false.',
       control: {
         type: 'boolean',
       },
