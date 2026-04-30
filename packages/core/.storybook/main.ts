@@ -27,7 +27,10 @@ if (process.env.VITE_STORYBOOK_ENV === 'dev') {
 const config: StorybookConfig = {
   stories: loadStories(),
   addons: addons,
-  staticDirs: ['../public'],
+  // The tegel-lite icon CSS variables resolve to url(../dist/tegel/assets/...);
+  // serve the dist folder in dev so those URLs don't 404 (in storybook build,
+  // Vite already bundles those assets into storybook-static/dist).
+  staticDirs: ['../public', { from: '../dist', to: '/dist' }],
   framework: {
     name: '@storybook/html-vite',
     options: {
