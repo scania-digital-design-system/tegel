@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host } from '@stencil/core';
+import { Component, h, Prop, Host, Element, Watch } from '@stencil/core';
 import { IconNames } from '../../types/Icons';
 
 @Component({
@@ -7,6 +7,8 @@ import { IconNames } from '../../types/Icons';
   shadow: true,
 })
 export class Icon {
+  @Element() host!: HTMLTdsIconElement;
+
   /** Pass the name of the icon.
    * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
   @Prop({ reflect: true }) name: IconNames = 'truck';
@@ -22,6 +24,25 @@ export class Icon {
 
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop({ reflect: true }) svgDescription?: string;
+
+  componentDidLoad() {
+    this.warnIfMissing();
+  }
+
+  @Watch('name')
+  nameChanged() {
+    this.warnIfMissing();
+  }
+
+  private warnIfMissing() {
+    const styles = getComputedStyle(this.host);
+    const exists = styles.getPropertyValue(`--tds-icon-${this.name}-exists`).trim();
+    if (exists) return;
+    const brand = styles.getPropertyValue('--tds-brand-name').trim().replace(/['"]/g, '');
+    console.warn(
+      `[tds-icon] "${this.name}" is not available in brand "${brand || 'unknown'}"; rendering placeholder.`,
+    );
+  }
 
   render() {
     // Path data is supplied by the brand-scoped CSS variable
