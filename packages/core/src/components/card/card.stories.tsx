@@ -109,8 +109,9 @@ export default {
       },
     },
     stretch: {
-      name: 'Stretch card body',
-      description: 'Toggles if the card body should scale with the card.',
+      name: 'Stretch card',
+      description:
+        'Makes the Card fill the available height in stretching layouts and lets the body section grow.',
       control: {
         type: 'boolean',
       },

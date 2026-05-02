@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Card - Stretch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+    <style>
+      .card-row {
+        display: flex;
+        align-items: stretch;
+        gap: 16px;
+        width: 900px;
+      }
+
+      .card-row + .card-row {
+        margin-top: 32px;
+      }
+
+      .card-row tds-card {
+        flex: 1 1 0;
+        min-width: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card-row card-row--stretch">
+      <tds-card stretch header="Short card" subheader="One line">
+        <div slot="body">Short text.</div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+
+      <tds-card stretch header="Medium card" subheader="Two lines">
+        <div slot="body">
+          This card has a bit more text so it becomes taller than the first card.
+        </div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+
+      <tds-card stretch header="Long card" subheader="Defines the row height">
+        <div slot="body">
+          This card has the longest body content. It should define the row height, and the two cards
+          before it should visually stretch to match this height when the card stretch behavior works
+          correctly.
+        </div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+    </div>
+
+    <div class="card-row card-row--default">
+      <tds-card header="Short card" subheader="One line">
+        <div slot="body">Short text.</div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+
+      <tds-card header="Medium card" subheader="Two lines">
+        <div slot="body">
+          This card has a bit more text so it becomes taller than the first card.
+        </div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+
+      <tds-card header="Long card" subheader="Defines the row height">
+        <div slot="body">
+          This card has the longest body content. It should define the row height, and the two cards
+          before it should visually stretch to match this height when the card stretch behavior works
+          correctly.
+        </div>
+        <div slot="actions">
+          <tds-button type="button" variant="secondary" size="sm" text="Action"></tds-button>
+        </div>
+      </tds-card>
+    </div>
+  </body>
+</html>
