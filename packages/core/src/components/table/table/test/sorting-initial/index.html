@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Table - Initial sorting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-table
+      table-id="tds-table-initial-sorting-example"
+      sort-column-key="driver"
+      sort-direction="desc"
+    >
+      <tds-table-header>
+        <tds-header-cell cell-key="truck" cell-value="Truck type" sortable="true"></tds-header-cell>
+        <tds-header-cell
+          cell-key="driver"
+          cell-value="Driver name"
+          sortable="true"
+        ></tds-header-cell>
+        <tds-header-cell cell-key="country" cell-value="Country" sortable="true"></tds-header-cell>
+      </tds-table-header>
+      <tds-table-body>
+        <tds-table-body-row>
+          <tds-body-cell cell-value="L-series" cell-key="truck"></tds-body-cell>
+          <tds-body-cell cell-value="Sonya Bruce" cell-key="driver"></tds-body-cell>
+          <tds-body-cell cell-value="Brazil" cell-key="country"></tds-body-cell>
+        </tds-table-body-row>
+      </tds-table-body>
+    </tds-table>
+  </body>
+</html>

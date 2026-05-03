@@ -77,6 +77,29 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    sortColumnKey: {
+      name: 'Current sorted column',
+      description:
+        'Sets which column should display as currently sorted. The value must match a header cell key.',
+      control: {
+        type: 'select',
+      },
+      options: ['None', 'truck', 'driver', 'country', 'mileage'],
+      table: {
+        defaultValue: { summary: 'None' },
+      },
+    },
+    sortDirection: {
+      name: 'Current sort direction',
+      description: 'Sets the current sort direction for the selected sorted column.',
+      control: {
+        type: 'radio',
+      },
+      options: ['asc', 'desc'],
+      table: {
+        defaultValue: { summary: 'asc' },
+      },
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -140,6 +163,8 @@ export default {
     column2sortable: true,
     column3sortable: true,
     column4sortable: true,
+    sortColumnKey: 'None',
+    sortDirection: 'asc',
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -157,6 +182,8 @@ const SortingTemplate = ({
   column2sortable,
   column3sortable,
   column4sortable,
+  sortColumnKey,
+  sortDirection,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -172,6 +199,8 @@ const SortingTemplate = ({
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${sortColumnKey !== 'None' ? `sort-column-key="${sortColumnKey}"` : ''}
+      ${sortColumnKey !== 'None' ? `sort-direction="${sortDirection}"` : ''}
     >
       <tds-table-toolbar table-title="Sorting"></tds-table-toolbar>
           <tds-table-header>
