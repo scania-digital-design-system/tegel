@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/textarea';
+
 .tl-textarea {
   --textarea-background-primary: var(--color-background-layer-01);
   --textarea-background-secondary: var(--color-background-layer-02);
