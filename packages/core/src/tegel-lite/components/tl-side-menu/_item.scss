@@ -1,3 +1,4 @@
+@use '../../../mixins/focus-state' as *;
 @use './tl-side-menu-vars' as *;
 
 .tl-side-menu__item {
@@ -25,8 +26,7 @@
   letter-spacing: var(--side-menu-text-item-letter-spacing);
 
   &:focus-visible {
-    outline: 2px solid var(--color-foreground-border-accent-focus);
-    outline-offset: -2px;
+    @include tds-focus-state-inset;
   }
 
   &:hover {
