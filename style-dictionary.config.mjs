@@ -366,6 +366,8 @@ const COMPONENT_FILE_LIST = [
   ['overlay', 'exact'],
   ['modal', 'exact'],
   ['scrollbar', 'exact'],
+  ['text-field', 'exact'],
+  ['textarea', 'exact'],
 ];
 
 // Helper function to create component file configuration
