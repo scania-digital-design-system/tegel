@@ -19,8 +19,8 @@
   font: inherit;
 
   &:focus-visible {
-    outline: var(--link-focus-outline-width) solid var(--link-focus-outline-color);
-    outline-offset: 1px;
+    @include tds-focus-state;
+
     text-decoration: none;
   }
 
