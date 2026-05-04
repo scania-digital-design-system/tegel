@@ -10,10 +10,18 @@
 
 :host(.error) {
   background-color: var(--tds-banner-background-error);
+
+  .content {
+    color: var(--tds-banner-text-error-color);
+  }
 }
 
 :host(.information) {
   background-color: var(--tds-banner-background-info);
+
+  .content {
+    color: var(--tds-banner-text-info-color);
+  }
 }
 
 :host {
