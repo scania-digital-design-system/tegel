@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/text-field';
+
 .tl-text-field {
   --text-field-background: var(--color-background-layer-01);
   --text-field-text: var(--color-foreground-text-strong);
