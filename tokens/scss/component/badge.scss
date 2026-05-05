@@ -8,6 +8,7 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
+  --component-badge-font-weight: var(--scania-font-weight-bold);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
@@ -19,6 +20,7 @@
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
+  --component-badge-font-weight: var(--traton-font-weight-semi-bold);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);
@@ -31,6 +33,7 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
+  --component-badge-font-weight: var(--scania-font-weight-bold);
   --component-badge-border-radius-none: var(--scania-unit-0);
   --component-badge-border-radius-default: var(--scania-unit-24);
   --component-badge-border-radius-full: var(--scania-unit-9999);
@@ -42,6 +45,7 @@
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
+  --component-badge-font-weight: var(--traton-font-weight-semi-bold);
   --component-badge-border-radius-none: var(--traton-unit-0);
   --component-badge-border-radius-default: var(--traton-unit-24);
   --component-badge-border-radius-full: var(--traton-unit-9999);

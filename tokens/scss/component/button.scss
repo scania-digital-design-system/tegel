@@ -109,9 +109,9 @@
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-button-background-standard-primary-default: #004852;
-  --component-button-background-standard-primary-hover: #003137;
-  --component-button-background-standard-primary-active: #002429;
+  --component-button-background-standard-primary-default: var(--traton-color-blue-800);
+  --component-button-background-standard-primary-hover: var(--traton-color-blue-850);
+  --component-button-background-standard-primary-active: var(--traton-color-blue-900);
   --component-button-background-standard-secondary-default: var(--color-background-none);
   --component-button-background-standard-secondary-hover: var(--color-background-none);
   --component-button-background-standard-secondary-active: var(--color-background-none);
@@ -328,9 +328,9 @@
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-button-background-standard-primary-default: #c2bfb6;
-  --component-button-background-standard-primary-hover: #d6d4c9;
-  --component-button-background-standard-primary-active: #a6a49c;
+  --component-button-background-standard-primary-default: var(--traton-color-grey-300);
+  --component-button-background-standard-primary-hover: var(--traton-color-grey-200);
+  --component-button-background-standard-primary-active: var(--traton-color-grey-400);
   --component-button-background-standard-secondary-default: var(--color-background-none);
   --component-button-background-standard-secondary-hover: var(--color-background-none);
   --component-button-background-standard-secondary-active: var(--color-background-none);
@@ -387,7 +387,7 @@
   --component-button-icon-standard-tertiary-active: var(
     --component-button-icon-standard-tertiary-default
   );
-  --component-button-icon-danger-primary-default: var(--scania-color-base-white);
+  --component-button-icon-danger-primary-default: var(--traton-color-base-white);
   --component-button-icon-danger-primary-hover: var(--component-button-icon-danger-primary-default);
   --component-button-icon-danger-primary-active: var(
     --component-button-icon-danger-primary-default

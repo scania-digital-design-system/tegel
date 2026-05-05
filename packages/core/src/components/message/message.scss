@@ -5,10 +5,11 @@
     display: flex;
     padding: 16px;
     background-color: var(--tds-message-background);
-    border-radius: 4px;
+    border-radius: var(--tds-message-border-radius);
 
     &.information {
-      border-left: 4px solid var(--tds-message-border-info);
+      border-left: var(--tds-message-border-width) solid var(--tds-message-border-info);
+      color: var(--tds-message-text-info);
 
       tds-icon {
         color: var(--tds-message-icon-info);
@@ -17,7 +18,8 @@
 
     &.success {
       background-color: var(--tds-message-background-success);
-      border-left: 4px solid var(--tds-message-border-success);
+      border-left: var(--tds-message-border-width) solid var(--tds-message-border-success);
+      color: var(--tds-message-text-success);
 
       tds-icon {
         color: var(--tds-message-icon-success);
@@ -26,7 +28,8 @@
 
     &.error {
       background-color: var(--tds-message-background-error);
-      border-left: 4px solid var(--tds-message-border-error);
+      border-left: var(--tds-message-border-width) solid var(--tds-message-border-error);
+      color: var(--tds-message-text-error);
 
       tds-icon {
         color: var(--tds-message-icon-error);
@@ -35,7 +38,8 @@
 
     &.warning {
       background-color: var(--tds-message-background-warning);
-      border-left: 4px solid var(--tds-message-border-warning);
+      border-left: var(--tds-message-border-width) solid var(--tds-message-border-warning);
+      color: var(--tds-message-text-warning);
 
       tds-icon {
         color: var(--tds-message-icon-warning);
@@ -71,7 +75,6 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: var(--foreground-text-strong);
     padding: 2px 24px 2px 0;
     overflow-wrap: anywhere;
 
@@ -80,7 +83,6 @@
     }
 
     .extended-message {
-      color: var(--foreground-text-strong);
       @include detail-03;
     }
   }

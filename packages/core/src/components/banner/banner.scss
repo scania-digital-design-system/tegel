@@ -1,6 +1,7 @@
 @use '../../mixins/z-index' as *;
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/focus-state' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 :host(.hide) {
   display: none;
@@ -9,10 +10,18 @@
 
 :host(.error) {
   background-color: var(--tds-banner-background-error);
+
+  .content {
+    color: var(--tds-banner-text-error-color);
+  }
 }
 
 :host(.information) {
   background-color: var(--tds-banner-background-info);
+
+  .content {
+    color: var(--tds-banner-text-info-color);
+  }
 }
 
 :host {
@@ -22,8 +31,7 @@
   padding-left: 16px;
 
   .banner-icon {
-    padding-left: 4px;
-    padding-top: 14px;
+    padding-top: 16px;
     padding-right: 12px;
     color: var(--tds-banner-prefix-default-color);
 
@@ -56,15 +64,13 @@
 
   .header,
   slot[name='header'] {
-    font: var(--tds-headline-06);
-    letter-spacing: var(--tds-headline-06-ls);
+    @include headline-06;
   }
 
   .subheader,
   slot[name='subheader'] {
     display: block;
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
   }
 
   slot[name='actions'] {
@@ -80,7 +86,7 @@
 
     button {
       padding-right: 16px;
-      padding-top: 14px;
+      padding-top: 16px;
       background-color: transparent;
       border: none;
       color: var(--tds-banner-x-color);
