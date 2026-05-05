@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/message/test/warning/index.html';
 const componentName = 'tds-message';
 const testDescription = 'tds-message-warning';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

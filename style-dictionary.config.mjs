@@ -360,6 +360,9 @@ const COMPONENT_FILE_LIST = [
   ['cookie', 'exact'],
   ['tooltip', 'exact'],
   ['text', 'exact'],
+  ['banner', 'exact'],
+  ['message', 'exact'],
+  ['toast', 'exact'],
 ];
 
 // Helper function to create component file configuration

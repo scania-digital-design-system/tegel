@@ -912,276 +912,6 @@
     }
   },
   "component": {
-    "-focus": {
-      "ring": {
-        "radius": {
-          "none": {
-            "$type": "number",
-            "$value": "{traton.unit.0}"
-          },
-          "extra-small": {
-            "$type": "number",
-            "$value": 1
-          },
-          "small": {
-            "$type": "number",
-            "$value": 2
-          },
-          "medium": {
-            "$type": "number",
-            "$value": 3
-          },
-          "large": {
-            "$type": "number",
-            "$value": 4
-          },
-          "extra-large": {
-            "$type": "number",
-            "$value": 5
-          },
-          "full": {
-            "$type": "number",
-            "$value": "{traton.unit.9999}"
-          }
-        },
-        "color": {
-          "strong": {
-            "$type": "color",
-            "$value": "{color.system.info.default}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.base.white}"
-          }
-        }
-      }
-    },
-    "-input": {
-      "background": {
-        "primary": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "secondary": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        }
-      },
-      "border": {
-        "default": {
-          "$type": "color",
-          "$value": "{color.border.soft}"
-        },
-        "hover": {
-          "$type": "color",
-          "$value": "{color.border.strong}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.border.strong}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        },
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        },
-        "radius-none": {
-          "$type": "number",
-          "$value": "{traton.unit.0}"
-        },
-        "radius-top-left": {
-          "$type": "number",
-          "$value": "{component.-input.border.radius-default}"
-        },
-        "radius-top-right": {
-          "$type": "number",
-          "$value": "{component.-input.border.radius-default}"
-        },
-        "radius-bottom-left": {
-          "$type": "number",
-          "$value": "{component.-input.border.radius-default}"
-        },
-        "radius-bottom-right": {
-          "$type": "number",
-          "$value": "{component.-input.border.radius-default}"
-        },
-        "width-default": {
-          "$type": "number",
-          "$value": "{traton.unit.1}"
-        },
-        "width-none": {
-          "$type": "number",
-          "$value": "{traton.unit.0}"
-        },
-        "width-top": {
-          "$type": "number",
-          "$value": "{component.-input.border.width-default}"
-        },
-        "width-right": {
-          "$type": "number",
-          "$value": "{component.-input.border.width-default}"
-        },
-        "width-bottom": {
-          "$type": "number",
-          "$value": "{component.-input.border.width-default}"
-        },
-        "width-left": {
-          "$type": "number",
-          "$value": "{component.-input.border.width-default}"
-        }
-      },
-      "icon": {
-        "prefix-default": {
-          "$type": "color",
-          "$value": "{color.text.defined}"
-        },
-        "suffix-default": {
-          "$type": "color",
-          "$value": "{color.text.defined}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      },
-      "opacity": {
-        "disabled": {
-          "$type": "number",
-          "$value": "{traton.opacity.25}"
-        }
-      },
-      "text": {
-        "counter-default": {
-          "$type": "color",
-          "$value": "{color.text.defined}"
-        },
-        "label-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "helper-default": {
-          "$type": "color",
-          "$value": "{color.text.defined}"
-        },
-        "placeholder-default": {
-          "$type": "color",
-          "$value": "{color.text.subtle}"
-        },
-        "value-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      }
-    },
-    "-shadow": {
-      "base-modifier": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      },
-      "default": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      },
-      "hover": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      },
-      "pressed": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      },
-      "focus": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      },
-      "dragged": {
-        "$type": "color",
-        "$value": "{traton.color.transparent.invisible.dark}"
-      }
-    },
-    "text-field": {
-      "focus-ring": {
-        "radius-primary": {
-          "$type": "number",
-          "$value": "{component.-focus.ring.radius.extra-large}"
-        },
-        "radius-secondary": {
-          "$type": "number",
-          "$value": "{component.-focus.ring.radius.extra-large}"
-        }
-      }
-    },
-    "textarea": {
-      "focus-ring": {
-        "radius-primary": {
-          "$type": "number",
-          "$value": "{component.-focus.ring.radius.extra-large}"
-        },
-        "radius-secondary": {
-          "$type": "number",
-          "$value": "{component.-focus.ring.radius.extra-large}"
-        }
-      },
-      "icon": {
-        "resize-default": {
-          "$type": "color",
-          "$value": "{color.icon.subtle}"
-        },
-        "readonly-default": {
-          "$type": "color",
-          "$value": "{color.icon.strong}"
-        }
-      },
-      "size": {
-        "resize-height": {
-          "$type": "number",
-          "$value": "{traton.unit.12}"
-        },
-        "resize-width": {
-          "$type": "number",
-          "$value": "{traton.unit.12}"
-        }
-      }
-    },
-    "badge": {
-      "font-weight": {
-        "$type": "number",
-        "$value": "{traton.font.weight.semi-bold}"
-      },
-      "border": {
-        "radius-none": {
-          "$type": "number",
-          "$value": "{traton.unit.0}"
-        },
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.24}"
-        },
-        "radius-full": {
-          "$type": "number",
-          "$value": "{traton.unit.9999}"
-        }
-      },
-      "background": {
-        "default": {
-          "$type": "color",
-          "$value": "{color.system.warning.default}"
-        }
-      },
-      "text": {
-        "default": {
-          "$type": "color",
-          "$value": "{color.text.inverse.base}"
-        }
-      }
-    },
     "banner": {
       "background": {
         "neutral-default": {
@@ -1227,6 +957,214 @@
         "dismiss-default": {
           "$type": "color",
           "$value": "{color.icon.strong}"
+        }
+      }
+    },
+    "message": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.discrete}"
+        }
+      },
+      "text": {
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "error-highlight-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        }
+      },
+      "border": {
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.system.info.subtle}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.subtle}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.system.warning.subtle}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.subtle}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        },
+        "width-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        }
+      },
+      "icon": {
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.system.info.default}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.default}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.system.warning.subtle}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        }
+      }
+    },
+    "toast": {
+      "background": {
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.background.inverse.base}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.background.inverse.base}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.background.inverse.base}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.background.inverse.base}"
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        },
+        "width-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        },
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.system.info.default}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.default}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.system.warning.default}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        }
+      },
+      "text": {
+        "title-default": {
+          "$type": "color",
+          "$value": "{color.text.inverse.strong}"
+        },
+        "body-default": {
+          "$type": "color",
+          "$value": "{color.text.inverse.soft}"
+        },
+        "link-default": {
+          "$type": "color",
+          "$value": "{component.toast.text.body-default}"
+        }
+      },
+      "icon": {
+        "dismiss-default": {
+          "$type": "color",
+          "$value": "{color.text.inverse.strong}"
+        },
+        "information-default": {
+          "$type": "color",
+          "$value": "{color.system.info.default}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.default}"
+        },
+        "warning-default": {
+          "$type": "color",
+          "$value": "{color.system.warning.default}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        }
+      }
+    },
+    "badge": {
+      "font-weight": {
+        "$type": "number",
+        "$value": "{traton.font.weight.semi-bold}"
+      },
+      "border": {
+        "radius-none": {
+          "$type": "number",
+          "$value": "{traton.unit.0}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.24}"
+        },
+        "radius-full": {
+          "$type": "number",
+          "$value": "{traton.unit.9999}"
+        }
+      },
+      "background": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.system.warning.default}"
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.text.inverse.base}"
         }
       }
     },
@@ -1654,19 +1592,17 @@
           "$type": "number",
           "$value": "{traton.unit.2}"
         },
-        "selected": {
-          "default": {
-            "$type": "color",
-            "$value": "{color.border.none}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.border.none}"
-          },
-          "active": {
-            "$type": "color",
-            "$value": "{color.border.none}"
-          }
+        "selected-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "selected-active": {
+          "$type": "color",
+          "$value": "{color.border.none}"
         },
         "standard": {
           "default": {
@@ -1928,100 +1864,6 @@
         }
       }
     },
-    "message": {
-      "background": {
-        "primary": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "secondary": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        },
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.discrete}"
-        }
-      },
-      "text": {
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "error-highlight-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      },
-      "border": {
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.system.info.subtle}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.system.success.subtle}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.system.warning.subtle}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.subtle}"
-        },
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        },
-        "width-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        }
-      },
-      "icon": {
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.system.info.default}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.system.success.default}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.system.warning.subtle}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      }
-    },
     "modal": {
       "background": {
         "default": {
@@ -2063,38 +1905,6 @@
         "default": {
           "$type": "number",
           "$value": 60
-        }
-      }
-    },
-    "scrollbar": {
-      "background": {
-        "thumb-default": {
-          "$type": "color",
-          "$value": "{color.border.subtle}"
-        },
-        "thumb-hover": {
-          "$type": "color",
-          "$value": "{color.border.soft}"
-        },
-        "track-default": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        }
-      },
-      "border": {
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.8}"
-        }
-      },
-      "size": {
-        "thumb-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        },
-        "thumb-hover": {
-          "$type": "number",
-          "$value": 6
         }
       }
     },
@@ -2143,6 +1953,28 @@
         "extra-small": {
           "$type": "number",
           "$value": 3
+        }
+      }
+    },
+    "scrollbar": {
+      "background": {
+        "thumb-default": {
+          "$type": "color",
+          "$value": "{color.border.subtle}"
+        },
+        "thumb-hover": {
+          "$type": "color",
+          "$value": "{color.border.soft}"
+        }
+      },
+      "width": {
+        "radius-default": {
+          "$type": "number",
+          "$value": 4
+        },
+        "radius-hover": {
+          "$type": "number",
+          "$value": 6
         }
       }
     },
@@ -2232,88 +2064,6 @@
         }
       }
     },
-    "toast": {
-      "background": {
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.background.inverse.base}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.background.inverse.base}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.background.inverse.base}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.background.inverse.base}"
-        }
-      },
-      "border": {
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        },
-        "width-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        },
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.system.info.default}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.system.success.default}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.system.warning.default}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      },
-      "text": {
-        "title-default": {
-          "$type": "color",
-          "$value": "{color.text.inverse.strong}"
-        },
-        "body-default": {
-          "$type": "color",
-          "$value": "{color.text.inverse.soft}"
-        },
-        "link-default": {
-          "$type": "color",
-          "$value": "{component.toast.text.body-default}"
-        }
-      },
-      "icon": {
-        "dismiss-default": {
-          "$type": "color",
-          "$value": "{color.text.inverse.strong}"
-        },
-        "information-default": {
-          "$type": "color",
-          "$value": "{color.system.info.default}"
-        },
-        "success-default": {
-          "$type": "color",
-          "$value": "{color.system.success.default}"
-        },
-        "warning-default": {
-          "$type": "color",
-          "$value": "{color.system.warning.default}"
-        },
-        "error-default": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      }
-    },
     "tooltip": {
       "background": {
         "default": {
@@ -2335,6 +2085,144 @@
         "default": {
           "$type": "color",
           "$value": "{color.text.inverse.strong}"
+        }
+      }
+    },
+    "-shadow": {
+      "base-modifier": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "dragged": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      }
+    },
+    "-input": {
+      "border": {
+        "focus": {
+          "top": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "right": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.2}"
+          }
+        },
+        "radius": {
+          "radius-top-left": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "radius-top-right": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "radius-bottom-left": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          },
+          "radius-bottom-right": {
+            "$type": "number",
+            "$value": "{traton.unit.4}"
+          }
+        },
+        "width": {
+          "top": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "right": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{traton.unit.1}"
+          }
+        }
+      }
+    },
+    "-focus": {
+      "ring": {
+        "color": {
+          "strong": {
+            "$type": "color",
+            "$value": "{color.system.info.default}"
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{traton.color.base.white}"
+          }
+        },
+        "radius": {
+          "none": {
+            "$type": "number",
+            "$value": "{traton.unit.0}"
+          },
+          "extra-small": {
+            "$type": "number",
+            "$value": 1
+          },
+          "small": {
+            "$type": "number",
+            "$value": 2
+          },
+          "medium": {
+            "$type": "number",
+            "$value": 3
+          },
+          "large": {
+            "$type": "number",
+            "$value": 4
+          },
+          "extra-large": {
+            "$type": "number",
+            "$value": 5
+          },
+          "full": {
+            "$type": "number",
+            "$value": "{traton.unit.9999}"
+          }
+        }
+      }
+    },
+    "cookie": {
+      "color": {
+        "text": {
+          "primary-inverse": {
+            "$type": "color",
+            "$value": "#FFFFFF"
+          }
         }
       }
     },

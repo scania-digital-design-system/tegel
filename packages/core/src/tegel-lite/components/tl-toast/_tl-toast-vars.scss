@@ -1,15 +1,12 @@
+@use '../../../../../../tokens/scss/component/toast';
+
 .tl-toast {
-  // Toast background
-  --toast-background: var(--color-background-inverse-base);
-
-  // Toast text colors
-  --toast-headline: var(--color-foreground-text-inverse-strong);
-  --toast-subheadline: var(--color-foreground-text-inverse-soft);
-  --toast-dismiss: var(--color-foreground-text-inverse-strong);
-
-  // Toast icon colors
-  --toast-icon-error: var(--color-system-danger-default);
-  --toast-icon-success: var(--color-system-success-default);
-  --toast-icon-warning: var(--color-system-warning-default);
-  --toast-icon-info: var(--color-system-info-default);
+  --toast-background: var(--component-toast-background-information-default);
+  --toast-headline: var(--component-toast-text-title-default);
+  --toast-subheadline: var(--component-toast-text-body-default);
+  --toast-dismiss: var(--component-toast-icon-dismiss-default);
+  --toast-icon-info: var(--component-toast-icon-information-default);
+  --toast-icon-success: var(--component-toast-icon-success-default);
+  --toast-icon-warning: var(--component-toast-icon-warning-default);
+  --toast-icon-error: var(--component-toast-icon-error-default);
 }
