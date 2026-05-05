@@ -27,7 +27,7 @@ if (process.env.VITE_STORYBOOK_ENV === 'dev') {
 const config: StorybookConfig = {
   stories: loadStories(),
   addons: addons,
-  staticDirs: ['../public', { from: '../dist/tegel/assets', to: '/dist/tegel/assets' }],
+  staticDirs: ['../public', { from: '../dist/tegel/assets/icons', to: '/dist/tegel/assets/icons' }],
   framework: {
     name: '@storybook/html-vite',
     options: {
