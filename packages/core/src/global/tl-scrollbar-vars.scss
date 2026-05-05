@@ -5,9 +5,17 @@
 .tds-mode-light {
   --tl-scrollbar-track-color: transparent;
   --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
+  --tl-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tl-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }
 
 .tl-mode-dark,
 .tds-mode-dark {
   --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
+  --tl-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tl-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }

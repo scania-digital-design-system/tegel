@@ -75,7 +75,7 @@ $modals: (
 @mixin modal-body {
   @include body-01;
 
-  color: var(--tds-modal-text-color);
+  color: var(--tds-modal-body-text-color);
   overflow-y: visible;
   padding: 0 16px 16px;
   @include modal-scrollbar;

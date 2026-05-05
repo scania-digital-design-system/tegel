@@ -3,9 +3,17 @@
   --tds-scrollbar-track-color: transparent;
   --tds-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
   --tds-scrollbar-hover-thumb-color: var(--component-scrollbar-background-thumb-hover);
+  --tds-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tds-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }
 
 .tds-mode-dark {
   --tds-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
   --tds-scrollbar-hover-thumb-color: var(--component-scrollbar-background-thumb-hover);
+  --tds-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tds-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }

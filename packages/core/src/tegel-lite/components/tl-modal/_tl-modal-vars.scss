@@ -12,6 +12,7 @@
   );
   --modal-border-radius: calc(var(--component-modal-border-radius-default) * 1px);
   --modal-text: var(--component-modal-text-title-default);
+  --modal-body-text: var(--component-modal-text-body-default);
   --modal-cross-svg: var(--component-modal-icon-dismiss-default);
   --modal-shadow: 0 2px 3px 0 var(--component-shadow-base-modifier);
   --component-shadow-base-modifier: var(--scania-color-transparent-invisible-dark);
