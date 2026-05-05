@@ -80,7 +80,7 @@
   }
 
   &:focus-within {
-    border: 2px solid var(--tds-focus-outline-color);
+    border: 2px solid var(--component--focus-ring-color-strong);
     margin: 0 -2px;
   }
 }

@@ -39,7 +39,7 @@ button {
   border: 1px solid transparent;
 
   &:focus {
-    outline: 1px solid var(--tds-focus-outline-color);
+    outline: 1px solid var(--component--focus-ring-color-strong);
   }
 
   &:focus-visible {

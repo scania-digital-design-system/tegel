@@ -1,4 +1,5 @@
 @use '../../../../mixins/box-sizing' as *;
+@use '../../../../mixins/focus-state' as *;
 @use '../../../../../../../typography/mixins/type-styles' as *;
 @use './tl-navigation-tabs-vars' as *;
 
@@ -23,12 +24,12 @@
   }
 
   &:focus-visible::before {
+    @include tds-focus-state;
+
     content: '';
     position: absolute;
     inset: 18px 0;
     border-radius: 2px;
-    box-shadow: 0 0 0 2px var(--navigation-tabs-tab-focus) inset;
-    z-index: 2;
     pointer-events: none;
   }
 
@@ -79,6 +80,7 @@
     }
 
     &:focus-visible::before {
+      outline: none;
       box-shadow: none;
     }
   }

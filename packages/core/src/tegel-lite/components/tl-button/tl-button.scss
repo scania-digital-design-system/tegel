@@ -1,5 +1,6 @@
 @use './tl-button-vars' as *; // Import global variables
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 /* Base button styles */
@@ -19,8 +20,7 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: var(--button-outline-width) solid var(--color-foreground-border-accent-focus);
-    outline-offset: calc(var(--button-outline-width) * -1);
+    @include tds-focus-state;
   }
 
   /* Variants */
@@ -46,13 +46,12 @@
       background: var(--button-primary-background-focus);
       border-color: var(--button-primary-border-color-focus);
       color: var(--button-primary-color-focus);
-      outline-color: var(--button-primary-outline-color-focus);
     }
 
     &:active:not(:disabled) {
       &:focus-visible {
         outline: none;
-        outline-offset: none;
+        box-shadow: none;
       }
 
       background-color: var(--button-primary-background-active);
@@ -82,12 +81,12 @@
       background: var(--button-secondary-background-focus);
       border-color: var(--button-secondary-border-color-focus);
       color: var(--button-secondary-color-focus);
-      outline-color: var(--button-secondary-outline-color-focus);
     }
 
     &:active:not(:disabled) {
       &:focus-visible {
         outline: none;
+        box-shadow: none;
       }
 
       border-color: var(--button-secondary-border-color-active);
@@ -116,12 +115,12 @@
       background: var(--button-ghost-background-focus);
       border-color: var(--button-ghost-border-color-focus);
       color: var(--button-ghost-color-focus);
-      outline-color: var(--button-ghost-outline-color-focus);
     }
 
     &:active:not(:disabled) {
       &:focus-visible {
         outline: none;
+        box-shadow: none;
       }
 
       border-color: var(--button-ghost-border-color-active);
@@ -150,12 +149,12 @@
       background: var(--button-danger-background-focus);
       border-color: var(--button-danger-border-color-focus);
       color: var(--button-danger-color-focus);
-      outline-color: var(--button-danger-outline-color-focus);
     }
 
     &:active:not(:disabled) {
       &:focus-visible {
         outline: none;
+        box-shadow: none;
       }
 
       background-color: var(--button-danger-background-active);

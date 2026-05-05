@@ -15,6 +15,7 @@
 @use '../../../../tokens/scss/traton/color-dark' as *;
 
 /* Figma design tokens: component tokens */
+@use '../../../../tokens/scss/component/-focus' as *;
 @use '../../../../tokens/scss/component/badge' as *;
 @use '../../../../tokens/scss/component/banner' as *;
 @use '../../../../tokens/scss/component/breadcrumbs' as *;
@@ -71,7 +72,6 @@
 // Vars
 @use '_variables' as *;
 @use 'scrollbar-vars' as *;
-@use 'focus-vars' as *;
 
 // Utility classes
 @use '_utility-classes' as *;
@@ -121,6 +121,7 @@
 @use 'traton-variables' as *;
 
 /* Component tokens */
+@use '../../../../tokens/scss/component/-focus' as *;
 @use '../../../../tokens/scss/component/badge' as *;
 @use '../../../../tokens/scss/component/banner' as *;
 @use '../../../../tokens/scss/component/breadcrumbs' as *;
