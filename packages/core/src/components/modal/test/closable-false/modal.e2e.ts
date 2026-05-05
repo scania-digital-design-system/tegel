@@ -10,7 +10,7 @@ import {
 const componentTestPath = 'src/components/modal/test/closable-false/index.html';
 const componentName = 'tds-modal';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

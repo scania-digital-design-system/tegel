@@ -363,6 +363,9 @@ const COMPONENT_FILE_LIST = [
   ['banner', 'exact'],
   ['message', 'exact'],
   ['toast', 'exact'],
+  ['overlay', 'exact'],
+  ['modal', 'exact'],
+  ['scrollbar', 'exact'],
 ];
 
 // Helper function to create component file configuration

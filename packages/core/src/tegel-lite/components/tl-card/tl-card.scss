@@ -12,7 +12,7 @@
   width: 100%;
   box-shadow: var(--card-box);
   background-color: var(--card-background);
-  border-radius: 4px;
+  border-radius: var(--card-border-radius);
   overflow: hidden;
 
   &--clickable {

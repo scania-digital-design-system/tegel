@@ -65,7 +65,7 @@ $modals: (
   box-shadow: var(--modal-shadow);
   margin: auto;
   position: relative;
-  border-radius: 4px;
+  border-radius: var(--modal-border-radius);
   max-height: $modal-max-height;
   overflow-y: auto;
   pointer-events: auto;
@@ -154,9 +154,10 @@ $modals: (
   background-color: transparent;
   border: 0;
   padding: 0;
+  height: 20px;
+  width: 20px;
   appearance: unset;
   display: inline-block;
-  height: auto;
   color: var(--modal-text);
   cursor: pointer;
 
