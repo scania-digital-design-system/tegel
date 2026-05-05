@@ -10,6 +10,9 @@
 );
 @use '../../../../tokens/scss/traton/traton-icons' as *;
 
+/* Cross-brand placeholder fallbacks — generated alongside icon.scss */
+@use '../../../../tokens/scss/component/icon-fallbacks' as *;
+
 @use '../tegel-lite/components/tl-button/tl-button' as *;
 @use '../tegel-lite/components/tl-header/tl-header' as *;
 @use '../tegel-lite/components/tl-message/tl-message' as *;
