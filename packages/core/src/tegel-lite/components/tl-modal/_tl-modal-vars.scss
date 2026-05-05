@@ -14,6 +14,6 @@
   --modal-text: var(--component-modal-text-title-default);
   --modal-body-text: var(--component-modal-text-body-default);
   --modal-cross-svg: var(--component-modal-icon-dismiss-default);
-  --modal-shadow: 0 2px 3px 0 var(--component-shadow-base-modifier);
-  --component-shadow-base-modifier: var(--scania-color-transparent-invisible-dark);
+  --modal-shadow: 0 3px 3px 0 var(--component-shadow-default, rgba(0, 0, 0, 0.15)),
+    0 -1px 1px 0 var(--component-shadow-base-modifier, rgba(0, 0, 0, 0.10));
 }

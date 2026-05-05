@@ -1,5 +1,3 @@
-@use '../../../../../../tokens/scss/component/card';
-
 .tl-card {
   --card-background: var(--component-card-background-primary-default);
   --card-border-radius: calc(var(--component-card-border-radius-default) * 1px);

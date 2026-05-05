@@ -9,5 +9,6 @@ tds-modal {
   --tds-modal-text-color: var(--component-modal-text-title-default);
   --tds-modal-body-text-color: var(--component-modal-text-body-default);
   --tds-modal-icon-color: var(--component-modal-icon-dismiss-default);
-  --tds-modal-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1), 0 -1px 1px 0 rgba(0, 0, 0, 0.05);
+  --tds-modal-box-shadow: 0 3px 3px 0 var(--component-shadow-default, rgba(0, 0, 0, 0.15)),
+    0 -1px 1px 0 var(--component-shadow-base-modifier, rgba(0, 0, 0, 0.10));
 }
