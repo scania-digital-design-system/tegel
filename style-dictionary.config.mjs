@@ -103,12 +103,16 @@ StyleDictionary.registerFormat({
     componentTokens.forEach(token => {
       const rawParts = token.path.slice(1);
       const pathParts = rawParts
-        .map(part =>
+        .map((part, index) =>
           part
             .trim()
             .replace(/\s+/g, '-')
             .replace(/[^a-zA-Z0-9-]/g, '')
-            .replace(/^-+/, '')
+            // Preserve a single leading "-" on the first path segment (e.g. "-focus", "-input",
+            // "-shadow") so emitted variables match Style Dictionary's auto-generated references
+            // (e.g. var(--component--focus-ring-radius-extra-large)). Strip leading dashes
+            // elsewhere to avoid accidental "--" runs from non-prefix segments.
+            .replace(index === 0 ? /^--+/ : /^-+/, '')
         )
         .filter(part => part.length > 0);
       const variableName = ['component', ...pathParts].join('-');
@@ -334,6 +338,7 @@ function extractBrandInfo(themes) {
 
 // List of [componentName, matchType] for component token files (used for both merged and per-theme builds)
 const COMPONENT_FILE_LIST = [
+  ['-focus', 'exact'],
   ['header', 'includes'],
   ['side-menu', 'includes'],
   ['card', 'includes'],
@@ -355,6 +360,9 @@ const COMPONENT_FILE_LIST = [
   ['cookie', 'exact'],
   ['tooltip', 'exact'],
   ['text', 'exact'],
+  ['banner', 'exact'],
+  ['message', 'exact'],
+  ['toast', 'exact'],
 ];
 
 // Helper function to create component file configuration

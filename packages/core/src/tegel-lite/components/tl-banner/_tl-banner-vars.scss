@@ -1,21 +1,12 @@
-:root,
-.tl-mode-light,
-.tl-mode-dark {
-  // Banner text color
-  --banner-text: var(--color-foreground-text-strong);
+@use '../../../../../../tokens/scss/component/banner';
 
-  // Banner close icon color
-  --banner-close-icon: var(--color-foreground-icon-strong);
-
-  // Type: Default
-  --banner-background-default: var(--color-background-layer-01);
-  --banner-prefix-default: var(--color-foreground-icon-strong);
-
-  // Type: Info
-  --banner-background-info: var(--color-system-info-discrete);
-  --banner-prefix-info: var(--color-system-info-default);
-
-  // Type: Error
-  --banner-background-error: var(--color-system-danger-discrete);
-  --banner-prefix-error: var(--color-system-danger-default);
+.tl-banner {
+  --banner-text: var(--component-banner-text-neutral-default);
+  --banner-close-icon: var(--component-banner-icon-dismiss-default);
+  --banner-background-default: var(--component-banner-background-neutral-default);
+  --banner-prefix-default: var(--component-banner-icon-neutral-default);
+  --banner-background-info: var(--component-banner-background-information-default);
+  --banner-prefix-info: var(--component-banner-icon-information-default);
+  --banner-background-error: var(--component-banner-background-error-default);
+  --banner-prefix-error: var(--component-banner-icon-error-default);
 }

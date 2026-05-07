@@ -1,5 +1,7 @@
 /* Component tokens */
+@use '../../../../tokens/scss/component/-focus' as *;
 @use '../../../../tokens/scss/component/badge' as *;
+@use '../../../../tokens/scss/component/banner' as *;
 @use '../../../../tokens/scss/component/button' as *;
 @use '../../../../tokens/scss/component/card' as *;
 @use '../../../../tokens/scss/component/chip' as *;
@@ -7,14 +9,17 @@
 @use '../../../../tokens/scss/component/dropdown' as *;
 @use '../../../../tokens/scss/component/footer' as *;
 @use '../../../../tokens/scss/component/header' as *;
+@use '../../../../tokens/scss/component/icon' as *;
 @use '../../../../tokens/scss/component/input-field' as *;
 @use '../../../../tokens/scss/component/logo' as *;
+@use '../../../../tokens/scss/component/message' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
 @use '../../../../tokens/scss/component/side-menu' as *;
 @use '../../../../tokens/scss/component/spinner' as *;
 @use '../../../../tokens/scss/component/stepper' as *;
 @use '../../../../tokens/scss/component/table' as *;
 @use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/toast' as *;
 @use '../../../../tokens/scss/component/tooltip' as *;
 
 // Motion

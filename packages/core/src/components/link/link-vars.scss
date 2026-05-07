@@ -13,8 +13,12 @@ tds-link {
 
 tds-toast tds-link {
   --tds-link: var(--color-text-inverse-strong);
+  --tds-link-hover: var(--color-text-inverse-strong);
+  --tds-link-visited: var(--color-text-inverse-strong);
 }
 
 tds-banner tds-link {
   --tds-link: var(--color-text-strong);
+  --tds-link-hover: var(--color-text-strong);
+  --tds-link-visited: var(--color-text-strong);
 }

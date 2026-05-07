@@ -10,3 +10,6 @@
 
 /* Scania icon tokens */
 @use '../../../../tokens/scss/scania/scania-icons' as *;
+
+/* Cross-brand placeholder fallbacks — generated alongside icon.scss */
+@use '../../../../tokens/scss/component/icon-fallbacks' as *;
