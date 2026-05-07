@@ -49,13 +49,13 @@ export class TdsTableBodyCell {
 
   tableEl!: HTMLTdsTableElement | null;
 
-  @Listen('internalTdsPropChange', { target: 'body' })
+  @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
         .forEach((changedProp) => {
-          if (typeof this[changedProp] === 'undefined') {
+          if (!(changedProp in this)) {
             throw new Error(`Table prop is not supported: ${changedProp}`);
           }
           this[changedProp] = event.detail[changedProp];
