@@ -18,7 +18,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'noMinWidth',
   'verticalDividers',
   'sortColumnKey',
-  'sortDirection',
 ];
 
 /**
@@ -79,8 +78,6 @@ export class TdsTableHeaderCell {
   @State() expandableRows: boolean = false;
 
   @State() sortColumnKey?: string;
-
-  @State() sortDirection?: SortDirection;
 
   @Element() host!: HTMLElement;
 
@@ -193,14 +190,16 @@ export class TdsTableHeaderCell {
   }
 
   private syncSortingStateFromTable() {
-    if (!this.sortColumnKey || !this.isSortDirection(this.sortDirection)) {
+    const sortDirection = this.tableEl?.sortDirection;
+
+    if (!this.sortColumnKey || !this.isSortDirection(sortDirection)) {
       this.sortedByMyKey = false;
       this.sortingDirection = undefined;
       return;
     }
 
     this.sortedByMyKey = this.sortable && this.cellKey === this.sortColumnKey;
-    this.sortingDirection = this.sortedByMyKey ? this.sortDirection : undefined;
+    this.sortingDirection = this.sortedByMyKey ? sortDirection : undefined;
   }
 
   componentWillRender() {
