@@ -9,7 +9,7 @@ import {
   Listen,
   Element,
 } from '@stencil/core';
-import { InternalTdsTablePropChange, TextAlign } from '../table/table';
+import { InternalTdsTablePropChange, SortDirection, TextAlign } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -17,6 +17,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
   'verticalDividers',
+  'sortColumnKey',
 ];
 
 /**
@@ -58,7 +59,7 @@ export class TdsTableHeaderCell {
 
   @State() textAlignState: TextAlign = 'left';
 
-  @State() sortingDirection: 'asc' | 'desc' | undefined;
+  @State() sortingDirection: SortDirection | undefined;
 
   @State() sortedByMyKey: boolean = false;
 
@@ -75,6 +76,8 @@ export class TdsTableHeaderCell {
   @State() tableId: string | undefined = '';
 
   @State() expandableRows: boolean = false;
+
+  @State() sortColumnKey?: string;
 
   @Element() host!: HTMLElement;
 
@@ -129,17 +132,25 @@ export class TdsTableHeaderCell {
     key: string;
   }>;
 
-  @Listen('internalTdsPropChange', { target: 'body' })
+  @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
         .forEach((changedProp) => {
-          if (typeof this[changedProp] === 'undefined') {
+          if (!(changedProp in this)) {
             throw new Error(`Table prop is not supported: ${changedProp}`);
           }
           this[changedProp] = event.detail[changedProp];
         });
+
+      if (
+        event.detail.changed.some(
+          (changedProp) => changedProp === 'sortColumnKey' || changedProp === 'sortDirection',
+        )
+      ) {
+        this.syncSortingStateFromTable();
+      }
     }
   }
 
@@ -171,6 +182,24 @@ export class TdsTableHeaderCell {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
+    this.syncSortingStateFromTable();
+  }
+
+  private isSortDirection(sortDirection: string | undefined): sortDirection is SortDirection {
+    return sortDirection === 'asc' || sortDirection === 'desc';
+  }
+
+  private syncSortingStateFromTable() {
+    const sortDirection = this.tableEl?.sortDirection;
+
+    if (!this.sortColumnKey || !this.isSortDirection(sortDirection)) {
+      this.sortedByMyKey = false;
+      this.sortingDirection = undefined;
+      return;
+    }
+
+    this.sortedByMyKey = this.sortable && this.cellKey === this.sortColumnKey;
+    this.sortingDirection = this.sortedByMyKey ? sortDirection : undefined;
   }
 
   componentWillRender() {
