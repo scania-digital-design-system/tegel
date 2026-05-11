@@ -1,3 +1,4 @@
+@use '../../../../../../tokens/scss/component/input-field';
 @use '../../../../../../tokens/scss/component/text-field';
 
 .tl-text-field {
@@ -21,6 +22,13 @@
   --text-field-affix-disabled: var(--color-foreground-text-disabled);
   --text-field-textcounter: var(--color-foreground-text-defined);
 
+  // Per-corner radius sourced from brand-aware input-field tokens
+  // (Scania: 4/4/0/0, Traton: 4/4/4/4). Replaces previous per-brand overrides.
+  --text-field-border-radius: calc(var(--component-input-field-border-radius-top-left) * 1px)
+    calc(var(--component-input-field-border-radius-top-right) * 1px)
+    calc(var(--component-input-field-border-radius-bottom-right) * 1px)
+    calc(var(--component-input-field-border-radius-bottom-left) * 1px);
+
   &--primary {
     --text-field-background: var(--color-background-layer-01);
     --text-field-background-disabled: var(--color-background-layer-01);
@@ -32,35 +40,23 @@
   }
 }
 
+// Box-shadow simulating the visible border. The shape differs per brand
+// (Scania = bottom-only, Traton = all-around), so these blocks stay scoped.
+// Focus is now handled by the tds-focus-state mixin (outline 1px outside),
+// so the previous *-focus / *-outline / bar-* vars are gone.
 .tl-text-field,
 .scania .tl-text-field {
-  --text-field-border-radius: 4px 4px 0 0;
   --text-field-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --text-field-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
   --text-field-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
   --text-field-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
-  --text-field-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
   --text-field-box-shadow-success: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --text-field-bar-focus: var(--color-foreground-border-accent-focus);
-  --text-field-bar-error: var(--color-system-danger-default);
-  --text-field-focus-outline: none;
-  --text-field-focus-outline-error: none;
-  --text-field-focus-outline-offset: 0;
 }
 
 .traton .tl-text-field {
-  --text-field-border-radius: 4px 4px 4px 4px;
   --text-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
-  --text-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
   --text-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
   --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
   --text-field-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
-  --text-field-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
-  --text-field-focus-outline: 2px solid var(--color-foreground-border-accent-focus);
-  --text-field-focus-outline-error: 2px solid var(--color-system-danger-default);
-  --text-field-focus-outline-offset: 0;
-  --text-field-bar-focus: transparent;
-  --text-field-bar-error: transparent;
 }

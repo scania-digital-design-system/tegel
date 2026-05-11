@@ -1,5 +1,6 @@
 @use './_tl-textarea-mixins' as *;
 @use './tl-textarea-vars' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-textarea {
@@ -139,7 +140,7 @@
   }
 
   &:focus {
-    box-shadow: inset var(--textarea-box-shadow-focus);
+    @include tds-focus-state;
   }
 
   &::-webkit-resizer {
@@ -154,7 +155,7 @@
     box-shadow: inset var(--textarea-box-shadow-error);
 
     &:focus {
-      box-shadow: inset var(--textarea-box-shadow-error-focus);
+      @include tds-focus-state;
     }
   }
 
@@ -180,7 +181,7 @@
     box-shadow: inset var(--textarea-box-shadow);
 
     &:focus {
-      box-shadow: inset var(--textarea-box-shadow-focus);
+      @include tds-focus-state;
     }
   }
 

@@ -1,6 +1,7 @@
 @use './tl-text-field-vars' as *;
 @use './tl-text-field-mixins' as *;
 @use '../tl-icon/tl-icon' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-text-field {
@@ -63,7 +64,7 @@
   transition: box-shadow 0.2s;
 
   &:focus {
-    box-shadow: inset var(--text-field-box-shadow-focus);
+    @include tds-focus-state;
   }
 
   .tl-text-field:hover &:not(:focus):not(:disabled) {
@@ -74,7 +75,7 @@
     box-shadow: inset var(--text-field-box-shadow-error);
 
     &:focus {
-      box-shadow: inset var(--text-field-box-shadow-error-focus);
+      @include tds-focus-state;
     }
   }
 
@@ -101,7 +102,7 @@
     box-shadow: inset var(--text-field-box-shadow);
 
     &:focus {
-      box-shadow: inset var(--text-field-box-shadow-focus);
+      @include tds-focus-state;
     }
   }
 
