@@ -16,16 +16,19 @@
     min-width: auto;
   }
 
+  // Disabled state — per Figma, the input visual unit fades to opacity 0.25
+  // as a single unit. Helper text sits outside and keeps full opacity.
   &:has(.tl-text-field__input:disabled) {
     cursor: not-allowed;
   }
 
+  &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper,
+  &:has(.tl-text-field__input:disabled) .tl-text-field__label {
+    opacity: 0.25;
+  }
+
   .tl-icon {
     background-color: var(--text-field-affix);
-
-    :has(.tl-text-field__input:disabled) & {
-      background-color: var(--text-field-affix-disabled);
-    }
   }
 }
 
@@ -60,19 +63,17 @@
   color: var(--text-field-text);
   flex: 1;
   order: 2;
-  box-shadow: inset var(--text-field-box-shadow);
-  transition: box-shadow 0.2s;
 
   &:focus {
     @include tds-focus-state;
   }
 
   .tl-text-field:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--text-field-box-shadow-hover);
+    border-color: var(--text-field-border-color-hover);
   }
 
   .tl-text-field--error & {
-    box-shadow: inset var(--text-field-box-shadow-error);
+    border-color: var(--text-field-border-color-error);
 
     &:focus {
       @include tds-focus-state;
@@ -80,26 +81,23 @@
   }
 
   .tl-text-field--error:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--text-field-box-shadow-error-hover);
+    border-color: var(--text-field-border-color-error);
   }
 
   .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
   :has(.tl-text-field__input:disabled)
 )
   &:not(:focus) {
-    box-shadow: inset var(--text-field-box-shadow-success);
+    border-color: var(--text-field-border-color-success);
   }
 
   &:disabled {
-    box-shadow: none;
-    background-color: var(--text-field-background-disabled);
-    color: var(--text-field-text-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
-    box-shadow: inset var(--text-field-box-shadow);
+    border-color: var(--text-field-border-color-readonly);
 
     &:focus {
       @include tds-focus-state;
@@ -108,7 +106,7 @@
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
   &:not(:focus) {
-    box-shadow: inset var(--text-field-box-shadow-hover);
+    border-color: var(--text-field-border-color-hover);
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {

@@ -258,24 +258,20 @@
   color: var(--tds-text-field-helper);
 }
 
-// Disabled state
+// Disabled state — per Figma, the input visual unit (container + prefix +
+// suffix + value + placeholder + inside-label + outside-label) fades to
+// opacity 0.25 as a single unit. Helper text sits below the unit and keeps
+// full opacity, using its own disabled color.
 .form-text-field-disabled {
+  cursor: not-allowed;
+
+  .text-field-container,
+  .text-field-label-outside {
+    opacity: 0.25;
+  }
+
   .text-field-container {
     cursor: not-allowed;
-    border-color: transparent;
-  }
-
-  .text-field-slot-wrap-prefix,
-  .text-field-slot-wrap-suffix {
-    > * {
-      color: var(--tds-text-field-ps-color-disabled);
-    }
-  }
-
-  .text-field-label-outside {
-    > * {
-      color: var(--tds-text-field-label-disabled);
-    }
   }
 
   .text-field-helper {

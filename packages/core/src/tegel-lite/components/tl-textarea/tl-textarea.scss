@@ -16,8 +16,20 @@
     min-width: auto;
   }
 
+  // Disabled state — per Figma, the input visual unit fades to opacity 0.25
+  // as a single unit. Helper text and textcounter sit outside and keep full
+  // opacity, using their own disabled colors.
   &:has(.tl-textarea__input:disabled) {
     cursor: not-allowed;
+  }
+
+  &:has(.tl-textarea__input:disabled) .tl-textarea__input,
+  &:has(.tl-textarea__input:disabled) .tl-textarea__label {
+    opacity: 0.25;
+  }
+
+  &:has(.tl-textarea__input:disabled)::after {
+    opacity: 0.25;
   }
 
   // Readonly icon (on wrapper because ::before doesn't work on textarea element)
@@ -83,8 +95,8 @@
     position: absolute;
     bottom: 3px;
     right: 3px;
-    width: 12px;
-    height: 12px;
+    width: calc(var(--component-textarea-size-resize-width) * 1px);
+    height: calc(var(--component-textarea-size-resize-height) * 1px);
     background-color: var(--textarea-resize-icon);
     mask-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.8536 0.853553C12.0488 0.658291 12.0488 0.341709 11.8536 0.146447C11.6583 -0.0488155 11.3417 -0.0488155 11.1464 0.146447L0.146447 11.1464C-0.0488155 11.3417 -0.0488155 11.6583 0.146447 11.8536C0.341709 12.0488 0.658291 12.0488 0.853553 11.8536L11.8536 0.853553ZM11.8536 4.64645C12.0488 4.84171 12.0488 5.15829 11.8536 5.35355L5.35355 11.8536C5.15829 12.0488 4.84171 12.0488 4.64645 11.8536C4.45118 11.6583 4.45118 11.3417 4.64645 11.1464L11.1464 4.64645C11.3417 4.45118 11.6583 4.45118 11.8536 4.64645ZM11.8536 8.64645C12.0488 8.84171 12.0488 9.15829 11.8536 9.35355L9.35355 11.8536C9.15829 12.0488 8.84171 12.0488 8.64645 11.8536C8.45118 11.6583 8.45118 11.3417 8.64645 11.1464L11.1464 8.64645C11.3417 8.45118 11.6583 8.45118 11.8536 8.64645Z' fill='currentColor'/%3E%3C/svg%3E");
     mask-size: contain;
@@ -116,9 +128,6 @@
     bottom: 27px;
   }
 
-  :has(.tl-textarea__input:disabled)::after {
-    background-color: var(--color-foreground-text-disabled);
-  }
 }
 
 .tl-textarea__input {
@@ -131,8 +140,6 @@
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   color: var(--textarea-text);
   resize: vertical;
-  box-shadow: inset var(--textarea-box-shadow);
-  transition: box-shadow 0.2s;
   z-index: 0;
 
   &::placeholder {
@@ -148,11 +155,11 @@
   }
 
   .tl-textarea:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--textarea-box-shadow-hover);
+    border-color: var(--textarea-border-color-hover);
   }
 
   .tl-textarea--error & {
-    box-shadow: inset var(--textarea-box-shadow-error);
+    border-color: var(--textarea-border-color-error);
 
     &:focus {
       @include tds-focus-state;
@@ -160,25 +167,23 @@
   }
 
   .tl-textarea--error:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--textarea-box-shadow-error-hover);
+    border-color: var(--textarea-border-color-error);
   }
 
   .tl-textarea--success:not(:has(.tl-textarea__input[readonly])):not(
   :has(.tl-textarea__input:disabled)
 )
   &:not(:focus) {
-    box-shadow: inset var(--textarea-box-shadow-success);
+    border-color: var(--textarea-border-color-success);
   }
 
   &:disabled {
-    box-shadow: none;
-    color: var(--textarea-text-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
-    box-shadow: inset var(--textarea-box-shadow);
+    border-color: var(--textarea-border-color-readonly);
 
     &:focus {
       @include tds-focus-state;
@@ -186,7 +191,7 @@
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):hover &:not(:focus) {
-    box-shadow: inset var(--textarea-box-shadow-hover);
+    border-color: var(--textarea-border-color-hover);
   }
 
   .tl-textarea--label-inside & {
