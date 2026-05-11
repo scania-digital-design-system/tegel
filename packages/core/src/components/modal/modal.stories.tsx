@@ -140,8 +140,8 @@ const ModalTemplate = ({
         ${bodyContent}
       </span>
       <span slot='actions' class='tds-u-flex tds-u-gap2'>
-        <tds-button data-dismiss-modal size="md" text="Button Text" variant="primary"></tds-button>
-        <tds-button data-dismiss-modal size="md" text="Button Text" variant="secondary"></tds-button>
+        <tds-button data-dismiss-modal size="sm" text="Button Text" variant="primary"></tds-button>
+        <tds-button data-dismiss-modal size="sm" text="Button Text" variant="secondary"></tds-button>
       </span>      
   </tds-modal>
   

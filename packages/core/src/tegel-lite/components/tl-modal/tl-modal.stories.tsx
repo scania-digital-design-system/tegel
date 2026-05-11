@@ -119,8 +119,8 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
           ${bodyContent}
         </>
         <div class="tl-modal__actions">
-          <button class="tl-button tl-button--md tl-button--primary">Button Text</>
-          <button class="tl-button tl-button--md tl-button--secondary">Button Text</>
+          <button class="tl-button tl-button--sm tl-button--primary">Button Text</>
+          <button class="tl-button tl-button--sm tl-button--secondary">Button Text</>
         </>
       </>
     </>

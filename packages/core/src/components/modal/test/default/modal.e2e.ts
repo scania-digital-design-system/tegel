@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/modal/test/default/index.html';
 const componentName = 'tds-modal';
 const testDescription = 'tds-modal-default';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

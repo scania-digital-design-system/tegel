@@ -1,0 +1,38 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  --component-overlay-background-default: var(--scania-color-base-black);
+  --component-overlay-opacity-default: 60;
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  --component-overlay-background-default: var(--traton-color-base-black);
+  --component-overlay-opacity-default: 40;
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  --component-overlay-background-default: var(--scania-color-grey-900);
+  --component-overlay-opacity-default: 84;
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  --component-overlay-background-default: var(--traton-color-base-black);
+  --component-overlay-opacity-default: 60;
+}
