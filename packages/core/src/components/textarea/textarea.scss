@@ -115,6 +115,11 @@
 
   &:focus {
     @include tds-focus-state;
+
+    // Token defines the corner radius the focus outline should adopt — Scania
+    // secondary collapses to 0 (square ring), Traton uses 5px. Outline follows
+    // the element's border-radius, so we override it on :focus.
+    border-radius: calc(var(--tds-textarea-focus-ring-radius) * 1px);
   }
 }
 
@@ -132,6 +137,8 @@
 
   svg {
     display: block;
+    width: calc(var(--component-textarea-size-resize-width) * 1px);
+    height: calc(var(--component-textarea-size-resize-height) * 1px);
   }
 }
 

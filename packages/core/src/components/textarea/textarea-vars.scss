@@ -46,6 +46,10 @@ tds-textarea {
   // Resize
   --tds-textarea-resize-icon: var(--component-textarea-icon-resize-default);
 
+  // Focus ring — radius the input adopts on :focus so the outline draws at the
+  // brand-defined corner radius (defaults to primary; secondary overrides below)
+  --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
+
   .tds-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
@@ -58,5 +62,6 @@ tds-textarea {
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--color-background-layer-01);
+    --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-secondary);
   }
 }
