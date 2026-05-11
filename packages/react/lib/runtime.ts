@@ -1,10 +1,10 @@
 /**
  * Custom runtime wrapper for @stencil/react-output-target.
  *
- * In JSDOM (vitest / jest), Stencil's lazy-loaded property-to-attribute
+ * In JSDOM/HappyDOM (vitest / jest), Stencil's lazy-loaded property-to-attribute
  * reflection never fires, so props set as JS properties via @lit/react's
  * createComponent are invisible to getAttribute(). This wrapper detects
- * JSDOM and adds a useLayoutEffect that explicitly syncs primitive props
+ * JSDOM/HappyDOM and adds a useLayoutEffect that explicitly syncs primitive props
  * to DOM attributes. In real browsers, the original component is returned
  * unchanged — zero runtime cost.
  */
@@ -16,9 +16,9 @@ import React from 'react';
 export type { EventName } from '@lit/react';
 export type { StencilReactComponent } from '@stencil/react-output-target/runtime';
 
-// ---------- JSDOM detection ----------
+// ---------- Test DOM detection ----------
 
-const isJsdom = typeof navigator !== 'undefined' && /jsdom/i.test(navigator.userAgent);
+const isTestDom = typeof navigator !== 'undefined' && /(jsdom|happydom)/i.test(navigator.userAgent);
 
 // ---------- Attribute helpers ----------
 
@@ -71,11 +71,11 @@ export const createComponent = <I extends HTMLElement, E extends EventNames = {}
   });
 
   // In real browsers Stencil's proxy handles reflection — return as-is.
-  if (!isJsdom) {
+  if (!isTestDom) {
     return OriginalComponent;
   }
 
-  // --- JSDOM wrapper ---
+  // --- Test DOM wrapper ---
   const { elementClass, events } = rest;
   const eventKeys = new Set(Object.keys(events ?? {}));
 
