@@ -46,7 +46,7 @@ tds-text-field {
   --tds-text-field-resize-icon: var(--color-icon-subtle);
 
   // Border (Scania renders bottom-only, Traton renders all 4 sides; same color
-  // applies to whichever sides are visible per --component-input-field-border-width-*)
+  // applies to whichever sides are visible per --component--input-border-width-*)
   --tds-text-field-border-bottom: var(--color-border-soft);
   --tds-text-field-border-bottom-hover: var(--color-border-strong);
   --tds-text-field-border-bottom-success: var(--color-border-strong);

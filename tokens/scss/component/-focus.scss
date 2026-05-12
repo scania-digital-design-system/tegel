@@ -8,8 +8,6 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component--focus-ring-color-strong: var(--color-system-info-default);
-  --component--focus-ring-color-discrete: var(--scania-color-base-white);
   --component--focus-ring-radius-none: var(--scania-unit-0);
   --component--focus-ring-radius-extra-small: 1;
   --component--focus-ring-radius-small: 2;
@@ -17,14 +15,14 @@
   --component--focus-ring-radius-large: 4;
   --component--focus-ring-radius-extra-large: 5;
   --component--focus-ring-radius-full: var(--scania-unit-9999);
+  --component--focus-ring-color-strong: var(--color-system-info-default);
+  --component--focus-ring-color-discrete: var(--scania-color-base-white);
 }
 
 .traton .tds-mode-light,
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component--focus-ring-color-strong: var(--color-system-info-default);
-  --component--focus-ring-color-discrete: var(--traton-color-base-white);
   --component--focus-ring-radius-none: var(--traton-unit-0);
   --component--focus-ring-radius-extra-small: 1;
   --component--focus-ring-radius-small: 2;
@@ -32,6 +30,8 @@
   --component--focus-ring-radius-large: 4;
   --component--focus-ring-radius-extra-large: 5;
   --component--focus-ring-radius-full: var(--traton-unit-9999);
+  --component--focus-ring-color-strong: var(--color-system-info-default);
+  --component--focus-ring-color-discrete: var(--traton-color-base-white);
 }
 
 .tds-mode-dark,
@@ -39,8 +39,6 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component--focus-ring-color-strong: var(--color-system-info-default);
-  --component--focus-ring-color-discrete: var(--scania-color-base-white);
   --component--focus-ring-radius-none: var(--scania-unit-0);
   --component--focus-ring-radius-extra-small: 1;
   --component--focus-ring-radius-small: 2;
@@ -48,14 +46,14 @@
   --component--focus-ring-radius-large: 4;
   --component--focus-ring-radius-extra-large: 5;
   --component--focus-ring-radius-full: var(--scania-unit-9999);
+  --component--focus-ring-color-strong: var(--color-system-info-default);
+  --component--focus-ring-color-discrete: var(--scania-color-base-white);
 }
 
 .traton .tds-mode-dark,
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component--focus-ring-color-strong: var(--color-system-info-default);
-  --component--focus-ring-color-discrete: var(--traton-color-base-white);
   --component--focus-ring-radius-none: var(--traton-unit-0);
   --component--focus-ring-radius-extra-small: 1;
   --component--focus-ring-radius-small: 2;
@@ -63,4 +61,6 @@
   --component--focus-ring-radius-large: 4;
   --component--focus-ring-radius-extra-large: 5;
   --component--focus-ring-radius-full: var(--traton-unit-9999);
+  --component--focus-ring-color-strong: var(--color-system-info-default);
+  --component--focus-ring-color-discrete: var(--traton-color-base-white);
 }

@@ -342,7 +342,7 @@ const COMPONENT_FILE_LIST = [
   ['header', 'includes'],
   ['side-menu', 'includes'],
   ['card', 'includes'],
-  ['input-field', 'includes'],
+  ['-input', 'exact'],
   ['table', 'exact'],
   ['stepper', 'exact'],
   ['spinner', 'exact'],

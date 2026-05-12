@@ -1,4 +1,4 @@
-@use '../../../../../../tokens/scss/component/input-field';
+@use '../../../../../../tokens/scss/component/-input';
 @use '../../../../../../tokens/scss/component/text-field';
 
 .tl-text-field {
@@ -23,12 +23,12 @@
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).
-  --text-field-border-radius: calc(var(--component-input-field-border-radius-top-left) * 1px)
-    calc(var(--component-input-field-border-radius-top-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-left) * 1px);
+  --text-field-border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
 
-  // Border color states. Per-side widths come from --component-input-field-
+  // Border color states. Per-side widths come from --component--input-
   // border-width-* and are applied in the mixin; the single color applies to
   // whichever sides have non-zero width (Scania bottom-only, Traton all 4).
   --text-field-border-color: var(--color-border-soft);

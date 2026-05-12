@@ -6,10 +6,10 @@
 
   // Match the container's brand-aware radius so the input's background doesn't
   // paint over the container's rounded corners (Traton has all 4 corners rounded).
-  border-radius: calc(var(--component-input-field-border-radius-top-left) * 1px)
-    calc(var(--component-input-field-border-radius-top-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-left) * 1px);
+  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -80,16 +80,16 @@
   // The single border-color applies to whichever sides have non-zero width.
   border-style: solid;
   border-color: var(--tds-text-field-border-bottom);
-  border-width: calc(var(--component-input-field-border-width-top) * 1px)
-    calc(var(--component-input-field-border-width-right) * 1px)
-    calc(var(--component-input-field-border-width-bottom) * 1px)
-    calc(var(--component-input-field-border-width-left) * 1px);
+  border-width: calc(var(--component--input-border-width-top) * 1px)
+    calc(var(--component--input-border-width-right) * 1px)
+    calc(var(--component--input-border-width-bottom) * 1px)
+    calc(var(--component--input-border-width-left) * 1px);
 
   // Brand-aware radius: Scania top-only (4,4,0,0), Traton all corners (4,4,4,4).
-  border-radius: calc(var(--component-input-field-border-radius-top-left) * 1px)
-    calc(var(--component-input-field-border-radius-top-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-right) * 1px)
-    calc(var(--component-input-field-border-radius-bottom-left) * 1px);
+  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
   transition: border-color 200ms ease;
 
   &:hover {

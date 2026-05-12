@@ -14,10 +14,10 @@
   // The single border-color applies to whichever sides have non-zero width.
   border-style: solid;
   border-color: var(--text-field-border-color);
-  border-width: calc(var(--component-input-field-border-width-top) * 1px)
-    calc(var(--component-input-field-border-width-right) * 1px)
-    calc(var(--component-input-field-border-width-bottom) * 1px)
-    calc(var(--component-input-field-border-width-left) * 1px);
+  border-width: calc(var(--component--input-border-width-top) * 1px)
+    calc(var(--component--input-border-width-right) * 1px)
+    calc(var(--component--input-border-width-bottom) * 1px)
+    calc(var(--component--input-border-width-left) * 1px);
   outline: none;
   transition: border-color 200ms ease;
 

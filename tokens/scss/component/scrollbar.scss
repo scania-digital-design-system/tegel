@@ -10,8 +10,10 @@
 .scania.tl-mode-light {
   --component-scrollbar-background-thumb-default: var(--color-border-subtle);
   --component-scrollbar-background-thumb-hover: var(--color-border-soft);
-  --component-scrollbar-width-radius-default: 4;
-  --component-scrollbar-width-radius-hover: 6;
+  --component-scrollbar-background-track-default: var(--scania-color-transparent-invisible-light);
+  --component-scrollbar-border-radius-default: var(--scania-unit-8);
+  --component-scrollbar-size-thumb-default: var(--scania-unit-4);
+  --component-scrollbar-size-thumb-hover: 6;
 }
 
 .traton .tds-mode-light,
@@ -20,8 +22,10 @@
 .traton.tl-mode-light {
   --component-scrollbar-background-thumb-default: var(--color-border-subtle);
   --component-scrollbar-background-thumb-hover: var(--color-border-soft);
-  --component-scrollbar-width-radius-default: 4;
-  --component-scrollbar-width-radius-hover: 6;
+  --component-scrollbar-background-track-default: var(--traton-color-transparent-invisible-light);
+  --component-scrollbar-border-radius-default: var(--traton-unit-8);
+  --component-scrollbar-size-thumb-default: var(--traton-unit-4);
+  --component-scrollbar-size-thumb-hover: 6;
 }
 
 .tds-mode-dark,
@@ -31,8 +35,10 @@
 .scania.tl-mode-dark {
   --component-scrollbar-background-thumb-default: var(--color-border-subtle);
   --component-scrollbar-background-thumb-hover: var(--color-border-soft);
-  --component-scrollbar-width-radius-default: 4;
-  --component-scrollbar-width-radius-hover: 6;
+  --component-scrollbar-background-track-default: var(--scania-color-transparent-invisible-dark);
+  --component-scrollbar-border-radius-default: var(--scania-unit-8);
+  --component-scrollbar-size-thumb-default: var(--scania-unit-4);
+  --component-scrollbar-size-thumb-hover: 6;
 }
 
 .traton .tds-mode-dark,
@@ -41,6 +47,8 @@
 .traton.tl-mode-dark {
   --component-scrollbar-background-thumb-default: var(--color-border-subtle);
   --component-scrollbar-background-thumb-hover: var(--color-border-soft);
-  --component-scrollbar-width-radius-default: 4;
-  --component-scrollbar-width-radius-hover: 6;
+  --component-scrollbar-background-track-default: var(--traton-color-transparent-invisible-dark);
+  --component-scrollbar-border-radius-default: var(--traton-unit-8);
+  --component-scrollbar-size-thumb-default: var(--traton-unit-4);
+  --component-scrollbar-size-thumb-hover: 6;
 }
