@@ -33,9 +33,8 @@
   }
 
   // Readonly icon (on wrapper because ::before doesn't work on textarea element)
-  &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
-  &--hide-readonly-icon
-)::before {
+  &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
+    )::before {
     content: '';
     position: absolute;
     top: 18px;
@@ -51,42 +50,33 @@
   }
 
   .traton
-  &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
-    &--hide-readonly-icon
-  )::before {
+    &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
+    )::before {
     top: 20px;
     right: 16px;
   }
 
   // Outside label - readonly icon position adjustment (only when label exists)
-  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
-  :has(.tl-textarea__input:disabled)
-):not(&--hide-readonly-icon)::before {
+  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
     top: calc(
       18px + 24px
     ); // 18px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
   }
 
   .traton
-  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
-    :has(.tl-textarea__input:disabled)
-  ):not(&--hide-readonly-icon)::before {
+    &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
     top: calc(
       20px + 24px
     ); // 20px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
   }
 
   // No label - readonly icon position adjustment (adjust for different padding)
-  &:not(&--label-inside):not(:has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
-  :has(.tl-textarea__input:disabled)
-):not(&--hide-readonly-icon)::before {
+  &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
     top: 17px; // 19px - 2px adjustment
   }
 
   .traton
-  &:not(&--label-inside):not(:has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
-    :has(.tl-textarea__input:disabled)
-  ):not(&--hide-readonly-icon)::before {
+    &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
     top: 19px; // 21px - 2px adjustment
   }
 
@@ -127,7 +117,6 @@
   .traton &:has(.tl-textarea__bottom)::after {
     bottom: 27px;
   }
-
 }
 
 .tl-textarea__input {
@@ -154,7 +143,7 @@
     display: none;
   }
 
-  .tl-textarea:hover &:not(:focus):not(:disabled) {
+  .tl-textarea:hover &:not(:focus, :disabled) {
     border-color: var(--textarea-border-color-hover);
   }
 
@@ -166,14 +155,12 @@
     }
   }
 
-  .tl-textarea--error:hover &:not(:focus):not(:disabled) {
+  .tl-textarea--error:hover &:not(:focus, :disabled) {
     border-color: var(--textarea-border-color-error);
   }
 
-  .tl-textarea--success:not(:has(.tl-textarea__input[readonly])):not(
-  :has(.tl-textarea__input:disabled)
-)
-  &:not(:focus) {
+  .tl-textarea--success:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
+    &:not(:focus) {
     border-color: var(--textarea-border-color-success);
   }
 
@@ -215,10 +202,9 @@
     pointer-events: none;
   }
 
-  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
-  &--hide-readonly-icon
-)
-  & {
+  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
+    )
+    & {
     padding-right: 50px;
   }
 }
@@ -243,8 +229,12 @@
     pointer-events: none;
     transform: none;
     transform-origin: top left;
-    transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
-    z-index: 1;
+    transition:
+      transform 0.15s,
+      font-size 0.15s,
+      color 0.15s,
+      top 0.15s;
+    z-index: 2;
   }
 
   .tl-textarea--label-inside:has(.tl-textarea__input:disabled) & {
@@ -303,10 +293,8 @@
     }
   }
 
-  .tl-textarea--error:not(:has(.tl-textarea__input[readonly])):not(
-  :has(.tl-textarea__input:disabled)
-)
-  & {
+  .tl-textarea--error:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
+    & {
     color: var(--textarea-error);
   }
 
@@ -325,10 +313,8 @@
     color: var(--color-foreground-text-disabled);
   }
 
-  .tl-textarea--error:not(:has(.tl-textarea__input[readonly])):not(
-  :has(.tl-textarea__input:disabled)
-)
-  & {
+  .tl-textarea--error:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
+    & {
     color: var(--textarea-error);
 
     .tl-textarea__charcounter-divider {
