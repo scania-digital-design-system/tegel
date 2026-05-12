@@ -33,7 +33,9 @@
   }
 
   // Readonly icon (on wrapper because ::before doesn't work on textarea element)
-  &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
+  &:has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
     )::before {
     content: '';
     position: absolute;
@@ -46,37 +48,51 @@
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
-    z-index: 1;
+    z-index: 2;
   }
 
   .traton
-    &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
+    &:has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
     )::before {
     top: 20px;
     right: 16px;
   }
 
   // Outside label - readonly icon position adjustment (only when label exists)
-  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
+  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
+    )::before {
     top: calc(
       18px + 24px
     ); // 18px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
   }
 
   .traton
-    &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
+    &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
+    )::before {
     top: calc(
       20px + 24px
     ); // 20px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
   }
 
   // No label - readonly icon position adjustment (adjust for different padding)
-  &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
+  &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
+    )::before {
     top: 17px; // 19px - 2px adjustment
   }
 
   .traton
-    &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)::before {
+    &:not(&--label-inside, :has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
+      :has(.tl-textarea__input:disabled),
+      &--hide-readonly-icon
+    )::before {
     top: 19px; // 21px - 2px adjustment
   }
 
@@ -93,7 +109,7 @@
     mask-repeat: no-repeat;
     mask-position: center;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
 
   .traton &::after {
@@ -202,8 +218,7 @@
     pointer-events: none;
   }
 
-  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon
-    )
+  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled), &--hide-readonly-icon)
     & {
     padding-right: 50px;
   }
