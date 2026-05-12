@@ -296,7 +296,7 @@
   position: relative;
 
   :has(.tl-text-field__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-text-field--error & {
@@ -333,7 +333,7 @@
   }
 
   .tl-text-field--error:has(.tl-text-field__input:disabled) &::before {
-    background-color: var(--color-foreground-text-disabled);
+    background-color: var(--color-text-disabled);
   }
 }
 
@@ -344,7 +344,7 @@
   color: var(--text-field-textcounter);
 
   :has(.tl-text-field__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
@@ -360,7 +360,7 @@
 }
 
 .tl-text-field__charcounter-divider {
-  color: var(--color-foreground-text-disabled);
+  color: var(--color-text-disabled);
 }
 
 .tl-text-field__prefix {

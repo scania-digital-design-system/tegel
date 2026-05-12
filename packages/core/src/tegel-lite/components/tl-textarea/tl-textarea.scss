@@ -279,7 +279,7 @@
   position: relative;
 
   :has(.tl-textarea__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-textarea--error & {
@@ -314,7 +314,7 @@
   }
 
   .tl-textarea--error:has(.tl-textarea__input:disabled) &::before {
-    background-color: var(--color-foreground-text-disabled);
+    background-color: var(--color-text-disabled);
   }
 }
 
@@ -325,7 +325,7 @@
   color: var(--textarea-textcounter);
 
   :has(.tl-textarea__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-textarea--error:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
@@ -339,7 +339,7 @@
 }
 
 .tl-textarea__charcounter-divider {
-  color: var(--color-foreground-text-disabled);
+  color: var(--color-text-disabled);
 }
 
 @include focus-input-state {

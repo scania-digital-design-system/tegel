@@ -3,23 +3,23 @@
 
 .tl-text-field {
   --text-field-background: var(--color-background-layer-01);
-  --text-field-text: var(--color-foreground-text-strong);
-  --text-field-placeholder: var(--color-foreground-text-subtle);
-  --text-field-affix: var(--color-foreground-text-defined);
-  --text-field-label: var(--color-foreground-text-strong);
-  --text-field-label-inside: var(--color-foreground-text-strong);
+  --text-field-text: var(--color-text-strong);
+  --text-field-placeholder: var(--color-text-subtle);
+  --text-field-affix: var(--color-text-defined);
+  --text-field-label: var(--color-text-strong);
+  --text-field-label-inside: var(--color-text-strong);
   --text-field-label-inside-left: 16px;
   --text-field-affix-width-icon: 35px;
   --text-field-affix-width-text: 8px;
-  --text-field-helper: var(--color-foreground-text-defined);
+  --text-field-helper: var(--color-text-defined);
   --text-field-error: var(--color-system-danger-default);
-  --text-field-affix-error: var(--color-foreground-text-defined);
+  --text-field-affix-error: var(--color-text-defined);
   --text-field-background-disabled: var(--color-background-layer-01);
-  --text-field-text-disabled: var(--color-foreground-text-disabled);
-  --text-field-placeholder-disabled: var(--color-foreground-text-disabled);
-  --text-field-label-disabled: var(--color-foreground-text-disabled);
-  --text-field-affix-disabled: var(--color-foreground-text-disabled);
-  --text-field-textcounter: var(--color-foreground-text-defined);
+  --text-field-text-disabled: var(--color-text-disabled);
+  --text-field-placeholder-disabled: var(--color-text-disabled);
+  --text-field-label-disabled: var(--color-text-disabled);
+  --text-field-affix-disabled: var(--color-text-disabled);
+  --text-field-textcounter: var(--color-text-defined);
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).
@@ -31,11 +31,11 @@
   // Border color states. Per-side widths come from --component-input-field-
   // border-width-* and are applied in the mixin; the single color applies to
   // whichever sides have non-zero width (Scania bottom-only, Traton all 4).
-  --text-field-border-color: var(--color-foreground-border-soft);
-  --text-field-border-color-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-success: var(--color-foreground-border-strong);
+  --text-field-border-color: var(--color-border-soft);
+  --text-field-border-color-hover: var(--color-border-strong);
+  --text-field-border-color-success: var(--color-border-strong);
   --text-field-border-color-error: var(--color-system-danger-default);
-  --text-field-border-color-readonly: var(--color-foreground-border-strong);
+  --text-field-border-color-readonly: var(--color-border-strong);
 
   &--primary {
     --text-field-background: var(--color-background-layer-01);
