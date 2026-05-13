@@ -52,6 +52,16 @@ export default {
       description: 'Pagination enabled on the table footer',
       control: 'boolean',
     },
+    paginationLabel: {
+      name: 'Pagination label',
+      description: 'Label displayed after the page number input. Use {pages} as a placeholder.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'of {pages} pages' },
+      },
+    },
     rowsPerPageValues: {
       name: 'Rows per page values',
       description:
@@ -92,6 +102,17 @@ export default {
         defaultValue: { summary: true },
       },
     },
+    rowsPerPageLabel: {
+      name: 'Rows per page label',
+      description: 'Label displayed before the rows per page dropdown.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'Rows per page' },
+      },
+      if: { arg: 'rowsPerPage', eq: true },
+    },
     rowsPerPageDropdownOpenDirection: {
       name: 'Rows per page dropdown open direction',
       description: 'Controls opening direction for rows per page dropdown',
@@ -101,6 +122,17 @@ export default {
       options: ['auto', 'up', 'down'],
       table: {
         defaultValue: { summary: 'auto' },
+      },
+      if: { arg: 'rowsPerPage', eq: true },
+    },
+    rowsPerPageDropdownAriaLabel: {
+      name: 'Rows per page dropdown aria label',
+      description: 'Aria label for the rows per page dropdown.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'Select rows per page' },
       },
       if: { arg: 'rowsPerPage', eq: true },
     },
@@ -155,11 +187,14 @@ export default {
     responsiveDesign: false,
     verticalDivider: false,
     pagination: true,
+    paginationLabel: 'of {pages} pages',
     pages: 4,
     rowsPerPage: true,
+    rowsPerPageLabel: 'Rows per page',
     rowsPerPageValues: '[10,25,50]',
     rowsPerPageValue: 10,
     rowsPerPageDropdownOpenDirection: 'auto',
+    rowsPerPageDropdownAriaLabel: 'Select rows per page',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -174,11 +209,14 @@ const PaginationTemplate = ({
   responsiveDesign,
   verticalDivider,
   pagination,
+  paginationLabel,
   pages,
   rowsPerPage,
+  rowsPerPageLabel,
   rowsPerPageValues,
   rowsPerPageValue,
   rowsPerPageDropdownOpenDirection,
+  rowsPerPageDropdownAriaLabel,
   noMinWidth,
   column1Width,
   column2Width,
@@ -255,9 +293,12 @@ const PaginationTemplate = ({
           <tds-table-footer
             pages="${pages}"
             pagination="${pagination}"
+            pagination-label="${paginationLabel}"
             rowsperpage="${rowsPerPage}"
+            rows-per-page-label="${rowsPerPageLabel}"
             rows-per-page-value="${rowsPerPageValue}"
             rows-per-page-dropdown-open-direction="${rowsPerPageDropdownOpenDirection}"
+            rows-per-page-dropdown-aria-label="${rowsPerPageDropdownAriaLabel}"
           ></tds-table-footer>
   </tds-table>
 
