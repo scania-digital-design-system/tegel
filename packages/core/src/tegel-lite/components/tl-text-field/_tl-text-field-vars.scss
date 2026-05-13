@@ -2,24 +2,27 @@
 @use '../../../../../../tokens/scss/component/text-field';
 
 .tl-text-field {
-  --text-field-background: var(--color-background-layer-01);
-  --text-field-text: var(--color-text-strong);
-  --text-field-placeholder: var(--color-text-subtle);
-  --text-field-affix: var(--color-text-defined);
-  --text-field-label: var(--color-text-strong);
-  --text-field-label-inside: var(--color-text-strong);
+  --text-field-background: var(--component--input-background-primary);
+  --text-field-text: var(--component--input-text-value-default);
+  --text-field-placeholder: var(--component--input-text-placeholder-default);
+  --text-field-affix: var(--component--input-icon-prefix-default);
+  --text-field-affix-suffix: var(--component--input-icon-suffix-default);
+  --text-field-label: var(--component--input-text-label-default);
+  --text-field-label-inside: var(--component--input-text-label-default);
   --text-field-label-inside-left: 16px;
   --text-field-affix-width-icon: 35px;
   --text-field-affix-width-text: 8px;
-  --text-field-helper: var(--color-text-defined);
-  --text-field-error: var(--color-system-danger-default);
-  --text-field-affix-error: var(--color-text-defined);
-  --text-field-background-disabled: var(--color-background-layer-01);
+  --text-field-helper: var(--component--input-text-helper-default);
+  --text-field-error: var(--component--input-text-error-default);
+  --text-field-error-icon: var(--component--input-icon-error-default);
+  --text-field-affix-error: var(--component--input-icon-error-default);
+  --text-field-background-disabled: var(--component--input-background-primary);
   --text-field-text-disabled: var(--color-text-disabled);
   --text-field-placeholder-disabled: var(--color-text-disabled);
   --text-field-label-disabled: var(--color-text-disabled);
   --text-field-affix-disabled: var(--color-text-disabled);
-  --text-field-textcounter: var(--color-text-defined);
+  --text-field-textcounter: var(--component--input-text-counter-default);
+  --text-field-opacity-disabled: var(--component--input-opacity-disabled);
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).
@@ -31,19 +34,24 @@
   // Border color states. Per-side widths come from --component--input-
   // border-width-* and are applied in the mixin; the single color applies to
   // whichever sides have non-zero width (Scania bottom-only, Traton all 4).
-  --text-field-border-color: var(--color-border-soft);
-  --text-field-border-color-hover: var(--color-border-strong);
-  --text-field-border-color-success: var(--color-border-strong);
-  --text-field-border-color-error: var(--color-system-danger-default);
+  --text-field-border-color: var(--component--input-border-default);
+  --text-field-border-color-hover: var(--component--input-border-hover);
+  --text-field-border-color-success: var(--component--input-border-success-default);
+  --text-field-border-color-error: var(--component--input-border-error-default);
   --text-field-border-color-readonly: var(--color-border-strong);
 
+  // Focus ring radius — primary by default, swapped per mode variant
+  --text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-primary);
+
   &--primary {
-    --text-field-background: var(--color-background-layer-01);
-    --text-field-background-disabled: var(--color-background-layer-01);
+    --text-field-background: var(--component--input-background-primary);
+    --text-field-background-disabled: var(--component--input-background-primary);
+    --text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-primary);
   }
 
   &--secondary {
-    --text-field-background: var(--color-background-layer-02);
-    --text-field-background-disabled: var(--color-background-layer-02);
+    --text-field-background: var(--component--input-background-secondary);
+    --text-field-background-disabled: var(--component--input-background-secondary);
+    --text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-secondary);
   }
 }

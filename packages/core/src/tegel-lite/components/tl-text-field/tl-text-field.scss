@@ -24,7 +24,7 @@
 
   &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper,
   &:has(.tl-text-field__input:disabled) .tl-text-field__label {
-    opacity: 0.25;
+    opacity: var(--text-field-opacity-disabled);
   }
 
   .tl-icon {
@@ -309,7 +309,7 @@
       top: 0;
       width: 16px;
       height: 16px;
-      background-color: var(--text-field-error);
+      background-color: var(--text-field-error-icon);
       mask-image: var(--icon-error-svg);
       mask-size: contain;
       mask-repeat: no-repeat;
@@ -395,6 +395,11 @@
 
 .tl-text-field__suffix {
   @include affix-base;
+  color: var(--text-field-affix-suffix);
+
+  &--icon.tl-icon {
+    background-color: var(--text-field-affix-suffix);
+  }
 
   &--text,
   &--icon {

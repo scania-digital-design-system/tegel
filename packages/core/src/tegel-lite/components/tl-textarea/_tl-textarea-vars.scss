@@ -2,22 +2,24 @@
 @use '../../../../../../tokens/scss/component/textarea';
 
 .tl-textarea {
-  --textarea-background-primary: var(--color-background-layer-01);
-  --textarea-background-secondary: var(--color-background-layer-02);
+  --textarea-background-primary: var(--component--input-background-primary);
+  --textarea-background-secondary: var(--component--input-background-secondary);
   --textarea-background: var(--textarea-background-primary);
-  --textarea-text: var(--color-text-strong);
+  --textarea-text: var(--component--input-text-value-default);
   --textarea-background-disabled: var(--textarea-background-primary);
   --textarea-text-disabled: var(--color-text-disabled);
   --textarea-placeholder-disabled: var(--color-text-disabled);
   --textarea-label-disabled: var(--color-text-disabled);
-  --textarea-label: var(--color-text-strong);
-  --textarea-label-inside: var(--color-text-strong);
+  --textarea-label: var(--component--input-text-label-default);
+  --textarea-label-inside: var(--component--input-text-label-default);
   --textarea-label-inside-left: 16px;
-  --textarea-placeholder: var(--color-text-subtle);
-  --textarea-helper: var(--color-text-defined);
-  --textarea-error: var(--color-system-danger-default);
-  --textarea-textcounter: var(--color-text-defined);
+  --textarea-placeholder: var(--component--input-text-placeholder-default);
+  --textarea-helper: var(--component--input-text-helper-default);
+  --textarea-error: var(--component--input-text-error-default);
+  --textarea-error-icon: var(--component--input-icon-error-default);
+  --textarea-textcounter: var(--component--input-text-counter-default);
   --textarea-resize-icon: var(--component-textarea-icon-resize-default);
+  --textarea-opacity-disabled: var(--component--input-opacity-disabled);
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).
@@ -29,19 +31,24 @@
   // Border color states. Per-side widths come from --component--input-
   // border-width-* and are applied in the mixin; the single color applies to
   // whichever sides have non-zero width (Scania bottom-only, Traton all 4).
-  --textarea-border-color: var(--color-border-soft);
-  --textarea-border-color-hover: var(--color-border-strong);
-  --textarea-border-color-success: var(--color-border-strong);
-  --textarea-border-color-error: var(--color-system-danger-default);
+  --textarea-border-color: var(--component--input-border-default);
+  --textarea-border-color-hover: var(--component--input-border-hover);
+  --textarea-border-color-success: var(--component--input-border-success-default);
+  --textarea-border-color-error: var(--component--input-border-error-default);
   --textarea-border-color-readonly: var(--color-border-strong);
+
+  // Focus ring radius — primary by default, swapped per mode variant
+  --textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
 
   &--primary {
     --textarea-background: var(--textarea-background-primary);
     --textarea-background-disabled: var(--textarea-background-primary);
+    --textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
   }
 
   &--secondary {
     --textarea-background: var(--textarea-background-secondary);
     --textarea-background-disabled: var(--textarea-background-secondary);
+    --textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-secondary);
   }
 }

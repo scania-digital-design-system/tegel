@@ -25,11 +25,11 @@
 
   &:has(.tl-textarea__input:disabled) .tl-textarea__input,
   &:has(.tl-textarea__input:disabled) .tl-textarea__label {
-    opacity: 0.25;
+    opacity: var(--textarea-opacity-disabled);
   }
 
   &:has(.tl-textarea__input:disabled)::after {
-    opacity: 0.25;
+    opacity: var(--textarea-opacity-disabled);
   }
 
   // Readonly icon (on wrapper because ::before doesn't work on textarea element)
@@ -292,7 +292,7 @@
       top: 0;
       width: 16px;
       height: 16px;
-      background-color: var(--textarea-error);
+      background-color: var(--textarea-error-icon);
       mask-image: var(--icon-error-svg);
       mask-size: contain;
       mask-repeat: no-repeat;

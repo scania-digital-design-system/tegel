@@ -1,41 +1,43 @@
 tds-textarea {
-  --tds-textarea-background-primary: var(--color-background-layer-01);
-  --tds-textarea-background-secondary: var(--color-background-layer-02);
+  --tds-textarea-background-primary: var(--component--input-background-primary);
+  --tds-textarea-background-secondary: var(--component--input-background-secondary);
   --tds-textarea-background: var(--tds-textarea-background-primary);
-  --tds-textarea-color: var(--color-text-strong);
-  --tds-textarea-color-hover: var(--color-text-strong);
+  --tds-textarea-color: var(--component--input-text-value-default);
+  --tds-textarea-color-hover: var(--component--input-text-value-default);
 
   // Disabled
   --tds-textarea-disabled-color: var(--color-text-disabled);
-  --tds-textarea-disabled-background-primary: var(--color-background-layer-01);
-  --tds-textarea-disabled-background-secondary: var(--color-background-layer-02);
+  --tds-textarea-disabled-background-primary: var(--component--input-background-primary);
+  --tds-textarea-disabled-background-secondary: var(--component--input-background-secondary);
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   --tds-textarea-disabled-placeholder: var(--color-text-disabled);
   --tds-textarea-disabled-label: var(--color-text-disabled);
   --tds-textarea-helper-disabled: var(--color-text-disabled);
   --tds-textarea-textcounter-disabled: var(--color-text-disabled);
+  --tds-textarea-opacity-disabled: var(--component--input-opacity-disabled);
 
   // Label
-  --tds-textarea-label-color: var(--color-text-strong);
-  --tds-textarea-label-inside-color: var(--color-text-strong);
+  --tds-textarea-label-color: var(--component--input-text-label-default);
+  --tds-textarea-label-inside-color: var(--component--input-text-label-default);
 
   // Placeholder
-  --tds-textarea-placeholder: var(--color-text-subtle);
-  --tds-textarea-placeholder-hover: var(--color-text-subtle);
+  --tds-textarea-placeholder: var(--component--input-text-placeholder-default);
+  --tds-textarea-placeholder-hover: var(--component--input-text-placeholder-default);
 
   // Helper
-  --tds-textarea-helper: var(--color-text-defined);
-  --tds-textarea-helper-error: var(--color-system-danger-default);
+  --tds-textarea-helper: var(--component--input-text-helper-default);
+  --tds-textarea-helper-error: var(--component--input-text-error-default);
+  --tds-textarea-icon-error: var(--component--input-icon-error-default);
 
   // Textcounter
-  --tds-textarea-textcounter: var(--color-text-defined);
-  --tds-textarea-textcounter-divider: var(--color-text-defined);
+  --tds-textarea-textcounter: var(--component--input-text-counter-default);
+  --tds-textarea-textcounter-divider: var(--component--input-text-counter-default);
 
   // Border bottom
-  --tds-textarea-border-bottom: var(--color-border-soft);
-  --tds-textarea-border-bottom-hover: var(--color-border-strong);
-  --tds-textarea-border-bottom-success: var(--color-border-strong);
-  --tds-textarea-border-bottom-error: var(--color-system-danger-default);
+  --tds-textarea-border-bottom: var(--component--input-border-default);
+  --tds-textarea-border-bottom-hover: var(--component--input-border-hover);
+  --tds-textarea-border-bottom-success: var(--component--input-border-success-default);
+  --tds-textarea-border-bottom-error: var(--component--input-border-error-default);
 
   // Read only
   --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
@@ -46,11 +48,15 @@ tds-textarea {
   // Resize
   --tds-textarea-resize-icon: var(--component-textarea-icon-resize-default);
 
+  // Focus ring radius — varies by mode variant per Figma
+  --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
+
   .tds-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--color-background-layer-02);
+    --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
   }
 
   .tds-mode-variant-secondary {
@@ -58,5 +64,6 @@ tds-textarea {
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--color-background-layer-01);
+    --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-secondary);
   }
 }

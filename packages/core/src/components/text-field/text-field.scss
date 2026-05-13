@@ -267,7 +267,7 @@
 
   .text-field-container,
   .text-field-label-outside {
-    opacity: 0.25;
+    opacity: var(--tds-text-field-opacity-disabled);
   }
 
   .text-field-container {
@@ -393,6 +393,7 @@
 
 .text-field-slot-wrap-suffix {
   margin: 0 14px 0 0;
+  color: var(--tds-text-field-ps-color-suffix);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 2px 0 0;

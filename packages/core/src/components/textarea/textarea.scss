@@ -245,6 +245,10 @@
 
   .textarea-helper {
     color: var(--tds-textarea-helper-error);
+
+    tds-icon {
+      color: var(--tds-textarea-icon-error);
+    }
   }
 }
 
@@ -257,7 +261,7 @@
 
   .textarea-wrapper,
   .textarea-label {
-    opacity: 0.25;
+    opacity: var(--tds-textarea-opacity-disabled);
   }
 
   .textarea-input {
