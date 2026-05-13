@@ -14,11 +14,11 @@ directories=(
 
 # Function to remove node_modules and package-lock.json safely
 clean_directory() {
-  if [ -d "$1/node_modules" ]; then
+  if [[ -d "$1/node_modules" ]]; then
     echo "Removing node_modules in $1"
     rm -rf "$1/node_modules"
   fi
-  if [ -f "$1/package-lock.json" ]; then
+  if [[ -f "$1/package-lock.json" ]]; then
     echo "Removing package-lock.json in $1"
     rm -rf "$1/package-lock.json"
   fi
@@ -47,7 +47,7 @@ npm i
 echo "installing dependencies in subdirectories"
 
 for dir in "${directories[@]}"; do
-  if [ -d "$dir" ]; then
+  if [[ -d "$dir" ]]; then
     echo "installing dependencies in $dir"
     (cd $dir && npm i)
   else
