@@ -1,12 +1,17 @@
 @use '../../mixins/box-sizing' as *;
 @use '../../../../../typography/mixins/type-styles' as *;
 
+:host {
+  display: block;
+}
+
 .card {
   @include tds-box-sizing;
 
   box-shadow: var(--tds-card-box);
   background-color: var(--tds-card-background);
   display: block;
+  width: 100%;
   border-radius: var(--tds-card-border-radius);
   overflow: hidden;
 
@@ -107,6 +112,10 @@
     padding: 16px;
     color: var(--tds-card-icon-color);
   }
+}
+
+:host([stretch]) .card {
+  height: 100%;
 }
 
 button {
