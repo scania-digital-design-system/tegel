@@ -114,7 +114,7 @@ export default {
     stretch: {
       name: 'Stretch card',
       description:
-        'Makes the Card fill the available height in stretching layouts and lets the body section grow.',
+        'Makes the Card fill the available height in stretching layouts and lets the body section grow. <br/> <br/> ℹ️ If the consumer uses multiples Card on grid or flexbox container it is up to them to manage the amount of content that is populated the body of the Card so that the overall design of the application is well balanced. ',
       control: {
         type: 'boolean',
       },
