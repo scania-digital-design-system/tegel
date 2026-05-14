@@ -55,7 +55,7 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `VITE_STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
 
 
-```
+```bash
 export VITE_STORYBOOK_ENV=dev
 ```
 

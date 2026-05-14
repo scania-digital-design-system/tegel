@@ -57,13 +57,13 @@
     "eslint-plugin-storybook": "9.1.16",
     "husky": "^7.0.4",
     "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "style-dictionary": "^5.0.0",
-    "stylelint": "^17.6.0",
+    "stylelint": "^17.11.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^6.0.3"
   },
   "config": {
     "commitizen": {

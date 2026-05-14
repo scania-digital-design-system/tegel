@@ -28,12 +28,10 @@
   }
 
   &:focus-visible {
-    outline: 2px solid currentcolor;
-    outline-offset: -4px;
-    box-shadow: none;
+    @include tds-focus-state-inset;
   }
 
-  &:hover:not(.tl-folder-tabs__tab--disabled):not(.tl-folder-tabs__tab--selected) {
+  &:hover:not(.tl-folder-tabs__tab--disabled, .tl-folder-tabs__tab--selected) {
     background-color: var(--folder-tab-surface-hover);
     border-top-color: var(--folder-tab-surface-hover);
     color: var(--folder-tab-text);

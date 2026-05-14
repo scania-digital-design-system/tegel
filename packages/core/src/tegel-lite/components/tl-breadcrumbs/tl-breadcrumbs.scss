@@ -49,7 +49,7 @@
     }
 
     &:focus-visible {
-      outline: var(--breadcrumb-focus-outline-width) solid var(--breadcrumb-focus-outline-color);
+      @include tds-focus-state;
     }
 
     &[aria-current='page'] {

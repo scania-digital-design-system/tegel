@@ -12,12 +12,15 @@
 }
 
 .tl-banner .tl-link {
-  --link: var(--color-system-info-default);
+  --link: var(--color-text-strong);
+  --link-hover: var(--color-text-strong);
+  --link-visited: var(--color-text-strong);
 }
 
 .tl-toast .tl-link {
-  --link: var(--color-system-info-default);
-  --link-hover: var(--color-system-info-default);
+  --link: var(--color-text-inverse-strong);
+  --link-hover: var(--color-text-inverse-strong);
+  --link-visited: var(--color-text-inverse-strong);
 }
 
 .traton .tl-link {

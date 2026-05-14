@@ -1,19 +1,14 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
-const thumbSVG =
-  `data:image/svg+xml;utf8,` +
-  encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
-    <rect width='40' height='40' fill='#E6E6E6'/>
+const thumbSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
     <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='10' fill='#999'></text>
-  </svg>`);
+  </svg>`)}`;
 
-const bodyImgSVG =
-  `data:image/svg+xml;utf8,` +
-  encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'>
+const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'>
     <rect width='100%' height='100%' fill='#F2F2F2'/>
     <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14' fill='#999'></text>
-  </svg>`);
+  </svg>`)}`;
 
 export default {
   title: 'Tegel Lite (Beta)/Card',

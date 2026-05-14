@@ -102,4 +102,32 @@ test.describe.parallel(componentName, () => {
     await expect(dropdown).toHaveCount(1);
     await expect(dropdown).toBeVisible();
   });
+
+  test('Footer supports custom pagination labels', async ({ page }) => {
+    const tableFooter = page.locator('tds-table-footer');
+    await tableFooter.evaluate(
+      (
+        footer: HTMLElement & {
+          paginationLabel: string;
+          rowsPerPageLabel: string;
+          rowsPerPageDropdownAriaLabel: string;
+        },
+      ) => {
+        footer.paginationLabel = 'av {pages} sidor';
+        footer.rowsPerPageLabel = 'Rader per sida';
+        footer.rowsPerPageDropdownAriaLabel = 'Valj rader per sida';
+      },
+    );
+
+    const customRowsPerPageText = page.getByText(/Rader per sida/);
+    await expect(customRowsPerPageText).toHaveCount(1);
+    await expect(customRowsPerPageText).toBeVisible();
+
+    const customPaginationText = page.getByText(/av 4 sidor/);
+    await expect(customPaginationText).toHaveCount(1);
+    await expect(customPaginationText).toBeVisible();
+
+    const dropdown = page.locator('tds-dropdown');
+    await expect(dropdown).toHaveAttribute('tds-aria-label', 'Valj rader per sida');
+  });
 });

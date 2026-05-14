@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/toast/test/success-empty-action-slot/i
 const componentName = 'tds-toast';
 const testDescription = 'Toast Component Tests';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

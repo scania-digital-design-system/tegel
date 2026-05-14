@@ -1,14 +1,19 @@
 @use '../../../../../../tokens/scss/component/shadow';
-
-/* Component variables */
+@use '../../../../../../tokens/scss/component/modal';
+@use '../../../../../../tokens/scss/component/overlay';
 
 .tl-modal,
-:root {
-  --modal-scroll-bar-thumb: var(--color-foreground-icon-discrete);
-  --modal-background: var(--color-background-layer-02);
-  --modal-backdrop: var(--color-background-overlay);
-  --modal-text: var(--color-foreground-text-strong);
-  --modal-cross-svg: var(--color-foreground-text-strong);
-  --modal-shadow: 0 2px 3px 0 var(--component-shadow-base-modifier);
-  --component-shadow-base-modifier: var(--scania-color-transparent-invisible-dark);
+.tl-modal__overlay {
+  --modal-background: var(--component-modal-background-default);
+  --modal-backdrop: color-mix(
+    in srgb,
+    var(--component-overlay-background-default) calc(var(--component-overlay-opacity-default) * 1%),
+    transparent
+  );
+  --modal-border-radius: calc(var(--component-modal-border-radius-default) * 1px);
+  --modal-text: var(--component-modal-text-title-default);
+  --modal-body-text: var(--component-modal-text-body-default);
+  --modal-cross-svg: var(--component-modal-icon-dismiss-default);
+  --modal-shadow: 0 3px 3px 0 var(--component-shadow-default, rgba(0, 0, 0, 0.15)),
+    0 -1px 1px 0 var(--component-shadow-base-modifier, rgba(0, 0, 0, 0.10));
 }

@@ -147,10 +147,12 @@ jobs:
         continue-on-error: true
 
       - name: Set up Git for authentication
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
 
       - name: Core - Read Package.json Version
         id: version
@@ -412,10 +414,12 @@ jobs:
         run: git fetch --all
 
       - name: Set up Git for authentication
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
 
       - name: Merge release branch into develop
         run: |
@@ -451,10 +455,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set up Git for authentication
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
 
       - name: Core - Create git tag
         run: git tag @scania/tegel@${{ needs.create-release-branch.outputs.version }}
@@ -479,10 +485,12 @@ jobs:
         run: git fetch --all
 
       - name: Set up Git for authentication
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
 
       # Sync develop and main is done with reset to avoid merge conflicts
       - name: Sync develop and main
@@ -504,6 +512,8 @@ jobs:
     if: always()
     steps:
       - name: Notify Teams
+        env:
+          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
         run: |
           version="${{ needs.create-release-branch.outputs.version }}"
           dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
@@ -526,4 +536,4 @@ jobs:
 
           curl -H 'Content-Type: application/json' \
             -d "{\"text\": \"$status\"}" \
-            ${{ secrets.TEAMS_WEBHOOK }}
+            $TEAMS_WEBHOOK

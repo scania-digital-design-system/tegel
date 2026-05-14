@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use './tl-card-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
@@ -11,7 +12,7 @@
   width: 100%;
   box-shadow: var(--card-box);
   background-color: var(--card-background);
-  border-radius: 4px;
+  border-radius: var(--card-border-radius);
   overflow: hidden;
 
   &--clickable {
@@ -21,9 +22,7 @@
     padding: 0;
 
     &:focus-visible {
-      outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
-      box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-      outline-offset: 1px;
+      @include tds-focus-state;
     }
 
     &:active {
@@ -59,6 +58,7 @@
   block-size: 36px;
   border-radius: 100%;
   margin-right: 16px;
+  background-color: var(--color-background-layer-03);
 }
 
 .tl-card__headings {
@@ -91,7 +91,7 @@
 
 .tl-card__body {
   display: block;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   .tl-card--stretch & {
     display: flex;

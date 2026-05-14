@@ -21,6 +21,9 @@
 @use '_variables' as *;
 @use 'tl-scrollbar-vars' as *;
 
+// Shared focus ring tokens (consumed by the tds-focus-state mixin)
+@use '../../../../tokens/scss/component/-focus' as *;
+
 body {
   font-family: var(--body-01-font-family);
   font-size: 14px;

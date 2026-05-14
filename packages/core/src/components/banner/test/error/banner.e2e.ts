@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/banner/test/error/index.html';
 const componentName = 'tds-banner';
 const testDescription = 'tds-banner-error';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

@@ -17,7 +17,7 @@ const componentTestPath = 'src/components/modal/test/open-close/index.html';
 const componentName = 'tds-modal';
 const testDescription = 'tds-modal-open';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

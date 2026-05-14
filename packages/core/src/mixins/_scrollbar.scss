@@ -2,6 +2,7 @@
   &:hover {
     &::-webkit-scrollbar-thumb {
       border: var(--tds-scrollbar-thumb-border-hover-width) solid transparent;
+      border-radius: var(--tds-scrollbar-hover-thumb-border-radius);
       background-clip: padding-box;
     }
   }
@@ -19,7 +20,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 40px;
+    border-radius: var(--tds-scrollbar-thumb-border-radius);
     background: var(--tds-scrollbar-thumb-color);
     border: var(--tds-scrollbar-thumb-border-width) solid transparent;
     background-clip: padding-box;

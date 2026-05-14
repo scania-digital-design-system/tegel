@@ -8,7 +8,7 @@
   --tds-toggle-on-slider-hover: var(--tds-green-400);
   --tds-toggle-on-slider-focus: var(--tds-green-400);
   --tds-toggle-on-slider-pressed: var(--tds-green-500);
-  --tds-toggle-on-border-focus: var(--tds-white);
+  --tds-toggle-on-border-focus: var(--component--focus-ring-color-discrete);
   --tds-toggle-border-outline: var(--tds-blue-400);
   --tds-toggle-on-slider-disabled: var(--tds-grey-200);
   --tds-toggle-slider-disabled: var(--tds-grey-200);
@@ -18,7 +18,7 @@
   --tds-toggle-off-slider-hover: var(--tds-grey-500);
   --tds-toggle-off-slider-focus: var(--tds-grey-500);
   --tds-toggle-off-slider-pressed: var(--tds-grey-600);
-  --tds-toggle-off-border-focus: var(--tds-white);
+  --tds-toggle-off-border-focus: var(--component--focus-ring-color-discrete);
 }
 
 .tds-mode-dark {
@@ -30,7 +30,7 @@
   --tds-toggle-on-slider-hover: var(--tds-green-400);
   --tds-toggle-on-slider-focus: var(--tds-green-400);
   --tds-toggle-on-slider-pressed: var(--tds-green-500);
-  --tds-toggle-on-border-focus: var(--tds-white);
+  --tds-toggle-on-border-focus: var(--component--focus-ring-color-discrete);
   --tds-toggle-border-outline: var(--tds-blue-300);
   --tds-toggle-on-slider-disabled: var(--tds-grey-600);
   --tds-toggle-slider-disabled: var(--tds-grey-650);
@@ -40,5 +40,5 @@
   --tds-toggle-off-slider-hover: var(--tds-grey-500);
   --tds-toggle-off-slider-focus: var(--tds-grey-500);
   --tds-toggle-off-slider-pressed: var(--tds-grey-600);
-  --tds-toggle-off-border-focus: var(--tds-white);
+  --tds-toggle-off-border-focus: var(--component--focus-ring-color-discrete);
 }

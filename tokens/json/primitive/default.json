@@ -683,6 +683,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1099",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -701,6 +704,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1095",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -719,6 +725,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1096",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -737,6 +746,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1101",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -755,6 +767,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1097",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -773,6 +788,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1100",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -791,6 +809,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1102",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -809,6 +830,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1103",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -827,6 +851,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1098",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         },
@@ -845,6 +872,9 @@
           "$extensions": {
             "com.figma.variableId": "VariableID:12604:1104",
             "com.figma.hiddenFromPublishing": true,
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
             "com.figma.isOverride": true
           }
         }

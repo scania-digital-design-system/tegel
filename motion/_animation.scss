@@ -408,11 +408,13 @@
 @property --collapse-size {
   syntax: '<length-percentage>';
   inherits: false;
+  initial-value: 0px;
 }
 
 @property --collapse-width-size {
   syntax: '<length-percentage>';
   inherits: false;
+  initial-value: 0px;
 }
 
 @keyframes collapse-in {

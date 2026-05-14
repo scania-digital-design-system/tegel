@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../mixins/tl-scrollbar' as *;
 @use './tl-table-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
@@ -137,8 +138,7 @@
   }
 
   &--clickable:focus-visible {
-    outline: 2px solid var(--table-header-button-focus);
-    outline-offset: -2px;
+    @include tds-focus-state-inset;
   }
 
   .tl-table--zebra-rows-odd .tl-table__body &:nth-child(odd) {
@@ -162,7 +162,7 @@
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover:not(&--checkbox):not(&--expand) {
+  &:hover:not(&--checkbox, &--expand) {
     background-color: var(--table-header-hover);
   }
 
@@ -236,8 +236,7 @@
   &:focus-visible,
   &:focus,
   &:active {
-    outline: 2px solid var(--table-header-button-focus);
-    outline-offset: -2px;
+    @include tds-focus-state-inset;
   }
 
   .tl-table--compact & {
@@ -256,7 +255,9 @@
   width: 16px;
   opacity: 0;
   transform-origin: center;
-  transition: opacity 200ms ease-in, transform 200ms ease;
+  transition:
+    opacity 200ms ease-in,
+    transform 200ms ease;
   color: var(--table-text);
 }
 
@@ -323,7 +324,7 @@
 
   @include table-cell-modifiers;
 
-  .tl-table--vertical-dividers &:not(:last-child):not(&--expand) {
+  .tl-table--vertical-dividers &:not(:last-child, &--expand) {
     border-right: 1px solid var(--table-divider);
   }
 
@@ -523,10 +524,7 @@
   &:has(.tl-table__expand-input:focus),
   &:has(.tl-table__expand-input:focus-visible),
   &:has(.tl-table__expand-input:active) {
-    outline: 2px solid var(--table-header-button-focus);
-    box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-    outline-offset: -1px;
-    z-index: 1;
+    @include tds-focus-state-inset;
   }
 }
 
