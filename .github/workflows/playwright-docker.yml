@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           node-version: 24
 
@@ -28,11 +30,15 @@ jobs:
         run: HOME=/root npx playwright test
 
       - uses: daun/playwright-report-summary@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         if: always()
         with:
           report-file: ./packages/core/results.json
 
       - uses: actions/upload-artifact@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         if: failure()
         with:
           name: playwright-output
