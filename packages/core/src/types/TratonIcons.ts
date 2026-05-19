@@ -18,6 +18,7 @@ export type TratonIconNames =
   | 'info'
   | 'minus'
   | 'notification'
+  | 'placeholder'
   | 'plus'
   | 'print'
   | 'refresh'
