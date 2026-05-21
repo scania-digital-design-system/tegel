@@ -70,6 +70,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       await datetime.pressSequentially('01');
       await datetime.pressSequentially('04');
+      await datetime.pressSequentially('2026');
 
       await datetime.blur();
 

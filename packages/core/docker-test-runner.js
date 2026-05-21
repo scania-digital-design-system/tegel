@@ -28,7 +28,7 @@ const args = [
   `${pwd}:/work/`,
   '-w',
   '/work/',
-  'mcr.microsoft.com/playwright:v1.56.1-jammy',
+  'mcr.microsoft.com/playwright:v1.60.0-jammy',
   '/bin/bash',
   '-c',
   'npx playwright test && exit',
