@@ -1,34 +1,22 @@
+@use '../../../../../../tokens/scss/component-stubs/radio-button';
+
 .tl-radio-button {
   // Default colors
-  --radio-button-background-hover: var(--color-border-discrete);
-  --radio-button-background-inverse: var(--color-icon-inverse-strong);
-  --radio-button-background-disabled: var(--color-background-accent-primary-disabled);
-  --radio-button-border: var(--color-border-strong);
-  --radio-button-label: var(--color-text-strong);
-  --radio-button-label-disabled: var(--color-text-disabled);
-  --radio-button-border-disabled: var(--color-border-discrete);
+  --radio-button-background-hover: var(--component-radio-button-background-hover);
+  --radio-button-background-inverse: var(--component-radio-button-background-inverse-default);
+  --radio-button-background-disabled: var(--component-radio-button-background-disabled);
+  --radio-button-border: var(--component-radio-button-border-default);
+  --radio-button-label: var(--component-radio-button-text-label-default);
+  --radio-button-border-disabled: var(--component-radio-button-border-disabled);
 
   // Active (checked)
-  --radio-button-focus: var(--color-system-info-default);
-  --radio-button-checked-disabled: var(--color-icon-disabled);
+  --radio-button-checked-disabled: var(--component-radio-button-icon-disabled);
 
-  // Units
+  // Disabled
+  --radio-button-opacity-disabled: calc(var(--component-radio-button-opacity-disabled) / 100);
+  --radio-button-label-disabled: var(--component-radio-button-text-label-default);
+
+  // Units (non-token values)
   --radio-button-spacing-4: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
     var(--tds-spacing-element-4);
-
-  // Focus outline
-  --radio-button-focus-outline-color: var(--color-system-info-default);
-  --radio-button-focus-outline-width: 2px;
-}
-
-.scania {
-  .tl-radio-button {
-    --radio-button-focus-outline-width: 2px;
-  }
-}
-
-.traton {
-  .tl-radio-button {
-    --radio-button-focus-outline-width: 4px;
-  }
 }

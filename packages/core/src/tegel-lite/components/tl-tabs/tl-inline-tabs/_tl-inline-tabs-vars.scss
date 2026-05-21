@@ -1,17 +1,19 @@
+@use '../../../../../../../tokens/scss/component-stubs/inline-tabs';
+
 .tl-inline-tabs {
   /* Horizontal divider */
-  --inline-tabs-horizontal-divider: var(--color-icon-discrete);
-
-  /* Mode variant backgrounds */
-  --inline-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
-  --inline-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
-  --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
+  --inline-tabs-horizontal-divider: var(--component-inline-tabs-divider-default);
 
   /* Scroll button */
-  --inline-tabs-scroll-button-text: var(--color-icon-strong);
+  --inline-tabs-scroll-button-text: var(--component-inline-tabs-scroll-button-icon-default);
   --inline-tabs-scroll-button-background: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-hover: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-active: var(--inline-tabs-tab-background);
+
+  /* Mode variant backgrounds (brand-specific transparent surfaces) */
+  --inline-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
+  --inline-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
+  --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
 
   &--primary {
     --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
@@ -31,11 +33,11 @@
 
 .tl-inline-tabs__tab {
   /* Tab */
-  --inline-tabs-tab: var(--color-text-soft);
-  --inline-tabs-tab-selected: var(--color-text-strong);
-  --inline-tabs-tab-disabled: var(--color-text-disabled);
-  --inline-tabs-tab-hover: var(--color-text-strong);
-  --inline-tabs-tab-focus: var(--color-system-info-default);
-  --inline-tabs-tab-indicator-active: var(--color-system-info-default);
-  --inline-tabs-tab-indicator-hover: var(--color-border-discrete);
+  --inline-tabs-tab: var(--component-inline-tabs-tab-text-default);
+  --inline-tabs-tab-selected: var(--component-inline-tabs-tab-text-selected);
+  --inline-tabs-tab-hover: var(--component-inline-tabs-tab-text-hover);
+  --inline-tabs-tab-disabled: var(--component-inline-tabs-tab-text-default);
+  --inline-tabs-tab-opacity-disabled: calc(var(--component-inline-tabs-tab-opacity-disabled) / 100);
+  --inline-tabs-tab-indicator-active: var(--component-inline-tabs-tab-indicator-active);
+  --inline-tabs-tab-indicator-hover: var(--component-inline-tabs-tab-indicator-hover);
 }

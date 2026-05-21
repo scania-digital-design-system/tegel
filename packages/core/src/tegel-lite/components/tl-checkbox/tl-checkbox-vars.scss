@@ -1,15 +1,22 @@
-.tl-checkbox {
-  --checkbox-label: var(--color-text-strong);
-  --checkbox-label-disabled: var(--color-text-disabled);
-  --checkbox-icon: var(--color-icon-strong);
-  --checkbox-fill: var(--color-icon-inverse-strong);
-  --checkbox-fill-disabled: var(--color-background-accent-primary-disabled);
-  --checkbox-border: var(--color-border-strong);
-  --checkbox-border-hover: var(--color-border-subtle);
-  --checkbox-border-focus: var(--color-system-info-default);
-  --checkbox-border-disabled: var(--color-border-discrete);
+@use '../../../../../../tokens/scss/component-stubs/checkbox';
 
-  // units
+.tl-checkbox {
+  // Text & icon
+  --checkbox-label: var(--component-checkbox-text-label-default);
+  --checkbox-icon: var(--component-checkbox-icon-default);
+  --checkbox-fill: var(--component-checkbox-icon-checked-default);
+  --checkbox-fill-disabled: var(--component-checkbox-background-checked-disabled);
+
+  // Border
+  --checkbox-border: var(--component-checkbox-border-default);
+  --checkbox-border-hover: var(--component-checkbox-border-hover);
+  --checkbox-border-disabled: var(--component-checkbox-border-disabled);
+
+  // Disabled
+  --checkbox-opacity-disabled: calc(var(--component-checkbox-opacity-disabled) / 100);
+  --checkbox-label-disabled: var(--component-checkbox-text-label-default);
+
+  // units (non-token values)
   --checkbox-background-opacity-hover: 0.12;
   --checkbox-background-opacity-focus: 0.24;
   --checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/></svg>");
@@ -27,20 +34,3 @@
   }
 }
 
-.scania {
-  .tl-checkbox {
-    --checkbox-focus-width: 20px;
-    --checkbox-focus-height: 20px;
-    --checkbox-focus-left: 2px;
-    --checkbox-focus-top: 2px;
-  }
-}
-
-.traton {
-  .tl-checkbox {
-    --checkbox-focus-width: 22px;
-    --checkbox-focus-height: 22px;
-    --checkbox-focus-left: 1px;
-    --checkbox-focus-top: 1px;
-  }
-}

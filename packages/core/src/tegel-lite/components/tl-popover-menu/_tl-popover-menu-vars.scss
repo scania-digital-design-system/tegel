@@ -1,19 +1,20 @@
+@use '../../../../../../tokens/scss/component-stubs/popover-menu';
+
 .tl-popover-menu {
-  --popover-menu-text: var(--color-text-strong);
-  --popover-menu-background: var(--color-background-layer-01);
-  --popover-menu-background-hover: var(--color-background-layer-02);
-  --popover-menu-item-outline-focus: var(--color-system-info-default);
-  --popover-menu-item-disabled: var(--color-text-disabled);
-  --popover-menu-item-icon-disabled: var(--color-icon-disabled);
+  --popover-menu-text: var(--component-popover-menu-text-default);
+  --popover-menu-background: var(--component-popover-menu-background-primary-default);
+  --popover-menu-background-hover: var(--component-popover-menu-background-primary-hover);
+  --popover-menu-item-disabled: var(--component-popover-menu-text-disabled);
+  --popover-menu-item-icon-disabled: var(--component-popover-menu-icon-disabled);
 
   &--primary {
-    --popover-menu-background: var(--color-background-layer-01);
-    --popover-menu-background-hover: var(--color-background-layer-02);
+    --popover-menu-background: var(--component-popover-menu-background-primary-default);
+    --popover-menu-background-hover: var(--component-popover-menu-background-primary-hover);
   }
 
   &--secondary {
-    --popover-menu-background: var(--color-background-layer-02);
-    --popover-menu-background-hover: var(--color-background-layer-01);
+    --popover-menu-background: var(--component-popover-menu-background-secondary-default);
+    --popover-menu-background-hover: var(--component-popover-menu-background-secondary-hover);
   }
 }
 

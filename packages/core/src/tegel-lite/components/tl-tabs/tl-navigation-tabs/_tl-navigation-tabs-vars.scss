@@ -1,24 +1,28 @@
+@use '../../../../../../../tokens/scss/component-stubs/navigation-tabs';
+
 .tl-navigation-tabs__tab {
   /* tds-navigation-tab variables */
-  --navigation-tabs-tab: var(--color-text-soft);
-  --navigation-tabs-tab-selected: var(--color-text-strong);
-  --navigation-tabs-tab-hover: var(--color-text-strong);
-  --navigation-tabs-tab-focus: var(--color-text-strong);
-  --navigation-tabs-tab-disabled: var(--color-text-disabled);
-  --navigation-tabs-tab-indicator-hover: var(--color-border-discrete);
-  --navigation-tabs-tab-indicator-active: var(--color-system-info-default);
+  --navigation-tabs-tab: var(--component-navigation-tabs-tab-text-default);
+  --navigation-tabs-tab-selected: var(--component-navigation-tabs-tab-text-selected);
+  --navigation-tabs-tab-hover: var(--component-navigation-tabs-tab-text-hover);
+  --navigation-tabs-tab-disabled: var(--component-navigation-tabs-tab-text-default);
+  --navigation-tabs-tab-opacity-disabled: calc(var(--component-navigation-tabs-tab-opacity-disabled) / 100);
+  --navigation-tabs-tab-indicator-hover: var(--component-navigation-tabs-tab-indicator-hover);
+  --navigation-tabs-tab-indicator-active: var(--component-navigation-tabs-tab-indicator-active);
 }
 
 .tl-navigation-tabs {
   /* tds-navigation-tabs variables */
-  --navigation-tabs-horizontal-divider: var(--color-icon-discrete);
-  --navigation-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
-  --navigation-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
-  --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
-  --navigation-tabs-scroll-button-icon: var(--color-icon-strong);
+  --navigation-tabs-horizontal-divider: var(--component-navigation-tabs-divider-default);
+  --navigation-tabs-scroll-button-icon: var(--component-navigation-tabs-scroll-button-icon-default);
   --navigation-tabs-scroll-button-background: var(--navigation-tabs-tab-background);
   --navigation-tabs-scroll-button-background-hover: var(--navigation-tabs-tab-background);
   --navigation-tabs-scroll-button-background-active: var(--navigation-tabs-tab-background);
+
+  /* Mode variant backgrounds (brand-specific transparent surfaces) */
+  --navigation-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
+  --navigation-tabs-tab-background-secondary: var(--scania-color-transparent-invisible-dark);
+  --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);
 
   &--primary {
     --navigation-tabs-tab-background: var(--navigation-tabs-tab-background-primary);

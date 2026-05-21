@@ -1,17 +1,21 @@
+@use '../../../../../../tokens/scss/component-stubs/block';
+
 .tl-block {
+  // Border radius
+  --block-border-radius: calc(var(--component-block-border-radius-default) * 1px);
+
   // Colors
-  --block-background: var(--color-background-layer-01);
-  --block-text-color: var(--color-text-strong);
+  --block-background: var(--component-block-background-primary-default);
+  --block-text-color: var(--component-block-text-default);
 
   // Mode variants
-  --block-background-mode-primary: var(--color-background-layer-01);
-  --block-background-mode-secondary: var(--color-background-layer-02);
+  --block-background-mode-primary: var(--component-block-background-primary-default);
+  --block-background-mode-secondary: var(--component-block-background-secondary-default);
 
   // Alternating backgrounds
-  --block-background-even: var(--color-background-layer-01);
-  --block-background-odd: var(--color-background-layer-02);
+  --block-background-even: var(--component-block-background-primary-default);
+  --block-background-odd: var(--component-block-background-secondary-default);
 
-  // Spacing
+  // Spacing (non-token values)
   --block-padding: 16px;
-  --block-border-radius: 4px;
 }

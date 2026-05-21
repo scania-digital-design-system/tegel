@@ -26,7 +26,17 @@
 
 // Stub component tokens — placeholders until Figma exports the real groups.
 // See tokens/scss/component-stubs/<name>.scss for per-stub provenance/cleanup notes.
+@use '../../../../tokens/scss/component-stubs/accordion' as *;
+@use '../../../../tokens/scss/component-stubs/block' as *;
+@use '../../../../tokens/scss/component-stubs/checkbox' as *;
+@use '../../../../tokens/scss/component-stubs/folder-tabs' as *;
 @use '../../../../tokens/scss/component-stubs/header' as *;
+@use '../../../../tokens/scss/component-stubs/inline-tabs' as *;
+@use '../../../../tokens/scss/component-stubs/navigation-tabs' as *;
+@use '../../../../tokens/scss/component-stubs/popover-menu' as *;
+@use '../../../../tokens/scss/component-stubs/radio-button' as *;
+@use '../../../../tokens/scss/component-stubs/slider' as *;
+@use '../../../../tokens/scss/component-stubs/toggle' as *;
 
 body {
   font-family: var(--body-01-font-family);

@@ -1,23 +1,25 @@
+@use '../../../../../../tokens/scss/component-stubs/slider';
+
 .tl-slider {
-  --slider-label: var(--color-text-strong);
-  --slider-thumb: var(--color-icon-strong);
-  --slider-track: var(--color-background-layer-03);
-  --slider-track-fill: var(--color-icon-strong);
-  --slider-divider: var(--color-background-layer-03);
-  --slider-divider-values: var(--color-text-defined);
-  --slider-input-focused: var(--color-system-info-default);
-  --slider-input-value: var(--color-text-defined);
-  --slider-disabled: var(--color-background-layer-03);
-  --slider-disabled-text: var(--color-text-disabled);
-  --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
-  --slider-value-tooltip: var(--color-text-inverse-strong);
-  --slider-input-background: var(--color-background-layer-01);
-  --slider-input-box-shadow: 0 -1px 0 0 var(--color-border-soft);
+  --slider-label: var(--component-slider-text-label-default);
+  --slider-thumb: var(--component-slider-thumb-default);
+  --slider-track: var(--component-slider-track-default);
+  --slider-track-fill: var(--component-slider-track-fill-default);
+  --slider-divider: var(--component-slider-divider-default);
+  --slider-divider-values: var(--component-slider-divider-text-default);
+  --slider-input-value: var(--component-slider-input-text-default);
+  --slider-disabled: var(--component-slider-background-disabled);
+  --slider-opacity-disabled: calc(var(--component-slider-opacity-disabled) / 100);
+  --slider-disabled-text: var(--component-slider-text-label-default);
+  --slider-value-tooltip-background: var(--component-slider-tooltip-background-default);
+  --slider-value-tooltip: var(--component-slider-tooltip-text-default);
+  --slider-input-background: var(--component-slider-input-background-default);
 }
 
 .tl-slider,
 .scania .tl-slider {
   --slider-border-radius: 4px 4px 0 0;
+  --slider-input-box-shadow: 0 -1px 0 0 var(--color-border-soft);
 }
 
 .traton .tl-slider {

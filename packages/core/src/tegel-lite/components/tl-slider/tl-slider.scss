@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-slider-vars';
 @use '../tl-button/tl-button';
@@ -109,10 +110,7 @@
   }
 
   &:focus-within .tl-slider__thumb-inner {
-    outline: 2px solid var(--slider-input-focused);
-    box-shadow: 0 0 0 1px var(--color-background-layer-01);
-    outline-offset: 1px;
-    z-index: 1;
+    @include tds-focus-state;
   }
 
   &:disabled {

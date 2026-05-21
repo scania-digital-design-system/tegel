@@ -1,5 +1,6 @@
 @use './tl-popover-menu-vars';
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../mixins/z-index' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
@@ -28,8 +29,7 @@
   }
 
   &:focus-visible {
-    outline: 1px solid var(--popover-menu-item-outline-focus);
-    outline-offset: -1px;
+    @include tds-focus-state;
   }
 }
 

@@ -1,24 +1,25 @@
+@use '../../../../../../tokens/scss/component-stubs/accordion';
+
 .tl-accordion {
   /* Border & Background */
-  --accordion-border: var(--color-border-discrete);
-  --accordion-background: transparent;
+  --accordion-border: var(--component-accordion-border-default);
+  --accordion-background: var(--component-accordion-background-primary-default);
 
   /* Hover backgrounds */
-  --accordion-background-hover-primary: var(--color-background-layer-01);
-  --accordion-background-hover-secondary: var(--color-background-layer-02);
+  --accordion-background-hover-primary: var(--component-accordion-background-primary-hover);
+  --accordion-background-hover-secondary: var(--component-accordion-background-secondary-hover);
   --accordion-background-hover: var(--accordion-background-hover-primary);
 
   /* Focus & Active states */
-  --accordion-background-focus: var(--color-background-layer-01);
-  --accordion-background-active: var(--color-background-layer-02);
+  --accordion-background-focus: var(--component-accordion-background-primary-hover);
+  --accordion-background-active: var(--component-accordion-background-primary-active);
 
   /* Text & Icon colours */
-  --accordion-text: var(--color-text-strong);
-  --accordion-icon: var(--color-icon-strong);
+  --accordion-text: var(--component-accordion-text-default);
+  --accordion-icon: var(--component-accordion-icon-default);
 
   /* Borders & Disabled */
-  --accordion-border-focus: var(--color-border-strong);
-  --accordion-text-disabled: var(--color-text-disabled);
+  --accordion-text-disabled: var(--component-accordion-text-disabled);
 }
 
 /* Mode variants */

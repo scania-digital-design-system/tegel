@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
 @use './tl-radio-button-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
@@ -59,15 +60,8 @@
   }
 
   /* Focus */
-  &:focus {
-    &::before {
-      background-color: var(--radio-button-focus);
-      animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
-    }
-
-    &::after {
-      outline: var(--radio-button-focus-outline-width) solid var(--radio-button-focus-outline-color);
-    }
+  &:focus-visible {
+    @include tds-focus-state;
   }
 
   /* Checked */
@@ -77,16 +71,9 @@
     }
   }
 
-  /* Checked + focus */
-  &:checked:focus {
-    &::after {
-      outline: var(--radio-button-focus-outline-width) solid var(--radio-button-focus-outline-color);
-    }
-  }
-
   /* Hover */
   .tl-radio-button:not(:has(:disabled)):hover &::after {
-    outline: var(--radio-button-focus-outline-width) solid var(--radio-button-background-hover);
+    outline: 2px solid var(--radio-button-background-hover);
   }
 
   /* Disabled */
@@ -136,14 +123,3 @@
   }
 }
 
-/* Focus animation */
-@keyframes rb-focus {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
