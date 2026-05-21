@@ -29,6 +29,7 @@
   --side-menu-sub-item-with-icon: calc(var(--component-side-menu-space-sub-item-with-icon) * 1px);
   --side-menu-sub-item-with-user-image: calc(var(--component-side-menu-space-sub-item-with-user-image) * 1px);
   --side-menu-subnav-border-radius: calc(var(--component-side-menu-radius-subnav) * 1px);
+  --side-menu-collapsed-item-icon-padding: calc(var(--component-side-menu-space-collapsed-item-inner-icon-left-and-right-padding) * 1px);
 
   // Legacy --tds-* vars referenced in tl-side-menu dropdown SCSS
   --tds-header-app-launcher-menu-bg: var(--component-side-menu-color-background-default);

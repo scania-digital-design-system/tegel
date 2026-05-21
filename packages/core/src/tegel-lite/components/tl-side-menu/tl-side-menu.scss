@@ -236,10 +236,7 @@ $breakpoint-lg: 992px;
 
   .tl-side-menu__item {
     .tl-side-menu--collapsed & {
-      padding-top: var(--component-side-menu-space-collapsed-item-left-right-inner-icon-padding);
-      padding-right: var(--component-side-menu-space-collapsed-item-left-right-inner-icon-padding);
-      padding-bottom: var(--component-side-menu-space-collapsed-item-left-right-inner-icon-padding);
-      padding-left: var(--component-side-menu-space-collapsed-item-left-right-inner-icon-padding);
+      padding: var(--side-menu-collapsed-item-icon-padding);
       display: flex;
       justify-content: center;
       align-items: center;
