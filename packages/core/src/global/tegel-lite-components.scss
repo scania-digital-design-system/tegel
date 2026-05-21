@@ -1,3 +1,13 @@
+/*
+ * Storybook bundle for Tegel Lite component styles.
+ * Imported by .storybook/preview.ts so every tl-* story can render —
+ * including un-shipped components in dev mode (VITE_STORYBOOK_ENV=dev).
+ *
+ * Production Storybook hides un-shipped components via the story-file
+ * allowlist in .storybook/main.ts; the npm-package bundle is
+ * src/tegel-lite/components.scss, which is restricted separately.
+ */
+
 @use 'tl-scrollbar-vars' as *;
 
 /* Icon tokens for Storybook (in production Tegel Lite these come from the brand variable CSS files) */
