@@ -76,7 +76,8 @@
 
 .scania {
   /* Light mode - explicit light mode class */
-  .tl-mode-light .tl-header {
+  .tl-mode-light .tl-header,
+  .tds-mode-light .tl-header {
     --header-background: var(--scania-color-blue-800);
     --header-nav-item: var(--color-icon-inverse-strong);
     --header-item-hover: var(--scania-color-blue-700);
@@ -86,7 +87,8 @@
   }
 
   /* Dark mode - override with dark colors */
-  .tl-mode-dark .tl-header {
+  .tl-mode-dark .tl-header,
+  .tds-mode-dark .tl-header {
     --header-background: var(--scania-color-blue-900);
     --header-nav-item: var(--scania-color-base-white);
     --header-item-hover: var(--scania-color-blue-800);

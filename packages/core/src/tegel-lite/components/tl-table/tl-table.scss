@@ -487,13 +487,16 @@
 .tl-table__body-cell .tl-text-field .tl-text-field__input,
 .tl-table__body-cell .tl-text-field .tl-text-field__input:hover,
 .tl-table__body-cell .tl-text-field:hover .tl-text-field__input:not(:focus):not(:disabled) {
-  box-shadow: 0 0 0 0 transparent;
-  border-color: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  box-shadow: none;
 }
 
 .tl-table__body-cell .tl-text-field .tl-text-field__input:focus {
-  box-shadow: inset var(--text-field-box-shadow-focus);
+  outline: none;
+  box-shadow: none;
   background-color: var(--table-input-focus);
+  border-bottom-color: var(--color-system-info-default);
 }
 
 .tl-table--compact .tl-table__body-cell .tl-text-field .tl-text-field__input {
