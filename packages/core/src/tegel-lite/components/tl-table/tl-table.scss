@@ -485,8 +485,10 @@
 }
 
 .tl-table__body-cell .tl-text-field .tl-text-field__input,
-.tl-table__body-cell .tl-text-field .tl-text-field__input:hover {
+.tl-table__body-cell .tl-text-field .tl-text-field__input:hover,
+.tl-table__body-cell .tl-text-field:hover .tl-text-field__input:not(:focus):not(:disabled) {
   box-shadow: 0 0 0 0 transparent;
+  border-color: transparent;
 }
 
 .tl-table__body-cell .tl-text-field .tl-text-field__input:focus {

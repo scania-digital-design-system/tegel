@@ -60,8 +60,10 @@
   }
 
   /* Focus */
-  &:focus-visible {
-    @include tds-focus-state;
+  &:focus-visible::after {
+    outline: 2px solid var(--component--focus-ring-color-strong);
+    box-shadow: 0 0 0 1px var(--component--focus-ring-color-discrete);
+    outline-offset: 1px;
   }
 
   /* Checked */

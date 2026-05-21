@@ -74,3 +74,11 @@
     --table-body-row-hover: var(--color-background-layer-03);
   }
 }
+
+.traton .tl-mode-light .tl-table {
+  --table-header: var(--traton-color-grey-400);
+}
+
+.traton .tl-mode-dark .tl-table {
+  --table-header: var(--traton-color-blue-700);
+}

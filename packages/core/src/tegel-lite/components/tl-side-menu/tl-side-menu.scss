@@ -37,6 +37,26 @@ $breakpoint-lg: 992px;
   gap: var(--component-side-menu-space-top-level-vertical-gap-padding);
 }
 
+.traton .tl-side-menu__list,
+.traton .tl-side-menu__list li,
+.traton .tl-side-menu__upper-list,
+.traton .tl-side-menu__upper-list li,
+.traton .tl-side-menu__end-list,
+.traton .tl-side-menu__end-list li,
+.scania .tl-side-menu__list,
+.scania .tl-side-menu__list li,
+.scania .tl-side-menu__upper-list,
+.scania .tl-side-menu__upper-list li,
+.scania .tl-side-menu__end-list,
+.scania .tl-side-menu__end-list li {
+  gap: 12px;
+}
+
+.traton .tl-side-menu__list-wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .tl-side-menu__wrapper {
   height: inherit;
 }
