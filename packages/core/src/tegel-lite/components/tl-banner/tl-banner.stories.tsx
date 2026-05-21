@@ -67,7 +67,7 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
 
   const iconElement = `<span class="tl-banner__icon"><span class="tl-icon tl-icon--${iconName} tl-icon--20" aria-hidden="true"></span></span>`;
   const closeButton = showClose
-    ? `<div class="tl-banner__close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></div>`
+    ? `<div type="button" class="tl-banner__close" aria-label="Close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></div>`
     : '';
 
   return formatHtmlPreview(`
@@ -91,6 +91,28 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
       </div>
       ${closeButton}
     </div>
+
+    <!-- Script tag for demo purposes -->
+    <script>
+      (function setupBanner() {
+        try {
+          document.querySelectorAll('.tl-banner__close').forEach((button) => {
+            if (button._bannerHandler) {
+              button.removeEventListener('click', button._bannerHandler);
+            }
+            button._bannerHandler = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const banner = button.closest('.tl-banner');
+              if (banner) banner.style.display = 'none';
+            };
+            button.addEventListener('click', button._bannerHandler);
+          });
+        } catch (error) {
+          console.error('Error setting up banner:', error);
+        }
+      })();
+    </script>
   `);
 };
 

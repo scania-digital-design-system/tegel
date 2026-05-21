@@ -112,8 +112,8 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
           : String(index);
 
       return `
-        <li class="tl-stepper__step ${state || ''}">
-          <div class="tl-stepper__node">${nodeContent}</div>
+        <li class="tl-stepper__step ${state || ''}" data-step-index="${index}" data-step-label="${label}">
+          <div class="tl-stepper__node" role="button" tabindex="0" aria-label="${label}" style="cursor: pointer;">${nodeContent}</div>
           <div class="tl-stepper__label">${label}</div>
         </li>
       `;
@@ -132,6 +132,59 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
         ${items}
       </ol>
     </div>
+
+    <!-- Script tag for demo purposes -->
+    <script>
+      (function setupStepper() {
+        try {
+          const list = document.querySelector('.tl-stepper');
+          if (!list) return;
+
+          const states = ['success', 'current', 'upcoming'];
+
+          const applyStates = (currentIndex) => {
+            list.querySelectorAll('.tl-stepper__step').forEach((step) => {
+              const idx = parseInt(step.dataset.stepIndex, 10);
+              states.forEach((s) => step.classList.remove('tl-stepper__step--' + s));
+              step.classList.remove('tl-stepper__step--error');
+              const node = step.querySelector('.tl-stepper__node');
+
+              if (idx < currentIndex) {
+                step.classList.add('tl-stepper__step--success');
+                if (node) node.textContent = '';
+              } else if (idx === currentIndex) {
+                step.classList.add('tl-stepper__step--current');
+                if (node) node.textContent = String(idx);
+              } else {
+                step.classList.add('tl-stepper__step--upcoming');
+                if (node) node.textContent = String(idx);
+              }
+            });
+          };
+
+          list.querySelectorAll('.tl-stepper__step').forEach((step) => {
+            const node = step.querySelector('.tl-stepper__node');
+            if (!node) return;
+            const activate = () => applyStates(parseInt(step.dataset.stepIndex, 10));
+            if (node._stepHandler) {
+              node.removeEventListener('click', node._stepHandler);
+              node.removeEventListener('keydown', node._stepKeyHandler);
+            }
+            node._stepHandler = (e) => { e.preventDefault(); activate(); };
+            node._stepKeyHandler = (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activate();
+              }
+            };
+            node.addEventListener('click', node._stepHandler);
+            node.addEventListener('keydown', node._stepKeyHandler);
+          });
+        } catch (error) {
+          console.error('Error setting up stepper:', error);
+        }
+      })();
+    </script>
   `);
 };
 

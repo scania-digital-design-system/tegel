@@ -91,7 +91,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
   const sizeClass = sizeMap[size] || 'lg';
 
   return formatHtmlPreview(`
-    <!-- Required stylesheet 
+    <!-- Required stylesheet
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-modal.css"
     -->
@@ -100,33 +100,41 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       "@scania/tegel-lite/tl-button.css"
       "@scania/tegel-lite/tl-icon.css"
     -->
+    <button type="button" class="tl-button tl-button--sm tl-button--primary" data-modal-trigger>
+      <span class="tl-button__label">Open modal</span>
+    </button>
+
     <div class="demo-wrapper">
       <div class="tl-modal ${showClass} tl-modal--${sizeClass} ${actionsClass}">
         <div class="tl-modal__header">
-          <h2 class="tl-modal__title">${headerText}</>
+          <h2 class="tl-modal__title">${headerText}</h2>
           ${
             closable
               ? `
           <!-- Close button -->
-          <button class="tl-modal__close">
+          <button type="button" class="tl-modal__close" aria-label="Close">
             <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
           </button>
           `
               : ''
           }
-        </>
+        </div>
         <div class="tl-modal__body">
           ${bodyContent}
-        </>
+        </div>
         <div class="tl-modal__actions">
-          <button class="tl-button tl-button--sm tl-button--primary">Button Text</>
-          <button class="tl-button tl-button--sm tl-button--secondary">Button Text</>
-        </>
-      </>
-    </>
+          <button type="button" class="tl-button tl-button--sm tl-button--primary" data-modal-close>
+            <span class="tl-button__label">Button Text</span>
+          </button>
+          <button type="button" class="tl-button tl-button--sm tl-button--secondary" data-modal-close>
+            <span class="tl-button__label">Button Text</span>
+          </button>
+        </div>
+      </div>
 
-    <!-- Overlay -->
-    <div class="tl-modal__overlay ${showClass}"></>
+      <!-- Overlay -->
+      <div class="tl-modal__overlay ${showClass}"></div>
+    </div>
 
     <!-- Demo wrapper styles -->
     <style>
@@ -141,9 +149,54 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
         justify-content: center;
         padding: 0 16px;
         z-index: 1001;
+        pointer-events: none;
+      }
+      .demo-wrapper .tl-modal,
+      .demo-wrapper .tl-modal__overlay {
+        pointer-events: auto;
       }
     </style>
 
+    <!-- Script tag for demo purposes -->
+    <script>
+      (function setupModal() {
+        try {
+          const modal = document.querySelector('.tl-modal');
+          const overlay = document.querySelector('.tl-modal__overlay');
+          const trigger = document.querySelector('[data-modal-trigger]');
+          if (!modal || !overlay) return;
+
+          const open = () => {
+            modal.classList.add('tl-modal--visible');
+            overlay.classList.add('tl-modal--visible');
+          };
+          const close = () => {
+            modal.classList.remove('tl-modal--visible');
+            overlay.classList.remove('tl-modal--visible');
+          };
+
+          if (trigger) {
+            if (trigger._modalHandler) trigger.removeEventListener('click', trigger._modalHandler);
+            trigger._modalHandler = (e) => { e.preventDefault(); open(); };
+            trigger.addEventListener('click', trigger._modalHandler);
+          }
+
+          document
+            .querySelectorAll('.tl-modal__close, [data-modal-close]')
+            .forEach((el) => {
+              if (el._modalCloseHandler) el.removeEventListener('click', el._modalCloseHandler);
+              el._modalCloseHandler = (e) => { e.preventDefault(); close(); };
+              el.addEventListener('click', el._modalCloseHandler);
+            });
+
+          if (overlay._modalCloseHandler) overlay.removeEventListener('click', overlay._modalCloseHandler);
+          overlay._modalCloseHandler = (e) => { e.preventDefault(); close(); };
+          overlay.addEventListener('click', overlay._modalCloseHandler);
+        } catch (error) {
+          console.error('Error setting up modal:', error);
+        }
+      })();
+    </script>
   `);
 };
 

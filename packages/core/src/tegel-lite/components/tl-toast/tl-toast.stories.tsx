@@ -91,7 +91,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
 
   const iconElement = `<span class="tl-toast__icon"><span class="tl-icon tl-icon--${iconName} tl-icon--20" aria-hidden="true"></span></span>`;
   const closeButton = closable
-    ? `<button class="tl-toast__close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></button>`
+    ? `<button type="button" class="tl-toast__close" aria-label="Close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></button>`
     : '';
 
   return formatHtmlPreview(`
@@ -111,6 +111,28 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
       </div>
       ${closeButton}
     </div>
+
+    <!-- Script tag for demo purposes -->
+    <script>
+      (function setupToast() {
+        try {
+          document.querySelectorAll('.tl-toast__close').forEach((button) => {
+            if (button._toastHandler) {
+              button.removeEventListener('click', button._toastHandler);
+            }
+            button._toastHandler = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const toast = button.closest('.tl-toast');
+              if (toast) toast.classList.add('tl-toast--hide');
+            };
+            button.addEventListener('click', button._toastHandler);
+          });
+        } catch (error) {
+          console.error('Error setting up toast:', error);
+        }
+      })();
+    </script>
   `);
 };
 
