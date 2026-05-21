@@ -119,9 +119,9 @@ StyleDictionary.registerFormat({
       if (!variableMeta.has(variableName)) {
         variableMeta.set(variableName, { rawParts });
       }
-      
+
       let value = null;
-      
+
       const originalValue = token.original?.$value;
       if (originalValue) {
         const refValue = originalValue;
@@ -342,7 +342,7 @@ const COMPONENT_FILE_LIST = [
   ['header', 'includes'],
   ['side-menu', 'includes'],
   ['card', 'includes'],
-  ['input-field', 'includes'],
+  ['-input', 'exact'],
   ['table', 'exact'],
   ['stepper', 'exact'],
   ['spinner', 'exact'],
@@ -366,6 +366,8 @@ const COMPONENT_FILE_LIST = [
   ['overlay', 'exact'],
   ['modal', 'exact'],
   ['scrollbar', 'exact'],
+  ['text-field', 'exact'],
+  ['textarea', 'exact'],
 ];
 
 // Helper function to create component file configuration
@@ -378,22 +380,22 @@ function createComponentFile(componentName, matchType = 'exact') {
       return false;
     }
     // Handle component names with -- prefix (e.g., --shadow, --input-field)
-  const rawComponentName = token.path[1] || '';
-  const actualComponentName = rawComponentName.replace(/^--/, '');
+    const rawComponentName = token.path[1] || '';
+    const actualComponentName = rawComponentName.replace(/^--/, '');
     if (matchFn === 'includes') {
       return actualComponentName.includes(componentName);
     }
     return actualComponentName === componentName;
   };
-  
+
   return {
     destination,
     format: 'component/variables',
     filter: filterFn,
     options: {
       showFileHeader: true,
-      outputReferences: true
-    }
+      outputReferences: true,
+    },
   };
 }
 

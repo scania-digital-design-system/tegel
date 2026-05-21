@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/textarea/test/read-only/index.html';
 const componentName = 'tds-textarea';
 const testDescription = 'tds-textarea-read-only';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

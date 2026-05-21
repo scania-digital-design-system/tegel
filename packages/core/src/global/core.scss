@@ -10,7 +10,7 @@
 @use '../../../../tokens/scss/component/footer' as *;
 @use '../../../../tokens/scss/component/header' as *;
 @use '../../../../tokens/scss/component/icon' as *;
-@use '../../../../tokens/scss/component/input-field' as *;
+@use '../../../../tokens/scss/component/-input' as *;
 @use '../../../../tokens/scss/component/logo' as *;
 @use '../../../../tokens/scss/component/message' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
@@ -22,6 +22,8 @@
 @use '../../../../tokens/scss/component/overlay' as *;
 @use '../../../../tokens/scss/component/scrollbar' as *;
 @use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/text-field' as *;
+@use '../../../../tokens/scss/component/textarea' as *;
 @use '../../../../tokens/scss/component/toast' as *;
 @use '../../../../tokens/scss/component/tooltip' as *;
 
