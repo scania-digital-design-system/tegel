@@ -1,0 +1,134 @@
+/**
+ * STUB — placeholder until Figma exports the missing component.side-menu.*
+ * groups. The generated tokens/scss/component/side-menu.scss already covers
+ * some spacing (size, top-level, sub-menu-item, etc.) and the divider color;
+ * this stub adds the rest:
+ *   - color: top-level / item-state / subnav / collapsed-dropdown backgrounds,
+ *     text colors, selected-marker color
+ *   - space: collapsed-button-size, dropdown-list-item-height, single-item-height,
+ *     profile-user-image-size, sub-item-with-icon/-with-user-image, collapsed
+ *     dropdown heading offset, subnav border radius
+ *
+ * Values inferred from current tl-side-menu styling + Figma reference (read-only).
+ * Delete this file and remove the @use line in tegel-lite-global.scss when the
+ * missing groups land in tokens/scss/component/side-menu.scss via build-tokens.mjs.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  // Color
+  --component-side-menu-color-background-default: var(--scania-color-grey-00);
+  --component-side-menu-color-background-hover: var(--scania-color-grey-50);
+  --component-side-menu-color-background-active: var(--scania-color-grey-50);
+  --component-side-menu-color-background-selected: var(--scania-color-grey-50);
+  --component-side-menu-color-background-subnav: var(--scania-color-grey-50);
+  --component-side-menu-color-background-collapsed-dropdown-default: var(--scania-color-grey-00);
+  --component-side-menu-color-background-collapsed-dropdown-hover: var(--scania-color-grey-50);
+  --component-side-menu-color-background-collapsed-dropdown-active: var(--scania-color-grey-50);
+  --component-side-menu-color-background-collapsed-dropdown-selected: var(--scania-color-grey-50);
+  --component-side-menu-color-text-single-item: var(--scania-color-transparent-950);
+  --component-side-menu-color-text-dropdown-list-item: var(--scania-color-transparent-650);
+  --component-side-menu-color-border-selected-marker: var(--scania-color-blue-400);
+
+  // Space (unitless; consume with calc(* 1px))
+  --component-side-menu-space-collapsed-button-size: 68;
+  --component-side-menu-space-collapsed-dropdown-heading-left: 24;
+  --component-side-menu-space-dropdown-list-item-height: 48;
+  --component-side-menu-space-single-item-height: 68;
+  --component-side-menu-space-profile-user-image-size: 34;
+  --component-side-menu-space-sub-item-with-icon: 56;
+  --component-side-menu-space-sub-item-with-user-image: 72;
+  --component-side-menu-radius-subnav: 0;
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  // Color
+  --component-side-menu-color-background-default: var(--traton-color-grey-50);
+  --component-side-menu-color-background-hover: var(--traton-color-grey-100);
+  --component-side-menu-color-background-active: var(--traton-color-grey-100);
+  --component-side-menu-color-background-selected: var(--traton-color-grey-100);
+  --component-side-menu-color-background-subnav: var(--traton-color-grey-100);
+  --component-side-menu-color-background-collapsed-dropdown-default: var(--traton-color-grey-100);
+  --component-side-menu-color-background-collapsed-dropdown-hover: var(--traton-color-grey-100);
+  --component-side-menu-color-background-collapsed-dropdown-active: var(--traton-color-grey-50);
+  --component-side-menu-color-background-collapsed-dropdown-selected: var(--traton-color-grey-100);
+  --component-side-menu-color-text-single-item: var(--traton-color-transparent-950);
+  --component-side-menu-color-text-dropdown-list-item: var(--traton-color-transparent-700);
+  --component-side-menu-color-border-selected-marker: var(--traton-color-blue-500);
+
+  // Space
+  --component-side-menu-space-collapsed-button-size: 72;
+  --component-side-menu-space-collapsed-dropdown-heading-left: 14;
+  --component-side-menu-space-dropdown-list-item-height: 32;
+  --component-side-menu-space-single-item-height: 40;
+  --component-side-menu-space-profile-user-image-size: 25.5;
+  --component-side-menu-space-sub-item-with-icon: 38;
+  --component-side-menu-space-sub-item-with-user-image: 46;
+  --component-side-menu-radius-subnav: 4;
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  // Color
+  --component-side-menu-color-background-default: var(--scania-color-grey-950);
+  --component-side-menu-color-background-hover: var(--scania-color-grey-900);
+  --component-side-menu-color-background-active: var(--scania-color-grey-900);
+  --component-side-menu-color-background-selected: var(--scania-color-grey-900);
+  --component-side-menu-color-background-subnav: var(--scania-color-grey-900);
+  --component-side-menu-color-background-collapsed-dropdown-default: var(--scania-color-grey-950);
+  --component-side-menu-color-background-collapsed-dropdown-hover: var(--scania-color-grey-900);
+  --component-side-menu-color-background-collapsed-dropdown-active: var(--scania-color-grey-900);
+  --component-side-menu-color-background-collapsed-dropdown-selected: var(--scania-color-grey-900);
+  --component-side-menu-color-text-single-item: var(--scania-color-transparent-inverse-50);
+  --component-side-menu-color-text-dropdown-list-item: var(--scania-color-transparent-inverse-200);
+  --component-side-menu-color-border-selected-marker: var(--scania-color-blue-300);
+
+  // Space
+  --component-side-menu-space-collapsed-button-size: 68;
+  --component-side-menu-space-collapsed-dropdown-heading-left: 24;
+  --component-side-menu-space-dropdown-list-item-height: 48;
+  --component-side-menu-space-single-item-height: 68;
+  --component-side-menu-space-profile-user-image-size: 34;
+  --component-side-menu-space-sub-item-with-icon: 56;
+  --component-side-menu-space-sub-item-with-user-image: 72;
+  --component-side-menu-radius-subnav: 0;
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  // Color
+  --component-side-menu-color-background-default: var(--traton-color-blue-1000);
+  --component-side-menu-color-background-hover: var(--traton-color-blue-950);
+  --component-side-menu-color-background-active: var(--traton-color-blue-950);
+  --component-side-menu-color-background-selected: var(--traton-color-blue-950);
+  --component-side-menu-color-background-subnav: var(--traton-color-blue-950);
+  --component-side-menu-color-background-collapsed-dropdown-default: var(--traton-color-blue-950);
+  --component-side-menu-color-background-collapsed-dropdown-hover: var(--traton-color-blue-950);
+  --component-side-menu-color-background-collapsed-dropdown-active: var(--traton-color-blue-900);
+  --component-side-menu-color-background-collapsed-dropdown-selected: var(--traton-color-blue-950);
+  --component-side-menu-color-text-single-item: var(--traton-color-transparent-inverse-950);
+  --component-side-menu-color-text-dropdown-list-item: var(--traton-color-transparent-inverse-700);
+  --component-side-menu-color-border-selected-marker: var(--traton-color-blue-500);
+
+  // Space
+  --component-side-menu-space-collapsed-button-size: 72;
+  --component-side-menu-space-collapsed-dropdown-heading-left: 14;
+  --component-side-menu-space-dropdown-list-item-height: 32;
+  --component-side-menu-space-single-item-height: 40;
+  --component-side-menu-space-profile-user-image-size: 25.5;
+  --component-side-menu-space-sub-item-with-icon: 38;
+  --component-side-menu-space-sub-item-with-user-image: 46;
+  --component-side-menu-radius-subnav: 4;
+}
