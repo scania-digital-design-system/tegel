@@ -3,29 +3,29 @@
   --datetime-background-primary: var(--color-background-layer-01);
   --datetime-background-secondary: var(--color-background-layer-02);
   --datetime-background: var(--datetime-background-primary);
-  --datetime-text: var(--color-foreground-text-strong);
-  --datetime-icon: var(--color-foreground-icon-strong);
-  --datetime-placeholder: var(--color-foreground-text-subtle);
+  --datetime-text: var(--color-text-strong);
+  --datetime-icon: var(--color-icon-strong);
+  --datetime-placeholder: var(--color-text-subtle);
 
   // Disabled
   --datetime-background-disabled-primary: var(--color-background-layer-01);
   --datetime-background-disabled-secondary: var(--color-background-layer-02);
   --datetime-background-disabled: var(--datetime-background-disabled-primary);
-  --datetime-text-disabled: var(--color-foreground-text-disabled);
-  --datetime-placeholder-disabled: var(--color-foreground-text-disabled);
-  --datetime-label-disabled: var(--color-foreground-text-disabled);
-  --datetime-icon-disabled: var(--color-foreground-text-disabled);
+  --datetime-text-disabled: var(--color-text-disabled);
+  --datetime-placeholder-disabled: var(--color-text-disabled);
+  --datetime-label-disabled: var(--color-text-disabled);
+  --datetime-icon-disabled: var(--color-text-disabled);
 
   // Label
-  --datetime-label: var(--color-foreground-text-strong);
-  --datetime-label-inside: var(--color-foreground-text-strong);
-  --datetime-placeholder-focus: var(--tds-grey-500);
+  --datetime-label: var(--color-text-strong);
+  --datetime-label-inside: var(--color-text-strong);
+  --datetime-placeholder-focus: var(--color-text-soft);
 
   // Highlight bar
-  --datetime-highlight-bar: var(--color-foreground-border-accent-focus);
+  --datetime-highlight-bar: var(--color-system-info-default);
 
   // helper
-  --datetime-helper: var(--color-foreground-text-defined);
+  --datetime-helper: var(--color-text-defined);
 
   // error
   --datetime-helper-error: var(--color-system-danger-default);
@@ -48,9 +48,9 @@
   --datetime-border-radius: 4px 4px 0 0;
 
   /* Datetime: box-shadow */
-  --datetime-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
-  --datetime-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --datetime-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow: 0 -1px 0 0 var(--color-border-soft);
+  --datetime-box-shadow-hover: 0 -1px 0 0 var(--color-border-strong);
+  --datetime-box-shadow-focus: 0 -2px 0 0 var(--color-system-info-default);
   --datetime-box-shadow-disabled: none;
   --datetime-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
   --datetime-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
@@ -61,25 +61,25 @@
   /* Datetime: border colors */
   --datetime-border-color-left: transparent;
   --datetime-border-color-right: transparent;
-  --datetime-border-color-bottom: var(--color-foreground-border-soft);
+  --datetime-border-color-bottom: var(--color-border-soft);
   --datetime-border-color-top: transparent;
 
   /* Datetime: border colors on hover */
   --datetime-border-color-left-hover: transparent;
   --datetime-border-color-right-hover: transparent;
-  --datetime-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-bottom-hover: var(--color-border-strong);
   --datetime-border-color-top-hover: transparent;
 
   /* Datetime: border colors on success */
   --datetime-border-color-left-success: transparent;
   --datetime-border-color-right-success: transparent;
-  --datetime-border-color-bottom-success: var(--color-foreground-border-strong);
+  --datetime-border-color-bottom-success: var(--color-border-strong);
   --datetime-border-color-top-success: transparent;
 
   /* Datetime: border colors on focus */
   --datetime-border-color-left-focus: transparent;
   --datetime-border-color-right-focus: transparent;
-  --datetime-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --datetime-border-color-bottom-focus: var(--color-border-strong);
   --datetime-border-color-top-focus: transparent;
   --datetime-outline-color-focus: none;
 
@@ -90,7 +90,7 @@
   --datetime-border-color-top-error: transparent;
 
   /* Datetime: bar colors */
-  --datetime-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --datetime-bar-color-focus: var(--color-system-info-default);
   --datetime-bar-color-error: var(--color-system-danger-default);
 
   /* Datetime: disabled */
@@ -102,9 +102,9 @@
   --datetime-border-radius: 4px 4px 4px 4px;
 
   /* Datetime: box-shadow */
-  --datetime-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
-  --datetime-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
-  --datetime-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow: 0 0 0 1px var(--color-border-soft);
+  --datetime-box-shadow-hover: 0 0 0 1px var(--color-border-strong);
+  --datetime-box-shadow-focus: 0 0 0 2px var(--color-system-info-default);
   --datetime-box-shadow-disabled: none;
   --datetime-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
   --datetime-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
@@ -113,29 +113,29 @@
   --datetime-highlight-error: transparent;
 
   /* Datetime: border colors */
-  --datetime-border-color-left: var(--color-foreground-border-soft);
-  --datetime-border-color-right: var(--color-foreground-border-soft);
-  --datetime-border-color-bottom: var(--color-foreground-border-soft);
-  --datetime-border-color-top: var(--color-foreground-border-soft);
+  --datetime-border-color-left: var(--color-border-soft);
+  --datetime-border-color-right: var(--color-border-soft);
+  --datetime-border-color-bottom: var(--color-border-soft);
+  --datetime-border-color-top: var(--color-border-soft);
 
   /* Datetime: border colors on hover */
-  --datetime-border-color-left-hover: var(--color-foreground-border-strong);
-  --datetime-border-color-right-hover: var(--color-foreground-border-strong);
-  --datetime-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --datetime-border-color-top-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-left-hover: var(--color-border-strong);
+  --datetime-border-color-right-hover: var(--color-border-strong);
+  --datetime-border-color-bottom-hover: var(--color-border-strong);
+  --datetime-border-color-top-hover: var(--color-border-strong);
 
   /* Datetime: border colors on success */
-  --datetime-border-color-left-success: var(--color-foreground-border-strong);
-  --datetime-border-color-right-success: var(--color-foreground-border-strong);
-  --datetime-border-color-bottom-success: var(--color-foreground-border-strong);
-  --datetime-border-color-top-success: var(--color-foreground-border-strong);
+  --datetime-border-color-left-success: var(--color-border-strong);
+  --datetime-border-color-right-success: var(--color-border-strong);
+  --datetime-border-color-bottom-success: var(--color-border-strong);
+  --datetime-border-color-top-success: var(--color-border-strong);
 
   /* Datetime: border colors on focus */
-  --datetime-border-color-left-focus: var(--color-foreground-border-accent-focus);
-  --datetime-border-color-right-focus: var(--color-foreground-border-accent-focus);
-  --datetime-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
-  --datetime-border-color-top-focus: var(--color-foreground-border-accent-focus);
-  --datetime-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --datetime-border-color-left-focus: var(--color-system-info-default);
+  --datetime-border-color-right-focus: var(--color-system-info-default);
+  --datetime-border-color-bottom-focus: var(--color-system-info-default);
+  --datetime-border-color-top-focus: var(--color-system-info-default);
+  --datetime-outline-color-focus: var(--color-system-info-default);
 
   /* Datetime: border colors on error */
   --datetime-border-color-left-error: var(--color-system-danger-default);

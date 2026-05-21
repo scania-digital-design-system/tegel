@@ -67,7 +67,8 @@
     "./tl-folder-tab.css": "./dist/tl-folder-tab.css",
     "./tl-inline-tab.css": "./dist/tl-inline-tab.css",
     "./tl-navigation-tab.css": "./dist/tl-navigation-tab.css",
-    "./tl-textarea-mixins.css": "./dist/tl-textarea-mixins.css"
+    "./tl-textarea-mixins.css": "./dist/tl-textarea-mixins.css",
+    "./tl-cookie-block.css": "./dist/tl-cookie-block.css"
   },
   "repository": {
     "type": "git",

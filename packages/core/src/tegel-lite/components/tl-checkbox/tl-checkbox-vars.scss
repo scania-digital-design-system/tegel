@@ -1,13 +1,13 @@
 .tl-checkbox {
-  --checkbox-label: var(--color-foreground-text-strong);
-  --checkbox-label-disabled: var(--color-foreground-text-disabled);
-  --checkbox-icon: var(--color-foreground-icon-strong);
-  --checkbox-fill: var(--color-foreground-icon-inverse-strong);
+  --checkbox-label: var(--color-text-strong);
+  --checkbox-label-disabled: var(--color-text-disabled);
+  --checkbox-icon: var(--color-icon-strong);
+  --checkbox-fill: var(--color-icon-inverse-strong);
   --checkbox-fill-disabled: var(--color-background-accent-primary-disabled);
-  --checkbox-border: var(--color-foreground-border-strong);
-  --checkbox-border-hover: var(--color-foreground-border-subtle);
-  --checkbox-border-focus: var(--color-foreground-border-accent-focus);
-  --checkbox-border-disabled: var(--color-foreground-border-discrete);
+  --checkbox-border: var(--color-border-strong);
+  --checkbox-border-hover: var(--color-border-subtle);
+  --checkbox-border-focus: var(--color-system-info-default);
+  --checkbox-border-disabled: var(--color-border-discrete);
 
   // units
   --checkbox-background-opacity-hover: 0.12;

@@ -116,7 +116,7 @@
     box-shadow: inset var(--datetime-box-shadow-focus);
   }
 
-  .tl-datetime:hover &:not(:focus):not(:disabled) {
+  .tl-datetime:hover &:not(:focus, :disabled) {
     box-shadow: inset var(--datetime-box-shadow-hover);
   }
 
@@ -128,7 +128,7 @@
     }
   }
 
-  .tl-datetime--error:hover &:not(:focus):not(:disabled) {
+  .tl-datetime--error:hover &:not(:focus, :disabled) {
     box-shadow: inset var(--datetime-box-shadow-error-hover);
   }
 
@@ -303,6 +303,6 @@
 
   /* Disabled state (should not override error text/icon color) */
   .tl-datetime:has(input:disabled):not(.tl-datetime--error) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 }

@@ -1,6 +1,6 @@
 .tl-inline-tabs {
   /* Horizontal divider */
-  --inline-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
+  --inline-tabs-horizontal-divider: var(--color-icon-discrete);
 
   /* Mode variant backgrounds */
   --inline-tabs-tab-background-primary: var(--scania-color-transparent-invisible-light);
@@ -8,7 +8,7 @@
   --inline-tabs-tab-background: var(--inline-tabs-tab-background-primary);
 
   /* Scroll button */
-  --inline-tabs-scroll-button-text: var(--color-foreground-icon-strong);
+  --inline-tabs-scroll-button-text: var(--color-icon-strong);
   --inline-tabs-scroll-button-background: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-hover: var(--inline-tabs-tab-background);
   --inline-tabs-scroll-button-background-active: var(--inline-tabs-tab-background);
@@ -31,11 +31,11 @@
 
 .tl-inline-tabs__tab {
   /* Tab */
-  --inline-tabs-tab: var(--color-foreground-text-soft);
-  --inline-tabs-tab-selected: var(--color-foreground-text-strong);
-  --inline-tabs-tab-disabled: var(--color-foreground-text-disabled);
-  --inline-tabs-tab-hover: var(--color-foreground-text-strong);
-  --inline-tabs-tab-focus: var(--color-foreground-border-accent-focus);
-  --inline-tabs-tab-indicator-active: var(--color-foreground-border-accent-focus);
-  --inline-tabs-tab-indicator-hover: var(--color-foreground-border-discrete);
+  --inline-tabs-tab: var(--color-text-soft);
+  --inline-tabs-tab-selected: var(--color-text-strong);
+  --inline-tabs-tab-disabled: var(--color-text-disabled);
+  --inline-tabs-tab-hover: var(--color-text-strong);
+  --inline-tabs-tab-focus: var(--color-system-info-default);
+  --inline-tabs-tab-indicator-active: var(--color-system-info-default);
+  --inline-tabs-tab-indicator-hover: var(--color-border-discrete);
 }

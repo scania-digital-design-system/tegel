@@ -1,6 +1,6 @@
 .tl-accordion {
   /* Border & Background */
-  --accordion-border: var(--color-foreground-border-discrete);
+  --accordion-border: var(--color-border-discrete);
   --accordion-background: transparent;
 
   /* Hover backgrounds */
@@ -13,12 +13,12 @@
   --accordion-background-active: var(--color-background-layer-02);
 
   /* Text & Icon colours */
-  --accordion-text: var(--color-foreground-text-strong);
-  --accordion-icon: var(--color-foreground-icon-strong);
+  --accordion-text: var(--color-text-strong);
+  --accordion-icon: var(--color-icon-strong);
 
   /* Borders & Disabled */
-  --accordion-border-focus: var(--color-foreground-border-strong);
-  --accordion-text-disabled: var(--color-foreground-text-disabled);
+  --accordion-border-focus: var(--color-border-strong);
+  --accordion-text-disabled: var(--color-text-disabled);
 }
 
 /* Mode variants */

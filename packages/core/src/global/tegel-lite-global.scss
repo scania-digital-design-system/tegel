@@ -24,6 +24,10 @@
 // Shared focus ring tokens (consumed by the tds-focus-state mixin)
 @use '../../../../tokens/scss/component/-focus' as *;
 
+// Stub component tokens — placeholders until Figma exports the real groups.
+// See tokens/scss/component-stubs/<name>.scss for per-stub provenance/cleanup notes.
+@use '../../../../tokens/scss/component-stubs/header' as *;
+
 body {
   font-family: var(--body-01-font-family);
   font-size: 14px;
@@ -57,35 +61,35 @@ h6 {
 
 :root,
 .tl-mode-light {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 
   &.tl-mode-variant-primary,
   & .tl-mode-variant-primary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-base);
   }
 
   &.tl-mode-variant-secondary,
   & .tl-mode-variant-secondary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-layer-01);
   }
 }
 
 .tl-mode-dark {
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
   background-color: var(--color-background-base);
 
   &.tl-mode-variant-primary,
   & .tl-mode-variant-primary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-base);
   }
 
   &.tl-mode-variant-secondary,
   & .tl-mode-variant-secondary {
-    color: var(--color-foreground-text-strong);
+    color: var(--color-text-strong);
     background-color: var(--color-background-layer-01);
   }
 }

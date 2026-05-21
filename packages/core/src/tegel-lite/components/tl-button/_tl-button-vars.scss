@@ -21,7 +21,7 @@
   --button-primary-color-focus: var(--component-button-text-standard-primary-hover);
   --button-primary-border-color: var(--component-button-border-standard-primary-default);
   --button-primary-border-color-focus: var(--component-button-border-standard-primary-hover);
-  --button-primary-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-primary-outline-color-focus: var(--color-system-info-default);
   --button-primary-icon-color: var(--component-button-icon-standard-primary-default);
 
   // Secondary (standard-secondary)
@@ -35,7 +35,7 @@
   --button-secondary-border-color-hover: var(--component-button-border-standard-secondary-hover);
   --button-secondary-border-color-active: var(--component-button-border-standard-secondary-active);
   --button-secondary-border-color-focus: var(--component-button-border-standard-secondary-hover);
-  --button-secondary-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-secondary-outline-color-focus: var(--color-system-info-default);
   --button-secondary-icon-color: var(--component-button-icon-standard-secondary-default);
 
   // Ghost (standard-tertiary)
@@ -47,7 +47,7 @@
   --button-ghost-border-color-hover: var(--component-button-border-standard-tertiary-hover);
   --button-ghost-border-color-active: var(--component-button-border-standard-tertiary-active);
   --button-ghost-border-color-focus: var(--component-button-border-standard-tertiary-hover);
-  --button-ghost-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-ghost-outline-color-focus: var(--color-system-info-default);
   --button-ghost-icon-color: var(--component-button-icon-standard-tertiary-default);
 
   // Danger (danger-primary)
@@ -60,7 +60,7 @@
   --button-danger-border-color: var(--component-button-border-danger-primary-default);
   --button-danger-border-color-active: var(--component-button-border-danger-primary-active);
   --button-danger-border-color-focus: var(--component-button-border-danger-primary-hover);
-  --button-danger-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --button-danger-outline-color-focus: var(--color-system-info-default);
   --button-danger-icon-color: var(--component-button-icon-danger-primary-default);
 }
 

@@ -1,18 +1,18 @@
 .tl-folder-tabs {
-  --folder-tabs-scroll-button-surface: var(--color-background-surface-200);
-  --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
-  --folder-tabs-scroll-button-surface-active: var(--color-background-surface-400);
-  --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
+  --folder-tabs-scroll-button-surface: var(--color-background-layer-02);
+  --folder-tabs-scroll-button-surface-hover: var(--color-background-layer-03);
+  --folder-tabs-scroll-button-surface-active: var(--color-background-layer-03);
+  --folder-tabs-scroll-button-text: var(--color-text-soft);
 }
 
 .tl-folder-tabs__tab {
-  --folder-tab-surface: var(--color-background-surface-200);
+  --folder-tab-surface: var(--color-background-layer-02);
   --folder-tab-surface-selected: var(--color-background-layer-01);
-  --folder-tab-surface-hover: var(--color-background-surface-300);
-  --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
-  --folder-tab-divider: var(--color-foreground-icon-discrete);
-  --folder-tab-text: var(--color-foreground-text-soft);
-  --folder-tab-text-disabled: var(--color-foreground-text-disabled);
+  --folder-tab-surface-hover: var(--color-background-layer-03);
+  --folder-tab-border-selected: var(--color-system-info-default);
+  --folder-tab-divider: var(--color-icon-discrete);
+  --folder-tab-text: var(--color-text-soft);
+  --folder-tab-text-disabled: var(--color-text-disabled);
 }
 
 .tl-folder-tabs--primary .tl-folder-tabs__tab {

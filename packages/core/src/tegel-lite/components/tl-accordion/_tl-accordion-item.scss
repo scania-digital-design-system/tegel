@@ -60,7 +60,7 @@
 .tl-accordion__title {
   flex-grow: 2;
   text-align: left;
-  color: var(--color-foreground-text-strong);
+  color: var(--color-text-strong);
 
   .tl-accordion__item--disabled & {
     color: var(--accordion-text-disabled);
@@ -154,7 +154,7 @@
   }
 
   .tl-accordion__item--expanded & {
-    background-color: var(--color-background-surface-100);
+    background-color: var(--color-background-layer-01);
   }
 
   &:active {

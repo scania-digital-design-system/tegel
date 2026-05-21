@@ -1,18 +1,18 @@
 .tl-slider {
-  --slider-label: var(--color-foreground-text-strong);
-  --slider-thumb: var(--color-foreground-icon-strong);
-  --slider-track: var(--color-background-surface-300);
-  --slider-track-fill: var(--color-foreground-icon-strong);
-  --slider-divider: var(--color-background-surface-300);
-  --slider-divider-values: var(--color-foreground-text-defined);
-  --slider-input-focused: var(--color-foreground-border-accent-focus);
-  --slider-input-value: var(--color-foreground-text-defined);
-  --slider-disabled: var(--color-background-surface-300);
-  --slider-disabled-text: var(--color-foreground-text-disabled);
+  --slider-label: var(--color-text-strong);
+  --slider-thumb: var(--color-icon-strong);
+  --slider-track: var(--color-background-layer-03);
+  --slider-track-fill: var(--color-icon-strong);
+  --slider-divider: var(--color-background-layer-03);
+  --slider-divider-values: var(--color-text-defined);
+  --slider-input-focused: var(--color-system-info-default);
+  --slider-input-value: var(--color-text-defined);
+  --slider-disabled: var(--color-background-layer-03);
+  --slider-disabled-text: var(--color-text-disabled);
   --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
-  --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
+  --slider-value-tooltip: var(--color-text-inverse-strong);
   --slider-input-background: var(--color-background-layer-01);
-  --slider-input-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --slider-input-box-shadow: 0 -1px 0 0 var(--color-border-soft);
 }
 
 .tl-slider,
@@ -22,5 +22,5 @@
 
 .traton .tl-slider {
   --slider-border-radius: 4px;
-  --slider-input-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --slider-input-box-shadow: 0 0 0 1px var(--color-border-soft);
 }

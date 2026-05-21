@@ -30,7 +30,7 @@
 
   &:active {
     background-color: var(--header-basic-element-background-selected);
-    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
+    box-shadow: inset 0 0 0 2px var(--color-system-info-default);
   }
 
   &--open {
@@ -44,7 +44,7 @@
 
     &:active {
       background-color: var(--component-header-color-background-pressed);
-      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
+      box-shadow: inset 0 0 0 2px var(--color-system-info-default);
     }
   }
 
@@ -79,7 +79,7 @@
 
   &:active {
     background-color: var(--header-basic-element-background-selected);
-    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
+    box-shadow: inset 0 0 0 2px var(--color-system-info-default);
   }
 
   &--open {
@@ -93,7 +93,7 @@
 
     &:active {
       background-color: var(--component-header-color-background-pressed);
-      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
+      box-shadow: inset 0 0 0 2px var(--color-system-info-default);
     }
   }
 
@@ -249,7 +249,7 @@
 .tl-header__user-menu-header {
   @include detail-06;
 
-  color: var(--color-foreground-text-defined);
+  color: var(--color-text-defined);
 }
 
 .tl-header__user-menu-subheader {
@@ -309,7 +309,7 @@ button {
     @include detail-02;
 
     background-color: var(--header-nav-dropdown-item-background);
-    color: var(--color-foreground-text-defined);
+    color: var(--color-text-defined);
 
     &:hover {
       background-color: var(--header-nav-item-background-hover);
@@ -340,7 +340,7 @@ button {
     @include detail-05;
 
     background-color: var(--header-nav-dropdown-item-background);
-    color: var(--color-foreground-text-defined);
+    color: var(--color-text-defined);
     border-radius: 4px;
     transition: background-color 150ms ease;
 

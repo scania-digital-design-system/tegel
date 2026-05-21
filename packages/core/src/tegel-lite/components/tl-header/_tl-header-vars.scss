@@ -1,6 +1,6 @@
 @use '../../../../../../tokens/scss/component/header';
 
-//Needs updating with variables. Didn't work with original in test project
+// Needs updating with variables. Didn't work with original in test project
 .tl-header {
   /* Layout */
   --tds-header-height: 64px;
@@ -13,20 +13,28 @@
   --header-nav-item: var(--component-header-color-foreground-strong);
 
   /* Nav-item states */
-  --header-nav-item-background-hover: var(--color-background-surface-100);
+  --header-nav-item-background-hover: var(--color-background-layer-01);
   --header-nav-item-background-selected: var(--component-header-dropdown-item-background);
-  --header-nav-item-border-pressed: var(--color-foreground-border-accent-focus);
+  --header-nav-item-border-pressed: var(--color-system-info-default);
   --header-item-hover: var(--component-header-color-background-hover);
 
   /* Dropdown menu items */
   --header-nav-dropdown-item-background: var(--component-header-dropdown-item-background);
-  --header-nav-dropdown-item-border: var(--color-foreground-border-discrete);
+  --header-nav-dropdown-item-border: var(--color-border-discrete);
 
-  /* Dropdown “opened” state */
-  --tds-header-nav-item-dropdown-opened-background: var(--tds-white);
-  --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-100);
-  --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-100);
-  --tds-header-nav-item-dropdown-opened-background-pressed: var(--tds-grey-300);
+  /* Dropdown “opened” state — sourced from component-stubs/header.scss until Figma exports these tokens */
+  --tds-header-nav-item-dropdown-opened-background: var(
+    --component-header-dropdown-opened-background-default
+  );
+  --tds-header-nav-item-dropdown-opened-background-hover: var(
+    --component-header-dropdown-opened-background-hover
+  );
+  --tds-header-nav-item-dropdown-opened-background-selected: var(
+    --component-header-dropdown-opened-background-selected
+  );
+  --tds-header-nav-item-dropdown-opened-background-pressed: var(
+    --component-header-dropdown-opened-background-pressed
+  );
   --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
 
   /* Basic element ("Bento") separators & backgrounds */
@@ -37,16 +45,16 @@
 
   /* Avatar dropdown */
   --header-avatar-item-background: var(--component-header-avatar-item-background);
-  --header-avatar-item: var(--color-foreground-text-soft);
+  --header-avatar-item: var(--color-text-soft);
 
   /* App launcher (list) */
   --header-app-launcher-menu-background: var(--component-header-app-launcher-meny-background);
-  --header-app-launcher-category-title: var(--color-foreground-text-soft);
-  --header-app-launcher-item: var(--color-foreground-text-defined);
+  --header-app-launcher-category-title: var(--color-text-soft);
+  --header-app-launcher-item: var(--color-text-defined);
 
   /* App launcher (grid) */
-  --header-app-launcher-grid-category-title: var(--color-foreground-text-soft);
-  --header-app-launcher-grid-hover-background: var(--color-background-surface-200);
+  --header-app-launcher-grid-category-title: var(--color-text-soft);
+  --header-app-launcher-grid-hover-background: var(--color-background-layer-02);
 
   /* Brand symbol */
   --header-brand-item-width: var(--component-header-item-width);
@@ -69,22 +77,22 @@
 .scania {
   /* Light mode - explicit light mode class */
   .tl-mode-light .tl-header {
-    --header-background: var(--color-brand-primary-800);
-    --header-nav-item: var(--color-foreground-icon-inverse-strong);
-    --header-item-hover: var(--color-brand-primary-700);
-    --header-basic-element-border: var(--color-brand-primary-700);
-    --header-basic-element-background-pressed: var(--color-brand-neutral-white);
-    --header-basic-element-background-selected: var(--color-brand-primary-700);
+    --header-background: var(--scania-color-blue-800);
+    --header-nav-item: var(--color-icon-inverse-strong);
+    --header-item-hover: var(--scania-color-blue-700);
+    --header-basic-element-border: var(--scania-color-blue-700);
+    --header-basic-element-background-pressed: var(--scania-color-base-white);
+    --header-basic-element-background-selected: var(--scania-color-blue-700);
   }
 
   /* Dark mode - override with dark colors */
   .tl-mode-dark .tl-header {
-    --header-background: var(--color-brand-primary-900);
-    --header-nav-item: var(--color-foreground-icon-strong);
-    --header-item-hover: var(--color-brand-primary-800);
-    --header-basic-element-border: var(--color-brand-primary-800);
-    --header-basic-element-background-pressed: var(--color-brand-primary-800);
-    --header-basic-element-background-selected: var(--color-brand-primary-800);
+    --header-background: var(--scania-color-blue-900);
+    --header-nav-item: var(--color-icon-strong);
+    --header-item-hover: var(--scania-color-blue-800);
+    --header-basic-element-border: var(--scania-color-blue-800);
+    --header-basic-element-background-pressed: var(--scania-color-blue-800);
+    --header-basic-element-background-selected: var(--scania-color-blue-800);
   }
 
   /* Default .tl-header (works for no mode specified - defaults to light) */
@@ -95,12 +103,12 @@
     --component-header-space-profile-padding: 16px;
 
     /* Background defaults to light mode */
-    --header-background: var(--color-brand-primary-800);
-    --header-nav-item: var(--color-foreground-icon-inverse-strong);
-    --header-item-hover: var(--color-brand-primary-700);
-    --header-basic-element-border: var(--color-brand-primary-700);
-    --header-basic-element-background-pressed: var(--color-brand-neutral-white);
-    --header-basic-element-background-selected: var(--color-brand-primary-700);
+    --header-background: var(--scania-color-blue-800);
+    --header-nav-item: var(--color-icon-inverse-strong);
+    --header-item-hover: var(--scania-color-blue-700);
+    --header-basic-element-border: var(--scania-color-blue-700);
+    --header-basic-element-background-pressed: var(--scania-color-base-white);
+    --header-basic-element-background-selected: var(--scania-color-blue-700);
   }
 }
 
@@ -112,11 +120,11 @@
 
     /* Background - uses base from traton tokens */
     --header-background: var(--color-background-base);
-    --header-nav-item: var(--color-foreground-icon-strong);
+    --header-nav-item: var(--color-icon-strong);
     --header-item-hover: var(--color-background-layer-01);
     --header-basic-element-border: var(--traton-color-transparent-invisible-light);
     --header-basic-element-background-pressed: var(--color-background-base);
-    --header-basic-element-background-selected: var(--color-background-surface-100);
+    --header-basic-element-background-selected: var(--color-background-layer-01);
   }
 
   .tl-mode-light .tl-header {
@@ -126,7 +134,7 @@
 
     /* Background - uses base from traton tokens */
     --header-background: var(--color-background-base);
-    --header-nav-item: var(--color-foreground-icon-strong);
+    --header-nav-item: var(--color-icon-strong);
     --header-item-hover: var(--color-background-layer-01);
     --header-basic-element-border: var(--traton-color-transparent-invisible-light);
     --header-basic-element-background-pressed: var(--color-background-base);
