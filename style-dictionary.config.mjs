@@ -368,6 +368,7 @@ const COMPONENT_FILE_LIST = [
   ['scrollbar', 'exact'],
   ['text-field', 'exact'],
   ['textarea', 'exact'],
+  ['accordion', 'exact'],
 ];
 
 // Helper function to create component file configuration

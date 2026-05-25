@@ -1,51 +1,31 @@
+@use '../../../../../../tokens/scss/component/accordion';
+
+/* Component variables */
+
 .tl-accordion {
-  /* Border & Background */
-  --accordion-border: var(--color-foreground-border-discrete);
-  --accordion-background: transparent;
-
-  /* Hover backgrounds */
-  --accordion-background-hover-primary: var(--color-background-layer-01);
-  --accordion-background-hover-secondary: var(--color-background-layer-02);
+  --accordion-background: var(--component-accordion-background-primary-default);
+  --accordion-background-hover-primary: var(--component-accordion-background-primary-hover);
+  --accordion-background-hover-secondary: var(--component-accordion-background-secondary-hover);
   --accordion-background-hover: var(--accordion-background-hover-primary);
-
-  /* Focus & Active states */
-  --accordion-background-focus: var(--color-background-layer-01);
-  --accordion-background-active: var(--color-background-layer-02);
-
-  /* Text & Icon colours */
-  --accordion-text: var(--color-foreground-text-strong);
-  --accordion-icon: var(--color-foreground-icon-strong);
-
-  /* Borders & Disabled */
-  --accordion-border-focus: var(--color-foreground-border-strong);
-  --accordion-text-disabled: var(--color-foreground-text-disabled);
+  --accordion-background-focus: var(--color-background-none);
+  --accordion-background-active: var(--component-accordion-background-primary-active);
+  --accordion-text: var(--component-accordion-text-default);
+  --accordion-icon: var(--component-accordion-icon-default);
+  --accordion-text-disabled: var(--color-text-disabled);
+  --accordion-border: var(--color-border-subtle);
+  --accordion-opacity-disabled: calc(var(--component-accordion-opacity-disabled) / 100);
 }
 
-/* Mode variants */
-.tl-mode-light .tl-accordion--primary,
-.tl-mode-light .tl-accordion .tl-accordion--primary {
-  background-color: var(--accordion-background-hover-secondary);
-
+.tl-accordion--primary,
+.tl-accordion .tl-accordion--primary {
+  --accordion-background: var(--component-accordion-background-primary-default);
   --accordion-background-hover: var(--accordion-background-hover-primary);
+  --accordion-background-active: var(--component-accordion-background-primary-active);
 }
 
-.tl-mode-light .tl-accordion--secondary,
-.tl-mode-light .tl-accordion .tl-accordion--secondary {
-  background-color: var(--accordion-background-hover-primary);
-
+.tl-accordion--secondary,
+.tl-accordion .tl-accordion--secondary {
+  --accordion-background: var(--component-accordion-background-secondary-default);
   --accordion-background-hover: var(--accordion-background-hover-secondary);
-}
-
-.tl-mode-dark .tl-accordion--primary,
-.tl-mode-dark .tl-accordion .tl-accordion--primary {
-  background-color: var(--accordion-background-hover-secondary);
-
-  --accordion-background-hover: var(--accordion-background-hover-primary);
-}
-
-.tl-mode-dark .tl-accordion--secondary,
-.tl-mode-dark .tl-accordion .tl-accordion--secondary {
-  background-color: var(--accordion-background-hover-primary);
-
-  --accordion-background-hover: var(--accordion-background-hover-secondary);
+  --accordion-background-active: var(--component-accordion-background-secondary-active);
 }
