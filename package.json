@@ -54,7 +54,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-storybook": "9.1.16",
+    "eslint-plugin-storybook": "10.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.3",
