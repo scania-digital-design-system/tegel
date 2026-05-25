@@ -158,7 +158,7 @@ export class TdsFolderTabs {
 
   private addEventListenerToTabs = (): void => {
     this.tabElements = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
-    this.tabElements.map((item, index) => {
+    this.tabElements.forEach((item, index) => {
       const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
@@ -173,7 +173,6 @@ export class TdsFolderTabs {
       };
       item.addEventListener('click', clickHandler);
       this.clickHandlers.set(item, clickHandler); // Store the handler in WeakMap
-      return item;
     });
   };
 

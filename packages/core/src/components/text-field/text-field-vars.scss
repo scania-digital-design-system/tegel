@@ -1,135 +1,75 @@
-:root,
-.tds-mode-light {
-  --tds-text-field-background-primary: var(--tds-grey-50);
-  --tds-text-field-background-secondary: var(--tds-white);
+tds-text-field {
+  --tds-text-field-background-primary: var(--component--input-background-primary);
+  --tds-text-field-background-secondary: var(--component--input-background-secondary);
   --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-color: var(--tds-grey-950);
-  --tds-text-field-placeholder: var(--tds-grey-500);
-  --tds-text-field-data-color: var(--tds-grey-958);
+  --tds-text-field-color: var(--component--input-text-value-default);
+  --tds-text-field-placeholder: var(--component--input-text-placeholder-default);
+  --tds-text-field-data-color: var(--component--input-text-value-default);
 
-  //Disabled
-  --tds-text-field-background-disabled-primary: var(--tds-grey-50);
-  --tds-text-field-background-disabled-secondary: var(--tds-white);
+  // Disabled
+  --tds-text-field-background-disabled-primary: var(--component--input-background-primary);
+  --tds-text-field-background-disabled-secondary: var(--component--input-background-secondary);
   --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-color-disabled: var(--tds-grey-250);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-250);
-  --tds-text-field-label-disabled: var(--tds-grey-250);
-  --tds-text-field-ps-color-disabled: var(--tds-grey-250);
-  --tds-text-field-helper-disabled: var(--tds-grey-250);
-
-  //Label
-  --tds-text-field-label-color: var(--tds-grey-950);
-  --tds-text-field-label-inside-color: var(--tds-grey-950);
-
-  //Highlight bar
-  --tds-text-field-bar: var(--tds-blue-400);
-
-  //helper
-  --tds-text-field-helper: var(--tds-grey-500);
-
-  //error
-  --tds-text-field-border-bottom-error: var(--tds-red-400);
-  --tds-text-field-helper-error: var(--tds-red-400);
-  --tds-text-field-bar-error: var(--tds-red-400);
-  --tds-text-field-icon-error: var(--tds-red-400);
-
-  //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-500);
-  --tds-text-field-textcounter-disabled: var(--tds-grey-250);
-  --tds-text-field-textcounter-divider: var(--tds-grey-500);
-
-  //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-500);
-  --tds-text-field-ps-color-error: var(--tds-red-400);
-
-  // text-field resize icon
-  --tds-text-field-resize-icon: var(--tds-grey-500);
-
-  // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-350);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-800);
-  --tds-text-field-border-bottom-success: var(--tds-grey-850);
-  --tds-text-field-border-bottom-readonly: var(--tds-grey-500);
-
-  // Read only
-  --tds-text-field-icon-read-only-color: var(--tds-grey-958);
-  --tds-text-field-icon-read-only-label-color: var(--tds-grey-958);
-
-  .tds-mode-variant-primary {
-    --tds-text-field-background: var(--tds-text-field-background-primary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-text-field-background: var(--tds-text-field-background-secondary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
-  }
-}
-
-.tds-mode-dark {
-  --tds-text-field-background-primary: var(--tds-grey-900);
-  --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-background-secondary: var(--tds-grey-850);
-  --tds-text-field-color: var(--tds-grey-50);
-  --tds-text-field-placeholder: var(--tds-grey-300);
-  --tds-text-field-data-color: var(--tds-grey-50);
-
-  //Disabled
-  --tds-text-field-ps-color-disabled: var(--tds-grey-500);
-  --tds-text-field-color-disabled: var(--tds-grey-800);
-  --tds-text-field-background-disabled-primary: var(--tds-grey-900);
-  --tds-text-field-background-disabled-secondary: var(--tds-grey-850);
-  --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-500);
-  --tds-text-field-label-disabled: var(--tds-grey-500);
-  --tds-text-field-helper-disabled: var(--tds-grey-500);
+  --tds-text-field-color-disabled: var(--color-text-disabled);
+  --tds-text-field-placeholder-disabled: var(--color-text-disabled);
+  --tds-text-field-label-disabled: var(--color-text-disabled);
+  --tds-text-field-ps-color-disabled: var(--color-text-disabled);
+  --tds-text-field-helper-disabled: var(--color-text-disabled);
+  --tds-text-field-opacity-disabled: var(--component--input-opacity-disabled);
 
   // Label
-  --tds-text-field-label-color: var(--tds-grey-50);
-  --tds-text-field-label-inside-color: var(--tds-grey-50);
+  --tds-text-field-label-color: var(--component--input-text-label-default);
+  --tds-text-field-label-inside-color: var(--component--input-text-label-default);
 
-  //Highlight bar
-  --tds-text-field-bar: var(--tds-blue-300);
+  // Highlight bar
+  --tds-text-field-bar: var(--color-system-info-default);
 
-  //helper
-  --tds-text-field-helper: var(--tds-grey-300);
+  // Helper
+  --tds-text-field-helper: var(--component--input-text-helper-default);
 
-  //error
-  --tds-text-field-helper-error: var(--tds-red-300);
-  --tds-text-field-bar-error: var(--tds-red-300);
-  --tds-text-field-icon-error: var(--tds-red-300);
+  // Error
+  --tds-text-field-border-bottom-error: var(--component--input-border-error-default);
+  --tds-text-field-helper-error: var(--component--input-text-error-default);
+  --tds-text-field-bar-error: var(--color-system-danger-default);
+  --tds-text-field-icon-error: var(--component--input-icon-error-default);
 
-  //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-300);
+  // Textcounter
+  --tds-text-field-textcounter: var(--component--input-text-counter-default);
+  --tds-text-field-textcounter-disabled: var(--color-text-disabled);
+  --tds-text-field-textcounter-divider: var(--component--input-text-counter-default);
+  --tds-text-field-textcounter-divider-disabled: var(--color-text-disabled);
 
-  //when disabled
-  --tds-text-field-textcounter-disabled: var(--tds-grey-500);
-  --tds-text-field-textcounter-divider: var(--tds-grey-500);
+  // Prefix and Suffix
+  --tds-text-field-ps-color: var(--component--input-icon-prefix-default);
+  --tds-text-field-ps-color-suffix: var(--component--input-icon-suffix-default);
+  --tds-text-field-ps-color-error: var(--component--input-icon-error-default);
 
-  //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-300);
+  // Resize icon
+  --tds-text-field-resize-icon: var(--color-icon-subtle);
 
-  // Textarea resize icon
-  --tds-text-field-resize-icon: var(--tds-grey-500);
-
-  // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-350);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-250);
-  --tds-text-field-border-bottom-success: var(--tds-grey-100);
-  --tds-text-field-border-bottom-error: var(--tds-red-300);
-  --tds-text-field-border-bottom-readonly: var(--tds-grey-600);
+  // Border (Scania renders bottom-only, Traton renders all 4 sides; same color
+  // applies to whichever sides are visible per --component--input-border-width-*)
+  --tds-text-field-border-bottom: var(--component--input-border-default);
+  --tds-text-field-border-bottom-hover: var(--component--input-border-hover);
+  --tds-text-field-border-bottom-success: var(--component--input-border-success-default);
+  --tds-text-field-border-bottom-readonly: var(--color-border-defined);
 
   // Read only
-  --tds-text-field-icon-read-only-color: var(--tds-grey-100);
-  --tds-text-field-icon-read-only-label-color: var(--tds-grey-50);
+  --tds-text-field-icon-read-only-color: var(--color-icon-strong);
+  --tds-text-field-icon-read-only-label-color: var(--color-icon-strong);
+
+  // Focus ring radius — varies by mode variant per Figma
+  --tds-text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-primary);
 
   .tds-mode-variant-primary {
     --tds-text-field-background: var(--tds-text-field-background-primary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+    --tds-text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-primary);
   }
 
   .tds-mode-variant-secondary {
     --tds-text-field-background: var(--tds-text-field-background-secondary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
+    --tds-text-field-focus-ring-radius: var(--component-text-field-focus-ring-radius-secondary);
   }
 }

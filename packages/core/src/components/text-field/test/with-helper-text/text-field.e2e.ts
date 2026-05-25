@@ -9,9 +9,9 @@ import {
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/with-helper-text/index.html';
 const componentName = 'tds-text-field';
-const testDescription = 'TdsTextField - with helper text';
+const testDescription = 'tds-text-field-with-helper-text';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

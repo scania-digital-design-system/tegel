@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/textarea/test/with-helper-text/index.h
 const componentName = 'tds-textarea';
 const testDescription = 'tds-textarea-with-helper-text';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

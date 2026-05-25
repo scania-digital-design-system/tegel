@@ -9,11 +9,11 @@ import {
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/password-error/index.html';
 const componentName = 'tds-text-field';
-const testDescription = 'TdsTextField - password type with error state';
+const testDescription = 'tds-text-field-password-error';
 
 const textFieldSelector = 'tds-text-field';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

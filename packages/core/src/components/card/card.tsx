@@ -42,6 +42,7 @@ export class TdsCard {
   /** Makes the Card clickable. */
   @Prop({ reflect: true }) clickable: boolean = false;
 
+  /** Makes the Card fill the available height in stretching layouts and lets the body section grow. */
   @Prop({ reflect: true }) stretch: boolean = false;
 
   /** ID for the Card, must be unique.

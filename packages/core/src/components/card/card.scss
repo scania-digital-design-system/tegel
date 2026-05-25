@@ -1,4 +1,9 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
+
+:host {
+  display: block;
+}
 
 .card {
   @include tds-box-sizing;
@@ -6,7 +11,8 @@
   box-shadow: var(--tds-card-box);
   background-color: var(--tds-card-background);
   display: block;
-  border-radius: 4px;
+  width: 100%;
+  border-radius: var(--tds-card-border-radius);
   overflow: hidden;
 
   &.clickable {
@@ -17,8 +23,8 @@
   }
 
   .card-header {
-    font: var(--tds-headline-06);
-    letter-spacing: var(--tds-headline-06-ls);
+    @include headline-06;
+
     padding: 16px;
     display: flex;
     align-items: center;
@@ -28,6 +34,7 @@
       height: 36px;
       border-radius: 100%;
       margin-right: 16px;
+      background-color: var(--color-background-layer-03);
     }
 
     .card-top-header {
@@ -91,8 +98,8 @@
 
   slot[name='body']::slotted(*) {
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-detail-03) !important;
-    letter-spacing: var(--tds-detail-03-ls) !important;
+    @include detail-03;
+
     color: var(--tds-card-body-color);
     padding: 0 16px;
     margin-bottom: 16px;
@@ -105,6 +112,10 @@
     padding: 16px;
     color: var(--tds-card-icon-color);
   }
+}
+
+:host([stretch]) .card {
+  height: 100%;
 }
 
 button {

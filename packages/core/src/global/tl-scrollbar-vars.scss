@@ -1,21 +1,21 @@
-.tl-mode-light {
+@use '../../../../tokens/scss/component/scrollbar';
+
+:root,
+.tl-mode-light,
+.tds-mode-light {
   --tl-scrollbar-track-color: transparent;
-  --tl-scrollbar-thumb-color: #303c612b;
+  --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
+  --tl-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tl-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }
 
-.tl-mode-dark {
-  --tl-scrollbar-track-color: transparent;
-  --tl-scrollbar-thumb-color: #a4c7f5;
-}
-
-.traton {
-  .tl-mode-light {
-    --tl-scrollbar-track-color: transparent;
-    --tl-scrollbar-thumb-color: #1a1a1926;
-  }
-
-  .tl-mode-dark {
-    --tl-scrollbar-track-color: transparent;
-    --tl-scrollbar-thumb-color: #d9edf054;
-  }
+.tl-mode-dark,
+.tds-mode-dark {
+  --tl-scrollbar-thumb-color: var(--component-scrollbar-background-thumb-default);
+  --tl-scrollbar-thumb-border-radius: calc(var(--component-scrollbar-width-radius-default) * 1px);
+  --tl-scrollbar-hover-thumb-border-radius: calc(
+    var(--component-scrollbar-width-radius-hover) * 1px
+  );
 }

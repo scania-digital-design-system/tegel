@@ -5,7 +5,7 @@ import { test } from 'stencil-playwright';
 const componentTestPath = 'src/components/text-field/test/focus/index.html';
 const textFieldSelector = 'tds-text-field';
 
-test.describe.parallel('TdsTextField - Focus', () => {
+test.describe.parallel('tds-text-field-focus', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the component test page before each test
     await page.goto(componentTestPath);

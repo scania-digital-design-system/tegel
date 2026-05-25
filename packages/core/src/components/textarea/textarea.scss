@@ -1,7 +1,13 @@
 @use '../../mixins/focus-state' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 @mixin textfield-base {
-  border-radius: 4px 4px 0 0;
+  // Match the visible container's brand-aware radius so the textarea's background
+  // doesn't paint over rounded corners (Traton has all 4 corners rounded).
+  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -22,13 +28,7 @@
   }
 
   &:disabled {
-    background-color: var(--tds-textarea-disabled-background);
-    color: var(--tds-textarea-disabled-color);
     cursor: not-allowed;
-
-    &::placeholder {
-      color: var(--tds-textarea-disabled-placeholder);
-    }
   }
 }
 
@@ -41,7 +41,7 @@
     color: transparent;
   }
 
-  //Input field in focus
+  // Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
     color: var(--tds-textarea-placeholder);
@@ -49,12 +49,15 @@
 }
 
 .textarea-container {
-  //@extend .tds-textfield-container;
-  border-radius: 4px 4px 0 0;
+  // @extend .tds-textfield-container;
+  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
   position: relative;
   box-sizing: border-box;
 
-  //@extend end
+  // @extend end
 
   height: auto;
   width: 100%;
@@ -79,14 +82,23 @@
 
 .textarea-input {
   @include textfield-base;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  border-bottom: 1px solid var(--tds-textarea-border-bottom);
-  transition: border-bottom-color 200ms ease;
+
+  // Brand-aware border: Scania emits bottom-only widths (0,0,1,0), Traton
+  // emits all-sides widths (1,1,1,1). Tokens are unitless, so multiply by 1px.
+  // The single border-color applies to whichever sides have non-zero width.
+  border-style: solid;
+  border-color: var(--tds-textarea-border-bottom);
+  border-width: calc(var(--component--input-border-width-top) * 1px)
+    calc(var(--component--input-border-width-right) * 1px)
+    calc(var(--component--input-border-width-bottom) * 1px)
+    calc(var(--component--input-border-width-left) * 1px);
+  transition: border-color 200ms ease;
 
   // Display none only works in Chrome
   &::-webkit-resizer {
@@ -94,7 +106,7 @@
   }
 
   &:hover {
-    border-bottom-color: var(--tds-textarea-border-bottom-hover);
+    border-color: var(--tds-textarea-border-bottom-hover);
 
     &::placeholder {
       color: var(--tds-textarea-placeholder-hover);
@@ -103,9 +115,6 @@
 
   &:focus {
     @include tds-focus-state;
-
-    border-radius: 0;
-    border-bottom: 1px solid transparent;
   }
 }
 
@@ -123,11 +132,14 @@
 
   svg {
     display: block;
+    width: calc(var(--component-textarea-size-resize-width) * 1px);
+    height: calc(var(--component-textarea-size-resize-height) * 1px);
   }
 }
 
 .textarea-label {
-  font: var(--tds-detail-05);
+  @include detail-05;
+
   letter-spacing: var(--tds-detail-05-ls);
   display: block;
   z-index: 1;
@@ -138,22 +150,17 @@
 .textarea-container {
   &.textarea-label-inside {
     .textarea-label {
-      font: var(--tds-detail-02);
+      @include detail-02;
+
       letter-spacing: var(--tds-detail-02-ls);
       transition: 0.1s ease all;
 
-      //@include end
+      // @include end
 
       color: var(--tds-textarea-label-inside-color);
       position: absolute;
       top: var(--tds-spacing-element-20);
       left: var(--tds-spacing-element-16);
-    }
-
-    &.textarea-disabled {
-      .textarea-label {
-        color: var(--tds-textarea-disabled-label);
-      }
     }
 
     .textarea-input {
@@ -164,7 +171,8 @@
   &.textarea-focus {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--tds-detail-07);
+        @include detail-07;
+
         letter-spacing: var(--tds-detail-07-ls);
         top: var(--tds-spacing-element-8);
       }
@@ -174,7 +182,8 @@
   &.textarea-data {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--tds-detail-07);
+        @include detail-07;
+
         letter-spacing: var(--tds-detail-07-ls);
         top: var(--tds-spacing-element-8);
       }
@@ -183,19 +192,21 @@
 }
 
 .textarea-textcounter {
-  //@extend .tds-textfield-textcounter;
-  font: var(--tds-detail-05);
+  // @extend .tds-textfield-textcounter;
+  @include detail-05;
+
   letter-spacing: var(--tds-detail-05-ls);
   color: var(--tds-textarea-textcounter);
   float: right;
 
   & .textfield-textcounter-divider {
-    font: var(--tds-detail-05);
+    @include detail-05;
+
     letter-spacing: var(--tds-detail-05-ls);
     color: var(--tds-textarea-textcounter-divider);
   }
 
-  //@extend end
+  // @extend end
 
   flex-basis: 100%;
   text-align: right;
@@ -203,7 +214,8 @@
 }
 
 .textarea-helper {
-  font: var(--tds-detail-05);
+  @include detail-05;
+
   letter-spacing: var(--tds-detail-05-ls);
   display: flex;
   gap: 8px;
@@ -222,32 +234,39 @@
 
 .textarea-success {
   .textarea-input {
-    border-bottom-color: var(--tds-textarea-border-bottom-success);
+    border-color: var(--tds-textarea-border-bottom-success);
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-bottom-color: var(--tds-textarea-border-bottom-error);
+    border-color: var(--tds-textarea-border-bottom-error);
   }
 
   .textarea-helper {
     color: var(--tds-textarea-helper-error);
+
+    tds-icon {
+      color: var(--tds-textarea-icon-error);
+    }
   }
 }
 
-//Disabled state
+// Disabled state — per Figma, the input visual unit (border + bg + value +
+// placeholder + inside-label + resize icon) fades to opacity 0.25 as a single
+// unit. Helper text and textcounter sit outside the wrapper and keep full
+// opacity, using their own disabled colors.
 .textarea-disabled {
   cursor: not-allowed;
 
-  .textarea-input {
-    border-bottom-color: transparent;
-    pointer-events: none;
-    user-select: none;
+  .textarea-wrapper,
+  .textarea-label {
+    opacity: var(--tds-textarea-opacity-disabled);
   }
 
-  .textarea-label {
-    color: var(--tds-textarea-disabled-label);
+  .textarea-input {
+    pointer-events: none;
+    user-select: none;
   }
 
   .textarea-helper {
@@ -263,7 +282,7 @@
   }
 }
 
-//Read only state
+// Read only state
 .textarea-icon__readonly {
   display: none;
   position: absolute;
@@ -276,7 +295,8 @@
     position: absolute;
     right: 18px;
     top: 48px;
-    font: var(--tds-detail-05);
+    @include detail-05;
+
     letter-spacing: var(--tds-detail-05-ls);
     padding: 8px;
     color: var(--tds-textarea-icon-read-only-label-color);
@@ -292,7 +312,7 @@
   }
 
   .textarea-input {
-    border-bottom-color: var(--tds-textarea-border-bottom-read-only-color);
+    border-color: var(--tds-textarea-border-bottom-read-only-color);
   }
 
   .textfield-container {

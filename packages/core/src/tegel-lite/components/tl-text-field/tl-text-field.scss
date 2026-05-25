@@ -1,6 +1,7 @@
 @use './tl-text-field-vars' as *;
 @use './tl-text-field-mixins' as *;
 @use '../tl-icon/tl-icon' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-text-field {
@@ -15,16 +16,19 @@
     min-width: auto;
   }
 
+  // Disabled state — per Figma, the input visual unit fades to opacity 0.25
+  // as a single unit. Helper text sits outside and keeps full opacity.
   &:has(.tl-text-field__input:disabled) {
     cursor: not-allowed;
   }
 
+  &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper,
+  &:has(.tl-text-field__input:disabled) .tl-text-field__label {
+    opacity: var(--text-field-opacity-disabled);
+  }
+
   .tl-icon {
     background-color: var(--text-field-affix);
-
-    :has(.tl-text-field__input:disabled) & {
-      background-color: var(--text-field-affix-disabled);
-    }
   }
 }
 
@@ -59,55 +63,50 @@
   color: var(--text-field-text);
   flex: 1;
   order: 2;
-  box-shadow: inset var(--text-field-box-shadow);
-  transition: box-shadow 0.2s;
 
   &:focus {
-    box-shadow: inset var(--text-field-box-shadow-focus);
+    @include tds-focus-state;
   }
 
   .tl-text-field:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--text-field-box-shadow-hover);
+    border-color: var(--text-field-border-color-hover);
   }
 
   .tl-text-field--error & {
-    box-shadow: inset var(--text-field-box-shadow-error);
+    border-color: var(--text-field-border-color-error);
 
     &:focus {
-      box-shadow: inset var(--text-field-box-shadow-error-focus);
+      @include tds-focus-state;
     }
   }
 
   .tl-text-field--error:hover &:not(:focus):not(:disabled) {
-    box-shadow: inset var(--text-field-box-shadow-error-hover);
+    border-color: var(--text-field-border-color-error);
   }
 
   .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
   :has(.tl-text-field__input:disabled)
 )
   &:not(:focus) {
-    box-shadow: inset var(--text-field-box-shadow-success);
+    border-color: var(--text-field-border-color-success);
   }
 
   &:disabled {
-    box-shadow: none;
-    background-color: var(--text-field-background-disabled);
-    color: var(--text-field-text-disabled);
     cursor: not-allowed;
     pointer-events: none;
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
-    box-shadow: inset var(--text-field-box-shadow);
+    border-color: var(--text-field-border-color-readonly);
 
     &:focus {
-      box-shadow: inset var(--text-field-box-shadow-focus);
+      @include tds-focus-state;
     }
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
   &:not(:focus) {
-    box-shadow: inset var(--text-field-box-shadow-hover);
+    border-color: var(--text-field-border-color-hover);
   }
 
   :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
@@ -297,7 +296,7 @@
   position: relative;
 
   :has(.tl-text-field__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-text-field--error & {
@@ -310,7 +309,7 @@
       top: 0;
       width: 16px;
       height: 16px;
-      background-color: var(--text-field-error);
+      background-color: var(--text-field-error-icon);
       mask-image: var(--icon-error-svg);
       mask-size: contain;
       mask-repeat: no-repeat;
@@ -334,7 +333,7 @@
   }
 
   .tl-text-field--error:has(.tl-text-field__input:disabled) &::before {
-    background-color: var(--color-foreground-text-disabled);
+    background-color: var(--color-text-disabled);
   }
 }
 
@@ -345,7 +344,7 @@
   color: var(--text-field-textcounter);
 
   :has(.tl-text-field__input:disabled) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--color-text-disabled);
   }
 
   .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
@@ -361,7 +360,7 @@
 }
 
 .tl-text-field__charcounter-divider {
-  color: var(--color-foreground-text-disabled);
+  color: var(--color-text-disabled);
 }
 
 .tl-text-field__prefix {
@@ -396,6 +395,11 @@
 
 .tl-text-field__suffix {
   @include affix-base;
+  color: var(--text-field-affix-suffix);
+
+  &--icon.tl-icon {
+    background-color: var(--text-field-affix-suffix);
+  }
 
   &--text,
   &--icon {

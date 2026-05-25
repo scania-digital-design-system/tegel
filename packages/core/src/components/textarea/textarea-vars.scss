@@ -1,121 +1,69 @@
-:root,
-.tds-mode-light {
-  --tds-textarea-background-primary: var(--tds-grey-50);
-  --tds-textarea-background-secondary: var(--tds-white);
+tds-textarea {
+  --tds-textarea-background-primary: var(--component--input-background-primary);
+  --tds-textarea-background-secondary: var(--component--input-background-secondary);
   --tds-textarea-background: var(--tds-textarea-background-primary);
-  --tds-textarea-color: var(--tds-grey-950);
-  --tds-textarea-color-hover: var(--tds-grey-950);
+  --tds-textarea-color: var(--component--input-text-value-default);
+  --tds-textarea-color-hover: var(--component--input-text-value-default);
 
   // Disabled
-  --tds-textarea-disabled-color: var(--tds-grey-250);
-  --tds-textarea-disabled-background-primary: var(--tds-grey-50);
-  --tds-textarea-disabled-background-secondary: var(--tds-white);
+  --tds-textarea-disabled-color: var(--color-text-disabled);
+  --tds-textarea-disabled-background-primary: var(--component--input-background-primary);
+  --tds-textarea-disabled-background-secondary: var(--component--input-background-secondary);
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
-  --tds-textarea-disabled-placeholder: var(--tds-grey-250);
-  --tds-textarea-disabled-label: var(--tds-grey-250);
-  --tds-textarea-helper-disabled: var(--tds-grey-250);
-  --tds-textarea-textcounter-disabled: var(--tds-grey-250);
+  --tds-textarea-disabled-placeholder: var(--color-text-disabled);
+  --tds-textarea-disabled-label: var(--color-text-disabled);
+  --tds-textarea-helper-disabled: var(--color-text-disabled);
+  --tds-textarea-textcounter-disabled: var(--color-text-disabled);
+  --tds-textarea-opacity-disabled: var(--component--input-opacity-disabled);
 
   // Label
-  --tds-textarea-label-color: var(--tds-grey-950);
-  --tds-textarea-label-inside-color: var(--tds-grey-950);
+  --tds-textarea-label-color: var(--component--input-text-label-default);
+  --tds-textarea-label-inside-color: var(--component--input-text-label-default);
 
   // Placeholder
-  --tds-textarea-placeholder: var(--tds-grey-500);
+  --tds-textarea-placeholder: var(--component--input-text-placeholder-default);
+  --tds-textarea-placeholder-hover: var(--component--input-text-placeholder-default);
 
   // Helper
-  --tds-textarea-helper: var(--tds-grey-500);
-  --tds-textarea-helper-error: var(--tds-red-400);
+  --tds-textarea-helper: var(--component--input-text-helper-default);
+  --tds-textarea-helper-error: var(--component--input-text-error-default);
+  --tds-textarea-icon-error: var(--component--input-icon-error-default);
 
   // Textcounter
-  --tds-textarea-textcounter: var(--tds-grey-500);
-  --tds-textarea-textcounter-divider: var(--tds-grey-500);
+  --tds-textarea-textcounter: var(--component--input-text-counter-default);
+  --tds-textarea-textcounter-divider: var(--component--input-text-counter-default);
 
   // Border bottom
-  --tds-textarea-border-bottom: var(--tds-grey-350);
-  --tds-textarea-border-bottom-hover: var(--tds-grey-850);
-  --tds-textarea-border-bottom-success: var(--tds-grey-850);
-  --tds-textarea-border-bottom-error: var(--tds-red-400);
+  --tds-textarea-border-bottom: var(--component--input-border-default);
+  --tds-textarea-border-bottom-hover: var(--component--input-border-hover);
+  --tds-textarea-border-bottom-success: var(--component--input-border-success-default);
+  --tds-textarea-border-bottom-error: var(--component--input-border-error-default);
 
   // Read only
   --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-  --tds-textarea-icon-read-only-color: var(--tds-grey-950);
-  --tds-textarea-icon-read-only-label-color: var(--tds-grey-950);
+  --tds-textarea-icon-read-only-color: var(--component-textarea-icon-readonly-default);
+  --tds-textarea-icon-read-only-label-color: var(--color-icon-strong);
+  --tds-textarea-icon-read-only-label-background: var(--color-background-layer-02);
 
   // Resize
-  --tds-textarea-resize-icon: var(--tds-grey-500);
+  --tds-textarea-resize-icon: var(--component-textarea-icon-resize-default);
+
+  // Focus ring radius — varies by mode variant per Figma
+  --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
 
   .tds-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-    --tds-textarea-read-only-background: vrer(--tds-white);
+    --tds-textarea-read-only-background: var(--color-background-layer-02);
+    --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
   }
 
   .tds-mode-variant-secondary {
     --tds-textarea-background: var(--tds-textarea-background-secondary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-    --tds-textarea-read-only-background: var(--tds-grey-50);
-  }
-}
-
-.tds-mode-dark {
-  --tds-textarea-background-primary: var(--tds-grey-900);
-  --tds-textarea-background-secondary: var(--tds-grey-850);
-  --tds-textarea-background: var(--tds-textarea-background-primary);
-  --tds-textarea-color: var(--tds-grey-50);
-
-  // Disabled
-  --tds-textarea-disabled-color: var(--tds-grey-800);
-  --tds-textarea-disabled-background-primary: var(--tds-grey-900);
-  --tds-textarea-disabled-background-secondary: var(--tds-grey-850);
-  --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
-  --tds-textarea-disabled-placeholder: var(--tds-grey-500);
-  --tds-textarea-disabled-label: var(--tds-grey-500);
-  --tds-textarea-helper-disabled: var(--tds-grey-500);
-  --tds-textarea-textcounter-disabled: var(--tds-grey-500);
-
-  // Label
-  --tds-textarea-label-color: var(--tds-grey-50);
-  --tds-textarea-label-inside-color: var(--tds-grey-50);
-
-  // Placeholder
-  --tds-textarea-placeholder: var(--tds-grey-300);
-
-  // Helper
-  --tds-textarea-helper: var(--tds-grey-300);
-  --tds-textarea-helper-error: var(--tds-red-300);
-
-  // Textcounter
-  --tds-textarea-textcounter: var(--tds-grey-300);
-  --tds-textarea-textcounter-divider: var(--tds-grey-300);
-
-  // Border bottom
-  --tds-textarea-border-bottom: var(--tds-grey-350);
-  --tds-textarea-border-bottom-hover: var(--tds-grey-50);
-  --tds-textarea-border-bottom-success: var(--tds-grey-100);
-  --tds-textarea-border-bottom-error: var(--tds-red-300);
-
-  // Read only
-  --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-  --tds-textarea-icon-read-only-color: var(--tds-grey-100);
-  --tds-textarea-icon-read-only-label-color: var(--tds-grey-50);
-
-  // Resize
-  --tds-textarea-resize-icon: var(--tds-grey-300);
-
-  .tds-mode-variant-primary {
-    --tds-textarea-background: var(--tds-textarea-background-primary);
-    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
-    --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-    --tds-textarea-read-only-background: var(--tds-grey-900);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-textarea-background: var(--tds-textarea-background-secondary);
-    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
-    --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
-    --tds-textarea-read-only-background: var(--tds-grey-850);
+    --tds-textarea-read-only-background: var(--color-background-layer-01);
+    --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-secondary);
   }
 }

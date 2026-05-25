@@ -1,0 +1,142 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  --component--input-background-primary: var(--color-background-layer-01);
+  --component--input-background-secondary: var(--color-background-layer-02);
+  --component--input-border-default: var(--color-border-soft);
+  --component--input-border-hover: var(--color-border-strong);
+  --component--input-border-success-default: var(--color-border-strong);
+  --component--input-border-error-default: var(--color-system-danger-default);
+  --component--input-border-radius-default: var(--scania-unit-4);
+  --component--input-border-radius-none: var(--scania-unit-0);
+  --component--input-border-radius-top-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-top-right: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-left: var(--component--input-border-radius-none);
+  --component--input-border-radius-bottom-right: var(--component--input-border-radius-none);
+  --component--input-border-width-default: var(--scania-unit-1);
+  --component--input-border-width-none: var(--scania-unit-0);
+  --component--input-border-width-top: var(--component--input-border-width-none);
+  --component--input-border-width-right: var(--component--input-border-width-none);
+  --component--input-border-width-bottom: var(--component--input-border-width-default);
+  --component--input-border-width-left: var(--component--input-border-width-none);
+  --component--input-icon-prefix-default: var(--color-text-defined);
+  --component--input-icon-suffix-default: var(--color-text-defined);
+  --component--input-icon-error-default: var(--color-system-danger-default);
+  --component--input-opacity-disabled: var(--scania-opacity-25);
+  --component--input-text-counter-default: var(--color-text-defined);
+  --component--input-text-label-default: var(--color-text-strong);
+  --component--input-text-helper-default: var(--color-text-defined);
+  --component--input-text-placeholder-default: var(--color-text-soft);
+  --component--input-text-value-default: var(--color-text-strong);
+  --component--input-text-error-default: var(--color-system-danger-default);
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  --component--input-background-primary: var(--color-background-layer-01);
+  --component--input-background-secondary: var(--color-background-layer-02);
+  --component--input-border-default: var(--color-border-soft);
+  --component--input-border-hover: var(--color-border-strong);
+  --component--input-border-success-default: var(--color-border-strong);
+  --component--input-border-error-default: var(--color-system-danger-default);
+  --component--input-border-radius-default: var(--traton-unit-4);
+  --component--input-border-radius-none: var(--traton-unit-0);
+  --component--input-border-radius-top-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-top-right: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-right: var(--component--input-border-radius-default);
+  --component--input-border-width-default: var(--traton-unit-1);
+  --component--input-border-width-none: var(--traton-unit-0);
+  --component--input-border-width-top: var(--component--input-border-width-default);
+  --component--input-border-width-right: var(--component--input-border-width-default);
+  --component--input-border-width-bottom: var(--component--input-border-width-default);
+  --component--input-border-width-left: var(--component--input-border-width-default);
+  --component--input-icon-prefix-default: var(--color-text-defined);
+  --component--input-icon-suffix-default: var(--color-text-defined);
+  --component--input-icon-error-default: var(--color-system-danger-default);
+  --component--input-opacity-disabled: var(--traton-opacity-25);
+  --component--input-text-counter-default: var(--color-text-defined);
+  --component--input-text-label-default: var(--color-text-strong);
+  --component--input-text-helper-default: var(--color-text-defined);
+  --component--input-text-placeholder-default: var(--color-text-subtle);
+  --component--input-text-value-default: var(--color-text-strong);
+  --component--input-text-error-default: var(--color-system-danger-default);
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  --component--input-background-primary: var(--color-background-layer-01);
+  --component--input-background-secondary: var(--color-background-layer-02);
+  --component--input-border-default: var(--color-border-soft);
+  --component--input-border-hover: var(--color-border-strong);
+  --component--input-border-success-default: var(--color-border-strong);
+  --component--input-border-error-default: var(--color-system-danger-default);
+  --component--input-border-radius-default: var(--scania-unit-4);
+  --component--input-border-radius-none: var(--scania-unit-0);
+  --component--input-border-radius-top-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-top-right: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-left: var(--component--input-border-radius-none);
+  --component--input-border-radius-bottom-right: var(--component--input-border-radius-none);
+  --component--input-border-width-default: var(--scania-unit-1);
+  --component--input-border-width-none: var(--scania-unit-0);
+  --component--input-border-width-top: var(--component--input-border-width-none);
+  --component--input-border-width-right: var(--component--input-border-width-none);
+  --component--input-border-width-bottom: var(--component--input-border-width-default);
+  --component--input-border-width-left: var(--component--input-border-width-none);
+  --component--input-icon-prefix-default: var(--color-text-defined);
+  --component--input-icon-suffix-default: var(--color-text-defined);
+  --component--input-icon-error-default: var(--color-system-danger-default);
+  --component--input-opacity-disabled: var(--scania-opacity-25);
+  --component--input-text-counter-default: var(--color-text-defined);
+  --component--input-text-label-default: var(--color-text-strong);
+  --component--input-text-helper-default: var(--color-text-defined);
+  --component--input-text-placeholder-default: var(--color-text-soft);
+  --component--input-text-value-default: var(--color-text-strong);
+  --component--input-text-error-default: var(--color-system-danger-default);
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  --component--input-background-primary: var(--color-background-layer-01);
+  --component--input-background-secondary: var(--color-background-layer-02);
+  --component--input-border-default: var(--color-border-soft);
+  --component--input-border-hover: var(--color-border-strong);
+  --component--input-border-success-default: var(--color-border-strong);
+  --component--input-border-error-default: var(--color-system-danger-default);
+  --component--input-border-radius-default: var(--traton-unit-4);
+  --component--input-border-radius-none: var(--traton-unit-0);
+  --component--input-border-radius-top-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-top-right: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-left: var(--component--input-border-radius-default);
+  --component--input-border-radius-bottom-right: var(--component--input-border-radius-default);
+  --component--input-border-width-default: var(--traton-unit-1);
+  --component--input-border-width-none: var(--traton-unit-0);
+  --component--input-border-width-top: var(--component--input-border-width-default);
+  --component--input-border-width-right: var(--component--input-border-width-default);
+  --component--input-border-width-bottom: var(--component--input-border-width-default);
+  --component--input-border-width-left: var(--component--input-border-width-default);
+  --component--input-icon-prefix-default: var(--color-text-defined);
+  --component--input-icon-suffix-default: var(--color-text-defined);
+  --component--input-icon-error-default: var(--color-system-danger-default);
+  --component--input-opacity-disabled: var(--traton-opacity-25);
+  --component--input-text-counter-default: var(--color-text-defined);
+  --component--input-text-label-default: var(--color-text-strong);
+  --component--input-text-helper-default: var(--color-text-defined);
+  --component--input-text-placeholder-default: var(--color-text-subtle);
+  --component--input-text-value-default: var(--color-text-strong);
+  --component--input-text-error-default: var(--color-system-danger-default);
+}

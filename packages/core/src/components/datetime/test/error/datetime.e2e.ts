@@ -33,8 +33,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page.getByText(errorText)).toHaveCSS('color', css);
     });
 
-    // Running these tests in Docker, the Browser is expecting a date in the format MM/dd/yyyy
-    // Running locally with `npx playwright test`, the Browser is expecting a date in the format dd/MM/yyyy
+    // Browser locale is forced to en-US in playwright.config.ts, so the date format is MM/dd/yyyy.
     test('renders the error message when manually inputing an invalid date', async ({ page }) => {
       const helperText = "Please enter a date with format 'MM/dd/yyyy'";
       const specialErrorText = 'This date is invalid';
@@ -70,6 +69,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       await datetime.pressSequentially('01');
       await datetime.pressSequentially('04');
+      await datetime.pressSequentially('2026');
 
       await datetime.blur();
 

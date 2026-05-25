@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/card/test/basic/index.html';
 const componentName = 'tds-card';
 const testDescription = 'tds-card-basic';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

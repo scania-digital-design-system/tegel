@@ -6,8 +6,18 @@
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  border: none;
+
+  // Brand-aware border: Scania emits bottom-only widths (0,0,1,0), Traton
+  // emits all-sides widths (1,1,1,1). Tokens are unitless, so multiply by 1px.
+  // The single border-color applies to whichever sides have non-zero width.
+  border-style: solid;
+  border-color: var(--textarea-border-color);
+  border-width: calc(var(--component--input-border-width-top) * 1px)
+    calc(var(--component--input-border-width-right) * 1px)
+    calc(var(--component--input-border-width-bottom) * 1px)
+    calc(var(--component--input-border-width-left) * 1px);
   outline: none;
+  transition: border-color 200ms ease;
 
   &::placeholder {
     color: var(--textarea-placeholder);

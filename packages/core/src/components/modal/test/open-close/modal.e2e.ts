@@ -17,10 +17,14 @@ const componentTestPath = 'src/components/modal/test/open-close/index.html';
 const componentName = 'tds-modal';
 const testDescription = 'tds-modal-open';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      // Wait for Stencil hydration so the modal's click listener is attached
+      // before tests dispatchEvent('click') on the open button. The modal is
+      // hidden by default, so wait for 'attached' rather than 'visible'.
+      await page.locator('tds-modal.hydrated').waitFor({ state: 'attached' });
     });
 
     test('Modal is closed by default', async ({ page }) => {

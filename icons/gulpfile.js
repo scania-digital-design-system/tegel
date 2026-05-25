@@ -74,7 +74,7 @@ function clean() {
 // Initialize required folders
 function initFolders(cb) {
   // Create main folders
-  [outputFolder, tempFolder].map((folder) => {
+  [outputFolder, tempFolder].forEach((folder) => {
     fs.mkdirSync(folder, { recursive: true });
   });
 
@@ -221,9 +221,9 @@ async function generateIcons() {
     fs.writeFileSync(`${tokensBrandFolder}/${brand}-icons.scss`, agnosticScss);
 
     // Collect all unique icon names from all brands
-    const allUniqueIcons = Array.from(
-      new Set(brands.flatMap((brand) => allIconNames[brand])),
-    ).sort(); // Optional: sort for consistency
+    const allUniqueIcons = Array.from(new Set(brands.flatMap((brand) => allIconNames[brand]))).sort(
+      (a, b) => a.localeCompare(b),
+    ); // Optional: sort for consistency
 
     // Generate SCSS variable list for Tegel Lite
     const allIconsScss = [
