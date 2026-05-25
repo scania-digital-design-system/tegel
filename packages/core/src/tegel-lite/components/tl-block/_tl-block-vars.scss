@@ -1,17 +1,14 @@
+@use '../../../../../../tokens/scss/component/block';
+
+/* Component variables */
+
 .tl-block {
-  // Colors
-  --block-background: var(--color-background-layer-01);
-  --block-text-color: var(--color-foreground-text-strong);
-
-  // Mode variants
-  --block-background-mode-primary: var(--color-background-layer-01);
-  --block-background-mode-secondary: var(--color-background-layer-02);
-
-  // Alternating backgrounds
-  --block-background-even: var(--color-background-layer-01);
-  --block-background-odd: var(--color-background-layer-02);
-
-  // Spacing
+  --block-background: var(--component-block-background-primary);
+  --block-text-color: var(--color-text-strong);
+  --block-background-mode-primary: var(--component-block-background-primary);
+  --block-background-mode-secondary: var(--component-block-background-secondary);
+  --block-background-even: var(--component-block-background-nested-even);
+  --block-background-odd: var(--component-block-background-nested-odd);
   --block-padding: 16px;
-  --block-border-radius: 4px;
+  --block-border-radius: calc(var(--component-block-border-radius-default) * 1px);
 }

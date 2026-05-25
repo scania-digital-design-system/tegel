@@ -369,6 +369,7 @@ const COMPONENT_FILE_LIST = [
   ['text-field', 'exact'],
   ['textarea', 'exact'],
   ['accordion', 'exact'],
+  ['block', 'exact'],
 ];
 
 // Helper function to create component file configuration
