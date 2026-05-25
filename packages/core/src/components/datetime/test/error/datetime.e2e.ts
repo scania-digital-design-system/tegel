@@ -65,7 +65,12 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       const datetime = page.getByLabel("DateTime component with type='date'");
 
-      await datetime.fill('2026-04-01');
+      await datetime.click();
+
+      await datetime.pressSequentially('01');
+      await datetime.pressSequentially('04');
+      await datetime.pressSequentially('2026');
+
       await datetime.blur();
 
       await expect(page.getByText(errorText)).toBeVisible();
