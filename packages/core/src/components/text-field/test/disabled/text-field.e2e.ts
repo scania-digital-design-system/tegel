@@ -9,7 +9,7 @@ import {
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/disabled/index.html';
 const componentName = 'tds-text-field';
-const testDescription = 'TdsTextField - default state';
+const testDescription = 'tds-text-field-disabled';
 
 const textFieldSelector = 'tds-text-field';
 

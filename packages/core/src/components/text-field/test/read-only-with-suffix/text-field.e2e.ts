@@ -2,7 +2,7 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/text-field/test/read-only-with-suffix/index.html';
-const testDescription = 'TdsTextField - readOnly prop effect';
+const testDescription = 'tds-text-field-read-only-with-suffix';
 
 test.describe.parallel(testDescription, () => {
   test.beforeEach(async ({ page }) => {

@@ -9,7 +9,7 @@ import {
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/password-error/index.html';
 const componentName = 'tds-text-field';
-const testDescription = 'TdsTextField - password type with error state';
+const testDescription = 'tds-text-field-password-error';
 
 const textFieldSelector = 'tds-text-field';
 
