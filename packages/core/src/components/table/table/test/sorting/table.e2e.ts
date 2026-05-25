@@ -33,13 +33,16 @@ testConfigurations.withModeVariants.forEach((config) => {
       const truckTypeHeader = page.getByText('Truck type');
       await truckTypeHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(1);
+      await page.waitForTimeout(250);
       const driverNameHeader = page.getByText('Driver name');
       await driverNameHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(2);
+      await page.waitForTimeout(250);
 
       const countryHeader = page.getByText('Country');
       await countryHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(3);
+      await page.waitForTimeout(250);
       const mileageHeader = page.getByText('Mileage');
       await mileageHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(4);
