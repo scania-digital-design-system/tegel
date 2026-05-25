@@ -9,6 +9,7 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: 'http://localhost:3333',
     browserName: 'chromium',
+    locale: 'en-US',
     screenshot: 'only-on-failure',
   },
   outputDir: './test-results/output',
