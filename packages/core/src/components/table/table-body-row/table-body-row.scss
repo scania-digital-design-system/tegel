@@ -5,7 +5,10 @@
 
   display: table-row;
   border-bottom: 1px solid var(--tds-table-divider);
-  background-color: var(--tds-table-body-row-background);
+
+  --row-bg: var(--tds-table-body-row-background);
+
+  background-color: var(--row-bg);
   transition: background-color 200ms ease;
   color: var(--tds-table-color);
 
@@ -21,7 +24,7 @@
 }
 
 :host(.tds-table__row:hover) {
-  background-color: var(--tds-table-body-row-background-hover);
+  --row-bg: var(--tds-table-body-row-background-hover);
 }
 
 :host(.tds-table__row--selected) {
