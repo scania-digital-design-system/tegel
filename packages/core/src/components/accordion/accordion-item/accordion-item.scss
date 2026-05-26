@@ -1,6 +1,7 @@
 @use '../../../mixins/focus-state' as *;
 @use '../../../mixins/disabled-style' as *;
 @use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tds-accordion-item {
   @include tds-box-sizing;
@@ -27,15 +28,12 @@
   button.tds-accordion-header-icon-start,
   button.tds-accordion-header-icon-end {
     @include tds-box-sizing;
+    @include headline-07;
 
     cursor: pointer;
     display: flex;
     align-items: center;
     width: 100%;
-
-    // fixme: wrong line-height compared to production
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
     padding: var(--tds-spacing-element-16);
     background-color: var(--tds-accordion-background);
 
@@ -55,12 +53,12 @@
   }
 
   .tds-accordion-panel {
+    @include detail-03;
+
     cursor: default;
     padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
       var(--tds-spacing-element-16);
     display: none;
-    font: var(--tds-detail-03);
-    letter-spacing: var(--tds-detail-03-ls);
 
     p {
       margin: 0;
