@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/accordion/test/basic/index.html';
 const accordionSelector = 'tds-accordion';
 const componentName = 'tds-accordion';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

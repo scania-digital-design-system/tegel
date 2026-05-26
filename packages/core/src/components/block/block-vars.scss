@@ -1,42 +1,17 @@
-:root,
-.tds-mode-light {
-  --tds-block-color: var(--tds-grey-950);
-  --tds-block-background: var(--tds-grey-50);
-  --tds-block-background-primary: var(--tds-grey-50);
-  --tds-block-background-secondary: var(--tds-white);
-  --tds-block-background-even: var(--tds-grey-50);
-  --tds-block-background-odd: var(--tds-white);
-
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-50);
-    --tds-block-background-even: var(--tds-grey-50);
-    --tds-block-background-odd: var(--tds-white);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-white);
-    --tds-block-background-even: var(--tds-white);
-    --tds-block-background-odd: var(--tds-grey-50);
-  }
+tds-block {
+  --tds-block-color: var(--color-text-strong);
+  --tds-block-background-primary: var(--component-block-background-primary);
+  --tds-block-background-secondary: var(--component-block-background-secondary);
+  --tds-block-background-even: var(--component-block-background-nested-even);
+  --tds-block-background-odd: var(--component-block-background-nested-odd);
+  --tds-block-background: var(--tds-block-background-primary);
+  --tds-block-border-radius: calc(var(--component-block-border-radius-default) * 1px);
 }
 
-.tds-mode-dark {
-  --tds-block-color: var(--tds-grey-50);
-  --tds-block-background: var(--tds-grey-900);
-  --tds-block-background-primary: var(--tds-grey-900);
-  --tds-block-background-secondary: var(--tds-grey-850);
-  --tds-block-background-even: var(--tds-grey-900);
-  --tds-block-background-odd: var(--tds-grey-850);
+.tds-mode-variant-primary tds-block {
+  --tds-block-background: var(--tds-block-background-primary);
+}
 
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-900);
-    --tds-block-background-even: var(--tds-grey-900);
-    --tds-block-background-odd: var(--tds-grey-850);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-grey-850);
-    --tds-block-background-even: var(--tds-grey-850);
-    --tds-block-background-odd: var(--tds-grey-900);
-  }
+.tds-mode-variant-secondary tds-block {
+  --tds-block-background: var(--tds-block-background-secondary);
 }
