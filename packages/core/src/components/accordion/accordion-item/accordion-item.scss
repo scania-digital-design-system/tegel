@@ -5,7 +5,7 @@
 .tds-accordion-item {
   @include tds-box-sizing;
 
-  &:hover {
+  &:hover:not(.disabled) {
     background-color: var(--tds-accordion-background-hover);
     border-bottom: 1px solid var(--tds-accordion-border-hover);
     border-top: 1px solid var(--tds-accordion-border-hover);
