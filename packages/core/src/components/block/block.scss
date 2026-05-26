@@ -1,14 +1,14 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 .tds-block {
   @include tds-box-sizing;
+  @include body-01;
 
   color: var(--tds-block-color);
   background-color: var(--tds-block-background);
   border-radius: var(--tds-block-border-radius);
   padding: 16px;
-  font: var(--tds-body-01);
-  letter-spacing: var(--tds-body-01-ls);
 }
 
 .tds-mode-variant-primary {
