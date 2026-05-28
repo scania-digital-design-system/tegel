@@ -1,4 +1,4 @@
-import { Component, h, Prop, Host, Element, Watch } from '@stencil/core';
+import { Component, h, Prop, Host, Element, Watch, State } from '@stencil/core';
 import { IconNames } from '../../types/Icons';
 
 @Component({
@@ -25,32 +25,38 @@ export class Icon {
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop({ reflect: true }) svgDescription?: string;
 
-  componentDidLoad() {
-    this.warnIfMissing();
+  @State() private pathD: string = '';
+
+  componentWillLoad() {
+    this.resolvePath();
   }
 
   @Watch('name')
   nameChanged() {
-    this.warnIfMissing();
+    this.resolvePath();
   }
 
-  private warnIfMissing() {
+  private resolvePath() {
+    // Path data lives on the brand-scoped CSS variable --tds-icon-<name>-d
+    // (see tokens/scss/component/icon.scss), shaped as `path('M...')`. We
+    // resolve it to an SVG `d` attribute via JS because the CSS `d` property
+    // is Safari 18+ only — older Safari would otherwise render an empty path.
     const styles = getComputedStyle(this.host);
     const exists = styles.getPropertyValue(`--tds-icon-${this.name}-exists`).trim();
-    if (exists) return;
-    const brand = styles.getPropertyValue('--tds-brand-name').trim().replace(/['"]/g, '');
-    console.warn(
-      `[tds-icon] "${this.name}" is not available in brand "${brand || 'unknown'}"; rendering placeholder.`,
-    );
+    if (!exists) {
+      const brand = styles.getPropertyValue('--tds-brand-name').trim().replace(/['"]/g, '');
+      console.warn(
+        `[tds-icon] "${this.name}" is not available in brand "${brand || 'unknown'}"; rendering placeholder.`,
+      );
+      this.pathD = '';
+      return;
+    }
+    const raw = styles.getPropertyValue(`--tds-icon-${this.name}-d`).trim();
+    const match = raw.match(/^path\(\s*(['"])([\s\S]*)\1\s*\)$/);
+    this.pathD = match ? match[2] : '';
   }
 
   render() {
-    // Path data is supplied by the brand-scoped CSS variable
-    // --tds-icon-<name>-d (see tokens/scss/component/icon.scss).
-    // The cascade picks scania vs. traton based on the nearest .scania/.traton
-    // ancestor, so no JS brand detection is needed.
-    const pathStyle = { d: `var(--tds-icon-${this.name}-d)` } as { [key: string]: string };
-
     return (
       <Host>
         <svg
@@ -66,7 +72,7 @@ export class Icon {
         >
           {this.svgTitle && <title id={`title-${this.name}`}>{this.svgTitle}</title>}
           {this.svgDescription && <desc id={`desc-${this.name}`}>{this.svgDescription}</desc>}
-          <path fill="currentColor" style={pathStyle} />
+          <path fill="currentColor" d={this.pathD} />
         </svg>
       </Host>
     );
