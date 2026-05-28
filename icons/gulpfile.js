@@ -126,14 +126,18 @@ async function generateIcons() {
       icon.name = props.name;
       iconsNamesArray.push(icon.name);
 
-      // Process SVG path data
-      const svgPath = parsedSvg.children.find((item) => item.name === 'path' || item.name === 'g');
-      const node = svgPath.children.length
-        ? svgPath.children.find((item) => item.name === 'path')
-        : svgPath;
+      // Collect all <path> elements. SVGs with multi-fill-rule paths cannot be
+      // merged by svgo (mergePaths refuses to combine different fill-rules), so
+      // we concatenate each path's `d` into one compound path. Subpaths start
+      // with absolute M, so SVG treats the result as a single path.
+      const group = parsedSvg.children.find((item) => item.name === 'g');
+      const pathNodes = (group ? group.children : parsedSvg.children).filter(
+        (item) => item.name === 'path' && item.attributes && item.attributes.d,
+      );
 
-      // Handle transform attributes if present
-      const { transform } = node.attributes;
+      // Handle transform attributes if present (from the first path)
+      const firstNode = pathNodes[0];
+      const { transform } = firstNode.attributes;
       if (transform !== undefined) {
         let transformObj = [];
         const regExp = /\(([^)]+)\)/;
@@ -143,7 +147,7 @@ async function generateIcons() {
       }
 
       // Store icon definition and viewbox
-      icon.definition = node.attributes.d;
+      icon.definition = pathNodes.map((p) => p.attributes.d).join(' ');
       icon.viewbox = parsedSvg.attributes.viewBox;
 
       iconsArray.push(icon);
