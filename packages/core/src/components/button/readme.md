@@ -1,6 +1,12 @@
 # tds-button
 
-
+**NOTE:** When using the button with an icon only, each icon's real size is rendered considering the size + padding of the button.
+<br>
+- **Extra small** _(xs)_ → not possible to have icon inside;
+<br>
+- **Small** _(sm)_ → maximum size of the container for the icon is 16px;
+<br>
+- **Medium** _(md)_ & **Large** _(lg)_ → maximum size of the container for the icon is 20px;
 
 <!-- Auto Generated Below -->
 
