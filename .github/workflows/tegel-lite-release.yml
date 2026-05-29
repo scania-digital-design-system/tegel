@@ -14,14 +14,40 @@ on:
         default: '22.12.0'
         type: string
 
-      betaVersionSuffix:
-        description: 'Beta version suffix (e.g., beta.0, beta.1)'
+      releaseType:
+        description: 'Release type'
         required: true
+        default: 'beta'
+        type: choice
+        options:
+          - beta
+          - stable
+
+      betaVersionSuffix:
+        description: 'Beta version suffix (e.g., beta.0, beta.1) — only used when releaseType=beta'
+        required: false
         default: 'beta.0'
         type: string
 
+      version:
+        description: 'Version bump — only used when releaseType=stable'
+        required: false
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+      dryRun:
+        description: 'Dry run — only used when releaseType=stable. Packs a tarball instead of publishing.'
+        required: false
+        default: true
+        type: boolean
+
 jobs:
   beta-release-tegel-lite:
+    if: ${{ github.event.inputs.releaseType == 'beta' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -91,3 +117,101 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --tag beta
+
+  stable-release-tegel-lite:
+    if: ${{ github.event.inputs.releaseType == 'stable' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          fetch-depth: 0
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure Git user
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
+
+      - name: Bump Tegel Lite version
+        id: set-version
+        working-directory: packages/tegel-lite
+        run: |
+          # Strip any pre-release suffix before bumping so e.g. 0.1.0-beta.5 → 0.1.0 → 1.0.0
+          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          jq ".version = \"$current_version\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+          npm version ${{ inputs.version }} --no-git-tag-version
+          new_version=$(jq -r '.version' package.json)
+          echo "Setting new version: $new_version"
+          echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Create release branch and commit version bump
+        id: create-branch
+        working-directory: packages/tegel-lite
+        run: |
+          BRANCH_NAME="release/tegel-lite@${{ steps.set-version.outputs.PACKAGE_VERSION }}"
+          if [[ "${{ inputs.dryRun }}" == "true" ]]; then
+            TIMESTAMP=$(TZ=Europe/Stockholm date +'%Y%m%d-%H%M')
+            BRANCH_NAME="$BRANCH_NAME-dry-run-$TIMESTAMP"
+          fi
+          echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          git checkout -b "$BRANCH_NAME"
+          git add package.json package-lock.json
+          git commit -m "chore(tegel-lite): bump version to ${{ steps.set-version.outputs.PACKAGE_VERSION }}"
+          git push -u --no-verify origin "$BRANCH_NAME"
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install Core dependencies
+        working-directory: packages/core
+        run: npm install
+
+      - name: Build Tegel Lite package
+        run: npm run build:tegel-lite
+
+      - name: Check if Tegel Lite version already exists
+        id: check-version
+        working-directory: packages/tegel-lite
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+            echo "VERSION_EXISTS=true" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION_EXISTS=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Pack tarball (dry run)
+        if: inputs.dryRun == true
+        id: pack
+        working-directory: packages/tegel-lite
+        run: |
+          TARBALL=$(npm pack)
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload tarball artifact (dry run)
+        if: inputs.dryRun == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: tegel-lite-tarball
+          path: packages/tegel-lite/${{ steps.pack.outputs.TARBALL }}
+
+      - name: Publish Tegel Lite package to NPM
+        if: inputs.dryRun != true && steps.check-version.outputs.VERSION_EXISTS != 'true'
+        working-directory: packages/tegel-lite
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --tag latest
