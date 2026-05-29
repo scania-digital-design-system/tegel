@@ -22,6 +22,7 @@ export const SHIPPED_COMPONENTS = [
   'tl-banner',
   'tl-block',
   'tl-breadcrumbs',
+  'tl-datetime',
   'tl-button',
   'tl-card',
   'tl-divider',
