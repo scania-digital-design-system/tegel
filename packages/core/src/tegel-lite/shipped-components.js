@@ -18,7 +18,9 @@
  * controls which stories the published Storybook actually surfaces.
  */
 export const SHIPPED_COMPONENTS = [
+  'tl-accordion',
   'tl-banner',
+  'tl-block',
   'tl-breadcrumbs',
   'tl-button',
   'tl-card',
