@@ -2,7 +2,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
-  title: 'Tegel Lite (Beta)/Header',
+  title: 'Tegel Lite/Header',
   parameters: {
     layout: 'fullscreen',
   },

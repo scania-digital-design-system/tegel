@@ -73,8 +73,8 @@ function getSelectMarkup(isInside: boolean, placeholder: string, disabled: boole
   const ph = isInside
     ? '<option value="" hidden selected></option>'
     : placeholder
-    ? `<option value="" disabled selected>${placeholder}</option>`
-    : '';
+      ? `<option value="" disabled selected>${placeholder}</option>`
+      : '';
 
   return `
     <select class="tl-dropdown__select" id="${IDS.select}" ${disabled ? 'disabled' : ''}>
@@ -126,8 +126,8 @@ export function getMultiselectMarkup(
     }" role="option">
       <div class="tl-checkbox">
         <input type="checkbox" class="tl-checkbox__input" id="${id}" ${
-    isDisabled ? 'disabled' : ''
-  }/>
+          isDisabled ? 'disabled' : ''
+        }/>
         <label class="tl-checkbox__label" for="${id}">${label}</label>
       </div>
     </li>`;
@@ -159,8 +159,8 @@ export function getFilterMarkup(
     }" role="option">
       <div class="tl-checkbox">
         <input type="checkbox" class="tl-checkbox__input" id="${id}" ${
-    isDisabled ? 'disabled' : ''
-  }/>
+          isDisabled ? 'disabled' : ''
+        }/>
         <label class="tl-checkbox__label" for="${id}">${label}</label>
       </div>
     </li>`;
@@ -182,13 +182,13 @@ export function getFilterMarkup(
       <input class="tl-dropdown__input" id="${
         IDS.filterInput
       }" type="text" placeholder="${placeholder}" ${
-    disabled ? 'disabled' : ''
-  } aria-expanded="false" />
+        disabled ? 'disabled' : ''
+      } aria-expanded="false" />
       <button type="button" class="tl-dropdown__input-clear" tabindex="-1"></button>
     </div>
     <ul class="tl-dropdown__list" id="${IDS.filterList}" role="listbox"${
-    multiselect ? ' aria-multiselectable="true"' : ''
-  }>
+      multiselect ? ' aria-multiselectable="true"' : ''
+    }>
       ${baseItems}
       ${disabledItem}
       ${noResult}
@@ -331,10 +331,10 @@ function getDropdownScript(props: {
     filter && multiselect
       ? 'filterMulti'
       : filter
-      ? 'filterSingle'
-      : multiselect
-      ? 'multi'
-      : 'single';
+        ? 'filterSingle'
+        : multiselect
+          ? 'multi'
+          : 'single';
 
   const { fn, comment } = scripts[scriptType];
   return `<!-- Script tag for demo purposes -->\n<script>\n  ${comment}\n  ${fn}\n</script>`;
@@ -349,7 +349,7 @@ const Template = (props: TemplateProps): string => {
 };
 
 export default {
-  title: 'Tegel Lite (Beta)/Dropdown',
+  title: 'Tegel Lite/Dropdown',
   includeStories: ['Default'],
   parameters: { layout: 'centered' },
   argTypes: {

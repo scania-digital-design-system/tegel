@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Popover Canvas',
+  title: 'Tegel Lite/Popover Canvas',
   parameters: {
     layout: 'centered',
     docs: {

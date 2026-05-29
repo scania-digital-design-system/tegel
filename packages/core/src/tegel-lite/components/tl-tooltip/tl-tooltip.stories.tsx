@@ -103,7 +103,7 @@ if (typeof window !== 'undefined') {
 }
 
 export default {
-  title: 'Tegel Lite (Beta)/Tooltip',
+  title: 'Tegel Lite/Tooltip',
   parameters: { layout: 'centered' },
   argTypes: {
     position: {

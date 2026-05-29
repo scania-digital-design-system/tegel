@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Side Menu',
+  title: 'Tegel Lite/Side Menu',
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -138,8 +138,8 @@ const Template = ({ persistent, collapsible, collapsed }) => {
    </header>
    <div class="demo-wrap-side-menu-and-main">
       <div class="tl-side-menu ${persistent ? 'tl-side-menu--persistent' : ''} ${
-    collapsible && collapsed ? 'tl-side-menu--collapsed' : ''
-  }">
+        collapsible && collapsed ? 'tl-side-menu--collapsed' : ''
+      }">
          <div class="tl-side-menu__wrapper tl-side-menu__wrapper--closed">
             <div class="tl-side-menu__overlay" id="tl-overlay"></div>
             <aside class="tl-side-menu__aside">

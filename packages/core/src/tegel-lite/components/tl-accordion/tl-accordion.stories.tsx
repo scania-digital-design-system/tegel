@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Accordion',
+  title: 'Tegel Lite/Accordion',
   parameters: {
     layout: 'padded',
   },

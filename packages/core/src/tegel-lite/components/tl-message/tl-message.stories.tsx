@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Message',
+  title: 'Tegel Lite/Message',
   parameters: {
     layout: 'centered',
   },

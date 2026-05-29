@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Spinner',
+  title: 'Tegel Lite/Spinner',
   parameters: {
     layout: 'centered',
   },

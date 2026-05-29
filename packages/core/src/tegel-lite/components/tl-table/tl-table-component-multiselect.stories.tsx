@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Multiselect',
+  title: 'Tegel Lite/Table/Multiselect',
   parameters: {
     layout: 'padded',
     docs: {
@@ -160,10 +160,10 @@ const MultiselectTemplate = ({
     
     
     <table class="tl-table ${compactDesign ? 'tl-table--compact' : ''} ${
-    responsive ? 'tl-table--responsive' : ''
-  } ${verticalDividers ? 'tl-table--vertical-dividers' : ''} ${
-    noMinWidth ? 'tl-table--no-min-width' : ''
-  } tl-table--${modeVariant.toLowerCase()}">
+      responsive ? 'tl-table--responsive' : ''
+    } ${verticalDividers ? 'tl-table--vertical-dividers' : ''} ${
+      noMinWidth ? 'tl-table--no-min-width' : ''
+    } tl-table--${modeVariant.toLowerCase()}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">

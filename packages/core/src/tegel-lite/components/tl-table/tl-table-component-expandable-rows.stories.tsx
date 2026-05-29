@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Expandable Rows',
+  title: 'Tegel Lite/Table/Expandable Rows',
   parameters: {
     docs: {
       description: {
@@ -166,8 +166,8 @@ const ExpandableRowTemplate = ({
     overflow === 'hidden'
       ? 'tl-table__expand-row-cell--overflow-hidden'
       : overflow === 'visible'
-      ? 'tl-table__expand-row-cell--overflow-visible'
-      : '';
+        ? 'tl-table__expand-row-cell--overflow-visible'
+        : '';
 
   const expandedClass = expanded ? 'tl-table__row--expanded' : '';
 

@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Editable Cells',
+  title: 'Tegel Lite/Table/Editable Cells',
   parameters: {
     docs: {
       description: {
@@ -208,8 +208,8 @@ const EditableCellsTemplate = ({
       <td class="tl-table__body-cell" data-column="${columnIndex}" ${cellStyle}>
         <div class="tl-text-field ${textFieldSizeClass} tl-text-field--no-min-width ${textFieldDisabledClass}">
           <input id="${inputId}" class="tl-text-field__input" type="text" value="${value}" ${
-      disabled ? 'disabled' : ''
-    } />
+            disabled ? 'disabled' : ''
+          } />
           <span class="tl-icon ${iconClass} ${iconSizeClass} tl-text-field__suffix--icon" aria-hidden="true"></span>
         </div>
       </td>
