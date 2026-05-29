@@ -1,16 +1,13 @@
 # @scania/tegel-lite
 
-![Status: Beta](https://img.shields.io/badge/status-beta-orange)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 > Pure CSS implementation of Tegel Design System - no JavaScript required.
 
-**⚠️ Beta Status:** This package is currently in beta. The API may change before stable 1.0.0. Report issues at [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
-
 ## Installation
 
 ```bash
-npm install @scania/tegel-lite@0.0.1-beta.10
+npm install @scania/tegel-lite
 ```
 
 ## Quick Start
