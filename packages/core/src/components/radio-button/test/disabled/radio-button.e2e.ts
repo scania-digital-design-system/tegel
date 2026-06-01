@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/radio-button/test/disabled/index.html'
 const componentName = 'tds-radio-button';
 const testDescription = 'Radio button - disabled state';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
