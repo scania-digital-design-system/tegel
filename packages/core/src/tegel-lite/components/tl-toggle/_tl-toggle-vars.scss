@@ -1,8 +1,33 @@
+@use '../../../../../../tokens/scss/component/toggle';
+
 .tl-toggle {
-  --toggle-switch: var(--color-brand-neutral-white);
-  --toggle-text: var(--color-foreground-text-strong);
-  --toggle-disabled: var(--color-foreground-icon-disabled);
-  --toggle-background-on: var(--color-system-success-default);
-  --toggle-background-off: var(--color-foreground-icon-subtle);
-  --toggle-border-focus: var(--color-foreground-border-accent-focus);
+  // Headline / label text
+  --toggle-text: var(--component-toggle-text-default);
+
+  // Track background — off (standard) per state
+  --toggle-off: var(--component-toggle-background-standard-default);
+  --toggle-off-hover: var(--component-toggle-background-standard-hover);
+  --toggle-off-active: var(--component-toggle-background-standard-active);
+
+  // Track background — on (selected) per state
+  --toggle-on: var(--component-toggle-background-selected-default);
+  --toggle-on-hover: var(--component-toggle-background-selected-hover);
+  --toggle-on-active: var(--component-toggle-background-selected-active);
+
+  // Knob colour — off (standard) per state
+  --toggle-knob: var(--component-toggle-icon-standard-default);
+  --toggle-knob-hover: var(--component-toggle-icon-standard-hover);
+  --toggle-knob-active: var(--component-toggle-icon-standard-active);
+
+  // Knob colour — on (selected) per state
+  --toggle-knob-on: var(--component-toggle-icon-selected-default);
+  --toggle-knob-on-hover: var(--component-toggle-icon-selected-hover);
+  --toggle-knob-on-active: var(--component-toggle-icon-selected-active);
+
+  // Geometry (tokens are unitless numbers)
+  --toggle-border-radius: calc(var(--component-toggle-border-radius-default) * 1px);
+  --toggle-focus-ring-radius: calc(var(--component-toggle-focus-ring-radius-default) * 1px);
+
+  // Disabled opacity (token is unitless 0–100)
+  --toggle-opacity-disabled: calc(var(--component-toggle-opacity-disabled) / 100);
 }
