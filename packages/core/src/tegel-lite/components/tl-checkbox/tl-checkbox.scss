@@ -139,6 +139,7 @@
   }
 
   .tl-checkbox:has(:disabled) & {
+    opacity: var(--checkbox-opacity-disabled);
     cursor: not-allowed;
   }
 }

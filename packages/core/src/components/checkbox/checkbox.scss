@@ -175,6 +175,7 @@
 
       + label {
         color: var(--tds-checkbox-text);
+        opacity: var(--tds-checkbox-opacity-disabled);
         cursor: not-allowed;
       }
     }
