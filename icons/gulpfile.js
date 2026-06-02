@@ -132,7 +132,7 @@ async function generateIcons() {
       // with absolute M, so SVG treats the result as a single path.
       const group = parsedSvg.children.find((item) => item.name === 'g');
       const pathNodes = (group ? group.children : parsedSvg.children).filter(
-        (item) => item.name === 'path' && item.attributes && item.attributes.d,
+        (item) => item.name === 'path' && item.attributes?.d,
       );
 
       // Handle transform attributes if present (from the first path)
