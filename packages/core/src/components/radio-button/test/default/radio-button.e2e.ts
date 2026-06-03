@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/radio-button/test/default/index.html';
 const componentName = 'tds-radio-button';
 const testDescription = 'TdsRadioButton component tests';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

@@ -23,6 +23,7 @@
 @use '../../../../tokens/scss/component/breadcrumbs' as *;
 @use '../../../../tokens/scss/component/button' as *;
 @use '../../../../tokens/scss/component/card' as *;
+@use '../../../../tokens/scss/component/checkbox' as *;
 @use '../../../../tokens/scss/component/chip' as *;
 @use '../../../../tokens/scss/component/cookie' as *;
 @use '../../../../tokens/scss/component/divider' as *;
@@ -34,6 +35,7 @@
 @use '../../../../tokens/scss/component/link' as *;
 @use '../../../../tokens/scss/component/logo' as *;
 @use '../../../../tokens/scss/component/message' as *;
+@use '../../../../tokens/scss/component/radio-button' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
 @use '../../../../tokens/scss/component/side-menu' as *;
 @use '../../../../tokens/scss/component/spinner' as *;
@@ -46,6 +48,7 @@
 @use '../../../../tokens/scss/component/text-field' as *;
 @use '../../../../tokens/scss/component/textarea' as *;
 @use '../../../../tokens/scss/component/toast' as *;
+@use '../../../../tokens/scss/component/toggle' as *;
 @use '../../../../tokens/scss/component/tooltip' as *;
 
 /* Multibrand tokens: Scania typography */
@@ -136,6 +139,7 @@
 @use '../../../../tokens/scss/component/breadcrumbs' as *;
 @use '../../../../tokens/scss/component/button' as *;
 @use '../../../../tokens/scss/component/card' as *;
+@use '../../../../tokens/scss/component/checkbox' as *;
 @use '../../../../tokens/scss/component/chip' as *;
 @use '../../../../tokens/scss/component/cookie' as *;
 @use '../../../../tokens/scss/component/divider' as *;
@@ -147,6 +151,7 @@
 @use '../../../../tokens/scss/component/link' as *;
 @use '../../../../tokens/scss/component/logo' as *;
 @use '../../../../tokens/scss/component/message' as *;
+@use '../../../../tokens/scss/component/radio-button' as *;
 @use '../../../../tokens/scss/component/shadow' as *;
 @use '../../../../tokens/scss/component/side-menu' as *;
 @use '../../../../tokens/scss/component/spinner' as *;
@@ -159,6 +164,7 @@
 @use '../../../../tokens/scss/component/text-field' as *;
 @use '../../../../tokens/scss/component/textarea' as *;
 @use '../../../../tokens/scss/component/toast' as *;
+@use '../../../../tokens/scss/component/toggle' as *;
 @use '../../../../tokens/scss/component/tooltip' as *;
 
 body {

@@ -1,0 +1,122 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  --component-checkbox-background-standard-default: var(--color-background-none);
+  --component-checkbox-background-standard-hover: var(--color-background-none);
+  --component-checkbox-background-selected-default: var(--scania-color-grey-950);
+  --component-checkbox-background-selected-hover: var(--scania-color-grey-950);
+  --component-checkbox-background-indeterminate-default: var(--scania-color-grey-950);
+  --component-checkbox-background-indeterminate-hover: var(--scania-color-grey-950);
+  --component-checkbox-border-standard-default: var(--color-border-strong);
+  --component-checkbox-border-standard-hover: var(--color-border-strong);
+  --component-checkbox-border-selected-default: var(--color-border-none);
+  --component-checkbox-border-selected-hover: var(--color-border-none);
+  --component-checkbox-border-indeterminate-default: var(--color-border-none);
+  --component-checkbox-border-indeterminate-hover: var(--color-border-none);
+  --component-checkbox-border-indicator-default: var(--color-border-none);
+  --component-checkbox-border-indicator-hover: var(--color-border-subtle);
+  --component-checkbox-border-radius-default: var(--scania-unit-2);
+  --component-checkbox-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-checkbox-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-selected-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-opacity-disabled: var(--scania-opacity-25);
+  --component-checkbox-text-default: var(--color-text-strong);
+  --component-checkbox-text-hover: var(--color-text-strong);
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  --component-checkbox-background-standard-default: var(--color-background-none);
+  --component-checkbox-background-standard-hover: var(--color-background-none);
+  --component-checkbox-background-selected-default: var(--traton-color-blue-950);
+  --component-checkbox-background-selected-hover: var(--traton-color-blue-950);
+  --component-checkbox-background-indeterminate-default: var(--traton-color-blue-950);
+  --component-checkbox-background-indeterminate-hover: var(--traton-color-blue-950);
+  --component-checkbox-border-standard-default: var(--color-border-strong);
+  --component-checkbox-border-standard-hover: var(--color-border-strong);
+  --component-checkbox-border-selected-default: var(--color-border-none);
+  --component-checkbox-border-selected-hover: var(--color-border-none);
+  --component-checkbox-border-indeterminate-default: var(--color-border-none);
+  --component-checkbox-border-indeterminate-hover: var(--color-border-none);
+  --component-checkbox-border-indicator-default: var(--color-border-none);
+  --component-checkbox-border-indicator-hover: var(--color-border-subtle);
+  --component-checkbox-border-radius-default: var(--traton-unit-2);
+  --component-checkbox-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-checkbox-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-selected-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-opacity-disabled: var(--traton-opacity-25);
+  --component-checkbox-text-default: var(--color-text-strong);
+  --component-checkbox-text-hover: var(--color-text-strong);
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  --component-checkbox-background-standard-default: var(--color-background-none);
+  --component-checkbox-background-standard-hover: var(--color-background-none);
+  --component-checkbox-background-selected-default: var(--scania-color-grey-50);
+  --component-checkbox-background-selected-hover: var(--scania-color-grey-50);
+  --component-checkbox-background-indeterminate-default: var(--scania-color-grey-50);
+  --component-checkbox-background-indeterminate-hover: var(--scania-color-grey-50);
+  --component-checkbox-border-standard-default: var(--color-border-strong);
+  --component-checkbox-border-standard-hover: var(--color-border-strong);
+  --component-checkbox-border-selected-default: var(--color-border-none);
+  --component-checkbox-border-selected-hover: var(--color-border-none);
+  --component-checkbox-border-indeterminate-default: var(--color-border-none);
+  --component-checkbox-border-indeterminate-hover: var(--color-border-none);
+  --component-checkbox-border-indicator-default: var(--color-border-none);
+  --component-checkbox-border-indicator-hover: var(--color-border-subtle);
+  --component-checkbox-border-radius-default: var(--scania-unit-2);
+  --component-checkbox-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-checkbox-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-selected-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-opacity-disabled: var(--scania-opacity-25);
+  --component-checkbox-text-default: var(--color-text-strong);
+  --component-checkbox-text-hover: var(--color-text-strong);
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  --component-checkbox-background-standard-default: var(--color-background-none);
+  --component-checkbox-background-standard-hover: var(--color-background-none);
+  --component-checkbox-background-selected-default: var(--traton-color-base-white);
+  --component-checkbox-background-selected-hover: var(--traton-color-base-white);
+  --component-checkbox-background-indeterminate-default: var(--traton-color-base-white);
+  --component-checkbox-background-indeterminate-hover: var(--traton-color-base-white);
+  --component-checkbox-border-standard-default: var(--color-border-strong);
+  --component-checkbox-border-standard-hover: var(--color-border-strong);
+  --component-checkbox-border-selected-default: var(--color-border-none);
+  --component-checkbox-border-selected-hover: var(--color-border-none);
+  --component-checkbox-border-indeterminate-default: var(--color-border-none);
+  --component-checkbox-border-indeterminate-hover: var(--color-border-none);
+  --component-checkbox-border-indicator-default: var(--color-border-none);
+  --component-checkbox-border-indicator-hover: var(--color-border-subtle);
+  --component-checkbox-border-radius-default: var(--traton-unit-2);
+  --component-checkbox-focus-ring-radius-default: var(--component--focus-ring-radius-medium);
+  --component-checkbox-icon-selected-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-selected-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-default: var(--color-icon-inverse-strong);
+  --component-checkbox-icon-indeterminate-hover: var(--color-icon-inverse-strong);
+  --component-checkbox-opacity-disabled: var(--traton-opacity-25);
+  --component-checkbox-text-default: var(--color-text-strong);
+  --component-checkbox-text-hover: var(--color-text-strong);
+}

@@ -1,46 +1,45 @@
+@use '../../../../../../tokens/scss/component/checkbox';
+
 .tl-checkbox {
-  --checkbox-label: var(--color-foreground-text-strong);
-  --checkbox-label-disabled: var(--color-foreground-text-disabled);
-  --checkbox-icon: var(--color-foreground-icon-strong);
-  --checkbox-fill: var(--color-foreground-icon-inverse-strong);
-  --checkbox-fill-disabled: var(--color-background-accent-primary-disabled);
-  --checkbox-border: var(--color-foreground-border-strong);
-  --checkbox-border-hover: var(--color-foreground-border-subtle);
-  --checkbox-border-focus: var(--color-foreground-border-accent-focus);
-  --checkbox-border-disabled: var(--color-foreground-border-discrete);
+  // Label / text
+  --checkbox-text: var(--component-checkbox-text-default);
+  --checkbox-text-hover: var(--component-checkbox-text-hover);
 
-  // units
-  --checkbox-background-opacity-hover: 0.12;
-  --checkbox-background-opacity-focus: 0.24;
-  --checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  --checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23ffffff'/></svg>");
-  --checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23b0b7c4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  --checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23b0b7c4'/></svg>");
-}
+  // Box background per state
+  --checkbox-background: var(--component-checkbox-background-standard-default);
+  --checkbox-background-hover: var(--component-checkbox-background-standard-hover);
+  --checkbox-background-selected: var(--component-checkbox-background-selected-default);
+  --checkbox-background-selected-hover: var(--component-checkbox-background-selected-hover);
+  --checkbox-background-indeterminate: var(--component-checkbox-background-indeterminate-default);
+  --checkbox-background-indeterminate-hover: var(--component-checkbox-background-indeterminate-hover);
 
-.tl-mode-dark {
-  .tl-checkbox {
-    --checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%230D0F13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    --checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%230D0F13'/></svg>");
-    --checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%2356657A' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    --checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%2356657A'/></svg>");
-  }
-}
+  // Box border per state
+  --checkbox-border: var(--component-checkbox-border-standard-default);
+  --checkbox-border-hover: var(--component-checkbox-border-standard-hover);
+  --checkbox-border-selected: var(--component-checkbox-border-selected-default);
+  --checkbox-border-selected-hover: var(--component-checkbox-border-selected-hover);
+  --checkbox-border-indeterminate: var(--component-checkbox-border-indeterminate-default);
+  --checkbox-border-indeterminate-hover: var(--component-checkbox-border-indeterminate-hover);
 
-.scania {
-  .tl-checkbox {
-    --checkbox-focus-width: 20px;
-    --checkbox-focus-height: 20px;
-    --checkbox-focus-left: 2px;
-    --checkbox-focus-top: 2px;
-  }
-}
+  // Hover indicator halo
+  --checkbox-indicator: var(--component-checkbox-border-indicator-default);
+  --checkbox-indicator-hover: var(--component-checkbox-border-indicator-hover);
 
-.traton {
-  .tl-checkbox {
-    --checkbox-focus-width: 22px;
-    --checkbox-focus-height: 22px;
-    --checkbox-focus-left: 1px;
-    --checkbox-focus-top: 1px;
-  }
+  // Icon (checkmark / indeterminate dash) colour
+  --checkbox-icon-selected: var(--component-checkbox-icon-selected-default);
+  --checkbox-icon-selected-hover: var(--component-checkbox-icon-selected-hover);
+  --checkbox-icon-indeterminate: var(--component-checkbox-icon-indeterminate-default);
+  --checkbox-icon-indeterminate-hover: var(--component-checkbox-icon-indeterminate-hover);
+
+  // Geometry (tokens are unitless numbers)
+  --checkbox-border-radius: calc(var(--component-checkbox-border-radius-default) * 1px);
+  --checkbox-focus-ring-radius: calc(var(--component-checkbox-focus-ring-radius-default) * 1px);
+
+  // Disabled opacity (token is unitless 0–100)
+  --checkbox-opacity-disabled: calc(var(--component-checkbox-opacity-disabled) / 100);
+
+  // Icon shapes — colour comes from the icon tokens above via mask, so the
+  // stroke/fill here is just an opaque alpha source and never rendered.
+  --checkbox-icon-mask: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --checkbox-icon-mask-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23000'/></svg>");
 }

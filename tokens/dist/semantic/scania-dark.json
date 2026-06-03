@@ -1659,6 +1659,112 @@
         }
       }
     },
+    "checkbox": {
+      "background": {
+        "standard-default": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "selected-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        },
+        "indeterminate-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        },
+        "indeterminate-hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        }
+      },
+      "border": {
+        "standard-default": {
+          "$type": "color",
+          "$value": "{color.border.strong}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{color.border.strong}"
+        },
+        "selected-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indeterminate-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indeterminate-hover": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indicator-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indicator-hover": {
+          "$type": "color",
+          "$value": "{color.border.subtle}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.2}"
+        }
+      },
+      "focus-ring": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{component.-focus.ring.radius.medium}"
+        }
+      },
+      "icon": {
+        "selected-default": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        },
+        "indeterminate-default": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        },
+        "indeterminate-hover": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{scania.opacity.25}"
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        }
+      }
+    },
     "chip": {
       "background": {
         "standard": {
@@ -2337,6 +2443,88 @@
         }
       }
     },
+    "radio-button": {
+      "background": {
+        "standard-default": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "selected-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        }
+      },
+      "border": {
+        "standard-default": {
+          "$type": "color",
+          "$value": "{color.border.strong}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{color.border.strong}"
+        },
+        "selected-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indicator-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "indicator-hover": {
+          "$type": "color",
+          "$value": "{color.border.subtle}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.9999}"
+        }
+      },
+      "focus-ring": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{component.-focus.ring.radius.full}"
+        }
+      },
+      "icon": {
+        "selected-default": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{scania.opacity.25}"
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        }
+      }
+    },
     "scrollbar": {
       "background": {
         "thumb-default": {
@@ -2672,6 +2860,84 @@
         "error-default": {
           "$type": "color",
           "$value": "{scania.color.red.400}"
+        }
+      }
+    },
+    "toggle": {
+      "background": {
+        "selected-default": {
+          "$type": "color",
+          "$value": "{scania.color.green.300}"
+        },
+        "standard-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.350}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{scania.color.green.400}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.500}"
+        },
+        "selected-active": {
+          "$type": "color",
+          "$value": "{scania.color.green.500}"
+        },
+        "standard-active": {
+          "$type": "color",
+          "$value": "{scania.color.grey.600}"
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.9999}"
+        }
+      },
+      "focus-ring": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{component.-focus.ring.radius.full}"
+        }
+      },
+      "icon": {
+        "standard-default": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        },
+        "standard-hover": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        },
+        "standard-active": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        },
+        "selected-default": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        },
+        "selected-hover": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        },
+        "selected-active": {
+          "$type": "color",
+          "$value": "{scania.color.base.white}"
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{scania.opacity.25}"
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
         }
       }
     },
