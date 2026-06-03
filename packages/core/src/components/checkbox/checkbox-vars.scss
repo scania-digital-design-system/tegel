@@ -1,30 +1,43 @@
-:root,
-.tds-mode-light {
-  --tds-checkbox-color: var(--tds-grey-950);
-  --tds-checkbox-interaction-01: var(--tds-blue-800);
-  --tds-checkbox-interaction-02: var(--tds-white);
-  --tds-checkbox-background-hover: var(--tds-grey-350);
-  --tds-checkbox-background-focus: var(--tds-blue-400);
-  --tds-checkbox-disabled: var(--tds-grey-250);
-  --tds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  --tds-checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23ffffff'/></svg>");
-  --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23B4BECD' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23B4BECD'/></svg>");
-  --tds-checkbox-border-color-disabled-after: var(--tds-grey-250);
-  --tds-checkbox-color-disabled-after: var(--tds-grey-250);
+tds-checkbox {
+  // Label / text
+  --tds-checkbox-text: var(--component-checkbox-text-default);
+  --tds-checkbox-text-hover: var(--component-checkbox-text-hover);
 
-  .tds-mode-dark {
-    --tds-checkbox-color: var(--tds-grey-50);
-    --tds-checkbox-interaction-01: var(--tds-white);
-    --tds-checkbox-interaction-02: var(--tds-grey-950);
-    --tds-checkbox-background-hover: var(--tds-grey-350);
-    --tds-checkbox-background-focus: var(--tds-blue-300);
-    --tds-checkbox-disabled: var(--tds-grey-500);
-    --tds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%230D0F13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    --tds-checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%230D0F13'/></svg>");
-    --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%235F728C' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%235F728C'/></svg>");
-    --tds-checkbox-border-color-disabled-after: var(--tds-grey-500);
-    --tds-checkbox-color-disabled-after: var(--tds-grey-500);
-  }
+  // Box background per state
+  --tds-checkbox-background: var(--component-checkbox-background-standard-default);
+  --tds-checkbox-background-hover: var(--component-checkbox-background-standard-hover);
+  --tds-checkbox-background-selected: var(--component-checkbox-background-selected-default);
+  --tds-checkbox-background-selected-hover: var(--component-checkbox-background-selected-hover);
+  --tds-checkbox-background-indeterminate: var(--component-checkbox-background-indeterminate-default);
+  --tds-checkbox-background-indeterminate-hover: var(--component-checkbox-background-indeterminate-hover);
+
+  // Box border per state
+  --tds-checkbox-border: var(--component-checkbox-border-standard-default);
+  --tds-checkbox-border-hover: var(--component-checkbox-border-standard-hover);
+  --tds-checkbox-border-selected: var(--component-checkbox-border-selected-default);
+  --tds-checkbox-border-selected-hover: var(--component-checkbox-border-selected-hover);
+  --tds-checkbox-border-indeterminate: var(--component-checkbox-border-indeterminate-default);
+  --tds-checkbox-border-indeterminate-hover: var(--component-checkbox-border-indeterminate-hover);
+
+  // Hover indicator halo
+  --tds-checkbox-indicator: var(--component-checkbox-border-indicator-default);
+  --tds-checkbox-indicator-hover: var(--component-checkbox-border-indicator-hover);
+
+  // Icon (checkmark / indeterminate dash) colour
+  --tds-checkbox-icon-selected: var(--component-checkbox-icon-selected-default);
+  --tds-checkbox-icon-selected-hover: var(--component-checkbox-icon-selected-hover);
+  --tds-checkbox-icon-indeterminate: var(--component-checkbox-icon-indeterminate-default);
+  --tds-checkbox-icon-indeterminate-hover: var(--component-checkbox-icon-indeterminate-hover);
+
+  // Geometry (tokens are unitless numbers)
+  --tds-checkbox-border-radius: calc(var(--component-checkbox-border-radius-default) * 1px);
+  --tds-checkbox-focus-ring-radius: calc(var(--component-checkbox-focus-ring-radius-default) * 1px);
+
+  // Disabled opacity (token is unitless 0–100)
+  --tds-checkbox-opacity-disabled: calc(var(--component-checkbox-opacity-disabled) / 100);
+
+  // Icon shapes — colour comes from the icon tokens above via mask, so the
+  // stroke/fill here is just an opaque alpha source and never rendered.
+  --tds-checkbox-icon-mask: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --tds-checkbox-icon-mask-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23000'/></svg>");
 }

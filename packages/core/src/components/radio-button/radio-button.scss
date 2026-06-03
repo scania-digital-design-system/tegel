@@ -1,14 +1,16 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
+@use '../../mixins/focus-state' as *;
 
 .tds-radio-button {
   @include tds-box-sizing;
+  @include detail-02;
 
   display: flex;
   align-items: center;
   margin-left: -4px;
-  font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
-  color: var(--tds-radio-button-color);
+  color: var(--tds-radio-button-text);
 
   .tds-form-input[type='radio'] {
     appearance: none;
@@ -17,7 +19,6 @@
     border: 0;
     width: 20px;
     height: 24px;
-    border-radius: 50%;
     position: relative;
     cursor: pointer;
     flex-shrink: 0;
@@ -25,6 +26,7 @@
 
     + label {
       padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4) 6px;
+      color: var(--tds-radio-button-text);
       cursor: pointer;
     }
 
@@ -32,102 +34,94 @@
     &::after {
       content: '';
       position: absolute;
-      border-radius: 50%;
       box-sizing: border-box;
-    }
-
-    &::before {
-      width: 20px;
-      height: 20px;
-      top: 2px;
-    }
-
-    &::after {
-      border: 1px solid var(--tds-radio-button-interaction-01);
-      background-color: var(--tds-radio-button-interaction-02);
-      width: 16px;
-      height: 16px;
+      border-radius: var(--tds-radio-button-border-radius);
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
     }
 
-    &:hover {
-      &::before {
-        background-color: var(--tds-radio-button-background-hover);
-      }
+    // The outer circle: border + fill, plus the (transparent by default) hover indicator halo.
+    &::before {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--tds-radio-button-border);
+      background-color: var(--tds-radio-button-background);
+      box-shadow: 0 0 0 2px var(--tds-radio-button-indicator);
+      transition: box-shadow 0.2s ease-in-out;
     }
 
-    &:focus-visible {
+    // The inner dot, colour driven by the icon token. Hidden until selected.
+    &::after {
+      width: 6px;
+      height: 6px;
+      background-color: var(--tds-radio-button-icon-selected);
+      opacity: 0;
+      // Keep the dot above the circle fill, which gets z-index: 1 from the focus ring.
+      z-index: 1;
+    }
+
+    &:hover::before {
+      border-color: var(--tds-radio-button-border-hover);
+      background-color: var(--tds-radio-button-background-hover);
+      box-shadow: 0 0 0 2px var(--tds-radio-button-indicator-hover);
+    }
+
+    &:focus-visible::before {
+      @include tds-focus-state;
+
+      border-radius: var(--tds-radio-button-focus-ring-radius);
+    }
+
+    &:hover + label {
+      color: var(--tds-radio-button-text-hover);
+    }
+
+    &:checked {
       &::before {
-        background-color: var(--tds-radio-button-background-focus);
-        box-shadow: 0 0 0 1px var(--tds-radio-button-background-focus);
-        animation: rb-focus var(--tds-motion-duration-moderate-02) var(--tds-motion-easing-enter)
-          forwards;
+        border-color: var(--tds-radio-button-border-selected);
+        background-color: var(--tds-radio-button-background-selected);
       }
 
       &::after {
-        outline: 1px solid var(--tds-radio-button-interaction-outline);
+        background-color: var(--tds-radio-button-icon-selected);
+        opacity: 1;
+      }
+
+      &:hover {
+        &::before {
+          border-color: var(--tds-radio-button-border-selected-hover);
+          background-color: var(--tds-radio-button-background-selected-hover);
+        }
+
+        &::after {
+          background-color: var(--tds-radio-button-icon-selected-hover);
+        }
       }
     }
 
     &:disabled,
     &.disabled {
       cursor: not-allowed;
+      opacity: var(--tds-radio-button-opacity-disabled);
 
-      &::after {
-        border-color: var(--tds-radio-button-border-color-disabled-after);
-        background-color: var(--tds-radio-button-interaction-02);
+      // Keep the resting appearance when disabled — only the opacity changes.
+      &:hover::before {
+        border-color: var(--tds-radio-button-border);
+        background-color: var(--tds-radio-button-background);
+        box-shadow: none;
+      }
+
+      &:checked:hover::before {
+        border-color: var(--tds-radio-button-border-selected);
+        background-color: var(--tds-radio-button-background-selected);
       }
 
       + label {
-        color: var(--tds-radio-button-disabled);
+        color: var(--tds-radio-button-text);
+        opacity: var(--tds-radio-button-opacity-disabled);
         cursor: not-allowed;
       }
-
-      &:hover {
-        &::before {
-          display: none;
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  .tds-form-input[type='radio']:checked {
-    &::after {
-      border: 4px solid var(--tds-radio-button-interaction-01);
-    }
-
-    &:disabled,
-    &.disabled {
-      &:hover::before,
-      &::before {
-        display: block;
-        background-color: transparent;
-        width: 16px;
-        height: 16px;
-        left: 2px;
-        top: 4px;
-        box-shadow: inset 0 0 0 1px var(--tds-radio-button-border-color-disabled-after);
-      }
-
-      &::after {
-        border: 4px solid var(--tds-radio-button-interaction-02);
-        background-color: var(--tds-radio-button-color-disabled-after);
-        clip-path: inset(1px 1px round 50%);
-      }
-    }
-  }
-
-  @keyframes rb-focus {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-
-    100% {
-      transform: scale(1);
     }
   }
 }

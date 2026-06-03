@@ -1,44 +1,31 @@
-:root,
-.tds-mode-light {
-  --tds-toggle-switch: var(--tds-white);
-  --tds-toggle-switch-disabled: var(--tds-grey-300);
-  --tds-toggle-headline: var(--tds-grey-950);
-  --tds-toggle-headline-disabled: var(--tds-grey-250);
-  --tds-toggle-on-slider: var(--tds-green-300);
-  --tds-toggle-on-slider-hover: var(--tds-green-400);
-  --tds-toggle-on-slider-focus: var(--tds-green-400);
-  --tds-toggle-on-slider-pressed: var(--tds-green-500);
-  --tds-toggle-on-border-focus: var(--component--focus-ring-color-discrete);
-  --tds-toggle-border-outline: var(--tds-blue-400);
-  --tds-toggle-on-slider-disabled: var(--tds-grey-200);
-  --tds-toggle-slider-disabled: var(--tds-grey-200);
-  --tds-toggle-label-color: var(--tds-grey-950);
-  --tds-toggle-label-color-disabled: var(--tds-grey-250);
-  --tds-toggle-off-slider: var(--tds-grey-350);
-  --tds-toggle-off-slider-hover: var(--tds-grey-500);
-  --tds-toggle-off-slider-focus: var(--tds-grey-500);
-  --tds-toggle-off-slider-pressed: var(--tds-grey-600);
-  --tds-toggle-off-border-focus: var(--component--focus-ring-color-discrete);
-}
+tds-toggle {
+  // Headline / label text
+  --tds-toggle-text: var(--component-toggle-text-default);
 
-.tds-mode-dark {
-  --tds-toggle-switch: var(--tds-white);
-  --tds-toggle-switch-disabled: var(--tds-grey-350);
-  --tds-toggle-headline: var(--tds-grey-50);
-  --tds-toggle-headline-disabled: var(--tds-grey-500);
-  --tds-toggle-on-slider: var(--tds-green-300);
-  --tds-toggle-on-slider-hover: var(--tds-green-400);
-  --tds-toggle-on-slider-focus: var(--tds-green-400);
-  --tds-toggle-on-slider-pressed: var(--tds-green-500);
-  --tds-toggle-on-border-focus: var(--component--focus-ring-color-discrete);
-  --tds-toggle-border-outline: var(--tds-blue-300);
-  --tds-toggle-on-slider-disabled: var(--tds-grey-600);
-  --tds-toggle-slider-disabled: var(--tds-grey-650);
-  --tds-toggle-label-color: var(--tds-grey-50);
-  --tds-toggle-label-color-disabled: var(--tds-grey-500);
-  --tds-toggle-off-slider: var(--tds-grey-350);
-  --tds-toggle-off-slider-hover: var(--tds-grey-500);
-  --tds-toggle-off-slider-focus: var(--tds-grey-500);
-  --tds-toggle-off-slider-pressed: var(--tds-grey-600);
-  --tds-toggle-off-border-focus: var(--component--focus-ring-color-discrete);
+  // Track background — off (standard) per state
+  --tds-toggle-off: var(--component-toggle-background-standard-default);
+  --tds-toggle-off-hover: var(--component-toggle-background-standard-hover);
+  --tds-toggle-off-active: var(--component-toggle-background-standard-active);
+
+  // Track background — on (selected) per state
+  --tds-toggle-on: var(--component-toggle-background-selected-default);
+  --tds-toggle-on-hover: var(--component-toggle-background-selected-hover);
+  --tds-toggle-on-active: var(--component-toggle-background-selected-active);
+
+  // Knob colour — off (standard) per state
+  --tds-toggle-knob: var(--component-toggle-icon-standard-default);
+  --tds-toggle-knob-hover: var(--component-toggle-icon-standard-hover);
+  --tds-toggle-knob-active: var(--component-toggle-icon-standard-active);
+
+  // Knob colour — on (selected) per state
+  --tds-toggle-knob-on: var(--component-toggle-icon-selected-default);
+  --tds-toggle-knob-on-hover: var(--component-toggle-icon-selected-hover);
+  --tds-toggle-knob-on-active: var(--component-toggle-icon-selected-active);
+
+  // Geometry (tokens are unitless numbers)
+  --tds-toggle-border-radius: calc(var(--component-toggle-border-radius-default) * 1px);
+  --tds-toggle-focus-ring-radius: calc(var(--component-toggle-focus-ring-radius-default) * 1px);
+
+  // Disabled opacity (token is unitless 0–100)
+  --tds-toggle-opacity-disabled: calc(var(--component-toggle-opacity-disabled) / 100);
 }

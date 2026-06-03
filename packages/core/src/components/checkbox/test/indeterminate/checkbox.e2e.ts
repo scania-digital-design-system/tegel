@@ -9,7 +9,7 @@ import {
 const componentTestPath = 'src/components/checkbox/test/indeterminate/index.html';
 const componentName = 'tds-checkbox';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
