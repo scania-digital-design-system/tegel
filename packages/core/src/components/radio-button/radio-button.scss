@@ -119,6 +119,7 @@
 
       + label {
         color: var(--tds-radio-button-text);
+        opacity: var(--tds-radio-button-opacity-disabled);
         cursor: not-allowed;
       }
     }
