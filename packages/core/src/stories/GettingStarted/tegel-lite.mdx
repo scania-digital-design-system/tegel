@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import { SHIPPED_COMPONENTS } from '../../tegel-lite/shipped-components.js';
 
 <Meta title="Getting Started/Tegel Lite" />
 
@@ -160,6 +161,29 @@ BEM modifiers like `.tl-button--primary` are **not standalone** — they must al
 ```
 
 Always include the base class (`.tl-button`) when using modifiers like `--primary`, `--disabled`, `--lg`, etc. Modifiers extend the base styling, they don't replace it.
+
+## Shipped Components
+
+The following **{SHIPPED_COMPONENTS.length} components** currently ship in the
+`@scania/tegel-lite` package. Each is importable individually (e.g.
+`@scania/tegel-lite/tl-button.css`) or via the bundled `components.css`. This
+list is generated from the package's source of truth, so it always reflects
+what is actually published.
+
+<ul>
+  {[...SHIPPED_COMPONENTS].sort().map((name) => {
+    const label = name
+      .replace(/^tl-/, '')
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    return (
+      <li key={name}>
+        {label} — <code>{name}</code>
+      </li>
+    );
+  })}
+</ul>
 
 ## Component Documentation
 
