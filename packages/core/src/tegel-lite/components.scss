@@ -15,17 +15,23 @@
  */
 
 // Components (alphabetically ordered)
+@use './components/tl-accordion/tl-accordion';
 @use './components/tl-banner/tl-banner';
+@use './components/tl-block/tl-block';
 @use './components/tl-breadcrumbs/tl-breadcrumbs';
 @use './components/tl-button/tl-button';
 @use './components/tl-card/tl-card';
+@use './components/tl-checkbox/tl-checkbox';
+@use './components/tl-datetime/tl-datetime';
 @use './components/tl-divider/tl-divider';
 @use './components/tl-footer/tl-footer';
 @use './components/tl-icon/tl-icon';
 @use './components/tl-link/tl-link';
 @use './components/tl-message/tl-message';
 @use './components/tl-modal/tl-modal';
+@use './components/tl-radio-button/tl-radio-button';
 @use './components/tl-text-field/tl-text-field';
 @use './components/tl-textarea/tl-textarea';
 @use './components/tl-toast/tl-toast';
+@use './components/tl-toggle/tl-toggle';
 @use './components/tl-tooltip/tl-tooltip';
