@@ -14,23 +14,23 @@ const packageJsonPath = path.resolve(dirName, '../../tegel-lite/package.json'); 
 // Read and parse the existing package.json file
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-// Ensure the "exports" field exists in package.json
-if (!packageJson.exports) packageJson.exports = {};
+// Reset the exports map to a clean baseline so that any stale tl-* entries
+// from previous builds (e.g. components that have since been removed from
+// the shipped allowlist) are dropped.
+packageJson.exports = {
+  '.': './dist/global.css',
+  './package.json': './package.json',
+  './global.css': './dist/global.css',
+  './scania-variables.css': './dist/scania-variables.css',
+  './traton-variables.css': './dist/traton-variables.css',
+};
 
-//  Add the global CSS export
-packageJson.exports['./global.css'] = './dist/global.css';
-
-// Add the Scania variables CSS export
-packageJson.exports['./scania-variables.css'] = './dist/scania-variables.css';
-
-// Add the Traton variables CSS export
-packageJson.exports['./traton-variables.css'] = './dist/traton-variables.css';
-
-// Iterate over the component CSS files and add them to exports
+// Iterate over the compiled CSS files in dist/ and re-add an export entry
+// for each. compile-tegel-lite-components.js only emits CSS for shipped
+// components, so this naturally produces the allowlisted set.
 fs.readdirSync(componentsCssDir).forEach((file) => {
   if (file.endsWith('.css')) {
-    const componentName = file; // Keep the filename unchanged
-    packageJson.exports[`./${componentName}`] = `./dist/${file}`;
+    packageJson.exports[`./${file}`] = `./dist/${file}`;
   }
 });
 

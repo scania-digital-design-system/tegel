@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Slider',
+  title: 'Tegel Lite/Slider',
   parameters: {
     layout: 'padded',
     backgrounds: {
@@ -291,14 +291,14 @@ const Template = ({
         <div class="tl-slider__value tl-slider__value--min">${actualMin}</div>
         `
             : showControls
-            ? `
+              ? `
         <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--minus tl-icon--16"></span>
         </button>
         `
-            : ''
+              : ''
         }
         
         <div class="tl-slider__track">
@@ -340,14 +340,14 @@ const Template = ({
         </div>
         `
             : showControls
-            ? `
+              ? `
         <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--plus tl-icon--16"></span>
         </button>
         `
-            : ''
+              : ''
         }
       </div>
       </div>

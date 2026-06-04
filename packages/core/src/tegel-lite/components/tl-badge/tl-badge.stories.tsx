@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Badge',
+  title: 'Tegel Lite/Badge',
   parameters: {
     layout: 'centered',
   },

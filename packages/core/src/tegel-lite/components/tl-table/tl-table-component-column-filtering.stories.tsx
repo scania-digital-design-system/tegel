@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Column Filtering',
+  title: 'Tegel Lite/Table/Column Filtering',
   parameters: {
     docs: {
       description: {

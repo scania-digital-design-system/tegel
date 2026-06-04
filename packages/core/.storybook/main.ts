@@ -2,6 +2,15 @@ import glob from 'glob';
 import path from 'path';
 import type { StorybookConfig } from '@storybook/html-vite';
 import { mergeConfig } from 'vite';
+import { SHIPPED_COMPONENTS } from '../src/tegel-lite/shipped-components.js';
+
+const TEGEL_LITE_SHIPPED = new Set<string>(SHIPPED_COMPONENTS);
+
+function isAllowedTegelLiteStory(file: string): boolean {
+  const match = file.match(/\/tegel-lite\/components\/([^/]+)\//);
+  if (!match) return true;
+  return TEGEL_LITE_SHIPPED.has(match[1]);
+}
 
 function loadStories() {
   // Gather all story files synchronously
@@ -9,12 +18,12 @@ function loadStories() {
     path.resolve(__dirname, '../src/**/*.@(stories.@(js|jsx|ts|tsx|mdx)|notes.mdx|mdx)'),
   );
 
-  // If in development environment, return all story files
-  // Otherwise, exclude stories from the _beta folder
+  // If in development environment, return all story files.
+  // Otherwise, exclude _beta and any un-shipped tegel-lite components.
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
     : storyFiles.filter(
-        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-lite/'),
+        (file: string) => !file.includes('/_beta/') && isAllowedTegelLiteStory(file),
       );
 }
 

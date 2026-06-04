@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import sass from 'sass';
+import { SHIPPED_COMPONENTS } from '../src/tegel-lite/shipped-components.js';
 
 // Define __dirname equivalent for ES modules
 const fileName = fileURLToPath(import.meta.url);
@@ -26,10 +27,20 @@ const tratonVarsCss = path.resolve(dirName, '../../tegel-lite/dist/traton-variab
 const componentsScss = path.resolve(dirName, '../src/tegel-lite/components.scss'); // Source all components SCSS
 const componentsCss = path.resolve(dirName, '../../tegel-lite/dist/components.css'); // Output compiled all components CSS
 
+const shipped = new Set(SHIPPED_COMPONENTS);
+
 // Ensure output directories exist before compilation
 if (!fs.existsSync(outputCssDir)) {
   fs.mkdirSync(outputCssDir, { recursive: true });
 }
+
+// Clean stale per-component CSS files from prior builds so the published
+// dist/ only reflects the current shipped allowlist.
+fs.readdirSync(outputCssDir).forEach((file) => {
+  if (file.startsWith('tl-') && file.endsWith('.css')) {
+    fs.unlinkSync(path.join(outputCssDir, file));
+  }
+});
 
 // Compile Global Styles
 console.log(`Compiling global styles: ${globalScss} -> ${globalCss}`);
@@ -51,11 +62,16 @@ console.log(`Compiling all components: ${componentsScss} -> ${componentsCss}`);
 const componentsResult = sass.compile(componentsScss, { style: 'expanded' });
 fs.writeFileSync(componentsCss, componentsResult.css);
 
-// Recursively compile each component's SCSS files into CSS
+// Recursively compile each shipped component's SCSS files into CSS.
+// Un-shipped folders are skipped so their CSS never lands in dist/.
 const componentEntries = fs.readdirSync(componentsDir, { withFileTypes: true });
 
 componentEntries.forEach((entry) => {
   if (!entry.isDirectory()) return;
+  if (!shipped.has(entry.name)) {
+    console.log(`Skipping un-shipped component: ${entry.name}`);
+    return;
+  }
 
   const componentDir = path.join(componentsDir, entry.name);
 

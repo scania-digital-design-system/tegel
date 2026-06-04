@@ -1,17 +1,13 @@
 # @scania/tegel-lite
 
-![Status: Beta](https://img.shields.io/badge/status-beta-orange)
-
 > Pure CSS implementation of Tegel Design System - no JavaScript required.
-
-**⚠️ Beta Status:** This package is currently in beta. While functional and ready for testing, the API and structure may change before the stable 1.0.0 release.
 
 Tegel Lite is a **styles-only** component library that provides the same design system as Tegel without relying on Web Components or Stencil.
 
 ## 📦 Installation
 
 ```bash
-npm install @scania/tegel-lite@0.0.1-beta.10
+npm install @scania/tegel-lite
 ```
 
 ## 🚀 Quick Start

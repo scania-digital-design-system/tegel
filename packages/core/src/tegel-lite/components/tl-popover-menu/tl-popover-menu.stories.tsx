@@ -2,7 +2,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
-  title: 'Tegel Lite (Beta)/Popover Menu',
+  title: 'Tegel Lite/Popover Menu',
   parameters: {
     layout: 'centered',
     docs: {

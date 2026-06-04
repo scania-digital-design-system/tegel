@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Batch Actions',
+  title: 'Tegel Lite/Table/Batch Actions',
   parameters: {
     docs: {
       description: {

@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (Beta)/Table/Zebra',
+  title: 'Tegel Lite/Table/Zebra',
   parameters: {
     docs: {
       description: {

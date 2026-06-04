@@ -1,16 +1,13 @@
 # @scania/tegel-lite
 
-![Status: Beta](https://img.shields.io/badge/status-beta-orange)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 > Pure CSS implementation of Tegel Design System - no JavaScript required.
 
-**⚠️ Beta Status:** This package is currently in beta. The API may change before stable 1.0.0. Report issues at [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
-
 ## Installation
 
 ```bash
-npm install @scania/tegel-lite@0.0.1-beta.10
+npm install @scania/tegel-lite
 ```
 
 ## Quick Start
@@ -32,7 +29,7 @@ import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
 import '@scania/tegel-lite/global.css'; // Component tokens (required)
 import '@scania/tegel-lite/tl-button.css';
 import '@scania/tegel-lite/tl-card.css';
-import '@scania/tegel-lite/tl-header.css';
+import '@scania/tegel-lite/tl-message.css';
 ```
 
 > **Important:** You must import three files in order:
@@ -48,14 +45,17 @@ import '@scania/tegel-lite/tl-header.css';
 </button>
 ```
 
-## Components 
+## Components
 
-**Layout:** header, footer, side-menu, breadcrumbs  
-**Forms:** text-field, textarea, checkbox, radio-button, toggle, dropdown, datetime, slider  
-**Navigation:** folder-tabs, inline-tabs, navigation-tabs  
-**Buttons:** button, link, chip  
-**Display:** card, table, accordion, stepper, step, badge, divider, block, icon  
-**Overlays:** modal, toast, banner, message, tooltip, popover-menu, popover-canvas, spinner
+This beta ships only the components migrated to the new design-token
+variable structure. Additional components will be added as their migration
+lands on `develop`.
+
+**Layout:** footer, breadcrumbs
+**Forms:** text-field, textarea
+**Buttons:** button, link
+**Display:** card, divider, icon
+**Overlays:** modal, toast, banner, message, tooltip
 
 ## Package Contents
 

@@ -2,7 +2,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
-  title: 'Tegel Lite (Beta)/Chip',
+  title: 'Tegel Lite/Chip',
   parameters: { layout: 'centered' },
   argTypes: {
     size: {
@@ -79,21 +79,21 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
 
     <div class="demo-wrapper" style="display: flex; gap: 8px; flex-wrap: wrap;">
       <button class="tl-chip ${sizeClass}${selectedClass}${prefixMod}${suffixMod}" ${
-    disabled ? 'disabled' : ''
-  }>
+        disabled ? 'disabled' : ''
+      }>
         ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 1${
-    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
-  }
+          hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+        }
       </button>
       <button class="tl-chip ${sizeClass}${prefixMod}${suffixMod}" ${disabled ? 'disabled' : ''}>
         ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 2${
-    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
-  }
+          hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+        }
       </button>
       <button class="tl-chip ${sizeClass}${prefixMod}${suffixMod}" ${disabled ? 'disabled' : ''}>
         ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 3${
-    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
-  }
+          hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+        }
       </button>
     </div>
 

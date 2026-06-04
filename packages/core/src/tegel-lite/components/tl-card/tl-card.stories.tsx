@@ -11,7 +11,7 @@ const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='ht
   </svg>`)}`;
 
 export default {
-  title: 'Tegel Lite (Beta)/Card',
+  title: 'Tegel Lite/Card',
   parameters: {
     layout: 'centered',
   },
