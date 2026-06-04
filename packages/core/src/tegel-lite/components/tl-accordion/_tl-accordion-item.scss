@@ -44,6 +44,8 @@
   }
 
   &--disabled {
+    opacity: var(--accordion-opacity-disabled);
+
     &:hover,
     &:active {
       background-color: transparent;
@@ -60,7 +62,7 @@
 .tl-accordion__title {
   flex-grow: 2;
   text-align: left;
-  color: var(--color-foreground-text-strong);
+  color: var(--accordion-text);
 
   .tl-accordion__item--disabled & {
     color: var(--accordion-text-disabled);
