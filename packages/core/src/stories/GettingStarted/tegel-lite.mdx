@@ -99,6 +99,18 @@ Set the active theme on the `<html>` element and mode on the `<body>` element:
 - Place the mode class (`.tl-mode-dark`) on the `<body>` element for dark mode
 - Light mode is the default and doesn't require a class
 
+> **Component variables are internal — do not consume them.**
+> The component-level CSS variables shipped in `global.css` (e.g.
+> `--tl-spinner-background`, `--tl-accordion-background`) are an internal
+> implementation detail. They are **not** part of the public API and may be
+> renamed, restructured, or removed without notice. Do not read, reference, or
+> override these `--tl-<component>-*` variables in your application code — code
+> that depends on them can break on any release.
+>
+> To theme your application, use the brand variables
+> (`scania-variables.css` / `traton-variables.css`) together with the theme
+> (`.scania` / `.traton`) and mode (`.tl-mode-dark`) classes shown above.
+
 ## Usage
 
 Tegel Lite components use BEM naming conventions with `tl-` prefix:
