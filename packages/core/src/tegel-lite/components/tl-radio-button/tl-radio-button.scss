@@ -114,6 +114,7 @@
   }
 
   .tl-radio-button:has(:disabled) & {
+    opacity: var(--radio-button-opacity-disabled);
     cursor: not-allowed;
   }
 }
