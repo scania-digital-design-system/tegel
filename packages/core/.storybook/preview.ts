@@ -4,7 +4,20 @@ import { defineCustomElements } from '../loader';
 import type { Preview, Decorator } from '@storybook/html';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
-import '../src/global/tegel-lite-components.scss';
+// Tegel Lite styles:
+// - dev (VITE_STORYBOOK_ENV=dev): compile from local source so in-progress and
+//   un-shipped tl-* components render and reflect live edits.
+// - production: consume the published @scania/tegel-lite package, so the deployed
+//   Storybook shows exactly what consumers get. Production only renders shipped
+//   components (see .storybook/main.ts), which matches the package's components.css.
+if (import.meta.env.VITE_STORYBOOK_ENV === 'dev') {
+  await import('../src/global/tegel-lite-components.scss');
+} else {
+  await import('@scania/tegel-lite/scania-variables.css');
+  await import('@scania/tegel-lite/traton-variables.css');
+  await import('@scania/tegel-lite/global.css');
+  await import('@scania/tegel-lite/components.css');
+}
 import './preview.css';
 import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 

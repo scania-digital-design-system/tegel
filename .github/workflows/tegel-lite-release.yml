@@ -59,8 +59,17 @@ jobs:
         id: set-version
         working-directory: packages/tegel-lite
         run: |
-          # Defensively strip any pre-release suffix before bumping (e.g. 0.1.0-beta.5 → 0.1.0)
-          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          # Source of truth is the published npm "latest" tag, NOT the (possibly stale)
+          # package.json — this workflow never writes the bump back to develop, so the
+          # in-repo version drifts. Bumping from npm is self-healing and avoids publishing
+          # a version older than what's already live.
+          current_version=$(npm view "$PACKAGE_NAME@latest" version 2>/dev/null)
+          if [[ -z "$current_version" ]]; then
+            echo "Could not read published version from npm; falling back to package.json"
+            current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          fi
+          echo "Current (published) version: $current_version"
           jq ".version = \"$current_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           npm version ${{ inputs.version }} --no-git-tag-version
@@ -78,7 +87,10 @@ jobs:
             BRANCH_NAME="$BRANCH_NAME-dry-run-$TIMESTAMP"
           fi
           echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          git checkout -b "$BRANCH_NAME"
+          # Drop any leftover remote branch with the same name (from a prior failed/partial
+          # run) so the push below can't fail with a non-fast-forward rejection.
+          git push origin --delete "$BRANCH_NAME" 2>/dev/null || true
+          git checkout -B "$BRANCH_NAME"
           git add package.json package-lock.json
           git commit -m "chore(tegel-lite): bump version to ${{ steps.set-version.outputs.PACKAGE_VERSION }}"
           git push -u --no-verify origin "$BRANCH_NAME"

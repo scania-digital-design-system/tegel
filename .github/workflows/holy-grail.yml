@@ -166,6 +166,10 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm ci || (npm cache clean --force && npm ci)
 
+      - name: Core - Install latest Tegel Lite
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install @scania/tegel-lite@latest --save-dev || (npm cache clean --force && npm install @scania/tegel-lite@latest --save-dev)
+
       - name: Core - Run build
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
