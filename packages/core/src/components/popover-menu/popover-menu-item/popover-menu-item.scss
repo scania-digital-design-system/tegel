@@ -1,5 +1,6 @@
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/_focus-state' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
@@ -7,8 +8,8 @@
   display: block;
 
   .wrapper {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include body-01;
+
     color: var(--tds-popover-menu-color);
     position: relative;
     width: 100%;

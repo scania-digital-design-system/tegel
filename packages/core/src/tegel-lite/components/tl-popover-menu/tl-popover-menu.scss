@@ -21,7 +21,7 @@
   color: var(--popover-menu-text);
   position: relative;
   transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-easy);
-  @include detail-02;
+  @include body-01;
 
   &:hover {
     cursor: pointer;
@@ -46,6 +46,7 @@
   cursor: not-allowed;
   opacity: var(--popover-menu-item-opacity-disabled);
   pointer-events: none;
+  @include body-01;
 
   &:hover {
     background-color: inherit;
