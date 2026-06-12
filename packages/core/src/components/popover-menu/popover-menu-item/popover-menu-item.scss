@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/_focus-state' as *;
 
 :host {
   @include tds-box-sizing;
@@ -18,22 +19,27 @@
     &:hover {
       cursor: pointer;
       background-color: var(--tds-popover-menu-background-hover);
+      color: var(--tds-popover-menu-color-hover);
     }
 
     &.disabled {
       cursor: not-allowed;
-      color: var(--tds-popover-menu-divider-disabled-color);
+      opacity: var(--tds-popover-menu-opacity-disabled);
 
       &:hover {
         background-color: inherit;
       }
 
-      ::slotted(tds-icon) {
-        color: var(--tds-popover-menu-divider-disabled-icon-color);
-      }
-
       ::slotted(*) {
         pointer-events: none;
+      }
+
+      ::slotted(*:focus-visible) {
+        &::before {
+          outline: none;
+          border: none;
+          box-shadow: none;
+        }
       }
     }
   }
@@ -50,16 +56,14 @@
 
   ::slotted(*:focus-visible) {
     &::before {
-      z-index: -1;
+      @include tds-focus-state-menu-item;
+
       content: '';
       display: block;
       position: absolute;
-      width: calc(100% - 4px);
+      width: calc(100% - 5px);
       height: 100%;
-      top: 0;
-      left: 2px;
-      outline: 1px solid var(--tds-blue-400);
-      outline-offset: 1px;
+      left: 1px;
     }
   }
 }
