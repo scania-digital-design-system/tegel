@@ -9,16 +9,20 @@ The DateTime component provides a form input for date and time selection with su
   <label class="tl-datetime__label">Select date</label>
   <div class="tl-datetime__wrapper">
     <input class="tl-datetime__input" type="date" />
+    <span class="tl-icon tl-icon--calendar tl-icon--20 tl-datetime__icon" aria-hidden="true"></span>
   </div>
   <div class="tl-datetime__helper">Helper text</div>
 </div>
 ```
+
+Use `tl-icon--clock` instead of `tl-icon--calendar` when the input `type` is `time`.
 
 ## Required Stylesheets
 
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-datetime.css
+@scania/tegel-lite/tl-icon.css
 ```
 
 ## Elements
@@ -27,9 +31,10 @@ The DateTime component provides a form input for date and time selection with su
 | ---------------------------- | ------------ | ------------------------------------- |
 | `.tl-datetime`               | `<div>`      | Main container (min-width 208px unless `--no-min-width`) |
 | `.tl-datetime__label`        | `<label>`    | Label for the input                   |
-| `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input (icon generated via CSS) |
+| `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input and icon            |
 | `.tl-datetime__input`        | `<input>`    | Input element (date/datetime-local/time) |
 | `.tl-datetime__label-inside` | `<label>`    | Label inside the input wrapper        |
+| `.tl-datetime__icon`         | `<span>`     | Calendar (or clock for `type="time"`) icon, positioned to the right of the input |
 | `.tl-datetime__helper`       | `<div>`      | Helper text container below input     |
 
 ## Modifiers

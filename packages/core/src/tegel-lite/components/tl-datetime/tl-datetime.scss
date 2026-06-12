@@ -55,43 +55,27 @@
   .tl-datetime:has(input:disabled) & {
     cursor: not-allowed;
   }
+}
 
-  /* CSS-generated icon */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 18px;
-    width: 20px;
-    height: 20px;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 20px 20px;
-    background-color: var(--datetime-icon);
-    pointer-events: none;
+.tl-datetime__icon {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  color: var(--datetime-icon);
+  pointer-events: none;
 
-    /* Default: calendar icon for date/datetime inputs */
-    mask-image: var(--icon-calendar-svg);
-
-    /* Firefox - hide our custom icon since Firefox shows its own */
-    @supports (-moz-appearance: none) {
-      display: none;
-    }
+  /* Firefox shows its own native picker icon — hide ours to avoid a duplicate */
+  @supports (-moz-appearance: none) {
+    display: none;
   }
 
-  /* Change to clock icon for time input */
-  &:has(input[type='time'])::after {
-    mask-image: var(--icon-clock-svg);
+  .tl-datetime--error & {
+    color: var(--datetime-icon-error);
   }
 
-  .tl-datetime--error &::after {
-    background-color: var(--datetime-icon-error);
-  }
-
-  /* Disabled state */
-  .tl-datetime:has(input:disabled) &::after {
-    background-color: var(--datetime-icon-disabled);
+  .tl-datetime:has(input:disabled) & {
+    color: var(--datetime-icon-disabled);
   }
 }
 
@@ -116,7 +100,7 @@
     box-shadow: inset var(--datetime-box-shadow-focus);
   }
 
-  .tl-datetime:hover &:not(:focus):not(:disabled) {
+  .tl-datetime:hover &:not(:focus, :disabled) {
     box-shadow: inset var(--datetime-box-shadow-hover);
   }
 
@@ -128,7 +112,7 @@
     }
   }
 
-  .tl-datetime--error:hover &:not(:focus):not(:disabled) {
+  .tl-datetime--error:hover &:not(:focus, :disabled) {
     box-shadow: inset var(--datetime-box-shadow-error-hover);
   }
 

@@ -132,10 +132,13 @@ const Template = ({
 
   const disabledAttr = disabled ? 'disabled' : '';
 
+  const iconName = typeLookup[type] === 'time' ? 'clock' : 'calendar';
+
   return formatHtmlPreview(`
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-datetime.css"
+      "@scania/tegel-lite/tl-icon.css"
     -->
 
   <div class="${classes}" style="width: calc(100vw - 40px); max-width: 400px;">
@@ -147,6 +150,7 @@ const Template = ({
         ${disabledAttr}
       />
       ${labelInside}
+      <span class="tl-icon tl-icon--${iconName} tl-icon--20 tl-datetime__icon" aria-hidden="true"></span>
     </div>
     ${helperHtml}
   </div>
