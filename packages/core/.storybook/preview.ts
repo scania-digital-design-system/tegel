@@ -83,13 +83,16 @@ const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   document.body.classList.add(`tds-mode-variant-${modeVariant}`);
 
   const story = StoryFn();
+  // Return a string so Storybook takes the innerHTML + simulatePageLoad code
+  // path in @storybook/html's renderToCanvas. That revives <script> tags in
+  // the story HTML (otherwise they're inert and demo JS in tegel-lite
+  // stories like accordion/dropdown/modal never executes).
+  if (typeof story === 'string') {
+    return `<div class="tds-mode-variant-${modeVariant}">${story}</div>`;
+  }
   const wrapper = document.createElement('div');
   wrapper.classList.add(`tds-mode-variant-${modeVariant}`);
-  if (typeof story === 'string') {
-    wrapper.innerHTML = story;
-  } else {
-    wrapper.appendChild(story);
-  }
+  wrapper.appendChild(story);
   return wrapper;
 };
 
