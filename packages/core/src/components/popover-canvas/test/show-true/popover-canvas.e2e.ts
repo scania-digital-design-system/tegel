@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/popover-canvas/test/show-true/index.ht
 const componentName = 'tds-popover-canvas';
 const testDescription = 'tds-popover-canvas-show-true';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
