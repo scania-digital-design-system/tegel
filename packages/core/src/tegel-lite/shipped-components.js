@@ -32,6 +32,8 @@ export const SHIPPED_COMPONENTS = [
   'tl-link',
   'tl-message',
   'tl-modal',
+  'tl-popover-canvas',
+  'tl-popover-menu',
   'tl-radio-button',
   'tl-text-field',
   'tl-textarea',

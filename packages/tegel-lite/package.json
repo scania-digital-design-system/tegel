@@ -41,6 +41,8 @@
     "./tl-link.css": "./dist/tl-link.css",
     "./tl-message.css": "./dist/tl-message.css",
     "./tl-modal.css": "./dist/tl-modal.css",
+    "./tl-popover-canvas.css": "./dist/tl-popover-canvas.css",
+    "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-radio-button.css": "./dist/tl-radio-button.css",
     "./tl-text-field.css": "./dist/tl-text-field.css",
     "./tl-textarea.css": "./dist/tl-textarea.css",
