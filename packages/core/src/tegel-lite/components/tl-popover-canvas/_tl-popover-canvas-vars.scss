@@ -1,18 +1,19 @@
+@use '../../../../../../tokens/scss/component/popover';
+
 .tl-popover-canvas {
-  --popover-canvas-text: var(--color-foreground-text-strong);
-  --popover-canvas-background: var(--color-background-layer-01);
-
-  &--primary {
-    --popover-canvas-background: var(--color-background-layer-01);
-  }
-
-  &--secondary {
-    --popover-canvas-background: var(--color-background-layer-02);
-  }
+  --popover-canvas-text: var(--component-popover-text-link-primary-default);
+  --popover-canvas-background: var(--component-popover-background-primary);
+  --popover-canvas-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
 }
 
-.scania .tl-popover-canvas {
-  --popover-canvas-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
+.tl-popover-canvas--primary,
+.tl-popover-canvas .tl-popover-canvas--primary {
+  --popover-canvas-background: var(--component-popover-background-primary);
+}
+
+.tl-popover-canvas--secondary,
+.tl-popover-canvas .tl-popover-canvas--secondary {
+  --popover-canvas-background: var(--component-popover-background-secondary);
 }
 
 .traton .tl-popover-canvas {
