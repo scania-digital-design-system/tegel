@@ -1106,6 +1106,88 @@
         "$value": "{traton.color.transparent.invisible.dark}"
       }
     },
+    "popover": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "primary-active": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "secondary-active": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          }
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        }
+      },
+      "icon": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{traton.opacity.25}"
+        }
+      },
+      "text": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      }
+    },
     "accordion": {
       "background": {
         "primary-default": {

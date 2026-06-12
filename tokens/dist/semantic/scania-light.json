@@ -1106,6 +1106,88 @@
         "$value": "{scania.color.transparent.shadow.200}"
       }
     },
+    "popover": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{scania.color.grey.100}"
+          },
+          "primary-active": {
+            "$type": "color",
+            "$value": "{component.popover.background.link.primary-hover}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{scania.color.grey.50}"
+          },
+          "secondary-active": {
+            "$type": "color",
+            "$value": "{component.popover.background.link.secondary-hover}"
+          }
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        }
+      },
+      "icon": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{scania.opacity.25}"
+        }
+      },
+      "text": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      }
+    },
     "accordion": {
       "background": {
         "primary-default": {
@@ -1130,7 +1212,7 @@
         },
         "secondary-hover": {
           "$type": "color",
-          "$value": "{scania.color.grey.100}",
+          "$value": "{scania.color.grey.50}",
           "$description": "Secondary hover lands on base — different from Primary, reflects variant axis."
         },
         "secondary-active": {
