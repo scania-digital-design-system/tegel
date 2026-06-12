@@ -1,24 +1,24 @@
+@use '../../../../../../tokens/scss/component/popover';
+
 .tl-popover-menu {
-  --popover-menu-text: var(--color-foreground-text-strong);
-  --popover-menu-background: var(--color-background-layer-01);
-  --popover-menu-background-hover: var(--color-background-layer-02);
-  --popover-menu-item-outline-focus: var(--color-foreground-border-accent-focus);
-  --popover-menu-item-disabled: var(--color-foreground-text-disabled);
-  --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
-
-  &--primary {
-    --popover-menu-background: var(--color-background-layer-01);
-    --popover-menu-background-hover: var(--color-background-layer-02);
-  }
-
-  &--secondary {
-    --popover-menu-background: var(--color-background-layer-02);
-    --popover-menu-background-hover: var(--color-background-layer-01);
-  }
+  --popover-menu-text: var(--component-popover-text-link-primary-default);
+  --popover-menu-background: var(--component-popover-background-primary);
+  --popover-menu-background-hover: var(--component-popover-background-link-primary-hover);
+  --popover-menu-item-outline-focus: var(--component--focus-ring-color-strong);
+  --popover-menu-item-opacity-disabled: calc(var(--component-popover-opacity-disabled) / 100);
+  --popover-menu-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
 }
 
-.scania .tl-popover-menu {
-  --popover-menu-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
+.tl-popover-menu--primary,
+.tl-popover-menu .tl-popover-menu--primary {
+  --popover-menu-background: var(--component-popover-background-primary);
+  --popover-menu-background-hover: var(--component-popover-background-link-primary-hover);
+}
+
+.tl-popover-menu--secondary,
+.tl-popover-menu .tl-popover-menu--secondary {
+  --popover-menu-background: var(--component-popover-background-secondary);
+  --popover-menu-background-hover: var(--component-popover-background-link-secondary-hover);
 }
 
 .traton .tl-popover-menu {

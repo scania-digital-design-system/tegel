@@ -1,26 +1,32 @@
-:root,
-.tds-mode-light {
-  --tds-popover-menu-color: var(--tds-grey-950);
-  --tds-popover-menu-background: var(--tds-white);
-  --tds-popover-menu-background-hover: var(--tds-grey-100);
-  --tds-popover-menu-divider-color: var(--tds-grey-350);
-  --tds-popover-menu-divider-disabled-color: var(--tds-grey-250);
-  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-950);
+tds-popover-menu {
+  --tds-popover-menu-color: var(--component-popover-text-link-primary-default);
+  --tds-popover-menu-color-hover: var(--component-popover-text-link-primary-hover);
+  --tds-popover-menu-background: var(--component-popover-background-primary);
+  --tds-popover-menu-background-hover: var(--component-popover-background-link-primary-hover);
+  --tds-popover-menu-background-active: var(--component-popover-background-link-primary-active);
+  --tds-popover-menu-opacity-disabled: calc(var(--component-popover-opacity-disabled) / 100);
+  --tds-popover-menu-border-radius: calc(var(--component-popover-border-radius-default) * 1px);
+  --tds-popover-menu-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
 }
 
-.tds-mode-dark {
-  --tds-popover-menu-color: var(--tds-white);
-  --tds-popover-menu-background: var(--tds-grey-850);
-  --tds-popover-menu-background-hover: var(--tds-grey-700);
-  --tds-popover-menu-divider-color: var(--tds-grey-500);
-  --tds-popover-menu-divider-disabled-color: var(--tds-grey-500);
-  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-50);
+.tds-mode-variant-primary tds-popover-menu,
+tds-popover-menu.tds-mode-variant-primary {
+  --tds-popover-menu-color: var(--component-popover-text-link-primary-default);
+  --tds-popover-menu-color-hover: var(--component-popover-text-link-primary-hover);
+  --tds-popover-menu-background: var(--component-popover-background-primary);
+  --tds-popover-menu-background-hover: var(--component-popover-background-link-primary-hover);
+  --tds-popover-menu-background-active: var(--component-popover-background-link-primary-active);
+}
 
-  .tds-mode-variant-primary {
-    --tds-popover-menu-background: var(--tds-grey-850);
-  }
+.tds-mode-variant-secondary tds-popover-menu,
+tds-popover-menu.tds-mode-variant-secondary {
+  --tds-popover-menu-color: var(--component-popover-text-link-secondary-default);
+  --tds-popover-menu-color-hover: var(--component-popover-text-link-secondary-hover);
+  --tds-popover-menu-background: var(--component-popover-background-secondary);
+  --tds-popover-menu-background-hover: var(--component-popover-background-link-secondary-hover);
+  --tds-popover-menu-background-active: var(--component-popover-background-link-secondary-active);
+}
 
-  .tds-mode-variant-secondary {
-    --tds-popover-menu-background: var(--tds-grey-800);
-  }
+.traton tds-popover-menu {
+  --tds-popover-menu-box-shadow: none;
 }

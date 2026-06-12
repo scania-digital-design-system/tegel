@@ -8,8 +8,8 @@
   width: 160px;
   background-color: var(--tds-popover-menu-background);
   padding: 16px 6px;
-  box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
-  border-radius: 4px;
+  box-shadow: var(--tds-popover-menu-box-shadow);
+  border-radius: var(--tds-popover-menu-border-radius);
   z-index: tds-z-index(tooltip);
 
   &.fluid-width {

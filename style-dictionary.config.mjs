@@ -373,6 +373,7 @@ const COMPONENT_FILE_LIST = [
   ['radio-button', 'exact'],
   ['checkbox', 'exact'],
   ['toggle', 'exact'],
+  ['popover', 'exact'],
 ];
 
 // Helper function to create component file configuration
