@@ -34,7 +34,7 @@ Use `tl-icon--clock` instead of `tl-icon--calendar` when the input `type` is `ti
 | `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input and icon            |
 | `.tl-datetime__input`        | `<input>`    | Input element (date/datetime-local/time) |
 | `.tl-datetime__label-inside` | `<label>`    | Label inside the input wrapper        |
-| `.tl-datetime__icon`         | `<span>`     | Calendar (or clock for `type="time"`) icon, positioned to the right of the input |
+| `.tl-datetime__icon`         | `<span>`     | Icon for the component. Clock icon for type="time" and calendar icon for the other types |
 | `.tl-datetime__helper`       | `<div>`      | Helper text container below input     |
 
 ## Modifiers
