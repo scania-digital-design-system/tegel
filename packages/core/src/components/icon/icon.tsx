@@ -5,12 +5,48 @@ import { IconNames } from '../../types/Icons';
 // supported (Chromium, Firefox, Safari 18+) the path renders reactively from
 // the brand-scoped --tds-icon-<name>-d variable via the CSS `d` property, so
 // none of the imperative getComputedStyle / MutationObserver fallback runs —
-// those engines pay no per-icon runtime cost. Only engines without it (older
-// Safari/WebKit) fall back to resolving the `d` attribute in JS.
-const SUPPORTS_CSS_D =
-  typeof CSS !== 'undefined' &&
-  typeof CSS.supports === 'function' &&
-  CSS.supports('d', 'path("M0 0Z")');
+// those engines pay no per-icon runtime cost. Only engines without it fall
+// back to resolving the `d` attribute in JS.
+//
+// The probe must mirror exactly how render() applies the path: `d` set to a
+// `var(--…)` reference resolved through the cascade, NOT a literal `path()`.
+// That distinction is what fixes the TRATON placeholder (and every icon) in
+// Safari: WebKit ships the `d` property — so a `CSS.supports('d', 'path(…)')`
+// syntax check returns a false positive — yet it silently drops `var()`
+// substitution inside `d` (https://bugs.webkit.org/show_bug.cgi?id=219448).
+// `CSS.supports` only validates syntax (where `var()` is always "valid"), so
+// it cannot detect this gap. Instead, render a detached probe element that
+// reads its `d` from a custom property and verify via getComputedStyle that
+// the value actually resolved. WebKit yields an empty/unresolved `d` and
+// reports false, correctly falling through to the JS `d`-attribute path that
+// works there; Chromium/Firefox resolve it and keep the zero-cost CSS path.
+function detectCssDVarSupport(): boolean {
+  if (typeof document === 'undefined' || !document.createElementNS) return false;
+  try {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    svg.style.setProperty('--tds-icon-probe-d', 'path("M0 0Z")');
+    // position offscreen; never reflowed into the layout flow
+    svg.setAttribute(
+      'style',
+      `${svg.getAttribute('style') ?? ''};position:absolute;width:0;height:0`,
+    );
+    path.style.setProperty('d', 'var(--tds-icon-probe-d)');
+    svg.appendChild(path);
+    document.documentElement.appendChild(svg);
+    // Supporting engines resolve `var()` and report a normalised `path(…)`
+    // value (Chromium/Firefox rewrite "M0 0Z" to "M 0 0 Z", so match the
+    // command, not the exact bytes); WebKit drops the substitution and returns
+    // an empty string.
+    const resolved = getComputedStyle(path).getPropertyValue('d');
+    document.documentElement.removeChild(svg);
+    return resolved.trim().startsWith('path(');
+  } catch {
+    return false;
+  }
+}
+
+const SUPPORTS_CSS_D = detectCssDVarSupport();
 
 @Component({
   tag: 'tds-icon',
