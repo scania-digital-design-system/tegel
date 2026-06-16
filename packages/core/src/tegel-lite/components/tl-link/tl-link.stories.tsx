@@ -79,8 +79,12 @@ const linkWithinTextTemplate = ({ disabled, underline }) => {
   `);
 };
 
-export const StandaloneLink = standaloneLinkTemplate.bind({});
-StandaloneLink.args = {
+// Standalone Link is the primary story. Named `Default` to match the
+// convention used by every other component (Button, Checkbox, Toggle, …):
+// the primary story is exported as `Default` so it leads the sidebar with the
+// global alphabetical `storySort`, ahead of the auto-generated Docs/Notes pages.
+export const Default = standaloneLinkTemplate.bind({});
+Default.args = {
   underline: false,
   disabled: false,
   iconEnabled: true,
@@ -88,7 +92,7 @@ StandaloneLink.args = {
 };
 
 // Additional argTypes for Standalone Link only
-StandaloneLink.argTypes = {
+Default.argTypes = {
   iconEnabled: {
     name: 'Icon Enabled',
     description: 'Toggle to enable or disable the icon as suffix.',
