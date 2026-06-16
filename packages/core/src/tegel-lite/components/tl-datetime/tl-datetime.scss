@@ -11,15 +11,15 @@
     min-width: auto;
   }
 
-  // Disabled state — per Figma, the input visual unit (wrapper + outside label)
-  // fades to opacity 0.25 as a single unit. Helper text sits outside the unit
-  // and keeps full opacity, using its own disabled color.
+  // Disabled state — per Figma, the input visual unit (wrapper + outside label
+  // + helper text) fades to opacity 0.25 as a single unit.
   &:has(input:disabled) {
     cursor: not-allowed;
   }
 
   &:has(input:disabled) .tl-datetime__wrapper,
-  &:has(input:disabled) .tl-datetime__label {
+  &:has(input:disabled) .tl-datetime__label,
+  &:has(input:disabled) .tl-datetime__helper {
     opacity: var(--datetime-opacity-disabled);
   }
 
@@ -330,10 +330,5 @@
       mask-image: var(--icon-error-svg);
       background-color: var(--datetime-helper-error);
     }
-  }
-
-  /* Disabled state (should not override error text/icon color) */
-  .tl-datetime:has(input:disabled):not(.tl-datetime--error) & {
-    color: var(--color-foreground-text-disabled);
   }
 }
