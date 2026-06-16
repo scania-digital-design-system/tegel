@@ -33,7 +33,7 @@ $breakpoint-lg: 992px;
 }
 
 .tl-footer__link {
-  @include headline-07;
+  @include detail-02;
 
   color: var(--footer-top-links);
   text-decoration: none;
@@ -56,7 +56,6 @@ $breakpoint-lg: 992px;
     display: block;
     border-bottom: 1px solid var(--footer-top-divider);
     padding: 19.5px 40px;
-    font-weight: normal;
 
     &:hover {
       background-color: var(--footer-top-links-background-hover);
