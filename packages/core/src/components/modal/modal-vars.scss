@@ -9,6 +9,19 @@ tds-modal {
   --tds-modal-text-color: var(--component-modal-text-title-default);
   --tds-modal-body-text-color: var(--component-modal-text-body-default);
   --tds-modal-icon-color: var(--component-modal-icon-dismiss-default);
-  --tds-modal-box-shadow: 0 3px 3px 0 var(--component-shadow-default, rgba(0, 0, 0, 0.15)),
-    0 -1px 1px 0 var(--component-shadow-base-modifier, rgba(0, 0, 0, 0.10));
+  --tds-modal-box-shadow:
+    0 3px 3px 0 var(--component-shadow-default, rgb(0, 0, 0, 0.15)),
+    0 -1px 1px 0 var(--component-shadow-base-modifier, rgb(0, 0, 0, 0.1));
+}
+
+// Workaround: the Figma-exported token maps the Scania dark modal surface to
+// layer-01 (page base) instead of layer-02 (the raised surface used by every
+// other theme/mode). Override at component level until the token is corrected
+// in Figma. Do not edit tokens/ directly.
+.tds-mode-dark tds-modal,
+.scania .tds-mode-dark tds-modal,
+.scania.tds-mode-dark tds-modal,
+.scania .tl-mode-dark tds-modal,
+.scania.tl-mode-dark tds-modal {
+  --tds-modal-background: var(--color-background-layer-02);
 }
