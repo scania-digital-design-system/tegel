@@ -5,21 +5,21 @@
   --datetime-background: var(--datetime-background-primary);
   --datetime-text: var(--color-foreground-text-strong);
   --datetime-icon: var(--color-foreground-icon-strong);
-  --datetime-placeholder: var(--color-foreground-text-subtle);
+  --datetime-placeholder: var(--color-text-subtle);
 
   // Disabled
   --datetime-background-disabled-primary: var(--color-background-layer-01);
   --datetime-background-disabled-secondary: var(--color-background-layer-02);
   --datetime-background-disabled: var(--datetime-background-disabled-primary);
   --datetime-text-disabled: var(--color-foreground-text-disabled);
-  --datetime-placeholder-disabled: var(--color-foreground-text-disabled);
+  --datetime-placeholder-disabled: var(--color-text-disabled);
   --datetime-label-disabled: var(--color-foreground-text-disabled);
   --datetime-icon-disabled: var(--color-foreground-text-disabled);
 
   // Label
   --datetime-label: var(--color-foreground-text-strong);
   --datetime-label-inside: var(--color-foreground-text-strong);
-  --datetime-placeholder-focus: var(--tds-grey-500);
+  --datetime-placeholder-focus: var(--color-text-subtle);
 
   // Highlight bar
   --datetime-highlight-bar: var(--color-foreground-border-accent-focus);

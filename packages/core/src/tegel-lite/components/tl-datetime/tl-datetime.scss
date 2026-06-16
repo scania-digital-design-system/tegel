@@ -130,14 +130,25 @@
   }
 
   /*
-   * Empty/default state: Safari renders the unset datetime placeholder
-   * (e.g. "yyyy/mm/dd") through ::-webkit-datetime-edit. Without an explicit
-   * color it falls back to the UA accent (aqua) — most visible on TRATON,
-   * where no theme rule overrides it. Set the placeholder color explicitly.
+   * Empty/default state: when no date is picked Safari renders the placeholder
+   * (e.g. "yyyy/mm/dd") through the ::-webkit-datetime-edit container and its
+   * -fields-wrapper. Safari ignores `color` on these pseudos and paints the
+   * text via `-webkit-text-fill-color`; with neither set it falls back to the
+   * UA accent (aqua) — most visible on TRATON, where no theme rule overrides
+   * it. Set both `color` (other engines) and `-webkit-text-fill-color` (Safari)
+   * to the placeholder colour. We only target the container + fields-wrapper,
+   * not the individual sub-fields: when a value IS present Safari paints the
+   * digits in the sub-field pseudos (e.g. ::-webkit-datetime-edit-year-field),
+   * which keep `--datetime-text` from the rules below — so a filled, unfocused
+   * value is not dimmed. Scoped to `:not(:focus)`.
    */
   @supports selector(input::-webkit-datetime-edit) {
-    &:not(:focus)::-webkit-datetime-edit {
-      color: var(--datetime-placeholder);
+    &:not(:focus) {
+      &::-webkit-datetime-edit,
+      &::-webkit-datetime-edit-fields-wrapper {
+        color: var(--datetime-placeholder);
+        -webkit-text-fill-color: var(--datetime-placeholder);
+      }
     }
   }
 
