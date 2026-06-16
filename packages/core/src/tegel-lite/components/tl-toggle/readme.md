@@ -7,10 +7,12 @@ The Toggle component provides a switch input for binary on/off selections.
 ```html
 <div class="tl-toggle">
   <div class="tl-toggle__headline">Settings</div>
-  <input type="checkbox" class="tl-toggle__input tl-toggle__input--lg" />
-  <label class="tl-toggle__label">Enable feature</label>
+  <input type="checkbox" class="tl-toggle__input tl-toggle__input--lg" id="toggle-1" />
+  <label class="tl-toggle__label" for="toggle-1">Enable feature</label>
 </div>
 ```
+
+**Note:** Match the `for` attribute on the `<label>` to the `id` of the `<input>` so clicking the label text toggles the control (and to keep the label/control association accessible).
 
 <br />
 
