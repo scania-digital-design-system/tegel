@@ -76,6 +76,14 @@
   }
 
   tds-icon {
+    /* Pin the leading status icon to a fixed box so every variant (info /
+       success / warning / error) reserves the same width and height. Without
+       this the icon is a flex child with the default `flex-shrink: 1`, so its
+       box could vary between variants and shift the component width. */
+    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
     padding: 14px 0 0 12px;
   }
 
