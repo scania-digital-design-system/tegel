@@ -11,6 +11,18 @@
     min-width: auto;
   }
 
+  // Disabled state — per Figma, the input visual unit (wrapper + outside label)
+  // fades to opacity 0.25 as a single unit. Helper text sits outside the unit
+  // and keeps full opacity, using its own disabled color.
+  &:has(input:disabled) {
+    cursor: not-allowed;
+  }
+
+  &:has(input:disabled) .tl-datetime__wrapper,
+  &:has(input:disabled) .tl-datetime__label {
+    opacity: var(--datetime-opacity-disabled);
+  }
+
   /* Native picker visuals */
   input[type='datetime-local'],
   input[type='date'],

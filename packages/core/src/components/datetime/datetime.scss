@@ -243,10 +243,20 @@
   }
 }
 
-//Disabled state
+//Disabled state — per Figma, the input visual unit (container + outside label)
+//fades to opacity 0.25 as a single unit. Helper text sits below the unit and
+//keeps full opacity, using its own disabled color.
 .tds-form-datetime-disabled {
+  cursor: not-allowed;
+
+  .tds-datetime-container,
+  .tds-datetime-label {
+    opacity: var(--tds-datetime-opacity-disabled);
+  }
+
   .tds-datetime-container {
     border-bottom-color: transparent;
+    cursor: not-allowed;
   }
 
   .datetime-icon {

@@ -15,6 +15,7 @@
   --datetime-placeholder-disabled: var(--color-text-disabled);
   --datetime-label-disabled: var(--color-foreground-text-disabled);
   --datetime-icon-disabled: var(--color-foreground-text-disabled);
+  --datetime-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Label
   --datetime-label: var(--color-foreground-text-strong);
