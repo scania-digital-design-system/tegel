@@ -83,12 +83,15 @@ export class TdsSideMenu {
     }
   }
 
+  componentWillLoad() {
+    this.isCollapsed = this.collapsed;
+    this.initialCollapsedState = this.collapsed;
+  }
+
   connectedCallback() {
     this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
     this.matchesLgBreakpointMq.addEventListener('change', this.handleMatchesLgBreakpointChange);
     this.isMobile = !this.matchesLgBreakpointMq.matches;
-    this.isCollapsed = this.collapsed;
-    this.initialCollapsedState = this.collapsed;
   }
 
   componentDidLoad() {
@@ -268,7 +271,7 @@ export class TdsSideMenu {
         >
           <slot name="overlay"></slot>
           <aside class={`menu`}>
-            <div role="navigation">
+            <nav>
               <slot name="close-button"></slot>
               <div class="tds-side-menu-wrapper">
                 <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
@@ -283,7 +286,7 @@ export class TdsSideMenu {
                 </ul>
               </div>
               <slot name="sticky-end"></slot>
-            </div>
+            </nav>
           </aside>
         </div>
       </Host>

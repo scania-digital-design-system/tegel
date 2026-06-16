@@ -87,7 +87,7 @@ export class TdsSideMenuDropdown {
     return this.collapsed ? this.hoverState?.isHovered : this.open;
   }
 
-  connectedCallback() {
+  componentWillLoad() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
     this.collapsed = !!this.sideMenuEl?.collapsed;
     this.open = this.defaultOpen;
