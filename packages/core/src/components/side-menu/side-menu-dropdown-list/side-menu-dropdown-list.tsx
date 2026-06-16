@@ -21,7 +21,7 @@ export class TdsSideMenuDropdownList {
     this.collapsed = event.detail.collapsed;
   }
 
-  connectedCallback() {
+  componentWillLoad() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
     this.collapsed = !!this.sideMenuEl?.collapsed;
   }

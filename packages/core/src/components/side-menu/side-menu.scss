@@ -1,4 +1,4 @@
-//@import '../theme/core/spacing/vars';
+// @import '../theme/core/spacing/vars';
 @use '../../../../../grid-deprecated/vars' as *;
 @use '../../mixins/scrollbar' as *;
 @use '../../mixins/z-index' as *;
@@ -143,7 +143,7 @@ aside {
     overflow-y: auto;
   }
 
-  [role='navigation'] {
+  nav {
     height: 100%;
     display: flex;
     flex-direction: column;
