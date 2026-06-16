@@ -12,7 +12,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Discrete', 'Expressive'],
+      options: ['Discrete', 'Subtle', 'Soft', 'Defined', 'Strong', 'Expressive'],
       table: {
         defaultValue: { summary: 'Discrete' },
       },
@@ -55,7 +55,7 @@ export default {
 
 const Template = ({ orientation, variant, width, height }) => {
   const orientationClass = orientation === 'Horizontal' ? 'horizontal' : 'vertical';
-  const variantClass = variant === 'Expressive' ? 'expressive' : 'discrete';
+  const variantClass = variant.toLowerCase();
   const style = orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`;
 
   return formatHtmlPreview(`

@@ -8,7 +8,7 @@ The Divider component creates a visual separator between content sections.
 <div class="tl-divider tl-divider--discrete tl-divider--horizontal"></div>
 ```
 
-**Note:** Both an orientation modifier (horizontal/vertical) and a variant modifier (discrete/expressive) should be applied.
+**Note:** Both an orientation modifier (horizontal/vertical) and a variant modifier (discrete/subtle/soft/defined/strong/expressive) should be applied.
 
 <br />
 
@@ -42,8 +42,12 @@ Apply these classes to the `.tl-divider` element.
 
 | Modifier                  | Description                     |
 | ------------------------- | ------------------------------- |
-| `.tl-divider--discrete`   | Subtle divider using discrete border color (default) |
-| `.tl-divider--expressive` | Prominent divider using strong border color |
+| `.tl-divider--discrete`   | Lightest divider using discrete border color (default) |
+| `.tl-divider--subtle`     | Subtle divider using subtle border color |
+| `.tl-divider--soft`       | Soft divider using soft border color |
+| `.tl-divider--defined`    | Defined divider using defined border color |
+| `.tl-divider--strong`     | Strong divider using strong border color |
+| `.tl-divider--expressive` | Most prominent divider using expressive border color |
 
 ----------------------------------------------
 
