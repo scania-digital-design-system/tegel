@@ -55,7 +55,9 @@
       tds-icon {
         cursor: pointer;
         margin-left: auto;
-        transition: transform 160ms ease-in-out, opacity 120ms ease-in-out;
+        transition:
+          transform 160ms ease-in-out,
+          opacity 120ms ease-in-out;
 
         &.rotated {
           transform: rotate(180deg);
@@ -92,13 +94,12 @@
 
   .tds-divider {
     margin: 16px 16px 0;
-    background-color: var(--tds-card-divider);
     height: 1px;
   }
 
   .card-body {
     display: block;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   slot[name='body']::slotted(*) {
