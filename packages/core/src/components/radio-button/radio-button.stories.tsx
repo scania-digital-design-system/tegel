@@ -25,42 +25,44 @@ export default {
         type: 'text',
       },
     },
-    disabled: {
-      name: 'Disabled',
-      description: 'Disables the Radio Button.',
+    disabledIndex: {
+      name: 'Disabled index',
+      description:
+        'Disables a single Radio Button in the group by index, or the whole group with "all".',
       control: {
-        type: 'boolean',
+        type: 'radio',
       },
+      options: [0, 1, 2, 'none', 'all'],
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'none' },
       },
     },
   },
   args: {
     label: 'Label text',
-    disabled: false,
+    disabledIndex: 'none',
   },
 };
 
-const Template = ({ label, disabled }) =>
+const Template = ({ label, disabledIndex }) =>
   formatHtmlPreview(`
   <style>
-  .demo-fieldset-reset { 
+  .demo-fieldset-reset {
     border: 0;
     margin: 0;
     min-width: 0;
-    padding: 0; 
+    padding: 0;
   }
 </style>
 
   <fieldset class="demo-fieldset-reset">
-  <tds-radio-button 
+  <tds-radio-button
     name="rb-example"
     value="option1"
     radio-id="option-1"
     required=false
-    ${disabled ? 'disabled' : ''}
-    checked="true" 
+    ${disabledIndex === 0 || disabledIndex === 'all' ? 'disabled' : ''}
+    checked="true"
     tds-tab-index="0"
   >
     <div slot="label">
@@ -73,13 +75,25 @@ const Template = ({ label, disabled }) =>
     value="option2"
     radio-id="option-2"
     required=false
-    ${disabled ? 'disabled' : ''} 
+    ${disabledIndex === 1 || disabledIndex === 'all' ? 'disabled' : ''}
   >
     <div slot="label">
       ${label} 2
     </div>
   </tds-radio-button>
-    
+
+  <tds-radio-button
+    name="rb-example"
+    value="option3"
+    radio-id="option-3"
+    required=false
+    ${disabledIndex === 2 || disabledIndex === 'all' ? 'disabled' : ''}
+  >
+    <div slot="label">
+      ${label} 3
+    </div>
+  </tds-radio-button>
+
   </fieldset>
 
   <!-- Script tag with eventlistener for demo purposes. -->
