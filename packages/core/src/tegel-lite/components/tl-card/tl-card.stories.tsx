@@ -7,9 +7,9 @@ const thumbSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http
 
 // Transparent placeholder so the brand-adjusted `--color-background-layer-03`
 // background on `.tl-card__image` shows through (and changes with the brand).
-const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'>
-    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14' fill='#999'>Cover image</text>
-  </svg>`)}`;
+const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'></svg>`,
+)}`;
 
 export default {
   title: 'Tegel Lite/Card',
