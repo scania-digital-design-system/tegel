@@ -19,7 +19,7 @@
   --textarea-error-icon: var(--component--input-icon-error-default);
   --textarea-textcounter: var(--component--input-text-counter-default);
   --textarea-resize-icon: var(--component-textarea-icon-resize-default);
-  --textarea-opacity-disabled: var(--component--input-opacity-disabled);
+  --textarea-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).

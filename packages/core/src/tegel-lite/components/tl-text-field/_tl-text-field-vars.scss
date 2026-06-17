@@ -22,7 +22,7 @@
   --text-field-label-disabled: var(--color-text-disabled);
   --text-field-affix-disabled: var(--color-text-disabled);
   --text-field-textcounter: var(--component--input-text-counter-default);
-  --text-field-opacity-disabled: var(--component--input-opacity-disabled);
+  --text-field-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Per-corner radius sourced from brand-aware input-field tokens
   // (Scania: 4/4/0/0, Traton: 4/4/4/4).

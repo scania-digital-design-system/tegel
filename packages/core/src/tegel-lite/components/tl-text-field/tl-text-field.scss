@@ -16,14 +16,15 @@
     min-width: auto;
   }
 
-  // Disabled state — per Figma, the input visual unit fades to opacity 0.25
-  // as a single unit. Helper text sits outside and keeps full opacity.
+  // Disabled state — per Figma, the input visual unit (wrapper + label + helper
+  // text) fades to opacity 0.25 as a single unit, matching tl-datetime.
   &:has(.tl-text-field__input:disabled) {
     cursor: not-allowed;
   }
 
   &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper,
-  &:has(.tl-text-field__input:disabled) .tl-text-field__label {
+  &:has(.tl-text-field__input:disabled) .tl-text-field__label,
+  &:has(.tl-text-field__input:disabled) .tl-text-field__helper {
     opacity: var(--text-field-opacity-disabled);
   }
 

@@ -16,15 +16,17 @@
     min-width: auto;
   }
 
-  // Disabled state — per Figma, the input visual unit fades to opacity 0.25
-  // as a single unit. Helper text and textcounter sit outside and keep full
-  // opacity, using their own disabled colors.
+  // Disabled state — per Figma, the input visual unit (input + label + helper
+  // text + charcounter) fades to opacity 0.25 as a single unit, matching
+  // tl-datetime.
   &:has(.tl-textarea__input:disabled) {
     cursor: not-allowed;
   }
 
   &:has(.tl-textarea__input:disabled) .tl-textarea__input,
-  &:has(.tl-textarea__input:disabled) .tl-textarea__label {
+  &:has(.tl-textarea__input:disabled) .tl-textarea__label,
+  &:has(.tl-textarea__input:disabled) .tl-textarea__helper,
+  &:has(.tl-textarea__input:disabled) .tl-textarea__charcounter {
     opacity: var(--textarea-opacity-disabled);
   }
 
