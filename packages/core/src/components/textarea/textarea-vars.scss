@@ -14,7 +14,7 @@ tds-textarea {
   --tds-textarea-disabled-label: var(--color-text-disabled);
   --tds-textarea-helper-disabled: var(--color-text-disabled);
   --tds-textarea-textcounter-disabled: var(--color-text-disabled);
-  --tds-textarea-opacity-disabled: var(--component--input-opacity-disabled);
+  --tds-textarea-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Label
   --tds-textarea-label-color: var(--component--input-text-label-default);

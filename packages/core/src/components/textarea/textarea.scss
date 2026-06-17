@@ -253,14 +253,15 @@
 }
 
 // Disabled state — per Figma, the input visual unit (border + bg + value +
-// placeholder + inside-label + resize icon) fades to opacity 0.25 as a single
-// unit. Helper text and textcounter sit outside the wrapper and keep full
-// opacity, using their own disabled colors.
+// placeholder + inside-label + resize icon + helper text + textcounter) fades
+// to opacity 0.25 as a single unit, matching tl-datetime.
 .textarea-disabled {
   cursor: not-allowed;
 
   .textarea-wrapper,
-  .textarea-label {
+  .textarea-label,
+  .textarea-helper,
+  .textarea-textcounter {
     opacity: var(--tds-textarea-opacity-disabled);
   }
 
