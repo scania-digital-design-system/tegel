@@ -139,8 +139,12 @@
    * to the placeholder colour. We only target the container + fields-wrapper,
    * not the individual sub-fields: when a value IS present Safari paints the
    * digits in the sub-field pseudos (e.g. ::-webkit-datetime-edit-year-field),
-   * which keep `--datetime-text` from the rules below — so a filled, unfocused
-   * value is not dimmed. Scoped to `:not(:focus)`.
+   * which keep `--datetime-text` from the rules below — so a filled value is
+   * not dimmed in either state. We cover both `:not(:focus)` and `:focus`:
+   * Safari keeps painting the empty placeholder through the container while the
+   * input is focused, so without the focused branch it falls back to the aqua
+   * UA accent again on focus. The focused branch uses the focus placeholder
+   * token to mirror the `::placeholder` rule above.
    */
   @supports selector(input::-webkit-datetime-edit) {
     &:not(:focus) {
@@ -148,6 +152,14 @@
       &::-webkit-datetime-edit-fields-wrapper {
         color: var(--datetime-placeholder);
         -webkit-text-fill-color: var(--datetime-placeholder);
+      }
+    }
+
+    &:focus {
+      &::-webkit-datetime-edit,
+      &::-webkit-datetime-edit-fields-wrapper {
+        color: var(--datetime-placeholder-focus);
+        -webkit-text-fill-color: var(--datetime-placeholder-focus);
       }
     }
   }
