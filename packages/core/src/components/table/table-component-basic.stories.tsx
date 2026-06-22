@@ -48,6 +48,18 @@ export default {
         defaultValue: { summary: 'left' },
       },
     },
+    cellVerticalAlignment: {
+      name: 'Text vertical alignment in cells',
+      description:
+        'Vertical content alignment inside body cells.<br/>This control change in the docs/demo from Storybook does not show a difference given the height of each cell is already being used in full. This is for cases where the height may be bigger.',
+      control: {
+        type: 'radio',
+      },
+      options: ['top', 'bottom', 'middle'],
+      table: {
+        defaultValue: { summary: 'top' },
+      },
+    },
     compactDesign: {
       name: 'Compact design',
       description: 'Enables compact design of the Table, rows with less height.',
@@ -173,6 +185,7 @@ export default {
     modeVariant: 'Inherit from parent',
     headerTextAlignment: 'left',
     cellTextAlignment: 'left',
+    cellVerticalAlignment: 'top',
     compactDesign: false,
     responsiveDesign: false,
     disablePadding: false,
@@ -192,6 +205,7 @@ const BasicTemplate = ({
   modeVariant,
   headerTextAlignment,
   cellTextAlignment,
+  cellVerticalAlignment,
   compactDesign,
   responsiveDesign,
   disablePadding,
@@ -216,43 +230,45 @@ const BasicTemplate = ({
     >
       <tds-table-header >
           <tds-header-cell cell-key='truck' cell-value='Truck type' disable-padding="${disableHeaderPadding}" ${
-    column1Width ? `custom-width="${column1Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+            column1Width ? `custom-width="${column1Width}"` : ''
+          } text-align="${headerTextAlignment}"></tds-header-cell>
           <tds-header-cell cell-key='driver' cell-value='Driver name' disable-padding="${disableHeaderPadding}" ${
-    column2Width ? `custom-width="${column2Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+            column2Width ? `custom-width="${column2Width}"` : ''
+          } text-align="${headerTextAlignment}"></tds-header-cell>
           <tds-header-cell cell-key='country' cell-value='Country' disable-padding="${disableHeaderPadding}" ${
-    column3Width ? `custom-width="${column3Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+            column3Width ? `custom-width="${column3Width}"` : ''
+          } text-align="${headerTextAlignment}"></tds-header-cell>
           <tds-header-cell cell-key='mileage' cell-value='Mileage' disable-padding="${disableHeaderPadding}" ${
-    column4Width ? `custom-width="${column4Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+            column4Width ? `custom-width="${column4Width}"` : ''
+          } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
           ${[...Array(6)]
             .map(
               (_, index) => `
             <tds-table-body-row ${clickable ? 'clickable' : ''}>
-              <tds-body-cell cell-value="Test value ${
+              <tds-body-cell cell-value="Bigger text in this cell so that vertical alignment control effect in the docs can be noticeable, Test value ${
                 index % 2 === 0 ? '1' : '5'
               }" cell-key="truck" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-              }></tds-body-cell>
+              } ${cellVerticalAlignment ? `vertical-align="${cellVerticalAlignment}"` : ''}>
+                
+              </tds-body-cell>
               <tds-body-cell cell-value="Test value ${
                 index % 2 === 0 ? '2' : '6'
               }" cell-key="driver" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-              }></tds-body-cell>
+              } ${cellVerticalAlignment ? `vertical-align="${cellVerticalAlignment}"` : ''}></tds-body-cell>
               <tds-body-cell cell-value="Test value ${
                 index % 2 === 0 ? '3' : '7'
               }" cell-key="country" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-              }></tds-body-cell>
+              } ${cellVerticalAlignment ? `vertical-align="${cellVerticalAlignment}"` : ''}></tds-body-cell>
               <tds-body-cell cell-value="Test value ${
                 index % 2 === 0 ? '4' : '8'
               }" cell-key="mileage" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-              }></tds-body-cell>
+              } ${cellVerticalAlignment ? `vertical-align="${cellVerticalAlignment}"` : ''}></tds-body-cell>
             </tds-table-body-row>
           `,
             )

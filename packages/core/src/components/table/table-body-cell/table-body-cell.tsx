@@ -6,6 +6,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
 ];
+
+export type VerticalAlign = 'top' | 'bottom' | 'middle';
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the cell contents.
  */
@@ -27,6 +30,9 @@ export class TdsTableBodyCell {
   /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
   @Prop({ reflect: true }) textAlign?: TextAlign;
 
+  /** Setting for vertical alignment in the text of the cells, default value "top". Accepted values are "top", "bottom", "middle". */
+  @Prop({ reflect: true }) verticalAlign?: VerticalAlign;
+
   /** Number of columns the cell should span. */
   @Prop({ reflect: true }) colSpan?: number;
 
@@ -34,6 +40,8 @@ export class TdsTableBodyCell {
   @Prop({ reflect: true }) rowSpan?: number;
 
   @State() textAlignState: TextAlign | undefined = undefined;
+
+  @State() verticalAlignState: VerticalAlign | undefined = undefined;
 
   @State() activeSorting: boolean = false;
 
@@ -108,6 +116,10 @@ export class TdsTableBodyCell {
     if (this.textAlign) {
       this.textAlignState = this.textAlign;
     }
+
+    if (this.verticalAlign) {
+      this.verticalAlignState = this.verticalAlign;
+    }
   }
 
   render() {
@@ -121,6 +133,7 @@ export class TdsTableBodyCell {
 
     const dynamicStyles = {
       textAlign: this.textAlignState,
+      verticalAlign: this.verticalAlignState ?? 'top',
       // Conditionally set padding style
       padding: paddingStyle,
     };
