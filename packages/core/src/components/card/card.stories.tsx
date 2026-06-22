@@ -1,8 +1,13 @@
-import CardBodyImage from '../../stories/assets/image/card-img.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 const CardThumbnailSVG = `data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'></svg>`,
+)}`;
+
+// Transparent placeholder so the brand-adjusted `--color-background-layer-03`
+// background on `.card-body-img` shows through (and changes with the brand).
+const CardBodyImage = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'></svg>`,
 )}`;
 
 export default {

@@ -83,6 +83,11 @@
 
   .card-body-img {
     width: 100%;
+    background-color: var(--color-background-layer-03);
+  }
+
+  slot[name='body-image']::slotted(*) {
+    background-color: var(--color-background-layer-03);
   }
 
   .tds-divider {

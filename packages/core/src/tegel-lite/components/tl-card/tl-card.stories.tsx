@@ -5,10 +5,11 @@ const thumbSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http
     <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='10' fill='#999'></text>
   </svg>`)}`;
 
-const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'>
-    <rect width='100%' height='100%' fill='#F2F2F2'/>
-    <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14' fill='#999'></text>
-  </svg>`)}`;
+// Transparent placeholder so the brand-adjusted `--color-background-layer-03`
+// background on `.tl-card__image` shows through (and changes with the brand).
+const bodyImgSVG = `data:image/svg+xml;utf8,${encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='300'></svg>`,
+)}`;
 
 export default {
   title: 'Tegel Lite/Card',
