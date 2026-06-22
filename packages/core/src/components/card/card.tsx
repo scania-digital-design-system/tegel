@@ -135,7 +135,7 @@ export class TdsCard {
           {usesBodyImageSlot && <slot name="body-image"></slot>}
           {this.bodyImg && <img class="card-body-img" src={this.bodyImg} alt={this.bodyImgAlt} />}
           {this.imagePlacement === 'above-header' && this.getCardHeader()}
-          {this.bodyDivider && <tds-divider></tds-divider>}
+          {this.bodyDivider && <tds-divider variant="discrete"></tds-divider>}
           {usesBodySlot && <slot name="body"></slot>}
         </div>
         {usesActionsSlot && <slot name={`actions`}></slot>}
