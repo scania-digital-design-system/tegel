@@ -21,8 +21,12 @@
     background-color: var(--tds-divider-background-defined);
   }
 
-  &.dark-blue {
-    background-color: var(--tds-divider-background-dark-blue);
+  &.strong {
+    background-color: var(--tds-divider-background-strong);
+  }
+
+  &.expressive {
+    background-color: var(--tds-divider-background-expressive);
   }
 
   &.horizontal {

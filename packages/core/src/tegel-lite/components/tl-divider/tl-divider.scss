@@ -6,12 +6,28 @@
 
   background-color: var(--divider-background);
 
-  &--expressive {
+  &--discrete {
+    background-color: var(--divider-background-discrete);
+  }
+
+  &--subtle {
+    background-color: var(--divider-background-subtle);
+  }
+
+  &--soft {
+    background-color: var(--divider-background-soft);
+  }
+
+  &--defined {
+    background-color: var(--divider-background-defined);
+  }
+
+  &--strong {
     background-color: var(--divider-background-strong);
   }
 
-  &--discrete {
-    background-color: var(--divider-background-discrete);
+  &--expressive {
+    background-color: var(--divider-background-expressive);
   }
 
   &--horizontal {
