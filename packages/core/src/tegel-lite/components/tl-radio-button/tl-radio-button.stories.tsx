@@ -22,21 +22,22 @@ export default {
       control: {
         type: 'radio',
       },
-      options: [0, 1, 'none'],
+      options: [0, 1, 2, 'none'],
       table: {
         defaultValue: {
           summary: 0,
         },
       },
     },
-    disabled: {
-      name: 'Disabled',
+    disabledIndex: {
+      name: 'Disabled index',
       control: {
-        type: 'boolean',
+        type: 'radio',
       },
+      options: [0, 1, 2, 'none', 'all'],
       table: {
         defaultValue: {
-          summary: false,
+          summary: 'none',
         },
       },
     },
@@ -54,13 +55,13 @@ export default {
   },
   args: {
     label: 'Label text',
-    disabled: false,
+    disabledIndex: 'none',
     checkedIndex: 0,
     name: 'rb-example',
   },
 };
 
-const Template = ({ label, checkedIndex, disabled, name }) =>
+const Template = ({ label, checkedIndex, disabledIndex, name }) =>
   formatHtmlPreview(`
 <!-- Required stylesheets:
   "@scania/tegel-lite/global.css"
@@ -80,7 +81,7 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
         id="${name}-1"
         value="option-1"
         ${checkedIndex === 0 ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
+        ${disabledIndex === 0 || disabledIndex === 'all' ? 'disabled' : ''}
       />
       <label class="tl-radio-button__label" for="${name}-1">${label} 1</label>
     </div>
@@ -93,9 +94,22 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
         id="${name}-2"
         value="option-2"
         ${checkedIndex === 1 ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
+        ${disabledIndex === 1 || disabledIndex === 'all' ? 'disabled' : ''}
       />
       <label class="tl-radio-button__label" for="${name}-2">${label} 2</label>
+    </div>
+
+    <div class="tl-radio-button">
+      <input
+        class="tl-radio-button__input"
+        type="radio"
+        name="${name}"
+        id="${name}-3"
+        value="option-3"
+        ${checkedIndex === 2 ? 'checked' : ''}
+        ${disabledIndex === 2 || disabledIndex === 'all' ? 'disabled' : ''}
+      />
+      <label class="tl-radio-button__label" for="${name}-3">${label} 3</label>
     </div>
 </fieldset>
 `);

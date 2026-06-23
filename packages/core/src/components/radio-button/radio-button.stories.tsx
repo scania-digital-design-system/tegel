@@ -25,42 +25,56 @@ export default {
         type: 'text',
       },
     },
-    disabled: {
-      name: 'Disabled',
-      description: 'Disables the Radio Button.',
+    checkedIndex: {
+      name: 'Checked index',
+      description: 'Sets which Radio Button in the group is checked by index, or "none".',
       control: {
-        type: 'boolean',
+        type: 'radio',
       },
+      options: [0, 1, 2, 'none'],
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 0 },
+      },
+    },
+    disabledIndex: {
+      name: 'Disabled index',
+      description:
+        'Disables a single Radio Button in the group by index, or the whole group with "all".',
+      control: {
+        type: 'radio',
+      },
+      options: [0, 1, 2, 'none', 'all'],
+      table: {
+        defaultValue: { summary: 'none' },
       },
     },
   },
   args: {
     label: 'Label text',
-    disabled: false,
+    checkedIndex: 0,
+    disabledIndex: 'none',
   },
 };
 
-const Template = ({ label, disabled }) =>
+const Template = ({ label, checkedIndex, disabledIndex }) =>
   formatHtmlPreview(`
   <style>
-  .demo-fieldset-reset { 
+  .demo-fieldset-reset {
     border: 0;
     margin: 0;
     min-width: 0;
-    padding: 0; 
+    padding: 0;
   }
 </style>
 
   <fieldset class="demo-fieldset-reset">
-  <tds-radio-button 
+  <tds-radio-button
     name="rb-example"
     value="option1"
     radio-id="option-1"
     required=false
-    ${disabled ? 'disabled' : ''}
-    checked="true" 
+    ${disabledIndex === 0 || disabledIndex === 'all' ? 'disabled' : ''}
+    ${checkedIndex === 0 ? 'checked' : ''}
     tds-tab-index="0"
   >
     <div slot="label">
@@ -73,20 +87,74 @@ const Template = ({ label, disabled }) =>
     value="option2"
     radio-id="option-2"
     required=false
-    ${disabled ? 'disabled' : ''} 
+    ${disabledIndex === 1 || disabledIndex === 'all' ? 'disabled' : ''}
+    ${checkedIndex === 1 ? 'checked' : ''}
   >
     <div slot="label">
       ${label} 2
     </div>
   </tds-radio-button>
-    
+
+  <tds-radio-button
+    name="rb-example"
+    value="option3"
+    radio-id="option-3"
+    required=false
+    ${disabledIndex === 2 || disabledIndex === 'all' ? 'disabled' : ''}
+    ${checkedIndex === 2 ? 'checked' : ''}
+  >
+    <div slot="label">
+      ${label} 3
+    </div>
+  </tds-radio-button>
+
   </fieldset>
 
-  <!-- Script tag with eventlistener for demo purposes. -->
+  <!-- Script tag for demo purposes: keeps the selected Radio Button checked
+       across re-renders (e.g. when changing the disabled index) instead of
+       snapping back, since tds-radio-button doesn't sync its checked prop on
+       user interaction. -->
   <script>
-  document.addEventListener('tdsChange', (event) => {
-    console.log(event)
-  })
+  (function () {
+    var GROUP = 'rb-example';
+    var argIndex = ${checkedIndex === 'none' ? -1 : checkedIndex};
+
+    // The "Checked index" control wins whenever it changes; otherwise keep the
+    // user's last manual selection so unrelated re-renders don't reset it.
+    if (window.__tdsRbArg !== argIndex) {
+      window.__tdsRbArg = argIndex;
+      window.__tdsRbSelected = argIndex;
+    }
+
+    function radios() {
+      return Array.prototype.slice.call(
+        document.querySelectorAll('tds-radio-button[name="' + GROUP + '"]')
+      );
+    }
+
+    function applySelection() {
+      radios().forEach(function (el, index) {
+        el.checked = index === window.__tdsRbSelected;
+      });
+    }
+
+    // Remember manual selections made directly in the preview.
+    if (!window.__tdsRbBound) {
+      window.__tdsRbBound = true;
+      document.addEventListener('tdsChange', function (event) {
+        console.log(event);
+        var id = event.detail && event.detail.radioId;
+        var index = radios().findIndex(function (el) {
+          return el.getAttribute('radio-id') === id;
+        });
+        if (index !== -1) {
+          window.__tdsRbSelected = index;
+        }
+      });
+    }
+
+    customElements.whenDefined('tds-radio-button').then(applySelection);
+  })();
   </script>
   `);
 
