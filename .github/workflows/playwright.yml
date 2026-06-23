@@ -77,7 +77,7 @@ jobs:
         working-directory: packages/tegel-lite
         run: HOME=/root npx playwright test
 
-      - uses: daun/playwright-report-summary@v3
+      - uses: daun/playwright-report-summary@1229105480a2a4bdd91598d8a146fbab41343fce # v3.11.0
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         if: always()
