@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Popover Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-popover-menu.css" />
+    <link rel="stylesheet" href="../../dist/tl-divider.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+    <link rel="stylesheet" href="../../dist/tl-button.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper">
+
+      <span class="click-icon">Click icon to toggle Popover Menu</span>
+      <div id="popover" class="tl-popover-menu tl-popover-menu--primary tl-popover-menu--visible">
+        <div class="tl-popover-menu__item-wrapper">
+          <button class="tl-popover-menu__item">Action</button>
+          <div class="tl-divider tl-divider--horizontal"></div>
+          <button class="tl-popover-menu__item">Action</button>
+          <button class="tl-popover-menu__item">Action</button>
+          <button class="tl-popover-menu__item--disabled">Disabled action</button>
+          <div class="tl-divider tl-divider--horizontal"></div>
+          <button class="tl-popover-menu__item">Action</button>
+          <div class="tl-divider tl-divider--horizontal"></div>
+          <button class="tl-popover-menu__item">Action</button>
+          <button class="tl-popover-menu__item">Action</button>
+        </div>
+      </div>
+      <button id="trigger" class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
+        <span id="trigger-label" class="tl-icon tl-icon--kebab tl-icon--16"></span>
+      </button>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 24px;
+        gap: 16px;
+      }
+  </style>
+</html>

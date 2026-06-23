@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Tooltip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-tooltip.css" />
+    <link rel="stylesheet" href="../../dist/tl-button.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+      <button type="button" class="tl-button tl-button--sm tl-button--primary tl-tooltip-trigger" aria-describedby="tooltip-id">
+        Hover me
+      </button>
+
+      <div
+        id="tooltip-id"
+        class="tl-tooltip tl-tooltip--top-start tl-tooltip--visible"
+        role="tooltip"
+        style="top: 80px; left: 24px;"
+      >
+        Multiple lines of tooltip - This is a tooltip that need a set of words to be able to formulate a sentence, that will be placed on multiple rows.
+      </div>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 24px;
+        gap: 24px;
+      }
+  </style>
+</html>

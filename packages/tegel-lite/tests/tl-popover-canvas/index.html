@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Popover Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-popover-canvas.css" />
+    <link rel="stylesheet" href="../../dist/tl-button.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+    <link rel="stylesheet" href="../../dist/tl-link.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper">
+
+      <div id="popover" class="tl-popover-canvas tl-popover-canvas--primary tl-popover-canvas--visible">
+        <div class="tl-popover-canvas__content">
+          <h2 class="tl-popover-canvas__header">A Popover Canvas!</h2>
+          <p>Where you can put anything you want!</p>
+          <div class="tl-popover-canvas__actions">
+            <a
+              class="tl-link tl-link--standalone tl-link--underline"
+              href="https://tegel.scania.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Even links!</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <button id="trigger" class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
+        <span id="trigger-label" class="tl-icon tl-icon--kebab tl-icon--16"></span>
+      </button>
+      <span class="tl-link-text">Click icon to toggle Popover Canvas</span>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px;
+        gap: 16px;
+      }
+  </style>
+</html>

@@ -1,0 +1,82 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Text Field</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-text-field.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+      <div class="variant-wrapper">
+
+        <div class="tl-text-field tl-text-field--primary tl-text-field--lg">
+          <label class="tl-text-field__label">Label</label>
+          <div class="tl-text-field__input-wrapper">
+            <input class="tl-text-field__input" type="text" placeholder="Placeholder" />
+          </div>
+          <div class="tl-text-field__bottom">
+            <div class="tl-text-field__helper">Helper text</div>
+          </div>
+        </div>
+
+        <div class="tl-text-field tl-text-field--primary tl-text-field--success tl-text-field--md">
+          <label class="tl-text-field__label">Label</label>
+          <div class="tl-text-field__input-wrapper">
+            <input class="tl-text-field__input" type="text" placeholder="Placeholder" />
+          </div>
+          <div class="tl-text-field__bottom">
+            <div class="tl-text-field__helper">Helper text</div>
+          </div>
+        </div>
+
+        <div class="tl-text-field tl-text-field--primary tl-text-field--error tl-text-field--sm">
+          <label class="tl-text-field__label">Label</label>
+          <div class="tl-text-field__input-wrapper">
+            <input class="tl-text-field__input" type="text" placeholder="Placeholder" />
+          </div>
+          <div class="tl-text-field__bottom">
+            <div class="tl-text-field__helper">Helper text</div>
+          </div>
+        </div>
+
+        <div class="tl-text-field tl-text-field--primary tl-text-field--lg">
+          <label class="tl-text-field__label">Label</label>
+          <div class="tl-text-field__input-wrapper">
+            <input class="tl-text-field__input" type="text" placeholder="Placeholder" disabled />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .variant-wrapper {
+        display: flex;
+        width: 380px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+  </style>
+</html>
