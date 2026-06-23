@@ -28,6 +28,7 @@
     "lint": "npx eslint ./",
     "tsc": "npx tsc --noEmit",
     "lint:prop-reflect": "node scripts/check-prop-reflect.mjs",
+    "check:artifact-size": "node scripts/check-artifact-size-budgets.mjs",
     "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect"
   },
   "repository": {

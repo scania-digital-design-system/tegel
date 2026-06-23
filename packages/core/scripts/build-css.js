@@ -23,6 +23,9 @@ async function main() {
     ['src/global/scania-variables.scss', 'dist-styles/scania-variables.css'],
     ['src/global/traton.scss', 'dist-styles/traton.css'],
     ['src/global/traton-variables.scss', 'dist-styles/traton-variables.css'],
+    ['src/global/tegel-icons.scss', 'dist/tegel/tegel-icons.css'],
+    ['src/global/tegel-icons-scania.scss', 'dist/tegel/tegel-icons-scania.css'],
+    ['src/global/tegel-icons-traton.scss', 'dist/tegel/tegel-icons-traton.css'],
   ];
 
   const watch = process.argv.includes('--watch');

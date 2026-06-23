@@ -1,23 +1,21 @@
 /**
- * Reads scaniaIconsArray.js and tratonIconsArray.js, emits two generated
- * stylesheets:
+ * Reads scaniaIconsArray.js and tratonIconsArray.js, then emits generated
+ * icon stylesheets:
  *
- * 1. tokens/scss/component/icon.scss
- *    --tds-icon-<name>-d variables (CSS path() values) scoped to .scania
- *    and .traton, so the <tds-icon> path data is picked by the cascade
- *    instead of by JS brand detection. Both brand blocks define the
- *    union of icon names; names with no native definition for a brand
- *    fall back to that brand's placeholder path. A --tds-brand-name
- *    marker plus --tds-icon-<name>-exists: 1 (only on natively defined
- *    names) lets the component log a console warning when a name is
- *    rendered as a placeholder.
+ * 1. tokens/scss/component/icon-scania.scss and icon-traton.scss
+ *    Native --tds-icon-<name>-d variables (CSS path() values) for each brand.
+ *    These files intentionally do not emit per-missing-icon placeholders or
+ *    existence markers. The web component now resolves missing brand icons via
+ *    JS lookup data, keeping this CSS payload opt-in only.
  *
- * 2. tokens/scss/component/icon-fallbacks.scss
- *    --icon-<name>-svg fallbacks for tegel-lite, which uses url()-based
- *    mask-image variables. Under .traton, every Scania-only name aliases
- *    to var(--traton-icon-placeholder-svg) so the cascade no longer
- *    leaks the Scania URL through. Symmetric .scania block (empty today
- *    since Traton is a strict subset, future-proof).
+ * 2. tokens/scss/component/icon.scss
+ *    A combined opt-in stylesheet that forwards the brand-specific path files.
+ *
+ * 3. tokens/scss/component/icon-fallbacks.scss
+ *    --icon-<name>-svg fallbacks for Tegel Lite, which uses url()-based
+ *    mask-image variables. Under .traton, Scania-only names must still alias
+ *    to var(--traton-icon-placeholder-svg), otherwise the inherited :root
+ *    Scania URL would leak through in Traton contexts.
  */
 
 import { writeFileSync } from 'node:fs';
@@ -56,17 +54,15 @@ const allNames = [...new Set([...scaniaByName.keys(), ...tratonByName.keys()])].
   a < b ? -1 : a > b ? 1 : 0,
 );
 
-function buildPathBlock(selectors, brandName, byName, placeholder) {
+function buildPathBlock(selectors, brandName, byName) {
   const lines = [`  --tds-brand-name: '${brandName}';`];
-  for (const name of allNames) {
-    const definition = byName.get(name) ?? placeholder;
+  const nativeNames = [...byName.keys()].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
+  for (const name of nativeNames) {
+    const definition = byName.get(name);
     if (definition.includes('"')) {
       throw new Error(`Icon "${name}" path data contains a double quote; needs escaping logic.`);
     }
     lines.push(`  --tds-icon-${name}-d: path("${definition}");`);
-    if (byName.has(name)) {
-      lines.push(`  --tds-icon-${name}-exists: 1;`);
-    }
   }
   return `${selectors.join(',\n')} {\n${lines.join('\n')}\n}`;
 }
@@ -84,12 +80,12 @@ function buildUrlFallbackBlock(selectors, brandName, byName) {
 
 const header = `/**\n * Do not edit directly, this file was auto-generated.\n */\n\n`;
 
-const pathOutput =
-  header +
-  buildPathBlock([':root', '.scania'], 'scania', scaniaByName, scaniaPlaceholder) +
-  '\n\n' +
-  buildPathBlock(['.traton'], 'traton', tratonByName, tratonPlaceholder) +
-  '\n';
+const scaniaPathOutput =
+  header + buildPathBlock([':root', '.scania'], 'scania', scaniaByName) + '\n';
+
+const tratonPathOutput = header + buildPathBlock(['.traton'], 'traton', tratonByName) + '\n';
+
+const pathOutput = header + "@use 'icon-scania' as *;\n" + "@use 'icon-traton' as *;\n";
 
 const fallbackOutput =
   header +
@@ -99,13 +95,17 @@ const fallbackOutput =
   '\n';
 
 const pathPath = join(repoRoot, 'tokens/scss/component/icon.scss');
+const scaniaPathPath = join(repoRoot, 'tokens/scss/component/icon-scania.scss');
+const tratonPathPath = join(repoRoot, 'tokens/scss/component/icon-traton.scss');
 const fallbackPath = join(repoRoot, 'tokens/scss/component/icon-fallbacks.scss');
 writeFileSync(pathPath, pathOutput, 'utf8');
+writeFileSync(scaniaPathPath, scaniaPathOutput, 'utf8');
+writeFileSync(tratonPathPath, tratonPathOutput, 'utf8');
 writeFileSync(fallbackPath, fallbackOutput, 'utf8');
 
 const tratonFallbacks = allNames.filter((n) => !tratonByName.has(n)).length;
 const scaniaFallbacks = allNames.filter((n) => !scaniaByName.has(n)).length;
 console.log(
-  `Wrote ${pathPath} and ${fallbackPath} ` +
+  `Wrote ${pathPath}, ${scaniaPathPath}, ${tratonPathPath} and ${fallbackPath} ` +
     `(${allNames.length} icon names; ${scaniaFallbacks} scania, ${tratonFallbacks} traton placeholders)`,
 );

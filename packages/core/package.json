@@ -31,6 +31,9 @@
       "default": "./dist/components/*.js"
     },
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
+    "./dist/tegel/tegel-icons.css": "./dist/tegel/tegel-icons.css",
+    "./dist/tegel/tegel-icons-scania.css": "./dist/tegel/tegel-icons-scania.css",
+    "./dist/tegel/tegel-icons-traton.css": "./dist/tegel/tegel-icons-traton.css",
     "./tds-accordion-item": {
       "import": "./dist/components/tds-accordion-item.js",
       "types": "./dist/components/tds-accordion-item.d.ts"
@@ -380,7 +383,8 @@
     "build:css": "node scripts/build-css.js",
     "watch:css": "node scripts/build-css.js --watch",
     "verify:csp": "node scripts/verify-csp.mjs",
-    "build:core": "stencil build && stencil build --docs && npm run build:css && npm run verify:csp",
+    "check:artifact-size": "node ../../scripts/check-artifact-size-budgets.mjs",
+    "build:core": "stencil build && stencil build --docs && npm run build:css && npm run verify:csp && npm run check:artifact-size",
     "build": "npm run build:core && npm run build:tegel-lite",
     "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
