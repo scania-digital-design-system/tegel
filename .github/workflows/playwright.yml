@@ -44,3 +44,51 @@ jobs:
           name: playwright-output
           path: ./packages/core/test-results/output ## Folder used in playwright.config.js `outputDir`
           retention-days: 1
+
+  test-lite:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        with:
+          node-version: 24
+
+      # Tegel Lite CSS is compiled from packages/core sources via the core
+      # build scripts (sass), so the core deps are required to produce dist/.
+      - name: Install Core dependencies
+        working-directory: packages/core
+        run: npm ci
+
+      # Compiles packages/tegel-lite/dist (global.css, *-variables.css and the
+      # per-component CSS) that the test pages link to. dist/ is git-ignored.
+      - name: Build Tegel Lite
+        working-directory: packages/core
+        run: npm run build:tegel-lite
+
+      - name: Install Tegel Lite dependencies
+        working-directory: packages/tegel-lite
+        run: npm ci
+
+      - name: Run Tegel Lite Playwright tests
+        working-directory: packages/tegel-lite
+        run: HOME=/root npx playwright test
+
+      - uses: daun/playwright-report-summary@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        if: always()
+        with:
+          report-file: ./packages/tegel-lite/results.json
+
+      - uses: actions/upload-artifact@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        if: failure()
+        with:
+          name: playwright-lite-output
+          path: ./packages/tegel-lite/test-results/output ## Folder used in playwright.config.ts `outputDir`
+          retention-days: 1
