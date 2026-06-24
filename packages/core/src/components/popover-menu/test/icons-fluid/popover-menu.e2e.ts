@@ -18,7 +18,11 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
 
     test('renders icons-fluid popover-menu correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+      const dropDownList = page.getByRole('menu');
+
       await triggerButton.click();
+      await expect(dropDownList).toBeVisible();
+      await expect(page.getByRole('menuitem')).toHaveCount(9);
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
