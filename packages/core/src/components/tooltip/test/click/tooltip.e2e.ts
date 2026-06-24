@@ -20,12 +20,13 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     });
 
     test('Should appears on button click', async ({ page }) => {
-      // Select the button that triggers the tooltip on click
-      const button = page.locator('tds-button#button-3');
-
-      await button.click();
-
+      const button = page.locator('tds-button#button-3.hydrated');
       const tooltipText = page.locator('text=Text inside Tooltip');
+
+      await page.locator('tds-tooltip.hydrated').waitFor({ state: 'attached' });
+      await button.waitFor({ state: 'attached' });
+      await button.click();
+      await tooltipText.waitFor({ state: 'visible' });
 
       // Assert that the tooltip is visible after clicking the button
       await expect(tooltipText).toBeVisible();
