@@ -14,7 +14,7 @@
     "build:tegel-lite": "cd packages/core && npm run build:tegel-lite",
     "test": "cd packages/core && npm run test",
     "test:axe": "cd packages/core && npm run test:axe",
-    "test:lte": "npm run build:tegel-lite && cd packages/tegel-lite && node docker-test-runner.js",
+    "test:lte": "npm run build:tegel-lite && cd packages/tegel-lite && node ../core/docker-test-runner.js",
     "commit": "cz",
     "prepare": "husky install",
     "reinstall": "./reinstall.sh",
