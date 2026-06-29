@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Radio Button</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-radio-button.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+      <fieldset class="demo-fieldset-reset">
+        <div class="tl-radio-button">
+          <input class="tl-radio-button__input" type="radio" name="rb-example" id="rb-example-1" value="option-1" checked />
+          <label class="tl-radio-button__label" for="rb-example-1">Label text 1</label>
+        </div>
+
+        <div class="tl-radio-button">
+          <input class="tl-radio-button__input" type="radio" name="rb-example" id="rb-example-2" value="option-2" />
+          <label class="tl-radio-button__label" for="rb-example-2">Label text 2</label>
+        </div>
+
+        <div class="tl-radio-button">
+          <input class="tl-radio-button__input" type="radio" name="rb-example" id="rb-example-3" value="option-3" disabled />
+          <label class="tl-radio-button__label" for="rb-example-3">Label text 3</label>
+        </div>
+      </fieldset>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .demo-fieldset-reset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+  </style>
+</html>

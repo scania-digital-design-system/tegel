@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Textarea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-textarea.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+      <div class="variant-wrapper">
+
+        <div class="tl-textarea tl-textarea--primary" style="width: 400px;">
+          <label class="tl-textarea__label" for="ta-default">Label</label>
+          <textarea class="tl-textarea__input" id="ta-default" rows="5" placeholder="Placeholder"></textarea>
+        </div>
+
+        <div class="tl-textarea tl-textarea--primary tl-textarea--error" style="width: 400px;">
+          <label class="tl-textarea__label" for="ta-error">Label</label>
+          <textarea class="tl-textarea__input" id="ta-error" rows="3" placeholder="Placeholder"></textarea>
+          <div class="tl-textarea__bottom">
+            <div class="tl-textarea__helper">Helper text</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .variant-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .demo-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+  </style>
+</html>

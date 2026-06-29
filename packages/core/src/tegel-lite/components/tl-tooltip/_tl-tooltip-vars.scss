@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/tooltip';
+
 .tl-tooltip {
   --tooltip-color: var(--component-tooltip-text-default);
   --tooltip-background: var(--component-tooltip-background-default);

@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Modal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-modal.css" />
+    <link rel="stylesheet" href="../../dist/tl-button.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+  </head>
+
+  <body style="height: 100vh;">
+    <div class="demo-wrapper">
+      <div class="tl-modal tl-modal--visible tl-modal--lg">
+        <div class="tl-modal__header">
+          <h2 class="tl-modal__title">Header text</h2>
+          <button class="tl-modal__close">
+            <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="tl-modal__body">
+          "I beg your pardon, Dr. Lanyon," he replied civilly enough. "What you say is very well founded; and my impatience has shown its heels to my politeness. I come here at the instance of your colleague, Dr. Henry Jekyll, on a piece of business of some moment; and I understood..."
+        </div>
+        <div class="tl-modal__actions">
+          <button class="tl-button tl-button--sm tl-button--primary">Button Text</button>
+          <button class="tl-button tl-button--sm tl-button--secondary">Button Text</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-modal__overlay tl-modal--visible"></div>
+  </body>
+  <style>
+      .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+      }
+
+      .demo-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        z-index: 1001;
+      }
+  </style>
+</html>
