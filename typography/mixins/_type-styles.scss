@@ -224,3 +224,11 @@
   letter-spacing: var(--detail-07-letter-spacing);
   text-transform: var(--detail-07-text-transform);
 }
+
+@mixin title-01 {
+  font-family: var(--type-system-title-01-font-family);
+  font-size: calc(var(--type-system-title-01-font-size) * 1px);
+  line-height: calc(var(--type-system-title-01-line-height) * 1px);
+  font-weight: var(--type-system-title-01-font-weight);
+  letter-spacing: calc(var(--type-system-title-01-letter-spacing) * 1px);
+}
