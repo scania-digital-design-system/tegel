@@ -7,15 +7,32 @@ body,
   min-height: 100%;
 }
 
-h1 { font-family: var(--headline-01-font-family); }
-h2 { font-family: var(--headline-02-font-family); }
-h3 { font-family: var(--headline-03-font-family); }
-h4 { font-family: var(--headline-04-font-family); }
-h5 { font-family: var(--headline-05-font-family); }
-h6 { font-family: var(--headline-06-font-family); }
+h1 {
+  font-family: var(--headline-01-font-family);
+}
+
+h2 {
+  font-family: var(--headline-02-font-family);
+}
+
+h3 {
+  font-family: var(--headline-03-font-family);
+}
+
+h4 {
+  font-family: var(--headline-04-font-family);
+}
+
+h5 {
+  font-family: var(--headline-05-font-family);
+}
+
+h6 {
+  font-family: var(--headline-06-font-family);
+}
+
 p,
-ul > li,
-a {
+ul>li {
   font-family: var(--body-01-font-family);
 }
 
@@ -23,7 +40,8 @@ a {
   /* This is the "show code" buttons that appears in examples under the docs tab. */
   /* Known issue: :has is not currently supported in firefox */
   position: relative;
-  z-index: 100000 !important; /* show above things like modals, headers, etc */
+  z-index: 100000 !important;
+  /* show above things like modals, headers, etc */
 }
 
 ::-webkit-scrollbar {
