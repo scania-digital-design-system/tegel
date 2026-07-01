@@ -37,6 +37,7 @@
     "./tl-datetime.css": "./dist/tl-datetime.css",
     "./tl-divider.css": "./dist/tl-divider.css",
     "./tl-footer.css": "./dist/tl-footer.css",
+    "./tl-header.css": "./dist/tl-header.css",
     "./tl-icon.css": "./dist/tl-icon.css",
     "./tl-link.css": "./dist/tl-link.css",
     "./tl-message.css": "./dist/tl-message.css",

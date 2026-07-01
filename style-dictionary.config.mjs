@@ -374,6 +374,7 @@ const COMPONENT_FILE_LIST = [
   ['checkbox', 'exact'],
   ['toggle', 'exact'],
   ['popover', 'exact'],
+  ['header', 'exact'],
 ];
 
 // Helper function to create component file configuration
