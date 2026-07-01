@@ -297,7 +297,7 @@ tds-header {
 
   /* App Launcher */
   --tds-header-app-launcher-menu-background: var(
-    --component-header-background-menu-item-tile-default
+    --component-header-background-menu-item-link-default
   );
   --tds-header-app-launcher-category-title-color: var(--component-header-text-category-default);
   --tds-header-app-launcher-grid-category-title-color: var(
@@ -306,6 +306,7 @@ tds-header {
   --tds-header-app-launcher-item-color: var(--component-header-text-menu-item-link-default);
 
   // App launcher - Grid menu
+  --tds-header-app-launcher-grid-color: var(--component-header-text-menu-item-link-default);
   --tds-header-app-launcher-grid-hover-background: var(
     --component-header-background-menu-item-tile-hover
   );
