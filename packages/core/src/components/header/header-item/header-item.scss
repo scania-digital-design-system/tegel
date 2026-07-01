@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../mixins/focus-state' as *;
 
 :host {
@@ -6,7 +7,9 @@
   ::slotted(a) {
     all: unset;
     @include tds-box-sizing;
+    @include title-01;
 
+    color: var(--tds-header-nav-item-color);
     background-color: var(--tds-header-background);
     border-right: 1px solid var(--tds-header--basic-element-border);
     width: 100%;

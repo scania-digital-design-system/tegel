@@ -22,11 +22,11 @@
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
       background-color: var(--tds-nav-dropdown-item-background);
-      color: var(--tds-header-nav-item-dropdown-opened-color);
+      color: var(--tds-header-nav-item-dropdown-item-color);
     }
 
     ::slotted(a:hover) {
-      background-color: var(--tds-nav-item-background-hover);
+      background-color: var(--tds-header-nav-item-dropdown-item-background-hover);
       cursor: pointer;
     }
 
@@ -35,15 +35,13 @@
     }
 
     &-selected {
-      background-color: var(--tds-nav-item-background-selected);
+      background-color: var(--tds-nav-item-dropdown-item-background-selected);
       padding-right: 4px;
-      border-left-width: 4px;
-      border-left-style: solid;
-      border-left-color: var(--tds-nav-item-border-color-active);
+      border-left: 4px solid var(--tds-nav-item-dropdown-item-border-color-selected);
 
       ::slotted(a),
       ::slotted(button) {
-        background-color: var(--tds-nav-item-background-selected);
+        background-color: var(--tds-nav-item-dropdown-item-background-selected);
       }
 
       &:focus-within {

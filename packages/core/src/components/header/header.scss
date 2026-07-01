@@ -1,16 +1,14 @@
-//@import '../theme/core/spacing/vars';
+// @import '../theme/core/spacing/vars';
 @use '../../../../../grid-deprecated/vars' as *;
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/flex-center' as *;
 @use '../../mixins/scrollbar' as *;
 @use '../../mixins/z-index' as *;
 
-html,
-:root {
-  --tds-nav-dropdown-menu-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --tds-nav-dropdown-item-border-radius: 0 0 4px 4px;
-  --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
-}
+// html,
+// :root {
+
+// }
 
 tds-header {
   display: block;
