@@ -5,11 +5,6 @@
 @use '../../mixins/scrollbar' as *;
 @use '../../mixins/z-index' as *;
 
-// html,
-// :root {
-
-// }
-
 tds-header {
   display: block;
   height: var(--tds-header-height);
@@ -50,7 +45,7 @@ nav {
     display: block;
     flex-grow: 1;
     height: var(--tds-header-height);
-    border-right: 1px solid var(--tds-header--basic-element-border);
+    border-right: 1px solid var(--tds-header-item-border);
   }
 
   @media screen and (min-width: $grid-lg) {
@@ -63,6 +58,6 @@ nav {
   tds-header-item:nth-child(3),
   tds-header-dropdown:nth-child(3) {
     /* Adds a left border to the button after the title, if any */
-    border-left: 1px solid var(--tds-header--basic-element-border);
+    border-left: 1px solid var(--tds-header-item-border);
   }
 }
