@@ -66,11 +66,13 @@ function generateIconsArray(brand, icons) {
     const svgContent = fs.readFileSync(svgPath, 'utf8');
 
     const viewBoxMatch = svgContent.match(/viewBox="([^"]+)"/i);
-    const pathMatch = svgContent.match(/<path[^>]*d="([^"]+)"/i);
 
+
+    const pathMatch = svgContent.match(/<path[^>]*d="([^"]+)"/i);
+    
     return {
       name: icon,
-      definition: pathMatch?.[1] ?? '',
+      definition:pathMatch?.[1] ?? '',
       viewbox: viewBoxMatch?.[1] ?? '0 0 32 32',
     };
   });
@@ -105,9 +107,8 @@ function generateIconListScss(brand, icons) {
 /**
  * Do not edit directly, this file was auto-generated with ./scripts/generate-icons.mjs
  */
-
-$${brand}-icons: (
-${icons.map((icon) => `  '${icon}'`).join(',\n')}
+$icons: (
+${icons.map((icon) => `  ${icon}`).join(',\n')}
 );
 `;
 }
@@ -176,7 +177,11 @@ function generateIconsScss(brand, icons) {
   
 const lowerBrand = brand.toLowerCase();
 
-return `:root,
+return `
+/**
+ * Do not edit directly, this file was auto-generated with ./scripts/generate-icons.mjs
+ */
+:root,
 .${lowerBrand} {
 ${icons
   .map(
