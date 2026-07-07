@@ -1,6 +1,7 @@
 @use '../../../mixins/tl-scrollbar' as *;
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/focus-state' as *;
+@use '../../../mixins/z-index' as *;
 @use './tl-header-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../global/_variables' as *;
@@ -133,6 +134,7 @@
 
   &--open {
     display: block;
+    z-index: tds-z-index(tooltip) + 1;
   }
 }
 
@@ -154,6 +156,7 @@
 
   &--open {
     display: block;
+    z-index: tds-z-index(tooltip) + 1;
   }
 }
 
@@ -175,6 +178,7 @@
   &--open {
     height: calc(100vh - var(--header-height));
     display: block;
+    z-index: tds-z-index(tooltip) + 1;
     box-shadow: 0 2px 3px 0 var(--header-sub-menu-box-shadow);
   }
 }
@@ -197,6 +201,7 @@
 
   &--open {
     display: block;
+    z-index: tds-z-index(tooltip) + 1;
   }
 }
 
