@@ -1,6 +1,6 @@
 import formatHtmlPreview from '../formatHtmlPreview';
-import { iconsNames as scaniaIconsNames } from '../../components/icon/scaniaIconsArray';
-import { iconsNames as tratonIconsNames } from '../../components/icon/tratonIconsArray';
+import { scaniaIconNames } from '../../types/ScaniaIcons';
+import { tratonIconNames } from '../../types/TratonIcons';
 
 export default {
   title: 'Foundations/Icons Gallery',
@@ -11,9 +11,9 @@ export default {
 };
 
 // Brand mapping configuration
-const brandIconsMap = {
-  scania: scaniaIconsNames,
-  traton: tratonIconsNames,
+const brandIconsMap: Record<string, string[]> = {
+  scania: scaniaIconNames,
+  traton: tratonIconNames,
   // Add new brands here as needed
 };
 
