@@ -33,8 +33,10 @@ flowchart TD
 ### assets/icons/<brand>/*.svg
 
 Runtime source.
-These are the SVGs that actually get served/shipped (Storybook static dirs, Stencil copies them into dist, the SCSS references them).
+In theory, these were the SVGs that actually get served/shipped (Storybook static dirs, Stencil copies them into dist, the SCSS references them).
 After being copied to the `dist` folder, these files are used by the web component `<tds-icon>`. The component fetches or references the SVG directly as an image/background-image for rendering in the DOM.
+
+However, after some[commits](https://github.com/scania-digital-design-system/tegel/commit/794ac3e6ec6f6351f0dd0209fda861a61ae6b11f) and [fixes](https://github.com/scania-digital-design-system/tegel/commit/8f8a635e126332067c975532a27f780dfd4096c0) when adding the Traton icons, the `<tds-icon>` web component now uses the brand-scoped CSS variable `--tds-icon-<name>-d` from `tokens/scss/component/icon.scss`
 
 ### packages/core/src/types/
 
