@@ -22,10 +22,18 @@
 # Remedy: Consider moving the zip file to Downloads, or this workspace. 
 #
 
+if [ -z "$1" ]; then
+  echo " "
+  echo "\033[31m[ERROR] ZIP file path is required.\033[0m"
+  echo " "
+  echo "Usage: $0 <zip-file>"
+  exit 1
+fi
+
+
 echo " "
 echo "🔀 Prepare import from $1..."
 echo " "
-
 
 TEGEL_HOME=$PWD
 unzip -q $1 -d new-icons-to-import
