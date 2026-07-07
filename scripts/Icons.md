@@ -65,10 +65,21 @@ As the flowchart describes, we need to :
 
 ## Open Points
 
-- It would be interesting to have this manual process into a GitHub workflow in the tegel repository.
-- The svgs are always packed as a part of Tegel, even if we use only one icon, the application that uses Tegel must serve them all. It would be a good refactor to separate the icons package from Tegel itself and let the consumers install two libs: `@scania/tegel` and `@scania/tegel-icons`.
+### GitHub workflow
+
+It would be interesting to have this manual process into a GitHub workflow in the tegel repository.
+
+### Tegel Icons package
+
+The svgs are always packed as a part of Tegel, even if we use only one icon, the application that uses Tegel must serve them all. It would be a good refactor to separate the icons package from Tegel itself and let the consumers install two libs: `@scania/tegel` and `@scania/tegel-icons`.
+
+### Icon component in Storybook
+
+The story for the [icon component](../packages/core/src/components/icon/icon.stories.tsx) uses only the Scania icons. Should it use all the icons?
+
 
 ## Deprecated
 
-There used to be an `icons/` folder in the tegel repository. This folder contained a `gulpfile` that merged paths to be used in the tokens stylesheets. 
+There used to be an `icons/` folder in the tegel repository. This folder contained a `gulpfile` that merged paths to be used in the tokens stylesheets.
+
 It forced us to keep the svgs in sync between this `icons` folder and the `assets` folder, which of course could be a problem.

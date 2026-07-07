@@ -40,12 +40,12 @@ type IconGallery = Map<string, IconDefinition>
 
 type BrandIcons = Map<Brand, IconGallery>;
 
-const BASE_HEADER =  [
-    '/**',
-    ' * Do not edit directly, this file was auto-generated with ./scripts/icon-token-generation.mts',
-    ' */',
-    ''
-  ]
+const BASE_HEADER = [
+  '/**',
+  ' * Do not edit directly, this file was auto-generated with ./scripts/icon-token-generation.mts',
+  ' */',
+  ''
+]
 
 //=============================================================================
 //
@@ -53,7 +53,7 @@ const BASE_HEADER =  [
 //
 //=============================================================================
 
-async function iconTokenGeneration () {
+async function iconTokenGeneration() {
 
   console.log("")
   console.log("   👷‍♀️ Create the scss files for new Tegel icons...")
@@ -63,31 +63,31 @@ async function iconTokenGeneration () {
 
 
   writeFile(
-    path.join(ROOT, 'tokens/scss/component/icon.scss'), 
+    path.join(ROOT, 'tokens/scss/component/icon.scss'),
     generateIconTokens(brandIcons).iconStylesheet);
 
   writeFile(
-    path.join(ROOT, 'tokens/scss/component/icon-fallbacks.scss'), 
+    path.join(ROOT, 'tokens/scss/component/icon-fallbacks.scss'),
     generateIconTokens(brandIcons).fallbacksStylesheet);
 
 
   for (const brand of brandIcons.keys()) {
-    
+
     writeFile(
       path.join(ROOT, 'tokens/scss', brand, `${brand}-icons-primitive.scss`),
       generatePrimitiveScss(brand, brandIcons.get(brand)!),
     );
 
     writeFile(
-      path.join(ROOT,'tokens/scss',brand, `${brand}-icons.scss`),
+      path.join(ROOT, 'tokens/scss', brand, `${brand}-icons.scss`),
       generateIconsScss(brand, brandIcons.get(brand)!),
     );
 
   }
 
   writeFile(
-      path.join(ROOT, 'packages/core/src/tegel-lite/components/tl-icon', '_icon-list.scss',    ),
-      generateIconListScss(brandIcons),
+    path.join(ROOT, 'packages/core/src/tegel-lite/components/tl-icon', '_icon-list.scss',),
+    generateIconListScss(brandIcons),
   );
 
   console.log("")
@@ -117,7 +117,7 @@ function writeFile(filePath: string, content: string) {
 // output: SVG with a single path
 //-----------------------------------------------------------------------------
 function mergePathData(svgContent: string): string {
-   return [...svgContent.matchAll(/<path\b[^>]*\bd="([^"]+)"/gi)]
+  return [...svgContent.matchAll(/<path\b[^>]*\bd="([^"]+)"/gi)]
     .map((match) => match[1])
     .join(' ')
     .replace(/\s+/g, ' ') // avoid line breaks from svgs created with Illustrator
@@ -132,13 +132,13 @@ function mergePathData(svgContent: string): string {
 // output: Map<Brand, IconGallery>
 //-----------------------------------------------------------------------------
 function getBrandIcons(): BrandIcons {
-  
+
   const brandIcons: BrandIcons = new Map<Brand, IconGallery>
-  
+
   for (const brand of BRANDS) {
-    
+
     const iconGallery: IconGallery = new Map<string, IconDefinition>
-    
+
     const iconDir = path.join(ICONS_SVG_DIR, brand);
 
     fs.readdirSync(iconDir)
@@ -148,12 +148,12 @@ function getBrandIcons(): BrandIcons {
         const iconSvg = fs.readFileSync(path.join(iconDir, file), 'utf8')
         const iconPath = mergePathData(iconSvg)
 
-        const iconName =  path.basename(file, '.svg')
+        const iconName = path.basename(file, '.svg')
 
         iconGallery.set(iconName, {
           name: iconName,
           definition: iconPath
-        })       
+        })
       })
 
     brandIcons.set(brand, iconGallery);
@@ -168,30 +168,30 @@ function getBrandIcons(): BrandIcons {
 //
 // output: string
 //-----------------------------------------------------------------------------
-function buildFallbackBlock( 
+function buildFallbackBlock(
   brandName: Brand,
-  iconGallery: IconGallery, 
+  iconGallery: IconGallery,
   allIconNames: string[],
-  ): string {
-    
-  
+): string {
+
+
   const missingIcons = allIconNames.filter(
     (iconName) => !iconGallery.has(iconName),
   );
 
   const lines = [
-      '',
-      `.${brandName} {`,
-    ];
+    '',
+    `.${brandName} {`,
+  ];
 
   if (missingIcons.length === 0) {
     lines.push("   /* No fallbacks needed: this brand defines every icon name. */")
   } else {
     for (const iconName of missingIcons) {
       lines.push(`  --icon-${iconName}-svg: var(--${brandName}-icon-placeholder-svg);`)
-    }    
+    }
   }
- 
+
   return `${lines.join('\n')}\n}\n`;
 }
 
@@ -204,20 +204,20 @@ function buildFallbackBlock(
 //
 // output: string
 //-----------------------------------------------------------------------------
-function buildPathBlock( 
+function buildPathBlock(
   brandName: Brand,
-  iconGallery: IconGallery, 
+  iconGallery: IconGallery,
   allIconNames: string[],
-   placeholderPath: string
-  ): string {
-    
-  const lines = [
-      '',
-      `.${brandName} {`,
-      `  --tds-brand-name: '${brandName}';`,
-    ];
+  placeholderPath: string
+): string {
 
-  
+  const lines = [
+    '',
+    `.${brandName} {`,
+    `  --tds-brand-name: '${brandName}';`,
+  ];
+
+
   for (const iconName of allIconNames) {
 
     const path = iconGallery.get(iconName)?.definition ?? placeholderPath;
@@ -225,14 +225,14 @@ function buildPathBlock(
     if (path.includes('"')) {
       throw new Error(`Icon "${iconName}" path data contains a double quote; needs escaping logic.`);
     }
-    lines.push(`  --tds-icon-${iconName}-d: path("${path}");`);
-    
+    lines.push(`  --tds-icon-${iconName}-d: path('${path}');`);
+
     // TODO: Check if we really need this variable
     if (iconGallery.has(iconName)) {
       lines.push(`  --tds-icon-${iconName}-exists: 1;`);
     }
   }
-  
+
   return `${lines.join('\n')}\n}\n`;
 }
 
@@ -241,8 +241,8 @@ function buildPathBlock(
 // 
 // output: uniqueIconNames: string[]
 //-----------------------------------------------------------------------------
-function getAllIconNames(brandIcons: BrandIcons ): string[] {
-  return  [
+function getAllIconNames(brandIcons: BrandIcons): string[] {
+  return [
     ...new Set(
       [...brandIcons.values()]
         .flatMap((gallery) => [...gallery.keys()])
@@ -255,7 +255,7 @@ function getAllIconNames(brandIcons: BrandIcons ): string[] {
 // 
 // output: {iconStylesheet, fallbackStylesheet}
 //-----------------------------------------------------------------------------
-function generateIconTokens(brandIcons: BrandIcons) : {iconStylesheet: string, fallbacksStylesheet: string} {
+function generateIconTokens(brandIcons: BrandIcons): { iconStylesheet: string, fallbacksStylesheet: string } {
 
   let icons: string = ''
   let fallbacks: string = ''
@@ -276,11 +276,11 @@ function generateIconTokens(brandIcons: BrandIcons) : {iconStylesheet: string, f
     }
 
     icons += buildPathBlock(brand, brandIcons.get(brand)!, allIconNames, placeholder.definition)
-    fallbacks += buildFallbackBlock(brand,brandIcons.get(brand)!, allIconNames, placeholder.definition)
+    fallbacks += buildFallbackBlock(brand, brandIcons.get(brand)!, allIconNames, placeholder.definition)
   }
 
   return {
-    iconStylesheet: icons, 
+    iconStylesheet: icons,
     fallbacksStylesheet: fallbacks
   }
 };
@@ -294,7 +294,7 @@ function generateIconTokens(brandIcons: BrandIcons) : {iconStylesheet: string, f
 function generateIconListScss(brandIcons: BrandIcons) {
 
   const allIconNames = getAllIconNames(brandIcons)
- 
+
   const lines = [...BASE_HEADER, '$icons: ('];
 
   lines.push(
@@ -317,13 +317,13 @@ function generateIconListScss(brandIcons: BrandIcons) {
 // outputs: 'tokens/scss/<brand>/<brand>-icons-primitive.scss'
 //-----------------------------------------------------------------------------
 function generatePrimitiveScss(brand: Brand, iconGallery: IconGallery) {
- 
-  const lines = [...BASE_HEADER,'$local-assets: null !default;', '', ':root {'];
+
+  const lines = [...BASE_HEADER, '$local-assets: null !default;', '', ':root {'];
 
   for (const icon of iconGallery.keys()) {
     lines.push(`  --${brand}-icon-${icon}-svg: url(#{$local-assets}/icons/${brand}/${icon}.svg);`)
   }
-  
+
   lines.push('}')
 
   return lines.join('\n');
@@ -335,16 +335,14 @@ function generatePrimitiveScss(brand: Brand, iconGallery: IconGallery) {
 // outputs: 'tokens/scss/<brand>/<brand>-icons.scss'
 //-----------------------------------------------------------------------------
 function generateIconsScss(brand: Brand, iconGallery: IconGallery) {
-  
- const lines = [...BASE_HEADER, ':root,', `.${brand} {`];
+
+  const lines = [...BASE_HEADER, ':root,', `.${brand} {`];
 
   for (const icon of iconGallery.keys()) {
     lines.push(`  --icon-${icon}-svg: var(--${brand}-icon-${icon}-svg);`)
   }
-  
+
   lines.push('}')
 
   return lines.join('\n');
 }
-
-

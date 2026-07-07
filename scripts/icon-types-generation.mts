@@ -31,14 +31,14 @@ type IconGallery = Set<string>
 
 type BrandIcons = Map<Brand, IconGallery>;
 
-const BASE_HEADER =  [
-    '/**',
-    ' * Do not edit directly, this file was auto-generated with ./scripts/icon-types-generation.mts',
-    ' */',
-    ''
-  ]
+const BASE_HEADER = [
+  '/**',
+  ' * Do not edit directly, this file was auto-generated with ./scripts/icon-types-generation.mts',
+  ' */',
+  ''
+]
 
-async function iconTypesGeneration () {
+async function iconTypesGeneration() {
   console.log("")
   console.log("   👷‍♀️ Create the types files for new Tegel icons...")
   console.log("")
@@ -46,13 +46,13 @@ async function iconTypesGeneration () {
 
   const brandIcons = getBrandIcons();
 
-    writeFile(
-      path.join(      ROOT,      'packages/core/src/types/Icons.ts' ),
-      generateGlobalIconType())
+  writeFile(
+    path.join(ROOT, 'packages/core/src/types/Icons.ts'),
+    generateGlobalIconType())
 
   for (const brand of BRANDS) {
     writeFile(
-      path.join(      ROOT,      'packages/core/src/types', `${brand}Icons.ts` ),
+      path.join(ROOT, 'packages/core/src/types', `${brand}Icons.ts`),
       generateBrandIconType(brand, brandIcons.get(brand)!));
   }
 
@@ -73,20 +73,20 @@ iconTypesGeneration().catch((err) => {
 // output: Map<Brand, IconGallery>
 //-----------------------------------------------------------------------------
 function getBrandIcons(): BrandIcons {
-  
+
   const brandIcons: BrandIcons = new Map<Brand, IconGallery>
-  
+
   for (const brand of BRANDS) {
-    
+
     const iconGallery: IconGallery = new Set<string>
-    
+
     const iconDir = path.join(ICONS_SVG_DIR, brand);
 
     fs.readdirSync(iconDir)
       .filter((file) => file.endsWith('.svg'))
       .map((file) => {
-        const iconName =  path.basename(file, '.svg')
-        iconGallery.add(iconName)       
+        const iconName = path.basename(file, '.svg')
+        iconGallery.add(iconName)
       })
 
     brandIcons.set(brand, iconGallery);
@@ -114,15 +114,15 @@ function writeFile(filePath: string, content: string) {
 function generateBrandIconType(brand: Brand, iconGallery: IconGallery): string {
   const typeName = `${brand.charAt(0).toUpperCase() + brand.slice(1)}IconNames`;
   const constName = typeName.charAt(0).toLowerCase() + typeName.slice(1)
-  
-  const lines = [...BASE_HEADER, `export const ${constName} = [`, 
-    [...iconGallery].map((icon) => `  '${icon}'`).join(',\n'),
-    "]", 
+
+  const lines = [...BASE_HEADER, `export const ${constName} = [`,
+  [...iconGallery].map((icon) => `  '${icon}'`).join(',\n'),
+    "]",
     " ",
-    `export type ${typeName} = typeof ${constName}[number];`
+  `export type ${typeName} = typeof ${constName}[number];`
   ]
 
- return `${lines.join('\n')}\n\n`;
+  return `${lines.join('\n')}\n\n`;
 }
 
 //----------------------------------------------------------------------------- 
@@ -138,8 +138,8 @@ function generateGlobalIconType(): string {
       (brand) => {
 
         const brandName = brand.toUpperCase()[0] + brand.slice(1)
-        
-        return  `import { ${brandName}IconNames } from './${brandName}Icons';`
+
+        return `import { ${brandName}IconNames } from './${brandName}Icons';`
       }
     )
     .join('\n');
@@ -148,11 +148,12 @@ function generateGlobalIconType(): string {
     .map((brand) => {
       const brandName = brand.toUpperCase()[0] + brand.slice(1)
 
-      return `${brandName}IconNames`})
+      return `${brandName}IconNames`
+    })
     .join(' | ');
 
 
-  return [...BASE_HEADER, 
+  return [...BASE_HEADER,
     " ", `${imports}`, " ", `export type IconNames = ${unions};`
   ].join('\n')
 }
