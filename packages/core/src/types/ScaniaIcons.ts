@@ -254,7 +254,7 @@ export const scaniaIconNames = [
   'wifi',
   'wifi_inactive',
   'windscreen_heating',
-  'windscreen_heating_inactive',
-];
-
-export type ScaniaIconNames = (typeof scaniaIconNames)[number];
+  'windscreen_heating_inactive'
+]
+ 
+export type ScaniaIconNames = typeof scaniaIconNames[number];

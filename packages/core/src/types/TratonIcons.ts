@@ -120,7 +120,7 @@ export const tratonIconNames = [
   'wallet',
   'warning',
   'wifi',
-  'wifi_inactive',
-];
-
-export type TratonIconNames = (typeof tratonIconNames)[number];
+  'wifi_inactive'
+]
+ 
+export type TratonIconNames = typeof tratonIconNames[number];

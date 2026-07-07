@@ -21,9 +21,9 @@ const pwd = toUnixPath(path.resolve(process.cwd()));
 const command = 'docker';
 const args = [
   'run',
-  '--rm',
-  '--network',
-  'host',
+  // '--rm',
+  // '--network',
+  // 'host',
   '-v',
   `${pwd}:/work/`,
   '-w',
