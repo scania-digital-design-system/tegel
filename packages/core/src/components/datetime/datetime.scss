@@ -30,11 +30,12 @@
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
   // only apply styling if browser supports
-  @supports selector(input::-webkit-datetime-edit) {
+  @supports selector(input::-webkit-datetime-edit) {    
     // placeholder text
     &:not(:focus)::-webkit-datetime-edit {
       color: var(--tds-datetime-placeholder-color);
     }
+    // the success and error states are set in their dedicated classes
   }
 
   &[type='datetime-local'] {
@@ -267,14 +268,21 @@
 
 //Success state
 .tds-form-datetime-success {
+  .tds-datetime-input::-webkit-datetime-edit {
+    color: var(--tds-datetime-color-success);;
+  }
+
   .tds-datetime-container {
     border-bottom-color: var(--tds-datetime-border-bottom-success);
-    color: var(--tds-datetime-color-success);
   }
 }
 
 //Error State
 .tds-form-datetime-error {
+    .tds-datetime-input::-webkit-datetime-edit {
+    color: var(--tds-datetime-helper-error);
+    }
+
   .tds-datetime-helper {
     color: var(--tds-datetime-helper-error);
 
