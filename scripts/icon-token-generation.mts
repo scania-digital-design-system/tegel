@@ -25,7 +25,7 @@ const ICONS_SVG_DIR = path.join(ROOT, 'assets', 'icons');
 //       It will be used to generate the stylesheets and append to :root
 const BRANDS = ['scania', 'traton'] as const;
 type Brand = (typeof BRANDS)[number];
-
+const DEFAULT_BRAND = BRANDS[0];
 
 //=======================================
 // Types:
@@ -335,8 +335,8 @@ function generatePrimitiveScss(brand: Brand, iconGallery: IconGallery) {
 // outputs: 'tokens/scss/<brand>/<brand>-icons.scss'
 //-----------------------------------------------------------------------------
 function generateIconsScss(brand: Brand, iconGallery: IconGallery) {
-
-  const lines = [...BASE_HEADER, ':root,', `.${brand} {`];
+ 
+  const lines = [...BASE_HEADER, brand === DEFAULT_BRAND ? ':root,' : "", `.${brand} {`];
 
   for (const icon of iconGallery.keys()) {
     lines.push(`  --icon-${icon}-svg: var(--${brand}-icon-${icon}-svg);`)
