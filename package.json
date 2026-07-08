@@ -55,7 +55,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-storybook": "9.1.16",
-    "husky": "^7.0.4",
+    "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.4",
     "style-dictionary": "^5.0.0",
