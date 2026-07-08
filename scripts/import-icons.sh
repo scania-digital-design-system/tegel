@@ -24,7 +24,7 @@
 
 if [ -z "$1" ]; then
   echo " "
-  echo "\033[31m[ERROR] ZIP file path is required.\033[0m"
+  echo "\033[31m[ERROR] ZIP file path is required.\033[0m" >&2
   echo " "
   echo "Usage: $0 <zip-file>"
   exit 1

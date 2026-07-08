@@ -227,7 +227,7 @@ function buildPathBlock(
     }
     lines.push(`  --tds-icon-${iconName}-d: path('${path}');`);
 
-    // TODO: Check if we really need this variable
+    // Pending information: Check if we really need this variable
     if (iconGallery.has(iconName)) {
       lines.push(`  --tds-icon-${iconName}-exists: 1;`);
     }
@@ -247,7 +247,7 @@ function getAllIconNames(brandIcons: BrandIcons): string[] {
       [...brandIcons.values()]
         .flatMap((gallery) => [...gallery.keys()])
     ),
-  ].sort();
+  ].sort((a, b) => a.localeCompare(b));
 }
 
 //-----------------------------------------------------------------------------
@@ -295,17 +295,11 @@ function generateIconListScss(brandIcons: BrandIcons) {
 
   const allIconNames = getAllIconNames(brandIcons)
 
-  const lines = [...BASE_HEADER, '$icons: ('];
-
-  lines.push(
-    ...allIconNames.map((icon, index) =>
-      `  ${icon}${index < allIconNames.length - 1 ? ',' : ''}`,
-    ),
+  const iconLines = allIconNames.map(
+    (icon, index) => `  ${icon}${index < allIconNames.length - 1 ? ',' : ''}`,
   );
 
-  lines.push(');');
-
-  return lines.join('\n');
+  return [...BASE_HEADER, '$icons: (', ...iconLines, ');'].join('\n');
 }
 
 
