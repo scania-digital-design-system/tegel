@@ -38,7 +38,8 @@
     background-color: var(--header-item-background-opened);
     color: var(--header-item-text-color-opened);
     position: relative;
-    border-bottom: 4px solid var(--header-item-border-selected);
+    border-bottom: var(--header-item-border-accent-thickness) solid
+      var(--header-item-border-accent-color);
 
     &:hover {
       background-color: var(--header-item-background-opened-hover);
@@ -50,7 +51,8 @@
   }
 
   &--selected {
-    border-bottom: 4px solid var(--header-item-border-selected);
+    border-bottom: var(--header-item-border-accent-thickness) solid
+      var(--header-item-border-accent-color);
   }
 }
 
@@ -86,7 +88,8 @@
     background-color: var(--header-item-background-opened);
     color: var(--header-item-text-color-opened);
     position: relative;
-    border-bottom: 4px solid var(--header-item-border-selected);
+    border-bottom: var(--header-item-border-accent-thickness) solid
+      var(--header-item-border-accent-color);
 
     &:hover {
       background-color: var(--header-item-background-opened-hover);
@@ -98,7 +101,8 @@
   }
 
   &--selected {
-    border-bottom: 4px solid var(--header-item-border-selected);
+    border-bottom: var(--header-item-border-accent-thickness) solid
+      var(--header-item-border-accent-color);
   }
 }
 
@@ -220,7 +224,8 @@
   &--selected {
     background-color: var(--header-sub-menu-item-background-selected);
     padding-right: 4px;
-    border-left: 4px solid var(--header-item-border-selected);
+    border-left: var(--header-item-border-accent-thickness) solid
+      var(--header-item-border-accent-color);
   }
 }
 
@@ -234,12 +239,12 @@
 }
 
 .tl-header__user-menu-box {
-  gap: 16px;
+  gap: var(--header-spacing-default);
   width: 100%;
-  padding: 0 16px;
+  padding: 0 var(--header-spacing-default);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--header-sub-menu-item-border-bottom); // --header-sub-menu-box-shadow
+  border-bottom: 1px solid var(--header-sub-menu-item-border-bottom);
 }
 
 .tl-header__user-menu-image {
@@ -296,7 +301,7 @@
   background-color: var(--header-sub-menu-category-item-background);
   color: var(--header-sub-menu-category-item-text-color);
   height: 48px;
-  padding: 0 16px;
+  padding: 0 var(--header-spacing-default);
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--header-sub-menu-category-item-border-bottom);

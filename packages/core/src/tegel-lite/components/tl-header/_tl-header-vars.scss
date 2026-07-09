@@ -6,6 +6,7 @@
   /* Layout */
   --header-height: var(--tds-spacing-layout-64);
   --header-list-item-md-height: var(--tds-spacing-layout-48);
+  --header-spacing-default: var(--tds-spacing-layout-16);
 
   /* Header items */
   --header-background: var(--component-header-background-main-standard-default);
@@ -14,7 +15,8 @@
   --header-item-background-selected: var(--component-header-background-nav-item-current-default);
   --header-item-text-color: var(--component-header-icon-nav-item-link-default);
   --header-item-border-right: var(--component-header-border-divider-default);
-  --header-item-border-selected: var(--component-header-border-nav-item-indicator-default);
+  --header-item-border-accent-color: var(--component-header-border-nav-item-indicator-default);
+  --header-item-border-accent-thickness: var(--tds-spacing-element-4);
 
   /* Header title */
   --header-title-font-family: var(--type-headline-01-font-family);
