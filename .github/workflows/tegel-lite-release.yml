@@ -11,7 +11,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '22.12.0'
+        default: '22.20.0'
         type: string
 
       version:
@@ -36,6 +36,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
@@ -43,6 +45,8 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
@@ -139,3 +143,45 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --tag latest
+
+    outputs:
+      version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
+
+  #CREATE GIT TAG
+  create-git-tag:
+    needs: [release-tegel-lite]
+    if: github.event.inputs.dryRun != 'true' && needs.release-tegel-lite.result == 'success'
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/tegel-lite
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          fetch-depth: 0 # Fetch all branches
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set up Git for authentication
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:$GH_PERSONAL_ACCESS_TOKEN@github.com/${{ github.repository }}
+
+      - name: Tegel Lite - Create git tag
+        run: git tag @scania/tegel-lite@${{ needs.release-tegel-lite.outputs.version }}
+
+      - name: Tegel Lite - Push git tag
+        run: git push --no-verify origin @scania/tegel-lite@${{ needs.release-tegel-lite.outputs.version }}
