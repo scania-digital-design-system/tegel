@@ -6,11 +6,11 @@
 .tl-header__item-wrapper {
   all: unset;
   @include tds-box-sizing;
-  @include headline-07;
+  @include title-01;
 
   background-color: var(--header-background);
-  border-right: 1px solid var(--header-basic-element-border);
-  color: var(--header-nav-item);
+  border-right: 1px solid var(--header-item-border-right);
+  color: var(--header-item-text-color);
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -24,7 +24,7 @@
   }
 
   &:hover {
-    background-color: var(--header-item-hover);
+    background-color: var(--header-item-background-hover);
   }
 
   &:focus-visible {
@@ -34,8 +34,11 @@
   &:active {
     padding-top: 2px;
     padding-bottom: 2px;
-    background-color: var(--header-basic-element-background-selected);
-    box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+    background-color: var(--header-item-background-active);
+  }
+
+  &:selected {
+    background-color: var(--header-item-background-selected);
   }
 }
 

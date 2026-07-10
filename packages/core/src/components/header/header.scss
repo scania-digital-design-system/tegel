@@ -1,16 +1,8 @@
-//@import '../theme/core/spacing/vars';
 @use '../../../../../grid-deprecated/vars' as *;
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/flex-center' as *;
 @use '../../mixins/scrollbar' as *;
 @use '../../mixins/z-index' as *;
-
-html,
-:root {
-  --tds-nav-dropdown-menu-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --tds-nav-dropdown-item-border-radius: 0 0 4px 4px;
-  --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
-}
 
 tds-header {
   display: block;
@@ -52,7 +44,7 @@ nav {
     display: block;
     flex-grow: 1;
     height: var(--tds-header-height);
-    border-right: 1px solid var(--tds-header--basic-element-border);
+    border-right: 1px solid var(--tds-header-item-border);
   }
 
   @media screen and (min-width: $grid-lg) {
@@ -65,6 +57,6 @@ nav {
   tds-header-item:nth-child(3),
   tds-header-dropdown:nth-child(3) {
     /* Adds a left border to the button after the title, if any */
-    border-left: 1px solid var(--tds-header--basic-element-border);
+    border-left: 1px solid var(--tds-header-item-border);
   }
 }

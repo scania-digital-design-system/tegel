@@ -4,17 +4,17 @@
   height: 84px;
 
   .user-box {
-    gap: 16px;
+    gap: var(--tds-header-avatar-item-padding);
     width: 100%;
-    padding: 0 16px;
+    padding: 0 var(--tds-header-avatar-item-padding);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+    border-bottom: 1px solid var(--tds-header-dropdown-item-border-color);
   }
 
   img,
   slot[name='thumbnail']::slotted(*) {
-    width: 34px;
+    width: var(--tds-header-avatar-item-size);
     border-radius: 100%;
   }
 

@@ -28,6 +28,7 @@ export const SHIPPED_COMPONENTS = [
   'tl-checkbox',
   'tl-divider',
   'tl-footer',
+  'tl-header',
   'tl-icon',
   'tl-link',
   'tl-message',

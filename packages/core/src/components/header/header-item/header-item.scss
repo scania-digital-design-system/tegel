@@ -1,4 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../mixins/focus-state' as *;
 
 :host {
@@ -6,9 +7,11 @@
   ::slotted(a) {
     all: unset;
     @include tds-box-sizing;
+    @include title-01;
 
+    color: var(--tds-header-item-color);
     background-color: var(--tds-header-background);
-    border-right: 1px solid var(--tds-header--basic-element-border);
+    border-right: 1px solid var(--tds-header-item-border);
     width: 100%;
     height: 100%;
     cursor: pointer;
@@ -21,13 +24,11 @@
   ::slotted(button:hover),
   ::slotted(a:hover) {
     background-color: var(--tds-header-item-hover);
-    box-shadow: inset 0 -2px 0 0 var(--tds-header-item-border-hover);
   }
 
   ::slotted(button:active),
   ::slotted(a:active) {
     background-color: var(--tds-header-item-active);
-    box-shadow: inset 0 -2px 0 0 var(--tds-header-item-border-active);
   }
 
   ::slotted(button:focus-visible),
@@ -40,9 +41,15 @@
   .component-active {
     ::slotted(button),
     ::slotted(a) {
-      background-color: var(--tds-header--basic-element-background-open);
-      color: var(--tds-header-nav-item-dropdown-opened-color);
-      border-color: var(--tds-header--basic-element-border-open);
+      background-color: var(--tds-header-item-background-open);
+      color: var(--tds-header-item-open-color);
+      border-color: var(--tds-header-item-border-open);
+      box-shadow: inset 0 -4px 0 0 var(--tds-header-item-border-hover); // this underline is for the grid button (launcher button)
+    }
+
+    ::slotted(button:hover),
+    ::slotted(a:hover) {
+      background-color: var(--tds-header-dropdown-item-background-hover);
     }
   }
 

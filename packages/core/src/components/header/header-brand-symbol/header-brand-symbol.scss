@@ -6,16 +6,17 @@
   }
 
   tds-header-item {
+    width: var(--tds-header-brand-item-width);
+
     ::slotted(*) {
-      background-image: var(--tds-background-image-scania-symbol-svg-local),
-        var(--tds-background-image-scania-symbol-svg);
-      background-size: 30px auto;
+      background-image: var(--tds-header-logotype-local), var(--tds-header-logotype-cdn);
+      background-size: var(--tds-header-brand-logo-size) auto;
       background-position: center;
       background-repeat: no-repeat;
     }
   }
 
-  @media (min-width: 992px) {
+  @media (width >= 992px) {
     tds-header-item {
       display: block;
     }
