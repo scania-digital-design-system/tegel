@@ -39,7 +39,7 @@
       left: var(--side-menu-width);
       box-shadow: var(--tds-side-menu-dropdown-box-shadow);
       border-radius: var(--tds-side-menu-item-border-radius);
-      padding-bottom: var(--tds-side-menu-sub-items-gap);
+      padding: var(--tds-side-menu-sub-items-gap);
       background-color: var(--tds-side-menu-item-background);
 
       .heading-collapsed {
@@ -52,6 +52,27 @@
         border-bottom: 1px solid var(--tds-side-menu-item-border-bottom-color);
 
         @include title-01;
+      }
+    }
+
+    &.state-open {
+      tds-side-menu-item {
+        button {
+          background-color: var(--tds-side-menu-item-background-selected);
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            border-top-left-radius: var(--tds-side-menu-item-border-radius);
+            border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
+            background-color: var(--tds-side-menu-item-border-left-color-selected);
+          }
+        }
       }
     }
   }
