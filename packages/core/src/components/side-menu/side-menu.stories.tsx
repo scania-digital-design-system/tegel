@@ -55,8 +55,9 @@ export default {
   },
 };
 
-const Template = ({ persistent, collapsible, collapsed }) =>
-  formatHtmlPreview(
+const Template = ({ persistent, collapsible, collapsed }) => {
+  const isScania = document.getElementsByClassName('scania').length !== 0;
+  return formatHtmlPreview(
     `
     <script>
     /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
@@ -133,28 +134,28 @@ const Template = ({ persistent, collapsible, collapsed }) =>
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
       <tds-side-menu ${collapsed ? 'collapsed' : ''} aria-label="Side menu" id="demo-side-menu" ${
-      persistent ? 'persistent' : ''
-    }>
+        persistent ? 'persistent' : ''
+      }>
         <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;"></tds-side-menu-overlay>
 
         <tds-side-menu-close-button slot="close-button" aria-label="Close drawer menu" onclick="demoSideMenu.open = false;"></tds-side-menu-close-button>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24px"></tds-icon>
+            <tds-icon name="timer" size=${isScania ? '24px' : '16px'}></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="truck" size="24px"></tds-icon>
+            <tds-icon name="truck" size=${isScania ? '24px' : '16px'}></tds-icon>
             Trucks
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <tds-icon slot="icon" name="profile" size=${isScania ? '24px' : '16px'}></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -174,37 +175,31 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24px"></tds-icon>
+            <tds-icon name="star" size=${isScania ? '24px' : '16px'}></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-item slot="end">
-          <tds-side-menu-user 
-            heading="Name Namesson" 
-            subheading="Company name" 
-            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            img-alt="">
-          </tds-side-menu-user>
-        </tds-side-menu-item>
-
         <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
-          <tds-side-menu-user 
-            slot="label" 
+            <tds-side-menu-user-image
+            slot="icon"     
+            src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
+            alt="">
+            </tds-side-menu-user-image>
+            <tds-side-menu-user-label
+            slot="label"
             heading="Name Namesson" 
-            subheading="Company name" 
-            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            img-alt="">
-          </tds-side-menu-user>
-          <tds-side-menu-dropdown-list>
-            <tds-side-menu-dropdown-list-item selected>
-              <a href="https://design.scania.com">My Instructions</a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://design.scania.com">Task List</a>
-            </tds-side-menu-dropdown-list-item>
-          </tds-side-menu-dropdown-list>
-        </tds-side-menu-dropdown>
+            subheading="Company name"        
+            ></tds-side-menu-user-label>
+            <tds-side-menu-dropdown-list>
+              <tds-side-menu-dropdown-list-item selected>
+                <a href="https://design.scania.com">My Instructions</a>
+              </tds-side-menu-dropdown-list-item>
+              <tds-side-menu-dropdown-list-item>
+                <a href="https://design.scania.com">Task List</a>
+              </tds-side-menu-dropdown-list-item>
+            </tds-side-menu-dropdown-list>
+          </tds-side-menu-dropdown>
 
         ${
           collapsible
@@ -217,6 +212,8 @@ const Template = ({ persistent, collapsible, collapsed }) =>
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
+        <p>The icons in each header item should be 24px for Scania brand. For TRATON they should be 16px.
+        </p>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
@@ -245,5 +242,6 @@ const Template = ({ persistent, collapsible, collapsed }) =>
   </script>
   `,
   );
+};
 
 export const Default = Template.bind({});

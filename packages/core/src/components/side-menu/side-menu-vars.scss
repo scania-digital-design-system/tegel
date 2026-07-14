@@ -1,62 +1,67 @@
-:root,
-.tds-mode-light {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-50);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-50);
-  --tds-sidebar-item-state-active: var(--tds-grey-300);
-  --tds-sidemenu-item-state-active: var(--tds-grey-150);
-  --tds-sidebar-item-state-selected: var(--tds-grey-100);
+tds-side-menu {
+  // core
+  --tds-side-menu-background: var(--component-side-menu-background-default);
+  --tds-side-menu-border-right-color: var(--component-side-menu-border-divider-default);
+  --tds-side-menu-border-thickness: var(--unit-1); // 1px
 
-  // TODO - Not sure why this was black before?
-  --tds-sidebar-side-menu: var(--tds-white);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-300);
-  --tds-sidebar-side-menu-background-cover: var(--tds-white);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-white);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-250);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-800);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-300);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
-  --tds-side-menu-item-hover-indicator: var(--tds-grey-350);
-  --tds-side-menu-item-pressed-indicator: var(--tds-grey-850);
+  // side menu item
+  --tds-side-menu-item-background: var(--component-side-menu-background-item-link-default);
+  --tds-side-menu-item-border-bottom-color: var(--component-side-menu-border-divider-default);
+  --tds-side-menu-item-border-thickness: var(--unit-1); // 1px
+  --tds-side-menu-item-border-radius: calc(var(--component-side-menu-border-radius-default) * 1px);
+  --tds-side-menu-item-text-color: var(--component-side-menu-text-item-link-default); // title-01
+  --tds-side-menu-item-background-hover: var(--component-side-menu-background-item-link-hover);
+  --tds-side-menu-item-background-active: var(--component-side-menu-background-item-link-active);
+  --tds-side-menu-item-background-selected: var(
+    --component-side-menu-background-item-current-default
+  );
+  --tds-side-menu-item-border-left-color-selected: var(
+    --component-side-menu-border-item-indicator-default
+  );
+  --tds-side-menu-item-icon-color: var(--component-side-menu-icon-item-link-default);
+
+  // side menu item user
+  --tds-side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
+
+  // side menu sub item - font: body-01
+
+  // dropdown
 }
 
-.tds-mode-dark {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-958);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-850);
-  --tds-sidebar-item-state-active: var(--tds-grey-800);
-  --tds-sidemenu-item-state-active: var(--tds-grey-800);
-  --tds-sidebar-item-state-selected: var(--tds-grey-868);
-  --tds-sidebar-side-menu: var(--tds-grey-958);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-850);
-  --tds-sidebar-side-menu-background-cover: var(--tds-grey-958);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-600);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-700);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
-  --tds-side-menu-item-hover-indicator: var(--tds-grey-400);
-  --tds-side-menu-item-pressed-indicator: var(--tds-grey-50);
+.scania tds-side-menu {
+  --tds-side-menu-width-collapsed: 68px;
+  --tds-side-menu-horizontal-padding: calc(var(--scania-unit-0) * 1px); // 0px
+  --tds-side-menu-gap: 0;
+  --tds-side-menu-dropdown-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --tds-side-menu-item-horizontal-padding: 22px; // 0px
+  --tds-side-menu-item-height: 68px; // 0px
+  --tds-side-menu-item-icon-size: 24px;
+
+  // side menu sub-item
+  --tds-side-menu-sub-item-height: 48px;
+  --tds-side-menu-sub-item-padding-icon: 16px 48px 16px 58px;
+  --tds-side-menu-sub-items-gap: 0;
+
+  // side menu user image
+  --tds-side-menu-user-image-size: 34px;
+}
+
+.traton tds-side-menu {
+  --tds-side-menu-width-collapsed: 72px;
+  --tds-side-menu-horizontal-padding: calc(var(--traton-unit-16) * 1px); // 16px
+  --tds-side-menu-gap: 16px;
+  --tds-side-menu-dropdown-box-shadow: none;
+
+  // side menu item
+  --tds-side-menu-item-horizontal-padding: calc(var(--traton-unit-12) * 1px); // 16px
+  --tds-side-menu-item-height: 40px;
+  --tds-side-menu-item-icon-size: 16px;
+
+  // side menu sub-item
+  --tds-side-menu-sub-item-height: 32px;
+  --tds-side-menu-sub-item-padding-icon: 8px 48px 8px 40px;
+  --tds-side-menu-sub-items-gap: 10px;
+
+  // side menu user image
+  --tds-side-menu-user-image-size: 24px;
 }

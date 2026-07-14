@@ -1,5 +1,4 @@
 :host {
-  display: block;
   width: 190px;
 
   [role='list'] {
@@ -7,12 +6,19 @@
     margin: 0;
     list-style: none;
     border-radius: none;
-    background-color: var(--tds-header-app-launcher-menu-bg);
+    background-color: var(--tds-side-menu-item-background);
+  }
+
+  * {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tds-side-menu-sub-items-gap);
   }
 
   .state-collapsed {
     ::slotted(*) {
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: var(--tds-side-menu-item-border-thickness) solid
+        var(--tds-side-menu-item-border-bottom-color);
     }
   }
 }

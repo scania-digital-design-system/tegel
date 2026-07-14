@@ -1,8 +1,8 @@
 :host {
   img,
   ::slotted(*) {
-    width: 34px;
-    height: 34px;
+    width: var(--tds-side-menu-user-image-size);
+    height: var(--tds-side-menu-user-image-size);
     border-radius: 50%;
   }
 }

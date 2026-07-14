@@ -1,5 +1,5 @@
 @use '../../../../../../grid-deprecated/vars' as *;
-
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../mixins/focus-state' as *;
 
 :host {
@@ -10,17 +10,19 @@
     ::slotted(button) {
       all: unset;
       box-sizing: border-box;
-      height: 68px;
+      height: var(--tds-side-menu-item-height);
       width: 100%;
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 0 22px;
+      padding: 0 var(--tds-side-menu-item-horizontal-padding);
       border: none;
-      background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-sidebar-side-menu-single-item-color);
+      border-radius: var(--tds-side-menu-item-border-radius);
+      background-color: var(--tds-side-menu-item-background);
+
+      @include title-01;
+
+      color: var(--tds-side-menu-item-text-color);
       cursor: pointer;
     }
 
@@ -28,22 +30,19 @@
     &-has-user ::slotted(button) {
       all: unset;
       box-sizing: border-box;
-      height: 68px;
+      height: var(--tds-side-menu-item-height);
       width: 100%;
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 0 22px 0 16px;
+      padding: 0 var(--tds-side-menu-item-horizontal-padding);
       border: none;
-      background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-sidebar-side-menu-single-item-color);
-      cursor: pointer;
-    }
+      background-color: var(--tds-side-menu-item-background);
 
-    tds-icon {
-      color: red !important;
+      @include title-01;
+
+      color: var(--tds-side-menu-item-text-color);
+      cursor: pointer;
     }
 
     ::slotted(a:focus-visible),
@@ -55,35 +54,15 @@
       ::slotted(a),
       ::slotted(button),
       ::slotted(tds-side-menu-user) {
-        background-color: var(--tds-sidebar-item-state-hover);
+        background-color: var(--tds-side-menu-item-background-hover);
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background-color: var(--tds-side-menu-item-hover-indicator);
-        }
       }
 
       ::slotted(a:focus-visible),
       ::slotted(button:focus-visible),
       ::slotted(tds-side-menu-user:focus-visible) {
-        background-color: var(--tds-sidebar-item-state-hover);
+        background-color: var(--tds-side-menu-item-background-hover);
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 3px;
-          left: 3px;
-          width: 4px;
-          height: calc(100% - calc(3px + 3px));
-          background-color: var(--tds-side-menu-item-hover-indicator);
-        }
       }
     }
 
@@ -91,35 +70,15 @@
       ::slotted(a),
       ::slotted(button),
       ::slotted(tds-side-menu-user) {
-        background-color: var(--tds-sidemenu-item-state-active);
+        background-color: var(--tds-side-menu-item-background-active);
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 4px;
-          height: 100%;
-          background-color: var(--tds-side-menu-item-pressed-indicator);
-        }
       }
 
       ::slotted(a:focus-visible),
       ::slotted(button:focus-visible),
       ::slotted(tds-side-menu-user:focus-visible) {
-        background-color: var(--tds-sidemenu-item-state-active);
+        background-color: var(--tds-side-menu-item-background-active);
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 3px;
-          left: 3px;
-          width: 4px;
-          height: calc(100% - calc(3px + 3px));
-          background-color: var(--tds-side-menu-item-pressed-indicator);
-        }
       }
     }
 
@@ -138,7 +97,7 @@
       ::slotted(a),
       ::slotted(button),
       ::slotted(tds-side-menu-user) {
-        background-color: var(--tds-sidebar-item-state-selected);
+        background-color: var(--tds-side-menu-item-background-selected);
         position: relative;
 
         &::before {
@@ -148,14 +107,16 @@
           left: 0;
           width: 4px;
           height: 100%;
-          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+          border-top-left-radius: var(--tds-side-menu-item-border-radius);
+          border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
+          background-color: var(--tds-side-menu-item-border-left-color-selected);
         }
       }
 
       ::slotted(a:focus-visible),
       ::slotted(button:focus-visible),
       ::slotted(tds-side-menu-user:focus-visible) {
-        background-color: var(--tds-sidebar-item-state-selected);
+        background-color: var(--tds-side-menu-item-background-selected);
         position: relative;
 
         &::before {
@@ -165,7 +126,9 @@
           left: 3px;
           width: 4px;
           height: calc(100% - calc(3px + 3px));
-          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+          border-top-left-radius: var(--tds-side-menu-item-border-radius);
+          border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
+          background-color: var(--tds-side-menu-item-border-left-color-selected);
         }
       }
     }

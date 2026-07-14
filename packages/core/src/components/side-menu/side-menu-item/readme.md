@@ -1,5 +1,6 @@
 # tds-side-menu-item
 
+The icons in each header item should be 24px for Scania brand. For TRATON they should be 16px.
 
 
 <!-- Auto Generated Below -->

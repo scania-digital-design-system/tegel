@@ -4,13 +4,13 @@
 
 :host {
   position: sticky;
+  padding: 0 var(--tds-side-menu-horizontal-padding);
   bottom: 0;
   display: none;
-  height: 68px;
-  border-top: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+  height: var(--tds-side-menu-item-height);
+  border-top: 1px solid var(--tds-side-menu-item-border-bottom-color);
 
   .icon {
-    transform: rotateZ(90deg);
     transition: all 0.2s ease-in-out;
     width: 20px;
     height: 20px;
@@ -18,11 +18,17 @@
 
   .state-collapsed {
     .icon {
-      transform: translateX(-50%) rotateZ(90deg) rotateX(180deg);
-      color: var(--tds-sidebar-side-menu-single-item-color);
+      transform: translateX(-50%) rotateZ(180deg) rotateX(180deg);
+      color: var(--tds-side-menu-item-icon-color);
       margin-left: 0;
       position: absolute;
       left: 50%;
+    }
+
+    .component .component-collapsed {
+      align-items: center;
+      justify-content: center;
+      display: flex;
     }
   }
 }

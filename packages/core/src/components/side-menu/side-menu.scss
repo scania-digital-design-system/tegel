@@ -15,19 +15,22 @@
 
   .wrapper {
     height: inherit;
+    background-color: var(--tds-side-menu-background);
 
     /* default slot */
     slot:not([name])::slotted(*) {
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: var(--tds-side-menu-item-border-thickness) solid
+        var(--tds-side-menu-item-border-bottom-color);
     }
 
     /* 'end' slot */
-    ::slotted([slot='end']) {
-      border-top: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+    slot[name='end'] {
+      border-top: var(--tds-side-menu-item-border-thickness) solid
+        var(--tds-side-menu-item-border-bottom-color);
     }
 
     .tds-side-menu-list-end {
-      margin-top: 68px;
+      margin-top: var(--tds-side-menu-item-height);
     }
   }
 
@@ -56,7 +59,7 @@
 
     ::slotted([slot='end']) {
       border-top: none;
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: 1px solid var(--tds-side-menu-item-border-bottom-color); // TODO FIXME
     }
   }
 }
@@ -74,7 +77,8 @@
     position: static;
     width: 272px;
     height: auto;
-    border-right: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+    border-right: var(--tds-side-menu-border-thickness) solid
+      var(--tds-side-menu-border-right-color);
 
     .wrapper {
       slot[name='overlay']::slotted(tds-side-menu-overlay) {
@@ -95,16 +99,12 @@
     }
 
     &:host(.menu-collapsed) {
-      width: 69px; // 68 + 1px for border
+      width: calc(var(--tds-side-menu-width-collapsed) + 1px); // + 1px for border TODO
       box-sizing: border-box;
 
       .menu {
-        width: 68px;
+        width: var(--tds-side-menu-width-collapsed);
       }
-    }
-
-    slot[name='end']::slotted(*) {
-      display: none;
     }
   }
 }
@@ -114,9 +114,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tds-side-menu-gap);
   }
 
-  width: 80%;
   height: inherit;
   position: relative;
   left: 0;
@@ -137,7 +139,8 @@ aside {
     justify-content: space-between;
     flex-direction: column;
     flex-grow: 1;
-    background-color: var(--tds-sidebar-side-menu-background-cover);
+    background-color: var(--tds-side-menu-background);
+    padding: 0 var(--tds-side-menu-horizontal-padding);
     @include tds-scrollbar;
 
     overflow-y: auto;
