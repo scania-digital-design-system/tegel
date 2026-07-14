@@ -117,6 +117,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--tds-side-menu-gap);
+    background-color: var(--tds-side-menu-background);
   }
 
   height: inherit;

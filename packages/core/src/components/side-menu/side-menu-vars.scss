@@ -44,6 +44,9 @@ tds-side-menu {
 
   // side menu user image
   --tds-side-menu-user-image-size: 34px;
+
+  // close button
+  --tds-side-menu-close-button-height: 64px;
 }
 
 .traton tds-side-menu {
@@ -64,4 +67,7 @@ tds-side-menu {
 
   // side menu user image
   --tds-side-menu-user-image-size: 24px;
+
+  // close button
+  --tds-side-menu-close-button-height: 36px;
 }
