@@ -17,7 +17,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     });
 
     test('renders side-menu in collapsed initial state', async ({ page }) => {
-      const sideMenu = page.getByLabel('Side menu');
+      const sideMenu = page.getByLabel('Side menu', { exact: true });
       await expect(sideMenu).toHaveAttribute('aria-expanded', 'false');
     });
 
@@ -29,7 +29,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       await expect(sideMenuCollapseButton).toBeVisible();
       await sideMenuCollapseButton.click();
 
-      const sideMenu = page.getByLabel('Side menu');
+      const sideMenu = page.getByLabel('Side menu', { exact: true });
       await expect(sideMenu).toHaveAttribute('aria-expanded', 'true');
     });
   });
