@@ -79,7 +79,13 @@ export class TdsSideMenuCollapseButton {
                 this.handleClick();
               }}
             >
-              <tds-icon class="icon" slot="icon" size="20px" name="arrow_left" />
+              <tds-icon
+                class="icon"
+                slot="icon"
+                size="20px"
+                name="arrow_left"
+                svgTitle="arrow to open or close side menu"
+              />
               {!this.collapsed && <slot></slot>}
             </button>
           </tds-side-menu-item>
