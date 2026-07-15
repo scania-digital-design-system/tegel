@@ -225,7 +225,10 @@ function buildPathBlock(
     if (path.includes('"')) {
       throw new Error(`Icon "${iconName}" path data contains a double quote; needs escaping logic.`);
     }
-    lines.push(`  --tds-icon-${iconName}-d: path('${path}');`);
+    // Note: the path() could be done with single quotes, but MDN uses double quotes 
+    // as it is the conventional style.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/basic-shape/path
+    lines.push(`  --tds-icon-${iconName}-d: path("${path}");`);
 
     // Pending information: Check if we really need this variable
     if (iconGallery.has(iconName)) {
