@@ -1,5 +1,6 @@
 @use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/side-menu-border-selected' as *;
 
 :host {
   display: block;
@@ -14,6 +15,8 @@
     ::slotted(a),
     ::slotted(button) {
       all: unset;
+      @include body-02;
+
       box-sizing: border-box;
       border-right: 1px solid var(--tds-header-dropdown-item-border-color);
       display: flex;
@@ -22,8 +25,6 @@
       padding: 0 24px;
       width: 100%;
       border-radius: var(--tds-side-menu-item-border-radius);
-      @include body-01;
-
       background-color: var(--tds-side-menu-item-background);
       color: var(--tds-side-menu-item-text-color);
       border: none;
@@ -45,14 +46,14 @@
 
     ::slotted(a:active),
     ::slotted(button:active) {
-      background-color: var(--tds-side-menu-item-background-active) !important;
+      background-color: var(--tds-side-menu-item-background-active);
       cursor: pointer;
       position: relative;
     }
 
     ::slotted(a:active:focus-visible),
     ::slotted(button:active:focus-visible) {
-      background-color: var(--tds-side-menu-item-background-active) !important;
+      background-color: var(--tds-side-menu-item-background-active);
       cursor: pointer;
       position: relative;
     }
@@ -75,9 +76,7 @@
         left: 0;
         width: 4px;
         height: 100%;
-        border-top-left-radius: var(--tds-side-menu-item-border-radius);
-        border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
-        background-color: var(--tds-side-menu-item-border-left-color-selected);
+        @include tds-side-menu-border-selected;
       }
     }
 
@@ -93,9 +92,7 @@
         left: 3px;
         width: 4px;
         height: calc(100% - 6px);
-        border-top-left-radius: var(--tds-side-menu-item-border-radius);
-        border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
-        background-color: var(--tds-side-menu-item-border-left-color-selected);
+        @include tds-side-menu-border-selected;
       }
     }
   }
@@ -113,7 +110,7 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 64px; // TODO
+        padding: 16px 48px 16px 64px;
       }
     }
   }

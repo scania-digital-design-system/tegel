@@ -1,9 +1,11 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
+@use '../side-menu-vars.scss' as *;
+@use '../../../mixins/side-menu-border-selected' as *;
 
 :host([slot='end']) .wrapper .menu {
   flex-direction: column-reverse;
-  bottom: var(--tds-side-menu-position-bottom);
-  padding-top: var(--tds-side-menu-sub-items-gap);
+  bottom: calc(var(--tds-side-menu-sub-items-gap) + var(--tds-side-menu-position-bottom));
+  padding-top: var(--tds-side-menu-dropdown-padding-top);
   padding-bottom: 0;
 }
 
@@ -45,11 +47,12 @@
       .heading-collapsed {
         all: unset;
         box-sizing: border-box;
-        padding: 16px 24px 15px; // TODO FIXME
+        padding: 16px 24px 15px;
         min-height: 48px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid var(--tds-side-menu-item-border-bottom-color);
+        border-bottom: var(--tds-side-menu-border-thickness) solid
+          var(--tds-side-menu-item-border-bottom-color);
 
         @include title-01;
       }
@@ -68,9 +71,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            border-top-left-radius: var(--tds-side-menu-item-border-radius);
-            border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
-            background-color: var(--tds-side-menu-item-border-left-color-selected);
+            @include tds-side-menu-border-selected;
           }
         }
       }

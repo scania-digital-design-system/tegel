@@ -1,6 +1,7 @@
 @use '../../../../../../grid-deprecated/vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../mixins/focus-state' as *;
+@use '../../../mixins/side-menu-border-selected' as *;
 
 :host {
   display: block;
@@ -107,9 +108,7 @@
           left: 0;
           width: 4px;
           height: 100%;
-          border-top-left-radius: var(--tds-side-menu-item-border-radius);
-          border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
-          background-color: var(--tds-side-menu-item-border-left-color-selected);
+          @include tds-side-menu-border-selected;
         }
       }
 
@@ -126,9 +125,7 @@
           left: 3px;
           width: 4px;
           height: calc(100% - calc(3px + 3px));
-          border-top-left-radius: var(--tds-side-menu-item-border-radius);
-          border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
-          background-color: var(--tds-side-menu-item-border-left-color-selected);
+          @include tds-side-menu-border-selected;
         }
       }
     }

@@ -1,6 +1,6 @@
 :host {
   display: flex;
   align-items: center;
-  gap: 16px; // TODO FIXME
+  gap: var(--tds-side-menu-user-gap);
   height: var(--tds-side-menu-item-height);
 }

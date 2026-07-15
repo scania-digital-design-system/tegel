@@ -59,7 +59,8 @@
 
     ::slotted([slot='end']) {
       border-top: none;
-      border-bottom: 1px solid var(--tds-side-menu-item-border-bottom-color); // TODO FIXME
+      border-bottom: var(--tds-side-menu-border-thickness) solid
+        var(--tds-side-menu-item-border-bottom-color);
     }
   }
 }
@@ -99,7 +100,10 @@
     }
 
     &:host(.menu-collapsed) {
-      width: calc(var(--tds-side-menu-width-collapsed) + 1px); // + 1px for border TODO
+      width: calc(
+        var(--tds-side-menu-width-collapsed) + var(--tds-side-menu-border-thickness)
+      ); // + 1px for border
+
       box-sizing: border-box;
 
       .menu {
