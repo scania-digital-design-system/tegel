@@ -7,6 +7,8 @@ const componentTestPath = 'src/components/side-menu/test/default/index.html';
 test.describe.parallel('Side Menu accessibility test', () => {
   test('Should render without detected accessibility issues', async ({ page }) => {
     await page.goto(componentTestPath);
+    await page.evaluate(() => document.body.classList.add('scania'));
+
     const { violations } = await tegelAnalyze(page);
 
     expect(violations).toEqual([]);
