@@ -18,7 +18,7 @@
 
   .state-collapsed {
     .icon {
-      transform: translateX(-50%) rotateZ(180deg) rotateX(180deg);
+      transform: translateX(-50%) rotateX(180deg);
       color: var(--tds-side-menu-item-icon-color);
       margin-left: 0;
       position: absolute;
