@@ -1,0 +1,11 @@
+@mixin tds-side-menu-border-selected {
+  border-top-left-radius: var(--tds-side-menu-item-border-radius);
+  border-bottom-left-radius: var(--tds-side-menu-item-border-radius);
+  background-color: var(--tds-side-menu-item-border-left-color-selected);
+}
+
+@mixin tl-side-menu-border-selected {
+  border-top-left-radius: var(--side-menu-item-border-radius);
+  border-bottom-left-radius: var(--side-menu-item-border-radius);
+  background-color: var(--side-menu-item-border-left-color-selected);
+}

@@ -1,32 +1,41 @@
 @use './tl-side-menu-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
+// Breakpoint for responsive layout
+$breakpoint-lg: 992px;
+
 .tl-side-menu__user {
   display: flex;
   align-items: center;
-  gap: var(--component-side-menu-space-sub-menu-item-profile-gap);
-  font-family: var(--side-menu-text-item-font-family);
-  font-size: var(--side-menu-text-item-font-size);
-  font-weight: var(--side-menu-text-item-font-weight);
-  line-height: var(--side-menu-text-item-line-height);
-  letter-spacing: var(--side-menu-text-item-letter-spacing);
+  gap: var(--side-menu-user-gap);
+  height: var(--side-menu-item-height);
+  @include title-01;
 }
 
 .tl-side-menu__user-image {
-  height: var(--side-menu-profile-user-image-size);
+  height: var(--side-menu-user-image-size);
+  width: var(--side-menu-user-image-size);
 
   * {
-    width: var(--side-menu-profile-user-image-size);
-    height: var(--side-menu-profile-user-image-size);
+    width: var(--side-menu-user-image-size);
+    height: var(--side-menu-user-image-size);
     border-radius: 50%;
   }
 }
 
 .tl-side-menu__user-label {
   display: block;
-  color: var(--side-menu-single-item-color);
+  color: var(--side-menu-item-text-color);
 
   .subheader {
-    color: var(--color-foreground-text-subtle);
+    color: var(--side-menu-item-user-subheading-color);
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .tl-side-menu__dropdown .tl-side-menu__user .tl-side-menu__user-label {
+    .tl-side-menu--collapsed & {
+      display: none;
+    }
   }
 }

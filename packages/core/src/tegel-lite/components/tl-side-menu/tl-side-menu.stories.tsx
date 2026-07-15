@@ -143,7 +143,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
          <div class="tl-side-menu__wrapper tl-side-menu__wrapper--closed">
             <div class="tl-side-menu__overlay" id="tl-overlay"></div>
             <aside class="tl-side-menu__aside">
-               <div class="tl-side-menu__navigation">
+               <nav class="tl-side-menu__navigation">
                   <div class="tl-side-menu__close">
                      <button class="tl-side-menu__item" id="tl-close">
                         <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
@@ -154,28 +154,28 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                         <li>
                            <button class="tl-side-menu__item tl-side-menu__item--selected">
                               <span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>
-                              About us
+                              <span class="tl-side-menu__item-text">About us</span>
                            </button>
                         </li>
                         <li>
                            <button class="tl-side-menu__item">
                               <span class="tl-icon tl-icon--truck ${iconSize}" aria-hidden="true"></span>
-                              Trucks
+                              <span class="tl-side-menu__item-text">Trucks</span>
                            </button>
                         </li>
                         <li class="tl-side-menu__dropdown" id="dropdown">
                            <button class="tl-side-menu__item tl-side-menu__item--selected" id="dropdown-trigger">
                               <span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>
-                              Dropdown
+                              <span class="tl-side-menu__item-text">Dropdown</span>
                            </button>
                            <div class="tl-side-menu__dropdown-menu">
                               <span class="tl-side-menu__dropdown-header">Dropdown</span>
                               <ul class="tl-side-menu__dropdown-list">
                                  <li>
-                                    <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
+                                    <button class="tl-side-menu__dropdown-item">item</button>
                                  </li>
                                  <li>
-                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown list item</button>
+                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">item</button>
                                  </li>
                               </ul>
                            </div>
@@ -183,28 +183,16 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                         <li>
                            <button class="tl-side-menu__item">
                               <span class="tl-icon tl-icon--star ${iconSize}" aria-hidden="true"></span>
-                              Values
+                              <span class="tl-side-menu__item-text">Values</span>
                            </button>
                         </li>
                      </ul>
                      <ul class="tl-side-menu__end-list">
-                        <li>
-                           <button class="tl-side-menu__item">
-                              <div class="tl-side-menu__user">
-                                 <div class="tl-side-menu__user-image">
-                                    <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg">
-                                 </div>
-                                 <div class="tl-side-menu__user-label">
-                                    Name Namesson
-                                    <div class="subheader">Company name</div>
-                                 </div>
-                              </div>
-                           </button>
-                        </li>
+                      
                         <li class="tl-side-menu__dropdown" id="dropdown2">
-                           <button class="tl-side-menu__item" id="dropdown-trigger2">
+                           <button class="tl-side-menu__item tl-side-menu__item--selected" id="dropdown-trigger2">
                               <div class="tl-side-menu__user">
-                                 <div class="tl-side-menu__user-image">
+                                 <div class="tl-side-menu__user-image tl-icon">
                                     <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg">
                                  </div>
                                  <div class="tl-side-menu__user-label">
@@ -230,8 +218,8 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                             ? `<li class="tl-side-menu__collapse">
                            <button class="tl-side-menu__item" id="collapse-toggle">
                               <span class="tl-icon ${
-                                collapsed ? 'tl-icon--arrow_right' : 'tl-icon--arrow_left'
-                              } ${iconSize}" aria-hidden="true"></span>
+                                collapsed ? 'tl-icon--arrow_right ' : 'tl-icon--arrow_left'
+                              }  tl-icon--20" aria-hidden="true"></span>
                               <span class="tl-side-menu__collapse-text">Collapse</span>
                            </button>
                         </li>`
@@ -239,7 +227,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                         }
                      </ul>
                   </div>
-               </div>
+               </nav>
             </aside>
          </div>
       </div>
@@ -287,11 +275,23 @@ const Template = ({ persistent, collapsible, collapsed }) => {
     overlay?.addEventListener('click', closeMobile);
     closeBtn?.addEventListener('click', closeMobile);
 
+    const dropdowns = sideMenu.querySelectorAll('.tl-side-menu__dropdown');
+    console.log(dropdowns);
     function toggleCollapsed(){
       if (!(isPersistent && isCollapsible)) return;
       sideMenu.classList.toggle('tl-side-menu--collapsed');
+     
+      if (sideMenu.classList.contains('tl-side-menu--collapsed')) {
+        dropdowns.forEach((dd) => {
+          if(dd.classList.contains('tl-side-menu__dropdown--open')) {
+            toggleDropdown(dd);
+          }
+        });
+              
+      }
+        
       console.log('tdsCollapse', { collapsed: sideMenu.classList.contains('tl-side-menu--collapsed') });
-      
+
       // Update collapse button icon
       const collapseBtn = document.getElementById('collapse-toggle');
       const collapseIcon = collapseBtn?.querySelector('.tl-icon');
@@ -308,7 +308,6 @@ const Template = ({ persistent, collapsible, collapsed }) => {
     document.getElementById('test')?.addEventListener('click', toggleCollapsed);
     document.getElementById('collapse-toggle')?.addEventListener('click', toggleCollapsed);
 
-    const dropdowns = sideMenu.querySelectorAll('.tl-side-menu__dropdown');
 
     function toggleDropdown(dd) {
       if (!dd) return;

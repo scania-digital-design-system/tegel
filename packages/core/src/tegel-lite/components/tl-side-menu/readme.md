@@ -9,7 +9,7 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
   <div class="tl-side-menu__wrapper">
     <div class="tl-side-menu__overlay"></div>
     <aside class="tl-side-menu__aside">
-      <div class="tl-side-menu__navigation">
+      <nav class="tl-side-menu__navigation">
         <div class="tl-side-menu__close">
           <button class="tl-side-menu__item" id="tl-close">
             <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
@@ -33,7 +33,7 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
     </aside>
   </div>
 </div>
@@ -62,12 +62,13 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
 | `.tl-side-menu__wrapper`              | `<div>`      | Wrapper for menu content           |
 | `.tl-side-menu__overlay`              | `<div>`      | Backdrop overlay                   |
 | `.tl-side-menu__aside`                | `<aside>`    | Sidebar container                  |
-| `.tl-side-menu__navigation`           | `<div>`      | Navigation container               |
+| `.tl-side-menu__navigation`           | `<nav>`      | Navigation container               |
 | `.tl-side-menu__close`                | `<div>`      | Close button wrapper               |
 | `.tl-side-menu__list-wrapper`         | `<div>`      | List wrapper with scroll           |
 | `.tl-side-menu__upper-list`           | `<ul>`       | Upper section list                 |
 | `.tl-side-menu__end-list`             | `<ul>`       | Bottom section list                |
 | `.tl-side-menu__item`                 | `<div>`      | Menu item container                |
+| `.tl-side-menu__item-text`            | `<span>`     | Menu item text container           |
 | `.tl-side-menu__dropdown`             | `<div>`      | Dropdown control wrapper           |
 | `.tl-side-menu__dropdown-menu`        | `<div>`      | Dropdown submenu container         |
 | `.tl-side-menu__dropdown-header`      | `<div>`      | Dropdown header/title              |
