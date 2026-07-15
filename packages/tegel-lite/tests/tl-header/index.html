@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Header</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-header.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+</head>
+
+<body style="height: 100vh;">
+    <div class="demo-wrapper ">
+
+        <header class="tl-header">
+            <nav class="tl-header__nav">
+                <ul class="tl-header__list">
+
+                    <li class="tl-header__item">
+                        <button class="tl-header__item-wrapper">
+                            <span class="tl-icon tl-icon--burger tl-icon--20" aria-hidden="true"></span>
+                        </button>
+                    </li>
+
+
+                    <li class="tl-header__title">
+                        <h4 class="tl-header__title-text">Application Name</h4>
+                    </li>
+
+                    <li class="tl-header__item"><button class="tl-header__item-wrapper"><span>Header
+                                item</span></button></li>
+
+                    <li class="tl-header__dropdown">
+                        <button
+                            class="tl-header__dropdown-wrapper tl-header__dropdown-wrapper--open tl-header__dropdown-wrapper--selected">
+                            <span>Dropdown</span>
+                            <div class="tl-header__dropdown-icon tl-header__dropdown-icon--rotated">
+                                <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
+                            </div>
+                        </button>
+                        <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--open">
+                            <li class="tl-header__dropdown-menu-item"><a href="#">Menu Item</a></li>
+                            <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a
+                                    href="#">Selected</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="tl-header__middle-spacer"></li>
+
+                    <li class="tl-header__item">
+                        <button class="tl-header__item-wrapper">
+                            <span class="tl-icon tl-icon--placeholder tl-icon--16" aria-hidden="true"></span>
+                        </button>
+                    </li>
+
+                    <li class="tl-header__dropdown">
+                        <button class="tl-header__dropdown-wrapper">
+                            <span class="tl-icon tl-icon--bento tl-icon--16"></span>
+                        </button>
+                        <ul class="tl-header__launcher-menu-grid">
+                            <li class="tl-header__launcher-menu-title">CATEGORY NAME</li>
+                            <ul class="tl-header__launcher-menu-list">
+                                <li class="tl-header__launcher-menu-item"><a href="#"><span
+                                            class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
+                                <li class="tl-header__launcher-menu-item"><a href="#"><span
+                                            class="tl-icon tl-icon--settings tl-icon--32"></span>My Settings</a></li>
+                                <li class="tl-header__launcher-menu-item"><a href="#"><span
+                                            class="tl-icon tl-icon--message tl-icon--32"></span>Support</a></li>
+                                <li class="tl-header__launcher-menu-item"><a href="#"><span
+                                            class="tl-icon tl-icon--truck tl-icon--32"></span>My Truck</a></li>
+                            </ul>
+                        </ul>
+                    </li>
+
+                    <li class="tl-header__dropdown">
+                        <button class="tl-header__dropdown-wrapper">
+                            <span class="tl-icon tl-icon--burger tl-icon--16"></span>
+                        </button>
+                        <ul class="tl-header__launcher-menu">
+                            <li class="tl-header__launcher-menu-title">CATEGORY NAME</li>
+                            <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a
+                                    href="#">My Profile</a></li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">My settings</a></li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">Support</a></li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">My truck</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="tl-header__dropdown">
+                        <button class="tl-header__dropdown-wrapper-user">
+                            <div class="tl-header__user-menu-image">
+                                <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+                                    alt="User avatar" />
+                            </div>
+                        </button>
+                        <ul class="tl-header__user-menu">
+                            <li class="tl-header__user-menu-item">
+                                <div class="tl-header__user-menu-box">
+                                    <div class="tl-header__user-menu-content">
+                                        <span class="tl-header__user-menu-header">User Name</span>
+                                        <span class="tl-header__user-menu-subheader">user@example.com</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">My Profile</a></li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">My Settings</a></li>
+                            <li class="tl-header__dropdown-menu-item"><a href="#">Log out</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="tl-header__item">
+                        <a class="tl-header__item-wrapper">
+                            <div class="tl-header__brand"></div>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </header>
+    </div>
+</body>
+<style>
+    .tl-mode-dark {
+        /* tds-grey-900 */
+        background-color: #15181d;
+    }
+
+    .demo-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+</html>

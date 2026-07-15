@@ -8,93 +8,106 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-header-color-popovers: var(--color-background-layer-02);
-  --component-header-color-icon-strong: var(--color-icon-inverse-strong);
-  --component-header-color-icon-defined: var(--color-text-inverse-defined);
-  --component-header-color-icon-selected: var(--color-icon-strong);
-  --component-header-color-background-default: #041e42;
-  --component-header-color-background-hover: #0f3263;
-  --component-header-color-background-focus: #041e42;
-  --component-header-color-background-pressed: #0f3263;
-  --component-header-color-background-selected: #fff;
-  --component-header-color-background-border: #0f3263;
-  --component-header-color-background-profile: #0f3263;
-  --component-header-color-expressive-mobile-menu-primary: #041e42;
-  --component-header-color-expressive-mobile-menu-focus: #041e42;
-  --component-header-color-expressive-mobile-menu-pressed: #0f3263;
-  --component-header-color-expressive-mobile-menu-selected: #fff;
-  --component-header-color-expressive-mobile-menu-selected-expressive: #041e42;
-  --component-header-text-application-name-font-family: var(--scania-font-family-display);
-  --component-header-text-application-name-font-weight: var(--scania-font-weight-regular);
-  --component-header-text-application-name-font-size: 14;
-  --component-header-text-application-name-line-height: 16;
-  --component-header-text-application-name-text-transform: none;
-  --component-header-text-item-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-font-size: 14;
-  --component-header-text-item-line-height: 16;
-  --component-header-text-item-letter-spacing: -0.14;
-  --component-header-text-item-text-transform: none;
-  --component-header-text-item-selected-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-selected-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-selected-font-size: 14;
-  --component-header-text-item-selected-line-height: 16;
-  --component-header-text-item-selected-letter-spacing: -0.14;
-  --component-header-text-item-selected-text-transform: none;
-  --component-header-text-item-profile-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-profile-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-profile-font-size: 14;
-  --component-header-text-item-profile-line-height: 16;
-  --component-header-text-item-profile-letter-spacing: -0.14;
-  --component-header-text-item-profile-text-transform: none;
-  --component-header-space-profile-padding: var(--scania-unit-16);
-  --component-header-space-profile-size: var(--scania-unit-32);
+  --component-header-background-content-default: var(--scania-color-base-white);
+  --component-header-background-popover-default: var(--color-background-base);
+  --component-header-background-main-standard-default: var(--scania-color-blue-800);
+  --component-header-background-main-expressive-default: var(--scania-color-blue-800);
+  --component-header-background-nav-item-avatar-default: var(--scania-color-blue-700);
+  --component-header-background-nav-item-current-default: var(
+    --component-header-background-popover-default
+  );
+  --component-header-background-nav-item-link-default: var(--scania-color-blue-800);
+  --component-header-background-nav-item-link-hover: var(--scania-color-blue-700);
+  --component-header-background-nav-item-link-active: var(--scania-color-blue-600);
+  --component-header-background-menu-item-link-default: var(--color-background-base);
+  --component-header-background-menu-item-link-hover: var(--color-background-layer-01);
+  --component-header-background-menu-item-tile-default: var(--color-background-base);
+  --component-header-background-menu-item-tile-hover: var(--color-background-layer-01);
+  --component-header-background-menu-item-current-default: var(--scania-color-grey-100);
+  --component-header-background-menu-item-sub-link-active: var(--scania-color-blue-700);
+  --component-header-background-search-dismiss-default: var(--color-background-none);
+  --component-header-background-search-dismiss-hover: var(--scania-color-grey-100);
+  --component-header-background-search-dismiss-active: var(--scania-color-grey-150);
+  --component-header-background-search-result-default: var(--color-background-base);
+  --component-header-background-search-result-hover: var(--color-background-layer-01);
+  --component-header-background-search-result-active: var(--scania-color-grey-100);
+  --component-header-border-divider-default: var(--scania-color-blue-700);
+  --component-header-border-nav-item-indicator-default: var(--scania-color-blue-400);
+  --component-header-border-menu-item-avatar-default: var(--color-border-strong);
+  --component-header-border-menu-item-indicator-default: var(--scania-color-blue-400);
+  --component-header-border-menu-item-link-default: var(--color-border-disabled);
+  --component-header-border-menu-item-link-hover: var(--color-border-discrete);
+  --component-header-border-search-divider-default: var(--color-border-discrete);
+  --component-header-icon-nav-item-current-default: var(--color-icon-strong);
+  --component-header-icon-nav-item-link-default: var(--color-icon-inverse-strong);
+  --component-header-icon-search-result-default: var(--color-icon-strong);
+  --component-header-icon-menu-item-avatar-default: var(--color-icon-strong);
+  --component-header-text-title-default: var(--color-text-strong);
+  --component-header-text-subtitle-default: var(--color-text-soft);
+  --component-header-text-category-default: var(--color-text-strong);
+  --component-header-text-menu-item-current-default: var(--color-text-strong);
+  --component-header-text-menu-item-link-default: var(--color-text-strong);
+  --component-header-text-nav-item-current-default: var(--color-text-strong);
+  --component-header-text-nav-item-link-default: var(--color-text-inverse-strong);
+  --component-header-text-nav-item-sub-link-default: var(--color-text-inverse-defined);
+  --component-header-text-search-result-default: var(--color-text-strong);
+  --component-header-text-font-weight-font-weight: var(--scania-font-weight-bold);
+  --component-header-size-avatar-default: var(--scania-unit-32);
+  --component-header-size-avatar-padding: var(--scania-unit-16);
 }
 
 .traton .tds-mode-light,
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-header-color-popovers: var(--color-background-layer-01);
-  --component-header-color-icon-strong: var(--color-icon-strong);
-  --component-header-color-icon-defined: var(--color-icon-defined);
-  --component-header-color-icon-selected: var(--color-icon-strong);
-  --component-header-color-background-default: var(--traton-color-transparent-invisible-light);
-  --component-header-color-background-hover: var(--color-background-layer-01);
-  --component-header-color-background-focus: var(--color-background-base);
-  --component-header-color-background-pressed: var(--color-background-layer-01);
-  --component-header-color-background-selected: var(--color-background-base);
-  --component-header-color-background-border: var(--traton-color-transparent-invisible-light);
-  --component-header-color-background-profile: #ebe7dd;
-  --component-header-color-expressive-mobile-menu-primary: var(--color-background-base);
-  --component-header-color-expressive-mobile-menu-focus: var(--color-background-base);
-  --component-header-color-expressive-mobile-menu-pressed: #ebe7dd;
-  --component-header-color-expressive-mobile-menu-selected: var(--traton-color-base-white);
-  --component-header-color-expressive-mobile-menu-selected-expressive: var(
-    --traton-color-base-white
+  --component-header-background-content-default: var(--color-background-layer-01);
+  --component-header-background-popover-default: var(--color-background-layer-01);
+  --component-header-background-main-standard-default: var(
+    --traton-color-transparent-invisible-light
   );
-  --component-header-text-application-name-font-family: var(--traton-font-family-display);
-  --component-header-text-application-name-font-weight: var(--traton-font-weight-medium);
-  --component-header-text-application-name-font-size: 14;
-  --component-header-text-application-name-line-height: 16;
-  --component-header-text-application-name-text-transform: none;
-  --component-header-text-item-font-family: var(--traton-font-family-default);
-  --component-header-text-item-font-weight: var(--traton-font-weight-medium);
-  --component-header-text-item-font-size: 14;
-  --component-header-text-item-line-height: 16;
-  --component-header-text-item-text-transform: none;
-  --component-header-text-item-selected-font-family: var(--traton-font-family-default);
-  --component-header-text-item-selected-font-weight: var(--traton-font-weight-semi-bold);
-  --component-header-text-item-selected-font-size: 14;
-  --component-header-text-item-selected-line-height: 18;
-  --component-header-text-item-selected-text-transform: none;
-  --component-header-text-item-profile-font-family: var(--traton-font-family-default);
-  --component-header-text-item-profile-font-weight: var(--traton-font-weight-semi-bold);
-  --component-header-text-item-profile-font-size: 12;
-  --component-header-text-item-profile-line-height: 18;
-  --component-header-text-item-profile-text-transform: none;
-  --component-header-space-profile-padding: var(--traton-unit-20);
-  --component-header-space-profile-size: var(--traton-unit-24);
+  --component-header-background-main-expressive-default: var(--color-background-base);
+  --component-header-background-nav-item-avatar-default: var(--traton-color-grey-150);
+  --component-header-background-nav-item-current-default: var(--color-background-base);
+  --component-header-background-nav-item-link-default: var(
+    --traton-color-transparent-invisible-light
+  );
+  --component-header-background-nav-item-link-hover: var(--color-background-layer-01);
+  --component-header-background-nav-item-link-active: var(--color-background-layer-02);
+  --component-header-background-menu-item-link-default: var(--color-background-layer-01);
+  --component-header-background-menu-item-link-hover: var(--traton-color-grey-100);
+  --component-header-background-menu-item-tile-default: var(--color-background-none);
+  --component-header-background-menu-item-tile-hover: var(--traton-color-grey-150);
+  --component-header-background-menu-item-current-default: var(--traton-color-grey-150);
+  --component-header-background-menu-item-sub-link-active: var(--color-background-layer-01);
+  --component-header-background-search-dismiss-default: var(--color-background-none);
+  --component-header-background-search-dismiss-hover: var(--traton-color-grey-150);
+  --component-header-background-search-dismiss-active: var(--traton-color-grey-200);
+  --component-header-background-search-result-default: var(--color-background-base);
+  --component-header-background-search-result-hover: var(--color-background-layer-01);
+  --component-header-background-search-result-active: var(--color-background-layer-01);
+  --component-header-border-divider-default: var(--traton-color-transparent-invisible-light);
+  --component-header-border-nav-item-indicator-default: var(--traton-color-blue-500);
+  --component-header-border-menu-item-avatar-default: var(--color-border-defined);
+  --component-header-border-menu-item-indicator-default: var(--traton-color-blue-500);
+  --component-header-border-menu-item-link-default: var(--color-border-disabled);
+  --component-header-border-menu-item-link-hover: var(--color-border-discrete);
+  --component-header-border-search-divider-default: var(--color-border-discrete);
+  --component-header-icon-nav-item-current-default: var(--color-icon-strong);
+  --component-header-icon-nav-item-link-default: var(--color-icon-strong);
+  --component-header-icon-search-result-default: var(--color-icon-strong);
+  --component-header-icon-menu-item-avatar-default: var(--color-icon-defined);
+  --component-header-text-title-default: var(--color-text-strong);
+  --component-header-text-subtitle-default: var(--color-text-soft);
+  --component-header-text-category-default: var(--color-text-soft);
+  --component-header-text-menu-item-current-default: var(--color-text-strong);
+  --component-header-text-menu-item-link-default: var(--color-text-defined);
+  --component-header-text-nav-item-current-default: var(--color-text-strong);
+  --component-header-text-nav-item-link-default: var(--color-text-strong);
+  --component-header-text-nav-item-sub-link-default: var(--color-text-defined);
+  --component-header-text-search-result-default: var(--color-text-strong);
+  --component-header-text-font-weight-font-weight: var(--traton-font-weight-regular);
+  --component-header-size-avatar-default: var(--traton-unit-24);
+  --component-header-size-avatar-padding: var(--traton-unit-20);
 }
 
 .tds-mode-dark,
@@ -102,91 +115,104 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-header-color-popovers: var(--color-background-layer-02);
-  --component-header-color-icon-strong: var(--color-icon-strong);
-  --component-header-color-icon-defined: var(--color-text-defined);
-  --component-header-color-icon-selected: var(--color-icon-strong);
-  --component-header-color-background-default: #001533;
-  --component-header-color-background-hover: #041e42;
-  --component-header-color-background-focus: #001533;
-  --component-header-color-background-pressed: #041e42;
-  --component-header-color-background-selected: #041e42;
-  --component-header-color-background-border: #041e42;
-  --component-header-color-background-profile: #041e42;
-  --component-header-color-expressive-mobile-menu-primary: var(--scania-color-blue-900);
-  --component-header-color-expressive-mobile-menu-focus: var(--scania-color-blue-900);
-  --component-header-color-expressive-mobile-menu-pressed: var(--scania-color-blue-800);
-  --component-header-color-expressive-mobile-menu-selected: #041e42;
-  --component-header-color-expressive-mobile-menu-selected-expressive: #001533;
-  --component-header-text-application-name-font-family: var(--scania-font-family-display);
-  --component-header-text-application-name-font-weight: var(--scania-font-weight-regular);
-  --component-header-text-application-name-font-size: 14;
-  --component-header-text-application-name-line-height: 16;
-  --component-header-text-application-name-text-transform: none;
-  --component-header-text-item-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-font-size: 14;
-  --component-header-text-item-line-height: 16;
-  --component-header-text-item-letter-spacing: -0.14;
-  --component-header-text-item-text-transform: none;
-  --component-header-text-item-selected-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-selected-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-selected-font-size: 14;
-  --component-header-text-item-selected-line-height: 16;
-  --component-header-text-item-selected-letter-spacing: -0.14;
-  --component-header-text-item-selected-text-transform: none;
-  --component-header-text-item-profile-font-family: var(--scania-font-family-semi-condensed);
-  --component-header-text-item-profile-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-item-profile-font-size: 14;
-  --component-header-text-item-profile-line-height: 16;
-  --component-header-text-item-profile-letter-spacing: -0.14;
-  --component-header-text-item-profile-text-transform: none;
-  --component-header-space-profile-padding: var(--scania-unit-16);
-  --component-header-space-profile-size: var(--scania-unit-32);
+  --component-header-background-content-default: var(--color-background-layer-01);
+  --component-header-background-popover-default: var(--color-background-layer-01);
+  --component-header-background-main-standard-default: var(--scania-color-blue-900);
+  --component-header-background-main-expressive-default: var(--scania-color-blue-900);
+  --component-header-background-nav-item-avatar-default: var(--scania-color-blue-800);
+  --component-header-background-nav-item-current-default: var(
+    --component-header-background-popover-default
+  );
+  --component-header-background-nav-item-link-default: var(--scania-color-blue-900);
+  --component-header-background-nav-item-link-hover: var(--scania-color-blue-800);
+  --component-header-background-nav-item-link-active: var(--scania-color-blue-700);
+  --component-header-background-menu-item-link-default: var(--color-background-layer-01);
+  --component-header-background-menu-item-link-hover: var(--color-background-layer-02);
+  --component-header-background-menu-item-tile-default: var(--color-background-layer-01);
+  --component-header-background-menu-item-tile-hover: var(--color-background-layer-02);
+  --component-header-background-menu-item-current-default: var(--scania-color-grey-850);
+  --component-header-background-menu-item-sub-link-active: var(--scania-color-blue-800);
+  --component-header-background-search-dismiss-default: var(--color-background-none);
+  --component-header-background-search-dismiss-hover: var(--scania-color-grey-850);
+  --component-header-background-search-dismiss-active: var(--scania-color-grey-800);
+  --component-header-background-search-result-default: var(--color-background-layer-01);
+  --component-header-background-search-result-hover: var(--color-background-layer-02);
+  --component-header-background-search-result-active: var(--color-background-layer-03);
+  --component-header-border-divider-default: var(--scania-color-blue-800);
+  --component-header-border-nav-item-indicator-default: var(--scania-color-blue-300);
+  --component-header-border-menu-item-avatar-default: var(--color-border-strong);
+  --component-header-border-menu-item-indicator-default: var(--scania-color-blue-300);
+  --component-header-border-menu-item-link-default: var(--color-border-disabled);
+  --component-header-border-menu-item-link-hover: var(--color-border-discrete);
+  --component-header-border-search-divider-default: var(--color-border-discrete);
+  --component-header-icon-nav-item-current-default: var(--color-icon-strong);
+  --component-header-icon-nav-item-link-default: var(--color-icon-strong);
+  --component-header-icon-search-result-default: var(--color-icon-strong);
+  --component-header-icon-menu-item-avatar-default: var(--color-icon-strong);
+  --component-header-text-title-default: var(--color-text-strong);
+  --component-header-text-subtitle-default: var(--color-text-soft);
+  --component-header-text-category-default: var(--color-text-strong);
+  --component-header-text-menu-item-current-default: var(--color-text-strong);
+  --component-header-text-menu-item-link-default: var(--color-text-strong);
+  --component-header-text-nav-item-current-default: var(--color-text-strong);
+  --component-header-text-nav-item-link-default: var(--color-text-strong);
+  --component-header-text-nav-item-sub-link-default: var(--color-text-defined);
+  --component-header-text-search-result-default: var(--color-text-strong);
+  --component-header-text-font-weight-font-weight: var(--scania-font-weight-bold);
+  --component-header-size-avatar-default: var(--scania-unit-32);
+  --component-header-size-avatar-padding: var(--scania-unit-16);
 }
 
 .traton .tds-mode-dark,
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-header-color-popovers: var(--color-background-layer-01);
-  --component-header-color-icon-strong: var(--color-icon-strong);
-  --component-header-color-icon-defined: var(--color-icon-defined);
-  --component-header-color-icon-selected: var(--color-icon-strong);
-  --component-header-color-background-default: var(--traton-color-transparent-invisible-light);
-  --component-header-color-background-hover: var(--color-background-layer-01);
-  --component-header-color-background-focus: var(--color-background-base);
-  --component-header-color-background-pressed: #002429;
-  --component-header-color-background-selected: var(--color-background-base);
-  --component-header-color-background-border: var(--traton-color-transparent-invisible-light);
-  --component-header-color-background-profile: #002429;
-  --component-header-color-expressive-mobile-menu-primary: var(--color-background-base);
-  --component-header-color-expressive-mobile-menu-focus: var(--color-background-base);
-  --component-header-color-expressive-mobile-menu-pressed: #002429;
-  --component-header-color-expressive-mobile-menu-selected: var(--traton-color-base-white);
-  --component-header-color-expressive-mobile-menu-selected-expressive: var(
-    --traton-color-base-white
+  --component-header-background-content-default: var(--color-background-layer-01);
+  --component-header-background-popover-default: var(--color-background-layer-01);
+  --component-header-background-main-standard-default: var(
+    --traton-color-transparent-invisible-light
   );
-  --component-header-text-application-name-font-family: var(--traton-font-family-display);
-  --component-header-text-application-name-font-weight: var(--traton-font-weight-medium);
-  --component-header-text-application-name-font-size: 14;
-  --component-header-text-application-name-line-height: 16;
-  --component-header-text-application-name-text-transform: none;
-  --component-header-text-item-font-family: var(--traton-font-family-default);
-  --component-header-text-item-font-weight: var(--traton-font-weight-medium);
-  --component-header-text-item-font-size: 14;
-  --component-header-text-item-line-height: 16;
-  --component-header-text-item-text-transform: none;
-  --component-header-text-item-selected-font-family: var(--traton-font-family-default);
-  --component-header-text-item-selected-font-weight: var(--traton-font-weight-semi-bold);
-  --component-header-text-item-selected-font-size: 14;
-  --component-header-text-item-selected-line-height: 18;
-  --component-header-text-item-selected-text-transform: none;
-  --component-header-text-item-profile-font-family: var(--traton-font-family-default);
-  --component-header-text-item-profile-font-weight: var(--traton-font-weight-semi-bold);
-  --component-header-text-item-profile-font-size: 12;
-  --component-header-text-item-profile-line-height: 18;
-  --component-header-text-item-profile-text-transform: none;
-  --component-header-space-profile-padding: var(--traton-unit-20);
-  --component-header-space-profile-size: var(--traton-unit-24);
+  --component-header-background-main-expressive-default: var(--color-background-base);
+  --component-header-background-nav-item-avatar-default: var(--traton-color-blue-900);
+  --component-header-background-nav-item-current-default: var(--color-background-base);
+  --component-header-background-nav-item-link-default: var(
+    --traton-color-transparent-invisible-light
+  );
+  --component-header-background-nav-item-link-hover: var(--color-background-layer-01);
+  --component-header-background-nav-item-link-active: var(--traton-color-blue-900);
+  --component-header-background-menu-item-link-default: var(--color-background-layer-01);
+  --component-header-background-menu-item-link-hover: var(--traton-color-blue-900);
+  --component-header-background-menu-item-tile-default: var(--color-background-none);
+  --component-header-background-menu-item-tile-hover: var(--traton-color-blue-900);
+  --component-header-background-menu-item-current-default: var(--traton-color-blue-900);
+  --component-header-background-menu-item-sub-link-active: var(--traton-color-blue-900);
+  --component-header-background-search-dismiss-default: var(--color-background-none);
+  --component-header-background-search-dismiss-hover: var(--traton-color-blue-900);
+  --component-header-background-search-dismiss-active: var(--traton-color-blue-850);
+  --component-header-background-search-result-default: var(--color-background-base);
+  --component-header-background-search-result-hover: var(--color-background-layer-01);
+  --component-header-background-search-result-active: var(--color-background-layer-01);
+  --component-header-border-divider-default: var(--traton-color-transparent-invisible-light);
+  --component-header-border-nav-item-indicator-default: var(--traton-color-yellow-400);
+  --component-header-border-menu-item-avatar-default: var(--color-border-defined);
+  --component-header-border-menu-item-indicator-default: var(--traton-color-yellow-400);
+  --component-header-border-menu-item-link-default: var(--color-border-disabled);
+  --component-header-border-menu-item-link-hover: var(--color-border-discrete);
+  --component-header-border-search-divider-default: var(--color-border-discrete);
+  --component-header-icon-nav-item-current-default: var(--color-icon-strong);
+  --component-header-icon-nav-item-link-default: var(--color-icon-strong);
+  --component-header-icon-search-result-default: var(--color-icon-strong);
+  --component-header-icon-menu-item-avatar-default: var(--color-icon-defined);
+  --component-header-text-title-default: var(--color-text-strong);
+  --component-header-text-subtitle-default: var(--color-text-soft);
+  --component-header-text-category-default: var(--color-text-soft);
+  --component-header-text-menu-item-current-default: var(--color-text-strong);
+  --component-header-text-menu-item-link-default: var(--color-text-defined);
+  --component-header-text-nav-item-current-default: var(--color-text-strong);
+  --component-header-text-nav-item-link-default: var(--color-text-strong);
+  --component-header-text-nav-item-sub-link-default: var(--color-text-defined);
+  --component-header-text-search-result-default: var(--color-text-strong);
+  --component-header-text-font-weight-font-weight: var(--traton-font-weight-regular);
+  --component-header-size-avatar-default: var(--traton-unit-24);
+  --component-header-size-avatar-padding: var(--traton-unit-20);
 }

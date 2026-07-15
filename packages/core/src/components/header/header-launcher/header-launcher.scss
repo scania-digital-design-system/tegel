@@ -16,7 +16,7 @@
 
       overflow-y: auto;
       max-height: calc(100vh - var(--tds-header-height));
-      box-shadow: var(--tds-nav-dropdown-menu-box);
+      box-shadow: var(--tds-header-dropdown-menu-box);
       background-color: var(--tds-header-app-launcher-menu-background);
       border-radius: 0;
 

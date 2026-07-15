@@ -11,7 +11,7 @@
 
 .tl-header {
   display: block;
-  height: var(--tds-header-height);
+  height: var(--header-height);
   background-color: var(--header-background);
   width: 100%;
 }
@@ -27,7 +27,7 @@
 .tl-header__list {
   @include tds-flex-center;
 
-  height: var(--tds-header-height);
+  height: var(--header-height);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -37,7 +37,7 @@
   display: none;
   height: 100%;
 
-  @media (min-width: 992px) {
+  @media (width >= 992px) {
     display: block;
   }
 
@@ -54,7 +54,7 @@
   height: 100%;
   position: relative;
 
-  @media (min-width: 992px) {
+  @media (width >= 992px) {
     display: block;
   }
 
@@ -66,6 +66,6 @@
 .tl-header__middle-spacer {
   display: block;
   flex-grow: 1;
-  height: var(--tds-header-height);
-  border-right: 1px solid var(--header-basic-element-border);
+  height: var(--header-height);
+  border-right: 1px solid var(--header-item-border-right);
 }
