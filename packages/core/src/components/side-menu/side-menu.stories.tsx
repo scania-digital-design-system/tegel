@@ -57,6 +57,7 @@ export default {
 
 const Template = ({ persistent, collapsible, collapsed }) => {
   const isScania = document.getElementsByClassName('scania').length !== 0;
+  const itemIconSize = isScania ? '24px' : '16px'; // Should be 16px if TRATON brand
   return formatHtmlPreview(
     `
     <script>
@@ -142,20 +143,20 @@ const Template = ({ persistent, collapsible, collapsed }) => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size=${isScania ? '24px' : '16px'}></tds-icon>
+            <tds-icon name="timer" size="${itemIconSize}"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="truck" size=${isScania ? '24px' : '16px'}></tds-icon>
+            <tds-icon name="truck" size="${itemIconSize}"></tds-icon>
             Trucks
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size=${isScania ? '24px' : '16px'}></tds-icon>
+          <tds-icon slot="icon" name="profile" size="${itemIconSize}"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -175,7 +176,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size=${isScania ? '24px' : '16px'}></tds-icon>
+            <tds-icon name="star" size="${itemIconSize}"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
@@ -212,7 +213,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
-        <p>The icons in each header item should be 24px for Scania brand. For TRATON they should be 16px.
+        <p>The icons in each side menu item should be 24px for Scania brand. For TRATON they should be 16px.
         </p>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
