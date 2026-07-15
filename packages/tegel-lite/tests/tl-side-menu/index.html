@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Side Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-side-menu.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+</head>
+
+<body style="height: 100vh;">
+    <div class="demo-wrapper">
+        <div class="tl-side-menu tl-side-menu--persistent">
+            <div class="tl-side-menu__wrapper tl-side-menu__wrapper--closed">
+                <div class="tl-side-menu__overlay" id="tl-overlay"></div>
+                <aside class="tl-side-menu__aside">
+                    <nav class="tl-side-menu__navigation">
+                        <div class="tl-side-menu__close">
+                            <button class="tl-side-menu__item" id="tl-close">
+                                <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="tl-side-menu__list-wrapper">
+                            <ul class="tl-side-menu__upper-list">
+                                <li>
+                                    <button class="tl-side-menu__item tl-side-menu__item--selected">
+                                        <span class="tl-icon tl-icon--info tl-icon--24" aria-hidden="true"></span>
+                                        <span class="tl-side-menu__item-text">About us</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="tl-side-menu__item">
+                                        <span class="tl-icon tl-icon--truck tl-icon--24" aria-hidden="true"></span>
+                                        <span class="tl-side-menu__item-text">Trucks</span>
+                                    </button>
+                                </li>
+                                <li class="tl-side-menu__dropdown tl-side-menu__dropdown--open" id="dropdown">
+                                    <button class="tl-side-menu__item" id="dropdown-trigger">
+                                        <span class="tl-icon tl-icon--info tl-icon--24" aria-hidden="true"></span>
+                                        <span class="tl-side-menu__item-text">Dropdown</span>
+                                    </button>
+                                    <div class="tl-side-menu__dropdown-menu">
+                                        <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                                        <ul class="tl-side-menu__dropdown-list">
+                                            <li>
+                                                <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown
+                                                    item</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button class="tl-side-menu__item">
+                                        <span class="tl-icon tl-icon--star tl-icon--24" aria-hidden="true"></span>
+                                        <span class="tl-side-menu__item-text">Values</span>
+                                    </button>
+                                </li>
+                            </ul>
+                            <ul class="tl-side-menu__end-list">
+
+                                <li class="tl-side-menu__dropdown tl-side-menu__dropdown--open" id="dropdown2">
+                                    <button class="tl-side-menu__item" id="dropdown-trigger2">
+                                        <div class="tl-side-menu__user">
+                                            <div class="tl-side-menu__user-image tl-icon">
+                                                <img
+                                                    src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg">
+                                            </div>
+                                            <div class="tl-side-menu__user-label">
+                                                Name Namesson
+                                                <div class="subheader">Company name</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                    <div class="tl-side-menu__dropdown-menu">
+                                        <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                                        <ul class="tl-side-menu__dropdown-list">
+                                            <li>
+                                                <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown
+                                                    list item</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="tl-side-menu__collapse">
+                                    <button class="tl-side-menu__item" id="collapse-toggle">
+                                        <span class="tl-icon tl-icon--arrow_left tl-icon--20" aria-hidden="true"></span>
+                                        <span class="tl-side-menu__collapse-text">Collapse</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .demo-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .tl-side-menu {
+        height: 100vh;
+        position: sticky;
+        top: 0px;
+        left: 0px;
+    }
+</style>
+
+</html>
