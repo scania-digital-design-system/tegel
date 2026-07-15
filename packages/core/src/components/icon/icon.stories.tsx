@@ -1,5 +1,5 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { iconsNames } from './scaniaIconsArray';
+import { scaniaIconNames as iconsNames } from '../../types/ScaniaIcons';
 
 export default {
   title: 'Components/Icon',
