@@ -1,6 +1,7 @@
 # tl-side-menu
 
 The Side Menu component provides a navigation sidebar with collapsible sections and responsive behavior.
+The icons in each side menu item should be 24px for Scania brand. For TRATON they should be 16px.
 
 ## Usage
 
