@@ -237,6 +237,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
          </p>
          <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
          <p><i>Note: The collapse button is optional.</i></p>
+         <p><i>Note: When the side menu is collapsed, you can overwrite both the bottom distance for the end dropdown menus as well as the maximum height for the dropdown menus.</i></p>
          <button id="test">Toggle the collapsed state programmatically</button>
          <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
       </main>

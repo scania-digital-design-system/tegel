@@ -264,6 +264,13 @@ $breakpoint-lg: 992px;
       width: max-content;
       max-width: 300px;
       flex-direction: column;
+
+      @include tl-scrollbar;
+
+      overflow-y: auto;
+
+      // Overwrite this if necessary.
+      max-height: 300px;
     }
   }
 
