@@ -119,7 +119,6 @@ $breakpoint-lg: 992px;
 
 .tl-side-menu__collapse {
   display: none;
-  border-top: var(--side-menu-item-border-thickness) solid var(--side-menu-item-border-bottom-color);
 
   @media (min-width: $breakpoint-lg) {
     .tl-side-menu--persistent & {
