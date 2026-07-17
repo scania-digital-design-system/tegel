@@ -202,7 +202,12 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                               </div>
                            </button>
                            <div class="tl-side-menu__dropdown-menu">
-                              <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                              <span class="tl-side-menu__dropdown-header">
+                                 <div class="tl-side-menu__user-label">
+                                    Name Namesson
+                                    <div class="subheader">Company name</div>
+                                 </div>
+                              </span>
                               <ul class="tl-side-menu__dropdown-list">
                                  <li>
                                     <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
