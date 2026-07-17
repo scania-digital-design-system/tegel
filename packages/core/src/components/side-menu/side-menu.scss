@@ -15,7 +15,6 @@
 
   .wrapper {
     height: inherit;
-    background-color: var(--tds-side-menu-background);
 
     /* default slot */
     slot:not([name])::slotted(*) {
@@ -124,6 +123,7 @@
     background-color: var(--tds-side-menu-background);
   }
 
+  width: 80%;
   height: inherit;
   position: relative;
   left: 0;
