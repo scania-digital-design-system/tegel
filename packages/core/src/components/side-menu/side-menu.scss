@@ -20,13 +20,13 @@
     /* default slot */
     slot:not([name])::slotted(*) {
       border-bottom: var(--tds-side-menu-item-border-thickness) solid
-        var(--tds-side-menu-item-border-bottom-color);
+        var(--tds-side-menu-item-border-color);
     }
 
     /* 'end' slot */
     slot[name='end'] {
       border-top: var(--tds-side-menu-item-border-thickness) solid
-        var(--tds-side-menu-item-border-bottom-color);
+        var(--tds-side-menu-item-border-color);
     }
 
     .tds-side-menu-list-end {
@@ -60,7 +60,7 @@
     ::slotted([slot='end']) {
       border-top: none;
       border-bottom: var(--tds-side-menu-border-thickness) solid
-        var(--tds-side-menu-item-border-bottom-color);
+        var(--tds-side-menu-item-border-color);
     }
   }
 }
@@ -78,8 +78,7 @@
     position: static;
     width: 272px;
     height: auto;
-    border-right: var(--tds-side-menu-border-thickness) solid
-      var(--tds-side-menu-border-right-color);
+    border-right: var(--tds-side-menu-border-thickness) solid var(--tds-side-menu-border-color);
 
     .wrapper {
       slot[name='overlay']::slotted(tds-side-menu-overlay) {

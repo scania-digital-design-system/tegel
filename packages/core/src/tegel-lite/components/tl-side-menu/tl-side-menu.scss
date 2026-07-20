@@ -86,6 +86,7 @@ $breakpoint-lg: 992px;
 }
 
 .tl-side-menu__end-list {
+  margin-top: var(--side-menu-item-height);
   border-top: var(--side-menu-item-border-thickness) solid var(--side-menu-item-border-bottom-color);
 
   .tl-side-menu__wrapper--empty & {
@@ -116,12 +117,15 @@ $breakpoint-lg: 992px;
 
 .tl-side-menu__collapse {
   display: none;
-  border-top: var(--side-menu-item-border-thickness) solid var(--side-menu-item-border-bottom-color);
 
   @media (min-width: $breakpoint-lg) {
     .tl-side-menu--persistent & {
       display: flex;
       flex-direction: row;
+      position: sticky;
+      bottom: 0;
+      border-top: var(--side-menu-item-border-thickness) solid
+        var(--side-menu-item-border-bottom-color);
     }
 
     .tl-side-menu--collapsed & .tl-side-menu__collapse-text {
@@ -139,7 +143,7 @@ $breakpoint-lg: 992px;
 
 .tl-side-menu__aside {
   background-color: var(--side-menu-background);
-  width: 100%;
+  width: 80%;
   height: inherit;
   position: relative;
   left: 0;
@@ -164,6 +168,13 @@ $breakpoint-lg: 992px;
   @include tl-scrollbar;
 
   gap: var(--side-menu-sub-items-gap);
+}
+
+.tl-side-menu__collapse-wrapper {
+  padding: var(--side-menu-gap) var(--side-menu-horizontal-padding);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .tl-side-menu__navigation {
@@ -228,7 +239,7 @@ $breakpoint-lg: 992px;
       display: flex;
       align-items: center;
       border-bottom: var(--tds-side-menu-border-thickness) solid
-        var(--tds-side-menu-item-border-bottom-color);
+        var(--tds-side-menu-item-border-color);
 
       @include title-01;
     }
