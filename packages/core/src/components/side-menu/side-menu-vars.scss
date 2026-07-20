@@ -1,12 +1,12 @@
 tds-side-menu {
   // core
   --tds-side-menu-background: var(--component-side-menu-background-default);
-  --tds-side-menu-border-right-color: var(--component-side-menu-border-divider-default);
+  --tds-side-menu-border-color: var(--component-side-menu-border-divider-default);
   --tds-side-menu-border-thickness: var(--unit-1); // 1px
 
   // side menu item
   --tds-side-menu-item-background: var(--component-side-menu-background-item-link-default);
-  --tds-side-menu-item-border-bottom-color: var(--component-side-menu-border-divider-default);
+  --tds-side-menu-item-border-color: var(--component-side-menu-border-divider-default);
   --tds-side-menu-item-border-thickness: var(--unit-1); // 1px
   --tds-side-menu-item-border-radius: calc(var(--component-side-menu-border-radius-default) * 1px);
   --tds-side-menu-item-text-color: var(--component-side-menu-text-item-link-default); // title-01

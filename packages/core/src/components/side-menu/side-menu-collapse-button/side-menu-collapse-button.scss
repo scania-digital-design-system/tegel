@@ -8,7 +8,8 @@
   bottom: 0;
   display: none;
   height: var(--tds-side-menu-item-height);
-  border-top: 1px solid var(--tds-side-menu-item-border-bottom-color);
+  border-top: var(--tds-side-menu-item-border-thickness) solid
+    var(--tds-side-menu-item-border-color);
 
   .icon {
     transition: all 0.2s ease-in-out;

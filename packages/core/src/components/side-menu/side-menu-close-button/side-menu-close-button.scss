@@ -16,7 +16,8 @@
     color: var(--tds-side-menu-item-icon-color);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--tds-side-menu-item-border-bottom-color);
+    border-bottom: var(--tds-side-menu-item-border-thickness) solid
+      var(--tds-side-menu-item-border-color);
 
     &:hover {
       cursor: pointer;

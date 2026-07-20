@@ -52,7 +52,7 @@
         display: flex;
         align-items: center;
         border-bottom: var(--tds-side-menu-border-thickness) solid
-          var(--tds-side-menu-item-border-bottom-color);
+          var(--tds-side-menu-item-border-color);
 
         @include title-01;
       }

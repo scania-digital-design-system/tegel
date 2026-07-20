@@ -18,7 +18,7 @@
   .state-collapsed {
     ::slotted(*) {
       border-bottom: var(--tds-side-menu-item-border-thickness) solid
-        var(--tds-side-menu-item-border-bottom-color);
+        var(--tds-side-menu-item-border-color);
     }
   }
 }
