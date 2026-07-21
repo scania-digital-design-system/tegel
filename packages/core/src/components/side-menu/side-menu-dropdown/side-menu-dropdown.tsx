@@ -36,8 +36,6 @@ export class TdsSideMenuDropdown {
 
   private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
-  private buttonEl!: HTMLButtonElement | null;
-
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapsedSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {
     this.collapsed = event.detail.collapsed;
@@ -114,13 +112,7 @@ export class TdsSideMenuDropdown {
             }}
             aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
           >
-            <button
-              ref={(element) => {
-                if (element) {
-                  this.buttonEl = element;
-                }
-              }}
-            >
+            <button>
               <slot name="icon"></slot>
               {!this.collapsed && (
                 <Fragment>
@@ -140,7 +132,7 @@ export class TdsSideMenuDropdown {
             class="menu"
             tabindex={this.collapsed ? '0' : undefined}
             style={{
-              '--tds-side-menu-position-bottom': `${this.buttonEl?.offsetHeight.toString()}px`,
+              '--tds-side-menu-dropdown-top-distance': `${this.host.getBoundingClientRect().y.toString()}px`,
             }}
           >
             {this.collapsed && (
