@@ -166,6 +166,62 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                 Hub-centric wheel
               </a>
             </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            
             <tds-side-menu-dropdown-list-item selected>
               <a href="https://www.scania.com" aria-current="page">
                 Rim wheel

@@ -175,6 +175,46 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                                     <button class="tl-side-menu__dropdown-item">Dropdown item</button>
                                  </li>
                                  <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li><li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li><li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown item</button>
+                                 </li>
+                                 
+                                 <li>
                                     <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown item</button>
                                  </li>
                               </ul>
@@ -202,7 +242,12 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                               </div>
                            </button>
                            <div class="tl-side-menu__dropdown-menu">
-                              <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                              <span class="tl-side-menu__dropdown-header">
+                                 <div class="tl-side-menu__user-label">
+                                    Name Namesson
+                                    <div class="subheader">Company name</div>
+                                 </div>
+                              </span>
                               <ul class="tl-side-menu__dropdown-list">
                                  <li>
                                     <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
@@ -213,32 +258,51 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                               </ul>
                            </div>
                         </li>
-                        ${
-                          persistent && collapsible
-                            ? `<li class="tl-side-menu__collapse">
+                     </ul>
+                  </div>
+                                          ${
+                                            persistent && collapsible
+                                              ? `<div class="tl-side-menu__collapse">
                            <button class="tl-side-menu__item" id="collapse-toggle">
                               <span class="tl-icon ${
                                 collapsed ? 'tl-icon--arrow_right ' : 'tl-icon--arrow_left'
                               }  tl-icon--20" aria-hidden="true"></span>
                               <span class="tl-side-menu__collapse-text">Collapse</span>
                            </button>
-                        </li>`
-                            : ''
-                        }
-                     </ul>
-                  </div>
+                        </div>`
+                                              : ''
+                                          } 
                </nav>
             </aside>
          </div>
       </div>
-      <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box; flex:1;">
-         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens.
+      <main class="tds-body-01 tds-u-p3" style="box-sizing: border-box; flex:1;">
+        <h1> Some styling considerations about the Side Menu</h1>
+
+        <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens.
             <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.
-         </p>
-         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
-         <p><i>Note: The collapse button is optional.</i></p>
-         <button id="test">Toggle the collapsed state programmatically</button>
-         <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
+        </p>
+        <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
+        <p><i>Note: The collapse button is optional.</i></p>
+        <p><i>Note: When the side menu is collapsed, you can overwrite both the bottom distance for the end dropdown menus as well as the maximum height for the dropdown menus.</i></p>
+
+        <p>Since Tegel Lite purely a CSS framework, is not responsible for all the styles and functionality your application will need.</p>
+   
+        <p> 
+          To help the consumers of Tegel Lite there are GitHub repositories with the usage Tegel Lite in demo applications using 
+          <a href="https://github.com/scania-digital-design-system/tegel-lite-react-demo" target="_blank" class="tl-link tl-link--underline">React</a>
+          and <a href="https://github.com/scania-digital-design-system/tegel-lite-angular-demo" target="_blank" class="tl-link tl-link--underline">Angular</a> as the framework to build the application.
+          <br/>
+          Feel free to explore the examples for complete usage of the extra styles and functionality needed in your application.
+        </p>  
+       
+        <button id="test" class="tl-button tl-button--primary tl-button--sm">Toggle the collapsed state programmatically</button>
+        <button id="toggleExpandedTest" class="tl-button tl-button--primary tl-button--sm">Toggle "Dropdown" menu item expanded state programmatically</button>
+
+      
+
+         <p></p>
+       
       </main>
    </div>
 </div>
