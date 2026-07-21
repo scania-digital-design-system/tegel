@@ -121,11 +121,11 @@ $breakpoint-lg: 992px;
   @media (min-width: $breakpoint-lg) {
     .tl-side-menu--persistent & {
       display: flex;
-      flex-direction: row;
       position: sticky;
       bottom: 0;
       border-top: var(--side-menu-item-border-thickness) solid
         var(--side-menu-item-border-bottom-color);
+      padding: var(--side-menu-gap) var(--side-menu-horizontal-padding);
     }
 
     .tl-side-menu--collapsed & .tl-side-menu__collapse-text {
@@ -168,13 +168,6 @@ $breakpoint-lg: 992px;
   @include tl-scrollbar;
 
   gap: var(--side-menu-sub-items-gap);
-}
-
-.tl-side-menu__collapse-wrapper {
-  padding: var(--side-menu-gap) var(--side-menu-horizontal-padding);
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
 }
 
 .tl-side-menu__navigation {
