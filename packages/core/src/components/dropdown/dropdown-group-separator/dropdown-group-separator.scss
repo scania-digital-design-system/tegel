@@ -1,5 +1,4 @@
 @use '../../../mixins/box-sizing' as *;
-@use '../../../../../../typography/mixins/type-styles' as *;
 @use '../dropdown-list-item-dimensions' as *;
 
 :host {
@@ -9,15 +8,11 @@
   background-color: var(--tds-dropdown-option-background);
 }
 
-.dropdown-heading {
-  @include detail-04;
+.dropdown-group-separator {
   @include dropdown-list-item-base;
-
-  color: var(--tds-dropdown-heading-color);
-  overflow-wrap: anywhere;
 }
 
-@include dropdown-list-item-heights('.dropdown-heading');
+@include dropdown-list-item-heights('.dropdown-group-separator');
 
 :host([hidden]) {
   display: none;
