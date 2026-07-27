@@ -60,6 +60,17 @@ function isDropdownDecorativeChild(tagName: string): boolean {
   return tagName === DROPDOWN_SEPARATOR_TAG || tagName === DROPDOWN_HEADING_TAG;
 }
 
+interface DropdownSection {
+  heading: Element | null;
+  options: HTMLTdsDropdownOptionElement[];
+  leadingSeparator: Element | null;
+}
+
+interface ParsedDropdownSections {
+  sections: DropdownSection[];
+  trailingSeparator: Element | null;
+}
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option, separator, and heading elements.
  */
@@ -615,6 +626,76 @@ export class TdsDropdown {
     });
   };
 
+  private readonly sectionHasVisibleOptions = (section: DropdownSection): boolean =>
+    section.options.some((option) => !option.hasAttribute('hidden'));
+
+  private readonly parseDropdownSections = (): ParsedDropdownSections => {
+    const sections: DropdownSection[] = [];
+    let pendingSeparator: Element | null = null;
+    let current: DropdownSection = { heading: null, options: [], leadingSeparator: null };
+
+    const pushCurrentSection = () => {
+      if (current.heading || current.options.length > 0) {
+        sections.push(current);
+      }
+    };
+
+    for (const child of this.getSlottedChildren()) {
+      if (child.tagName === DROPDOWN_HEADING_TAG) {
+        pushCurrentSection();
+        current = {
+          heading: child,
+          options: [],
+          leadingSeparator: pendingSeparator,
+        };
+        pendingSeparator = null;
+      } else if (isDropdownOption(child.tagName)) {
+        current.options.push(child as HTMLTdsDropdownOptionElement);
+      } else if (child.tagName === DROPDOWN_SEPARATOR_TAG) {
+        pendingSeparator = child;
+      }
+    }
+
+    pushCurrentSection();
+
+    return { sections, trailingSeparator: pendingSeparator };
+  };
+
+  private readonly updateFilterDecorativeVisibility = () => {
+    if (this.filterQuery === '') {
+      this.showDecorativeChildren();
+      return;
+    }
+
+    const { sections, trailingSeparator } = this.parseDropdownSections();
+
+    sections.forEach((section, index) => {
+      const hasVisibleOptions = this.sectionHasVisibleOptions(section);
+      const previousHasVisibleOptions =
+        index > 0 ? this.sectionHasVisibleOptions(sections[index - 1]) : false;
+
+      if (section.heading) {
+        if (hasVisibleOptions) {
+          section.heading.removeAttribute('hidden');
+        } else {
+          section.heading.setAttribute('hidden', '');
+        }
+      }
+
+      if (section.leadingSeparator) {
+        if (hasVisibleOptions && previousHasVisibleOptions) {
+          section.leadingSeparator.removeAttribute('hidden');
+        } else {
+          section.leadingSeparator.setAttribute('hidden', '');
+        }
+      }
+    });
+
+    if (trailingSeparator) {
+      trailingSeparator.setAttribute('hidden', '');
+    }
+  };
+
   private readonly validateSlottedChildren = () => {
     Array.from(this.host.children).forEach((child) => {
       if (!isValidDropdownChild(child.tagName)) {
@@ -740,7 +821,7 @@ export class TdsDropdown {
         }
         return !element.hasAttribute('hidden');
       }).length;
-      this.showDecorativeChildren();
+      this.updateFilterDecorativeVisibility();
     }
   };
 
