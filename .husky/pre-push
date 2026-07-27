@@ -1,6 +1,3 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 echo "Running unit tests before pushing..."
 npm run test
 npm run test:lte
