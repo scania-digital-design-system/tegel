@@ -1,4 +1,4 @@
-# tds-dropdown-separator
+# tds-dropdown-group-separator
 
 
 
