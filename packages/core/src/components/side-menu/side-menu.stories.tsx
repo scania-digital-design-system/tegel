@@ -222,7 +222,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
               </a>
             </tds-side-menu-dropdown-list-item>
             
-            <tds-side-menu-dropdown-list-item selected>
+            <tds-side-menu-dropdown-list-item >
               <a href="https://www.scania.com" aria-current="page">
                 Rim wheel
               </a>
@@ -239,14 +239,14 @@ const Template = ({ persistent, collapsible, collapsed }) => {
 
         <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
             <tds-side-menu-user-image
-            slot="icon"     
-            src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            alt="">
+              slot="icon"     
+              src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
+              alt="">
             </tds-side-menu-user-image>
             <tds-side-menu-user-label
-            slot="label"
-            heading="Name Namesson" 
-            subheading="Company name"        
+              slot="label"
+              heading="Name Namesson" 
+              subheading="Company name"        
             ></tds-side-menu-user-label>
             <tds-side-menu-dropdown-list>
               <tds-side-menu-dropdown-list-item selected>
@@ -277,8 +277,8 @@ const Template = ({ persistent, collapsible, collapsed }) => {
         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
-        <button id="test">Toggle the collapsed state programmatically</button>
-        <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
+        <tds-button id="test" text="Toggle the collapsed state programmatically" size="sm"></tds-button>
+        <tds-button id="toggleExpandedTest" text="Toggle wheel types expanded programmatically" size="sm"></tds-button>
       </main>
     </div>
   </div>

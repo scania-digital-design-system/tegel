@@ -97,7 +97,8 @@
     }
   }
 
-  .component.component-dropdown-has-icon {
+  .component.component-dropdown-has-icon,
+  .component.component-dropdown-has-user {
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
@@ -110,7 +111,7 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 64px;
+        padding: var(--tds-side-menu-sub-item-padding-user-image);
       }
     }
   }

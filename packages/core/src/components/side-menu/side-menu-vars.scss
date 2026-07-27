@@ -38,6 +38,8 @@ tds-side-menu {
   // side menu sub-item
   --tds-side-menu-sub-item-height: var(--unit-48);
   --tds-side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
+  --tds-side-menu-sub-item-padding-user-image: var(--unit-16) var(--unit-48) var(--unit-16)
+    var(--unit-64);
   --tds-side-menu-sub-items-gap: 0px;
 
   // side menu user image
@@ -63,6 +65,8 @@ tds-side-menu {
   // side menu sub-item
   --tds-side-menu-sub-item-height: var(--unit-32);
   --tds-side-menu-sub-item-padding-icon: var(--unit-8) var(--unit-48) var(--unit-8) var(--unit-40);
+  --tds-side-menu-sub-item-padding-user-image: var(--unit-8) var(--unit-48) var(--unit-8)
+    var(--unit-48);
   --tds-side-menu-sub-items-gap: var(--unit-10);
 
   // side menu user image
