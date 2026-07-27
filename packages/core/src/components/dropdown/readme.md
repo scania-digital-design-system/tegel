@@ -77,6 +77,16 @@ Type: `Promise<void>`
 
 
 
+### `getInstanceId() => Promise<string>`
+
+Returns a unique id for this dropdown instance.
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
 ### `removeValue(oldValue: string) => Promise<void>`
 
 
@@ -129,6 +139,24 @@ dropdown.setValue(['option-1', 'option-2']);
 #### Returns
 
 Type: `Promise<{ value: string | number | undefined; label: string | undefined; }[]>`
+
+
+
+### `toggleGroupSelection(group: string, selected: boolean) => Promise<void>`
+
+Selects or deselects all child options in a multiselect group.
+Called by group parent `tds-dropdown-option` elements.
+
+#### Parameters
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| `group`    | `string`  |             |
+| `selected` | `boolean` |             |
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 
