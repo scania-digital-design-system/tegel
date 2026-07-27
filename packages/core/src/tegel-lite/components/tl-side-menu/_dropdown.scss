@@ -90,7 +90,7 @@
     background-color: var(--side-menu-item-background-active);
   }
 
-  &:focus {
+  &:focus-visible {
     @include tds-focus-state-inset;
   }
 
