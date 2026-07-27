@@ -154,12 +154,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-item>
-          <button>
-            <tds-icon name="truck" size="${itemIconSize}"></tds-icon>
-            Trucks
-          </button>
-        </tds-side-menu-item>
+       
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
           <tds-icon slot="icon" name="profile" size="${itemIconSize}"></tds-icon>
@@ -167,7 +162,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
             Wheel types
           </span>
           <tds-side-menu-dropdown-list>
-            <tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item selected>
               <a href="https://www.scania.com">
                 Hub-centric wheel
               </a>
@@ -182,57 +177,39 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
                 Hub-centric wheel
               </a>
             </tds-side-menu-dropdown-list-item>
+
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
+
+         <tds-side-menu-item>
+          <button>
+            <tds-icon name="home" size="${itemIconSize}"></tds-icon>
+            Home
+          </button>
+        </tds-side-menu-item> 
+
+        <tds-side-menu-dropdown >
+          <tds-icon slot="icon" name="truck" size="${itemIconSize}"></tds-icon>
+          <span slot="label">
+            Truck types
+          </span>
+          <tds-side-menu-dropdown-list>
             <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
+                Big truck
               </a>
             </tds-side-menu-dropdown-list-item>
             <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">
-                Hub-centric wheel
+                Bigger truck
               </a>
             </tds-side-menu-dropdown-list-item>
             <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">
-                Hub-centric wheel
+                Ginormous truck
               </a>
             </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://www.scania.com">
-                Hub-centric wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
-            
-            <tds-side-menu-dropdown-list-item >
-              <a href="https://www.scania.com" aria-current="page">
-                Rim wheel
-              </a>
-            </tds-side-menu-dropdown-list-item>
+
           </tds-side-menu-dropdown-list>
         </tds-side-menu-dropdown>
 
@@ -243,7 +220,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
+        <tds-side-menu-dropdown slot="end" class="demo-lg-hide">
             <tds-side-menu-user-image
               slot="icon"     
               src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
@@ -255,7 +232,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
               subheading="Company name"        
             ></tds-side-menu-user-label>
             <tds-side-menu-dropdown-list>
-              <tds-side-menu-dropdown-list-item selected>
+              <tds-side-menu-dropdown-list-item>
                 <a href="https://design.scania.com">My Instructions</a>
               </tds-side-menu-dropdown-list-item>
               <tds-side-menu-dropdown-list-item>
@@ -280,9 +257,14 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
-        <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
+        <p><i>Note 1: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
-        <p><i>Note: The collapse button is optional.</i></p>
+        <p><i>Note 2: The collapse button is optional.</i></p>
+
+        <p><i>Note 3: It is only possible to have one tds-side-menu-dropdown open at a time.</i></p>
+        
+        <p><i>Note 4: The tds-side-menu-dropdown menu item is an aggregator for tds-side-menu-dropdown-list-items and shouldn't be used as a link to another page.</i></p>
+
       </main>
     </div>
   </div>

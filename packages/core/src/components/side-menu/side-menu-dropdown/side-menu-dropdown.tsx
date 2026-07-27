@@ -1,4 +1,15 @@
-import { Component, Element, Fragment, h, Host, Listen, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  EventEmitter,
+  Event,
+  Fragment,
+  h,
+  Host,
+  Listen,
+  Prop,
+  State,
+} from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
 /**
@@ -33,6 +44,15 @@ export class TdsSideMenuDropdown {
   };
 
   @State() collapsed: boolean = false;
+
+  @State() id: string = self.crypto.randomUUID();
+
+  /** @internal Broadcats to parent that this dropdown should remain open. */
+  @Event({
+    eventName: 'internalKeepThisDropdownOpen',
+    bubbles: true,
+  })
+  internalKeepThisDropdownOpen!: EventEmitter<string>;
 
   private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
@@ -93,6 +113,13 @@ export class TdsSideMenuDropdown {
     this.open = this.defaultOpen;
   }
 
+  @Listen('internalCloseDropdown', { target: 'body' })
+  handleCloseDropdown(id: string) {
+    if (id !== this.id) {
+      this.open = false;
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -108,6 +135,9 @@ export class TdsSideMenuDropdown {
             active={this.getIsOpenState()}
             selected={this.selected}
             onClick={() => {
+              if (!this.open) {
+                this.internalKeepThisDropdownOpen.emit(this.id);
+              }
               this.open = !this.open;
             }}
             aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
