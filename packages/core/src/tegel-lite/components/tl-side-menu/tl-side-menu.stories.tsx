@@ -60,7 +60,13 @@ export default {
   },
 };
 
-const Template = ({ persistent, collapsible, collapsed }) => {
+type TemplateProps = {
+  persistent: boolean;
+  collapsible: boolean;
+  collapsed: boolean;
+};
+
+const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
   const isTraton =
     typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
 
@@ -294,15 +300,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
           and <a href="https://github.com/scania-digital-design-system/tegel-lite-angular-demo" target="_blank" class="tl-link tl-link--underline">Angular</a> as the framework to build the application.
           <br/>
           Feel free to explore the examples for complete usage of the extra styles and functionality needed in your application.
-        </p>  
-       
-        <button id="test" class="tl-button tl-button--primary tl-button--sm">Toggle the collapsed state programmatically</button>
-        <button id="toggleExpandedTest" class="tl-button tl-button--primary tl-button--sm">Toggle "Dropdown" menu item expanded state programmatically</button>
-
-      
-
-         <p></p>
-       
+        </p>       
       </main>
    </div>
 </div>
@@ -369,7 +367,6 @@ const Template = ({ persistent, collapsible, collapsed }) => {
         }
       }
     }
-    document.getElementById('test')?.addEventListener('click', toggleCollapsed);
     document.getElementById('collapse-toggle')?.addEventListener('click', toggleCollapsed);
 
 
@@ -405,9 +402,6 @@ const Template = ({ persistent, collapsible, collapsed }) => {
       }
     });
 
-    document.getElementById('toggleExpandedTest')?.addEventListener('click', () => {
-      dropdowns.forEach((dd) => toggleDropdown(dd));
-    });
 
     })();
 </script>

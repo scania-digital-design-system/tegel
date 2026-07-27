@@ -55,7 +55,13 @@ export default {
   },
 };
 
-const Template = ({ persistent, collapsible, collapsed }) => {
+type TemplateProps = {
+  persistent: boolean;
+  collapsible: boolean;
+  collapsed: boolean;
+};
+
+const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
   const isScania = document.getElementsByClassName('scania').length !== 0;
   const itemIconSize = isScania ? '24px' : '16px'; // Should be 16px if TRATON brand
   return formatHtmlPreview(
@@ -277,22 +283,10 @@ const Template = ({ persistent, collapsible, collapsed }) => {
         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
-        <tds-button id="test" text="Toggle the collapsed state programmatically" size="sm"></tds-button>
-        <tds-button id="toggleExpandedTest" text="Toggle wheel types expanded programmatically" size="sm"></tds-button>
       </main>
     </div>
   </div>
   <script>
-    sideMenu = document.querySelector('tds-side-menu')
-    document.querySelector('#test')?.addEventListener('click', ()=> {
-      sideMenu.collapsed = !sideMenu.collapsed;
-    })
-
-    wheelTypesDropdown = document.querySelector('#wheel-types-dropdown')
-    document.querySelector('#toggleExpandedTest')?.addEventListener('click', ()=> {
-      wheelTypesDropdown.open = !wheelTypesDropdown.open;
-    })
-
     document.querySelector('tds-side-menu-collapse-button')?.addEventListener('tdsCollapse', (event) => {
       console.log(event)
     })
