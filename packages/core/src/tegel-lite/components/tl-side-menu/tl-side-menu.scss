@@ -225,7 +225,8 @@ $breakpoint-lg: 992px;
     }
   }
 
-  .tl-side-menu__dropdown:hover .tl-side-menu__dropdown-menu {
+  .tl-side-menu__dropdown:hover .tl-side-menu__dropdown-menu,
+  .tl-side-menu__dropdown:focus-within .tl-side-menu__dropdown-menu {
     .tl-side-menu--collapsed & {
       box-sizing: border-box;
       min-height: 48px;
@@ -278,7 +279,8 @@ $breakpoint-lg: 992px;
     }
   }
 
-  .tl-side-menu__dropdown:hover {
+  .tl-side-menu__dropdown:hover,
+  .tl-side-menu__dropdown:focus-within {
     .tl-side-menu__dropdown-menu {
       .tl-side-menu--collapsed & {
         display: flex;

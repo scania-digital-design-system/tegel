@@ -158,7 +158,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
                   <div class="tl-side-menu__list-wrapper">
                      <ul class="tl-side-menu__upper-list">
                         <li>
-                           <button class="tl-side-menu__item tl-side-menu__item--selected">
+                           <button class="tl-side-menu__item">
                               <span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>
                               <span class="tl-side-menu__item-text">About us</span>
                            </button>
