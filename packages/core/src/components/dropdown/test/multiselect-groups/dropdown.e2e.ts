@@ -37,6 +37,9 @@ testConfigurations.basic.forEach((config) => {
       await page.evaluate(async () => {
         await customElements.whenDefined('tds-dropdown');
         const dropdown = document.querySelector('tds-dropdown');
+        if (!dropdown) {
+          throw new Error('tds-dropdown not found');
+        }
         dropdown.value = ['citywide', 'interlink'];
       });
 
