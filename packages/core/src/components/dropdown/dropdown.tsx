@@ -268,8 +268,7 @@ export class TdsDropdown {
 
   private readonly getGroupParentOption = (group: string) =>
     this.getChildren().find(
-      (option) =>
-        convertToString(option.group) === convertToString(group) && option.groupParent,
+      (option) => convertToString(option.group) === convertToString(group) && option.groupParent,
     );
 
   private readonly getDefinedGroups = () => {
@@ -662,7 +661,8 @@ export class TdsDropdown {
 
     this.pendingInvalidValues.forEach((val) => {
       const isValid = children.some(
-        (element) => convertToString(element.value) === convertToString(val),
+        (element) =>
+          !element.groupParent && convertToString(element.value) === convertToString(val),
       );
       if (!isValid) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
@@ -679,7 +679,8 @@ export class TdsDropdown {
     this.pendingInvalidValues.clear();
     this.selectedOptions.forEach((val) => {
       const isValid = children.some(
-        (element) => convertToString(element.value) === convertToString(val),
+        (element) =>
+          !element.groupParent && convertToString(element.value) === convertToString(val),
       );
       if (!isValid) {
         this.pendingInvalidValues.add(val);
@@ -720,9 +721,6 @@ export class TdsDropdown {
     });
   };
 
-  private readonly groupHasVisibleOptions = (group: DropdownGroup): boolean =>
-    group.options.some((option) => !option.hasAttribute('hidden'));
-
   private readonly parseDropdownGroups = (): ParsedDropdownGroups => {
     const groups: DropdownGroup[] = [];
     let pendingSeparator: Element | null = null;
@@ -734,7 +732,7 @@ export class TdsDropdown {
       }
     };
 
-    for (const child of this.getSlottedChildren()) {
+    this.getSlottedChildren().forEach((child) => {
       if (child.tagName === DROPDOWN_GROUP_TITLE_TAG) {
         pushCurrentGroup();
         current = {
@@ -748,7 +746,7 @@ export class TdsDropdown {
       } else if (child.tagName === DROPDOWN_GROUP_SEPARATOR_TAG) {
         pendingSeparator = child;
       }
-    }
+    });
 
     pushCurrentGroup();
 
@@ -764,9 +762,11 @@ export class TdsDropdown {
     const { groups, trailingSeparator } = this.parseDropdownGroups();
 
     groups.forEach((group, index) => {
-      const hasVisibleOptions = this.groupHasVisibleOptions(group);
+      const hasVisibleOptions = group.options.some((option) => !option.hasAttribute('hidden'));
       const previousHasVisibleOptions =
-        index > 0 ? this.groupHasVisibleOptions(groups[index - 1]) : false;
+        index > 0
+          ? groups[index - 1].options.some((option) => !option.hasAttribute('hidden'))
+          : false;
 
       if (group.groupTitle) {
         if (hasVisibleOptions) {
@@ -835,8 +835,7 @@ export class TdsDropdown {
     const { groups } = this.parseDropdownGroups();
     const matchingGroup = groups.find((parsedGroup) =>
       parsedGroup.options.some(
-        (option) =>
-          option.groupParent && convertToString(option.group) === convertToString(group),
+        (option) => option.groupParent && convertToString(option.group) === convertToString(group),
       ),
     );
 
@@ -847,32 +846,32 @@ export class TdsDropdown {
     const labels: string[] = [];
     const emittedCollapsedGroups = new Set<string>();
 
-    for (const option of this.getChildren()) {
+    this.getChildren().forEach((option) => {
       if (option.groupParent) {
-        continue;
+        return;
       }
 
       const value = convertToString(option.value);
       if (!this.selectedOptions.includes(value)) {
-        continue;
+        return;
       }
 
       const group = option.group ? convertToString(option.group) : null;
 
       if (group) {
         if (emittedCollapsedGroups.has(group)) {
-          continue;
+          return;
         }
 
         if (this.isGroupFullySelected(group)) {
           labels.push(this.getGroupDisplayLabel(group));
           emittedCollapsedGroups.add(group);
-          continue;
+          return;
         }
       }
 
       labels.push(option.textContent?.trim() ?? '');
-    }
+    });
 
     return labels;
   };
@@ -994,6 +993,8 @@ export class TdsDropdown {
 
       if (hasVisibleChild) {
         element.removeAttribute('hidden');
+      } else {
+        element.setAttribute('hidden', '');
       }
     });
   };
