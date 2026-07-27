@@ -819,9 +819,22 @@ export class TdsDropdown {
       convertToString(option.value),
     );
 
-    return (
-      childValues.length > 0 && childValues.every((value) => this.selectedOptions.includes(value))
+    const allEnabledChildrenSelected =
+      childValues.length > 0 && childValues.every((value) => this.selectedOptions.includes(value));
+
+    if (!allEnabledChildrenSelected) {
+      return false;
+    }
+
+    const hasSelectedDisabledChild = this.getChildren().some(
+      (option) =>
+        !option.groupParent &&
+        option.disabled &&
+        convertToString(option.group) === convertToString(group) &&
+        this.selectedOptions.includes(convertToString(option.value)),
     );
+
+    return !hasSelectedDisabledChild;
   };
 
   private readonly getGroupDisplayLabel = (group: string): string => {
