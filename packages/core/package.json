@@ -91,9 +91,17 @@
       "import": "./dist/components/tds-divider.js",
       "types": "./dist/components/tds-divider.d.ts"
     },
+    "./tds-dropdown-heading": {
+      "import": "./dist/components/tds-dropdown-heading.js",
+      "types": "./dist/components/tds-dropdown-heading.d.ts"
+    },
     "./tds-dropdown-option": {
       "import": "./dist/components/tds-dropdown-option.js",
       "types": "./dist/components/tds-dropdown-option.d.ts"
+    },
+    "./tds-dropdown-separator": {
+      "import": "./dist/components/tds-dropdown-separator.js",
+      "types": "./dist/components/tds-dropdown-separator.d.ts"
     },
     "./tds-dropdown": {
       "import": "./dist/components/tds-dropdown.js",

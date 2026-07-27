@@ -1,0 +1,24 @@
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../dropdown-list-item-dimensions' as *;
+
+:host {
+  @include tds-box-sizing;
+
+  display: block;
+  background-color: var(--tds-dropdown-option-background);
+}
+
+.dropdown-heading {
+  @include detail-04;
+  @include dropdown-list-item-base;
+
+  color: var(--tds-dropdown-heading-color);
+  overflow-wrap: anywhere;
+}
+
+@include dropdown-list-item-heights('.dropdown-heading');
+
+:host([hidden]) {
+  display: none;
+}

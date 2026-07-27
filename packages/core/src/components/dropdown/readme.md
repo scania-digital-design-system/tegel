@@ -147,9 +147,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot          | Description                                        |
-| ------------- | -------------------------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
+| Slot          | Description                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For dropdown option, separator, and heading elements. |
 
 
 ## Dependencies
