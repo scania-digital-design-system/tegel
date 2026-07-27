@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown - Multiselect with groups</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-dropdown
+      name="dropdown"
+      label="Label text"
+      label-position="outside"
+      placeholder="Placeholder"
+      helper="Helper text"
+      size="lg"
+      multiselect
+      filter
+      open-direction="auto"
+      data-testid="tds-dropdown-testid"
+    >
+      <tds-dropdown-group-title text="Trucks"></tds-dropdown-group-title>
+      <tds-dropdown-option group="trucks" group-parent value="trucks">Trucks</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="r-series">R-series</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="s-series">S-series</tds-dropdown-option>
+
+      <tds-dropdown-group-separator></tds-dropdown-group-separator>
+
+      <tds-dropdown-group-title text="Buses"></tds-dropdown-group-title>
+      <tds-dropdown-option group="buses" group-parent value="buses">Buses</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="citywide">Citywide</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="interlink" disabled>Interlink</tds-dropdown-option>
+    </tds-dropdown>
+  </body>
+</html>
