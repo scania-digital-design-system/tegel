@@ -1,0 +1,19 @@
+@use '../../../mixins/box-sizing' as *;
+@use '../dropdown-list-item-dimensions' as *;
+
+:host {
+  @include tds-box-sizing;
+
+  display: block;
+  background-color: var(--tds-dropdown-option-background);
+}
+
+.dropdown-separator {
+  @include dropdown-list-item-base;
+}
+
+@include dropdown-list-item-heights('.dropdown-separator');
+
+:host([hidden]) {
+  display: none;
+}
