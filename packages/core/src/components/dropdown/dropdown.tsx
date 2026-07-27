@@ -38,8 +38,30 @@ function getTypedQuery(rawValue: string, displayValue: string): string {
   return rawValue;
 }
 
+const DROPDOWN_OPTION_TAG = 'TDS-DROPDOWN-OPTION';
+const DROPDOWN_SEPARATOR_TAG = 'TDS-DROPDOWN-SEPARATOR';
+const DROPDOWN_HEADING_TAG = 'TDS-DROPDOWN-HEADING';
+
+const VALID_DROPDOWN_CHILD_TAGS = new Set([
+  DROPDOWN_OPTION_TAG,
+  DROPDOWN_SEPARATOR_TAG,
+  DROPDOWN_HEADING_TAG,
+]);
+
+function isValidDropdownChild(tagName: string): boolean {
+  return VALID_DROPDOWN_CHILD_TAGS.has(tagName);
+}
+
+function isDropdownOption(tagName: string): boolean {
+  return tagName === DROPDOWN_OPTION_TAG;
+}
+
+function isDropdownDecorativeChild(tagName: string): boolean {
+  return tagName === DROPDOWN_SEPARATOR_TAG || tagName === DROPDOWN_HEADING_TAG;
+}
+
 /**
- * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
+ * @slot <default> - <b>Unnamed slot.</b> For dropdown option, separator, and heading elements.
  */
 @Component({
   tag: 'tds-dropdown',
@@ -424,13 +446,15 @@ export class TdsDropdown {
     }
   }
 
+  private readonly getFocusedOptionIndex = (activeElement: Element) =>
+    this.getChildren().findIndex(
+      (option) => option === activeElement || option.contains(activeElement),
+    );
+
   private readonly handleArrowDown = (activeElement: Element) => {
     const children = this.getChildren();
-    /** Get the index of the current focus index, if there is no
-    nextElementSibling return the index for the first child in our Dropdown.  */
-    const startingIndex = activeElement.nextElementSibling
-      ? children.findIndex((element) => element === activeElement.nextElementSibling)
-      : 0;
+    const currentIndex = this.getFocusedOptionIndex(activeElement);
+    const startingIndex = currentIndex >= 0 ? currentIndex + 1 : 0;
 
     if (children.length > 0) {
       const elementIndex = findNextFocusableElement(children, startingIndex);
@@ -441,11 +465,8 @@ export class TdsDropdown {
 
   private readonly handleArrowUp = (activeElement: Element) => {
     const children = this.getChildren();
-    /** Get the index of the current focus index, if there is no
-    previousElementSibling return the index for the first last in our Dropdown.  */
-    const startingIndex = activeElement.nextElementSibling
-      ? children.findIndex((element) => element === activeElement.previousElementSibling)
-      : 0;
+    const currentIndex = this.getFocusedOptionIndex(activeElement);
+    const startingIndex = currentIndex >= 0 ? currentIndex - 1 : children.length - 1;
 
     if (children.length > 0) {
       const elementIndex = findPreviousFocusableElement(children, startingIndex);
@@ -511,6 +532,8 @@ export class TdsDropdown {
 
   /** Method to handle slot changes */
   private handleSlotChange() {
+    this.validateSlottedChildren();
+
     /**
      * Warn for values that were pending from a previous slot change
      * and are still invalid now that new options have arrived.
@@ -575,10 +598,32 @@ export class TdsDropdown {
     }
   };
 
+  private readonly getSlottedChildren = () =>
+    Array.from(this.host.children).filter((element) => isValidDropdownChild(element.tagName));
+
+  private readonly getDecorativeChildren = () =>
+    Array.from(this.host.children).filter((element) => isDropdownDecorativeChild(element.tagName));
+
   private readonly getChildren = () =>
-    Array.from(this.host.children).filter(
-      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-    ) as Array<HTMLTdsDropdownOptionElement>;
+    this.getSlottedChildren().filter((element): element is HTMLTdsDropdownOptionElement =>
+      isDropdownOption(element.tagName),
+    );
+
+  private readonly showDecorativeChildren = () => {
+    this.getDecorativeChildren().forEach((element) => {
+      element.removeAttribute('hidden');
+    });
+  };
+
+  private readonly validateSlottedChildren = () => {
+    Array.from(this.host.children).forEach((child) => {
+      if (!isValidDropdownChild(child.tagName)) {
+        console.warn(
+          `TDS DROPDOWN: <${child.tagName.toLowerCase()}> is not a valid child of tds-dropdown.`,
+        );
+      }
+    });
+  };
 
   private readonly getSelectedChildren = () => {
     if (this.selectedOptions.length === 0) return [];
@@ -679,6 +724,7 @@ export class TdsDropdown {
         element.removeAttribute('hidden');
         return element;
       });
+      this.showDecorativeChildren();
       this.filterResult = null;
       /** Hide the options that do not match the query */
     } else {
@@ -694,6 +740,7 @@ export class TdsDropdown {
         }
         return !element.hasAttribute('hidden');
       }).length;
+      this.showDecorativeChildren();
     }
   };
 
@@ -752,6 +799,7 @@ export class TdsDropdown {
     children.forEach((element) => {
       element.removeAttribute('hidden');
     });
+    this.showDecorativeChildren();
     this.filterResult = null;
   };
 
@@ -876,7 +924,7 @@ export class TdsDropdown {
     const ariaLabel = this.tdsAriaLabel ?? fallbackAriaLabel;
     let derivedPlaceholder = this.placeholder ?? '';
     if (this.labelPosition === 'inside') {
-      derivedPlaceholder = showPlaceholderInside ? this.placeholder ?? '' : '';
+      derivedPlaceholder = showPlaceholderInside ? (this.placeholder ?? '') : '';
     }
     let buttonText = '';
     if (this.selectedOptions.length > 0) {
