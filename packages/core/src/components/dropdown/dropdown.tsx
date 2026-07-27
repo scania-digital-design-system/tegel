@@ -39,13 +39,13 @@ function getTypedQuery(rawValue: string, displayValue: string): string {
 }
 
 const DROPDOWN_OPTION_TAG = 'TDS-DROPDOWN-OPTION';
-const DROPDOWN_SEPARATOR_TAG = 'TDS-DROPDOWN-SEPARATOR';
-const DROPDOWN_HEADING_TAG = 'TDS-DROPDOWN-HEADING';
+const DROPDOWN_GROUP_SEPARATOR_TAG = 'TDS-DROPDOWN-GROUP-SEPARATOR';
+const DROPDOWN_GROUP_TITLE_TAG = 'TDS-DROPDOWN-GROUP-TITLE';
 
 const VALID_DROPDOWN_CHILD_TAGS = new Set([
   DROPDOWN_OPTION_TAG,
-  DROPDOWN_SEPARATOR_TAG,
-  DROPDOWN_HEADING_TAG,
+  DROPDOWN_GROUP_SEPARATOR_TAG,
+  DROPDOWN_GROUP_TITLE_TAG,
 ]);
 
 function isValidDropdownChild(tagName: string): boolean {
@@ -56,23 +56,23 @@ function isDropdownOption(tagName: string): boolean {
   return tagName === DROPDOWN_OPTION_TAG;
 }
 
-function isDropdownDecorativeChild(tagName: string): boolean {
-  return tagName === DROPDOWN_SEPARATOR_TAG || tagName === DROPDOWN_HEADING_TAG;
+function isDropdownGroupChild(tagName: string): boolean {
+  return tagName === DROPDOWN_GROUP_SEPARATOR_TAG || tagName === DROPDOWN_GROUP_TITLE_TAG;
 }
 
-interface DropdownSection {
-  heading: Element | null;
+interface DropdownGroup {
+  groupTitle: Element | null;
   options: HTMLTdsDropdownOptionElement[];
   leadingSeparator: Element | null;
 }
 
-interface ParsedDropdownSections {
-  sections: DropdownSection[];
+interface ParsedDropdownGroups {
+  groups: DropdownGroup[];
   trailingSeparator: Element | null;
 }
 
 /**
- * @slot <default> - <b>Unnamed slot.</b> For dropdown option, separator, and heading elements.
+ * @slot <default> - <b>Unnamed slot.</b> For dropdown option, group title, and group separator elements.
  */
 @Component({
   tag: 'tds-dropdown',
@@ -613,7 +613,7 @@ export class TdsDropdown {
     Array.from(this.host.children).filter((element) => isValidDropdownChild(element.tagName));
 
   private readonly getDecorativeChildren = () =>
-    Array.from(this.host.children).filter((element) => isDropdownDecorativeChild(element.tagName));
+    Array.from(this.host.children).filter((element) => isDropdownGroupChild(element.tagName));
 
   private readonly getChildren = () =>
     this.getSlottedChildren().filter((element): element is HTMLTdsDropdownOptionElement =>
@@ -626,39 +626,39 @@ export class TdsDropdown {
     });
   };
 
-  private readonly sectionHasVisibleOptions = (section: DropdownSection): boolean =>
-    section.options.some((option) => !option.hasAttribute('hidden'));
+  private readonly groupHasVisibleOptions = (group: DropdownGroup): boolean =>
+    group.options.some((option) => !option.hasAttribute('hidden'));
 
-  private readonly parseDropdownSections = (): ParsedDropdownSections => {
-    const sections: DropdownSection[] = [];
+  private readonly parseDropdownGroups = (): ParsedDropdownGroups => {
+    const groups: DropdownGroup[] = [];
     let pendingSeparator: Element | null = null;
-    let current: DropdownSection = { heading: null, options: [], leadingSeparator: null };
+    let current: DropdownGroup = { groupTitle: null, options: [], leadingSeparator: null };
 
-    const pushCurrentSection = () => {
-      if (current.heading || current.options.length > 0) {
-        sections.push(current);
+    const pushCurrentGroup = () => {
+      if (current.groupTitle || current.options.length > 0) {
+        groups.push(current);
       }
     };
 
     for (const child of this.getSlottedChildren()) {
-      if (child.tagName === DROPDOWN_HEADING_TAG) {
-        pushCurrentSection();
+      if (child.tagName === DROPDOWN_GROUP_TITLE_TAG) {
+        pushCurrentGroup();
         current = {
-          heading: child,
+          groupTitle: child,
           options: [],
           leadingSeparator: pendingSeparator,
         };
         pendingSeparator = null;
       } else if (isDropdownOption(child.tagName)) {
         current.options.push(child as HTMLTdsDropdownOptionElement);
-      } else if (child.tagName === DROPDOWN_SEPARATOR_TAG) {
+      } else if (child.tagName === DROPDOWN_GROUP_SEPARATOR_TAG) {
         pendingSeparator = child;
       }
     }
 
-    pushCurrentSection();
+    pushCurrentGroup();
 
-    return { sections, trailingSeparator: pendingSeparator };
+    return { groups, trailingSeparator: pendingSeparator };
   };
 
   private readonly updateFilterDecorativeVisibility = () => {
@@ -667,26 +667,26 @@ export class TdsDropdown {
       return;
     }
 
-    const { sections, trailingSeparator } = this.parseDropdownSections();
+    const { groups, trailingSeparator } = this.parseDropdownGroups();
 
-    sections.forEach((section, index) => {
-      const hasVisibleOptions = this.sectionHasVisibleOptions(section);
+    groups.forEach((group, index) => {
+      const hasVisibleOptions = this.groupHasVisibleOptions(group);
       const previousHasVisibleOptions =
-        index > 0 ? this.sectionHasVisibleOptions(sections[index - 1]) : false;
+        index > 0 ? this.groupHasVisibleOptions(groups[index - 1]) : false;
 
-      if (section.heading) {
+      if (group.groupTitle) {
         if (hasVisibleOptions) {
-          section.heading.removeAttribute('hidden');
+          group.groupTitle.removeAttribute('hidden');
         } else {
-          section.heading.setAttribute('hidden', '');
+          group.groupTitle.setAttribute('hidden', '');
         }
       }
 
-      if (section.leadingSeparator) {
+      if (group.leadingSeparator) {
         if (hasVisibleOptions && previousHasVisibleOptions) {
-          section.leadingSeparator.removeAttribute('hidden');
+          group.leadingSeparator.removeAttribute('hidden');
         } else {
-          section.leadingSeparator.setAttribute('hidden', '');
+          group.leadingSeparator.setAttribute('hidden', '');
         }
       }
     });

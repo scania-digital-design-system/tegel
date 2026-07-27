@@ -445,24 +445,24 @@ const GroupedMultiselectTemplate = ({
         tdsAriaLabel,
       })}
     >
-      <tds-dropdown-heading text="Trucks"></tds-dropdown-heading>
+      <tds-dropdown-group-title text="Trucks"></tds-dropdown-group-title>
       <tds-dropdown-option value="r-series">Scania R-series</tds-dropdown-option>
       <tds-dropdown-option value="s-series">Scania S-series</tds-dropdown-option>
       <tds-dropdown-option value="p-series">Scania P-series</tds-dropdown-option>
       <tds-dropdown-option value="g-series">Scania G-series</tds-dropdown-option>
       <tds-dropdown-option value="xt">Scania XT</tds-dropdown-option>
 
-      <tds-dropdown-separator></tds-dropdown-separator>
+      <tds-dropdown-group-separator></tds-dropdown-group-separator>
 
-      <tds-dropdown-heading text="Buses"></tds-dropdown-heading>
+      <tds-dropdown-group-title text="Buses"></tds-dropdown-group-title>
       <tds-dropdown-option value="citywide">Scania Citywide</tds-dropdown-option>
       <tds-dropdown-option value="interlink">Scania Interlink</tds-dropdown-option>
       <tds-dropdown-option value="touring-hd">Scania Touring HD</tds-dropdown-option>
       <tds-dropdown-option value="fencer">Scania Fencer</tds-dropdown-option>
 
-      <tds-dropdown-separator></tds-dropdown-separator>
+      <tds-dropdown-group-separator></tds-dropdown-group-separator>
 
-      <tds-dropdown-heading text="Power Solutions"></tds-dropdown-heading>
+      <tds-dropdown-group-title text="Power Solutions"></tds-dropdown-group-title>
       <tds-dropdown-option value="dc13">Scania DC13 engine</tds-dropdown-option>
       <tds-dropdown-option value="oc09">Scania OC09 engine</tds-dropdown-option>
       <tds-dropdown-option value="hybrid">Scania hybrid powertrain</tds-dropdown-option>
@@ -492,7 +492,7 @@ MultiselectWithGroups.parameters = {
   docs: {
     description: {
       story:
-        'Multiselect dropdown with grouped options using `tds-dropdown-heading` and `tds-dropdown-separator` to organize Scania products by category.',
+        'Multiselect dropdown with grouped options using `tds-dropdown-group-title` and `tds-dropdown-group-separator` to organize Scania products by category.',
     },
   },
 };
