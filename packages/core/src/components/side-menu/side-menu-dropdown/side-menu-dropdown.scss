@@ -74,16 +74,6 @@
         button {
           background-color: var(--tds-side-menu-item-background-selected);
           position: relative;
-
-          &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            @include tds-side-menu-border-selected;
-          }
         }
       }
     }
@@ -100,5 +90,23 @@
   .menu {
     display: none;
     flex-direction: column;
+  }
+}
+
+:host([selected]) {
+  .state-collapsed.state-open {
+    tds-side-menu-item {
+      button {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          @include tds-side-menu-border-selected;
+        }
+      }
+    }
   }
 }
