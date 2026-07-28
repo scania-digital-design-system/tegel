@@ -59,6 +59,7 @@
         box-sizing: border-box;
         padding: 16px 24px 15px;
         min-height: 48px;
+        height: var(--tds-side-menu-item-height);
         display: flex;
         align-items: center;
         border-bottom: var(--tds-side-menu-border-thickness) solid
