@@ -252,18 +252,20 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
+        <h1> Some styling considerations about the Side Menu</h1>
+
         <p>The icons in each side menu item should be 24px for Scania brand. For TRATON they should be 16px.
         </p>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
-        <p><i>Note 1: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
+        <p><strong>Note 1:</strong> The Side Menu is sticky, and should not scroll with the main content of the page.</p>
 
-        <p><i>Note 2: The collapse button is optional.</i></p>
+        <p><strong>Note 2:</strong> The collapse button is optional.</p>
 
-        <p><i>Note 3: It is only possible to have one tds-side-menu-dropdown open at a time.</i></p>
+        <p><strong>Note 3:</strong> It is only possible to have one tds-side-menu-dropdown open at a time.</p>
         
-        <p><i>Note 4: The tds-side-menu-dropdown menu item is an aggregator for tds-side-menu-dropdown-list-items and shouldn't be used as a link to another page.</i></p>
+        <p><strong>Note 4:</strong> The tds-side-menu-dropdown menu item is an aggregator for tds-side-menu-dropdown-list-items and shouldn't be used as a link to another page.</p>
 
       </main>
     </div>
