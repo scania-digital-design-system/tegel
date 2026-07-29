@@ -25,7 +25,7 @@ import { CollapseEvent } from '../side-menu';
 export class TdsSideMenuDropdown {
   @Element() host!: HTMLElement;
 
-  /** If the dropdown should be open from the start. */
+  /** If the dropdown should be open from the start. <br/>It is only possible to have one tds-side-menu-dropdown open at a time. */
   @Prop({ reflect: true }) defaultOpen: boolean = false;
 
   /** The label of the button that opens the dropdown.
