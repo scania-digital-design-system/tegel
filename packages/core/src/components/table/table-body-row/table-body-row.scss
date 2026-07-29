@@ -1,3 +1,4 @@
+@use '../../../components/checkbox/checkbox-vars' as *;
 @use '../../../mixins/box-sizing' as *;
 
 :host(.tds-table__row) {
