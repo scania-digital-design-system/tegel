@@ -232,8 +232,6 @@ $breakpoint-lg: 992px;
       min-height: 48px;
       display: flex;
       align-items: center;
-      border-bottom: var(--tds-side-menu-border-thickness) solid
-        var(--tds-side-menu-item-border-color);
 
       @include title-01;
 
@@ -241,6 +239,11 @@ $breakpoint-lg: 992px;
         display: flex;
         align-items: center;
         padding: 16px 24px 15px;
+      }
+
+      .tl-side-menu__dropdown-item {
+        border-bottom: var(--side-menu-border-thickness) solid
+          var(--side-menu-item-border-bottom-color);
       }
     }
   }
