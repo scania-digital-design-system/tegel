@@ -5,6 +5,10 @@
   --side-menu-background: var(--component-side-menu-background-default);
   --side-menu-border-right-color: var(--component-side-menu-border-divider-default);
   --side-menu-border-thickness: var(--unit-1);
+  --side-menu-width-collapsed: var(--unit-68);
+  --side-menu-horizontal-padding: 0px;
+  --side-menu-gap: 0px;
+  --side-menu-dropdown-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
 
   // side menu item
   --side-menu-item-background: var(--component-side-menu-background-item-link-default);
@@ -20,6 +24,14 @@
   );
   --side-menu-item-icon-color: var(--component-side-menu-icon-item-link-default);
   --side-menu-item-text-width: 168px; // derived from side-menu width (272px) minus paddings and other elements
+  --side-menu-item-horizontal-padding: var(--unit-22);
+  --side-menu-item-height: var(--unit-68);
+  --side-menu-item-icon-size: var(--unit-24);
+
+  // side menu sub-item
+  --side-menu-sub-item-height: var(--unit-48);
+  --side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
+  --side-menu-sub-items-gap: 0px;
 
   // side menu item user
   --side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
@@ -27,6 +39,10 @@
   // side menu user
   --side-menu-item-user-text-width: 150px; // derived from side-menu width (272px) minus paddings and other elements
   --side-menu-user-gap: var(--unit-16);
+  --side-menu-user-image-size: var(--unit-34);
+
+  // close button
+  --side-menu-close-button-height: var(--unit-64);
 }
 
 .scania .tl-side-menu {

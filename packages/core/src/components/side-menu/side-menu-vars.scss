@@ -3,6 +3,10 @@ tds-side-menu {
   --tds-side-menu-background: var(--component-side-menu-background-default);
   --tds-side-menu-border-color: var(--component-side-menu-border-divider-default);
   --tds-side-menu-border-thickness: var(--unit-1); // 1px
+  --tds-side-menu-width-collapsed: var(--unit-68);
+  --tds-side-menu-horizontal-padding: 0px;
+  --tds-side-menu-gap: 0px;
+  --tds-side-menu-dropdown-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
 
   // side menu item
   --tds-side-menu-item-background: var(--component-side-menu-background-item-link-default);
@@ -19,12 +23,28 @@ tds-side-menu {
     --component-side-menu-border-item-indicator-default
   );
   --tds-side-menu-item-icon-color: var(--component-side-menu-icon-item-link-default);
+  --tds-side-menu-item-horizontal-padding: var(--unit-22);
+  --tds-side-menu-item-height: var(--unit-68);
+
+  // side menu sub item
+  --tds-side-menu-sub-item-height: var(--unit-48);
+  --tds-side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
+  --tds-side-menu-sub-item-padding-user-image: var(--unit-16) var(--unit-48) var(--unit-16)
+    var(--unit-64);
+  --tds-side-menu-sub-items-gap: 0px;
 
   // side menu item user
   --tds-side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
 
   // side menu user
   --tds-side-menu-user-gap: var(--unit-16);
+  --tds-side-menu-user-image-size: var(--unit-34);
+
+  // close button
+  --tds-side-menu-close-button-height: var(--unit-64);
+
+  // slot end dropdown menu
+  --tds-side-menu-dropdown-padding-top: 0px;
 }
 
 .scania tds-side-menu {
