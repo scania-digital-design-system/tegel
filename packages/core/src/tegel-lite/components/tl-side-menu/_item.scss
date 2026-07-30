@@ -4,6 +4,13 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-side-menu__item {
+  .tl-side-menu__item-text {
+    width: var(--side-menu-item-text-width);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   all: unset;
   box-sizing: border-box;
   height: var(--side-menu-item-height);

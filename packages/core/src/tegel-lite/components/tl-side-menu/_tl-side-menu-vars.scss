@@ -19,11 +19,13 @@
     --component-side-menu-border-item-indicator-default
   );
   --side-menu-item-icon-color: var(--component-side-menu-icon-item-link-default);
+  --side-menu-item-text-width: 168px; // derived from side-menu width (272px) minus paddings and other elements
 
   // side menu item user
   --side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
 
   // side menu user
+  --side-menu-item-user-text-width: 150px; // derived from side-menu width (272px) minus paddings and other elements
   --side-menu-user-gap: var(--unit-16);
 }
 

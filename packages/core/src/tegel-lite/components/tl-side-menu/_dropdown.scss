@@ -68,7 +68,7 @@
   box-sizing: border-box;
   border-right: var(--side-menu-item-border-thickness) solid
     var(--side-menu-item-border-bottom-color);
-  display: flex;
+  display: inline-block;
   align-items: center;
   height: var(--side-menu-sub-item-height);
   padding: 0 var(--side-menu-item-horizontal-padding);
@@ -79,6 +79,9 @@
   border-radius: var(--side-menu-item-border-radius);
   position: relative;
   cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
   @include body-02;
 

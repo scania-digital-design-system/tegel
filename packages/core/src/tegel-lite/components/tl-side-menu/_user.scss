@@ -27,8 +27,19 @@ $breakpoint-lg: 992px;
   display: block;
   color: var(--side-menu-item-text-color);
 
+  .tl-side-menu:not(.tl-side-menu--collapsed) & {
+    width: var(--side-menu-item-user-text-width);
+  }
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   .subheader {
     color: var(--side-menu-item-user-subheading-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 }
 
