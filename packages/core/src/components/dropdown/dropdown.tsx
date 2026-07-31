@@ -650,6 +650,13 @@ export class TdsDropdown {
 
   private readonly handleFilter = (event: InputEvent): void => {
     const input = event.currentTarget as HTMLInputElement;
+    /** Ensure the list is open whenever the user modifies the filter query.
+     * Necessary when a previous selection has collapsed the list and the user
+     * presses backspace (or otherwise edits) to browse alternatives without
+     * having to blur/refocus the input first. */
+    if (!this.open) {
+      this.open = true;
+    }
     if (
       this.multiselect &&
       this.filterQuery.length === 0 &&
@@ -1072,6 +1079,21 @@ export class TdsDropdown {
           aria-multiselectable={this.multiselect}
           ref={(element) => {
             if (element) this.dropdownList = element;
+          }}
+          /**
+           * Prevent focus loss from the filter input when the user presses on an
+           * option. Standard combobox pattern: in WebKit/Safari, buttons and other
+           * elements inside the shadow DOM do not receive focus on mousedown, which
+           * causes `focusout` to fire on the input with `relatedTarget = null`.
+           * That triggers `handleBlur` and clears `filterQuery`/input value before
+           * the click can reach the option, so selection appears to just clear the
+           * input. Preventing the default mousedown behavior keeps focus on the
+           * input while still allowing the click event to fire on the option.
+           */
+          onMouseDown={(event) => {
+            if (this.filter) {
+              event.preventDefault();
+            }
           }}
           class={{
             'dropdown-list': true,
