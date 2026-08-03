@@ -71,10 +71,9 @@
   box-sizing: border-box;
   border-right: var(--side-menu-item-border-thickness) solid
     var(--side-menu-item-border-bottom-color);
-  display: inline-block;
+  display: flex;
   align-items: center;
   height: var(--side-menu-sub-item-height);
-  line-height: calc(var(--type-body-02-font-size) * 1px);
   width: 100%;
   background-color: var(--side-menu-item-background);
   color: var(--side-menu-item-text-color);
@@ -82,9 +81,6 @@
   border-radius: var(--side-menu-item-border-radius);
   position: relative;
   cursor: pointer;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 
   &:hover {
     background-color: var(--side-menu-item-background-hover);
