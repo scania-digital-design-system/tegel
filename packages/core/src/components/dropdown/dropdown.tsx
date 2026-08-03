@@ -38,8 +38,41 @@ function getTypedQuery(rawValue: string, displayValue: string): string {
   return rawValue;
 }
 
+const DROPDOWN_OPTION_TAG = 'TDS-DROPDOWN-OPTION';
+const DROPDOWN_GROUP_SEPARATOR_TAG = 'TDS-DROPDOWN-GROUP-SEPARATOR';
+const DROPDOWN_GROUP_TITLE_TAG = 'TDS-DROPDOWN-GROUP-TITLE';
+
+const VALID_DROPDOWN_CHILD_TAGS = new Set([
+  DROPDOWN_OPTION_TAG,
+  DROPDOWN_GROUP_SEPARATOR_TAG,
+  DROPDOWN_GROUP_TITLE_TAG,
+]);
+
+function isValidDropdownChild(tagName: string): boolean {
+  return VALID_DROPDOWN_CHILD_TAGS.has(tagName);
+}
+
+function isDropdownOption(tagName: string): boolean {
+  return tagName === DROPDOWN_OPTION_TAG;
+}
+
+function isDropdownGroupChild(tagName: string): boolean {
+  return tagName === DROPDOWN_GROUP_SEPARATOR_TAG || tagName === DROPDOWN_GROUP_TITLE_TAG;
+}
+
+interface DropdownGroup {
+  groupTitle: Element | null;
+  options: HTMLTdsDropdownOptionElement[];
+  leadingSeparator: Element | null;
+}
+
+interface ParsedDropdownGroups {
+  groups: DropdownGroup[];
+  trailingSeparator: Element | null;
+}
+
 /**
- * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
+ * @slot <default> - <b>Unnamed slot.</b> For dropdown option, group title, and group separator elements.
  */
 @Component({
   tag: 'tds-dropdown',
@@ -204,7 +237,8 @@ export class TdsDropdown {
 
     return values.filter((val) => {
       const isValid = children.some(
-        (element) => convertToString(element.value) === convertToString(val),
+        (element) =>
+          !element.groupParent && convertToString(element.value) === convertToString(val),
       );
       if (!isValid && strict) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
@@ -215,10 +249,86 @@ export class TdsDropdown {
 
   private updateOptionElements() {
     this.getChildren()?.forEach((element) => {
-      /** Convert element.value to string for comparison */
+      if (element.groupParent) {
+        return;
+      }
+
       element.setSelected(this.selectedOptions.includes(convertToString(element.value)));
     });
+    this.syncAllGroupParents();
   }
+
+  private readonly getGroupChildOptions = (group: string) =>
+    this.getChildren().filter(
+      (option) =>
+        convertToString(option.group) === convertToString(group) &&
+        !option.disabled &&
+        !option.groupParent,
+    );
+
+  private readonly getGroupParentOption = (group: string) =>
+    this.getChildren().find(
+      (option) => convertToString(option.group) === convertToString(group) && option.groupParent,
+    );
+
+  private readonly getDefinedGroups = () => {
+    const groups = new Set<string>();
+
+    this.getChildren().forEach((option) => {
+      if (option.groupParent && option.group) {
+        groups.add(convertToString(option.group));
+      }
+    });
+
+    return Array.from(groups);
+  };
+
+  private readonly syncGroupParent = (group: string) => {
+    const groupParent = this.getGroupParentOption(group);
+    if (!groupParent) {
+      return;
+    }
+
+    const childOptions = this.getGroupChildOptions(group);
+    const childValues = childOptions.map((option) => convertToString(option.value));
+    const selectedCount = childValues.filter((value) =>
+      this.selectedOptions.includes(value),
+    ).length;
+
+    const allSelected = childValues.length > 0 && selectedCount === childValues.length;
+    const noneSelected = selectedCount === 0;
+    const indeterminate = !allSelected && !noneSelected;
+
+    groupParent.setGroupState({
+      checked: allSelected,
+      indeterminate,
+      disabled: childOptions.length === 0,
+    });
+  };
+
+  private readonly syncAllGroupParents = () => {
+    if (!this.multiselect) {
+      return;
+    }
+
+    this.getDefinedGroups().forEach((group) => this.syncGroupParent(group));
+  };
+
+  private readonly handleGroupParentSelect = (group: string, selected: boolean) => {
+    const childValues = this.getGroupChildOptions(group).map((option) =>
+      convertToString(option.value),
+    );
+
+    if (childValues.length === 0) {
+      return;
+    }
+
+    const newValues = selected
+      ? [...new Set([...this.selectedOptions, ...childValues])]
+      : this.selectedOptions.filter((value) => !childValues.includes(value));
+
+    this.updateDropdownStateFromUser(newValues);
+  };
 
   private updateDisplayValue() {
     this.internalValue = this.getSelectedChildrenLabels().join(', ');
@@ -279,6 +389,21 @@ export class TdsDropdown {
   async removeValue(oldValue: string) {
     const newValues = this.selectedOptions.filter((v) => v !== oldValue);
     this.updateDropdownStateFromUser(newValues);
+  }
+
+  /**
+   * Selects or deselects all child options in a multiselect group.
+   * Called by group parent `tds-dropdown-option` elements.
+   */
+  @Method()
+  async toggleGroupSelection(group: string, selected: boolean) {
+    this.handleGroupParentSelect(group, selected);
+  }
+
+  /** Returns a unique id for this dropdown instance. */
+  @Method()
+  async getInstanceId(): Promise<string> {
+    return this.uuid;
   }
 
   /** Method that forces focus on the input element. */
@@ -424,13 +549,15 @@ export class TdsDropdown {
     }
   }
 
+  private readonly getFocusedOptionIndex = (activeElement: Element) =>
+    this.getChildren().findIndex(
+      (option) => option === activeElement || option.contains(activeElement),
+    );
+
   private readonly handleArrowDown = (activeElement: Element) => {
     const children = this.getChildren();
-    /** Get the index of the current focus index, if there is no
-    nextElementSibling return the index for the first child in our Dropdown.  */
-    const startingIndex = activeElement.nextElementSibling
-      ? children.findIndex((element) => element === activeElement.nextElementSibling)
-      : 0;
+    const currentIndex = this.getFocusedOptionIndex(activeElement);
+    const startingIndex = currentIndex >= 0 ? currentIndex + 1 : 0;
 
     if (children.length > 0) {
       const elementIndex = findNextFocusableElement(children, startingIndex);
@@ -441,11 +568,8 @@ export class TdsDropdown {
 
   private readonly handleArrowUp = (activeElement: Element) => {
     const children = this.getChildren();
-    /** Get the index of the current focus index, if there is no
-    previousElementSibling return the index for the first last in our Dropdown.  */
-    const startingIndex = activeElement.nextElementSibling
-      ? children.findIndex((element) => element === activeElement.previousElementSibling)
-      : 0;
+    const currentIndex = this.getFocusedOptionIndex(activeElement);
+    const startingIndex = currentIndex >= 0 ? currentIndex - 1 : children.length - 1;
 
     if (children.length > 0) {
       const elementIndex = findPreviousFocusableElement(children, startingIndex);
@@ -511,6 +635,8 @@ export class TdsDropdown {
 
   /** Method to handle slot changes */
   private handleSlotChange() {
+    this.validateSlottedChildren();
+
     /**
      * Warn for values that were pending from a previous slot change
      * and are still invalid now that new options have arrived.
@@ -525,6 +651,7 @@ export class TdsDropdown {
 
     /** Track currently unmatched values as pending for the next slot change */
     this.updatePendingInvalidValues();
+    this.syncAllGroupParents();
   }
 
   /** Warn for pending values that are still not matched, then clear pending */
@@ -534,7 +661,8 @@ export class TdsDropdown {
 
     this.pendingInvalidValues.forEach((val) => {
       const isValid = children.some(
-        (element) => convertToString(element.value) === convertToString(val),
+        (element) =>
+          !element.groupParent && convertToString(element.value) === convertToString(val),
       );
       if (!isValid) {
         console.warn(`TDS DROPDOWN: Option with value "${val}" does not exist`);
@@ -551,7 +679,8 @@ export class TdsDropdown {
     this.pendingInvalidValues.clear();
     this.selectedOptions.forEach((val) => {
       const isValid = children.some(
-        (element) => convertToString(element.value) === convertToString(val),
+        (element) =>
+          !element.groupParent && convertToString(element.value) === convertToString(val),
       );
       if (!isValid) {
         this.pendingInvalidValues.add(val);
@@ -575,10 +704,101 @@ export class TdsDropdown {
     }
   };
 
+  private readonly getSlottedChildren = () =>
+    Array.from(this.host.children).filter((element) => isValidDropdownChild(element.tagName));
+
+  private readonly getDecorativeChildren = () =>
+    Array.from(this.host.children).filter((element) => isDropdownGroupChild(element.tagName));
+
   private readonly getChildren = () =>
-    Array.from(this.host.children).filter(
-      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-    ) as Array<HTMLTdsDropdownOptionElement>;
+    this.getSlottedChildren().filter((element): element is HTMLTdsDropdownOptionElement =>
+      isDropdownOption(element.tagName),
+    );
+
+  private readonly showDecorativeChildren = () => {
+    this.getDecorativeChildren().forEach((element) => {
+      element.removeAttribute('hidden');
+    });
+  };
+
+  private readonly parseDropdownGroups = (): ParsedDropdownGroups => {
+    const groups: DropdownGroup[] = [];
+    let pendingSeparator: Element | null = null;
+    let current: DropdownGroup = { groupTitle: null, options: [], leadingSeparator: null };
+
+    const pushCurrentGroup = () => {
+      if (current.groupTitle || current.options.length > 0) {
+        groups.push(current);
+      }
+    };
+
+    this.getSlottedChildren().forEach((child) => {
+      if (child.tagName === DROPDOWN_GROUP_TITLE_TAG) {
+        pushCurrentGroup();
+        current = {
+          groupTitle: child,
+          options: [],
+          leadingSeparator: pendingSeparator,
+        };
+        pendingSeparator = null;
+      } else if (isDropdownOption(child.tagName)) {
+        current.options.push(child as HTMLTdsDropdownOptionElement);
+      } else if (child.tagName === DROPDOWN_GROUP_SEPARATOR_TAG) {
+        pendingSeparator = child;
+      }
+    });
+
+    pushCurrentGroup();
+
+    return { groups, trailingSeparator: pendingSeparator };
+  };
+
+  private readonly updateFilterDecorativeVisibility = () => {
+    if (this.filterQuery === '') {
+      this.showDecorativeChildren();
+      return;
+    }
+
+    const { groups, trailingSeparator } = this.parseDropdownGroups();
+
+    groups.forEach((group, index) => {
+      const hasVisibleOptions = group.options.some((option) => !option.hasAttribute('hidden'));
+      const previousHasVisibleOptions =
+        index > 0
+          ? groups[index - 1].options.some((option) => !option.hasAttribute('hidden'))
+          : false;
+
+      if (group.groupTitle) {
+        if (hasVisibleOptions) {
+          group.groupTitle.removeAttribute('hidden');
+        } else {
+          group.groupTitle.setAttribute('hidden', '');
+        }
+      }
+
+      if (group.leadingSeparator) {
+        if (hasVisibleOptions && previousHasVisibleOptions) {
+          group.leadingSeparator.removeAttribute('hidden');
+        } else {
+          group.leadingSeparator.setAttribute('hidden', '');
+        }
+      }
+    });
+
+    if (trailingSeparator) {
+      trailingSeparator.setAttribute('hidden', '');
+    }
+  };
+
+  private readonly validateSlottedChildren = () => {
+    Array.from(this.host.children).forEach((child) => {
+      if (!isValidDropdownChild(child.tagName)) {
+        console.warn(
+          `TDS DROPDOWN: <${child.tagName.toLowerCase()}> is not a valid child of tds-dropdown.`,
+        );
+      }
+    });
+  };
 
   private readonly getSelectedChildren = () => {
     if (this.selectedOptions.length === 0) return [];
@@ -594,17 +814,87 @@ export class TdsDropdown {
       .filter(Boolean);
   };
 
-  private readonly getSelectedChildrenLabels = () =>
-    this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
-      element.textContent?.trim(),
+  private readonly isGroupFullySelected = (group: string): boolean => {
+    const childValues = this.getGroupChildOptions(group).map((option) =>
+      convertToString(option.value),
     );
+
+    const allEnabledChildrenSelected =
+      childValues.length > 0 && childValues.every((value) => this.selectedOptions.includes(value));
+
+    if (!allEnabledChildrenSelected) {
+      return false;
+    }
+
+    const hasSelectedDisabledChild = this.getChildren().some(
+      (option) =>
+        !option.groupParent &&
+        option.disabled &&
+        convertToString(option.group) === convertToString(group) &&
+        this.selectedOptions.includes(convertToString(option.value)),
+    );
+
+    return !hasSelectedDisabledChild;
+  };
+
+  private readonly getGroupDisplayLabel = (group: string): string => {
+    const groupParent = this.getGroupParentOption(group);
+    const parentLabel = groupParent?.textContent?.trim();
+
+    if (parentLabel) {
+      return parentLabel;
+    }
+
+    const { groups } = this.parseDropdownGroups();
+    const matchingGroup = groups.find((parsedGroup) =>
+      parsedGroup.options.some(
+        (option) => option.groupParent && convertToString(option.group) === convertToString(group),
+      ),
+    );
+
+    return matchingGroup?.groupTitle?.textContent?.trim() ?? group;
+  };
+
+  private readonly getSelectedChildrenLabels = (): string[] => {
+    const labels: string[] = [];
+    const emittedCollapsedGroups = new Set<string>();
+
+    this.getChildren().forEach((option) => {
+      if (option.groupParent) {
+        return;
+      }
+
+      const value = convertToString(option.value);
+      if (!this.selectedOptions.includes(value)) {
+        return;
+      }
+
+      const group = option.group ? convertToString(option.group) : null;
+
+      if (group) {
+        if (emittedCollapsedGroups.has(group)) {
+          return;
+        }
+
+        if (this.isGroupFullySelected(group)) {
+          labels.push(this.getGroupDisplayLabel(group));
+          emittedCollapsedGroups.add(group);
+          return;
+        }
+      }
+
+      labels.push(option.textContent?.trim() ?? '');
+    });
+
+    return labels;
+  };
 
   private readonly getValue = () => {
     const labels = this.getSelectedChildrenLabels();
-    if (!labels) {
+    if (!labels.length) {
       return '';
     }
-    return labels?.join(', ');
+    return labels.join(', ');
   };
 
   private readonly setValueAttribute = () => {
@@ -679,6 +969,7 @@ export class TdsDropdown {
         element.removeAttribute('hidden');
         return element;
       });
+      this.showDecorativeChildren();
       this.filterResult = null;
       /** Hide the options that do not match the query */
     } else {
@@ -694,7 +985,31 @@ export class TdsDropdown {
         }
         return !element.hasAttribute('hidden');
       }).length;
+      this.syncGroupParentFilterVisibility();
+      this.updateFilterDecorativeVisibility();
     }
+  };
+
+  private readonly syncGroupParentFilterVisibility = () => {
+    if (this.filterQuery === '') {
+      return;
+    }
+
+    this.getChildren().forEach((element) => {
+      if (!element.groupParent || !element.group) {
+        return;
+      }
+
+      const hasVisibleChild = this.getGroupChildOptions(convertToString(element.group)).some(
+        (child) => !child.hasAttribute('hidden'),
+      );
+
+      if (hasVisibleChild) {
+        element.removeAttribute('hidden');
+      } else {
+        element.setAttribute('hidden', '');
+      }
+    });
   };
 
   private readonly focusInput = (value: string) => {
@@ -752,6 +1067,7 @@ export class TdsDropdown {
     children.forEach((element) => {
       element.removeAttribute('hidden');
     });
+    this.showDecorativeChildren();
     this.filterResult = null;
   };
 
@@ -876,7 +1192,7 @@ export class TdsDropdown {
     const ariaLabel = this.tdsAriaLabel ?? fallbackAriaLabel;
     let derivedPlaceholder = this.placeholder ?? '';
     if (this.labelPosition === 'inside') {
-      derivedPlaceholder = showPlaceholderInside ? this.placeholder ?? '' : '';
+      derivedPlaceholder = showPlaceholderInside ? (this.placeholder ?? '') : '';
     }
     let buttonText = '';
     if (this.selectedOptions.length > 0) {

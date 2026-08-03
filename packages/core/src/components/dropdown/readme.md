@@ -77,6 +77,16 @@ Type: `Promise<void>`
 
 
 
+### `getInstanceId() => Promise<string>`
+
+Returns a unique id for this dropdown instance.
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
 ### `removeValue(oldValue: string) => Promise<void>`
 
 
@@ -132,6 +142,24 @@ Type: `Promise<{ value: string | number | undefined; label: string | undefined; 
 
 
 
+### `toggleGroupSelection(group: string, selected: boolean) => Promise<void>`
+
+Selects or deselects all child options in a multiselect group.
+Called by group parent `tds-dropdown-option` elements.
+
+#### Parameters
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| `group`    | `string`  |             |
+| `selected` | `boolean` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `updateDisplay() => Promise<void>`
 
 Method to force update the dropdown display value.
@@ -147,9 +175,9 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot          | Description                                        |
-| ------------- | -------------------------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
+| Slot          | Description                                                                          |
+| ------------- | ------------------------------------------------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For dropdown option, group title, and group separator elements. |
 
 
 ## Dependencies

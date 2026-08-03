@@ -91,6 +91,14 @@
       "import": "./dist/components/tds-divider.js",
       "types": "./dist/components/tds-divider.d.ts"
     },
+    "./tds-dropdown-group-separator": {
+      "import": "./dist/components/tds-dropdown-group-separator.js",
+      "types": "./dist/components/tds-dropdown-group-separator.d.ts"
+    },
+    "./tds-dropdown-group-title": {
+      "import": "./dist/components/tds-dropdown-group-title.js",
+      "types": "./dist/components/tds-dropdown-group-title.d.ts"
+    },
     "./tds-dropdown-option": {
       "import": "./dist/components/tds-dropdown-option.js",
       "types": "./dist/components/tds-dropdown-option.d.ts"

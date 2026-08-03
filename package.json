@@ -16,7 +16,7 @@
     "test:axe": "cd packages/core && npm run test:axe",
     "test:lte": "npm run build:tegel-lite && cd packages/tegel-lite && node ../core/docker-test-runner.js",
     "commit": "cz",
-    "prepare": "husky install",
+    "prepare": "husky",
     "reinstall": "./reinstall.sh",
     "pack:core": "cd packages/core && npm run build && npm pack",
     "pack:react": "cd packages/react && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",

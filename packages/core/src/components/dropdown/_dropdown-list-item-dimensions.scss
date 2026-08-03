@@ -1,0 +1,29 @@
+@mixin dropdown-list-item-base {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--tds-dropdown-option-border);
+}
+
+@mixin dropdown-list-item-heights($block) {
+  :host-context(tds-dropdown[size='lg']) #{$block} {
+    height: 55px;
+  }
+
+  :host-context(tds-dropdown[size='md']) #{$block} {
+    height: 47px;
+  }
+
+  :host-context(tds-dropdown[size='sm']) #{$block} {
+    height: 39px;
+  }
+
+  :host-context(tds-dropdown[size='xs']:not([multiselect])) #{$block} {
+    height: 31px;
+  }
+
+  :host-context(tds-dropdown[size='xs'][multiselect]) #{$block} {
+    height: 39px;
+  }
+}

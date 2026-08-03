@@ -231,6 +231,82 @@ const defaultOptionLookUp = {
 const getMultiselectDefaultValue = (multiDefaultOption: string[]) =>
   multiDefaultOption.map((item) => defaultOptionLookUp[item]);
 
+const buildDropdownAttributes = ({
+  name = 'dropdown',
+  placeholder,
+  labelText,
+  labelPosition,
+  helperText,
+  size,
+  error,
+  filter,
+  normalizeText,
+  multiselect,
+  openDirection,
+  modeVariant,
+  disabled,
+  defaultOption = undefined,
+  multiDefaultOption = undefined,
+  noResultText,
+  animation,
+  tdsAriaLabel,
+}) => `
+        ${
+          defaultOption && defaultOption !== 'No default'
+            ? `default-value="${defaultOptionLookUp[defaultOption]}"`
+            : ''
+        }
+        ${
+          multiDefaultOption?.length
+            ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
+            : ''
+        }
+        ${
+          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        }
+          name="${name}"
+          label="${labelText}"
+          ${
+            labelPosition && labelPosition !== 'None'
+              ? `label-position="${labelPosition.toLowerCase()}"`
+              : ''
+          }
+          placeholder="${placeholder}"
+          helper="${helperText}"
+          size="${sizeLookUp[size]}"
+          ${error ? 'error' : ''}
+          ${filter ? 'filter' : ''}
+          ${filter ? `no-result-text="${noResultText}"` : ''}
+          ${normalizeText ? '' : `normalize-text="false"`}
+          ${multiselect ? 'multiselect' : ''}
+          ${disabled ? 'disabled' : ''}
+          ${animation !== 'None' ? `animation="${animation}"` : ''}
+          open-direction="${openDirection.toLowerCase()}"
+          tds-aria-label="${tdsAriaLabel}"`;
+
+const buildDropdownChangeScript = (selector: string, filter: boolean) => `
+    <script>
+      (function () {
+        const dropdown = document.querySelector('${selector}');
+
+        if (dropdown) {
+          dropdown.addEventListener('tdsChange', (event) => {
+            console.log(event);
+          });
+
+          ${
+            filter
+              ? `
+          dropdown.addEventListener('tdsClear', (event) => {
+            console.log('tdsClear', event.detail);
+          });
+          `
+              : ''
+          }
+        }
+      })();
+    </script>`;
+
 const Template = ({
   placeholder,
   labelText,
@@ -266,38 +342,25 @@ const Template = ({
 
     <div class="demo-wrapper">
         <tds-dropdown
-        ${
-          defaultOption && defaultOption !== 'No default'
-            ? `default-value="${defaultOptionLookUp[defaultOption]}"`
-            : ''
-        }
-        ${
-          multiDefaultOption
-            ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
-            : ''
-        }
-        ${
-          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-        }
-          name="dropdown"
-          label="${labelText}"
-          ${
-            labelPosition && labelPosition !== 'None'
-              ? `label-position="${labelPosition.toLowerCase()}"`
-              : ''
-          }
-          placeholder="${placeholder}"
-          helper="${helperText}"
-          size="${sizeLookUp[size]}"
-          ${error ? 'error' : ''}
-          ${filter ? 'filter' : ''}
-          ${filter ? `no-result-text="${noResultText}"` : ''}
-          ${normalizeText ? '' : `normalize-text="false"`}
-          ${multiselect ? 'multiselect' : ''}
-          ${disabled ? 'disabled' : ''}
-          ${animation !== 'None' ? `animation="${animation}"` : ''}
-          open-direction="${openDirection.toLowerCase()}"
-          tds-aria-label="${tdsAriaLabel}"
+        ${buildDropdownAttributes({
+          placeholder,
+          labelText,
+          labelPosition,
+          helperText,
+          size,
+          error,
+          filter,
+          normalizeText,
+          multiselect,
+          openDirection,
+          modeVariant,
+          disabled,
+          defaultOption,
+          multiDefaultOption,
+          noResultText,
+          animation,
+          tdsAriaLabel,
+        })}
           >
             <tds-dropdown-option value="option-1">
               Option 1
@@ -329,28 +392,118 @@ const Template = ({
         </tds-dropdown>
     </div>
 
-    <script>
-      (function() {
-        const dropdown = document.querySelector('tds-dropdown');
-        
-        if (dropdown) {
-          dropdown.addEventListener('tdsChange', (event) => {
-            console.log(event);
-          });
-  
-          // Only listen to tdsClear when filter is enabled
-          ${
-            filter
-              ? `
-          dropdown.addEventListener('tdsClear', (event) => {
-            console.log('tdsClear', event.detail);
-          });
-          `
-              : ''
-          }
-        }
-      })();
-    </script>    
+    ${buildDropdownChangeScript('tds-dropdown', filter)}
   `);
 
 export const Default = Template.bind({});
+
+const GroupedMultiselectTemplate = ({
+  placeholder,
+  labelText,
+  labelPosition,
+  helperText,
+  size,
+  error,
+  filter,
+  normalizeText,
+  multiselect,
+  openDirection,
+  modeVariant,
+  disabled,
+  noResultText,
+  animation,
+  responsive,
+  tdsAriaLabel,
+}) =>
+  formatHtmlPreview(`
+  <style>
+    .demo-wrapper {
+      width: ${responsive ? 'calc(100vw - 40px)' : '320px'};
+      max-width: 960px;
+      height: 400px;
+    }
+  </style>
+
+  <div class="demo-wrapper">
+    <tds-dropdown
+      ${buildDropdownAttributes({
+        name: 'scania-products',
+        placeholder,
+        labelText,
+        labelPosition,
+        helperText,
+        size,
+        error,
+        filter,
+        normalizeText,
+        multiselect,
+        openDirection,
+        modeVariant,
+        disabled,
+        noResultText,
+        animation,
+        tdsAriaLabel,
+      })}
+    >
+      <tds-dropdown-group-title text="Trucks"></tds-dropdown-group-title>
+      <tds-dropdown-option group="trucks" group-parent value="trucks">Trucks</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="r-series">Scania R-series</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="s-series">Scania S-series</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="p-series">Scania P-series</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="g-series">Scania G-series</tds-dropdown-option>
+      <tds-dropdown-option group="trucks" value="xt">Scania XT</tds-dropdown-option>
+
+      <tds-dropdown-group-separator></tds-dropdown-group-separator>
+
+      <tds-dropdown-group-title text="Buses"></tds-dropdown-group-title>
+      <tds-dropdown-option group="buses" group-parent value="buses">Buses</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="citywide">Scania Citywide</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="interlink">Scania Interlink</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="touring-hd">Scania Touring HD</tds-dropdown-option>
+      <tds-dropdown-option group="buses" value="fencer">Scania Fencer</tds-dropdown-option>
+
+      <tds-dropdown-group-separator></tds-dropdown-group-separator>
+
+      <tds-dropdown-group-title text="Power Solutions"></tds-dropdown-group-title>
+      <tds-dropdown-option group="power-solutions" group-parent value="power-solutions">
+        Power Solutions
+      </tds-dropdown-option>
+      <tds-dropdown-option group="power-solutions" value="dc13">Scania DC13 engine</tds-dropdown-option>
+      <tds-dropdown-option group="power-solutions" value="oc09">Scania OC09 engine</tds-dropdown-option>
+      <tds-dropdown-option group="power-solutions" value="hybrid">
+        Scania hybrid powertrain
+      </tds-dropdown-option>
+      <tds-dropdown-option group="power-solutions" value="bev">
+        Scania battery electric powertrain
+      </tds-dropdown-option>
+      <tds-dropdown-option group="power-solutions" value="ethanol">
+        Scania ethanol powertrain
+      </tds-dropdown-option>
+    </tds-dropdown>
+  </div>
+
+  ${buildDropdownChangeScript('tds-dropdown[name="scania-products"]', filter)}
+`);
+
+export const MultiselectWithGroups = GroupedMultiselectTemplate.bind({});
+MultiselectWithGroups.storyName = 'Multiselect with groups';
+MultiselectWithGroups.args = {
+  multiselect: true,
+  labelText: 'Select products',
+  labelPosition: 'Outside',
+  helperText: 'Select one or more products from the list',
+  placeholder: 'Choose Scania products',
+  tdsAriaLabel: 'Scania products dropdown',
+};
+MultiselectWithGroups.argTypes = {
+  defaultOption: { table: { disable: true } },
+  multiDefaultOption: { table: { disable: true } },
+};
+MultiselectWithGroups.parameters = {
+  docs: {
+    description: {
+      story:
+        'Multiselect dropdown with grouped options using `tds-dropdown-group-title`, `tds-dropdown-group-separator`, and group parent/child `tds-dropdown-option` elements.',
+    },
+  },
+};
