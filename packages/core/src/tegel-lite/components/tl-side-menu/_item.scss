@@ -17,7 +17,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--side-menu-item-horizontal-gap);
   padding: 0 var(--side-menu-item-horizontal-padding);
   border: none;
   background-color: var(--side-menu-item-background);

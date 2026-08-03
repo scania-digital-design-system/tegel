@@ -73,6 +73,7 @@
     var(--side-menu-item-border-bottom-color);
   display: flex;
   align-items: center;
+  gap: var(--side-menu-item-horizontal-gap);
   height: var(--side-menu-sub-item-height);
   width: 100%;
   background-color: var(--side-menu-item-background);

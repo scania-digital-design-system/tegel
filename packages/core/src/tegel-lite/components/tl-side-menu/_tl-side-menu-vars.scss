@@ -28,6 +28,9 @@
   --side-menu-item-height: var(--unit-68);
   --side-menu-item-icon-size: var(--unit-24);
 
+  // side menu items/subitems gap between icon and text
+  --side-menu-item-horizontal-gap: var(--unit-10);
+
   // side menu sub-item
   --side-menu-sub-item-height: var(--unit-48);
   --side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
