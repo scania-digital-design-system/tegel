@@ -19,20 +19,15 @@
 
       box-sizing: border-box;
       border-right: 1px solid var(--tds-header-dropdown-item-border-color);
-      display: inline-block;
+      display: flex;
       align-items: center;
       height: 100%;
-      line-height: var(--tds-side-menu-sub-items-custom-line-height);
-      vertical-align: middle;
       padding: 0 24px;
       width: 100%;
       border-radius: var(--tds-side-menu-item-border-radius);
       background-color: var(--tds-side-menu-item-background);
       color: var(--tds-side-menu-item-text-color);
       border: none;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     ::slotted(a:hover),
