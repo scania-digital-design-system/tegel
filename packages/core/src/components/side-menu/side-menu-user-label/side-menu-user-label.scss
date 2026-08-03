@@ -5,8 +5,14 @@
   @include title-01;
 
   color: var(--tds-side-menu-item-text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   .subheading {
     color: var(--tds-side-menu-item-user-subheading-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
