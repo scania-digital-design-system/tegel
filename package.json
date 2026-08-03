@@ -28,7 +28,9 @@
     "lint": "npx eslint ./",
     "tsc": "npx tsc --noEmit",
     "lint:prop-reflect": "node scripts/check-prop-reflect.mjs",
-    "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect"
+    "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect", 
+    "icons:import": "./scripts/import-icons.sh",
+    "icons:update": "node ./scripts/icon-types-generation.mts && node ./scripts/icon-token-generation.mts"
   },
   "repository": {
     "type": "git",
@@ -42,7 +44,7 @@
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^21.1.0",
-    "@types/node": "^25.7.0",
+    "@types/node": "^26.1.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "commitizen": "^4.3.0",
@@ -56,7 +58,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-storybook": "9.1.16",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.0.8",
     "prettier": "^3.8.4",
     "style-dictionary": "^5.0.0",
     "stylelint": "^17.12.0",

@@ -42,9 +42,10 @@
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "types": ["node"]
   },
   "exclude": ["**/*.d.ts", "packages/core/src/components/_beta/**"],
-  "include": ["packages/core/**/*"],
+  "include": ["packages/core/**/*", "scripts"],
   "files": [
     "packages/core/src/global.d.ts"
   ]
