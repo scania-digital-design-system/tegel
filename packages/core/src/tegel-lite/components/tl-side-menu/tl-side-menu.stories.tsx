@@ -200,7 +200,9 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
                                     <button class="tl-side-menu__dropdown-item">Hub-centric wheel</button>
                                  </li>
                                  <li>
-                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Another type of wheel</button>
+                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">
+                                       <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Another type of wheel</span>
+                                    </button>
                                  </li>
                               </ul>
                            </div>

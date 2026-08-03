@@ -274,9 +274,7 @@ $breakpoint-lg: 992px;
       padding: var(--side-menu-sub-items-gap);
       border-radius: var(--side-menu-item-border-radius);
       display: none;
-      min-width: 190px;
-      width: max-content;
-      max-width: 300px;
+      width: 190px;
       flex-direction: column;
 
       @include tl-scrollbar;
