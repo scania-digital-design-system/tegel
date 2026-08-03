@@ -33,6 +33,9 @@ tds-side-menu {
     var(--unit-64);
   --tds-side-menu-sub-items-gap: 0px;
 
+  // side menu items/subitems gap between icon and text
+  --tds-side-menu-item-horizontal-gap: var(--unit-10);
+
   // side menu item user
   --tds-side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
 
