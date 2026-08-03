@@ -232,6 +232,7 @@ $breakpoint-lg: 992px;
       min-height: 48px;
       display: flex;
       align-items: center;
+      gap: var(--side-menu-sub-items-gap);
 
       @include title-01;
 
@@ -274,7 +275,7 @@ $breakpoint-lg: 992px;
       padding: var(--side-menu-sub-items-gap);
       border-radius: var(--side-menu-item-border-radius);
       display: none;
-      width: 190px;
+      width: 210px; // 190px + 2 * 10px (padding on each side)
       flex-direction: column;
 
       @include tl-scrollbar;
