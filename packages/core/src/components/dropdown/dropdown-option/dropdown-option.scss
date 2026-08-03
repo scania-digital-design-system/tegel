@@ -1,3 +1,7 @@
+/* Component consuming other components inside shadowDOM needs to import its variables to display correctly */
+@use '../../../components/checkbox/checkbox-vars' as *;
+
+/* Mixins */
 @use '../../../mixins/focus-state' as *;
 @use '../../../mixins/box-sizing' as *;
 

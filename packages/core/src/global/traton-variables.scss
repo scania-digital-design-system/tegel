@@ -20,8 +20,3 @@
 
 /* Traton typography tokens */
 @use '../../../../tokens/scss/traton/typography' as *;
-
-/* Traton specific imports */
-@use '../../../../typography/tokens/typography-traton' as *;
-@use '../../../../spacing/traton-units' as *;
-@use '../../../../typography/traton-fonts' as *;

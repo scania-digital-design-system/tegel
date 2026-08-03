@@ -49,6 +49,7 @@ export const config: Config = {
   namespace: 'tegel',
   globalStyle: 'src/global/global.scss',
   extras: {
+    addGlobalStyleToComponents: false,
     enableImportInjection: true,
     tagNameTransform: true,
   },

@@ -56,7 +56,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('renders the error message when manually selecting a date outside the min/max boundaries', async ({
       page,
     }) => {
-      const errorText = 'Value must be between 10/01/2026 and 31/03/2026';
+      const errorText = 'Value must be between 10/01/2030 and 31/03/2030';
 
       const helperText = "Please enter a date with format 'MM/dd/yyyy'";
 
@@ -65,11 +65,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       const datetime = page.getByLabel("DateTime component with type='date'");
 
-      await datetime.click();
-
-      await datetime.pressSequentially('01');
-      await datetime.pressSequentially('04');
-      await datetime.pressSequentially('2026');
+      await datetime.fill('2030-01-04');
 
       await datetime.blur();
 
@@ -80,7 +76,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('renders the error message when manually selecting a week outside the min/max boundaries', async ({
       page,
     }) => {
-      const errorText = 'Value must be between Week 06, 2026 and Week 10, 2026';
+      const errorText = 'Value must be between Week 06, 2030 and Week 10, 2030';
       const helperText = "Please enter a week with format 'Week ww, yyyy'";
 
       await expect(page.getByText(errorText)).not.toBeVisible();
@@ -126,14 +122,14 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('renders the error message when programmatically setting an input value outside the min/max boundaries', async ({
       page,
     }) => {
-      const invalidErrorText = 'Value must be between 10/01/2026 and 31/03/2026';
+      const invalidErrorText = 'Value must be between 10/01/2030 and 31/03/2030';
       const helperText = "Please enter a date with format 'MM/dd/yyyy'";
 
       await expect(page.getByText(invalidErrorText)).not.toBeVisible();
       await expect(page.getByText(helperText)).toBeVisible();
 
       await page.evaluate(async () => {
-        (document.getElementById('date-input') as HTMLTdsDatetimeElement).setValue('2026-04-01');
+        (document.getElementById('date-input') as HTMLTdsDatetimeElement).setValue('2030-04-01');
       });
 
       await expect(page.getByText(invalidErrorText)).toBeVisible();
@@ -148,11 +144,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page.getByText(helperText)).toBeVisible();
 
       const datetime = page.getByLabel('DateTime component with customValidator');
-      await datetime.click();
-
-      await datetime.pressSequentially('03');
-      await datetime.pressSequentially('03');
-      await datetime.pressSequentially('2026');
+      await datetime.fill('2030-03-03');
 
       await datetime.blur();
 
