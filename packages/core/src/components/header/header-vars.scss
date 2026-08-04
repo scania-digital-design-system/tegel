@@ -53,6 +53,12 @@ tds-header {
   --tds-header-app-launcher-grid-hover-background: var(
     --component-header-background-menu-item-tile-hover
   );
+
+  /* Header Symbol */
+  --tds-header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+  --tds-header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+  --tds-header-brand-logo-size: 32px;
+  --tds-header-brand-item-width: unset;
 }
 
 .scania {

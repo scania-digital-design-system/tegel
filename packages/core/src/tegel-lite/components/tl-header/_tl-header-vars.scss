@@ -27,6 +27,10 @@
   --header-item-user-id-padding: calc(var(--component-header-size-avatar-padding) * 1px);
   --header-item-user-id-image-size: calc(var(--component-header-size-avatar-default) * 1px);
 
+  .tl-header__title {
+    --header-title-font-weight: 400;
+  }
+
   /* Expandable header items */
   --header-item-background-opened: var(--component-header-background-nav-item-current-default);
   --header-item-background-opened-hover: var(--component-header-background-menu-item-link-hover);
@@ -62,6 +66,14 @@
   /* user id submenu items */
   --header-sub-menu-item-title-color: var(--component-header-text-title-default);
   --header-sub-menu-item-subtitle-color: var(--component-header-text-subtitle-default);
+
+  // Fallback to Scania logotype (white wordmark — header background is always dark blue)
+  .tl-header__brand {
+    --header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+    --header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+    --header-brand-logo-size: 32px;
+    --header-brand-item-width: 30px;
+  }
 }
 
 .scania {
