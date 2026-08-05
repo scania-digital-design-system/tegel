@@ -1,6 +1,7 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use '../side-menu-vars.scss' as *;
 @use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../mixins/z-index' as *;
 @use '../../../mixins/side-menu-border-selected' as *;
 
@@ -53,6 +54,10 @@
       overflow-y: auto;
       max-height: calc(calc(100vh - var(--tds-side-menu-dropdown-top-distance)) * 0.7);
       z-index: tds-z-index(side-menu);
+
+      &:focus-visible {
+        @include tds-focus-state;
+      }
 
       .heading-collapsed {
         all: unset;
