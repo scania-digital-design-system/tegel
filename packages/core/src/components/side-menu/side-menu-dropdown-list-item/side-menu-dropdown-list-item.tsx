@@ -50,11 +50,10 @@ export class TdsSideMenuDropdownListItem {
     const btnIconIsUserImage =
       btnIconSlottedEls?.[0]?.tagName.toLowerCase() === 'tds-side-menu-user-image';
 
-    if (hasBtnIcon && !btnIconIsUserImage) {
+    if (hasBtnIcon) {
       this.dropdownHasIcon = true;
     }
-
-    if (hasUserMenu) {
+    if ((hasBtnIcon && btnIconIsUserImage) || hasUserMenu) {
       this.dropdownHasUser = true;
     }
   }

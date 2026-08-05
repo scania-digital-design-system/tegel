@@ -1,4 +1,15 @@
-import { Component, Element, Fragment, h, Host, Listen, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  EventEmitter,
+  Event,
+  Fragment,
+  h,
+  Host,
+  Listen,
+  Prop,
+  State,
+} from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
 /**
@@ -14,7 +25,7 @@ import { CollapseEvent } from '../side-menu';
 export class TdsSideMenuDropdown {
   @Element() host!: HTMLElement;
 
-  /** If the dropdown should be open from the start. */
+  /** If the dropdown should be open from the start. <br/>It is only possible to have one tds-side-menu-dropdown open at a time. */
   @Prop({ reflect: true }) defaultOpen: boolean = false;
 
   /** The label of the button that opens the dropdown.
@@ -33,6 +44,15 @@ export class TdsSideMenuDropdown {
   };
 
   @State() collapsed: boolean = false;
+
+  @State() id: string = self.crypto.randomUUID();
+
+  /** @internal Broadcats to parent that this dropdown should remain open. */
+  @Event({
+    eventName: 'internalKeepThisDropdownOpen',
+    bubbles: true,
+  })
+  internalKeepThisDropdownOpen!: EventEmitter<string>;
 
   private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
@@ -93,6 +113,13 @@ export class TdsSideMenuDropdown {
     this.open = this.defaultOpen;
   }
 
+  @Listen('internalCloseDropdown', { target: 'body' })
+  handleCloseDropdown(id: string) {
+    if (id !== this.id) {
+      this.open = false;
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -108,6 +135,9 @@ export class TdsSideMenuDropdown {
             active={this.getIsOpenState()}
             selected={this.selected}
             onClick={() => {
+              if (!this.open) {
+                this.internalKeepThisDropdownOpen.emit(this.id);
+              }
               this.open = !this.open;
             }}
             aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
@@ -128,7 +158,13 @@ export class TdsSideMenuDropdown {
               )}
             </button>
           </tds-side-menu-item>
-          <div class="menu" tabindex={this.collapsed ? '0' : undefined}>
+          <div
+            class="menu"
+            tabindex={this.collapsed ? '0' : undefined}
+            style={{
+              '--tds-side-menu-dropdown-top-distance': `${this.host.getBoundingClientRect().y.toString()}px`,
+            }}
+          >
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}

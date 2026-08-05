@@ -32,6 +32,13 @@ const Template = () =>
   </style>
 
   <h4>Spacing Element</h4>
+
+  <p>When using the variables defined in CSS it is necessary to cast them to pixels as shown in the example below. </p>
+  
+  <pre>your-var: calc(var((--tds-spacing-element-X) * 1px);</pre>
+ 
+  <br/>
+
   <table>
     <tr>
       <th>Px</th>

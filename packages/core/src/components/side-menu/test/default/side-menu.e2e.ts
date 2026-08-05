@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/side-menu/test/default/index.html';
 const componentName = 'tds-side-menu';
 const testDescription = 'tds-side-menu-default';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

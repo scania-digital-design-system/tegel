@@ -1,67 +1,57 @@
 @use '../../../mixins/focus-state' as *;
+@use '../../../mixins/side-menu-border-selected' as *;
 @use './tl-side-menu-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-side-menu__item {
+  .tl-side-menu__item-text {
+    width: var(--side-menu-item-text-width);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   all: unset;
   box-sizing: border-box;
-  height: var(--side-menu-single-item-height);
+  height: var(--side-menu-item-height);
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: var(--component-side-menu-space-sub-menu-item-top-and-bottom)
-    var(--component-side-menu-space-sub-menu-item-chevron-right-padding)
-    var(--component-side-menu-space-sub-menu-item-top-and-bottom)
-    var(--component-side-menu-space-sub-menu-item-left);
+  gap: var(--side-menu-item-horizontal-gap);
+  padding: 0 var(--side-menu-item-horizontal-padding);
   border: none;
-  background-color: var(--side-menu-background-cover);
-  color: var(--side-menu-single-item-color);
+  background-color: var(--side-menu-item-background);
+  color: var(--side-menu-item-text-color);
   cursor: pointer;
   position: relative;
-  border-radius: var(--component-side-menu-radius-corner);
-  font-family: var(--side-menu-text-item-font-family);
-  font-size: var(--side-menu-text-item-font-size);
-  font-weight: var(--side-menu-text-item-font-weight);
-  line-height: var(--side-menu-text-item-line-height);
-  letter-spacing: var(--side-menu-text-item-letter-spacing);
+  border-radius: var(--side-menu-item-border-radius);
+
+  @include title-01;
 
   &:focus-visible {
     @include tds-focus-state-inset;
   }
 
   &:hover {
-    background-color: var(--side-menu-item-state-hover);
+    background-color: var(--side-menu-item-background-hover);
   }
 
   &:active {
-    background-color: var(--side-menu-item-state-active);
+    background-color: var(--side-menu-item-background-active);
   }
 
   &--selected {
     position: relative;
-    background-color: var(--side-menu-item-state-selected);
-
-    &:active {
-      background-color: var(--side-menu-item-state-selected);
-    }
-
-    &:hover {
-      background-color: var(
-        --side-menu-item-state-selected-hover,
-        var(--side-menu-item-state-selected)
-      );
-    }
+    background-color: var(--side-menu-item-background-selected);
 
     &::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: var(--component-side-menu-space-sub-page-selected-marker-width);
-      height: var(--component-side-menu-space-sub-menu-item-selected-marker-height);
-      background-color: var(--side-menu-single-subitem-selected-border-color);
-      border-radius: var(--component-side-menu-radius-corner) 0 0
-        var(--component-side-menu-radius-corner);
+      width: 4px;
+      height: 100%;
+      @include tl-side-menu-border-selected;
     }
   }
 }

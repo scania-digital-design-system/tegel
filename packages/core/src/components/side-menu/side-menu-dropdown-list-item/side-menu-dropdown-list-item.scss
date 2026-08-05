@@ -1,9 +1,11 @@
 @use '../../../mixins/focus-state' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/side-menu-border-selected' as *;
 
 :host {
   display: block;
   box-sizing: border-box;
-  height: 48px;
+  height: var(--tds-side-menu-sub-item-height);
   width: 100%;
 
   .component {
@@ -13,6 +15,8 @@
     ::slotted(a),
     ::slotted(button) {
       all: unset;
+      @include body-02;
+
       box-sizing: border-box;
       border-right: 1px solid var(--tds-header-dropdown-item-border-color);
       display: flex;
@@ -20,79 +24,38 @@
       height: 100%;
       padding: 0 24px;
       width: 100%;
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      background-color: var(--tds-header-dropdown-item-background);
-      color: var(--tds-header-item-open-color);
+      border-radius: var(--tds-side-menu-item-border-radius);
+      background-color: var(--tds-side-menu-item-background);
+      color: var(--tds-side-menu-item-text-color);
       border: none;
     }
 
     ::slotted(a:hover),
     ::slotted(button:hover) {
-      background-color: var(--tds-sidebar-item-state-hover);
+      background-color: var(--tds-side-menu-item-background-hover);
       cursor: pointer;
       position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background-color: var(--tds-side-menu-item-hover-indicator);
-      }
     }
 
     ::slotted(a:hover:focus-visible),
     ::slotted(button:hover:focus-visible) {
-      background-color: var(--tds-sidebar-item-state-hover);
+      background-color: var(--tds-side-menu-item-background-hover);
       cursor: pointer;
       position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 4px;
-        height: calc(100% - 6px);
-        background-color: var(--tds-side-menu-item-hover-indicator);
-      }
     }
 
     ::slotted(a:active),
     ::slotted(button:active) {
-      background-color: var(--tds-sidemenu-item-state-active) !important;
+      background-color: var(--tds-side-menu-item-background-active);
       cursor: pointer;
       position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background-color: var(--tds-side-menu-item-pressed-indicator);
-      }
     }
 
     ::slotted(a:active:focus-visible),
     ::slotted(button:active:focus-visible) {
-      background-color: var(--tds-sidemenu-item-state-active) !important;
+      background-color: var(--tds-side-menu-item-background-active);
       cursor: pointer;
       position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 4px;
-        height: calc(100% - 6px);
-        background-color: var(--tds-side-menu-item-pressed-indicator);
-      }
     }
 
     ::slotted(a:focus-visible) {
@@ -103,8 +66,10 @@
   .component.component-selected {
     ::slotted(a),
     ::slotted(button) {
-      background-color: var(--tds-header-dropdown-item-background-selected);
+      background-color: var(--tds-side-menu-item-background-selected);
       position: relative;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
 
       &::before {
         content: '';
@@ -113,13 +78,13 @@
         left: 0;
         width: 4px;
         height: 100%;
-        background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+        @include tds-side-menu-border-selected;
       }
     }
 
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      background-color: var(--tds-header-dropdown-item-background-selected);
+      background-color: var(--tds-side-menu-item-background-selected);
       position: relative;
 
       &::before {
@@ -129,16 +94,17 @@
         left: 3px;
         width: 4px;
         height: calc(100% - 6px);
-        background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+        @include tds-side-menu-border-selected;
       }
     }
   }
 
-  .component.component-dropdown-has-icon {
+  .component.component-dropdown-has-icon,
+  .component.component-dropdown-has-user {
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 58px;
+        padding: var(--tds-side-menu-sub-item-padding-icon);
       }
     }
   }
@@ -147,7 +113,7 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 64px;
+        padding: var(--tds-side-menu-sub-item-padding-user-image);
       }
     }
   }

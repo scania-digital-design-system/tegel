@@ -1,26 +1,38 @@
+@use '../../../mixins/focus-state' as *;
+
 :host {
+  margin: 0 var(--tds-side-menu-gap);
+
   button {
-    height: 64px;
+    height: var(--tds-side-menu-close-button-height);
     width: 100%;
     text-align: left;
-    padding: 0 22px;
+    padding: 0 var(--tds-side-menu-item-horizontal-padding);
     border: none;
-    background-color: var(--tds-sidebar-side-menu-background-cover);
+    border-radius: var(--tds-side-menu-item-border-radius);
+    background-color: var(--tds-side-menu-background);
     font: var(--tds-headline-07);
     letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-sidebar-side-menu-single-item-color);
+    color: var(--tds-side-menu-item-icon-color);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+    border-bottom: var(--tds-side-menu-item-border-thickness) solid
+      var(--tds-side-menu-item-border-color);
 
     &:hover {
       cursor: pointer;
-      background-color: var(--tds-sidebar-item-state-hover);
+      background-color: var(--tds-side-menu-item-background-hover);
     }
 
     &:focus-visible {
+      @include tds-focus-state;
+
       cursor: pointer;
-      border: 1px solid var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: var(--tds-side-menu-item-background-active);
     }
   }
 }

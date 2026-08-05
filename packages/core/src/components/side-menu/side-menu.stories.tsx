@@ -55,8 +55,16 @@ export default {
   },
 };
 
-const Template = ({ persistent, collapsible, collapsed }) =>
-  formatHtmlPreview(
+type TemplateProps = {
+  persistent: boolean;
+  collapsible: boolean;
+  collapsed: boolean;
+};
+
+const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
+  const isScania = document.getElementsByClassName('scania').length !== 0;
+  const itemIconSize = isScania ? '24px' : '16px'; // Should be 16px if TRATON brand
+  return formatHtmlPreview(
     `
     <script>
     /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
@@ -133,78 +141,105 @@ const Template = ({ persistent, collapsible, collapsed }) =>
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
       <tds-side-menu ${collapsed ? 'collapsed' : ''} aria-label="Side menu" id="demo-side-menu" ${
-      persistent ? 'persistent' : ''
-    }>
+        persistent ? 'persistent' : ''
+      }>
         <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;"></tds-side-menu-overlay>
 
         <tds-side-menu-close-button slot="close-button" aria-label="Close drawer menu" onclick="demoSideMenu.open = false;"></tds-side-menu-close-button>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24px"></tds-icon>
+            <tds-icon name="timer" size="${itemIconSize}"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-item>
-          <button>
-            <tds-icon name="truck" size="24px"></tds-icon>
-            Trucks
-          </button>
-        </tds-side-menu-item>
+       
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <tds-icon slot="icon" name="profile" size="${itemIconSize}"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
           <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item selected>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
+              </a>
+            </tds-side-menu-dropdown-list-item>
             <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">
                 Hub-centric wheel
               </a>
             </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item selected>
-              <a href="https://www.scania.com" aria-current="page">
-                Rim wheel
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Hub-centric wheel
               </a>
             </tds-side-menu-dropdown-list-item>
+
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
+
+         <tds-side-menu-item>
+          <button>
+            <tds-icon name="home" size="${itemIconSize}"></tds-icon>
+            Home
+          </button>
+        </tds-side-menu-item> 
+
+        <tds-side-menu-dropdown >
+          <tds-icon slot="icon" name="truck" size="${itemIconSize}"></tds-icon>
+          <span slot="label">
+            Truck types
+          </span>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Big truck
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Bigger truck
+              </a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://www.scania.com">
+                Ginormous truck
+              </a>
+            </tds-side-menu-dropdown-list-item>
+
           </tds-side-menu-dropdown-list>
         </tds-side-menu-dropdown>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24px"></tds-icon>
+            <tds-icon name="star" size="${itemIconSize}"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-item slot="end">
-          <tds-side-menu-user 
-            heading="Name Namesson" 
-            subheading="Company name" 
-            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            img-alt="">
-          </tds-side-menu-user>
-        </tds-side-menu-item>
-
-        <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
-          <tds-side-menu-user 
-            slot="label" 
-            heading="Name Namesson" 
-            subheading="Company name" 
-            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            img-alt="">
-          </tds-side-menu-user>
-          <tds-side-menu-dropdown-list>
-            <tds-side-menu-dropdown-list-item selected>
-              <a href="https://design.scania.com">My Instructions</a>
-            </tds-side-menu-dropdown-list-item>
-            <tds-side-menu-dropdown-list-item>
-              <a href="https://design.scania.com">Task List</a>
-            </tds-side-menu-dropdown-list-item>
-          </tds-side-menu-dropdown-list>
-        </tds-side-menu-dropdown>
+        <tds-side-menu-dropdown slot="end" class="demo-lg-hide">
+            <tds-side-menu-user-image
+              slot="icon"     
+              src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
+              alt="">
+            </tds-side-menu-user-image>
+            <tds-side-menu-user-label
+              slot="label"
+              heading="Name Namesson" 
+              subheading="Company name"        
+            ></tds-side-menu-user-label>
+            <tds-side-menu-dropdown-list>
+              <tds-side-menu-dropdown-list-item>
+                <a href="https://design.scania.com">My Instructions</a>
+              </tds-side-menu-dropdown-list-item>
+              <tds-side-menu-dropdown-list-item>
+                <a href="https://design.scania.com">Task List</a>
+              </tds-side-menu-dropdown-list-item>
+            </tds-side-menu-dropdown-list>
+          </tds-side-menu-dropdown>
 
         ${
           collapsible
@@ -217,33 +252,31 @@ const Template = ({ persistent, collapsible, collapsed }) =>
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
+        <h1> Some styling considerations about the Side Menu</h1>
+
+        <p>The icons in each side menu item should be 24px for Scania brand. For TRATON they should be 16px.
+        </p>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
-        <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
+        <p><strong>Note 1:</strong> The Side Menu is sticky, and should not scroll with the main content of the page.</p>
 
-        <p><i>Note: The collapse button is optional.</i></p>
-        <button id="test">Toggle the collapsed state programmatically</button>
-        <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
+        <p><strong>Note 2:</strong> The collapse button is optional.</p>
+
+        <p><strong>Note 3:</strong> It is only possible to have one tds-side-menu-dropdown open at a time.</p>
+        
+        <p><strong>Note 4:</strong> The tds-side-menu-dropdown menu item is an aggregator for tds-side-menu-dropdown-list-items and shouldn't be used as a link to another page.</p>
+
       </main>
     </div>
   </div>
   <script>
-    sideMenu = document.querySelector('tds-side-menu')
-    document.querySelector('#test')?.addEventListener('click', ()=> {
-      sideMenu.collapsed = !sideMenu.collapsed;
-    })
-
-    wheelTypesDropdown = document.querySelector('#wheel-types-dropdown')
-    document.querySelector('#toggleExpandedTest')?.addEventListener('click', ()=> {
-      wheelTypesDropdown.open = !wheelTypesDropdown.open;
-    })
-
     document.querySelector('tds-side-menu-collapse-button')?.addEventListener('tdsCollapse', (event) => {
       console.log(event)
     })
   </script>
   `,
   );
+};
 
 export const Default = Template.bind({});

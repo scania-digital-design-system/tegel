@@ -246,6 +246,17 @@ export class TdsSideMenu {
   })
   internalTdsSideMenuPropChange!: EventEmitter<InternalTdsSideMenuPropChange>;
 
+  /** @internal Broadcasts to children dropdowns which one should remain open. */
+  @Event({
+    eventName: 'internalCloseDropdown',
+  })
+  internalCloseDropdown!: EventEmitter<string>;
+
+  @Listen('internalKeepThisDropdownOpen', { target: 'body' })
+  keepThisDropdownOpen(id: string) {
+    this.internalCloseDropdown.emit(id);
+  }
+
   @Listen('internalTdsCollapse', { target: 'body' })
   collapsedSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {
     this.collapsed = event.detail.collapsed;

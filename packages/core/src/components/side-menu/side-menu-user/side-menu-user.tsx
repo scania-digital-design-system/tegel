@@ -26,7 +26,7 @@ export class TdsSideMenuUser {
     return (
       <Host>
         <tds-side-menu-user-image src={this.imgSrc} alt={this.imgAlt}>
-          <slot name="image"></slot>
+          <slot name="icon"></slot>
         </tds-side-menu-user-image>
         <tds-side-menu-user-label
           heading={this.heading}

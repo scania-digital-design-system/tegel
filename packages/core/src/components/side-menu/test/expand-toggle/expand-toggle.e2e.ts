@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/side-menu/test/expand-toggle/index.htm
 const componentName = 'tds-side-menu';
 const testDescription = 'tds-side-menu-toggle-expand';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

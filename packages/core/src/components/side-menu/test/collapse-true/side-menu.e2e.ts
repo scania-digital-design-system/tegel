@@ -10,14 +10,14 @@ const componentTestPath = 'src/components/side-menu/test/collapse-true/index.htm
 const componentName = 'tds-side-menu';
 const testDescription = 'tds-side-menu-collapse-true';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
     test('renders side-menu in collapsed initial state', async ({ page }) => {
-      const sideMenu = page.getByLabel('Side menu');
+      const sideMenu = page.getByLabel('Side menu', { exact: true });
       await expect(sideMenu).toHaveAttribute('aria-expanded', 'false');
     });
 
@@ -29,7 +29,7 @@ testConfigurations.basic.forEach((config) => {
       await expect(sideMenuCollapseButton).toBeVisible();
       await sideMenuCollapseButton.click();
 
-      const sideMenu = page.getByLabel('Side menu');
+      const sideMenu = page.getByLabel('Side menu', { exact: true });
       await expect(sideMenu).toHaveAttribute('aria-expanded', 'true');
     });
   });

@@ -912,38 +912,16 @@
     }
   },
   "component": {
-    "header": {
+    "side-menu": {
       "background": {
-        "content-default": {
+        "default": {
           "$type": "color",
-          "$value": "{color.background.layer-01}"
+          "$value": "{color.background.base}"
         },
-        "popover-default": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "main": {
-          "standard-default": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.invisible.light}"
-          },
-          "expressive-default": {
-            "$type": "color",
-            "$value": "{color.background.base}"
-          }
-        },
-        "nav-item": {
-          "avatar-default": {
-            "$type": "color",
-            "$value": "{traton.color.grey.150}"
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.background.base}"
-          },
+        "item": {
           "link-default": {
             "$type": "color",
-            "$value": "{traton.color.transparent.invisible.light}"
+            "$value": "{component.side-menu.background.default}"
           },
           "link-hover": {
             "$type": "color",
@@ -951,58 +929,9 @@
           },
           "link-active": {
             "$type": "color",
-            "$value": "{color.background.layer-02}"
-          }
-        },
-        "menu-item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          },
-          "link-hover": {
-            "$type": "color",
-            "$value": "{traton.color.grey.100}"
-          },
-          "tile-default": {
-            "$type": "color",
-            "$value": "{color.background.none}"
-          },
-          "tile-hover": {
-            "$type": "color",
             "$value": "{traton.color.grey.150}"
           },
           "current-default": {
-            "$type": "color",
-            "$value": "{traton.color.grey.150}"
-          },
-          "sub-link-active": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}",
-            "$description": "Pressed-state surface for Sub-Sub Menu Item (Mobile Nav drawer item). Split from nav-item/link-active 2026-05-26 to eliminate dual-use; identical values today across all 4 modes, can diverge later if surfaces need different pressed treatments."
-          }
-        },
-        "search": {
-          "dismiss-default": {
-            "$type": "color",
-            "$value": "{color.background.none}"
-          },
-          "dismiss-hover": {
-            "$type": "color",
-            "$value": "{traton.color.grey.150}"
-          },
-          "dismiss-active": {
-            "$type": "color",
-            "$value": "{traton.color.grey.200}"
-          },
-          "result-default": {
-            "$type": "color",
-            "$value": "{color.background.base}"
-          },
-          "result-hover": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          },
-          "result-active": {
             "$type": "color",
             "$value": "{color.background.layer-01}"
           }
@@ -1013,59 +942,45 @@
           "$type": "color",
           "$value": "{traton.color.transparent.invisible.light}"
         },
-        "nav-item": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.8}"
+        },
+        "item": {
           "indicator-default": {
             "$type": "color",
             "$value": "{traton.color.blue.500}"
-          }
-        },
-        "menu-item": {
-          "avatar-default": {
-            "$type": "color",
-            "$value": "{color.border.defined}"
-          },
-          "indicator-default": {
-            "$type": "color",
-            "$value": "{traton.color.blue.500}"
-          },
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.border.disabled}"
-          },
-          "link-hover": {
-            "$type": "color",
-            "$value": "{color.border.discrete}"
-          }
-        },
-        "search": {
-          "divider-default": {
-            "$type": "color",
-            "$value": "{color.border.discrete}"
           }
         }
       },
       "icon": {
-        "nav-item": {
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}"
-          },
+        "dismiss-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "item": {
           "link-default": {
             "$type": "color",
             "$value": "{color.icon.strong}"
-          }
-        },
-        "search": {
-          "result-default": {
+          },
+          "current-default": {
             "$type": "color",
             "$value": "{color.icon.strong}"
           }
+        }
+      },
+      "focus-ring": {
+        "radius-primary": {
+          "$type": "number",
+          "$value": "{traton.unit.8}"
         },
-        "menu-item": {
-          "avatar-default": {
-            "$type": "color",
-            "$value": "{color.icon.defined}"
-          }
+        "radius-secondary": {
+          "$type": "number",
+          "$value": 7
+        },
+        "radius-tertiary": {
+          "$type": "number",
+          "$value": 5
         }
       },
       "text": {
@@ -1077,55 +992,15 @@
           "$type": "color",
           "$value": "{color.text.soft}"
         },
-        "category-default": {
-          "$type": "color",
-          "$value": "{color.text.soft}"
-        },
-        "menu-item": {
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.text.defined}"
-          }
-        },
-        "nav-item": {
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
+        "item": {
           "link-default": {
             "$type": "color",
             "$value": "{color.text.strong}"
           },
-          "sub-link-default": {
-            "$type": "color",
-            "$value": "{color.text.defined}"
-          }
-        },
-        "search": {
-          "result-default": {
+          "current-default": {
             "$type": "color",
             "$value": "{color.text.strong}"
           }
-        },
-        "font-weight": {
-          "font-weight": {
-            "$type": "number",
-            "$value": "{traton.font.weight.regular}"
-          }
-        }
-      },
-      "size": {
-        "avatar-default": {
-          "$type": "number",
-          "$value": "{traton.unit.24}"
-        },
-        "avatar-padding": {
-          "$type": "number",
-          "$value": "{traton.unit.20}"
         }
       }
     },
@@ -2330,6 +2205,223 @@
         }
       }
     },
+    "header": {
+      "background": {
+        "content-default": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "popover-default": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "main": {
+          "standard-default": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          },
+          "expressive-default": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          }
+        },
+        "nav-item": {
+          "avatar-default": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "link-default": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          },
+          "link-hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          },
+          "link-active": {
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
+          }
+        },
+        "menu-item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          },
+          "link-hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.100}"
+          },
+          "tile-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "tile-hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "sub-link-active": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}",
+            "$description": "Pressed-state surface for Sub-Sub Menu Item (Mobile Nav drawer item). Split from nav-item/link-active 2026-05-26 to eliminate dual-use; identical values today across all 4 modes, can diverge later if surfaces need different pressed treatments."
+          }
+        },
+        "search": {
+          "dismiss-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "dismiss-hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.150}"
+          },
+          "dismiss-active": {
+            "$type": "color",
+            "$value": "{traton.color.grey.200}"
+          },
+          "result-default": {
+            "$type": "color",
+            "$value": "{color.background.base}"
+          },
+          "result-hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          },
+          "result-active": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          }
+        }
+      },
+      "border": {
+        "divider-default": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.light}"
+        },
+        "nav-item": {
+          "indicator-default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
+          }
+        },
+        "menu-item": {
+          "avatar-default": {
+            "$type": "color",
+            "$value": "{color.border.defined}"
+          },
+          "indicator-default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
+          },
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.border.disabled}"
+          },
+          "link-hover": {
+            "$type": "color",
+            "$value": "{color.border.discrete}"
+          }
+        },
+        "search": {
+          "divider-default": {
+            "$type": "color",
+            "$value": "{color.border.discrete}"
+          }
+        }
+      },
+      "icon": {
+        "nav-item": {
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        },
+        "search": {
+          "result-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        },
+        "menu-item": {
+          "avatar-default": {
+            "$type": "color",
+            "$value": "{color.icon.defined}"
+          }
+        }
+      },
+      "text": {
+        "title-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "subtitle-default": {
+          "$type": "color",
+          "$value": "{color.text.soft}"
+        },
+        "category-default": {
+          "$type": "color",
+          "$value": "{color.text.soft}"
+        },
+        "menu-item": {
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.text.defined}"
+          }
+        },
+        "nav-item": {
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "sub-link-default": {
+            "$type": "color",
+            "$value": "{color.text.defined}"
+          }
+        },
+        "search": {
+          "result-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        },
+        "font-weight": {
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.regular}"
+          }
+        }
+      },
+      "size": {
+        "avatar-default": {
+          "$type": "number",
+          "$value": "{traton.unit.24}"
+        },
+        "avatar-padding": {
+          "$type": "number",
+          "$value": "{traton.unit.20}"
+        }
+      }
+    },
     "link": {
       "icon": {
         "accent": {
@@ -3071,156 +3163,6 @@
         "default": {
           "$type": "color",
           "$value": "{color.text.inverse.strong}"
-        }
-      }
-    },
-    "side-menu": {
-      "color": {
-        "divider": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.light}"
-        }
-      },
-      "size": {
-        "icon": {
-          "$type": "number",
-          "$value": "{traton.unit.16}"
-        },
-        "icon-close": {
-          "$type": "number",
-          "$value": "{traton.unit.20}"
-        }
-      },
-      "space": {
-        "top-level": {
-          "bottom-collapsible": {
-            "$type": "number",
-            "$value": "{traton.unit.16}"
-          },
-          "left": {
-            "$type": "number",
-            "$value": "{traton.unit.16}"
-          },
-          "top": {
-            "$type": "number",
-            "$value": 14
-          },
-          "horizontal-gap-padding": {
-            "$type": "number",
-            "$value": "{traton.unit.16}"
-          },
-          "vertical-gap-padding": {
-            "$type": "number",
-            "$value": "{traton.unit.16}"
-          }
-        },
-        "sub-menu-item": {
-          "left": {
-            "$type": "number",
-            "$value": "{traton.unit.12}"
-          },
-          "top-bottom": {
-            "$type": "number",
-            "$value": "{traton.unit.8}"
-          },
-          "right-padding-chevron": {
-            "$type": "number",
-            "$value": "{traton.unit.12}"
-          },
-          "selected-marker-height": {
-            "$type": "number",
-            "$value": "{traton.unit.40}"
-          },
-          "profile": {
-            "left": {
-              "$type": "number",
-              "$value": "{traton.unit.8}"
-            },
-            "gap": {
-              "$type": "number",
-              "$value": "{traton.unit.8}"
-            },
-            "top-bottom": {
-              "$type": "number",
-              "$value": "{traton.unit.4}"
-            }
-          }
-        },
-        "sub-page": {
-          "top-bottom": {
-            "$type": "number",
-            "$value": "{traton.unit.8}"
-          },
-          "left-with-icon": {
-            "$type": "number",
-            "$value": "{traton.unit.40}"
-          },
-          "left-no-icon": {
-            "$type": "number",
-            "$value": 14
-          },
-          "left-profile": {
-            "$type": "number",
-            "$value": "{traton.unit.48}"
-          },
-          "top-group": {
-            "$type": "number",
-            "$value": "{traton.unit.4}"
-          },
-          "selected-marker-height": {
-            "$type": "number",
-            "$value": 34
-          },
-          "selected-marker-width": {
-            "$type": "number",
-            "$value": "{traton.unit.8}"
-          }
-        },
-        "collapsed-item": {
-          "inner-icon": {
-            "left-and-right-padding": {
-              "$type": "number",
-              "$value": "{traton.unit.12}"
-            },
-            "top-and-bottom-padding": {
-              "$type": "number",
-              "$value": "{traton.unit.12}"
-            }
-          }
-        }
-      },
-      "radius": {
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.8}"
-        }
-      },
-      "text": {
-        "items": {
-          "font-family": {
-            "$type": "string",
-            "$value": "{traton.font.family.default}"
-          },
-          "font-weight": {
-            "$type": "number",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "number",
-            "$value": 14
-          },
-          "line-height": {
-            "$type": "number",
-            "$value": 18
-          },
-          "letter-spacing": {
-            "$type": "number",
-            "$value": 0
-          },
-          "text-transform": {
-            "$type": "string",
-            "$value": "none"
-          }
         }
       }
     },

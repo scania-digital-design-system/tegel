@@ -1,88 +1,93 @@
 @use '../../../../../../tokens/scss/component/side-menu';
 
 .tl-side-menu {
-  --side-menu-background-cover: var(--color-background-base);
-  --side-menu-item-state-hover: var(--color-background-layer-01);
-  --side-menu-item-state-active: var(--color-background-surface-100);
-  --side-menu-item-state-selected: var(--color-background-layer-01);
-  --side-menu-single-subitem-selected-border-color: var(--color-foreground-border-accent-focus);
-  --side-menu-dropdown-list-item-color: var(--color-foreground-text-defined);
-  --side-menu-subnav-background: var(--color-background-layer-01);
-  --side-menu-single-item-color: var(--color-foreground-text-strong);
-  --side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider);
+  // core
+  --side-menu-background: var(--component-side-menu-background-default);
+  --side-menu-border-right-color: var(--component-side-menu-border-divider-default);
+  --side-menu-border-thickness: var(--unit-1);
+  --side-menu-width-collapsed: var(--unit-68);
+  --side-menu-horizontal-padding: 0px;
+  --side-menu-gap: 0px;
+  --side-menu-dropdown-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
 
-  // Legacy --tds-* vars referenced in tl-side-menu dropdown SCSS
-  --tds-header-app-launcher-menu-bg: var(--color-background-base);
-  --tds-nav-item-border-color: var(--color-foreground-border-accent-focus);
-  --tds-nav-dropdown-menu-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  // side menu item
+  --side-menu-item-background: var(--component-side-menu-background-item-link-default);
+  --side-menu-item-border-bottom-color: var(--component-side-menu-border-divider-default);
+  --side-menu-item-border-thickness: var(--unit-1);
+  --side-menu-item-border-radius: calc(var(--component-side-menu-border-radius-default) * 1px);
+  --side-menu-item-text-color: var(--component-side-menu-text-item-link-default);
+  --side-menu-item-background-hover: var(--component-side-menu-background-item-link-hover);
+  --side-menu-item-background-active: var(--component-side-menu-background-item-link-active);
+  --side-menu-item-background-selected: var(--component-side-menu-background-item-current-default);
+  --side-menu-item-border-left-color-selected: var(
+    --component-side-menu-border-item-indicator-default
+  );
+  --side-menu-item-icon-color: var(--component-side-menu-icon-item-link-default);
+  --side-menu-item-text-width: 168px; // derived from side-menu width (272px) minus paddings and other elements
+  --side-menu-item-horizontal-padding: var(--unit-22);
+  --side-menu-item-height: var(--unit-68);
+  --side-menu-item-icon-size: var(--unit-24);
 
-  // Custom variables for dropdown colors when not collapsed:
-  --side-menu-dropdown-list-item-custom-background: var(--side-menu-background-cover);
-  --side-menu-dropdown-list-item-custom-background-hover: var(--side-menu-item-state-hover);
-  --side-menu-dropdown-list-item-custom-background-active: var(--side-menu-item-state-active);
-  --side-menu-dropdown-list-item-custom-background-selected: var(--side-menu-item-state-selected);
+  // side menu items/subitems gap between icon and text
+  --side-menu-item-horizontal-gap: var(--unit-10);
+
+  // side menu sub-item
+  --side-menu-sub-item-height: var(--unit-48);
+  --side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
+  --side-menu-sub-items-gap: 0px;
+
+  // side menu item user
+  --side-menu-item-user-subheading-color: var(--component-side-menu-text-subtitle-default);
+
+  // side menu user
+  --side-menu-item-user-text-width: 150px; // derived from side-menu width (272px) minus paddings and other elements
+  --side-menu-user-gap: var(--unit-16);
+  --side-menu-user-image-size: var(--unit-34);
+
+  // close button
+  --side-menu-close-button-height: var(--unit-64);
 }
 
-.scania {
-  .tl-side-menu {
-    --side-menu-bottom-menu-border-top-collapsed: 1px solid var(--color-foreground-border-discrete);
-    --side-menu-close-button-wrapper-height: auto;
-    --side-menu-collapsed-button-size: 68px;
-    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
-    --side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
-    --side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
-    --side-menu-collapsed-dropdown-background: var(--color-background-base);
-    --side-menu-collapsed-dropdown-heading-padding-left: 24px;
-    --side-menu-dropdown-list-item-height: 48px;
-    --side-menu-profile-user-image-size: 34px;
-    --side-menu-single-item-height: 68px;
-    --side-menu-subnav-border-radius: 0;
-    --side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
-    --side-menu-text-item-font-family: 'Scania Sans Semi Condensed', arial, 'Helvetica Neue';
-    --side-menu-text-item-font-size: 14px;
-    --side-menu-text-item-font-weight: 700;
-    --side-menu-text-item-line-height: 16px;
-    --side-menu-text-item-letter-spacing: -0.14px;
-    --side-menu-sub-item-with-icon: 56px;
-    --side-menu-sub-item-with-user-image: 72px;
-  }
+.scania .tl-side-menu {
+  --side-menu-width-collapsed: var(--unit-68);
+  --side-menu-horizontal-padding: 0px;
+  --side-menu-gap: 0px;
+  --side-menu-dropdown-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --side-menu-item-horizontal-padding: var(--unit-22);
+  --side-menu-item-height: var(--unit-68);
+  --side-menu-item-icon-size: var(--unit-24);
+
+  // side menu sub-item
+  --side-menu-sub-item-height: var(--unit-48);
+  --side-menu-sub-item-padding-icon: var(--unit-16) var(--unit-48) var(--unit-16) var(--unit-58);
+  --side-menu-sub-items-gap: 0px;
+
+  // side menu user image
+  --side-menu-user-image-size: var(--unit-34);
+
+  // close button
+  --side-menu-close-button-height: var(--unit-64);
 }
 
-.traton {
-  .tl-side-menu {
-    --side-menu-bottom-menu-border-top-collapsed: none;
-    --side-menu-close-button-wrapper-height: 64px;
-    --side-menu-collapsed-button-size: 72px;
-    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
-    --side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
-    --side-menu-collapsed-dropdown-background-selected: var(--color-background-surface-100);
-    --side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
-    --side-menu-collapsed-dropdown-heading-padding-left: 14px;
-    --side-menu-dropdown-list-item-height: 32px;
-    --side-menu-profile-user-image-size: 25.5px;
-    --side-menu-single-item-height: 40px;
-    --side-menu-subnav-border-radius: 4px;
-    --side-menu-subnav-box-shadow: none;
-    --side-menu-text-item-font-family: 'TRATON Type Text';
-    --side-menu-text-item-font-size: 14px;
-    --side-menu-text-item-font-weight: 500;
-    --side-menu-text-item-line-height: 18px;
-    --side-menu-text-item-letter-spacing: 0;
-    --side-menu-sub-item-with-icon: 38px;
-    --side-menu-sub-item-with-user-image: 46px;
-  }
-}
+.traton .tl-side-menu {
+  --side-menu-width-collapsed: var(--unit-72);
+  --side-menu-horizontal-padding: var(--unit-16);
+  --side-menu-gap: var(--unit-16);
+  --side-menu-dropdown-box-shadow: none;
 
-.tl-side-menu--collapsed {
-  // Custom variables for dropdown colors when collapsed:
-  --side-menu-dropdown-list-item-custom-background: var(--side-menu-collapsed-dropdown-background);
-  --side-menu-dropdown-list-item-custom-background-hover: var(
-    --side-menu-collapsed-dropdown-background-hover
-  );
-  --side-menu-dropdown-list-item-custom-background-active: var(
-    --side-menu-collapsed-dropdown-background-active
-  );
-  --side-menu-dropdown-list-item-custom-background-selected: var(
-    --side-menu-collapsed-dropdown-background-selected
-  );
+  // side menu item
+  --side-menu-item-horizontal-padding: var(--unit-12);
+  --side-menu-item-height: var(--unit-40);
+  --side-menu-item-icon-size: var(--unit-16);
+
+  // side menu sub-item
+  --side-menu-sub-item-height: var(--unit-32);
+  --side-menu-sub-item-padding-icon: var(--unit-8) var(--unit-48) var(--unit-8) var(--unit-40);
+  --side-menu-sub-items-gap: var(--unit-10);
+
+  // side menu user image
+  --side-menu-user-image-size: var(--unit-24);
+
+  // close button
+  --side-menu-close-button-height: var(--unit-36);
 }
