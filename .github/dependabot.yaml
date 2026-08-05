@@ -1,0 +1,46 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'npm'
+    directories:
+      - '**/*'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+    groups:
+      prod-minor-and-patch:
+        applies-to: 'version-updates'
+        patterns:
+          - '*'
+        dependency-type: 'production'
+        update-types:
+          - 'minor'
+          - 'patch'
+      dev-minor-and-patch:
+        applies-to: 'version-updates'
+        patterns:
+          - '*'
+        dependency-type: 'development'
+        update-types:
+          - 'minor'
+          - 'patch'
+    cooldown:
+      default-days: 3
+      semver-major-days: 14
+      semver-minor-days: 7
+      semver-patch-days: 3
+    commit-message:
+      prefix: 'build'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+    ignore:
+      - dependency-name: '@angular/*'
+        update-types:
+          - 'version-update:semver-major'
+      - dependency-name: '@angular-devkit/*'
+        update-types:
+          - 'version-update:semver-major'
+      - dependency-name: 'ng-packagr'
+        update-types:
+          - 'version-update:semver-major'
