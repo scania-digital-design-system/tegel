@@ -527,6 +527,10 @@ export class TdsSlider {
   };
 
   componentWillLoad() {
+    if (this.readOnly && !this.tdsReadOnlyAriaLabel) {
+      console.warn('tds-slider: tdsReadOnlyAriaLabel is recommended when readonly is true');
+    }
+
     const numTicks = parseInt(this.ticks);
 
     if (numTicks > 0) {
@@ -610,10 +614,6 @@ export class TdsSlider {
   }
 
   connectedCallback() {
-    if (this.readOnly && !this.tdsReadOnlyAriaLabel) {
-      console.warn('tds-slider: tdsAriaLabel is reccomended when readonly is true');
-    }
-
     if (this.resetEventListenerAdded && this.formElement) {
       this.formElement.removeEventListener('reset', this.resetToInitialValue);
       this.resetEventListenerAdded = false;
