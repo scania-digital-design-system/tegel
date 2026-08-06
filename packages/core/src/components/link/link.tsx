@@ -20,7 +20,7 @@ export class TdsLink {
   /** Displays the Link as a standalone component. Not part of a paragraph. */
   @Prop({ reflect: true }) standalone: boolean = false;
 
-  connectedCallback() {
+  componentWillLoad() {
     const links = this.host.querySelectorAll('a');
     if (links.length > 1) {
       console.warn('tds-link is only intended to wrap one <a> tag');
