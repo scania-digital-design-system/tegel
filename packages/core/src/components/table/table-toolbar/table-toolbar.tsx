@@ -83,16 +83,17 @@ export class TdsTableToolbar {
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-
-    if (!this.tdsSearchAriaLabel) {
-      console.warn('tds-table-toolbar: tdsSearchAriaLabel is highly recommended for accessibility');
-    }
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
+
+    // Only a rendered search input needs an accessible name; render() gates it on `filter`.
+    if (this.filter && !this.tdsSearchAriaLabel) {
+      console.warn('tds-table-toolbar: tdsSearchAriaLabel is highly recommended for accessibility');
+    }
   }
 
   handleSearch(event) {
