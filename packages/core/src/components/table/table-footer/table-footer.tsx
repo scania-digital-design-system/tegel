@@ -48,7 +48,7 @@ export class TdsTableFooter {
   @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
   /** Set rows per page dropdown open direction */
-  @Prop() rowsPerPageDropdownOpenDirection: 'up' | 'down' | 'auto' = 'auto';
+  @Prop({ reflect: true }) rowsPerPageDropdownOpenDirection: 'up' | 'down' | 'auto' = 'auto';
 
   /** Set rows per page dropdown aria label. */
   @Prop({ reflect: true }) rowsPerPageDropdownAriaLabel: string = 'Select rows per page';
@@ -60,7 +60,7 @@ export class TdsTableFooter {
   @Prop({ reflect: true }) cols: number | null = null;
 
   /** Sets the number of rows that should appear per page. <br/> If pagination is enabled, this value must be defined and controlled by the consumer of Tegel. <br/> Otherwise, it will default to the first element of the "rowsPerPageValues". */
-  @Prop({ mutable: true }) rowsPerPageValue?: number;
+  @Prop({ reflect: true, mutable: true }) rowsPerPageValue?: number;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
   @State() columnsNumber: number = 0;
