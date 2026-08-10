@@ -1,5 +1,6 @@
 @use '../../../../mixins/focus-state' as *;
 @use '../../../../mixins/box-sizing' as *;
+@use '../../../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
@@ -13,8 +14,8 @@
     width: calc(100% - 32px);
 
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-headline-07) !important;
-    letter-spacing: var(--tds-headline-07-ls) !important;
+    @include title-01;
+
     cursor: pointer;
     padding: 16px;
     white-space: nowrap;
@@ -29,25 +30,13 @@
 
     content: '';
     position: absolute;
-    top: 3px;
-    bottom: 3px;
-    left: 3px;
-    right: 3px;
+    inset: 3px;
   }
 
   div:not(.selected) {
     background-color: var(--tds-folder-tab-background);
     position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background-color: var(--tds-folder-tab-divider-color);
-    }
+    border-left: 1px solid var(--tds-folder-tab-divider-color);
 
     ::slotted(*) {
       border-top: 2px solid transparent;
@@ -59,16 +48,17 @@
       cursor: pointer;
 
       ::slotted(*) {
-        border-top: 2px solid var(--tds-folder-tab-top-border-hover);
-        color: var(--tds-folder-tab-color);
+        color: var(--tds-folder-tab-item-color);
       }
     }
 
     &.disabled {
       background-color: var(--tds-folder-tab-item-background-disabled);
+      opacity: var(--tds-folder-tab-item-opacity-disabled);
+      border-left: 1px solid var(--tds-folder-tab-divider-color);
 
       ::slotted(*) {
-        color: var(--tds-folder-tab-item-color-disabled);
+        color: var(--tds-folder-tab-item-color);
       }
 
       ::slotted(*:focus-visible) {
@@ -89,30 +79,14 @@
     background-color: var(--tds-folder-tab-background-selected);
     border-top: 2px solid var(--tds-folder-tab-border-selected);
 
-    &::after {
-      content: ' ';
-      background-color: var(--tds-folder-tab-divider-color);
-      width: 1px;
-      top: 0;
-      bottom: 0;
-      right: -1px;
-      display: block;
-      position: absolute;
-      z-index: 1;
-    }
-
     ::slotted(*) {
-      color: var(--tds-folder-tab-color);
+      color: var(--tds-folder-tab-item-color-selected);
     }
 
     // Hover
     &:hover:not(.disabled) {
       background-color: var(--tds-folder-tab-background-hover);
       cursor: pointer;
-
-      ::slotted(*) {
-        color: var(--tds-folder-tab-color);
-      }
     }
   }
 }
