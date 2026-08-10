@@ -1,3 +1,5 @@
+@use '../../../../../../../tokens/scss/component/tabs';
+
 .tl-folder-tabs {
   --folder-tabs-scroll-button-background: var(--component-tabs-background-scroll-default);
   --folder-tabs-scroll-button-color: var(--component-tabs-icon-scroll-default);
