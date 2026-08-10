@@ -5,7 +5,7 @@
 
 .tl-folder-tabs__tab {
   all: unset;
-  @include headline-07;
+  @include title-01;
 
   box-sizing: border-box;
   position: relative;
@@ -19,12 +19,12 @@
   text-align: left;
   cursor: pointer;
   border-left: 1px solid transparent;
-  border-top: 2px solid var(--folder-tab-surface);
-  background-color: var(--folder-tab-surface);
+  border-top: 2px solid transparent;
+  background-color: var(--folder-tab-background);
   color: var(--folder-tab-text);
 
   & + .tl-folder-tabs__tab {
-    border-left-color: var(--folder-tab-divider);
+    border-left: 1px solid var(--folder-tab-divider-color);
   }
 
   &:focus-visible {
@@ -32,30 +32,20 @@
   }
 
   &:hover:not(.tl-folder-tabs__tab--disabled, .tl-folder-tabs__tab--selected) {
-    background-color: var(--folder-tab-surface-hover);
-    border-top-color: var(--folder-tab-surface-hover);
-    color: var(--folder-tab-text);
+    background-color: var(--folder-tab-background-hover);
+
+    // color: var(--folder-tab-text);
   }
 
   &--selected {
-    background-color: var(--folder-tab-surface-selected);
-    border-top-color: var(--folder-tab-border-selected);
-    color: var(--folder-tab-text);
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: -1px;
-      bottom: 0;
-      width: 1px;
-      background-color: var(--folder-tab-surface-selected);
-      z-index: 1;
-    }
+    background-color: var(--folder-tab-background-selected);
+    border-top: 2px solid var(--folder-tab-border-selected);
+    color: var(--folder-tab-text-selected);
   }
 
   &--disabled {
-    color: var(--folder-tab-text-disabled);
+    // color: var(--folder-tab-text-disabled);
+    opacity: var(--folder-tab-item-opacity-disabled);
     cursor: not-allowed;
     user-select: none;
 
