@@ -50,7 +50,12 @@ function syncAttribute(node: Element, name: string, value: unknown): void {
 
 type EventNames = Record<string, EventName | string>;
 
-export const createComponent = <I extends HTMLElement, E extends EventNames = {}>({
+export const createComponent = <
+  I extends HTMLElement,
+  E extends EventNames = {},
+  C = Omit<I, keyof HTMLElement>,
+  _R extends keyof C = never,
+>({
   defineCustomElement,
   tagName,
   transformTag,
