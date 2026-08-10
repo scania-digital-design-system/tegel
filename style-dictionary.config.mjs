@@ -376,6 +376,7 @@ const COMPONENT_FILE_LIST = [
   ['popover', 'exact'],
   ['header', 'exact'],
   ['side-menu', 'exact'],
+  ['tabs', 'exact'],
 ];
 
 // Helper function to create component file configuration

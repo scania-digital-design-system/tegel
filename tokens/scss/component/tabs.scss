@@ -1,0 +1,118 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  --component-tabs-background-primary: var(--color-background-base);
+  --component-tabs-background-secondary: var(--color-background-layer-01);
+  --component-tabs-background-folder-primary: var(--scania-color-transparent-invisible-light);
+  --component-tabs-background-folder-secondary: var(--scania-color-transparent-invisible-light);
+  --component-tabs-background-scroll-default: var(--scania-color-grey-200);
+  --component-tabs-background-item-primary-default: var(--scania-color-grey-100);
+  --component-tabs-background-item-primary-hover: var(--scania-color-grey-200);
+  --component-tabs-background-item-primary-current-default: var(--scania-color-grey-50);
+  --component-tabs-background-item-secondary-default: var(--scania-color-grey-100);
+  --component-tabs-background-item-secondary-hover: var(--scania-color-grey-200);
+  --component-tabs-background-item-secondary-current-default: var(--scania-color-base-white);
+  --component-tabs-border-default: var(--color-border-discrete);
+  --component-tabs-border-folder-default: var(--color-border-none);
+  --component-tabs-border-item-default: var(--color-border-none);
+  --component-tabs-border-item-hover: var(--scania-color-grey-850);
+  --component-tabs-border-item-divider-default: var(--color-border-discrete);
+  --component-tabs-border-item-indicator-default: var(--scania-color-blue-400);
+  --component-tabs-text-item-default: var(--color-text-soft);
+  --component-tabs-text-item-folder-default: var(--color-text-strong);
+  --component-tabs-text-item-current-default: var(--color-text-strong);
+  --component-tabs-opacity-disabled: var(--scania-opacity-25);
+  --component-tabs-icon-scroll-default: var(--color-icon-strong);
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  --component-tabs-background-primary: var(--color-background-base);
+  --component-tabs-background-secondary: var(--color-background-layer-01);
+  --component-tabs-background-folder-primary: var(--traton-color-transparent-invisible-light);
+  --component-tabs-background-folder-secondary: var(--traton-color-transparent-invisible-light);
+  --component-tabs-background-scroll-default: var(--traton-color-grey-300);
+  --component-tabs-background-item-primary-default: var(--traton-color-grey-200);
+  --component-tabs-background-item-primary-hover: var(--traton-color-grey-300);
+  --component-tabs-background-item-primary-current-default: var(--color-background-layer-01);
+  --component-tabs-background-item-secondary-default: var(--traton-color-grey-200);
+  --component-tabs-background-item-secondary-hover: var(--traton-color-grey-300);
+  --component-tabs-background-item-secondary-current-default: var(--color-background-layer-02);
+  --component-tabs-border-default: var(--color-border-discrete);
+  --component-tabs-border-folder-default: var(--color-border-none);
+  --component-tabs-border-item-default: var(--color-border-none);
+  --component-tabs-border-item-hover: var(--color-border-discrete);
+  --component-tabs-border-item-divider-default: var(--color-border-discrete);
+  --component-tabs-border-item-indicator-default: var(--traton-color-blue-500);
+  --component-tabs-text-item-default: var(--color-text-soft);
+  --component-tabs-text-item-folder-default: var(--color-text-strong);
+  --component-tabs-text-item-current-default: var(--color-text-strong);
+  --component-tabs-opacity-disabled: var(--traton-opacity-25);
+  --component-tabs-icon-scroll-default: var(--color-icon-strong);
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  --component-tabs-background-primary: var(--color-background-base);
+  --component-tabs-background-secondary: var(--color-background-layer-01);
+  --component-tabs-background-folder-primary: var(--scania-color-transparent-invisible-dark);
+  --component-tabs-background-folder-secondary: var(--scania-color-transparent-invisible-dark);
+  --component-tabs-background-scroll-default: var(--scania-color-grey-750);
+  --component-tabs-background-item-primary-default: var(--scania-color-grey-800);
+  --component-tabs-background-item-primary-hover: var(--scania-color-grey-800);
+  --component-tabs-background-item-primary-current-default: var(--scania-color-grey-850);
+  --component-tabs-background-item-secondary-default: var(--scania-color-grey-750);
+  --component-tabs-background-item-secondary-hover: var(--scania-color-grey-800);
+  --component-tabs-background-item-secondary-current-default: var(--scania-color-grey-800);
+  --component-tabs-border-default: var(--color-border-discrete);
+  --component-tabs-border-folder-default: var(--color-border-none);
+  --component-tabs-border-item-default: var(--color-border-none);
+  --component-tabs-border-item-hover: var(--scania-color-grey-50);
+  --component-tabs-border-item-divider-default: var(--color-border-discrete);
+  --component-tabs-border-item-indicator-default: var(--scania-color-blue-300);
+  --component-tabs-text-item-default: var(--color-text-soft);
+  --component-tabs-text-item-folder-default: var(--color-text-strong);
+  --component-tabs-text-item-current-default: var(--color-text-strong);
+  --component-tabs-opacity-disabled: var(--scania-opacity-25);
+  --component-tabs-icon-scroll-default: var(--color-icon-strong);
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  --component-tabs-background-primary: var(--color-background-base);
+  --component-tabs-background-secondary: var(--color-background-layer-01);
+  --component-tabs-background-folder-primary: var(--traton-color-transparent-invisible-dark);
+  --component-tabs-background-folder-secondary: var(--traton-color-transparent-invisible-dark);
+  --component-tabs-background-scroll-default: var(--traton-color-blue-800);
+  --component-tabs-background-item-primary-default: var(--traton-color-blue-850);
+  --component-tabs-background-item-primary-hover: var(--traton-color-blue-800);
+  --component-tabs-background-item-primary-current-default: var(--color-background-layer-01);
+  --component-tabs-background-item-secondary-default: var(--traton-color-blue-850);
+  --component-tabs-background-item-secondary-hover: var(--traton-color-blue-800);
+  --component-tabs-background-item-secondary-current-default: var(--color-background-layer-02);
+  --component-tabs-border-default: var(--color-border-discrete);
+  --component-tabs-border-folder-default: var(--color-border-none);
+  --component-tabs-border-item-default: var(--color-border-none);
+  --component-tabs-border-item-hover: var(--color-border-discrete);
+  --component-tabs-border-item-divider-default: var(--color-border-discrete);
+  --component-tabs-border-item-indicator-default: var(--traton-color-yellow-400);
+  --component-tabs-text-item-default: var(--color-text-soft);
+  --component-tabs-text-item-folder-default: var(--color-text-strong);
+  --component-tabs-text-item-current-default: var(--color-text-strong);
+  --component-tabs-opacity-disabled: var(--traton-opacity-25);
+  --component-tabs-icon-scroll-default: var(--color-icon-strong);
+}
