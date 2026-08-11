@@ -84,7 +84,7 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
         <button role="tab" aria-controls="tab-panel">Third tab</button>
       </tds-folder-tab>
       <tds-folder-tab disabled>
-        <button role="tab" aria-controls="tab-panel">Fourth tab</button>
+        <button role="tab" aria-controls="tab-panel" disabled>Fourth tab</button>
       </tds-folder-tab>
     </tds-folder-tabs>
 
