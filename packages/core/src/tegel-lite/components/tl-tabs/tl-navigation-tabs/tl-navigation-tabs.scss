@@ -6,18 +6,21 @@
 .tl-navigation-tabs {
   @include tds-box-sizing;
 
-  background-color: var(--navigation-tabs-tab-background);
   display: flex;
   flex-wrap: nowrap;
   white-space: nowrap;
   width: 100%;
   overflow-x: scroll;
   scrollbar-width: none;
-  gap: 16px;
+  gap: 24px;
   position: relative;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &:focus-visible {
+    @include tds-focus-state;
   }
 
   &::after {
@@ -32,8 +35,8 @@
 }
 
 .tl-navigation-tabs__scroll-button {
-  background-color: transparent;
-  color: var(--navigation-tabs-scroll-button-icon);
+  background-color: var(--navigation-tabs-scroll-button-background);
+  color: var(--navigation-tabs-scroll-button-color);
   cursor: pointer;
   min-width: 48px;
   border: 0;
@@ -42,6 +45,11 @@
   align-items: center;
   opacity: 1;
   position: sticky;
+  border-bottom: 1px solid var(--navigation-tabs-horizontal-divider);
+
+  &:focus-visible {
+    @include tds-focus-state-inset;
+  }
 }
 
 .tl-navigation-tabs__scroll-button--right {
