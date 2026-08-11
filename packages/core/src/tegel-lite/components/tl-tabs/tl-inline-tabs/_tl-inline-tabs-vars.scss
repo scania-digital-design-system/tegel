@@ -1,3 +1,5 @@
+@use '../../../../../../../tokens/scss/component/tabs';
+
 .tl-inline-tabs {
   /* Horizontal divider */
   --inline-tabs-horizontal-divider: var(--component-tabs-border-default);
