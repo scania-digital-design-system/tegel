@@ -81,16 +81,16 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
       tds-scroll-right-aria-label="Navigate to next tab"
     >
       <tds-navigation-tab>
-        <button>First tab</button>
+        <button role='tab'>First tab</button>
       </tds-navigation-tab>
       <tds-navigation-tab>
-        <button>Second tab is much longer</button>
+        <button role='tab'>Second tab is much longer</button>
       </tds-navigation-tab>
       <tds-navigation-tab>
-        <button>Third tab</button>
+        <button role='tab'>Third tab</button>
       </tds-navigation-tab>
       <tds-navigation-tab disabled>
-        <button>Fourth tab</button>
+        <button role='tab' disabled>Fourth tab</button>
       </tds-navigation-tab>
     </tds-navigation-tabs>
 
