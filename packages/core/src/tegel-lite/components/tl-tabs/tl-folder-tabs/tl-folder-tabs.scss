@@ -16,6 +16,10 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &:focus-visible {
+    @include tds-focus-state;
+  }
 }
 
 /* Overlay buttons (optional in markup; visible via media query) */
@@ -28,6 +32,10 @@
   align-items: center;
   position: sticky;
   cursor: pointer;
+
+  &:focus-visible {
+    @include tds-focus-state-inset;
+  }
 }
 
 /* left/right anchoring over the track */
