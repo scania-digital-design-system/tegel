@@ -12,13 +12,15 @@
   width: 100%;
   overflow-x: scroll;
   scrollbar-width: none;
-
-  // gap: 16px;
   position: relative;
   border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &:focus-visible {
+    @include tds-focus-state;
   }
 }
 
@@ -35,7 +37,7 @@
   position: sticky;
 
   &:focus-visible {
-    @include tds-focus-state;
+    @include tds-focus-state-inset;
 
     outline-offset: -2px;
   }
