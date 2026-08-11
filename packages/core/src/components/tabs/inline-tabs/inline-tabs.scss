@@ -46,6 +46,7 @@
 
   .scroll-right-button,
   .scroll-left-button {
+    background-color: var(--tds-inline-tabs-scroll-btn-background);
     color: var(--tds-inline-tabs-scroll-btn-color);
     cursor: pointer;
     border: 0;
@@ -56,6 +57,7 @@
     opacity: 0;
     pointer-events: none;
     position: sticky;
+    border-bottom: 1px solid var(--tds-inline-tabs-horizontal-divider-background);
 
     &.show {
       min-width: 48px;

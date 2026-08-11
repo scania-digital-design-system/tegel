@@ -4,6 +4,7 @@ tds-inline-tabs {
 
   /* Scroll button icon color */
   --tds-inline-tabs-scroll-btn-color: var(--component-tabs-icon-scroll-default);
+  --tds-inline-tabs-scroll-btn-background: var(--component-tabs-background-primary);
 
   /* Tab */
   --tds-inline-tabs-tab-color: var(--component-tabs-text-item-default);
@@ -14,4 +15,14 @@ tds-inline-tabs {
   --tds-inline-tabs-tab-indicator-background-active: var(
     --component-tabs-border-item-indicator-default
   );
+}
+
+.tds-mode-variant-primary tds-inline-tabs,
+tds-inline-tabs.tds-mode-variant-primary {
+  --tds-inline-tabs-scroll-btn-background: var(--component-tabs-background-primary);
+}
+
+.tds-mode-variant-secondary tds-inline-tabs,
+tds-inline-tabs.tds-mode-variant-secondary {
+  --tds-inline-tabs-scroll-btn-background: var(--component-tabs-background-secondary);
 }
