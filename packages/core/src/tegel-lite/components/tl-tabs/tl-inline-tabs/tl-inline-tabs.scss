@@ -12,28 +12,19 @@
   width: 100%;
   overflow-x: scroll;
   scrollbar-width: none;
-  gap: 16px;
+
+  // gap: 16px;
   position: relative;
-  background-color: var(--inline-tabs-tab-background);
+  border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
 
   &::-webkit-scrollbar {
     display: none;
   }
-
-  &::after {
-    border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
-    content: ' ';
-    display: block;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-  }
 }
 
 .tl-inline-tabs__scroll-button {
-  background-color: transparent;
-  color: var(--inline-tabs-scroll-button-text);
+  background-color: var(--inline-tabs-scroll-button-background);
+  color: var(--inline-tabs-scroll-button-color);
   cursor: pointer;
   min-width: 48px;
   border: 0;
@@ -42,6 +33,12 @@
   align-items: center;
   opacity: 1;
   position: sticky;
+
+  &:focus-visible {
+    @include tds-focus-state;
+
+    outline-offset: -2px;
+  }
 }
 
 .tl-inline-tabs__scroll-button--right {
@@ -56,6 +53,6 @@
 
 svg {
   .tl-inline-tabs__scroll-button & {
-    fill: var(--inline-tabs-scroll-button-text);
+    fill: var(--inline-tabs-scroll-button-color);
   }
 }
