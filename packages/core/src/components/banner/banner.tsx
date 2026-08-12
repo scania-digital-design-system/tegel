@@ -66,11 +66,13 @@ export class TdsBanner {
     this.hidden = false;
   }
 
-  connectedCallback() {
-    if (this.variant === 'error') {
-      this.icon = 'error';
-    } else if (this.variant === 'information') {
-      this.icon = 'info';
+  componentWillLoad() {
+    if (this.icon === undefined) {
+      if (this.variant === 'error') {
+        this.icon = 'error';
+      } else if (this.variant === 'information') {
+        this.icon = 'info';
+      }
     }
   }
 

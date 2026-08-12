@@ -160,6 +160,15 @@ export class TdsPopoverCore {
     }
   }
 
+  @Watch('selector')
+  onSelectorChanged(newValue: string, oldValue: string) {
+    if (newValue === oldValue) return;
+    if (newValue) {
+      this.disableLogic = false;
+      this.initialize({ referenceEl: this.referenceEl, trigger: this.trigger });
+    }
+  }
+
   private focusFirstElement() {
     // Try to find a focusable element inside the popover
     const focusableElements = this.host.querySelectorAll(
@@ -289,7 +298,8 @@ export class TdsPopoverCore {
     this.popperInstance?.destroy();
   }
 
-  connectedCallback() {
+  /* To enable initial loading of a component if user controls show prop */
+  componentWillLoad() {
     if (this.selector === undefined && this.referenceEl === undefined) {
       this.disableLogic = true;
       console.warn(
@@ -302,10 +312,7 @@ export class TdsPopoverCore {
       referenceEl: this.referenceEl,
       trigger: this.trigger,
     });
-  }
 
-  /* To enable initial loading of a component if user controls show prop */
-  componentWillLoad() {
     // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);

@@ -114,7 +114,7 @@ export class TdsModal {
     }
   }
 
-  private initializeWithProps() {
+  componentWillLoad() {
     if (this.closable === undefined) {
       this.closable = true;
     }
@@ -135,14 +135,6 @@ export class TdsModal {
         'Tegel Modal: Missing focus origin. Please provide either a "referenceEl" or a "selector" to ensure focus returns to the element that opened the modal. If the modal is opened programmatically, this message can be ignored.',
       );
     }
-  }
-
-  connectedCallback() {
-    this.initializeWithProps();
-  }
-
-  componentWillLoad() {
-    this.initializeWithProps();
   }
 
   disconnectedCallback() {

@@ -43,7 +43,9 @@ export class TdsFooterGroup {
     if (!this.topPartGroup) {
       this.slotPosition = this.host.parentElement?.slot === 'end' ? 'end' : 'start';
     }
+  }
 
+  componentWillLoad() {
     if (!this.tdsListAriaLabel) {
       console.warn('Tegel Footer Group component: missing tdsListAriaLabel prop');
     }

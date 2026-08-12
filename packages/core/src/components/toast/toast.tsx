@@ -98,7 +98,7 @@ export class TdsToast {
     }
   };
 
-  connectedCallback() {
+  componentWillLoad() {
     if (!this.tdsCloseAriaLabel) {
       console.warn('tds-toast: tdsCloseAriaLabel is required');
     }
