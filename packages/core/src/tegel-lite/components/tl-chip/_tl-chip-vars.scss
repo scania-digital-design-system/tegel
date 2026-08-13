@@ -1,3 +1,5 @@
+@use '../../../../../../tokens/scss/component/chip';
+
 .tl-chip {
   --chip-text: var(--component-chip-text-standard-default);
   --chip-text-active: var(--component-chip-text-selected-default);
