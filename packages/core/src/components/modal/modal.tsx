@@ -62,6 +62,9 @@ export class TdsModal {
   // Focus state index in focusable Elements
   @State() activeElementIndex = 0;
 
+  /** The element that had focus when the modal opened, used to restore focus on close. */
+  private focusOrigin: HTMLElement | null = null;
+
   /** Shows the Modal.  */
   @Method()
   async showModal() {
@@ -129,12 +132,6 @@ export class TdsModal {
         "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
       );
     }
-
-    if (!this.selector && !this.referenceEl) {
-      console.warn(
-        'Tegel Modal: Missing focus origin. Please provide either a "referenceEl" or a "selector" to ensure focus returns to the element that opened the modal. If the modal is opened programmatically, this message can be ignored.',
-      );
-    }
   }
 
   disconnectedCallback() {
@@ -166,10 +163,7 @@ export class TdsModal {
   }
 
   private returnFocusOnClose() {
-    const referenceElement =
-      this.referenceEl ??
-      (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
-
+    const referenceElement = this.focusOrigin;
     if (!referenceElement) return;
 
     const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
@@ -247,8 +241,12 @@ export class TdsModal {
 
   /** Runs whenever the modal is opened and updates it. */
   private onOpen() {
-    // Focus immediately to preserve interaction modality for :focus-visible
-    this.focusFirstElement();
+    // Capture the active/focused element BEFORE focusFirstElement() moves focus away.
+    const active = (this.host.getRootNode() as Document | ShadowRoot).activeElement;
+    this.focusOrigin =
+      this.referenceEl ??
+      (this.selector ? document.querySelector<HTMLElement>(this.selector) : null) ??
+      (active instanceof HTMLElement ? active : null);
 
     // Defer scroll reset to next frame
     requestAnimationFrame(() => {
