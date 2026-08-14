@@ -34,6 +34,7 @@
     "./tl-button.css": "./dist/tl-button.css",
     "./tl-card.css": "./dist/tl-card.css",
     "./tl-checkbox.css": "./dist/tl-checkbox.css",
+    "./tl-chip.css": "./dist/tl-chip.css",
     "./tl-datetime.css": "./dist/tl-datetime.css",
     "./tl-divider.css": "./dist/tl-divider.css",
     "./tl-footer.css": "./dist/tl-footer.css",

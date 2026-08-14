@@ -26,6 +26,7 @@ export const SHIPPED_COMPONENTS = [
   'tl-button',
   'tl-card',
   'tl-checkbox',
+  'tl-chip',
   'tl-divider',
   'tl-footer',
   'tl-header',
