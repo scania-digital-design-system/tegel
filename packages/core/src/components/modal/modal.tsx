@@ -210,31 +210,28 @@ export class TdsModal {
   }
 
   private focusFirstElement() {
-    const focusableSelectors = [
-      'a[href]',
-      'button:not([disabled])',
-      'textarea:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(',');
+    // Prioritize close button over focusable elements in slotted content (actions/body)
+    const focusableCloseButton =
+      this.host.shadowRoot?.querySelector<HTMLElement>('button.tds-modal-close');
 
-    // Prioritize focusable elements in slotted content (actions/body) over shadow DOM elements (like close button)
-    const focusableInSlots = Array.from(
-      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
-    );
-
-    if (focusableInSlots.length > 0) {
-      focusableInSlots[0].focus();
-      this.activeElementIndex = this.getFocusableElements().indexOf(focusableInSlots[0]);
+    if (this.closable && focusableCloseButton) {
+      focusableCloseButton.focus();
+      this.activeElementIndex = 0;
     } else {
-      // Fallback to shadow DOM elements if no slotted content is focusable
-      const focusableInShadowRoot = Array.from(
-        this.host.shadowRoot?.querySelectorAll<HTMLElement>(focusableSelectors) ?? [],
+      const focusableSelectors = [
+        'a[href]',
+        'button:not([disabled])',
+        'textarea:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(',');
+      const focusableInSlots = Array.from(
+        this.host.querySelectorAll<HTMLElement>(focusableSelectors),
       );
-      if (focusableInShadowRoot.length > 0) {
-        focusableInShadowRoot[0].focus();
-        this.activeElementIndex = 0;
+      if (focusableInSlots.length > 0) {
+        focusableInSlots[0].focus();
+        this.activeElementIndex = this.getFocusableElements().indexOf(focusableInSlots[0]);
       }
     }
   }
@@ -251,6 +248,7 @@ export class TdsModal {
     // Defer scroll reset to next frame
     requestAnimationFrame(() => {
       this.resetScrollPosition();
+      this.focusFirstElement();
     });
   }
 
