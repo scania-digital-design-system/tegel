@@ -44,6 +44,14 @@ export class TdsFolderTab {
           'Tegel folder-tab component: Interactive elements should have attribute role="tab"',
         );
       }
+    }
+  }
+
+  componentWillLoad() {
+    const elements = this.host.querySelectorAll('button, a');
+    for (let index = 0; index < elements.length; index++) {
+      const element = elements[index];
+
       if (this.disabled) {
         element.setAttribute('aria-disabled', 'true');
       } else {
