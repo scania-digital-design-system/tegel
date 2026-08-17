@@ -38,7 +38,7 @@
   .navigation-tab-item {
     position: relative;
 
-    &:hover {
+    &:hover:not(.disabled) {
       cursor: pointer;
 
       ::slotted(*) {
@@ -87,7 +87,6 @@
 
     ::slotted(*:hover) {
       cursor: not-allowed;
-      color: var(--tds-navigation-tabs-tab-color);
     }
 
     ::slotted(*:focus-visible)::before {

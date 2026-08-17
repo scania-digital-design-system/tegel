@@ -56,10 +56,6 @@
       opacity: var(--tds-folder-tab-item-opacity-disabled);
       border-left: 1px solid var(--tds-folder-tab-divider-color);
 
-      ::slotted(*) {
-        color: var(--tds-folder-tab-item-color);
-      }
-
       ::slotted(*:focus-visible)::before {
         outline: none;
       }
