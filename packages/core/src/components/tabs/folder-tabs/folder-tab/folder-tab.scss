@@ -61,7 +61,7 @@
         color: var(--tds-folder-tab-item-color);
       }
 
-      ::slotted(*:focus-visible) {
+      ::slotted(*:focus-visible)::before {
         outline: none;
       }
 
