@@ -90,7 +90,7 @@
       color: var(--tds-navigation-tabs-tab-color);
     }
 
-    ::slotted(*:focus-visible) {
+    ::slotted(*:focus-visible)::before {
       outline: none;
     }
   }
