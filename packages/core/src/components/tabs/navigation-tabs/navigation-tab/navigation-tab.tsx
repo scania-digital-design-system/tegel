@@ -38,13 +38,23 @@ export class TdsNavigationTab {
     }
   }
 
+  componentWillLoad() {
+    const elements = this.host.querySelectorAll('button, a');
+    for (const element of elements) {
+      if (this.disabled) {
+        element.setAttribute('aria-disabled', 'true');
+      } else {
+        element.removeAttribute('aria-disabled');
+      }
+    }
+  }
+
   render() {
     return (
       <Host>
         <div
           class={`navigation-tab-item  ${this.selected ? 'selected' : ''}
            ${this.disabled ? 'disabled' : ''}`}
-          aria-disabled={this.disabled ? 'true' : 'false'}
         >
           <slot></slot>
         </div>

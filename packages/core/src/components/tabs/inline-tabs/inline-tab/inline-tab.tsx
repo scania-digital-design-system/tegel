@@ -38,6 +38,17 @@ export class TdsInlineTab {
     }
   }
 
+  componentWillLoad() {
+    const elements = this.host.querySelectorAll('button, a');
+    for (const element of elements) {
+      if (this.disabled) {
+        element.setAttribute('aria-disabled', 'true');
+      } else {
+        element.removeAttribute('aria-disabled');
+      }
+    }
+  }
+
   render() {
     return (
       <Host aria-selected={this.selected}>
@@ -47,7 +58,6 @@ export class TdsInlineTab {
             'selected': this.selected,
             'disabled': this.disabled,
           }}
-          aria-disabled={this.disabled ? 'true' : 'false'}
         >
           <slot></slot>
         </div>
