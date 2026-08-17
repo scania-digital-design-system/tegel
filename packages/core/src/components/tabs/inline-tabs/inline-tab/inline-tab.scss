@@ -91,7 +91,7 @@
       color: var(--tds-inline-tabs-tab-color);
     }
 
-    ::slotted(*:focus-visible) {
+    ::slotted(*:focus-visible)::before {
       outline: none;
     }
   }
