@@ -42,7 +42,7 @@
     width: 0%;
   }
 
-  &:hover {
+  &:hover:not(.tl-inline-tabs__tab--disabled, .tl-inline-tabs__tab--selected) {
     cursor: pointer;
     color: var(--inline-tabs-tab-color-hover);
 
@@ -62,8 +62,8 @@
 
   &--disabled {
     opacity: var(--inline-tabs-tab-opacity-disabled);
-    pointer-events: none;
     cursor: not-allowed;
+    user-select: none;
 
     &::after {
       content: none;
