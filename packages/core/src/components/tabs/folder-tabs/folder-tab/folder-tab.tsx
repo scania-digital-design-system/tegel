@@ -32,8 +32,7 @@ export class TdsFolderTab {
 
   connectedCallback() {
     const elements = this.host.querySelectorAll('button, a');
-    for (let index = 0; index < elements.length; index++) {
-      const element = elements[index];
+    for (const element of elements) {
       if (!element.getAttribute('aria-controls')) {
         console.warn(
           'Tegel folder-tab component: Interactive elements should have aria-controls attribute to link the tab to its corresponding panel',
@@ -47,19 +46,6 @@ export class TdsFolderTab {
     }
   }
 
-  componentWillLoad() {
-    const elements = this.host.querySelectorAll('button, a');
-    for (let index = 0; index < elements.length; index++) {
-      const element = elements[index];
-
-      if (this.disabled) {
-        element.setAttribute('aria-disabled', 'true');
-      } else {
-        element.removeAttribute('aria-disabled');
-      }
-    }
-  }
-
   render() {
     return (
       <Host aria-selected={this.selected}>
@@ -68,6 +54,7 @@ export class TdsFolderTab {
             selected: this.selected,
             disabled: this.disabled,
           }}
+          aria-disabled={this.disabled ? 'true' : 'false'}
           style={{ width: `${this.tabWidth}px` }}
         >
           <slot></slot>

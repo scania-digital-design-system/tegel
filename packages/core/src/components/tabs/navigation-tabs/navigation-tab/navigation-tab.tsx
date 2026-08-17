@@ -24,8 +24,7 @@ export class TdsNavigationTab {
 
   connectedCallback() {
     const elements = this.host.querySelectorAll('button, a');
-    for (let index = 0; index < elements.length; index++) {
-      const element = elements[index];
+    for (const element of elements) {
       if (!element.getAttribute('aria-controls')) {
         console.warn(
           'Tegel navigation-tab component: Interactive elements should have aria-controls attribute to link the tab to its corresponding panel',
@@ -39,25 +38,13 @@ export class TdsNavigationTab {
     }
   }
 
-  componentWillLoad() {
-    const elements = this.host.querySelectorAll('button, a');
-    for (let index = 0; index < elements.length; index++) {
-      const element = elements[index];
-
-      if (this.disabled) {
-        element.setAttribute('aria-disabled', 'true');
-      } else {
-        element.removeAttribute('aria-disabled');
-      }
-    }
-  }
-
   render() {
     return (
       <Host>
         <div
           class={`navigation-tab-item  ${this.selected ? 'selected' : ''}
            ${this.disabled ? 'disabled' : ''}`}
+          aria-disabled={this.disabled ? 'true' : 'false'}
         >
           <slot></slot>
         </div>
