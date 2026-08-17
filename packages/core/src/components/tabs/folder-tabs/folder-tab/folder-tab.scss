@@ -13,7 +13,6 @@
     display: block;
     width: calc(100% - 32px);
 
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
     @include title-01;
 
     cursor: pointer;
