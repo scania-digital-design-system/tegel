@@ -4503,27 +4503,6 @@
             ]
           }
         }
-      },
-      "tabs": {
-        "placeholder-fill": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              0.7529411911964417,
-              1,
-              0.9333333373069763
-            ],
-            "alpha": 1,
-            "hex": "#C0FFEE"
-          },
-          "$extensions": {
-            "com.figma.variableId": "VariableID:21740:10679",
-            "com.figma.scopes": [
-              "ALL_FILLS"
-            ]
-          }
-        }
       }
     },
     "content__wip": {
@@ -7122,263 +7101,6 @@
     }
   },
   "component": {
-    "side-menu": {
-      "background": {
-        "default": {
-          "$type": "color",
-          "$value": "{color.background.base}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:32873:446",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{component.side-menu.background.default}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:448",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "link-hover": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:450",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "link-active": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                0.9215686321258545,
-                0.9058823585510254,
-                0.8666666746139526
-              ],
-              "alpha": 1,
-              "hex": "#EBE7DD"
-            },
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:452",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.aliasData": {
-                "targetVariableId": "VariableID:948190e27ddb081499e3c1fb02e014aadb27e7d8/-1:-1",
-                "targetVariableName": "traton/color/grey/150",
-                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
-                "targetVariableSetName": "Primitive"
-              }
-            }
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:454",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          }
-        }
-      },
-      "border": {
-        "divider-default": {
-          "$type": "color",
-          "$value": {
-            "colorSpace": "srgb",
-            "components": [
-              1,
-              1,
-              1
-            ],
-            "alpha": 0,
-            "hex": "#FFFFFF"
-          },
-          "$extensions": {
-            "com.figma.variableId": "VariableID:3126:32460",
-            "com.figma.scopes": [
-              "STROKE"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:a3fb1702b03af7f31ac4f44884e5444bd374ea23/-1:-1",
-              "targetVariableName": "traton/color/transparent/invisible/light",
-              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
-              "targetVariableSetName": "Primitive"
-            }
-          }
-        },
-        "radius-default": {
-          "$type": "number",
-          "$value": 8,
-          "$extensions": {
-            "com.figma.variableId": "VariableID:3136:55678",
-            "com.figma.scopes": [
-              "CORNER_RADIUS"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:aef5a02a48bb7ba81732dbe9a4e3531a41c3c686/-1:-1",
-              "targetVariableName": "traton/unit/8",
-              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
-              "targetVariableSetName": "Primitive"
-            }
-          }
-        },
-        "item": {
-          "indicator-default": {
-            "$type": "color",
-            "$value": {
-              "colorSpace": "srgb",
-              "components": [
-                0.1764705926179886,
-                0.6196078658103943,
-                0.6784313917160034
-              ],
-              "alpha": 1,
-              "hex": "#2D9EAD"
-            },
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:456",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.aliasData": {
-                "targetVariableId": "VariableID:bf1b78b2cd100bf0003265fcbd21eef0571c59d0/-1:-1",
-                "targetVariableName": "traton/color/blue/500",
-                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
-                "targetVariableSetName": "Primitive"
-              }
-            }
-          }
-        }
-      },
-      "icon": {
-        "dismiss-default": {
-          "$type": "color",
-          "$value": "{color.icon.strong}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:32873:470",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:466",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:468",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          }
-        }
-      },
-      "focus-ring": {
-        "radius-primary": {
-          "$type": "number",
-          "$value": 8,
-          "$extensions": {
-            "com.figma.variableId": "VariableID:34314:14082",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ],
-            "com.figma.aliasData": {
-              "targetVariableId": "VariableID:aef5a02a48bb7ba81732dbe9a4e3531a41c3c686/-1:-1",
-              "targetVariableName": "traton/unit/8",
-              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
-              "targetVariableSetName": "Primitive"
-            }
-          }
-        },
-        "radius-secondary": {
-          "$type": "number",
-          "$value": 7,
-          "$extensions": {
-            "com.figma.variableId": "VariableID:34314:14083",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "radius-tertiary": {
-          "$type": "number",
-          "$value": 5,
-          "$extensions": {
-            "com.figma.variableId": "VariableID:34318:51720",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        }
-      },
-      "text": {
-        "title-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:32873:462",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "subtitle-default": {
-          "$type": "color",
-          "$value": "{color.text.soft}",
-          "$extensions": {
-            "com.figma.variableId": "VariableID:32873:464",
-            "com.figma.scopes": [
-              "ALL_SCOPES"
-            ]
-          }
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:458",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}",
-            "$extensions": {
-              "com.figma.variableId": "VariableID:32873:460",
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ]
-            }
-          }
-        }
-      }
-    },
     "-focus": {
       "ring": {
         "color": {
@@ -12570,6 +12292,263 @@
         }
       }
     },
+    "side-menu": {
+      "background": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.background.base}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:32873:446",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{component.side-menu.background.default}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:448",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "link-hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:450",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "link-active": {
+            "$type": "color",
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.9215686321258545,
+                0.9058823585510254,
+                0.8666666746139526
+              ],
+              "alpha": 1,
+              "hex": "#EBE7DD"
+            },
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:452",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:948190e27ddb081499e3c1fb02e014aadb27e7d8/-1:-1",
+                "targetVariableName": "traton/color/grey/150",
+                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                "targetVariableSetName": "Primitive"
+              }
+            }
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:454",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "border": {
+        "divider-default": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "alpha": 0,
+            "hex": "#FFFFFF"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:3126:32460",
+            "com.figma.scopes": [
+              "STROKE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:a3fb1702b03af7f31ac4f44884e5444bd374ea23/-1:-1",
+              "targetVariableName": "traton/color/transparent/invisible/light",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:3136:55678",
+            "com.figma.scopes": [
+              "CORNER_RADIUS"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:aef5a02a48bb7ba81732dbe9a4e3531a41c3c686/-1:-1",
+              "targetVariableName": "traton/unit/8",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "item": {
+          "indicator-default": {
+            "$type": "color",
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.1764705926179886,
+                0.6196078658103943,
+                0.6784313917160034
+              ],
+              "alpha": 1,
+              "hex": "#2D9EAD"
+            },
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:456",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:bf1b78b2cd100bf0003265fcbd21eef0571c59d0/-1:-1",
+                "targetVariableName": "traton/color/blue/500",
+                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                "targetVariableSetName": "Primitive"
+              }
+            }
+          }
+        }
+      },
+      "icon": {
+        "dismiss-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:32873:470",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:466",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:468",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "focus-ring": {
+        "radius-primary": {
+          "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34314:14082",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:aef5a02a48bb7ba81732dbe9a4e3531a41c3c686/-1:-1",
+              "targetVariableName": "traton/unit/8",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "radius-secondary": {
+          "$type": "number",
+          "$value": 7,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34314:14083",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "radius-tertiary": {
+          "$type": "number",
+          "$value": 5,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34318:51720",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      },
+      "text": {
+        "title-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:32873:462",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "subtitle-default": {
+          "$type": "color",
+          "$value": "{color.text.soft}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:32873:464",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:458",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:32873:460",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      }
+    },
     "spinner": {
       "background": {
         "default": {
@@ -12865,6 +12844,374 @@
           "$value": "{color.background.layer-02}",
           "$extensions": {
             "com.figma.variableId": "VariableID:14121:107532",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        }
+      }
+    },
+    "tabs": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.base}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:446",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:448",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "folder-primary": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "alpha": 0,
+            "hex": "#FFFFFF"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:460",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:a3fb1702b03af7f31ac4f44884e5444bd374ea23/-1:-1",
+              "targetVariableName": "traton/color/transparent/invisible/light",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "folder-secondary": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              1
+            ],
+            "alpha": 0,
+            "hex": "#FFFFFF"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:462",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:a3fb1702b03af7f31ac4f44884e5444bd374ea23/-1:-1",
+              "targetVariableName": "traton/color/transparent/invisible/light",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "scroll-default": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7607843279838562,
+              0.7490196228027344,
+              0.7137255072593689
+            ],
+            "alpha": 1,
+            "hex": "#C2BFB6"
+          },
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34504:446",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:e2355b7d8f4dfcb746883b920d5318abcc377aba/-1:-1",
+              "targetVariableName": "traton/color/grey/300",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        },
+        "item": {
+          "primary": {
+            "default": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.8392156958580017,
+                  0.8313725590705872,
+                  0.7882353067398071
+                ],
+                "alpha": 1,
+                "hex": "#D6D4C9"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:464",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.aliasData": {
+                  "targetVariableId": "VariableID:0739d85581fb43d4f72822eda65b5c1de0b95afe/-1:-1",
+                  "targetVariableName": "traton/color/grey/200",
+                  "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                  "targetVariableSetName": "Primitive"
+                }
+              }
+            },
+            "hover": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.7607843279838562,
+                  0.7490196228027344,
+                  0.7137255072593689
+                ],
+                "alpha": 1,
+                "hex": "#C2BFB6"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:472",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.aliasData": {
+                  "targetVariableId": "VariableID:e2355b7d8f4dfcb746883b920d5318abcc377aba/-1:-1",
+                  "targetVariableName": "traton/color/grey/300",
+                  "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                  "targetVariableSetName": "Primitive"
+                }
+              }
+            },
+            "current-default": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:468",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          },
+          "secondary": {
+            "default": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.8392156958580017,
+                  0.8313725590705872,
+                  0.7882353067398071
+                ],
+                "alpha": 1,
+                "hex": "#D6D4C9"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:466",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.aliasData": {
+                  "targetVariableId": "VariableID:0739d85581fb43d4f72822eda65b5c1de0b95afe/-1:-1",
+                  "targetVariableName": "traton/color/grey/200",
+                  "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                  "targetVariableSetName": "Primitive"
+                }
+              }
+            },
+            "hover": {
+              "$type": "color",
+              "$value": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.7607843279838562,
+                  0.7490196228027344,
+                  0.7137255072593689
+                ],
+                "alpha": 1,
+                "hex": "#C2BFB6"
+              },
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:474",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ],
+                "com.figma.aliasData": {
+                  "targetVariableId": "VariableID:e2355b7d8f4dfcb746883b920d5318abcc377aba/-1:-1",
+                  "targetVariableName": "traton/color/grey/300",
+                  "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                  "targetVariableSetName": "Primitive"
+                }
+              }
+            },
+            "current-default": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}",
+              "$extensions": {
+                "com.figma.variableId": "VariableID:34182:470",
+                "com.figma.scopes": [
+                  "ALL_SCOPES"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.border.discrete}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:450",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "folder-default": {
+          "$type": "color",
+          "$value": "{color.border.none}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34257:452",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ]
+          }
+        },
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.border.none}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34257:446",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.border.discrete}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:458",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "divider-default": {
+            "$type": "color",
+            "$value": "{color.border.discrete}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:476",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "indicator-default": {
+            "$type": "color",
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.1764705926179886,
+                0.6196078658103943,
+                0.6784313917160034
+              ],
+              "alpha": 1,
+              "hex": "#2D9EAD"
+            },
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:456",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:bf1b78b2cd100bf0003265fcbd21eef0571c59d0/-1:-1",
+                "targetVariableName": "traton/color/blue/500",
+                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                "targetVariableSetName": "Primitive"
+              }
+            }
+          }
+        }
+      },
+      "text": {
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.text.soft}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:452",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "folder-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:478",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:34182:454",
+              "com.figma.scopes": [
+                "ALL_SCOPES"
+              ]
+            }
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": 25,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34182:500",
+            "com.figma.scopes": [
+              "ALL_SCOPES"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d1871a282d49edb3fd58a59e90c36e8bb1086d5d/-1:-1",
+              "targetVariableName": "traton/opacity/25",
+              "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+              "targetVariableSetName": "Primitive"
+            }
+          }
+        }
+      },
+      "icon": {
+        "scroll-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:34504:448",
             "com.figma.scopes": [
               "ALL_SCOPES"
             ]

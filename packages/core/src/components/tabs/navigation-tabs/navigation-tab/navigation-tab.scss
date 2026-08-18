@@ -1,5 +1,6 @@
 @use '../../../../mixins/focus-state' as *;
 @use '../../../../mixins/box-sizing' as *;
+@use '../../../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
@@ -9,9 +10,8 @@
   ::slotted(*) {
     all: unset;
 
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-headline-07) !important;
-    letter-spacing: var(--tds-headline-07-ls) !important;
+    @include title-01;
+
     color: var(--tds-navigation-tabs-tab-color);
     text-decoration: none;
     display: block;
@@ -20,17 +20,13 @@
     white-space: nowrap;
     background-color: transparent;
     border: 0;
-    width: 100%;
-    padding: 26px 0;
+    padding: 25px 8px;
   }
 
   ::slotted(*:focus-visible)::before {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 3px;
-    bottom: 3px;
+    inset: 3px 0;
     @include tds-focus-state;
   }
 
@@ -42,7 +38,7 @@
   .navigation-tab-item {
     position: relative;
 
-    &:hover {
+    &:hover:not(.disabled) {
       cursor: pointer;
 
       ::slotted(*) {
@@ -69,10 +65,6 @@
     z-index: 1;
   }
 
-  .navigation-tab-item:hover:focus-within::after {
-    bottom: 3px;
-  }
-
   .selected {
     ::slotted(*) {
       color: var(--tds-navigation-tabs-tab-color-selected);
@@ -86,7 +78,7 @@
 
   .disabled {
     ::slotted(*) {
-      color: var(--tds-navigation-tabs-tab-color-disabled);
+      opacity: var(--tds-navigation-tabs-tab-opacity-disabled);
     }
 
     &::after {
@@ -95,10 +87,9 @@
 
     ::slotted(*:hover) {
       cursor: not-allowed;
-      color: var(--tds-navigation-tabs-tab-color-disabled);
     }
 
-    ::slotted(*:focus-visible) {
+    ::slotted(*:focus-visible)::before {
       outline: none;
     }
   }

@@ -1,24 +1,29 @@
+@use '../../../../../../../tokens/scss/component/tabs';
+
 .tl-folder-tabs {
-  --folder-tabs-scroll-button-surface: var(--color-background-surface-200);
-  --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
-  --folder-tabs-scroll-button-surface-active: var(--color-background-surface-400);
-  --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
+  --folder-tabs-scroll-button-background: var(--component-tabs-background-scroll-default);
+  --folder-tabs-scroll-button-color: var(--component-tabs-icon-scroll-default);
 }
 
 .tl-folder-tabs__tab {
-  --folder-tab-surface: var(--color-background-surface-200);
-  --folder-tab-surface-selected: var(--color-background-layer-01);
-  --folder-tab-surface-hover: var(--color-background-surface-300);
-  --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
-  --folder-tab-divider: var(--color-foreground-icon-discrete);
-  --folder-tab-text: var(--color-foreground-text-soft);
-  --folder-tab-text-disabled: var(--color-foreground-text-disabled);
+  --folder-tab-background: var(--component-tabs-background-item-primary-default);
+  --folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
+  --folder-tab-background-selected: var(--component-tabs-background-item-primary-current-default);
+  --folder-tab-border-selected: var(--component-tabs-border-item-indicator-default);
+  --folder-tab-divider-color: var(--component-tabs-border-item-divider-default);
+  --folder-tab-text: var(--component-tabs-text-item-folder-default);
+  --folder-tab-text-selected: var(--component-tabs-text-item-current-default);
+  --folder-tab-item-opacity-disabled: calc(var(--component-tabs-opacity-disabled) / 100);
 }
 
 .tl-folder-tabs--primary .tl-folder-tabs__tab {
-  --folder-tab-surface-selected: var(--color-background-layer-01);
+  --folder-tab-background: var(--component-tabs-background-item-primary-default);
+  --folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
+  --folder-tab-background-selected: var(--component-tabs-background-item-primary-current-default);
 }
 
 .tl-folder-tabs--secondary .tl-folder-tabs__tab {
-  --folder-tab-surface-selected: var(--color-background-layer-02);
+  --folder-tab-background: var(--component-tabs-background-item-secondary-default);
+  --folder-tab-background-hover: var(--component-tabs-background-item-secondary-hover);
+  --folder-tab-background-selected: var(--component-tabs-background-item-secondary-current-default);
 }

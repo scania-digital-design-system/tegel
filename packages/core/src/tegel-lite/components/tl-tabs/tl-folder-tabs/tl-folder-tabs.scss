@@ -16,12 +16,16 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &:focus-visible {
+    @include tds-focus-state;
+  }
 }
 
 /* Overlay buttons (optional in markup; visible via media query) */
 .tl-folder-tabs__scroll-button {
-  background-color: var(--folder-tab-surface);
-  color: var(--folder-tabs-scroll-button-text);
+  background-color: var(--folder-tabs-scroll-button-background);
+  color: var(--folder-tabs-scroll-button-color);
   min-width: 48px;
   border: 0;
   justify-content: center;
@@ -29,12 +33,8 @@
   position: sticky;
   cursor: pointer;
 
-  &:hover {
-    background-color: var(--folder-tabs-scroll-button-surface-hover);
-  }
-
-  &:active {
-    background-color: var(--folder-tabs-scroll-button-surface-active);
+  &:focus-visible {
+    @include tds-focus-state-inset;
   }
 }
 
@@ -51,6 +51,6 @@
 
 svg {
   .tl-folder-tabs__scroll-button & {
-    fill: var(--folder-tabs-scroll-button-text);
+    fill: var(--folder-tabs-scroll-button-color);
   }
 }

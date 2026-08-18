@@ -10,7 +10,7 @@ import {
 const componentTestPath = 'src/components/tabs/test/inline-tabs/index.html';
 const componentName = 'tds-inline-tabs';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     let inlineTabs;
     let firstTabDiv;

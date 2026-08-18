@@ -50,23 +50,12 @@
       pointer-events: all;
     }
 
-    &:hover {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
-    }
-
-    &:active {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
-    }
-
     &:focus-within::before {
       @include tds-focus-state;
 
       content: '';
       position: absolute;
-      top: 3px;
-      bottom: 3px;
-      left: 3px;
-      right: 3px;
+      inset: 3px;
     }
 
     &:focus {

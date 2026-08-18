@@ -4,11 +4,10 @@
 
 .tl-inline-tabs__tab {
   all: unset;
-  margin-right: 32px;
   @include tds-box-sizing;
-  @include headline-07;
+  @include title-01;
 
-  color: var(--inline-tabs-tab);
+  color: var(--inline-tabs-tab-color);
   text-decoration: none;
   display: block;
   position: relative;
@@ -16,20 +15,12 @@
   white-space: nowrap;
   background-color: transparent;
   border: 0;
-  padding: 20px 4px;
+  padding: 20px 8px;
 
   &:focus-visible {
-    outline: none;
-  }
+    @include tds-focus-state-inset;
 
-  &:focus-visible::before {
-    @include tds-focus-state;
-
-    content: '';
-    position: absolute;
-    inset: 18px 0;
-    border-radius: 2px;
-    pointer-events: none;
+    outline-offset: -2px;
   }
 
   &::after {
@@ -51,9 +42,9 @@
     width: 0%;
   }
 
-  &:hover {
+  &:hover:not(.tl-inline-tabs__tab--disabled, .tl-inline-tabs__tab--selected) {
     cursor: pointer;
-    color: var(--inline-tabs-tab-hover);
+    color: var(--inline-tabs-tab-color-hover);
 
     &::after {
       width: 100%;
@@ -61,7 +52,7 @@
   }
 
   &--selected {
-    color: var(--inline-tabs-tab-selected);
+    color: var(--inline-tabs-tab-color-selected);
 
     &::after {
       background-color: var(--inline-tabs-tab-indicator-active);
@@ -70,9 +61,9 @@
   }
 
   &--disabled {
-    color: var(--inline-tabs-tab-disabled);
-    pointer-events: none;
+    opacity: var(--inline-tabs-tab-opacity-disabled);
     cursor: not-allowed;
+    user-select: none;
 
     &::after {
       content: none;

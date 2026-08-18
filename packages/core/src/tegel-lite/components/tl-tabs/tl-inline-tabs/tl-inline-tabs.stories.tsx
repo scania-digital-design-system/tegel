@@ -24,12 +24,12 @@ export default {
       name: 'Left Padding',
       description: 'Sets the custom left padding for the tabs container. Accepts a numeric value.',
       control: { type: 'number' },
-      table: { defaultValue: { summary: 32 } },
+      table: { defaultValue: { summary: 0 } },
     },
   },
   args: {
     selectedIndex: 0,
-    leftPadding: 32,
+    leftPadding: 0,
     showLeftButton: false,
     showRightButton: false,
   },
@@ -54,7 +54,7 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
         .join(' ');
 
       return `
-        <button class="${buttonClasses}">${label}</button>
+        <button class="${buttonClasses}" ${isDisabled ? 'disabled' : ''}>${label}</button>
       `;
     })
     .join('');

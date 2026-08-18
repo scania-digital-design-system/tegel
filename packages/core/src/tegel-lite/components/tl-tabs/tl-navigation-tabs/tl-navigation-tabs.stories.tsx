@@ -54,7 +54,7 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
         .join(' ');
 
       return `
-        <button class="${buttonClasses}">${label}</button>
+        <button class="${buttonClasses}" ${isDisabled ? 'disabled' : ''}>${label}</button>
       `;
     })
     .join('');

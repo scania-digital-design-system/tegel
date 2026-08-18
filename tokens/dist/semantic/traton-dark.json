@@ -912,98 +912,6 @@
     }
   },
   "component": {
-    "side-menu": {
-      "background": {
-        "default": {
-          "$type": "color",
-          "$value": "{color.background.base}"
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{component.side-menu.background.default}"
-          },
-          "link-hover": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          },
-          "link-active": {
-            "$type": "color",
-            "$value": "{traton.color.blue.900}"
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          }
-        }
-      },
-      "border": {
-        "divider-default": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.8}"
-        },
-        "item": {
-          "indicator-default": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.400}"
-          }
-        }
-      },
-      "icon": {
-        "dismiss-default": {
-          "$type": "color",
-          "$value": "{color.icon.strong}"
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}"
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}"
-          }
-        }
-      },
-      "focus-ring": {
-        "radius-primary": {
-          "$type": "number",
-          "$value": "{traton.unit.8}"
-        },
-        "radius-secondary": {
-          "$type": "number",
-          "$value": 7
-        },
-        "radius-tertiary": {
-          "$type": "number",
-          "$value": 5
-        }
-      },
-      "text": {
-        "title-default": {
-          "$type": "color",
-          "$value": "{color.text.strong}"
-        },
-        "subtitle-default": {
-          "$type": "color",
-          "$value": "{color.text.soft}"
-        },
-        "item": {
-          "link-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
-          "current-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          }
-        }
-      }
-    },
     "-focus": {
       "ring": {
         "color": {
@@ -2758,6 +2666,98 @@
         }
       }
     },
+    "side-menu": {
+      "background": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.background.base}"
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{component.side-menu.background.default}"
+          },
+          "link-hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          },
+          "link-active": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
+          }
+        }
+      },
+      "border": {
+        "divider-default": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.8}"
+        },
+        "item": {
+          "indicator-default": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.400}"
+          }
+        }
+      },
+      "icon": {
+        "dismiss-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        }
+      },
+      "focus-ring": {
+        "radius-primary": {
+          "$type": "number",
+          "$value": "{traton.unit.8}"
+        },
+        "radius-secondary": {
+          "$type": "number",
+          "$value": 7
+        },
+        "radius-tertiary": {
+          "$type": "number",
+          "$value": 5
+        }
+      },
+      "text": {
+        "title-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "subtitle-default": {
+          "$type": "color",
+          "$value": "{color.text.soft}"
+        },
+        "item": {
+          "link-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      }
+    },
     "spinner": {
       "background": {
         "default": {
@@ -2849,6 +2849,116 @@
         "cell": {
           "$type": "color",
           "$value": "{color.background.layer-02}"
+        }
+      }
+    },
+    "tabs": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.base}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "folder-primary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        },
+        "folder-secondary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        },
+        "scroll-default": {
+          "$type": "color",
+          "$value": "{traton.color.blue.800}"
+        },
+        "item": {
+          "primary": {
+            "default": {
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{traton.color.blue.800}"
+            },
+            "current-default": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}"
+            }
+          },
+          "secondary": {
+            "default": {
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{traton.color.blue.800}"
+            },
+            "current-default": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            }
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.border.discrete}"
+        },
+        "folder-default": {
+          "$type": "color",
+          "$value": "{color.border.none}"
+        },
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.border.none}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.border.discrete}"
+          },
+          "divider-default": {
+            "$type": "color",
+            "$value": "{color.border.discrete}"
+          },
+          "indicator-default": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.400}"
+          }
+        }
+      },
+      "text": {
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.text.soft}"
+          },
+          "folder-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{traton.opacity.25}"
+        }
+      },
+      "icon": {
+        "scroll-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
         }
       }
     },

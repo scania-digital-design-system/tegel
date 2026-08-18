@@ -10,7 +10,7 @@ import {
 const componentTestPath = 'src/components/tabs/test/navigation-tabs/index.html';
 const componentName = 'tds-navigation-tabs';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     let navigationTabs;
     let firstTabDiv;

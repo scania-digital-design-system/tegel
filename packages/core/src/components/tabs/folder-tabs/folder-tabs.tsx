@@ -111,7 +111,7 @@ export class TdsFolderTabs {
     if (!this.navWrapperElement) return;
 
     const scroll = this.navWrapperElement.scrollLeft;
-    this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
+    this.navWrapperElement.scrollLeft = scroll + this.componentWidth / 2;
     this.evaluateScrollButtons();
   }
 
@@ -119,7 +119,7 @@ export class TdsFolderTabs {
     if (!this.navWrapperElement) return;
 
     const scroll = this.navWrapperElement.scrollLeft;
-    this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
+    this.navWrapperElement.scrollLeft = scroll - this.componentWidth / 2;
     this.evaluateScrollButtons();
   }
 

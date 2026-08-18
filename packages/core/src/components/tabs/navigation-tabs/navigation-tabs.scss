@@ -7,7 +7,6 @@
   --padding-left: 0;
 
   display: flex;
-  background-color: var(--tds-navigation-tabs-background);
   position: relative;
 
   &::after {
@@ -27,7 +26,7 @@
     width: 100%;
     overflow-x: scroll;
     scrollbar-width: none;
-    gap: 16px;
+    gap: 24px;
     padding-left: var(--padding-left);
 
     &::-webkit-scrollbar {
@@ -47,11 +46,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    color: var(--tds-folder-tabs-scroll-btn-color);
+    color: var(--tds-navigation-tabs-scroll-btn-color);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--tds-inline-tabs-scroll-btn-background);
+    background-color: var(--tds-navigation-tabs-scroll-btn-background);
     display: none;
     justify-content: center;
     align-items: center;
@@ -64,14 +63,6 @@
       display: block;
       opacity: 1;
       pointer-events: all;
-    }
-
-    &:hover {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
-    }
-
-    &:active {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
     }
 
     &:focus::before {

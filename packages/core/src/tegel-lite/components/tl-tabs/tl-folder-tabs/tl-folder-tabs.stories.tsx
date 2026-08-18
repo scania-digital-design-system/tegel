@@ -54,7 +54,7 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
         .join(' ');
 
       return `
-        <button class="${classes}">${label}</button>
+        <button class="${classes}" ${isDisabled ? 'disabled' : ''}>${label}</button>
       `;
     })
     .join('');
