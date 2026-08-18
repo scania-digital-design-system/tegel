@@ -8,14 +8,8 @@ import { TdsRadioValueAccessor } from './directives/tds-radio-value-accessor';
 import { TdsDropdownValueAccessor } from './directives/tds-dropdown-value-accessor';
 
 @NgModule({
-  declarations: [
-    ...DIRECTIVES,
-    BooleanValueAccessor,
-    NumericValueAccessor,
-    TextValueAccessor,
-    TdsRadioValueAccessor,
-    TdsDropdownValueAccessor,
-  ],
+  declarations: [...DIRECTIVES, BooleanValueAccessor, NumericValueAccessor, TextValueAccessor],
+  imports: [TdsRadioValueAccessor, TdsDropdownValueAccessor],
   exports: [
     ...DIRECTIVES,
     BooleanValueAccessor,
