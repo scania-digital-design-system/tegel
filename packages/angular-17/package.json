@@ -22,7 +22,6 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
-    "@scania/tegel": "file:../core/scania-tegel-1.61.0.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -32,7 +31,6 @@
     "@angular/compiler-cli": "^22.1.0",
     "jsdom": "^28.0.0",
     "ng-packagr": "^22.1.0",
-    "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^4.0.8"
   }
