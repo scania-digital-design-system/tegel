@@ -2,11 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "lib": [
-      "dom",
-      "es2017",
-      "dom.iterable"
-    ],
+    "lib": ["dom", "es2017", "dom.iterable"],
     "moduleResolution": "node",
     "module": "esnext",
     "resolveJsonModule": true,
@@ -15,18 +11,8 @@
     "target": "es2017",
     "jsx": "react",
     "jsxFactory": "h",
-    "types": [
-      "node",
-      "@playwright/test"
-    ]
+    "types": ["node", "react", "@playwright/test"]
   },
-  "exclude": [
-    "**/**.stories.*",
-    "src/stories/**",
-    "src/components/_beta/**"
-  ],
-  "include": [
-    "src/**/*",
-    "types/**/*.d.ts"
-  ]
+  "exclude": ["**/**.stories.*", "src/stories/**", "src/components/_beta/**"],
+  "include": ["src/**/*", "types/**/*.d.ts"]
 }

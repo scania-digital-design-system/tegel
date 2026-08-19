@@ -1,3 +1,4 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -17,6 +18,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -32,13 +34,4 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
-  // "files": [],
-  // "references": [
-  //   {
-  //     "path": "./projects/components/tsconfig.lib.json"
-  //   },
-  //   {
-  //     "path": "./projects/components/tsconfig.spec.json"
-  //   }
-  // ]
 }
