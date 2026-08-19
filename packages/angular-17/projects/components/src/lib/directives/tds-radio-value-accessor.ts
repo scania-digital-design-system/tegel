@@ -12,7 +12,7 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
   /* tslint:disable-next-line:directive-selector */
   selector: 'tds-radio-button, tds-chip[type="radio"]',
   host: {
-    '(tdsChange)': 'handleChangeEvent($any($event.target)?.value)',
+    '(tdsChange)': 'handleChangeEvent($event.target.value)',
   },
   providers: [
     {
@@ -21,7 +21,7 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
       multi: true,
     },
   ],
-  standalone: false
+  standalone: false,
 })
 export class TdsRadioValueAccessor extends ValueAccessor {
   writeValue(value: any) {
