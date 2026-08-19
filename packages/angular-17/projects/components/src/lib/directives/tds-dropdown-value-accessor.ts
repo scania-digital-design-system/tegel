@@ -20,5 +20,6 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
       multi: true,
     },
   ],
+  standalone: false
 })
 export class TdsDropdownValueAccessor extends ValueAccessor {}

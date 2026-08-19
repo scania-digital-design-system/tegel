@@ -21,6 +21,7 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
       multi: true,
     },
   ],
+  standalone: false
 })
 export class TdsRadioValueAccessor extends ValueAccessor {
   writeValue(value: any) {
