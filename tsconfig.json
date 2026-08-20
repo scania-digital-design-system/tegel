@@ -33,7 +33,7 @@
     "declaration": false,
     "experimentalDecorators": true,
     "lib": ["dom", "es2017"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "esnext",
     "jsx": "react",
     "jsxFactory": "h",

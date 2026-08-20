@@ -173,7 +173,7 @@ export class TdsTextarea {
           <textarea
             id={`textarea-element-${this.uuid}`}
             class={'textarea-input'}
-            ref={(inputEl: HTMLTextAreaElement) => {
+            ref={(inputEl?: HTMLTextAreaElement) => {
               this.textEl = inputEl;
             }}
             disabled={this.disabled}

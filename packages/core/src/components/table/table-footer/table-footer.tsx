@@ -19,8 +19,8 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'expandableRows',
 ];
 
-function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
-  e.target.classList.remove('tds-table__page-selector-input--shake');
+function removeShakeAnimation(e: AnimationEvent) {
+  (e.target as HTMLElement | null)?.classList.remove('tds-table__page-selector-input--shake');
 }
 
 @Component({

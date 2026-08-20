@@ -98,7 +98,8 @@ export class TdsInlineTabs {
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate(): void {
-    this.tabElements = Array.from(this.host.children).map((tabElement: HTMLTdsInlineTabElement) => {
+    this.tabElements = Array.from(this.host.children).map((element: Element) => {
+      const tabElement = element as HTMLTdsInlineTabElement;
       tabElement.setSelected(false);
       return tabElement;
     });
@@ -140,7 +141,7 @@ export class TdsInlineTabs {
         let buttonsWidth = 0;
 
         const navButtons = Array.from(this.host.children);
-        navButtons.forEach((navButton: HTMLElement) => {
+        navButtons.forEach((navButton: Element) => {
           const style = window.getComputedStyle(navButton);
           buttonsWidth +=
             navButton.clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
