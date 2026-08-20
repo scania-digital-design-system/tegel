@@ -16,6 +16,7 @@
 
 | Slot          | Description                                                                                          |
 | ------------- | ---------------------------------------------------------------------------------------------------- |
+|               | The default slot                                                                                     |
 | `"<default>"` | <b>Unnamed slot.</b> For injecting a native <code>&lt;button></code> or <code>&lt;a></code> element. |
 
 

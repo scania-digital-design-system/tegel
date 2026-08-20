@@ -7,6 +7,7 @@
         "./dist/components"
       ]
     },
+    "rootDir": "./projects/components/src",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": false,
@@ -18,7 +19,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
