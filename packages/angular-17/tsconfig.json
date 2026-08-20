@@ -35,5 +35,14 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "strictDomEventTypes": false
-  }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/components/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/components/tsconfig.spec.json"
+    }
+  ]
 }
