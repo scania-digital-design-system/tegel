@@ -8,28 +8,36 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-dropdown-hover: #edeff3;
-  --component-dropdown-focus: #edeff3;
-  --component-dropdown-secondary-hover: #edeff3;
-  --component-dropdown-secondary-focus: #edeff3;
-  --component-dropdown-list-item-hover: #edeff3;
-  --component-dropdown-list-item-focus: #edeff3;
-  --component-dropdown-list-item-secondary-hover: #edeff3;
-  --component-dropdown-list-item-secondary-focus: #edeff3;
+  --component-dropdown-background-primary: var(--color-background-layer-01);
+  --component-dropdown-background-secondary: var(--color-background-layer-02);
+  --component-dropdown-background-item-default: var(--color-background-none);
+  --component-dropdown-background-item-hover: var(--scania-color-grey-100);
+  --component-dropdown-background-item-selected-default: var(--scania-color-grey-150);
+  --component-dropdown-border-radius-default: var(--scania-unit-4);
+  --component-dropdown-border-item-divider-default: var(--color-border-discrete);
+  --component-dropdown-icon-default: var(--color-icon-strong);
+  --component-dropdown-icon-item-selected-default: var(--color-icon-strong);
+  --component-dropdown-text-item-default: var(--color-text-strong);
+  --component-dropdown-text-item-selected-default: var(--color-text-strong);
+  --component-dropdown-opacity-disabled: var(--scania-opacity-25);
 }
 
 .traton .tds-mode-light,
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-dropdown-hover: #ebe7dd;
-  --component-dropdown-focus: var(--color-background-layer-01);
-  --component-dropdown-secondary-hover: #ebe7dd;
-  --component-dropdown-secondary-focus: var(--color-background-layer-02);
-  --component-dropdown-list-item-hover: #ebe7dd;
-  --component-dropdown-list-item-focus: var(--color-background-layer-01);
-  --component-dropdown-list-item-secondary-hover: #ebe7dd;
-  --component-dropdown-list-item-secondary-focus: var(--color-background-layer-02);
+  --component-dropdown-background-primary: var(--color-background-layer-01);
+  --component-dropdown-background-secondary: var(--color-background-layer-02);
+  --component-dropdown-background-item-default: var(--color-background-none);
+  --component-dropdown-background-item-hover: var(--traton-color-grey-150);
+  --component-dropdown-background-item-selected-default: var(--color-background-layer-01);
+  --component-dropdown-border-radius-default: var(--traton-unit-4);
+  --component-dropdown-border-item-divider-default: var(--color-border-discrete);
+  --component-dropdown-icon-default: var(--color-icon-strong);
+  --component-dropdown-icon-item-selected-default: var(--color-icon-strong);
+  --component-dropdown-text-item-default: var(--color-text-strong);
+  --component-dropdown-text-item-selected-default: var(--color-text-strong);
+  --component-dropdown-opacity-disabled: var(--traton-opacity-25);
 }
 
 .tds-mode-dark,
@@ -37,26 +45,34 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-dropdown-hover: var(--color-background-layer-02);
-  --component-dropdown-focus: var(--color-background-layer-02);
-  --component-dropdown-secondary-hover: var(--color-background-layer-03);
-  --component-dropdown-secondary-focus: var(--color-background-layer-03);
-  --component-dropdown-list-item-hover: var(--color-background-layer-02);
-  --component-dropdown-list-item-focus: var(--color-background-layer-02);
-  --component-dropdown-list-item-secondary-hover: var(--color-background-layer-03);
-  --component-dropdown-list-item-secondary-focus: var(--color-background-layer-03);
+  --component-dropdown-background-primary: var(--color-background-layer-01);
+  --component-dropdown-background-secondary: var(--color-background-layer-02);
+  --component-dropdown-background-item-default: var(--color-background-none);
+  --component-dropdown-background-item-hover: var(--color-background-layer-02);
+  --component-dropdown-background-item-selected-default: var(--scania-color-grey-800);
+  --component-dropdown-border-radius-default: var(--scania-unit-4);
+  --component-dropdown-border-item-divider-default: var(--color-border-discrete);
+  --component-dropdown-icon-default: var(--color-icon-strong);
+  --component-dropdown-icon-item-selected-default: var(--color-icon-strong);
+  --component-dropdown-text-item-default: var(--color-text-strong);
+  --component-dropdown-text-item-selected-default: var(--color-text-strong);
+  --component-dropdown-opacity-disabled: var(--scania-opacity-25);
 }
 
 .traton .tds-mode-dark,
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-dropdown-hover: var(--color-background-layer-02);
-  --component-dropdown-focus: var(--color-background-layer-01);
-  --component-dropdown-secondary-hover: var(--color-background-layer-03);
-  --component-dropdown-secondary-focus: var(--color-background-layer-02);
-  --component-dropdown-list-item-hover: var(--color-background-layer-02);
-  --component-dropdown-list-item-focus: var(--color-background-layer-01);
-  --component-dropdown-list-item-secondary-hover: var(--color-background-layer-03);
-  --component-dropdown-list-item-secondary-focus: var(--color-background-layer-02);
+  --component-dropdown-background-primary: var(--color-background-layer-01);
+  --component-dropdown-background-secondary: var(--color-background-layer-02);
+  --component-dropdown-background-item-default: var(--color-background-none);
+  --component-dropdown-background-item-hover: var(--color-background-layer-02);
+  --component-dropdown-background-item-selected-default: var(--color-background-layer-01);
+  --component-dropdown-border-radius-default: var(--traton-unit-4);
+  --component-dropdown-border-item-divider-default: var(--color-border-discrete);
+  --component-dropdown-icon-default: var(--color-icon-strong);
+  --component-dropdown-icon-item-selected-default: var(--color-icon-strong);
+  --component-dropdown-text-item-default: var(--color-text-strong);
+  --component-dropdown-text-item-selected-default: var(--color-text-strong);
+  --component-dropdown-opacity-disabled: var(--traton-opacity-25);
 }
