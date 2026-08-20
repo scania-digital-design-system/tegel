@@ -1,5 +1,7 @@
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/focus-state' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../components/dropdown/dropdown-option/dropdown-option-vars' as *;
 
 :host {
   @include tds-box-sizing;
@@ -32,7 +34,13 @@
           margin-right: var(--tds-spacing-element-16);
 
           p {
+            @include type-system-body-01;
+
             margin-right: var(--tds-spacing-element-8);
+          }
+
+          tds-dropdown {
+            width: 74px;
           }
         }
       }
