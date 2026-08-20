@@ -1,34 +1,10 @@
-:root,
-.tds-mode-light {
-  --tds-dropdown-option-color: var(--tds-grey-850);
-  --tds-dropdown-option-color-disabled: var(--tds-grey-250);
-  --tds-dropdown-option-background: var(--tds-grey-50);
-  --tds-dropdown-option-background-selected: var(--tds-grey-150);
-  --tds-dropdown-option-border: var(--tds-grey-200);
-  --tds-dropdown-option-border-hover: var(--tds-grey-850);
-
-  .tds-mode-variant-primary {
-    --tds-dropdown-option-background: var(--tds-grey-50);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-dropdown-option-background: var(--tds-white);
-  }
-}
-
-.tds-mode-dark {
-  --tds-dropdown-option-color: var(--tds-grey-50);
-  --tds-dropdown-option-color-disabled: var(--tds-grey-500);
-  --tds-dropdown-option-background: var(--tds-grey-900);
-  --tds-dropdown-option-background-selected: var(--tds-grey-700);
-  --tds-dropdown-option-border: var(--tds-grey-600);
-  --tds-dropdown-option-border-hover: var(--tds-grey-50);
-
-  .tds-mode-variant-primary {
-    --tds-dropdown-option-background: var(--tds-grey-900);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-dropdown-option-background: var(--tds-grey-850);
-  }
+tds-dropdown-option {
+  --tds-dropdown-option-background: var(--component-dropdown-background-item-default);
+  --tds-dropdown-option-background-hover: var(--component-dropdown-background-item-hover);
+  --tds-dropdown-option-background-selected: var(
+    --component-dropdown-background-item-selected-default
+  );
+  --tds-dropdown-option-color: var(--component-dropdown-text-item-default);
+  --tds-dropdown-option-opacity-disabled: calc(var(--component-dropdown-opacity-disabled) / 100);
+  --tds-dropdown-option-border: var(--component-dropdown-border-item-divider-default);
 }

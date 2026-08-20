@@ -1,3 +1,5 @@
+@use '../../../../../typography/mixins/type-styles' as *;
+
 :host {
   button {
     all: unset;
@@ -7,13 +9,7 @@
     width: 100%;
     box-sizing: border-box;
     background-color: var(--tds-dropdown-bg);
-    border-bottom: 1px solid var(--tds-dropdown-border-bottom);
-    border-radius: var(--tds-dropdown-border-radius);
     padding: 0 16px;
-
-    &:hover {
-      border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
-    }
 
     .value-wrapper {
       flex: 1;
@@ -33,9 +29,9 @@
     }
 
     &.value {
+      @include type-system-body-01;
+
       color: var(--tds-dropdown-value-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
 
       /** Needed to not get be affected by overflow:hidden 
       The original line-height is 1.14 */
