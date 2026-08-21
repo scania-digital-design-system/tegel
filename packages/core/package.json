@@ -418,6 +418,8 @@
     "@storybook/addon-docs": "9.1.17",
     "@storybook/html-vite": "9.1.17",
     "@types/node": "^22.10.7",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
     "@vueless/storybook-dark-mode": "^9.0.10",
     "concurrently": "9.1.2",
     "highlight.js": "11.8.0",
