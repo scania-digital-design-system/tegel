@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // Master switch
-    // "strict": true,
+    "strict": false,
 
     // Prevent using values that might be null/undefined
     "strictNullChecks": true,
