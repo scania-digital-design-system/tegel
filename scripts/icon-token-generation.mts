@@ -279,7 +279,7 @@ function generateIconTokens(brandIcons: BrandIcons): { iconStylesheet: string, f
     }
 
     icons += buildPathBlock(brand, brandIcons.get(brand)!, allIconNames, placeholder.definition)
-    fallbacks += buildFallbackBlock(brand, brandIcons.get(brand)!, allIconNames, placeholder.definition)
+    fallbacks += buildFallbackBlock(brand, brandIcons.get(brand)!, allIconNames)
   }
 
   return {

@@ -340,7 +340,7 @@ function getDropdownScript(props: {
   return `<!-- Script tag for demo purposes -->\n<script>\n  ${comment}\n  ${fn}\n</script>`;
 }
 
-const Template = (props: TemplateProps): string => {
+const Template = (props: TemplateProps): Promise<string> => {
   const dropUp = props.direction === 'Up';
   const optionOrder = dropUp ? [OPTIONS[1], OPTIONS[0]] : [...OPTIONS];
   const markup = getDropdownMarkup(props, optionOrder);
