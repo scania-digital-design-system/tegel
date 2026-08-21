@@ -5,9 +5,7 @@ import { tegelAnalyze } from '../../../../utils/axeHelpers';
 const componentTestPath = 'src/components/radio-button/test/disabled/index.html';
 
 test.describe.parallel('Radio-Button disabled accessibility test', () => {
-  test('Should render disabled behavior without detected accessibility issues', async ({
-    page,
-  }) => {
+  test('Should render disabled behavior without detected accessibility issues', async ({ page }) => {
     await page.goto(componentTestPath);
     const { violations } = await tegelAnalyze(page);
 
