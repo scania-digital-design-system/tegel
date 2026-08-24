@@ -22,17 +22,6 @@
       @include tds-dropdown-border-hover;
     }
 
-    &.disabled {
-      color: var(--tds-dropdown-disabled-color);
-      opacity: var(--tds-dropdown-disabled-opacity);
-
-      .value-wrapper {
-        input {
-          color: var(--tds-dropdown-disabled-color);
-        }
-      }
-    }
-
     .value-wrapper {
       display: flex;
       align-items: center;
@@ -90,8 +79,10 @@
       }
     }
 
-    &.error {
-      @include tds-dropdown-border-error;
+    &:not(.disabled) {
+      &.error {
+        @include tds-dropdown-border-error;
+      }
     }
 
     input {
