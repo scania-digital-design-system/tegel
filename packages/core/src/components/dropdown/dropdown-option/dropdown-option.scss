@@ -33,7 +33,7 @@
       background-color: var(--tds-dropdown-option-background-selected);
     }
 
-    &.disabled {
+    &.disabled:not(:has(tds-checkbox)) {
       opacity: var(--tds-dropdown-option-opacity-disabled);
     }
 
