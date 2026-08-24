@@ -796,7 +796,7 @@
     padding-top: 2px;
   }
 
-  .tl-dropdown.tl-dropdown--label-inside & {
+  .tl-dropdown:is(.tl-dropdown--lg, .tl-dropdown--md).tl-dropdown--label-inside & {
     &:empty {
       top: 6px;
     }
