@@ -1,4 +1,4 @@
-@use '../../../mixins/box-sizing' as *;
+// @use '../../../mixins/box-sizing' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-stepper-vars' as *;
 
@@ -21,13 +21,13 @@
   }
 
   .tl-stepper--lg & {
-    @include detail-01;
+    @include type-system-body-01;
 
     padding: 0 20px;
   }
 
   .tl-stepper--sm & {
-    @include detail-05;
+    @include label-01;
 
     padding: 0 20px;
   }
@@ -88,19 +88,18 @@
   .tl-stepper--lg.tl-stepper--horizontal & {
     &::after {
       height: 1px;
-      left: calc(50% + 15px + 8px);
-      right: calc(-100% + 50% + 15px + 8px);
+      left: calc(100% - 10px);
+      right: -10px;
       top: 16px;
     }
   }
 
-  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
+  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-below:not(.tl-stepper--hide-labels) & {
     &::after {
       height: 1px;
       top: 16px;
-      width: 10px;
-      left: auto;
-      right: -10px;
+      left: calc(50% + 32px);
+      right: calc(-50% + 32px);
     }
   }
 
@@ -120,21 +119,20 @@
       @include divider;
 
       height: 1px;
-      left: calc(50% + 12px + 8px);
-      right: calc(-100% + 50% + 12px + 8px);
+      left: calc(100% - 10px);
+      right: -10px;
       top: 13px;
     }
   }
 
-  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
+  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-below:not(.tl-stepper--hide-labels) & {
     &::after {
       @include divider;
 
       height: 1px;
       top: 13px;
-      width: 10px;
-      left: auto;
-      right: -10px;
+      left: calc(50% + 24px);
+      right: calc(-50% + 24px);
     }
   }
 }
@@ -143,7 +141,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-radius: 100px;
+  border-radius: var(--stepper-border-radius);
   border-width: 1px;
   border-style: solid;
   text-align: center;
@@ -161,23 +159,27 @@
   }
 
   .tl-stepper__step--error & {
-    border-color: var(--stepper-icon-step-border-warning);
-    color: var(--stepper-icon-step-border-warning);
+    border: 1px solid var(--stepper-icon-step-border-warning);
+    color: var(--stepper-icon-step-color-warning);
+    background-color: var(--stepper-icon-step-background-warning);
   }
 
   .tl-stepper__step--success & {
-    background-color: var(--stepper-icon-step-border-success);
-    border-color: var(--stepper-icon-step-border-success);
-    color: var(--stepper-icon-step-checkmark);
+    background-color: var(--stepper-icon-step-background-succes);
+    border: 1px solid var(--stepper-icon-step-border-success);
+    color: var(--stepper-icon-step-color-success);
   }
 
   .tl-stepper__step--current & {
-    color: var(--stepper-current-number-with-border);
+    color: var(--stepper-icon-step-color-current);
+    border: 1px solid var(--stepper-icon-step-border-color-current);
+    background-color: var(--stepper-icon-step-background-color-current);
   }
 
   .tl-stepper__step--upcoming & {
-    border-color: var(--stepper-label-border-upcoming);
+    border: 1px solid var(--stepper-label-border-upcoming);
     color: var(--stepper-label-text-upcoming);
+    background-color: var(--stepper-label-background-upcoming);
   }
 
   .tl-stepper__step--success &,
@@ -227,7 +229,6 @@
 
   .tl-stepper__step--upcoming & {
     color: var(--stepper-label-text-upcoming);
-    opacity: var(--tds-stepper-label-text-opacity-upcoming);
   }
 
   .tl-stepper--hide-labels & {
