@@ -3,7 +3,7 @@
 @use '../../../../../../tokens/scss/component/-input';
 
 .tl-dropdown {
-  --dropdown-background: var(--component-dropdown-background-primary);
+  --dropdown-background: var(--component--input-background-primary);
   --dropdown-text: var(--component--input-text-value-default);
   --dropdown-helper-text: var(--component--input-text-helper-default);
   --dropdown-placeholder: var(--component--input-text-placeholder-default);
@@ -30,13 +30,16 @@
   --dropdown-option-background-selected: var(--component-dropdown-background-item-selected-default);
   --dropdown-option-opacity-disabled: calc(var(--component-dropdown-opacity-disabled) / 100);
   --dropdown-option-border: var(--component-dropdown-border-item-divider-default);
+  --dropdown-list-background-color: var(--component-dropdown-background-secondary);
 
   &--primary {
-    --dropdown-background: var(--component-dropdown-background-primary);
+    --dropdown-background: var(--component--input-background-primary);
+    --dropdown-list-background-color: var(--component-dropdown-background-primary);
   }
 
   &--secondary {
-    --dropdown-background: var(--component-dropdown-background-secondary);
+    --dropdown-background: var(--component--input-background-secondary);
+    --dropdown-list-background-color: var(--component-dropdown-background-secondary);
   }
 }
 

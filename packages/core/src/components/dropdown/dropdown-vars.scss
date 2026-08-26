@@ -25,16 +25,19 @@ tds-dropdown {
   --tds-dropdown-clear-icon-hover-color: var(--component--input-icon-control-hover);
   --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
   --tds-placeholder-margin: calc(var(--unit-8) * 1px);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
 }
 
 .tds-mode-variant-primary tds-dropdown,
 tds-dropdown.tds-mode-variant-primary {
   --tds-dropdown-bg: var(--component--input-background-primary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
 }
 
 .tds-mode-variant-secondary tds-dropdown,
 tds-dropdown.tds-mode-variant-secondary {
   --tds-dropdown-bg: var(--component--input-background-secondary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
 }
 
 .scania tds-dropdown {
@@ -47,6 +50,7 @@ tds-dropdown.tds-mode-variant-secondary {
 
 tds-table-footer {
   --tds-dropdown-bg: var(--component--input-background-secondary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
   --tds-dropdown-border-color: transparent;
   --tds-dropdown-border-color-hover: transparent;
   --tds-dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px);

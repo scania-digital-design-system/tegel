@@ -586,7 +586,7 @@
   top: 100%;
   z-index: 500;
   width: 100%;
-  background: var(--dropdown-background);
+  background: var(--dropdown-list-background-color);
   box-shadow: var(--dropdown-list-box-shadow);
   border-radius: var(--dropdown-list-border-radius);
   margin: 0;
@@ -817,7 +817,7 @@
   padding-top: 10px;
 }
 
-:has(:is(.tl-dropdown__select, .tl-dropdown__button, .tl-dropdown__input):disabled)
+.tl-dropdown:has(:is(.tl-dropdown__select, .tl-dropdown__button, .tl-dropdown__input):disabled)
   .tl-dropdown__text:empty::before {
   opacity: var(--dropdown-opacity-disabled);
   cursor: not-allowed;
