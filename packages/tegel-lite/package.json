@@ -51,6 +51,8 @@
     "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-radio-button.css": "./dist/tl-radio-button.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
+    "./tl-step.css": "./dist/tl-step.css",
+    "./tl-stepper.css": "./dist/tl-stepper.css",
     "./tl-text-field.css": "./dist/tl-text-field.css",
     "./tl-textarea.css": "./dist/tl-textarea.css",
     "./tl-toast.css": "./dist/tl-toast.css",
