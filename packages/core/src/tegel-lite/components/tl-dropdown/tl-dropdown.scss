@@ -449,7 +449,7 @@
   .tl-dropdown:not(.tl-dropdown--label-inside) & {
     @include label-01;
 
-    color: var(--dropdown-text);
+    color: var(--dropdown-label);
     display: block;
     margin-bottom: var(--tds-spacing-element-4);
   }
