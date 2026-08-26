@@ -1045,6 +1045,14 @@
         "error-default": {
           "$type": "color",
           "$value": "{color.system.danger.default}"
+        },
+        "control-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "control-hover": {
+          "$type": "color",
+          "$value": "{component.-input.icon.control-default}"
         }
       },
       "opacity": {
@@ -2012,42 +2020,70 @@
       }
     },
     "dropdown": {
-      "hover": {
-        "$type": "color",
-        "$value": "#EDEFF3"
-      },
-      "focus": {
-        "$type": "color",
-        "$value": "#EDEFF3"
-      },
-      "secondary": {
-        "hover": {
+      "background": {
+        "primary": {
           "$type": "color",
-          "$value": "#EDEFF3"
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "#EDEFF3"
-        }
-      },
-      "list-item": {
-        "hover": {
-          "$type": "color",
-          "$value": "#EDEFF3"
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "#EDEFF3"
+          "$value": "{color.background.layer-01}"
         },
         "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
           "hover": {
             "$type": "color",
-            "$value": "#EDEFF3"
+            "$value": "{scania.color.grey.100}"
           },
-          "focus": {
+          "selected-default": {
             "$type": "color",
-            "$value": "#EDEFF3"
+            "$value": "{scania.color.grey.150}"
           }
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        },
+        "item": {
+          "divider-default": {
+            "$type": "color",
+            "$value": "{color.border.discrete}"
+          }
+        }
+      },
+      "icon": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "item": {
+          "selected-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        }
+      },
+      "text": {
+        "item": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "selected-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{scania.opacity.25}"
         }
       }
     },

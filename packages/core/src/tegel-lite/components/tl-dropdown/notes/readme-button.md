@@ -1,7 +1,9 @@
 # tl-dropdown - Custom
 
 The Custom variant provides a fully customizable dropdown interface using a button trigger and custom option list. It supports both standard selection and filter functionality.
-
+### Good to know
+ - Label inside is only used for sizes Large and Medium. Should not be used for other sizes than those. 
+ 
 ## Usage
 
 ### Custom Dropdown

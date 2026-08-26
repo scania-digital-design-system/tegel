@@ -2,7 +2,7 @@
 
 
 ### Good to know
- - Setting type='time' together with min and max props will not prevent user from set time outside min-max range. It is known issue for native input element. Here is more about it and how to work with it: [Time validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#validation)
+ - Label inside is only used for sizes Large and Medium. Should not be used for other sizes than those. 
 
 **Important**: When you programmatically change the text content of dropdown options, you must call the `updateDisplay()` method to update the display. The dropdown does not automatically detect text content changes.
 

@@ -1,108 +1,52 @@
 // Tegel Lite Dropdown Variables
 @use '../../../../../../tokens/scss/component/dropdown';
-
-.tl-dropdown-option {
-  --dropdown-option-background: var(--color-background-layer-01);
-  --dropdown-option-background-hover: var(--component-dropdown-hover);
-  --dropdown-option-background-selected: var(--component-dropdown-focus);
-  --dropdown-option-disabled: var(--color-foreground-text-disabled);
-  --dropdown-option-border: var(--color-foreground-border-discrete);
-}
+@use '../../../../../../tokens/scss/component/-input';
 
 .tl-dropdown {
-  // Colors - Base
-  --dropdown-background: var(--color-background-layer-01);
+  --dropdown-background: var(--component--input-background-primary);
+  --dropdown-text: var(--component--input-text-value-default);
+  --dropdown-helper-text: var(--component--input-text-helper-default);
+  --dropdown-placeholder: var(--component--input-text-placeholder-default);
+  --dropdown-label: var(--component--input-text-label-default);
+  --dropdown-label-inside: var(--component--input-text-label-default);
+  --dropdown-opacity-disabled: calc(var(--component-dropdown-opacity-disabled) / 100);
+  --dropdown-icon: var(--component-dropdown-icon-default);
+  --dropdown-clear-icon: var(--component--input-icon-control-default);
+  --dropdown-error: var(--component--input-text-error-default);
+  --dropdown-border-bottom-width: calc(var(--component--input-border-width-bottom) * 1px);
+  --dropdown-border-left-width: calc(var(--component--input-border-width-left) * 1px);
+  --dropdown-border-right-width: calc(var(--component--input-border-width-right) * 1px);
+  --dropdown-border-top-width: calc(var(--component--input-border-width-top) * 1px);
+  --dropdown-border: var(--component--input-border-default);
+  --dropdown-border-hover: var(--component--input-border-hover);
+  --dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
+  --dropdown-list-border-radius: calc(var(--component-dropdown-border-radius-default) * 1px);
+  --dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
+  --dropdown-option-background: var(--component-dropdown-background-item-default);
+  --dropdown-option-background-hover: var(--component-dropdown-background-item-hover);
+  --dropdown-option-background-selected: var(--component-dropdown-background-item-selected-default);
+  --dropdown-option-opacity-disabled: calc(var(--component-dropdown-opacity-disabled) / 100);
+  --dropdown-option-border: var(--component-dropdown-border-item-divider-default);
+  --dropdown-list-background-color: var(--component-dropdown-background-secondary);
 
   &--primary {
-    --dropdown-background: var(--color-background-layer-01);
+    --dropdown-background: var(--component--input-background-primary);
+    --dropdown-list-background-color: var(--component-dropdown-background-primary);
   }
 
   &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
+    --dropdown-background: var(--component--input-background-secondary);
+    --dropdown-list-background-color: var(--component-dropdown-background-secondary);
   }
-
-  // Colors - Label/Placeholder/Helper
-  --dropdown-text: var(--color-foreground-text-strong);
-  --dropdown-helper-text: var(--color-foreground-text-defined);
-  --dropdown-placeholder: var(--color-foreground-text-subtle);
-  --dropdown-disabled: var(--color-foreground-text-disabled);
-
-  // Colors - Icon
-  --dropdown-icon: var(--color-foreground-icon-strong);
-  --dropdown-clear-icon: var(--color-foreground-icon-subtle);
-
-  // Colors - Error
-  --dropdown-error: var(--color-system-danger-default);
-  --dropdown-error-focus: var(--color-system-danger-subtle);
 }
 
-.tl-dropdown,
 .scania .tl-dropdown {
-  // Colors - Border - Scania
-
-  /* Changed box shadow variables to work with bottom inside border design. Remove comments when a11y changes are applied */
-  // --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
-  // --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  // --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
-  // --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
-  // --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
-  // --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
-  // --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
-
-  /* Changed box shadow variables to work with bottom inside border design. Can be removed when a11y changes are applied */
-  --dropdown-border: 0 -1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 -2px 0 0 var(--dropdown-error-focus);
-
-  // Units
-  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
-  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
-  --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
-  --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
-  --dropdown-text: var(--color-foreground-text-strong);
-
-  //option
-  --dropdown-option-disabled: var(--color-foreground-text-disabled);
-  --dropdown-option-background: var(--color-background-layer-01);
-  --dropdown-option-background-hover: var(--component-dropdown-hover);
-  --dropdown-option-background-selected: var(--component-dropdown-focus);
-  --dropdown-option-border: var(--color-foreground-border-discrete);
-  --dropdown-helper-text: var(--color-foreground-text-defined);
-  --dropdown-placeholder: var(--color-foreground-text-subtle);
+  --dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
 }
 
-// Traton theme: full border on all sides
 .traton .tl-dropdown {
-  --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
-
-  // Units
-  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
-  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4)
-    var(--dropdown-spacing-4) var(--dropdown-spacing-4);
-
-  &--primary {
-    --dropdown-background: var(--color-background-layer-01);
-
-    .tl-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-01);
-    }
-  }
-
-  &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
-
-    .tl-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-02);
-    }
-  }
+  --dropdown-list-box-shadow: none;
 }
