@@ -8,14 +8,48 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-stepper-success: var(--color-system-success-default);
+  --component-stepper-background-item-default: var(--color-background-none);
+  --component-stepper-background-current-default: var(--scania-color-grey-750);
+  --component-stepper-background-error-default: var(--color-background-none);
+  --component-stepper-background-success-default: var(--scania-color-green-400);
+  --component-stepper-border-item-default: var(--scania-color-grey-750);
+  --component-stepper-border-current-default: var(--color-border-none);
+  --component-stepper-border-error-default: var(--color-system-danger-default);
+  --component-stepper-border-success-default: var(--scania-color-green-400);
+  --component-stepper-border-divider-default: var(--scania-color-grey-750);
+  --component-stepper-border-radius-default: var(--scania-unit-9999);
+  --component-stepper-icon-error-default: var(--color-system-danger-default);
+  --component-stepper-icon-success-default: var(--scania-color-grey-50);
+  --component-stepper-text-label-default: var(--color-text-strong);
+  --component-stepper-text-label-success-default: var(--color-text-strong);
+  --component-stepper-text-label-current-default: var(--color-text-strong);
+  --component-stepper-text-label-error-default: var(--color-text-strong);
+  --component-stepper-text-index-default: var(--color-text-strong);
+  --component-stepper-text-index-current-default: var(--color-text-inverse-strong);
 }
 
 .traton .tds-mode-light,
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-stepper-success: var(--color-system-success-default);
+  --component-stepper-background-item-default: var(--color-background-none);
+  --component-stepper-background-current-default: var(--color-background-none);
+  --component-stepper-background-error-default: var(--color-background-none);
+  --component-stepper-background-success-default: var(--color-system-success-default);
+  --component-stepper-border-item-default: var(--color-border-discrete);
+  --component-stepper-border-current-default: var(--color-border-strong);
+  --component-stepper-border-error-default: var(--color-system-danger-default);
+  --component-stepper-border-success-default: var(--color-system-success-default);
+  --component-stepper-border-divider-default: var(--color-border-disabled);
+  --component-stepper-border-radius-default: var(--traton-unit-9999);
+  --component-stepper-icon-error-default: var(--color-system-danger-default);
+  --component-stepper-icon-success-default: var(--color-icon-inverse-strong);
+  --component-stepper-text-label-default: var(--color-text-disabled);
+  --component-stepper-text-label-success-default: var(--color-text-strong);
+  --component-stepper-text-label-current-default: var(--color-text-strong);
+  --component-stepper-text-label-error-default: var(--color-text-strong);
+  --component-stepper-text-index-default: var(--color-text-disabled);
+  --component-stepper-text-index-current-default: var(--color-text-strong);
 }
 
 .tds-mode-dark,
@@ -23,12 +57,46 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-stepper-success: var(--color-system-success-default);
+  --component-stepper-background-item-default: var(--color-background-none);
+  --component-stepper-background-current-default: var(--scania-color-grey-150);
+  --component-stepper-background-error-default: var(--color-background-none);
+  --component-stepper-background-success-default: var(--scania-color-green-300);
+  --component-stepper-border-item-default: var(--scania-color-grey-150);
+  --component-stepper-border-current-default: var(--color-border-none);
+  --component-stepper-border-error-default: var(--color-system-danger-default);
+  --component-stepper-border-success-default: var(--scania-color-green-300);
+  --component-stepper-border-divider-default: var(--scania-color-grey-250);
+  --component-stepper-border-radius-default: var(--scania-unit-9999);
+  --component-stepper-icon-error-default: var(--color-system-danger-default);
+  --component-stepper-icon-success-default: var(--scania-color-grey-50);
+  --component-stepper-text-label-default: var(--color-text-strong);
+  --component-stepper-text-label-success-default: var(--color-text-strong);
+  --component-stepper-text-label-current-default: var(--color-text-strong);
+  --component-stepper-text-label-error-default: var(--color-text-strong);
+  --component-stepper-text-index-default: var(--color-text-strong);
+  --component-stepper-text-index-current-default: var(--color-text-inverse-strong);
 }
 
 .traton .tds-mode-dark,
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-stepper-success: var(--color-system-success-default);
+  --component-stepper-background-item-default: var(--color-background-none);
+  --component-stepper-background-current-default: var(--color-background-none);
+  --component-stepper-background-error-default: var(--color-background-none);
+  --component-stepper-background-success-default: var(--color-system-success-default);
+  --component-stepper-border-item-default: var(--color-border-discrete);
+  --component-stepper-border-current-default: var(--color-border-strong);
+  --component-stepper-border-error-default: var(--color-system-danger-default);
+  --component-stepper-border-success-default: var(--color-system-success-default);
+  --component-stepper-border-divider-default: var(--color-border-disabled);
+  --component-stepper-border-radius-default: var(--traton-unit-9999);
+  --component-stepper-icon-error-default: var(--color-system-danger-default);
+  --component-stepper-icon-success-default: var(--color-icon-inverse-strong);
+  --component-stepper-text-label-default: var(--color-text-disabled);
+  --component-stepper-text-label-success-default: var(--color-text-strong);
+  --component-stepper-text-label-current-default: var(--color-text-strong);
+  --component-stepper-text-label-error-default: var(--color-text-strong);
+  --component-stepper-text-index-default: var(--color-text-disabled);
+  --component-stepper-text-index-current-default: var(--color-text-strong);
 }
