@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/dropdown/test/multiselect/index.html';
 const componentName = 'tds-dropdown';
 const testDescription = 'tds-dropdown-multiselect';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

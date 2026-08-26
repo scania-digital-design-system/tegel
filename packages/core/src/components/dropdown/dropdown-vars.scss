@@ -1,75 +1,62 @@
-:root,
-.tds-mode-light {
-  --tds-dropdown-bg: var(--tds-grey-50);
-  --tds-dropdown-border-bottom: var(--tds-grey-350);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-850);
-  --tds-dropdown-value-color: var(--tds-grey-950);
-  --tds-dropdown-label-color: var(--tds-grey-950);
-  --tds-dropdown-label-inside-color: var(--tds-grey-950);
-  --tds-dropdown-helper-color: var(--tds-grey-500);
-  --tds-dropdown-placeholder-color: var(--tds-grey-500);
-  --tds-dropdown-disabled-color: var(--tds-grey-250);
-  --tds-dropdown-filter-input-color: var(--tds-grey-950);
-  --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
-  --tds-dropdown-error: var(--tds-red-400);
-  --tds-dropdown-menu-icon-color: var(--tds-grey-950);
-  --tds-dropdown-clear-icon-color: var(--tds-grey-350);
-  --tds-dropdown-clear-icon-hover-color: var(--tds-grey-350);
-
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-50);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-white);
-  }
-
-  tds-table-footer {
-    --tds-dropdown-bg: white;
-    --tds-placeholder-margin: var(--tds-spacing-element-8);
-    --tds-dropdown-border-bottom: transparent;
-    --tds-dropdown-border-bottom-hover: transparent;
-    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
-  }
+tds-dropdown {
+  --tds-dropdown-bg: var(--component--input-background-primary);
+  --tds-dropdown-border-color: var(--component--input-border-default);
+  --tds-dropdown-border-bottom-width: calc(var(--component--input-border-width-bottom) * 1px);
+  --tds-dropdown-border-left-width: calc(var(--component--input-border-width-left) * 1px);
+  --tds-dropdown-border-right-width: calc(var(--component--input-border-width-right) * 1px);
+  --tds-dropdown-border-top-width: calc(var(--component--input-border-width-top) * 1px);
+  --tds-dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
+  --tds-dropdown-border-color-hover: var(--component--input-border-hover);
+  --tds-dropdown-value-color: var(--component--input-text-value-default);
+  --tds-dropdown-label-color: var(--component--input-text-label-default);
+  --tds-dropdown-label-inside-color: var(--component--input-text-label-default);
+  --tds-dropdown-helper-color: var(--component--input-text-helper-default);
+  --tds-dropdown-placeholder-color: var(--component--input-text-placeholder-default);
+  --tds-dropdown-disabled-color: var(--component--input-text-placeholder-default);
+  --tds-dropdown-disabled-opacity: calc(var(--component-dropdown-opacity-disabled) / 100);
+  --tds-dropdown-filter-input-color: var(--component--input-text-value-default);
+  --tds-dropdown-list-border-radius: calc(var(--component-dropdown-border-radius-default) * 1px);
+  --tds-dropdown-error: var(--component--input-text-error-default);
+  --tds-dropdown-menu-icon-color: var(--component-dropdown-icon-default);
+  --tds-dropdown-clear-icon-color: var(--component--input-icon-control-default);
+  --tds-dropdown-clear-icon-hover-color: var(--component--input-icon-control-hover);
+  --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
+  --tds-placeholder-margin: calc(var(--unit-8) * 1px);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
 }
 
-.tds-mode-dark {
-  --tds-dropdown-bg: var(--tds-grey-900);
-  --tds-dropdown-border-bottom: var(--tds-grey-350);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-50);
-  --tds-dropdown-value-color: var(--tds-grey-50);
-  --tds-dropdown-label-color: var(--tds-grey-50);
-  --tds-dropdown-label-inside-color: var(--tds-grey-50);
-  --tds-dropdown-helper-color: var(--tds-grey-300);
-  --tds-dropdown-placeholder-color: var(--tds-grey-300);
-  --tds-dropdown-disabled-color: var(--tds-grey-500);
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
-  --tds-dropdown-filter-input-color: var(--tds-grey-50);
-  --tds-dropdown-error: var(--tds-red-300);
-  --tds-dropdown-menu-icon-color: var(--tds-grey-50);
-  --tds-dropdown-clear-icon-color: var(--tds-grey-400);
-  --tds-dropdown-clear-icon-hover-color: var(--tds-grey-400);
+.tds-mode-variant-primary tds-dropdown,
+tds-dropdown.tds-mode-variant-primary {
+  --tds-dropdown-bg: var(--component--input-background-primary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
+}
 
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-900);
-  }
+.tds-mode-variant-secondary tds-dropdown,
+tds-dropdown.tds-mode-variant-secondary {
+  --tds-dropdown-bg: var(--component--input-background-secondary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
+}
 
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-grey-850);
-  }
+.scania tds-dropdown {
+  --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
+}
 
-  tds-table-footer {
-    --tds-dropdown-bg: var(--tds-grey-850);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
-  }
+.traton tds-dropdown {
+  --tds-dropdown-list-box-shadow: none;
+}
+
+tds-table-footer {
+  --tds-dropdown-bg: var(--component--input-background-secondary);
+  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
+  --tds-dropdown-border-color: transparent;
+  --tds-dropdown-border-color-hover: transparent;
+  --tds-dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px);
+  --tds-dropdown-value-color: var(--component--input-text-value-default);
+  --tds-dropdown-list-border-radius: calc(var(--component-dropdown-border-radius-default) * 1px);
+  --tds-dropdown-menu-icon-color: var(--component-dropdown-icon-default);
+  --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
+  --tds-placeholder-margin: calc(var(--unit-8) * 1px);
 }

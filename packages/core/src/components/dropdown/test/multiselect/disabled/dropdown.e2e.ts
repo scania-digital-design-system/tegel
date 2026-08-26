@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/dropdown/test/multiselect/disabled/ind
 const componentName = 'tds-dropdown';
 const testDescription = 'tds-dropdown-multiselect-disabled';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

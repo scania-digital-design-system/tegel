@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tegel Lite - Dropdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+  <link rel="stylesheet" href="../../dist/scania-variables.css" />
+  <link rel="stylesheet" href="../../dist/traton-variables.css" />
+  <link rel="stylesheet" href="../../dist/global.css" />
+  <link rel="stylesheet" href="../../dist/tl-dropdown.css" />
+  <link rel="stylesheet" href="../../dist/tl-checkbox.css" />
+</head>
+
+<body style="height: 100vh;">
+  <div class="demo-wrapper ">
+
+    <!-- Large Single select open -->
+    <div class="tl-dropdown tl-dropdown--lg tl-dropdown--primary">
+      <label class="tl-dropdown__label" id="tl-dropdown-label">Label</label>
+
+      <button type="button" class="tl-dropdown__button" aria-expanded="true">
+        <span class="tl-dropdown__text" data-placeholder="Placeholder"></span>
+      </button>
+      <ul class="tl-dropdown__list" id="tl-dropdown-btn-list" role="listbox">
+        <li class="tl-dropdown__option" role="option">Option 1</li>
+        <li class="tl-dropdown__option" role="option">Option 2</li>
+        <li class="tl-dropdown__option" role="option">Option 3</li>
+        <li class="tl-dropdown__option" role="option">Option 4</li>
+        <li class="tl-dropdown__option" role="option">Option 5</li>
+        <li class="tl-dropdown__option" role="option">Option 6</li>
+        <li class="tl-dropdown__option" role="option">Option 7</li>
+        <li class="tl-dropdown__option" role="option">Option 8</li>
+        <li class="tl-dropdown__option" role="option">Option 9</li>
+        <li class="tl-dropdown__option" role="option">Option 10</li>
+        <li class="tl-dropdown__option" role="option">Option 11</li>
+        <li class="tl-dropdown__option" role="option">Option 12</li>
+        <li class="tl-dropdown__option" role="option">Option 13</li>
+        <li class="tl-dropdown__option" role="option">Option 14</li>
+        <li class="tl-dropdown__option" role="option">Option 15</li>
+        <li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">Option disabled</li>
+      </ul>
+      <div class="tl-dropdown__helper">Helper text</div>
+    </div>
+
+    <!-- Large Multi select open -->
+    <div class="tl-dropdown tl-dropdown--lg tl-dropdown--primary">
+      <label class="tl-dropdown__label" id="tl-dropdown-label">Label</label>
+
+      <button type="button" class="tl-dropdown__button" aria-expanded="true">
+        <span class="tl-dropdown__text" data-placeholder="Placeholder"></span>
+      </button>
+      <ul class="tl-dropdown__list" id="tl-dropdown-multi" role="listbox" aria-multiselectable="true">
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-0" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-0">Option 1</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-1" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-1">Option 2</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-2" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-2">Option 3</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-3" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-3">Option 4</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-4" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-4">Option 5</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-5" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-5">Option 6</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-6" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-6">Option 7</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-7" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-7">Option 8</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-8" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-8">Option 9</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-9" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-9">Option 10</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-10" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-10">Option 11</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-11" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-11">Option 12</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-12" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-12">Option 13</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-13" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-13">Option 14</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-14" />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-14">Option 15</label>
+          </div>
+        </li>
+
+        <li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-multi-disabled" disabled />
+            <label class="tl-checkbox__label" for="tl-dropdown-multi-disabled">Option disabled</label>
+          </div>
+        </li>
+      </ul>
+      <div class="tl-dropdown__helper">Helper text</div>
+    </div>
+
+    <!-- Large Single select with filter open -->
+    <div class="tl-dropdown tl-dropdown--lg tl-dropdown--primary">
+      <label class="tl-dropdown__label" id="tl-dropdown-label" for="tl-dropdown-filter-input">
+        Label
+      </label>
+
+      <div class="tl-dropdown__input-wrapper">
+        <input class="tl-dropdown__input" id="tl-dropdown-filter-input" type="text" placeholder="Placeholder"
+          aria-expanded="true" />
+        <button type="button" class="tl-dropdown__input-clear" tabindex="-1"></button>
+      </div>
+      <ul class="tl-dropdown__list" id="tl-dropdown-filter-list" role="listbox">
+        <li class="tl-dropdown__option" role="option">Option 1</li>
+        <li class="tl-dropdown__option" role="option">Option 2</li>
+        <li class="tl-dropdown__option" role="option">Option 3</li>
+        <li class="tl-dropdown__option" role="option">Option 4</li>
+        <li class="tl-dropdown__option" role="option">Option 5</li>
+        <li class="tl-dropdown__option" role="option">Option 6</li>
+        <li class="tl-dropdown__option" role="option">Option 7</li>
+        <li class="tl-dropdown__option" role="option">Option 8</li>
+        <li class="tl-dropdown__option" role="option">Option 9</li>
+        <li class="tl-dropdown__option" role="option">Option 10</li>
+        <li class="tl-dropdown__option" role="option">Option 11</li>
+        <li class="tl-dropdown__option" role="option">Option 12</li>
+        <li class="tl-dropdown__option" role="option">Option 13</li>
+        <li class="tl-dropdown__option" role="option">Option 14</li>
+        <li class="tl-dropdown__option" role="option">Option 15</li>
+        <li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">Option disabled</li>
+        <li class="tl-dropdown__option tl-dropdown__option--no-result" role="option">No result</li>
+      </ul>
+      <div class="tl-dropdown__helper">Helper text</div>
+    </div>
+
+    <!-- Large Multi select with filter open -->
+    <div class="tl-dropdown tl-dropdown--lg tl-dropdown--primary">
+      <label class="tl-dropdown__label" id="tl-dropdown-label" for="tl-dropdown-filter-input">
+        Label
+      </label>
+
+      <div class="tl-dropdown__input-wrapper">
+        <input class="tl-dropdown__input" id="tl-dropdown-filter-input" type="text" placeholder="Placeholder"
+          aria-expanded="true" />
+        <button type="button" class="tl-dropdown__input-clear" tabindex="-1"></button>
+      </div>
+      <ul class="tl-dropdown__list" id="tl-dropdown-filter-list" role="listbox" aria-multiselectable="true">
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-0" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-0">Option 1</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-1" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-1">Option 2</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-2" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-2">Option 3</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-3" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-3">Option 4</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-4" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-4">Option 5</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-5" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-5">Option 6</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-6" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-6">Option 7</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-7" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-7">Option 8</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-8" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-8">Option 9</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-9" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-9">Option 10</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-10" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-10">Option 11</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-11" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-11">Option 12</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-12" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-12">Option 13</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-13" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-13">Option 14</label>
+          </div>
+        </li>
+        <li class="tl-dropdown__option" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-14" />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-14">Option 15</label>
+          </div>
+        </li>
+
+        <li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="tl-dropdown-filter-list-disabled" disabled />
+            <label class="tl-checkbox__label" for="tl-dropdown-filter-list-disabled">
+              Option disabled
+            </label>
+          </div>
+        </li>
+      </ul>
+      <div class="tl-dropdown__helper">Helper text</div>
+    </div>
+  </div>
+</body>
+<style>
+  .tds-mode-dark {
+    /* tds-grey-900 */
+    background-color: #15181d;
+  }
+
+  .variant-wrapper {
+    display: flex;
+    width: 380px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .demo-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+</style>
+
+</html>

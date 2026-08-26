@@ -85,7 +85,6 @@ function getSelectMarkup(isInside: boolean, placeholder: string, disabled: boole
 }
 
 export function getButtonMarkup(
-  isInside: boolean,
   placeholder: string,
   disabled: boolean,
   listId: string,
@@ -107,7 +106,7 @@ export function getButtonMarkup(
     <button type="button" class="tl-dropdown__button" ${
       disabled ? 'disabled' : ''
     } aria-expanded="false">
-      <span class="tl-dropdown__text"${isInside ? '' : ` data-placeholder="${placeholder}"`}></span>
+      <span class="tl-dropdown__text" data-placeholder="${placeholder}"></span>
     </button>
     <ul class="tl-dropdown__list" id="${listId}" role="listbox">
       ${items}
@@ -115,7 +114,6 @@ export function getButtonMarkup(
 }
 
 export function getMultiselectMarkup(
-  isInside: boolean,
   placeholder: string,
   disabled: boolean,
   opts: readonly string[],
@@ -139,7 +137,7 @@ export function getMultiselectMarkup(
     <button type="button" class="tl-dropdown__button" ${
       disabled ? 'disabled' : ''
     } aria-expanded="false">
-      <span class="tl-dropdown__text"${isInside ? '' : ` data-placeholder="${placeholder}"`}></span>
+      <span class="tl-dropdown__text" data-placeholder="${placeholder}"></span>
     </button>
     <ul class="tl-dropdown__list" id="${IDS.multi}" role="listbox" aria-multiselectable="true">
       ${items}
@@ -251,12 +249,12 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   } else if (currentVariant === 'Button' && multiselect) {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getMultiselectMarkup(isInside, placeholder, disabled, optionOrder)}`;
+      ${getMultiselectMarkup(placeholder, disabled, optionOrder)}`;
   } else if (currentVariant === 'Button') {
     const listId = IDS.btnList;
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getButtonMarkup(isInside, placeholder, disabled, listId, optionOrder, dropUp)}`;
+      ${getButtonMarkup(placeholder, disabled, listId, optionOrder, dropUp)}`;
   } else {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.filterInput) : ''}
@@ -340,7 +338,7 @@ function getDropdownScript(props: {
   return `<!-- Script tag for demo purposes -->\n<script>\n  ${comment}\n  ${fn}\n</script>`;
 }
 
-const Template = (props: TemplateProps): string => {
+const Template = (props: TemplateProps): Promise<string> => {
   const dropUp = props.direction === 'Up';
   const optionOrder = dropUp ? [OPTIONS[1], OPTIONS[0]] : [...OPTIONS];
   const markup = getDropdownMarkup(props, optionOrder);

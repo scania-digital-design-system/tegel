@@ -37,6 +37,7 @@
     "./tl-chip.css": "./dist/tl-chip.css",
     "./tl-datetime.css": "./dist/tl-datetime.css",
     "./tl-divider.css": "./dist/tl-divider.css",
+    "./tl-dropdown.css": "./dist/tl-dropdown.css",
     "./tl-folder-tabs.css": "./dist/tl-folder-tabs.css",
     "./tl-footer.css": "./dist/tl-footer.css",
     "./tl-header.css": "./dist/tl-header.css",

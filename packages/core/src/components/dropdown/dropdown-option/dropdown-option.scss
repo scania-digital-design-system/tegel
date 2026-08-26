@@ -4,6 +4,7 @@
 /* Mixins */
 @use '../../../mixins/focus-state' as *;
 @use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 :host {
   @include tds-box-sizing;
@@ -12,19 +13,28 @@
   background-color: var(--tds-dropdown-option-background);
 
   .dropdown-option {
+    @include type-system-body-01;
+
     color: var(--tds-dropdown-option-color);
     border-bottom: 1px solid var(--tds-dropdown-option-border);
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
     overflow-wrap: anywhere;
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+
+    &:hover:not(.disabled, .selected) {
+      background-color: var(--tds-dropdown-option-background-hover);
+      cursor: pointer;
+    }
+
+    &:hover.disabled {
+      cursor: not-allowed;
+    }
 
     &.selected {
       background-color: var(--tds-dropdown-option-background-selected);
     }
 
-    &.disabled {
-      color: var(--tds-dropdown-option-color-disabled);
+    &.disabled:not(:has(tds-checkbox)) {
+      opacity: var(--tds-dropdown-option-opacity-disabled);
     }
 
     & button:focus {
@@ -83,17 +93,11 @@
         &.xs {
           padding: 7px 16px 8px;
         }
+
+        input[type='checkbox']:hover::before {
+          box-shadow: none;
+        }
       }
-    }
-
-    &:hover {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
-      cursor: pointer;
-    }
-
-    &:hover.disabled {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
-      cursor: not-allowed;
     }
   }
 }
