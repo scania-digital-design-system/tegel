@@ -9,6 +9,7 @@
   position: relative;
 
   &:has(:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):disabled) {
+    opacity: var(--dropdown-opacity-disabled);
     cursor: not-allowed;
   }
 }
@@ -67,7 +68,6 @@
   &:disabled {
     @include tl-dropdown-border;
 
-    opacity: var(--dropdown-opacity-disabled);
     box-shadow: none;
     cursor: not-allowed;
     pointer-events: none;
@@ -199,12 +199,6 @@
     & {
     transform: rotate(180deg) translateY(50%);
   }
-
-  .tl-dropdown:has(.tl-dropdown__select:disabled) &,
-  .tl-dropdown:has(.tl-dropdown__button:disabled) &,
-  .tl-dropdown:has(.tl-dropdown__input:disabled) & {
-    opacity: var(--dropdown-opacity-disabled);
-  }
 }
 
 // Label outside without helper - size specific adjustments
@@ -227,12 +221,6 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown--lg:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
-    :has(.tl-dropdown__helper)
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
-}
-
 .tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
   )::after {
@@ -252,12 +240,6 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
-    :has(.tl-dropdown__helper)
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
-}
-
 .tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
   )::after {
@@ -275,12 +257,6 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
-}
-
-.tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select:disabled):not(
-    :has(.tl-dropdown__helper)
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
 }
 
 // Label outside for button/input - 1px lower
@@ -313,12 +289,6 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):not(
-    :has(.tl-dropdown__helper)
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
-}
-
 // No label without helper - perfectly centered
 .tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select):not(
     :has(.tl-dropdown__helper)
@@ -339,12 +309,6 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select:disabled):not(
-    :has(.tl-dropdown__helper)
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
-}
-
 // Label inside with helper - same as no label with helper
 .tl-dropdown--label-inside:has(.tl-dropdown__select):has(.tl-dropdown__helper)::after {
   content: '';
@@ -361,10 +325,6 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
-}
-
-.tl-dropdown--label-inside:has(.tl-dropdown__select:disabled):has(.tl-dropdown__helper)::after {
-  opacity: var(--dropdown-opacity-disabled);
 }
 
 // No label with helper - helper below, chevron moves up
@@ -387,12 +347,6 @@
   transition: transform 0.2s;
 }
 
-.tl-dropdown:not(:has(.tl-dropdown__label)):has(.tl-dropdown__select:disabled):has(
-    .tl-dropdown__helper
-  )::after {
-  opacity: var(--dropdown-opacity-disabled);
-}
-
 // Label outside with helper - label above + helper below balance out, centered
 .tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(.tl-dropdown__select):has(
     .tl-dropdown__helper
@@ -411,12 +365,6 @@
   mask-position: center;
   pointer-events: none;
   transition: transform 0.2s;
-}
-
-.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(
-    .tl-dropdown__select:disabled
-  ):has(.tl-dropdown__helper)::after {
-  opacity: var(--dropdown-opacity-disabled);
 }
 
 .tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__label):has(
@@ -439,12 +387,6 @@
 }
 
 .tl-dropdown__label {
-  .tl-dropdown:has(.tl-dropdown__select:disabled) &,
-  .tl-dropdown:has(.tl-dropdown__button:disabled) &,
-  .tl-dropdown:has(.tl-dropdown__input:disabled) & {
-    opacity: var(--dropdown-opacity-disabled);
-  }
-
   // Default behavior: label outside
   .tl-dropdown:not(.tl-dropdown--label-inside) & {
     @include label-01;
@@ -759,7 +701,6 @@
     }
 
     color: var(--dropdown-helper-text);
-    opacity: var(--dropdown-opacity-disabled);
   }
 
   .tl-dropdown--error &::before {
@@ -819,7 +760,6 @@
 
 .tl-dropdown:has(:is(.tl-dropdown__select, .tl-dropdown__button, .tl-dropdown__input):disabled)
   .tl-dropdown__text:empty::before {
-  opacity: var(--dropdown-opacity-disabled);
   cursor: not-allowed;
 }
 
@@ -836,12 +776,10 @@
 }
 
 .tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select:disabled {
-  opacity: var(--dropdown-opacity-disabled);
   cursor: not-allowed;
 }
 
 .tl-dropdown:not(.tl-dropdown--label-inside) .tl-dropdown__input:disabled::placeholder {
-  opacity: var(--dropdown-opacity-disabled);
   cursor: not-allowed;
 }
 
@@ -860,18 +798,10 @@
   &:focus-visible {
     @include tds-focus-state;
   }
-
-  &:disabled {
-    opacity: var(--dropdown-opacity-disabled);
-  }
 }
 
 .tl-dropdown__select {
   @include tl-dropdown-border;
-
-  &:disabled {
-    opacity: var(--dropdown-opacity-disabled);
-  }
 }
 
 :is(.traton, .scania) .tl-dropdown--error .tl-dropdown__select {
