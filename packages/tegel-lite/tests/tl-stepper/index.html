@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tegel Lite - Stepper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+  <link rel="stylesheet" href="../../dist/scania-variables.css" />
+  <link rel="stylesheet" href="../../dist/traton-variables.css" />
+  <link rel="stylesheet" href="../../dist/global.css" />
+  <link rel="stylesheet" href="../../dist/tl-stepper.css" />
+  <link rel="stylesheet" href="../../dist/tl-icon.css" />
+</head>
+
+<body style="height: 100vh;">
+  <div class="demo-wrapper ">
+
+    <div class="variant-wrapper">
+
+      <div class="tl-stepper tl-stepper--lg tl-stepper--horizontal tl-stepper--label-aside">
+        <ol class="tl-stepper__list">
+          <li class="tl-stepper__step tl-stepper__step--success">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Success step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--error">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Error step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--current">
+            <div class="tl-stepper__node">3</div>
+            <div class="tl-stepper__label">Current step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--upcoming">
+            <div class="tl-stepper__node">4</div>
+            <div class="tl-stepper__label">Upcoming step</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="tl-stepper tl-stepper--sm tl-stepper--horizontal tl-stepper--label-below">
+        <ol class="tl-stepper__list">
+          <li class="tl-stepper__step tl-stepper__step--success">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Success step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--error">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Error step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--current">
+            <div class="tl-stepper__node">3</div>
+            <div class="tl-stepper__label">Current step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--upcoming">
+            <div class="tl-stepper__node">4</div>
+            <div class="tl-stepper__label">Upcoming step</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="tl-stepper tl-stepper--lg tl-stepper--vertical tl-stepper--hide-labels">
+        <ol class="tl-stepper__list">
+          <li class="tl-stepper__step tl-stepper__step--success">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Success step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--error">
+            <div class="tl-stepper__node"></div>
+            <div class="tl-stepper__label">Error step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--current">
+            <div class="tl-stepper__node">3</div>
+            <div class="tl-stepper__label">Current step</div>
+          </li>
+          <li class="tl-stepper__step tl-stepper__step--upcoming">
+            <div class="tl-stepper__node">4</div>
+            <div class="tl-stepper__label">Upcoming step</div>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+<style>
+  .tl-mode-dark {
+    /* tds-grey-900 */
+    background-color: #15181d;
+  }
+
+  .variant-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .demo-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+</style>
+
+</html>
