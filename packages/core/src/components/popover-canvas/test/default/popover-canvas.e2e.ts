@@ -54,7 +54,9 @@ test.describe.parallel(componentName, () => {
   });
 
   test('activating close method should close the dialog', async ({ page }) => {
-    const triggerButton = page.getByRole('button');
+    const triggerButton = page.getByTestId('trigger-button');
+
+    await expect(triggerButton).toHaveClass(/hydrated/);
     await triggerButton.click();
 
     const popoverCanvasHeader = page.getByRole('heading');
