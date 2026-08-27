@@ -203,21 +203,21 @@
       }
 
       &.success {
-        background-color: var(--tds-stepper-icon-step-border-color-success);
+        background-color: var(--tds-stepper-icon-step-background-success);
         border: 1px solid var(--tds-stepper-icon-step-border-color-success);
         color: var(--tds-stepper-icon-step-color-success);
       }
 
       &.current {
-        background-color: var(--tds-stepper-icon-step-background-color-current);
-        color: var(--tds-stepper-icon-step-color-current);
-        border: 1px solid var(--tds-stepper-icon-step-border-color-current);
+        background-color: var(--tds-stepper-background-color-current);
+        color: var(--tds-stepper-index-color-current);
+        border: 1px solid var(--tds-stepper-border-color-current);
       }
 
       &.upcoming {
         background-color: var(--tds-stepper-background-color-upcoming);
-        border: 1px solid var(--tds-stepper-label-border-color-upcoming);
-        color: var(--tds-stepper-label-text-color-upcoming);
+        border: 1px solid var(--tds-stepper-border-color-upcoming);
+        color: var(--tds-stepper-index-color-upcoming);
       }
     }
 
@@ -230,6 +230,18 @@
 
       &.sm {
         @include label-01;
+      }
+
+      &.error {
+        color: var(--tds-stepper-label-text-color-warning);
+      }
+
+      &.success {
+        color: var(--tds-stepper-label-text-color-success);
+      }
+
+      &.current {
+        color: var(--tds-stepper-label-text-color-current);
       }
 
       &.upcoming {
