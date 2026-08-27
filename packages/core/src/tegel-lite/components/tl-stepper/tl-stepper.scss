@@ -1,7 +1,7 @@
 @use '../../../mixins/box-sizing' as *;
 @use './tl-stepper-vars' as *;
 
-@use 'tl-step' as *;
+@use 'step' as *;
 
 .tl-stepper {
   @include tds-box-sizing;
