@@ -2,24 +2,28 @@
 
 .tl-stepper {
   // Current
-  --stepper-icon-step-border-color-current: var(--component-stepper-border-current-default);
-  --stepper-icon-step-background-color-current: var(--component-stepper-background-current-default);
-  --stepper-icon-step-color-current: var(--component-stepper-text-index-current-default);
+  --stepper-background-color-current: var(--component-stepper-background-current-default);
+  --stepper-border-color-current: var(--component-stepper-border-current-default);
+  --stepper-index-color-current: var(--component-stepper-text-index-current-default);
+  --stepper-label-text-color-current: var(--component-stepper-text-label-current-default);
 
   // Warning
-  --stepper-icon-step-border-warning: var(--color-system-danger-default);
+  --stepper-icon-step-background-warning: var(--component-stepper-background-error-default);
+  --stepper-icon-step-border-warning: var(--component-stepper-border-error-default);
   --stepper-icon-step-color-warning: var(--component-stepper-icon-error-default);
-  --stepper-icon-step-backgound-warning: var(--component-stepper-background-error-default);
+  --stepper-label-text-color-warning: var(--component-stepper-text-label-error-default);
 
   // Success
+  --stepper-icon-step-background-succes: var(--component-stepper-background-success-default);
   --stepper-icon-step-border-success: var(--component-stepper-border-success-default);
   --stepper-icon-step-color-success: var(--component-stepper-icon-success-default);
-  --stepper-icon-step-background-succes: var(--component-stepper-background-success-default);
+  --stepper-label-text-color-success: var(--component-stepper-text-label-success-default);
 
   // Upcoming
-  --stepper-label-text-upcoming: var(--component-stepper-text-index-default);
+  --stepper-label-background-upcoming: var(--component-stepper-background-item-default);
   --stepper-label-border-upcoming: var(--component-stepper-border-item-default);
-  --stepper-label-background-upcoming: var(--component-stepper-background-item-default); // new
+  --stepper-index-color-upcoming: var(--component-stepper-text-index-default);
+  --stepper-label-text-color-upcoming: var(--component-stepper-text-label-default);
 
   // Divider
   --stepper-divider-line: var(--component-stepper-border-divider-default);

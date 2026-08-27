@@ -1,4 +1,3 @@
-// @use '../../../mixins/box-sizing' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-stepper-vars' as *;
 
@@ -33,7 +32,6 @@
   }
 
   .tl-stepper--horizontal:not(.tl-stepper--label-aside) .tl-stepper__list > & {
-    flex: 1 1 0;
     min-inline-size: 60px; // Prevent overlap: node (30px) + label + spacing
   }
 
@@ -63,6 +61,13 @@
     }
   }
 
+  .tl-stepper--lg &:first-of-type,
+  .tl-stepper--sm &:first-of-type {
+    &::before {
+      display: none;
+    }
+  }
+
   .tl-stepper--vertical.tl-stepper--lg &:last-of-type,
   .tl-stepper--vertical.tl-stepper--sm &:last-of-type {
     &::after {
@@ -70,14 +75,10 @@
     }
   }
 
-  .tl-stepper--lg & {
-    &::after {
-      @include divider;
-    }
-  }
-
   .tl-stepper--lg.tl-stepper--vertical & {
     &::after {
+      @include divider;
+
       height: 36px;
       width: 1px;
       top: 40px;
@@ -87,19 +88,63 @@
 
   .tl-stepper--lg.tl-stepper--horizontal & {
     &::after {
+      @include divider;
+
       height: 1px;
-      left: calc(100% - 10px);
-      right: -10px;
+      left: calc(50% + 32px);
+      right: 0;
+      top: 16px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      right: calc(50% + 32px);
+      left: 0;
       top: 16px;
     }
   }
 
-  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-below:not(.tl-stepper--hide-labels) & {
+  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
     &::after {
+      @include divider;
+
       height: 1px;
       top: 16px;
-      left: calc(50% + 32px);
-      right: calc(-50% + 32px);
+      left: auto;
+      right: -10px;
+      width: 10px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      top: 16px;
+      left: -10px;
+      right: auto;
+      width: 10px;
+    }
+  }
+
+  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--hide-labels & {
+    &::after {
+      @include divider;
+
+      height: 1px;
+      left: calc(50% + 16px + 8px);
+      right: 0;
+      top: 16px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      right: calc(50% + 16px + 8px);
+      left: 0;
+      top: 16px;
     }
   }
 
@@ -119,20 +164,60 @@
       @include divider;
 
       height: 1px;
-      left: calc(100% - 10px);
-      right: -10px;
+      left: calc(50% + 12px + 16px);
+      right: 0;
+      top: 13px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      left: 0;
+      right: calc(50% + 12px + 16px);
       top: 13px;
     }
   }
 
-  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-below:not(.tl-stepper--hide-labels) & {
+  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
     &::after {
       @include divider;
 
       height: 1px;
+      left: auto;
+      right: -10px;
+      width: 10px;
       top: 13px;
-      left: calc(50% + 24px);
-      right: calc(-50% + 24px);
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      top: 13px;
+      left: -10px;
+      right: auto;
+      width: 10px;
+    }
+  }
+
+  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--hide-labels & {
+    &::after {
+      @include divider;
+
+      height: 1px;
+      left: calc(50% + 12px + 8px);
+      right: 0;
+      top: 13px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      right: calc(50% + 12px + 8px);
+      left: 0;
+      top: 13px;
     }
   }
 }
@@ -150,7 +235,6 @@
   .tl-stepper--lg & {
     height: 30px;
     min-width: 30px;
-    font-size: 14px;
   }
 
   .tl-stepper--sm & {
@@ -171,14 +255,14 @@
   }
 
   .tl-stepper__step--current & {
-    color: var(--stepper-icon-step-color-current);
-    border: 1px solid var(--stepper-icon-step-border-color-current);
-    background-color: var(--stepper-icon-step-background-color-current);
+    color: var(--stepper-index-color-current);
+    border: 1px solid var(--stepper-border-color-current);
+    background-color: var(--stepper-background-color-current);
   }
 
   .tl-stepper__step--upcoming & {
     border: 1px solid var(--stepper-label-border-upcoming);
-    color: var(--stepper-label-text-upcoming);
+    color: var(--stepper-index-color-upcoming);
     background-color: var(--stepper-label-background-upcoming);
   }
 
@@ -217,18 +301,20 @@
 .tl-stepper__label {
   text-align: center;
 
-  .tl-stepper--lg & {
-    @include detail-01;
-
-    font-size: 14px;
+  .tl-stepper__step--error & {
+    color: var(--stepper-label-text-color-warning);
   }
 
-  .tl-stepper--sm & {
-    @include detail-05;
+  .tl-stepper__step--success & {
+    color: var(--stepper-label-text-color-success);
+  }
+
+  .tl-stepper__step--current & {
+    color: var(--stepper-label-text-color-current);
   }
 
   .tl-stepper__step--upcoming & {
-    color: var(--stepper-label-text-upcoming);
+    color: var(--stepper-label-text-color-upcoming);
   }
 
   .tl-stepper--hide-labels & {
