@@ -95,7 +95,10 @@ test.describe.parallel(componentName, () => {
 
   test('activating close method should close the dialog', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    const dropDownList = page.getByRole('menu');
+
     await triggerButton.click();
+    await expect(dropDownList).toBeVisible();
 
     const closeButton = page.getByTestId('menu-close-button');
     await expect(closeButton).toBeVisible();
