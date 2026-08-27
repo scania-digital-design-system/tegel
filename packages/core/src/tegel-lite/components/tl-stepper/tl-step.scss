@@ -249,7 +249,7 @@
   }
 
   .tl-stepper__step--success & {
-    background-color: var(--stepper-icon-step-background-succes);
+    background-color: var(--stepper-icon-step-background-success);
     border: 1px solid var(--stepper-icon-step-border-success);
     color: var(--stepper-icon-step-color-success);
   }
@@ -261,9 +261,9 @@
   }
 
   .tl-stepper__step--upcoming & {
-    border: 1px solid var(--stepper-label-border-upcoming);
+    border: 1px solid var(--stepper-border-upcoming);
     color: var(--stepper-index-color-upcoming);
-    background-color: var(--stepper-label-background-upcoming);
+    background-color: var(--stepper-background-upcoming);
   }
 
   .tl-stepper__step--success &,
