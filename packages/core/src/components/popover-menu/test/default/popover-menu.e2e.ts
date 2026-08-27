@@ -56,6 +56,8 @@ test.describe.parallel(componentName, () => {
   test('hover active menu item -> active item should be clickable', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('menu');
+
+    await expect(triggerButton).toHaveClass(/hydrated/);
     await triggerButton.click();
 
     const tdsMenuItemListItemLinks = page
