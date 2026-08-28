@@ -5,6 +5,7 @@
 $local-assets: null !default;
 
 :root {
+  --traton-icon-agent-svg: url(#{$local-assets}/icons/traton/agent.svg);
   --traton-icon-arrow_diagonal-svg: url(#{$local-assets}/icons/traton/arrow_diagonal.svg);
   --traton-icon-arrow_down-svg: url(#{$local-assets}/icons/traton/arrow_down.svg);
   --traton-icon-arrow_left-svg: url(#{$local-assets}/icons/traton/arrow_left.svg);
@@ -32,6 +33,7 @@ $local-assets: null !default;
   --traton-icon-document_doc-svg: url(#{$local-assets}/icons/traton/document_doc.svg);
   --traton-icon-document_eye-svg: url(#{$local-assets}/icons/traton/document_eye.svg);
   --traton-icon-document_pdf-svg: url(#{$local-assets}/icons/traton/document_pdf.svg);
+  --traton-icon-document_ppt-svg: url(#{$local-assets}/icons/traton/document_ppt.svg);
   --traton-icon-document_tool-svg: url(#{$local-assets}/icons/traton/document_tool.svg);
   --traton-icon-document_word-svg: url(#{$local-assets}/icons/traton/document_word.svg);
   --traton-icon-document_wrong-svg: url(#{$local-assets}/icons/traton/document_wrong.svg);
@@ -72,7 +74,10 @@ $local-assets: null !default;
   --traton-icon-lock-svg: url(#{$local-assets}/icons/traton/lock.svg);
   --traton-icon-meatballs-svg: url(#{$local-assets}/icons/traton/meatballs.svg);
   --traton-icon-message-svg: url(#{$local-assets}/icons/traton/message.svg);
+  --traton-icon-message_ai-svg: url(#{$local-assets}/icons/traton/message_ai.svg);
   --traton-icon-message_inactive-svg: url(#{$local-assets}/icons/traton/message_inactive.svg);
+  --traton-icon-microphone-svg: url(#{$local-assets}/icons/traton/microphone.svg);
+  --traton-icon-microphone_ai-svg: url(#{$local-assets}/icons/traton/microphone_ai.svg);
   --traton-icon-mileage-svg: url(#{$local-assets}/icons/traton/mileage.svg);
   --traton-icon-mileage_inactive-svg: url(#{$local-assets}/icons/traton/mileage_inactive.svg);
   --traton-icon-minus-svg: url(#{$local-assets}/icons/traton/minus.svg);
@@ -106,6 +111,7 @@ $local-assets: null !default;
   --traton-icon-smartphone-svg: url(#{$local-assets}/icons/traton/smartphone.svg);
   --traton-icon-smartphone_inactive-svg: url(#{$local-assets}/icons/traton/smartphone_inactive.svg);
   --traton-icon-sorting-svg: url(#{$local-assets}/icons/traton/sorting.svg);
+  --traton-icon-sparkle-svg: url(#{$local-assets}/icons/traton/sparkle.svg);
   --traton-icon-speedometer-svg: url(#{$local-assets}/icons/traton/speedometer.svg);
   --traton-icon-speedometer_inactive-svg: url(#{$local-assets}/icons/traton/speedometer_inactive.svg);
   --traton-icon-star-svg: url(#{$local-assets}/icons/traton/star.svg);
