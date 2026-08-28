@@ -99,6 +99,7 @@ export const tratonIconNames = [
   'report_inactive',
   'save',
   'save_inactive',
+  'scissor',
   'search',
   'send',
   'send_inactive',
