@@ -23,7 +23,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       // Select the button that triggers the tooltip on click
       const button = page.locator('tds-button#button-3');
 
-      await expect(button).toHaveClass(/hydrated/);
+      await expect(button).toBeVisible();
       await button.click();
 
       const tooltipText = page.locator('text=Text inside Tooltip');
@@ -56,8 +56,7 @@ test.describe.parallel(componentName, () => {
   test('Should contain correct HTML content on click', async ({ page }) => {
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-3');
-
-    await expect(button).toHaveClass(/hydrated/);
+    await expect(button).toBeVisible();
     await button.click();
 
     const tooltipParagraph = page.locator('.tooltip-paragraph');

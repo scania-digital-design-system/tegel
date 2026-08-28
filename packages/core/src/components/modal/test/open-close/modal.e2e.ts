@@ -99,10 +99,12 @@ test.describe.parallel('tds-modal-open', () => {
 
     // First, open the modal
     const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
+    await expect(openModalButton).toBeVisible();
     await openModalButton.dispatchEvent('click');
     await expect(tdsModal).toBeVisible(); // Modal should be open
 
     // Now, close the modal by clicking outside
+    await expect(tdsModalBackdrop).toBeVisible();
     await tdsModalBackdrop.dispatchEvent('click');
     await expect(tdsModal).toBeHidden(); // Modal should be closed after clicking outside
   });

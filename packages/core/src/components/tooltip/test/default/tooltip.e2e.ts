@@ -22,6 +22,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('tooltip appears on button hover', async ({ page }) => {
       // Select the button that triggers the tooltip on hover
       const button = page.locator('tds-button#button-1');
+      await expect(button).toBeVisible();
 
       // Use Playwright's hover method to simulate moving the mouse over the button
       await button.hover();
