@@ -57,14 +57,15 @@ test.describe.parallel(componentName, () => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('menu');
     await expect(triggerButton).toBeVisible();
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const tdsMenuItemListItemLinks = page
       .getByRole('menuitem')
       .filter({ has: page.getByRole('link') });
 
     const myEventSpy = await page.spyOnEvent('click');
-    await expect(tdsMenuItemListItemLinks.first()).toBeVisible();
     await tdsMenuItemListItemLinks.first().click();
     expect(myEventSpy).toHaveReceivedEvent();
 
@@ -76,7 +77,10 @@ test.describe.parallel(componentName, () => {
     page,
   }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    await expect(triggerButton).toBeVisible();
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const tdsMenuItemListItemButtons = page
       .getByRole('menuitem')
@@ -98,11 +102,15 @@ test.describe.parallel(componentName, () => {
   test('activating close method should close the dialog', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await expect(triggerButton).toBeVisible();
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const closeButton = page.getByTestId('menu-close-button');
     await expect(closeButton).toBeVisible();
+
     await closeButton.click();
+    await page.waitForChanges();
 
     await expect(closeButton).not.toBeVisible();
   });

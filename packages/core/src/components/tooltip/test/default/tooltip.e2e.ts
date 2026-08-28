@@ -26,6 +26,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
       // Use Playwright's hover method to simulate moving the mouse over the button
       await button.hover();
+      await page.waitForChanges();
 
       const tooltip = page.locator('text=Text inside Tooltip');
 
@@ -48,7 +49,10 @@ test.describe.parallel(componentName, () => {
 
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-1');
+    await expect(button).toBeVisible();
+
     await button.hover();
+    await page.waitForChanges();
 
     const tooltipParagraph = page.locator('.tooltip-paragraph');
 

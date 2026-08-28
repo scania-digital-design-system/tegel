@@ -56,7 +56,9 @@ test.describe.parallel(componentName, () => {
   test('activating close method should close the dialog', async ({ page }) => {
     const triggerButton = page.getByRole('button');
     await expect(triggerButton).toBeVisible();
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const popoverCanvasHeader = page.getByRole('heading');
     const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
@@ -70,7 +72,9 @@ test.describe.parallel(componentName, () => {
 
     const closeButton = page.getByTestId('canvas-close-button');
     await expect(closeButton).toBeVisible();
+
     await closeButton.click();
+    await page.waitForChanges();
 
     await expect(popoverCanvasHeader).toBeHidden();
     await expect(popoverCanvasBody).toBeHidden();

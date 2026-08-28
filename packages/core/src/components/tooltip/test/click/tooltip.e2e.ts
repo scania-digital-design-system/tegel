@@ -22,9 +22,10 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('Should appears on button click', async ({ page }) => {
       // Select the button that triggers the tooltip on click
       const button = page.locator('tds-button#button-3');
-
       await expect(button).toBeVisible();
+
       await button.click();
+      await page.waitForChanges();
 
       const tooltipText = page.locator('text=Text inside Tooltip');
 
@@ -44,8 +45,10 @@ test.describe.parallel(componentName, () => {
   test('Should not appear on hover', async ({ page }) => {
     // Select the button that triggers the tooltip on click
     const button = page.locator('tds-button#button-3');
+    await expect(button).toBeVisible();
 
     await button.hover();
+    await page.waitForChanges();
 
     const tooltipText = page.locator('text=Text inside Tooltip');
 
@@ -57,7 +60,9 @@ test.describe.parallel(componentName, () => {
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-3');
     await expect(button).toBeVisible();
+
     await button.click();
+    await page.waitForChanges();
 
     const tooltipParagraph = page.locator('.tooltip-paragraph');
 

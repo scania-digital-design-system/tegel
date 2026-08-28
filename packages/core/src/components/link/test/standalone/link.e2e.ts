@@ -70,6 +70,8 @@ test.describe.parallel(componentName, () => {
     });
 
     await page.locator('tds-link').click();
+    await page.waitForURL('https://tegel.scania.com/home');
+
     await expect(page).toHaveURL('https://tegel.scania.com/home');
     await expect(page.getByText('Hello, Scania!')).toBeVisible();
   });
