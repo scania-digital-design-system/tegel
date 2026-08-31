@@ -79,15 +79,9 @@ const sizeLookUp = {
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   formatHtmlPreview(
     `
-    <style>
-      .demo-wrapper {
-        max-width: 680px;
-      }
-    </style>
-    <div class="demo-wrapper">
       <tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
-      orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
-    } orientation="${orientation.toLowerCase()}">
+        orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
+      } orientation="${orientation.toLowerCase()}">
         <tds-step state="success" index="1">
           <div slot="label">Success step</div>
         </tds-step>
@@ -101,7 +95,6 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
           <div slot="label">Upcoming step</div>
         </tds-step>
       </tds-stepper>
-    </div>
         `,
   );
 export const Default = Template.bind({});
