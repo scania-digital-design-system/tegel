@@ -39,6 +39,7 @@ test.describe.parallel(componentName, () => {
     await expect(dropDownList).toBeHidden();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeVisible();
