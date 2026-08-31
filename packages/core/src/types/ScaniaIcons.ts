@@ -150,7 +150,6 @@ export const scaniaIconNames = [
   'list',
   'list_inactive',
   'lock',
-  'lock_inactive',
   'map_cursor',
   'map_cursor_inactive',
   'maximize_fullscreen',
