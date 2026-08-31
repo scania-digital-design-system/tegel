@@ -18,7 +18,10 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
 
     test('renders default popover-menu correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+      await expect(triggerButton).toBeVisible();
+
       await triggerButton.click();
+      await page.waitForChanges();
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
