@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { E2EPage, test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -9,10 +9,16 @@ import {
 const componentTestPath = 'src/components/tooltip/test/disabled/index.html';
 const componentName = 'tds-tooltip';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-tooltip')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#button-2')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders the tooltip correctly', async ({ page }) => {
@@ -22,7 +28,6 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('tooltip closes when cursor is removed from the button', async ({ page }) => {
       // Assuming your button and tooltip setup is already appropriate for this test
       const button = page.locator('tds-button#button-2');
-      await expect(button).toBeVisible();
 
       // Hover over the button to show the tooltip
       await button.hover();

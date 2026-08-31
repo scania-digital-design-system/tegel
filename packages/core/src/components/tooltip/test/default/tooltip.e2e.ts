@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { E2EPage, test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -9,10 +9,16 @@ import {
 const componentTestPath = 'src/components/tooltip/test/default/index.html';
 const componentName = 'tds-tooltip';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-tooltip')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#button-1')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders the tooltip correctly', async ({ page }) => {
@@ -22,7 +28,6 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('tooltip appears on button hover', async ({ page }) => {
       // Select the button that triggers the tooltip on hover
       const button = page.locator('tds-button#button-1');
-      await expect(button).toBeVisible();
 
       // Use Playwright's hover method to simulate moving the mouse over the button
       await button.hover();
@@ -41,6 +46,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+    await waitForHydration(page);
   });
 
   test('tooltip contains correct HTML content on hover', async ({ page }) => {
@@ -49,7 +55,6 @@ test.describe.parallel(componentName, () => {
 
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-1');
-    await expect(button).toBeVisible();
 
     await button.hover();
     await page.waitForChanges();
