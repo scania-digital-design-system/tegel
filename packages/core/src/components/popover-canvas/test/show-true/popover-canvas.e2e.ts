@@ -24,7 +24,9 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
     test('renders show=true popover-canvas correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button');
+
       await triggerButton.click();
+      await page.waitForChanges();
 
       // get popover element
       const popover = page.locator('tds-popover-core');
@@ -59,6 +61,7 @@ test.describe.parallel(componentName, () => {
     await expect(popoverCanvasLink).toBeVisible();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(popoverCanvasHeader).toBeVisible();

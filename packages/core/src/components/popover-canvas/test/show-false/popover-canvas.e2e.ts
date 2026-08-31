@@ -24,7 +24,9 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
     test('renders show=false popover-canvas correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button');
+
       await triggerButton.click();
+      await page.waitForChanges();
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -53,6 +55,7 @@ test.describe.parallel(componentName, () => {
     await expect(popoverCanvasLink).toBeHidden();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(popoverCanvasHeader).toBeHidden();
