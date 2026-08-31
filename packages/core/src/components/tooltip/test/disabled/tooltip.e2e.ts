@@ -22,9 +22,12 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('tooltip closes when cursor is removed from the button', async ({ page }) => {
       // Assuming your button and tooltip setup is already appropriate for this test
       const button = page.locator('tds-button#button-2');
+      await expect(button).toBeVisible();
 
       // Hover over the button to show the tooltip
       await button.hover();
+      await page.waitForChanges();
+
       // Assuming you can uniquely identify the tooltip that should be visible on hover
       const tooltip = page.locator('text=Text inside Tooltip');
 
@@ -39,6 +42,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
           buttonBox.x + buttonBox.width + 10,
           buttonBox.y + buttonBox.height + 10,
         );
+        await page.waitForChanges();
       }
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
