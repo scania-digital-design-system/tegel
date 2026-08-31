@@ -36,8 +36,10 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('Clicking [Open Modal] button opens the modal', async ({ page }) => {
       const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
       const tdsModal = page.locator('tds-modal');
+      await expect(openModalButton).toBeVisible();
 
       await openModalButton.dispatchEvent('click');
+      await page.waitForChanges();
 
       // Assert that the modal is visible
       await expect(tdsModal).toBeVisible();
@@ -48,14 +50,17 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       const deleteButton = page.getByRole('button').filter({ hasText: /Delete/ });
       const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
       const tdsModal = page.locator('tds-modal');
+      await expect(openModalButton).toBeVisible();
 
       await openModalButton.dispatchEvent('click');
+      await page.waitForChanges();
 
       await expect(tdsModal).toBeVisible();
       await expect(deleteButton).toBeVisible();
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
       await deleteButton.dispatchEvent('click'); // Click [Delete] button
+      await page.waitForChanges();
 
       await expect(deleteButton).toBeHidden(); // button is removed
       await expect(tdsModal).toBeHidden();
@@ -75,7 +80,10 @@ test.describe.parallel('tds-modal-open', () => {
 
   test('Open modal using selector', async ({ page }) => {
     const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
+    await expect(openModalButton).toBeVisible();
+
     await openModalButton.dispatchEvent('click');
+    await page.waitForChanges();
 
     const modalSelector = 'tds-modal'; // Adjust the selector to match your modal's attributes
     await page.waitForSelector(modalSelector);
@@ -87,9 +95,12 @@ test.describe.parallel('tds-modal-open', () => {
   test('Clicking [Close] button closes the modal', async ({ page }) => {
     const closeButton = page.locator('button[aria-label="close"]');
     const tdsModal = page.locator('tds-modal');
+    await expect(closeButton).toBeVisible();
 
     // Now, close the modal
     await closeButton.dispatchEvent('click');
+    await page.waitForChanges();
+
     await expect(tdsModal).toBeHidden(); // Modal should be closed after clicking Close
   });
 
@@ -129,7 +140,10 @@ test.describe.parallel('tds-modal-events', () => {
     });
 
     const openModalButton = page.getByRole('button', { name: /Open Modal/ });
+    await expect(openModalButton).toBeVisible();
+
     await openModalButton.click();
+    await page.waitForChanges();
 
     const eventFired = await page.evaluate(() => window.openEventFired);
     expect(eventFired).toBe(true);
@@ -147,8 +161,14 @@ test.describe.parallel('tds-modal-events', () => {
     const openModalButton = page.getByRole('button', { name: /Open Modal/ });
     const closeModalButton = page.getByRole('button', { name: /Delete/ });
 
+    await expect(openModalButton).toBeVisible();
+    await expect(closeModalButton).toBeVisible();
+
     await openModalButton.click();
+    await page.waitForChanges();
+
     await closeModalButton.click();
+    await page.waitForChanges();
 
     const eventFired = await page.evaluate(() => window.closeEventFired);
     expect(eventFired).toBe(true);
