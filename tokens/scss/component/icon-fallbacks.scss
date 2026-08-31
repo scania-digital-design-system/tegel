@@ -4,7 +4,7 @@
 
 :root,
 .scania {
-  --icon-document_word-svg: var(--scania-icon-placeholder-svg);
+  /* No fallbacks needed: this brand defines every icon name. */
 }
 
 .traton {

@@ -33,7 +33,6 @@ export const tratonIconNames = [
   'document_pdf',
   'document_ppt',
   'document_tool',
-  'document_word',
   'document_wrong',
   'document_xls',
   'dollar',
