@@ -11176,7 +11176,16 @@
           },
           "hover": {
             "$type": "color",
-            "$value": "{color.background.layer-02}",
+            "$value": {
+              "colorSpace": "srgb",
+              "components": [
+                0.1764705926179886,
+                0.21176470816135406,
+                0.26274511218070984
+              ],
+              "alpha": 1,
+              "hex": "#2D3643"
+            },
             "$extensions": {
               "com.figma.variableId": "VariableID:14121:114024",
               "com.figma.hiddenFromPublishing": true,
@@ -11184,6 +11193,12 @@
                 "FRAME_FILL",
                 "SHAPE_FILL"
               ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:03a8a1fffe73135fb3a9507dade343b7ca52f58d/-1:-1",
+                "targetVariableName": "scania/color/grey/750",
+                "targetVariableSetId": "VariableCollectionId:1099ad0dbee3f3d5f520e944529dc0383a65d86c/-1:-1",
+                "targetVariableSetName": "Primitive"
+              },
               "com.figma.isOverride": true
             }
           },
