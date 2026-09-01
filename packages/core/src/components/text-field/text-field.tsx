@@ -75,6 +75,9 @@ export class TdsTextField {
   /** Max length of input */
   @Prop({ reflect: true }) maxLength?: number;
 
+  /** Lets user control whether to hide max length indicator of input */
+  @Prop({ reflect: true }) hideMaxLength?: boolean = false;
+
   /** Autofocus for input */
   @Prop({ reflect: true }) autofocus: boolean = false;
 
@@ -338,7 +341,7 @@ export class TdsTextField {
         </div>
 
         <div aria-live="assertive">
-          {(this.helper || (this.maxLength ?? 0) > 0) && (
+          {(this.helper || (!this.hideMaxLength && (this.maxLength ?? 0) > 0)) && (
             <div class="text-field-helper" id={`text-field-helper-element-${this.uuid}`}>
               {this.state === 'error' && (
                 <div class="text-field-helper-error-state">
@@ -348,7 +351,7 @@ export class TdsTextField {
               )}
               {this.state !== 'error' && this.helper}
 
-              {!this.readOnly && (this.maxLength ?? 0) > 0 && (
+              {!this.readOnly && !this.hideMaxLength && (this.maxLength ?? 0) > 0 && (
                 <span
                   class={{
                     'text-field-textcounter-divider': true,
