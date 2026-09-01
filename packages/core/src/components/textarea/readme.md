@@ -13,6 +13,7 @@
 | `cols`             | `cols`                | Textarea cols attribute                                                                                      | `number \| undefined`                 | `undefined`  |
 | `disabled`         | `disabled`            | Set input in disabled state                                                                                  | `boolean`                             | `false`      |
 | `helper`           | `helper`              | Helper text                                                                                                  | `string \| undefined`                 | `undefined`  |
+| `hideMaxLength`    | `hide-max-length`     | Lets user control whether to hide max length indicator of textarea                                           | `boolean \| undefined`                | `false`      |
 | `hideReadOnlyIcon` | `hide-read-only-icon` | Hide the readonly icon                                                                                       | `boolean`                             | `false`      |
 | `label`            | `label`               | Label text                                                                                                   | `string`                              | `''`         |
 | `labelPosition`    | `label-position`      | Position of the label for the Textarea.                                                                      | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
