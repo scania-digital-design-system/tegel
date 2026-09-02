@@ -52,7 +52,27 @@ test.describe.parallel(componentName, () => {
   });
 
   test('component is not disabled', async ({ page }) => {
+    await page.route('https://tegel.scania.com/home', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'text/html',
+        body: `
+          <html>
+            <head>
+              <title>Scania Home</title>
+            </head>
+            <body>
+              <h1>Hello, Scania!</h1>
+            </body>
+          </html>
+        `,
+      });
+    });
+
     await page.locator('tds-link').click();
+    await page.waitForURL('https://tegel.scania.com/home');
+
     await expect(page).toHaveURL('https://tegel.scania.com/home');
+    await expect(page.getByText('Hello, Scania!')).toBeVisible();
   });
 });
