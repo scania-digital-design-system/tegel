@@ -16,7 +16,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('renders textarea with helper text', async ({ page }) => {
+    test('renders textarea with max length', async ({ page }) => {
       /* Expect no diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
