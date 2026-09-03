@@ -6,23 +6,18 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/badge/test/value/index.html';
-const componentName = 'tds-badge';
-const testDescription = 'tds-badge';
+const componentTestPath = 'src/components/textarea/test/max-length/index.html';
+const componentName = 'tds-textarea';
+const testDescription = 'tds-textarea-with-max-length';
 
-testConfigurations.basicWithBrandVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('renders value badge correctly', async ({ page }) => {
-      await Promise.all(
-        (await page.locator('tds-badge').all()).map((element) =>
-          expect(element).toHaveClass(/hydrated/),
-        ),
-      );
-
+    test('renders textarea with max length', async ({ page }) => {
+      /* Expect no diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });

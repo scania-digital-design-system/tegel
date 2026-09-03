@@ -55,6 +55,9 @@ export class TdsTextarea {
   /** Max length of input */
   @Prop({ reflect: true }) maxLength?: number;
 
+  /** Lets user control whether to hide max length indicator of textarea */
+  @Prop({ reflect: true }) hideMaxLength: boolean = false;
+
   /** Mode variant of the Textarea */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
@@ -174,7 +177,7 @@ export class TdsTextarea {
             id={`textarea-element-${this.uuid}`}
             class={'textarea-input'}
             ref={(inputEl?: HTMLTextAreaElement) => {
-              this.textEl = inputEl;
+              if (inputEl) this.textEl = inputEl;
             }}
             disabled={this.disabled}
             readonly={!this.disabled && this.readOnly}
@@ -241,7 +244,7 @@ export class TdsTextarea {
           {this.helper}
         </span>
 
-        {(this.maxLength ?? 0) > 0 && (
+        {!this.hideMaxLength && (this.maxLength ?? 0) > 0 && (
           <div class={'textarea-textcounter'}>
             {this.value === null ? 0 : this.value?.length}
             <span class="textfield-textcounter-divider"> / </span> {this.maxLength}

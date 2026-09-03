@@ -5,7 +5,9 @@ import { tegelAnalyze } from '../../../../utils/axeHelpers';
 const componentTestPath = 'src/components/slider/test/read-only/index.html';
 
 test.describe.parallel('Slider read-only accessibility test', () => {
-  test('Should render read-only behavior without detected accessibility issues', async ({ page }) => {
+  test('Should render read-only behavior without detected accessibility issues', async ({
+    page,
+  }) => {
     await page.goto(componentTestPath);
     const { violations } = await tegelAnalyze(page);
 
