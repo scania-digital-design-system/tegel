@@ -28,7 +28,7 @@
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
     "@scania/tegel": "^1.63.0",
-    "@stencil/react-output-target": "1.6.2"
+    "@stencil/react-output-target": "^1.6.2"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",
