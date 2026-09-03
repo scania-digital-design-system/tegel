@@ -1,14 +1,6 @@
 :host {
   [role='list'] {
-    &:not(.text-position-aside) {
-      display: table;
-      table-layout: fixed;
-      width: 100%;
-      list-style: none;
-    }
-
     display: flex;
-    justify-content: space-evenly;
     min-width: 100%;
 
     &.vertical {

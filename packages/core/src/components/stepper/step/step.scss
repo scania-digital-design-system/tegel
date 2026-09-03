@@ -1,3 +1,5 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+
 @mixin divider {
   content: ' ';
   position: absolute;
@@ -6,7 +8,6 @@
 
 :host {
   position: relative;
-  display: table-cell;
 
   [role='listitem'] {
     display: flex;
@@ -21,20 +22,11 @@
 
     &.lg {
       padding: 0 20px;
-      font: var(--tds-detail-01);
-      letter-spacing: var(--tds-detail-01-ls);
+      @include type-system-body-01;
 
       .content-container {
         height: 30px;
         min-width: 30px;
-
-        tds-icon {
-          vertical-align: bottom;
-        }
-
-        .index-container {
-          vertical-align: sub;
-        }
       }
 
       &.vertical {
@@ -96,6 +88,7 @@
               left: auto;
               right: -10px;
               width: 10px;
+              top: 16px;
             }
 
             &::before {
@@ -114,36 +107,15 @@
 
     &.sm {
       padding: 0 20px;
-      font: var(--tds-detail-05);
-      letter-spacing: var(--tds-detail-05-ls);
-
-      .index-container {
-        vertical-align: -webkit-baseline-middle;
-        vertical-align: -moz-middle-with-baseline;
-      }
+      @include label-01;
 
       .content-container {
         height: 24px;
         min-width: 24px;
       }
 
-      .tds-step-icon {
-        vertical-align: -webkit-baseline-middle;
-        vertical-align: -moz-middle-with-baseline;
-        margin-top: -2px;
-      }
-
       &.vertical {
         &::after {
-          @include divider;
-
-          height: 20px;
-          width: 1px;
-          top: 34px;
-          left: 32px;
-        }
-
-        &::before {
           @include divider;
 
           height: 20px;
@@ -219,31 +191,33 @@
     }
 
     .content-container {
-      border-radius: 100px;
-      border: 1px solid var(--tds-stepper-icon-background);
-      text-align: center;
-      position: relative;
+      border-radius: var(--tds-stepper-border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &.error {
-        border-color: var(--tds-stepper-icon-step-border-color-warning);
-        color: var(--tds-stepper-icon-step-border-color-warning);
+        border: 1px solid var(--tds-stepper-icon-step-border-color-warning);
+        color: var(--tds-stepper-icon-step-color-warning);
+        background-color: var(--tds-stepper-icon-step-background-warning);
       }
 
       &.success {
-        background-color: var(--tds-stepper-icon-step-border-color-success);
-        border-color: var(--tds-stepper-icon-step-border-color-success);
-        color: var(--tds-white);
+        background-color: var(--tds-stepper-icon-step-background-success);
+        border: 1px solid var(--tds-stepper-icon-step-border-color-success);
+        color: var(--tds-stepper-icon-step-color-success);
       }
 
       &.current {
-        background-color: var(--tds-stepper-icon-step-border-color-current);
-        color: var(--tds-stepper-color);
+        background-color: var(--tds-stepper-background-color-current);
+        color: var(--tds-stepper-index-color-current);
+        border: 1px solid var(--tds-stepper-border-color-current);
       }
 
       &.upcoming {
-        background-color: transparent;
-        border-color: var(--tds-stepper-label-border-color-upcoming);
-        color: var(--tds-stepper-label-text-color-upcoming);
+        background-color: var(--tds-stepper-background-color-upcoming);
+        border: 1px solid var(--tds-stepper-border-color-upcoming);
+        color: var(--tds-stepper-index-color-upcoming);
       }
     }
 
@@ -251,18 +225,27 @@
       text-align: center;
 
       &.lg {
-        font: var(--tds-detail-01);
-        letter-spacing: var(--tds-detail-01-ls);
+        @include type-system-body-01;
       }
 
       &.sm {
-        font: var(--tds-detail-05);
-        letter-spacing: var(--tds-detail-05-ls);
+        @include label-01;
+      }
+
+      &.error {
+        color: var(--tds-stepper-label-text-color-warning);
+      }
+
+      &.success {
+        color: var(--tds-stepper-label-text-color-success);
+      }
+
+      &.current {
+        color: var(--tds-stepper-label-text-color-current);
       }
 
       &.upcoming {
         color: var(--tds-stepper-label-text-color-upcoming);
-        opacity: var(--tds-stepper-label-text-opacity-upcoming);
       }
     }
   }
@@ -288,6 +271,15 @@
         &::before {
           top: 13px;
           width: 13px;
+          left: 0;
+          right: calc(50% + 20px);
+        }
+      }
+
+      &.lg.hide-labels {
+        &::before {
+          top: 16px;
+          width: 16px;
           left: 0;
           right: calc(50% + 20px);
         }

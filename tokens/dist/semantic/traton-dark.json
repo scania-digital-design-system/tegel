@@ -912,6 +912,92 @@
     }
   },
   "component": {
+    "stepper": {
+      "background": {
+        "item-default": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "current-default": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.background.none}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.default}"
+        }
+      },
+      "border": {
+        "item-default": {
+          "$type": "color",
+          "$value": "{color.border.discrete}"
+        },
+        "current-default": {
+          "$type": "color",
+          "$value": "{color.border.strong}"
+        },
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.system.success.default}"
+        },
+        "divider-default": {
+          "$type": "color",
+          "$value": "{color.border.disabled}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.9999}"
+        }
+      },
+      "icon": {
+        "error-default": {
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
+        },
+        "success-default": {
+          "$type": "color",
+          "$value": "{color.icon.inverse.strong}"
+        }
+      },
+      "text": {
+        "label": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.text.disabled}"
+          },
+          "success-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "error-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        },
+        "index": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.text.disabled}"
+          },
+          "current-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
+        }
+      }
+    },
     "-focus": {
       "ring": {
         "color": {
@@ -1112,88 +1198,6 @@
       "dragged": {
         "$type": "color",
         "$value": "{traton.color.transparent.invisible.dark}"
-      }
-    },
-    "popover": {
-      "background": {
-        "primary": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "secondary": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        },
-        "link": {
-          "primary-default": {
-            "$type": "color",
-            "$value": "{color.background.none}"
-          },
-          "primary-hover": {
-            "$type": "color",
-            "$value": "{traton.color.blue.900}"
-          },
-          "primary-active": {
-            "$type": "color",
-            "$value": "{traton.color.blue.900}"
-          },
-          "secondary-default": {
-            "$type": "color",
-            "$value": "{color.background.none}"
-          },
-          "secondary-hover": {
-            "$type": "color",
-            "$value": "{traton.color.blue.850}"
-          },
-          "secondary-active": {
-            "$type": "color",
-            "$value": "{traton.color.blue.850}"
-          }
-        }
-      },
-      "border": {
-        "radius-default": {
-          "$type": "number",
-          "$value": "{traton.unit.4}"
-        }
-      },
-      "icon": {
-        "link": {
-          "primary-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}"
-          },
-          "secondary-default": {
-            "$type": "color",
-            "$value": "{color.icon.strong}"
-          }
-        }
-      },
-      "opacity": {
-        "disabled": {
-          "$type": "number",
-          "$value": "{traton.opacity.25}"
-        }
-      },
-      "text": {
-        "link": {
-          "primary-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
-          "primary-hover": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
-          "secondary-default": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          },
-          "secondary-hover": {
-            "$type": "color",
-            "$value": "{color.text.strong}"
-          }
-        }
       }
     },
     "accordion": {
@@ -2036,7 +2040,7 @@
           },
           "hover": {
             "$type": "color",
-            "$value": "{color.background.layer-02}"
+            "$value": "{color.background.layer-03}"
           },
           "selected-default": {
             "$type": "color",
@@ -2585,6 +2589,88 @@
         "default": {
           "$type": "number",
           "$value": 60
+        }
+      }
+    },
+    "popover": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "primary-active": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.background.none}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.850}"
+          },
+          "secondary-active": {
+            "$type": "color",
+            "$value": "{traton.color.blue.850}"
+          }
+        }
+      },
+      "border": {
+        "radius-default": {
+          "$type": "number",
+          "$value": "{traton.unit.4}"
+        }
+      },
+      "icon": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.icon.strong}"
+          }
+        }
+      },
+      "opacity": {
+        "disabled": {
+          "$type": "number",
+          "$value": "{traton.opacity.25}"
+        }
+      },
+      "text": {
+        "link": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{color.text.strong}"
+          }
         }
       }
     },
@@ -3310,12 +3396,6 @@
           "$type": "color",
           "$value": "{color.text.inverse.strong}"
         }
-      }
-    },
-    "stepper": {
-      "success": {
-        "$type": "color",
-        "$value": "{color.system.success.default}"
       }
     }
   }
