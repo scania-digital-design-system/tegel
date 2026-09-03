@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/text-field/test/read-only-with-suffix/index.html';

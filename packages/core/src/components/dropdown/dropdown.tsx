@@ -264,9 +264,9 @@ export class TdsDropdown {
       normalizedValue = [convertToString(value)];
     }
     this.updateDropdownStateFromUser(normalizedValue);
-    return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
-      value: element.value,
-      label: element.textContent?.trim(),
+    return this.getSelectedChildren().map((element?: HTMLTdsDropdownOptionElement) => ({
+      value: element?.value,
+      label: element?.textContent?.trim(),
     }));
   }
 
@@ -595,8 +595,8 @@ export class TdsDropdown {
   };
 
   private readonly getSelectedChildrenLabels = () =>
-    this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
-      element.textContent?.trim(),
+    this.getSelectedChildren()?.map((element?: HTMLTdsDropdownOptionElement) =>
+      element?.textContent?.trim(),
     );
 
   private readonly getValue = () => {
@@ -883,7 +883,7 @@ export class TdsDropdown {
     const ariaLabel = this.tdsAriaLabel ?? fallbackAriaLabel;
     let derivedPlaceholder = this.placeholder ?? '';
     if (this.labelPosition === 'inside') {
-      derivedPlaceholder = showPlaceholderInside ? this.placeholder ?? '' : '';
+      derivedPlaceholder = showPlaceholderInside ? (this.placeholder ?? '') : '';
     }
     let buttonText = '';
     if (this.selectedOptions.length > 0) {

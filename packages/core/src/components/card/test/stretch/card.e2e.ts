@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect, type Page } from '@playwright/test';
 
 const componentTestPath = 'src/components/card/test/stretch/index.html';

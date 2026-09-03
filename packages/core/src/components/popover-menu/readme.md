@@ -99,6 +99,7 @@ Type: `Promise<void>`
 
 | Slot          | Description                                      |
 | ------------- | ------------------------------------------------ |
+|               | The default slot                                 |
 | `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
 
 
