@@ -34,6 +34,8 @@ interface IconDefinition {
   name: string;          // name of the icon
   definition: string;    // with the path definition
   placeholder?: boolean; // if the icon will be replaced with a placeholder because it doesn't exist in the brand yet
+  clipRule: string | undefined;
+  fillRule: string | undefined;
 }
 
 type IconGallery = Map<string, IconDefinition>
@@ -125,6 +127,14 @@ function mergePathData(svgContent: string): string {
 
 }
 
+function getIconFillRule(svgContent: string): string | undefined {
+  return svgContent.match(/\bfill-rule="([^"]+)"/i)?.[1];
+}
+
+function getIconClipRule(svgContent: string): string | undefined {
+  return svgContent.match(/\bclip-rule="([^"]+)"/i)?.[1];
+}
+
 
 //-----------------------------------------------------------------------------
 // Gets the icons definition (name and path) per brand. 
@@ -147,12 +157,15 @@ function getBrandIcons(): BrandIcons {
 
         const iconSvg = fs.readFileSync(path.join(iconDir, file), 'utf8')
         const iconPath = mergePathData(iconSvg)
-
+        const iconFillRule = getIconFillRule(iconSvg)
+        const iconClipRule = getIconClipRule(iconSvg)
         const iconName = path.basename(file, '.svg')
 
         iconGallery.set(iconName, {
           name: iconName,
-          definition: iconPath
+          definition: iconPath,
+          clipRule: iconClipRule,
+          fillRule: iconFillRule,
         })
       })
 
@@ -221,6 +234,8 @@ function buildPathBlock(
   for (const iconName of allIconNames) {
 
     const path = iconGallery.get(iconName)?.definition ?? placeholderPath;
+    const clipRule = iconGallery.get(iconName)?.clipRule;
+    const fillRule = iconGallery.get(iconName)?.fillRule;
 
     if (path.includes('"')) {
       throw new Error(`Icon "${iconName}" path data contains a double quote; needs escaping logic.`);
@@ -229,6 +244,11 @@ function buildPathBlock(
     // as it is the conventional style.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/basic-shape/path
     lines.push(`  --tds-icon-${iconName}-d: path("${path}");`);
+
+    
+    if(clipRule) lines.push(`  --tds-icon-${iconName}-clip-rule: ${clipRule};`) 
+
+    if(fillRule) lines.push(`  --tds-icon-${iconName}-fill-rule: ${fillRule};`)
 
     // Pending information: Check if we really need this variable
     if (iconGallery.has(iconName)) {

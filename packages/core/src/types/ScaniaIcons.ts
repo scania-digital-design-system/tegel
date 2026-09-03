@@ -9,6 +9,7 @@ export const scaniaIconNames = [
   'acceleration_inactive',
   'adblue',
   'adblue_inactive',
+  'agent',
   'arrow_diagonal',
   'arrow_down',
   'arrow_left',
@@ -149,7 +150,6 @@ export const scaniaIconNames = [
   'list',
   'list_inactive',
   'lock',
-  'lock_inactive',
   'map_cursor',
   'map_cursor_inactive',
   'maximize_fullscreen',
@@ -157,8 +157,10 @@ export const scaniaIconNames = [
   'merge',
   'merge_inactive',
   'message',
+  'message_ai',
   'message_inactive',
   'microphone',
+  'microphone_ai',
   'microphone_inactive',
   'mileage',
   'mileage_inactive',
@@ -208,6 +210,7 @@ export const scaniaIconNames = [
   'route_inactive',
   'save',
   'save_inactive',
+  'scissor',
   'search',
   'send',
   'send_inactive',
@@ -219,6 +222,7 @@ export const scaniaIconNames = [
   'smartphone',
   'smartphone_inactive',
   'sorting',
+  'sparkle',
   'speedometer',
   'speedometer_inactive',
   'star',
@@ -254,7 +258,7 @@ export const scaniaIconNames = [
   'wifi',
   'wifi_inactive',
   'windscreen_heating',
-  'windscreen_heating_inactive'
-]
- 
-export type ScaniaIconNames = typeof scaniaIconNames[number];
+  'windscreen_heating_inactive',
+];
+
+export type ScaniaIconNames = (typeof scaniaIconNames)[number];
