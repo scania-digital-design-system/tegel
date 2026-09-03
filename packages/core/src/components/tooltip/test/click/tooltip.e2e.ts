@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { E2EPage, test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -9,10 +9,16 @@ import {
 const componentTestPath = 'src/components/tooltip/test/click/index.html';
 const componentName = 'tds-tooltip';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-tooltip')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#button-3')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders the tooltip correctly', async ({ page }) => {
@@ -24,6 +30,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       const button = page.locator('tds-button#button-3');
 
       await button.click();
+      await page.waitForChanges();
 
       const tooltipText = page.locator('text=Text inside Tooltip');
 
@@ -38,6 +45,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+    await waitForHydration(page);
   });
 
   test('Should not appear on hover', async ({ page }) => {
@@ -45,6 +53,7 @@ test.describe.parallel(componentName, () => {
     const button = page.locator('tds-button#button-3');
 
     await button.hover();
+    await page.waitForChanges();
 
     const tooltipText = page.locator('text=Text inside Tooltip');
 
@@ -55,7 +64,9 @@ test.describe.parallel(componentName, () => {
   test('Should contain correct HTML content on click', async ({ page }) => {
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-3');
+
     await button.click();
+    await page.waitForChanges();
 
     const tooltipParagraph = page.locator('.tooltip-paragraph');
 
