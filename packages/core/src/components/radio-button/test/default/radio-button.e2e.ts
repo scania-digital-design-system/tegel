@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import {
   testConfigurations,
   getTestDescribeText,

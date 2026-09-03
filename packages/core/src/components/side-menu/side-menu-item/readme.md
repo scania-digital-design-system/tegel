@@ -18,6 +18,7 @@ The icons in each header item should be 24px for Scania brand. For TRATON they s
 
 | Slot          | Description                                                                                          |
 | ------------- | ---------------------------------------------------------------------------------------------------- |
+|               | The default slot                                                                                     |
 | `"<default>"` | <b>Unnamed slot.</b> For injecting a native <code>&lt;button</code> and <code>&lt;a></code> element. |
 
 

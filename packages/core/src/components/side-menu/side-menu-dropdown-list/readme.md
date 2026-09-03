@@ -9,6 +9,7 @@
 
 | Slot          | Description                                                                                        |
 | ------------- | -------------------------------------------------------------------------------------------------- |
+|               | The default slot                                                                                   |
 | `"<default>"` | <b>Unnamed slot.</b> For injection of <code>tds-side-menu-dropdown-list-item</code> subcomponents. |
 
 

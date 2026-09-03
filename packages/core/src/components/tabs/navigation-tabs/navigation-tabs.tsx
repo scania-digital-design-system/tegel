@@ -94,12 +94,11 @@ export class TdsNavigationTabs {
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate() {
-    this.tabElements = Array.from(this.host.children).map(
-      (tabElement: HTMLTdsNavigationTabElement) => {
-        tabElement.setSelected(false);
-        return tabElement;
-      },
-    );
+    this.tabElements = Array.from(this.host.children).map((element: Element) => {
+      const tabElement = element as HTMLTdsNavigationTabElement;
+      tabElement.setSelected(false);
+      return tabElement;
+    });
     if (this.selectedIndex) {
       this.tabElements[this.selectedIndex].setSelected(true);
     }
@@ -137,7 +136,7 @@ export class TdsNavigationTabs {
         let buttonsWidth = 0;
 
         const navButtons = Array.from(this.host.children);
-        navButtons.forEach((navButton: HTMLElement) => {
+        navButtons.forEach((navButton: Element) => {
           const style = window.getComputedStyle(navButton);
           buttonsWidth +=
             navButton.clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);

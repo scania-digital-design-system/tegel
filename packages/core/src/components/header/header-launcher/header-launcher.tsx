@@ -79,7 +79,7 @@ export class TdsHeaderLauncher {
       'onClick': () => {
         this.toggleLauncher();
       },
-      'ref': (el: HTMLTdsHeaderLauncherButtonElement) => {
+      'ref': (el?: HTMLTdsHeaderLauncherButtonElement) => {
         this.buttonEl = el;
       },
     };

@@ -10,7 +10,7 @@ export class TdsBadge {
   @Prop({ reflect: true }) value: string = '';
 
   /** Changes visibility of Badge */
-  @Prop({ reflect: true }) hidden: boolean = false;
+  @Prop({ attribute: 'hidden' }) isHidden: boolean = false;
 
   /** Sets component size. */
   @Prop({ reflect: true }) size: 'lg' | 'sm' = 'lg';
@@ -51,7 +51,7 @@ export class TdsBadge {
           'tds-badge': true,
           [`tds-badge-${this.size}`]: true,
           'tds-badge-pill': this.shape === 'pill',
-          'tds-badge-hidden': this.hidden,
+          'tds-badge-hidden': this.isHidden,
         }}
         aria-label={this.tdsAriaLabel}
         aria-live={this.tdsAriaLive}
