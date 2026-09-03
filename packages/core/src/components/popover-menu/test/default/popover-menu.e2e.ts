@@ -1,4 +1,4 @@
-import { test } from '@stencil/playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -10,15 +10,23 @@ const componentTestPath = 'src/components/popover-menu/test/default/index.html';
 const componentName = 'tds-popover-menu';
 const testDescription = 'tds-popover-menu-default';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-popover-menu')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#my-popover-button')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders default popover-menu correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+
       await triggerButton.click();
+      await page.waitForChanges();
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -29,6 +37,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+    await waitForHydration(page);
   });
 
   test('clicking the trigger button should open the popover menu dialog', async ({ page }) => {
@@ -39,6 +48,7 @@ test.describe.parallel(componentName, () => {
     await expect(dropDownList).toBeHidden();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeVisible();
@@ -56,7 +66,9 @@ test.describe.parallel(componentName, () => {
   test('hover active menu item -> active item should be clickable', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('menu');
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const tdsMenuItemListItemLinks = page
       .getByRole('menuitem')
@@ -74,7 +86,9 @@ test.describe.parallel(componentName, () => {
     page,
   }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const tdsMenuItemListItemButtons = page
       .getByRole('menuitem')
@@ -95,11 +109,15 @@ test.describe.parallel(componentName, () => {
 
   test('activating close method should close the dialog', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+
     await triggerButton.click();
+    await page.waitForChanges();
 
     const closeButton = page.getByTestId('menu-close-button');
     await expect(closeButton).toBeVisible();
+
     await closeButton.click();
+    await page.waitForChanges();
 
     await expect(closeButton).not.toBeVisible();
   });

@@ -1,4 +1,4 @@
-import { test } from '@stencil/playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -10,10 +10,16 @@ const componentTestPath = 'src/components/popover-menu/test/show/index.html';
 const componentName = 'tds-popover-menu';
 const testDescription = 'tds-popover-menu-show';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-popover-menu')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#my-popover-button')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders show=true popover-menu correctly', async ({ page }) => {
@@ -26,6 +32,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+    await waitForHydration(page);
   });
 
   test('clicking the trigger button should keep the popover menu dialog open when it is open by default', async ({
@@ -38,6 +45,7 @@ test.describe.parallel(componentName, () => {
     await expect(dropDownList).toBeVisible();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeVisible();

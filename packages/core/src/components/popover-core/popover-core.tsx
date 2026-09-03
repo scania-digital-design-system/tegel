@@ -62,19 +62,9 @@ export class TdsPopoverCore {
    * Alternatevly it can be hidden externally based on emitted events. */
   @Prop({ reflect: true }) autoHide: boolean = true;
 
-  @State() renderedShowValue: boolean = false;
-
-  @State() popperInstance: Instance | null = null;
-
-  @State() target?: HTMLElement | null;
-
   @State() isShown: boolean = false;
 
-  @State() disableLogic: boolean = false;
-
   @State() hasShownAtLeastOnce: boolean = false;
-
-  @State() openedByKeyboard: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -82,6 +72,18 @@ export class TdsPopoverCore {
   }
 
   private uuid: string = generateUniqueId();
+
+  private renderedShowValue: boolean = false;
+
+  private popperInstance: Instance | null = null;
+
+  private target?: HTMLElement | null;
+
+  private disableLogic: boolean = false;
+
+  private openedByKeyboard: boolean = false;
+
+  private targetObserver?: MutationObserver;
 
   /** @internal Show event. */
   @Event({
@@ -138,16 +140,13 @@ export class TdsPopoverCore {
   @Watch('referenceEl')
   onReferenceElChanged(newValue: HTMLElement, oldValue: HTMLElement) {
     if (newValue !== oldValue) {
-      this.initialize({ referenceEl: newValue, trigger: this.trigger });
+      this.initialize();
     }
   }
 
   @Watch('trigger')
-  onTriggerChanged(newValue: 'click' | 'hover' | 'hover-popover') {
-    this.initialize({
-      referenceEl: this.referenceEl,
-      trigger: newValue,
-    });
+  onTriggerChanged() {
+    this.initialize();
   }
 
   @Watch('isShown')
@@ -165,7 +164,7 @@ export class TdsPopoverCore {
     if (newValue === oldValue) return;
     if (newValue) {
       this.disableLogic = false;
-      this.initialize({ referenceEl: this.referenceEl, trigger: this.trigger });
+      this.initialize();
     }
   }
 
@@ -209,6 +208,14 @@ export class TdsPopoverCore {
     this.setIsShown((isShown: boolean) => !isShown);
   };
 
+  private onKeydownTarget = (event: KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.openedByKeyboard = true;
+      this.onClickTarget(event);
+    }
+  };
+
   private handleShow = (event: FocusEvent | MouseEvent) => {
     event.stopPropagation();
     // Check if event was triggered by keyboard (tab focus)
@@ -221,21 +228,59 @@ export class TdsPopoverCore {
     this.setIsShown(false);
   };
 
-  private initialize({
-    referenceEl,
-    trigger,
-  }: {
-    referenceEl: HTMLElement | undefined | null;
-    trigger: 'click' | 'hover' | 'hover-popover';
-  }) {
-    this.cleanUp();
+  private initialize() {
+    this.cleanUpTarget();
 
-    if (typeof referenceEl !== 'undefined') {
-      this.target = referenceEl;
-    } else {
-      this.target = this.selector ? document.querySelector(this.selector) : null;
+    this.observeTarget();
+    this.syncTarget();
+  }
+
+  private syncTarget() {
+    const newTarget = this.resolveTarget();
+
+    if (newTarget === this.target) {
+      return;
     }
 
+    this.cleanUpTarget();
+    this.target = newTarget;
+
+    if (!newTarget) {
+      console.error(`Could not initialize: reference element not found.`);
+      return;
+    }
+
+    this.bindTarget();
+  }
+
+  private observeTarget() {
+    if (this.targetObserver) {
+      return;
+    }
+
+    this.targetObserver = new MutationObserver(() => {
+      this.syncTarget();
+    });
+
+    this.targetObserver.observe(this.host.ownerDocument.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
+  private resolveTarget(): HTMLElement | null {
+    if (this.referenceEl !== undefined) {
+      return this.referenceEl;
+    }
+
+    if (this.selector) {
+      return this.host.ownerDocument.querySelector<HTMLElement>(this.selector);
+    }
+
+    return null;
+  }
+
+  private bindTarget() {
     this.popperInstance = this.target
       ? createPopper(this.target, this.host, {
           strategy: 'fixed',
@@ -252,23 +297,13 @@ export class TdsPopoverCore {
         })
       : null;
 
-    if (!this.popperInstance) {
-      console.error(`Could not initialize: reference element not found.`);
-    }
-
-    if (trigger === 'click' && this.show === null) {
+    if (this.trigger === 'click' && this.show === null) {
       this.target?.addEventListener('click', this.onClickTarget);
       // Also handle keyboard activation via Enter and Space
-      this.target?.addEventListener('keydown', (e: KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.openedByKeyboard = true;
-          this.onClickTarget(e);
-        }
-      });
+      this.target?.addEventListener('keydown', this.onKeydownTarget);
     }
 
-    if (trigger === 'hover' || trigger === 'hover-popover') {
+    if (this.trigger === 'hover' || this.trigger === 'hover-popover') {
       // For tabbing over element
       this.target?.addEventListener('focusin', this.handleShow);
       this.target?.addEventListener('focusout', this.handleHide);
@@ -278,7 +313,7 @@ export class TdsPopoverCore {
       this.target?.addEventListener('mouseleave', this.handleHide);
 
       // For hovering over Popover itself
-      if (trigger === 'hover-popover') {
+      if (this.trigger === 'hover-popover') {
         this.host.addEventListener('mouseenter', this.handleShow);
         this.host.addEventListener('mouseleave', this.handleHide);
       }
@@ -286,16 +321,27 @@ export class TdsPopoverCore {
   }
 
   private cleanUp() {
+    this.targetObserver?.disconnect();
+    this.targetObserver = undefined;
+
+    this.cleanUpTarget();
+  }
+
+  private cleanUpTarget() {
     this.target?.removeEventListener('click', this.onClickTarget);
-    this.target?.removeEventListener('keydown', this.onClickTarget);
+    this.target?.removeEventListener('keydown', this.onKeydownTarget);
     this.target?.removeEventListener('focusin', this.handleShow);
     this.target?.removeEventListener('focusout', this.handleHide);
     this.target?.removeEventListener('mouseenter', this.handleShow);
     this.target?.removeEventListener('mouseleave', this.handleHide);
+
     this.host?.removeEventListener('mouseenter', this.handleShow);
     this.host?.removeEventListener('mouseleave', this.handleHide);
 
     this.popperInstance?.destroy();
+
+    this.popperInstance = null;
+    this.target = undefined;
   }
 
   /* To enable initial loading of a component if user controls show prop */
@@ -308,10 +354,7 @@ export class TdsPopoverCore {
       return;
     }
 
-    this.initialize({
-      referenceEl: this.referenceEl,
-      trigger: this.trigger,
-    });
+    this.initialize();
 
     // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
