@@ -23,12 +23,16 @@
   "unpkg": "dist/components/components.esm.js",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts"
+      "import": "./dist/tegel/tegel.esm.js",
+      "require": "./dist/cjs/tegel.cjs.js"
     },
-    "./dist/components/*.js": {
+    "./dist/*": {
+      "import": "./dist/*",
+      "types": "./dist/*"
+    },
+    "./components/*": {
       "import": "./dist/components/*.js",
-      "types": "./dist/components/*.d.ts",
-      "default": "./dist/components/*.js"
+      "types": "./dist/components/*.d.ts"
     },
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
     "./tds-accordion-item": {
