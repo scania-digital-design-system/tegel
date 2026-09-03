@@ -56,7 +56,7 @@ export class TdsTextarea {
   @Prop({ reflect: true }) maxLength?: number;
 
   /** Lets user control whether to hide max length indicator of textarea */
-  @Prop({ reflect: true }) hideMaxLength?: boolean = false;
+  @Prop({ reflect: true }) hideMaxLength: boolean = false;
 
   /** Mode variant of the Textarea */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
