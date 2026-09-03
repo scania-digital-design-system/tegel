@@ -20,6 +20,8 @@
 | Slot          | Description             |
 | ------------- | ----------------------- |
 | `"header"`    | Slot for the header.    |
+| `"subheader"` |                         |
+| `"thumbanil"` |                         |
 | `"thumbnail"` | Slot for the thumbnail. |
 
 

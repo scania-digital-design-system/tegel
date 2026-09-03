@@ -7,6 +7,7 @@
         "./dist/components"
       ]
     },
+    "rootDir": "./projects/components/src",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": false,
@@ -18,7 +19,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -32,6 +33,16 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+    "strictDomEventTypes": false
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/components/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/components/tsconfig.spec.json"
+    }
+  ]
 }

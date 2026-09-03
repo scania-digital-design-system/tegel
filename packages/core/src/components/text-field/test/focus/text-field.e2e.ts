@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/focus/index.html';

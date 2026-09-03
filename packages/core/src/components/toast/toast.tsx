@@ -28,7 +28,7 @@ export class TdsToast {
   @Prop({ reflect: true }) variant: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Hides the Toast. */
-  @Prop({ reflect: true }) hidden: boolean = false;
+  @Prop({ attribute: 'hidden' }) isHidden: boolean = false;
 
   /** Enables the close button. */
   @Prop({ reflect: true }) closable: boolean = true;
@@ -45,13 +45,13 @@ export class TdsToast {
   /** Hides the Toast. */
   @Method()
   async hideToast() {
-    this.hidden = true;
+    this.isHidden = true;
   }
 
   /** Shows the Toast. */
   @Method()
   async showToast() {
-    this.hidden = false;
+    this.isHidden = false;
   }
 
   /** Sends unique Toast identifier when component is closed. */
@@ -85,7 +85,7 @@ export class TdsToast {
       toastId: this.toastId,
     });
     if (!tdsCloseEvent.defaultPrevented) {
-      this.hidden = true;
+      this.isHidden = true;
     }
   };
 
@@ -94,7 +94,7 @@ export class TdsToast {
       toastId: this.toastId,
     });
     if (!tdsCloseEvent.defaultPrevented) {
-      this.hidden = false;
+      this.isHidden = false;
     }
   };
 
@@ -114,8 +114,8 @@ export class TdsToast {
         toastRole={this.toastRole}
         aria-describedby={this.host.getAttribute('aria-describedby')}
         class={{
-          hide: this.hidden,
-          show: !this.hidden,
+          hide: this.isHidden,
+          show: !this.isHidden,
         }}
       >
         <div

@@ -19,6 +19,7 @@
 
 | Slot          | Description                                                                                      |
 | ------------- | ------------------------------------------------------------------------------------------------ |
+|               | The default slot                                                                                 |
 | `"<default>"` | <b>Unnamed slot.</b> For injection of the <code>tds-side-menu-dropdown-list</code> subcomponent. |
 | `"icon"`      | Used for injecting the icon that compliments the dropdown title                                  |
 | `"label"`     | Used for injecting the text, aka dropdown title                                                  |

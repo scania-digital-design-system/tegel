@@ -3,6 +3,7 @@
  */
 
 .traton {
+  --icon-agent-svg: var(--traton-icon-agent-svg);
   --icon-arrow_diagonal-svg: var(--traton-icon-arrow_diagonal-svg);
   --icon-arrow_down-svg: var(--traton-icon-arrow_down-svg);
   --icon-arrow_left-svg: var(--traton-icon-arrow_left-svg);
@@ -30,8 +31,8 @@
   --icon-document_doc-svg: var(--traton-icon-document_doc-svg);
   --icon-document_eye-svg: var(--traton-icon-document_eye-svg);
   --icon-document_pdf-svg: var(--traton-icon-document_pdf-svg);
+  --icon-document_ppt-svg: var(--traton-icon-document_ppt-svg);
   --icon-document_tool-svg: var(--traton-icon-document_tool-svg);
-  --icon-document_word-svg: var(--traton-icon-document_word-svg);
   --icon-document_wrong-svg: var(--traton-icon-document_wrong-svg);
   --icon-document_xls-svg: var(--traton-icon-document_xls-svg);
   --icon-dollar-svg: var(--traton-icon-dollar-svg);
@@ -70,7 +71,10 @@
   --icon-lock-svg: var(--traton-icon-lock-svg);
   --icon-meatballs-svg: var(--traton-icon-meatballs-svg);
   --icon-message-svg: var(--traton-icon-message-svg);
+  --icon-message_ai-svg: var(--traton-icon-message_ai-svg);
   --icon-message_inactive-svg: var(--traton-icon-message_inactive-svg);
+  --icon-microphone-svg: var(--traton-icon-microphone-svg);
+  --icon-microphone_ai-svg: var(--traton-icon-microphone_ai-svg);
   --icon-mileage-svg: var(--traton-icon-mileage-svg);
   --icon-mileage_inactive-svg: var(--traton-icon-mileage_inactive-svg);
   --icon-minus-svg: var(--traton-icon-minus-svg);
@@ -94,6 +98,7 @@
   --icon-report_inactive-svg: var(--traton-icon-report_inactive-svg);
   --icon-save-svg: var(--traton-icon-save-svg);
   --icon-save_inactive-svg: var(--traton-icon-save_inactive-svg);
+  --icon-scissor-svg: var(--traton-icon-scissor-svg);
   --icon-search-svg: var(--traton-icon-search-svg);
   --icon-send-svg: var(--traton-icon-send-svg);
   --icon-send_inactive-svg: var(--traton-icon-send_inactive-svg);
@@ -104,6 +109,7 @@
   --icon-smartphone-svg: var(--traton-icon-smartphone-svg);
   --icon-smartphone_inactive-svg: var(--traton-icon-smartphone_inactive-svg);
   --icon-sorting-svg: var(--traton-icon-sorting-svg);
+  --icon-sparkle-svg: var(--traton-icon-sparkle-svg);
   --icon-speedometer-svg: var(--traton-icon-speedometer-svg);
   --icon-speedometer_inactive-svg: var(--traton-icon-speedometer_inactive-svg);
   --icon-star-svg: var(--traton-icon-star-svg);

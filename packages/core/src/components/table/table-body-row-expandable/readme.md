@@ -100,6 +100,7 @@ Type: `Promise<void>`
 
 | Slot           | Description                         |
 | -------------- | ----------------------------------- |
+|                | The default slot                    |
 | `"<default>"`  | <b>Unnamed slot.</b> For the cells. |
 | `"expand-row"` | Slot for the expanded row.          |
 

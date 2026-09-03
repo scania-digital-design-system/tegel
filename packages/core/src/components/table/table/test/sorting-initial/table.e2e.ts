@@ -1,5 +1,5 @@
 import { expect, type Page } from '@playwright/test';
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 
 const componentTestPath = 'src/components/table/table/test/sorting-initial/index.html';
 const componentName = 'tds-table';
