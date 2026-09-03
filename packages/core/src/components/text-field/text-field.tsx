@@ -76,7 +76,7 @@ export class TdsTextField {
   @Prop({ reflect: true }) maxLength?: number;
 
   /** Lets user control whether to hide max length indicator of input */
-  @Prop({ reflect: true }) hideMaxLength?: boolean = false;
+  @Prop({ reflect: true }) hideMaxLength: boolean = false;
 
   /** Autofocus for input */
   @Prop({ reflect: true }) autofocus: boolean = false;
