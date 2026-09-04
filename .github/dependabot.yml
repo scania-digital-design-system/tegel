@@ -34,13 +34,3 @@ updates:
       include: 'scope'
     labels:
       - 'dependencies'
-    ignore:
-      - dependency-name: '@angular/*'
-        update-types:
-          - 'version-update:semver-major'
-      - dependency-name: '@angular-devkit/*'
-        update-types:
-          - 'version-update:semver-major'
-      - dependency-name: 'ng-packagr'
-        update-types:
-          - 'version-update:semver-major'
