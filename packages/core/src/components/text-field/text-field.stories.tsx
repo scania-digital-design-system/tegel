@@ -181,6 +181,17 @@ export default {
         type: 'number',
       },
     },
+    hideMaxLength: {
+      name: 'Hide max length indicator',
+      description:
+        'Controls whether to hide the min/max character indicator or not when maxLength is set.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     noMinWidth: {
       name: 'No minimum width',
       description: 'Enables component to shrink below 208px which is the default width.',
@@ -265,6 +276,7 @@ export default {
     step: '0.1',
     hideNumberArrows: false,
     maxLength: 0,
+    hideMaxLength: false,
     noMinWidth: 'Default',
     readonly: false,
     hideReadonlyIcon: false,
@@ -293,6 +305,7 @@ const Template = ({
   suffix,
   suffixType,
   maxLength,
+  hideMaxLength,
   noMinWidth,
   readonly,
   hideReadonlyIcon,
@@ -331,6 +344,7 @@ const Template = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}"` : ''}
       ${maxlength}
+      hide-max-length=${hideMaxLength}
       ${minAttr}
       ${maxAttr}
       ${stepAttr}

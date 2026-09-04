@@ -4,7 +4,7 @@
 
 :root,
 .scania {
-  --icon-document_word-svg: var(--scania-icon-placeholder-svg);
+  /* No fallbacks needed: this brand defines every icon name. */
 }
 
 .traton {
@@ -47,7 +47,6 @@
   --icon-diamond_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-document_plus-svg: var(--traton-icon-placeholder-svg);
   --icon-document_plus_inactive-svg: var(--traton-icon-placeholder-svg);
-  --icon-document_ppt-svg: var(--traton-icon-placeholder-svg);
   --icon-driving_licence-svg: var(--traton-icon-placeholder-svg);
   --icon-driving_licence_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-drop-svg: var(--traton-icon-placeholder-svg);
@@ -90,13 +89,11 @@
   --icon-layer_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-list-svg: var(--traton-icon-placeholder-svg);
   --icon-list_inactive-svg: var(--traton-icon-placeholder-svg);
-  --icon-lock_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-map_cursor-svg: var(--traton-icon-placeholder-svg);
   --icon-map_cursor_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-maximize_fullscreen-svg: var(--traton-icon-placeholder-svg);
   --icon-merge-svg: var(--traton-icon-placeholder-svg);
   --icon-merge_inactive-svg: var(--traton-icon-placeholder-svg);
-  --icon-microphone-svg: var(--traton-icon-placeholder-svg);
   --icon-microphone_inactive-svg: var(--traton-icon-placeholder-svg);
   --icon-minimize_fullscreen-svg: var(--traton-icon-placeholder-svg);
   --icon-navigate-svg: var(--traton-icon-placeholder-svg);

@@ -107,7 +107,11 @@ export class Icon {
     // Where the CSS `d` property is supported it overrides the `d` attribute,
     // so the two coexist: supporting engines use (1) and never populate (2);
     // others fall back to (2). See SUPPORTS_CSS_D above.
-    const pathStyle = { d: `var(--tds-icon-${this.name}-d)` } as { [key: string]: string };
+    const pathStyle = {
+      d: `var(--tds-icon-${this.name}-d)`,
+      fillRule: `var(--tds-icon-${this.name}-fill-rule, unset)`,
+      clipRule: `var(--tds-icon-${this.name}-clip-rule, unset)`,
+    } as { [key: string]: string };
 
     return (
       <Host>

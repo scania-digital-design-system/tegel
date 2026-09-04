@@ -3,6 +3,7 @@
  */
 
 export const tratonIconNames = [
+  'agent',
   'arrow_diagonal',
   'arrow_down',
   'arrow_left',
@@ -30,8 +31,8 @@ export const tratonIconNames = [
   'document_doc',
   'document_eye',
   'document_pdf',
+  'document_ppt',
   'document_tool',
-  'document_word',
   'document_wrong',
   'document_xls',
   'dollar',
@@ -70,7 +71,10 @@ export const tratonIconNames = [
   'lock',
   'meatballs',
   'message',
+  'message_ai',
   'message_inactive',
+  'microphone',
+  'microphone_ai',
   'mileage',
   'mileage_inactive',
   'minus',
@@ -94,6 +98,7 @@ export const tratonIconNames = [
   'report_inactive',
   'save',
   'save_inactive',
+  'scissor',
   'search',
   'send',
   'send_inactive',
@@ -104,6 +109,7 @@ export const tratonIconNames = [
   'smartphone',
   'smartphone_inactive',
   'sorting',
+  'sparkle',
   'speedometer',
   'speedometer_inactive',
   'star',
@@ -120,7 +126,7 @@ export const tratonIconNames = [
   'wallet',
   'warning',
   'wifi',
-  'wifi_inactive'
-]
- 
-export type TratonIconNames = typeof tratonIconNames[number];
+  'wifi_inactive',
+];
+
+export type TratonIconNames = (typeof tratonIconNames)[number];

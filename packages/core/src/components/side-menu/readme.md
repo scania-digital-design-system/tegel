@@ -25,6 +25,7 @@
 
 | Slot             | Description                                                                                                                                                                                                       |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                  | The default slot                                                                                                                                                                                                  |
 | `"<default>"`    | <b>Unnamed slot.</b> For primary content of the side menu - like buttons. Used for nesting main content of Side Menu, e.g. <code><tds-side-menu-item></code> and <code><tds-side-menu-dropdown></code> components |
 | `"close-button"` | Used for injection of tds-side-menu-close-button that is show when in mobile view                                                                                                                                 |
 | `"end"`          | Used for items that are presented at the bottom of the Side Menu, e.g. profile settings                                                                                                                           |

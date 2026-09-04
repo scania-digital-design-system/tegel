@@ -18,6 +18,7 @@
 
 | Slot          | Description                                                          |
 | ------------- | -------------------------------------------------------------------- |
+|               | The default slot                                                     |
 | `"<default>"` | <b>Unnamed slot.</b> For a link element. Eg. <code>&lt;a><a></code>. |
 
 

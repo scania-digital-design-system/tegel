@@ -9,6 +9,7 @@
 
 | Slot          | Description                                                                                             |
 | ------------- | ------------------------------------------------------------------------------------------------------- |
+|               | The default slot                                                                                        |
 | `"<default>"` | <b>Unnamed slot.</b> For a link. When using an <a> tag, use the aria-label attribute for accessibility. |
 
 

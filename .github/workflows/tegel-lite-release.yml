@@ -11,7 +11,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '22.22.1'
+        default: '22.22.3'
         type: string
 
       version:
