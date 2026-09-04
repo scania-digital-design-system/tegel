@@ -139,7 +139,7 @@ export class TdsFolderTabs {
         let buttonsWidth = 0;
 
         const navButtons = Array.from(this.host.children);
-        navButtons.forEach((navButton: HTMLElement) => {
+        navButtons.forEach((navButton: Element) => {
           const style = window.getComputedStyle(navButton);
           buttonsWidth +=
             navButton.clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);

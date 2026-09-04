@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';

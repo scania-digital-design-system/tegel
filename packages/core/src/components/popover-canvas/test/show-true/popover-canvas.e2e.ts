@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -10,15 +10,23 @@ const componentTestPath = 'src/components/popover-canvas/test/show-true/index.ht
 const componentName = 'tds-popover-canvas';
 const testDescription = 'tds-popover-canvas-show-true';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-popover-canvas')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#trigger')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders show=true popover-canvas correctly', async ({ page }) => {
       const triggerButton = page.getByRole('button');
+
       await triggerButton.click();
+      await page.waitForChanges();
 
       // get popover element
       const popover = page.locator('tds-popover-core');
@@ -35,6 +43,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+    await waitForHydration(page);
   });
 
   test('make sure the popover canvas content is displayed both before and after the trigger button is pressed', async ({
@@ -52,6 +61,7 @@ test.describe.parallel(componentName, () => {
     await expect(popoverCanvasLink).toBeVisible();
 
     await triggerButton.click();
+    await page.waitForChanges();
 
     await expect(triggerButton).toBeVisible();
     await expect(popoverCanvasHeader).toBeVisible();

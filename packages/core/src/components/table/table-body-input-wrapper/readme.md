@@ -12,6 +12,13 @@
 | `showIcon` | `show-icon` | Controls if the edit icon is shown | `boolean` | `true`  |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

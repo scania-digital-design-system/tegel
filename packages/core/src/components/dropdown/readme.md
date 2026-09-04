@@ -149,6 +149,7 @@ Type: `Promise<void>`
 
 | Slot          | Description                                        |
 | ------------- | -------------------------------------------------- |
+|               | The default slot                                   |
 | `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
 
 

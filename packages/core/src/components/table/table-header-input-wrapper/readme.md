@@ -13,6 +13,13 @@
 | `showIcon`      | `show-icon`      | Controls if the search icon is shown | `boolean` | `true`  |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

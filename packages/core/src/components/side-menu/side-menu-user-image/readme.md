@@ -15,9 +15,10 @@
 
 ## Slots
 
-| Slot                                                                                                                            | Description |
-| ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `"<default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM."` |             |
+| Slot                                                                                                                            | Description      |
+| ------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+|                                                                                                                                 | The default slot |
+| `"<default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM."` |                  |
 
 
 ## Dependencies

@@ -25,7 +25,7 @@ function dfs(
   }
 
   let foundElement: HTMLElement | null = null;
-  childElements.some((child: HTMLElement) => {
+  childElements.some((child: Element) => {
     foundElement = dfs(child, searchPredicate, pierceShadow);
     return foundElement !== null;
   });
