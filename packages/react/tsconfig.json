@@ -1,14 +1,14 @@
 {
   "extends": "../../tsconfig.json",
     "compilerOptions": {
-      "baseUrl": "./",
       "paths": {
-        "components": ["dist/components"]
+        "components": ["./dist/components"]
       },
+      "rootDir": "./lib",
       "outDir": "./dist",
       "lib": ["dom", "es2017"],
       "module": "esnext",
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
       "target": "es2017",
       "skipLibCheck": true,
       "jsx": "react",

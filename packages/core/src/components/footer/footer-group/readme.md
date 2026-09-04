@@ -17,6 +17,7 @@
 
 | Slot          | Description                                                                                                                                           |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | The default slot                                                                                                                                      |
 | `"<default>"` | <b>Unnamed slot.</b> For footer items.                                                                                                                |
 | `"title"`     | Slot for the title of the group. Should contain a heading element adjusted to the rest of the website in terms of heading nesting, for accessibility. |
 

@@ -94,6 +94,7 @@ Type: `Promise<void>`
 
 | Slot          | Description                                           |
 | ------------- | ----------------------------------------------------- |
+|               | The default slot                                      |
 | `"<default>"` | <b>Unnamed slot.</b> For the contents of the popover. |
 
 

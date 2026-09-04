@@ -57,6 +57,7 @@ Type: `Promise<{ selectedTabIndex: number | undefined; }>`
 
 | Slot          | Description                                |
 | ------------- | ------------------------------------------ |
+|               | The default slot                           |
 | `"<default>"` | <b>Unnamed slot.</b> For the tab elements. |
 
 

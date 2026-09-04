@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -18,9 +18,9 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
     test('renders value badge correctly', async ({ page }) => {
       await Promise.all(
-        (
-          await page.locator('tds-badge').all()
-        ).map((element) => expect(element).toHaveClass(/hydrated/)),
+        (await page.locator('tds-badge').all()).map((element) =>
+          expect(element).toHaveClass(/hydrated/),
+        ),
       );
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });

@@ -1,6 +1,6 @@
 //TODO: This test is failing and needs to be fixed. Therefore it is being skipped.
 
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row-autocollapse/index.html';

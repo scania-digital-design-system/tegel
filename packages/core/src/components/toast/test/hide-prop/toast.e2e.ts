@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/toast/test/hide-prop/index.html';

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "declaration": false,
     "lib": ["dom", "es2017", "dom.iterable"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "esnext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -11,7 +11,7 @@
     "target": "es2017",
     "jsx": "react",
     "jsxFactory": "h",
-    "types": ["node", "jest", "react", "@playwright/test"]
+    "types": ["node", "react", "@playwright/test"]
   },
   "exclude": ["**/**.stories.*", "src/stories/**", "src/components/_beta/**"],
   "include": ["src/**/*", "types/**/*.d.ts"]

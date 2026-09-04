@@ -16,6 +16,7 @@
 
 | Slot          | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
+|               | The default slot                                            |
 | `"<default>"` | <b>Unnamed slot.</b> For a launcher list (or grid) element. |
 
 

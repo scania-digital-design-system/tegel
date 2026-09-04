@@ -1,4 +1,4 @@
-import { test } from 'stencil-playwright';
+import { E2EPage, test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
@@ -9,10 +9,16 @@ import {
 const componentTestPath = 'src/components/tooltip/test/disabled/index.html';
 const componentName = 'tds-tooltip';
 
+const waitForHydration = async (page: E2EPage) => {
+  await expect(page.locator('tds-tooltip')).toHaveClass(/hydrated/);
+  await expect(page.locator('tds-button#button-2')).toHaveClass(/hydrated/);
+};
+
 testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, componentName), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
+      await waitForHydration(page);
     });
 
     test('renders the tooltip correctly', async ({ page }) => {
@@ -25,6 +31,8 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
       // Hover over the button to show the tooltip
       await button.hover();
+      await page.waitForChanges();
+
       // Assuming you can uniquely identify the tooltip that should be visible on hover
       const tooltip = page.locator('text=Text inside Tooltip');
 
@@ -39,6 +47,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
           buttonBox.x + buttonBox.width + 10,
           buttonBox.y + buttonBox.height + 10,
         );
+        await page.waitForChanges();
       }
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
