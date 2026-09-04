@@ -144,6 +144,7 @@ Type: `Promise<void>`
 
 | Slot          | Description                                                |
 | ------------- | ---------------------------------------------------------- |
+|               | The default slot                                           |
 | `"<default>"` | <b>Unnamed slot.</b> For content of an expanded accordion. |
 | `"header"`    | Slot for the Accordion Item header.                        |
 

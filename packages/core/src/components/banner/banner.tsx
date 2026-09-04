@@ -36,7 +36,7 @@ export class TdsBanner {
   @Prop({ reflect: true }) bannerId: string = generateUniqueId();
 
   /** Hides the Banner */
-  @Prop({ reflect: true }) hidden = false;
+  @Prop({ attribute: 'hidden' }) isHidden = false;
 
   /** Defines the ARIA role of the banner. Defaults to "banner" for global use,
    * but can be set to "region" or "alert" if used differently.
@@ -57,13 +57,13 @@ export class TdsBanner {
   /** Hides the Banner. */
   @Method()
   async hideBanner() {
-    this.hidden = true;
+    this.isHidden = true;
   }
 
   /** Shows the Banner */
   @Method()
   async showBanner() {
-    this.hidden = false;
+    this.isHidden = false;
   }
 
   componentWillLoad() {
@@ -81,7 +81,7 @@ export class TdsBanner {
       bannerId: this.bannerId,
     });
     if (!tdsCloseEvent.defaultPrevented) {
-      this.hidden = true;
+      this.isHidden = true;
     }
   };
 
@@ -93,13 +93,13 @@ export class TdsBanner {
     return (
       <Host
         role={this.roleType}
-        aria-hidden={`${this.hidden}`}
+        aria-hidden={`${this.isHidden}`}
         aria-live={this.roleType === 'alert' ? 'assertive' : 'polite'}
         aria-atomic={this.host.getAttribute('aria-atomic')}
         class={{
           [this.variant]: true,
-          hide: this.hidden,
-          show: !this.hidden,
+          hide: this.isHidden,
+          show: !this.isHidden,
         }}
       >
         {this.icon && (

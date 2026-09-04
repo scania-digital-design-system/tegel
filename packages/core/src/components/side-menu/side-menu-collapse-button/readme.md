@@ -16,6 +16,7 @@
 
 | Slot          | Description                                            |
 | ------------- | ------------------------------------------------------ |
+|               | The default slot                                       |
 | `"<default>"` | <b>Unnamed slot.</b> For the text label of the button. |
 
 

@@ -1,10 +1,13 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import { iconsNames } from '../../../components/icon/iconsArray';
+import { scaniaIconNames } from '../../../types/ScaniaIcons';
+import { tratonIconNames } from '../../../types/TratonIcons';
 
 const iconSizes = [
   12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58,
   60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96,
 ];
+
+const iconsNames = [...new Set([...scaniaIconNames, ...tratonIconNames])];
 
 const iconSizeOptions = Object.fromEntries(iconSizes.map((s) => [`${s}px`, `${s}`]));
 export default {

@@ -12,6 +12,13 @@
 | `disabled` | `disabled` | Disables the Popover Menu Item | `boolean` | `false` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
