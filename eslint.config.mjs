@@ -5,10 +5,6 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import storybook from 'eslint-plugin-storybook';
 
 export default defineConfig([
-  js.configs.recommended,
-  tseslint.configs.recommended,
-  ...storybook.configs['flat/recommended'],
-  eslintConfigPrettier,
   globalIgnores([
     '**/node_modules',
     '**/dist',
@@ -34,6 +30,9 @@ export default defineConfig([
     'gulpfile.js',
     'commitlint.config.js',
   ]),
+  js.configs.recommended,
+  tseslint.configs.recommended,
+  ...storybook.configs['flat/recommended'],
   {
     rules: {
       'no-lonely-if': 'off',
@@ -92,4 +91,5 @@ export default defineConfig([
       '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^h$' }],
     },
   },
+  eslintConfigPrettier,
 ]);
