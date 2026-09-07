@@ -26,12 +26,14 @@ const args = [
   'host',
   '-v',
   `${pwd}:/work/`,
+  '-v',
+  '/work/node_modules/',
   '-w',
   '/work/',
   'mcr.microsoft.com/playwright:v1.60.0-jammy',
   '/bin/bash',
   '-c',
-  'npx playwright test && exit',
+  'npm ci && npx playwright test && exit',
 ];
 
 // Check if Docker is running
