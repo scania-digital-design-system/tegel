@@ -85,14 +85,14 @@ export class TdsDatetime {
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
 
-  /** Change event for the Datetime */
+  /** Change event for the Datetime, emits Event on change and object { name, value } on reset */
   @Event({
     eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  tdsChange!: EventEmitter;
+  tdsChange!: EventEmitter<Event | { name: string; value: string }>;
 
   /** Blur event for the Datetime */
   @Event({

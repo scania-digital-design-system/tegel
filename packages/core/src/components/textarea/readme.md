@@ -34,7 +34,7 @@
 | Event       | Description                   | Type                      |
 | ----------- | ----------------------------- | ------------------------- |
 | `tdsBlur`   | Blur event for the Textarea   | `CustomEvent<FocusEvent>` |
-| `tdsChange` | Change event for the Textarea | `CustomEvent<any>`        |
+| `tdsChange` | Change event for the Textarea | `CustomEvent<Event>`      |
 | `tdsFocus`  | Focus event for the Textarea  | `CustomEvent<FocusEvent>` |
 | `tdsInput`  | Input event for the Textarea  | `CustomEvent<InputEvent>` |
 

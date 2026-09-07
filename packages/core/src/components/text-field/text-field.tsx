@@ -103,7 +103,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange!: EventEmitter;
+  tdsChange!: EventEmitter<Event>;
 
   handleChange(event: Event): void {
     this.tdsChange.emit(event);
