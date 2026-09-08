@@ -30,7 +30,7 @@ const args = [
   '/work/node_modules/',
   '-w',
   '/work/',
-  'mcr.microsoft.com/playwright:v1.60.0-jammy',
+  'mcr.microsoft.com/playwright:v1.62.1-jammy',
   '/bin/bash',
   '-c',
   'npm ci && npx playwright test && exit',
