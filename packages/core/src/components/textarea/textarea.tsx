@@ -80,7 +80,7 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange!: EventEmitter<Event>;
+  tdsChange!: EventEmitter<globalThis.Event>;
 
   handleChange(event: Event): void {
     this.tdsChange.emit(event);
