@@ -85,7 +85,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       const datetime = page.getByLabel("DateTime component with type='week'");
       await datetime.click();
 
-      await datetime.pressSequentially('23');
+      await datetime.pressSequentially('232030');
 
       await datetime.blur();
 

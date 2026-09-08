@@ -73,7 +73,7 @@
     "test": "npx playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "1.60.0",
+    "@playwright/test": "1.62.1",
     "@types/node": "^24.3.1",
     "serve": "^14.2.5"
   },
