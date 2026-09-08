@@ -92,7 +92,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsShow!: EventEmitter<object>;
+  internalTdsShow!: EventEmitter<void>;
 
   /** @internal Close event. */
   @Event({
@@ -101,7 +101,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: false,
   })
-  internalTdsClose!: EventEmitter<object>;
+  internalTdsClose!: EventEmitter<void>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {

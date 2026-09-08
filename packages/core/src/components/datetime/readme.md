@@ -41,12 +41,12 @@ These issues stem from the use of the native HTML <code style="font-size: inheri
 
 ## Events
 
-| Event       | Description                   | Type                      |
-| ----------- | ----------------------------- | ------------------------- |
-| `tdsBlur`   | Blur event for the Datetime   | `CustomEvent<FocusEvent>` |
-| `tdsChange` | Change event for the Datetime | `CustomEvent<any>`        |
-| `tdsFocus`  | Focus event for the Datetime  | `CustomEvent<FocusEvent>` |
-| `tdsInput`  | Input event for the Datetime  | `CustomEvent<InputEvent>` |
+| Event       | Description                                                                              | Type                                                     |
+| ----------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Datetime                                                              | `CustomEvent<FocusEvent>`                                |
+| `tdsChange` | Change event for the Datetime, emits Event on change and object { name, value } on reset | `CustomEvent<Event \| { name: string; value: string; }>` |
+| `tdsFocus`  | Focus event for the Datetime                                                             | `CustomEvent<FocusEvent>`                                |
+| `tdsInput`  | Input event for the Datetime                                                             | `CustomEvent<InputEvent>`                                |
 
 
 ## Methods
