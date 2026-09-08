@@ -8,6 +8,7 @@ import {
   Listen,
   Element,
   Prop,
+  Watch,
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
@@ -129,6 +130,7 @@ export class TdsTableHeaderRow {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
+    this.onSelectedChange(this.selected);
   }
 
   componentWillRender() {
@@ -139,8 +141,14 @@ export class TdsTableHeaderRow {
     }
   }
 
+  @Watch('selected')
+  onSelectedChange(newValue?: boolean) {
+    if (newValue === undefined) return;
+    this.allSelected = newValue;
+  }
+
   async handleCheckboxChange(event) {
-    this.allSelected = event.detail.checked;
+    this.selected = event.detail.checked;
     this.tdsSelectAll.emit({
       tableId: this.tableId,
       checked: event.detail.checked,
