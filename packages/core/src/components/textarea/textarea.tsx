@@ -80,9 +80,9 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange!: EventEmitter;
+  tdsChange!: EventEmitter<Event>;
 
-  handleChange(event): void {
+  handleChange(event: Event): void {
     this.tdsChange.emit(event);
   }
 
