@@ -92,7 +92,7 @@ export class TdsModal {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose!: EventEmitter<Event>;
+  tdsClose!: EventEmitter<globalThis.Event>;
 
   /** Emits just before Modal is opened. */
   @Event({
