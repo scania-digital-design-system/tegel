@@ -1,5 +1,5 @@
-import glob from 'glob';
-import path from 'path';
+import { globSync } from 'glob';
+import path from 'node:path';
 import type { StorybookConfig } from '@storybook/html-vite';
 import { mergeConfig } from 'vite';
 import { SHIPPED_COMPONENTS } from '../src/tegel-lite/shipped-components.js';
@@ -14,7 +14,7 @@ function isAllowedTegelLiteStory(file: string): boolean {
 
 function loadStories() {
   // Gather all story files synchronously
-  const storyFiles = glob.sync(
+  const storyFiles = globSync(
     path.resolve(__dirname, '../src/**/*.@(stories.@(js|jsx|ts|tsx|mdx)|notes.mdx|mdx)'),
   );
 
