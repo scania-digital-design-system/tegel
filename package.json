@@ -6,31 +6,34 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "cd packages/core && npm run start:core",
-    "build": "cd packages/core && npm run build",
-    "build:angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
-    "build:react": "npm run build && cd packages/react && npm i && npm run build ",
-    "build:all": "npm run build && (cd packages/angular-17 && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
-    "build:tegel-lite": "cd packages/core && npm run build:tegel-lite",
-    "test": "cd packages/core && npm run test",
-    "test:axe": "cd packages/core && npm run test:axe",
-    "test:lte": "npm run build:tegel-lite && cd packages/tegel-lite && node ../core/docker-test-runner.js",
+    "start": "pnpm filter:core start:core",
+    "build": "pnpm filter:core build",
+    "build:angular-17": "pnpm build && pnpm filter:angular-17 install && pnpm filter:angular-17 build",
+    "build:react": "pnpm build && pnpm filter:react install && pnpm filter:react build",
+    "build:all": "pnpm build && pnpm build:angular-17 && pnpm build:react",
+    "build:tegel-lite": "pnpm filter:core build:tegel-lite",
+    "test": "pnpm filter:core test",
+    "test:axe": "pnpm filter:core test:axe",
+    "test:lte": "pnpm build:tegel-lite && cd packages/tegel-lite && node ../core/docker-test-runner.js",
     "commit": "cz",
     "prepare": "husky install",
     "reinstall": "./reinstall.sh",
-    "pack:core": "cd packages/core && npm run build && npm pack",
-    "pack:react": "cd packages/react && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
-    "pack:angular-17": "cd packages/angular-17 && npm install $(ls -t ../core/*.tgz | head -1) && cd dist/components && npm pack",
-    "pack:all": "npm run pack-core && npm run pack-react && npm run pack-angular-17",
+    "pack:core": "pnpm build && pnpm filter:core pack --pack-destination packages/core",
+    "pack:react": "pnpm build:react && pnpm filter:react pack --pack-destination packages/react",
+    "pack:angular-17": "pnpm build:angular-17 && pnpm filter:angular-17 pack-components",
+    "pack:all": "pnpm pack:core && pnpm pack:react && pnpm pack:angular-17",
     "lint:css": "stylelint \"**/*.scss\" --quiet",
     "lint:css:tl": "stylelint \"packages/core/src/tegel-lite/**/*.scss\"",
     "lint:css:tl:fix": "stylelint \"packages/core/src/tegel-lite/**/*.scss\" --fix",
-    "lint": "npx eslint ./",
-    "tsc": "npx tsc --noEmit",
+    "lint": "pnx eslint ./",
+    "tsc": "pnx tsc --noEmit",
     "lint:prop-reflect": "node scripts/check-prop-reflect.mjs",
-    "lint:check": "npm run lint && npm run tsc && npm run lint:prop-reflect",
+    "lint:check": "pnpm lint && pnpm tsc && pnpm lint:prop-reflect",
     "icons:import": "./scripts/import-icons.sh",
-    "icons:update": "node ./scripts/icon-types-generation.mts && node ./scripts/icon-token-generation.mts"
+    "icons:update": "node ./scripts/icon-types-generation.mts && node ./scripts/icon-token-generation.mts",
+    "filter:core": "pnpm --filter @scania/tegel",
+    "filter:angular-17": "pnpm --filter angular-17",
+    "filter:react": "pnpm --filter @scania/tegel-react"
   },
   "repository": {
     "type": "git",
@@ -112,10 +115,11 @@
     "**/*.{js,jsx,ts,tsx,scss,md,yml,yaml}": "prettier --write"
   },
   "engines": {
-    "npm": ">=9.0.0",
+    "pnpm": ">=12.0.0",
     "node": ">=22.11.0"
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3"
-  }
+  },
+  "packageManager": "pnpm@12.3.4"
 }

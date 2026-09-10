@@ -69,11 +69,11 @@
     "dist/"
   ],
   "scripts": {
-    "prepublishOnly": "echo 'Warning: Run npm run build:tegel-lite from root before publishing'",
-    "test": "npx playwright test"
+    "prepublishOnly": "echo 'Warning: Run pnpm build:tegel-lite from root before publishing'",
+    "test": "pnx playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "catalog:",
     "@types/node": "^24.3.1",
     "serve": "^14.2.5"
   },

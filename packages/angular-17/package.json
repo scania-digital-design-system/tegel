@@ -9,8 +9,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build components",
-    "npm_pack": "cd dist/components && npm pack",
-    "package": "npm run build && npm run npm_pack",
+    "pack-components": "node scripts/patch-dist-package.mjs && cd dist/components && pnpm pack",
+    "package": "pnpm build && pnpm pack-components",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -22,7 +22,7 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
-    "@scania/tegel": "^1.63.0",
+    "@scania/tegel": "workspace:^",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

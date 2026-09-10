@@ -1,0 +1,13 @@
+packages:
+  - 'packages/*'
+  - 'color'
+  - 'grid-deprecated'
+
+catalog:
+  '@playwright/test': 1.62.1
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
