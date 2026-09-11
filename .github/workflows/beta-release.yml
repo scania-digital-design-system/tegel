@@ -195,7 +195,7 @@ jobs:
 
       - name: Install @scania/tegel as dev dependency for build
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.beta-release-core.outputs.version }} --save-dev
+        run: npm install @scania/tegel@${{ needs.beta-release-core.outputs.version }} --save-dev --save-exact
 
       - name: Angular-17 - Run build
         run: npm run build:angular-17

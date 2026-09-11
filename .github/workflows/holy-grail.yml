@@ -267,17 +267,17 @@ jobs:
       - name: Angular 17 - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
 
       - name: Angular 17 components - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
 
       - name: React - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }})
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
 
       - name: Wrappers Core increase - Commit and push changes
         run: |
