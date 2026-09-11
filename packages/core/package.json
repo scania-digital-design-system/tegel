@@ -386,9 +386,9 @@
     "build:core": "stencil build && stencil build --docs && pnpm build:css && pnpm verify:csp",
     "build": "pnpm build:core && pnpm build:tegel-lite",
     "start": "concurrently --raw \"pnpm:build-stencil:watch\" \"pnpm:watch:css\" \"pnpm:start:storybook\"",
-    "test": "node docker-test-runner.js",
-    "test:axe": "pnx playwright test --config 'playwright-axe.config.ts'",
-    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -v /work/node_modules/ -w /work/ mcr.microsoft.com/playwright:v1.62.1-jammy /bin/bash -c 'pnpm ci && pnx playwright test --update-snapshots && exit'",
+    "test": "pnpm workspace test",
+    "test:axe": "playwright test --config 'playwright-axe.config.ts'",
+    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -v /work/node_modules/ -w /work/ mcr.microsoft.com/playwright:v1.62.1-jammy /bin/bash -c 'pnpm ci && pnpm exec playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "copy:assets": "node scripts/copy-assets.mjs",
@@ -403,7 +403,8 @@
     "update:tegel-lite-exports": "node scripts/update-tegel-lite-exports.js",
     "copy:assets-tegel-lite": "node scripts/copy-tegel-lite-assets.js",
     "lint:css:tl": "stylelint \"src/tegel-lite/**/*.scss\"",
-    "lint:css:tl:fix": "stylelint \"src/tegel-lite/**/*.scss\" --fix"
+    "lint:css:tl:fix": "stylelint \"src/tegel-lite/**/*.scss\" --fix",
+    "workspace": "pnpm --workspace-root"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",

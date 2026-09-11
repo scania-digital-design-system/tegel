@@ -1,0 +1,21 @@
+# Use the official Playwright image with Playwright 1.62.1 and Ubuntu 22.04 (Jammy)
+FROM mcr.microsoft.com/playwright:v1.62.1-jammy
+
+# Set /app as the working directory inside the container
+WORKDIR /app/
+
+# Copy the entire Docker build context into /app
+# Files and directories excluded by .dockerignore are not copied
+COPY ./ ./
+
+# Enable Corepack so that pnpm can be used
+RUN corepack enable
+
+# Clean install of the core package dependencies
+RUN pnpm filter:core ci
+
+# Build the core package
+RUN pnpm build
+
+# Run the Playwright tests when the container starts
+CMD ["pnpm", "filter:core", "exec", "playwright", "test"]

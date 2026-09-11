@@ -70,7 +70,7 @@
   ],
   "scripts": {
     "prepublishOnly": "echo 'Warning: Run pnpm build:tegel-lite from root before publishing'",
-    "test": "pnx playwright test"
+    "test": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
