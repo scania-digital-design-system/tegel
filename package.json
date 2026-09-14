@@ -12,14 +12,12 @@
     "build:react": "pnpm build && pnpm filter:react install && pnpm filter:react build",
     "build:all": "pnpm build && pnpm build:angular-17 && pnpm build:react",
     "build:tegel-lite": "pnpm filter:core build:tegel-lite",
-    "build:core:docker:test": "docker build --file packages/core/Dockerfile.test --tag tegel-core-test .",
-    "run:core:docker:test": "docker run --rm tegel-core-test",
-    "test": "pnpm build:core:docker:test && pnpm run:core:docker:test",
+    "test": "pnpm build:core:docker:playwright && pnpm run:core:docker:playwright",
     "test:axe": "pnpm filter:core test:axe",
-    "test:lte": "pnpm build:tegel-lite && cd packages/tegel-lite && node ../core/docker-test-runner.js",
+    "test:lte": "pnpm build:tegel-lite:docker:playwright && pnpm run:tegel-lite:docker:playwright",
     "commit": "cz",
     "prepare": "husky install",
-    "reinstall": "./reinstall.sh",
+    "reinstall": "rm -rf node_modules && pnpm install --fix-lockfile",
     "pack:core": "pnpm build && pnpm filter:core pack --pack-destination packages/core",
     "pack:react": "pnpm build:react && pnpm filter:react pack --pack-destination packages/react",
     "pack:angular-17": "pnpm build:angular-17 && pnpm filter:angular-17 pack-components",
@@ -33,9 +31,15 @@
     "lint:check": "pnpm lint && pnpm tsc && pnpm lint:prop-reflect",
     "icons:import": "./scripts/import-icons.sh",
     "icons:update": "node ./scripts/icon-types-generation.mts && node ./scripts/icon-token-generation.mts",
+    "export:manifest": "node ./scripts/create-exportable-manifest.mjs",
+    "build:core:docker:playwright": "docker build --file playwright.Dockerfile --target core --tag tegel-playwright:core .",
+    "build:tegel-lite:docker:playwright": "docker build --file playwright.Dockerfile --target tegel-lite --tag tegel-playwright:tegel-lite .",
+    "run:core:docker:playwright": "docker run --env TEST_TARGET=core --volume $(pwd)/packages/core/src/components:/app/packages/core/src/components --rm tegel-playwright:core",
+    "run:tegel-lite:docker:playwright": "docker run --env TEST_TARGET=tegel-lite --volume $(pwd)/packages/tegel-lite/tests:/app/packages/tegel-lite/tests --rm tegel-playwright:tegel-lite",
     "filter:core": "pnpm --filter @scania/tegel",
     "filter:angular-17": "pnpm --filter angular-17",
-    "filter:react": "pnpm --filter @scania/tegel-react"
+    "filter:react": "pnpm --filter @scania/tegel-react",
+    "filter:tegel-lite": "pnpm --filter @scania/tegel-lite"
   },
   "repository": {
     "type": "git",
@@ -50,6 +54,11 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^21.1.0",
     "@eslint/js": "^10.0.1",
+    "@pnpm/catalogs.config": "^1100.0.7",
+    "@pnpm/exportable-manifest": "^1000.4.2",
+    "@pnpm/find-workspace-dir": "^1000.1.5",
+    "@pnpm/read-project-manifest": "^1001.2.6",
+    "@pnpm/workspace.read-manifest": "^1000.3.1",
     "@types/node": "^26.1.2",
     "commitizen": "^4.3.0",
     "commitlint": "^20.5.0",
@@ -117,11 +126,11 @@
     "**/*.{js,jsx,ts,tsx,scss,md,yml,yaml}": "prettier --write"
   },
   "engines": {
-    "pnpm": ">=12.0.0",
+    "pnpm": "^10.0.0",
     "node": ">=22.11.0"
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3"
   },
-  "packageManager": "pnpm@12.3.4"
+  "packageManager": "pnpm@10.34.5"
 }
