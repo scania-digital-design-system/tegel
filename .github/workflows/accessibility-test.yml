@@ -1,33 +1,41 @@
 name: Accessibility Tests
+
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+
 jobs:
   playwright-axe:
     runs-on: ubuntu-22.04
+
     steps:
       - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
       - uses: actions/setup-node@v3
         with:
           node-version: 22
 
       - name: Install dependencies
         working-directory: packages/core
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build Tegel
         working-directory: packages/core
-        run: npm run build
+        run: pnpm build
 
       - name: Install Playwright Browsers
         working-directory: packages/core
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install --with-deps
 
       - name: Run Accessibility Tests
         working-directory: packages/core
-        run: npx playwright test --config "playwright-axe.config.ts"
+        run: pnpm exec playwright test --config "playwright-axe.config.ts"
 
       - uses: daun/playwright-report-summary@v3
         if: always()
