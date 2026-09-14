@@ -11,7 +11,7 @@
  * Exits 0 if no violations are found.
  * Exits 1 with details if violations are found (build should be treated as broken).
  *
- * Run automatically after every production build via the "build:core" npm script.
+ * Run automatically after every production build via the "build:core" pnpm script.
  * Can also be run standalone: node scripts/verify-csp.mjs
  *
  * If this script fails after a Stencil upgrade, inspect the new runtime output for

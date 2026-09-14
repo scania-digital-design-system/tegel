@@ -1,6 +1,6 @@
 /**
  * Checks that all primitive/enum @Prop() decorators in Stencil components
- * include `reflect: true`. Run via: npm run lint:prop-reflect
+ * include `reflect: true`. Run via: pnpm lint:prop-reflect
  *
  * Exits with code 1 if any violations are found.
  */
