@@ -114,12 +114,12 @@ jobs:
           fi
           echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
-      # - name: Core - Publish
-      #   if: env.VERSION_EXISTS != 'true'
-      #   working-directory: ${{ env.WORKING_DIRECTORY }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: pnpm publish --access public --tag beta
+      - name: Core - Publish
+        if: env.VERSION_EXISTS != 'true'
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --access public --tag beta
 
     outputs:
       version: ${{ steps.check-version.outputs.PACKAGE_VERSION }}
@@ -199,12 +199,12 @@ jobs:
           fi
           echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
-      # - name: Angular-17 - Publish
-      #   if: env.VERSION_EXISTS != 'true'
-      #   working-directory: packages/angular-17/dist/components
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: pnpm publish --access public --tag beta
+      - name: Angular-17 - Publish
+        if: env.VERSION_EXISTS != 'true'
+        working-directory: packages/angular-17/dist/components
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --access public --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
@@ -279,12 +279,12 @@ jobs:
           fi
           echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
-      # - name: Publish React package to NPM
-      #   if: env.VERSION_EXISTS != 'true'
-      #   working-directory: packages/react
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: pnpm publish --tag beta
+      - name: Publish React package to NPM
+        if: env.VERSION_EXISTS != 'true'
+        working-directory: packages/react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
@@ -359,12 +359,12 @@ jobs:
           fi
           echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
-      # - name: Publish Tegel Lite package to NPM
-      #   if: env.VERSION_EXISTS != 'true'
-      #   working-directory: packages/tegel-lite
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: pnpm publish --tag beta
+      - name: Publish Tegel Lite package to NPM
+        if: env.VERSION_EXISTS != 'true'
+        working-directory: packages/tegel-lite
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
