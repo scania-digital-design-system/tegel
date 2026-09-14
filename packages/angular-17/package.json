@@ -9,10 +9,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build components",
-    "pack-components": "node scripts/patch-dist-package.mjs && cd dist/components && pnpm pack",
+    "pack-components": "pnpm export:manifest && pnpm --dir dist/components pack",
     "package": "pnpm build && pnpm pack-components",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "export:manifest": "pnpm workspace export:manifest packages/angular-17/projects/components packages/angular-17/dist/components",
+    "workspace": "pnpm --workspace-root"
   },
   "private": false,
   "dependencies": {
