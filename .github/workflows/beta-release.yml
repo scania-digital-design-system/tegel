@@ -58,6 +58,10 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
 
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -89,16 +93,12 @@ jobs:
           jq ".version = \"$new_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
 
-      - name: Install dependencies in root
-        run: npm install
-
-      - name: Core - Install
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm install
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Core - Run build
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm run build
+        run: pnpm build
 
       - name: Check if version already exists
         id: check-version
@@ -106,7 +106,7 @@ jobs:
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
           PACKAGE_VERSION=$(jq -r '.version' package.json)
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          if pnpm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_ENV
           else
@@ -119,7 +119,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --tag beta
+        run: pnpm publish --access public --tag beta
 
     outputs:
       version: ${{ steps.check-version.outputs.PACKAGE_VERSION }}
@@ -136,6 +136,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.branch }}
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -158,47 +162,28 @@ jobs:
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
 
-      - name: Install dependencies in root
-        run: npm install
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm install
-
-      - name: Angular-17 workspace - Install
-        working-directory: packages/angular-17
-        run: npm install
-
-      - name: Update @scania/tegel peerDependency in Angular-17 workspace
-        working-directory: packages/angular-17
-        run: |
-          echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} in package.json"
-          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
-          mv package.tmp.json package.json
-
-      - name: Angular-17 wrapper - Install
-        working-directory: packages/angular-17/projects/components
-        run: npm install
-
-      - name: Update @scania/tegel peerDependency and version in Angular-17 wrapper
+      - name: Update version in Angular-17 wrapper
         id: set-version
         working-directory: packages/angular-17/projects/components
         run: |
-          echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} and setting package version"
+          echo "Setting package version"
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
           beta_version_suffix="$BETA_VERSION_SUFFIX"
           NEW_VERSION="${current_version}-${beta_version_suffix}"
           echo "Setting new version: $NEW_VERSION"
-          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\" | .version = \"$NEW_VERSION\"" package.json > package.tmp.json
+          jq ".version = \"$NEW_VERSION\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
 
       - name: Install @scania/tegel as dev dependency for build
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.beta-release-core.outputs.version }} --save-dev
+        run: pnpm add @scania/tegel --save-dev --save-exact --workspace
 
       - name: Angular-17 - Run build
-        run: npm run build:angular-17
+        run: pnpm build:angular-17
 
       - name: Check if Angular-17 version already exists
         id: check-version
@@ -206,7 +191,7 @@ jobs:
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
           PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          if pnpm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_ENV
           else
@@ -219,7 +204,7 @@ jobs:
         working-directory: packages/angular-17/dist/components
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --tag beta
+        run: pnpm publish --access public --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
@@ -236,6 +221,10 @@ jobs:
           ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -257,32 +246,24 @@ jobs:
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
 
-      - name: Install root dependencies
-        run: npm install
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Install Core dependencies
-        working-directory: packages/core
-        run: npm install
-
-      - name: Update React package version and dependency
+      - name: Update React package version
         id: set-version
         working-directory: packages/react
         run: |
-          echo "Updating React package version and dependency"
+          echo "Updating React package version"
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
           beta_version_suffix="$BETA_VERSION_SUFFIX"
           new_version="${current_version}-${beta_version_suffix}"
           echo "Setting new version: $new_version"
-          jq ".version = \"$new_version\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
+          jq ".version = \"$new_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
 
-      - name: Install React dependencies
-        working-directory: packages/react
-        run: npm install
-
       - name: Build React package
-        run: npm run build:react
+        run: pnpm build:react
 
       - name: Check if React version already exists
         id: check-version
@@ -290,7 +271,7 @@ jobs:
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
           PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          if pnpm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_ENV
           else
@@ -303,7 +284,7 @@ jobs:
         working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --tag beta
+        run: pnpm publish --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
@@ -320,6 +301,10 @@ jobs:
           ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -341,12 +326,8 @@ jobs:
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
 
-      - name: Install root dependencies
-        run: npm install
-
-      - name: Install Core dependencies
-        working-directory: packages/core
-        run: npm install
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Update Tegel Lite package version
         id: set-version
@@ -362,7 +343,7 @@ jobs:
           echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
 
       - name: Build Tegel Lite package
-        run: npm run build:tegel-lite
+        run: pnpm build:tegel-lite
 
       - name: Check if Tegel Lite version already exists
         id: check-version
@@ -370,7 +351,7 @@ jobs:
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
           PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          if pnpm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_ENV
           else
@@ -383,7 +364,7 @@ jobs:
         working-directory: packages/tegel-lite
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --tag beta
+        run: pnpm publish --tag beta
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
