@@ -103,12 +103,8 @@ jobs:
           git commit -m "chore(tegel-lite): bump version to ${{ steps.set-version.outputs.PACKAGE_VERSION }}"
           git push -u --no-verify origin "$BRANCH_NAME"
 
-      - name: Install root dependencies
-        run: pnpm install
-
-      - name: Install Core dependencies
-        working-directory: packages/core
-        run: pnpm install
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Tegel Lite package
         run: pnpm build:tegel-lite

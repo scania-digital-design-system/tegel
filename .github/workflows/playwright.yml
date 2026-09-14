@@ -1,21 +1,16 @@
 name: Playwright
-
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     container:
       image: mcr.microsoft.com/playwright:v1.62.1-jammy
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v6
         with:
           cache: true
@@ -26,8 +21,7 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install dependencies
-        working-directory: packages/core
+      - name: Install workspace dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Tegel
@@ -56,13 +50,10 @@ jobs:
 
   test-lite:
     runs-on: ubuntu-latest
-
     container:
       image: mcr.microsoft.com/playwright:v1.62.1-jammy
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: pnpm/action-setup@v6
         with:
           cache: true
@@ -75,8 +66,7 @@ jobs:
 
       # Tegel Lite CSS is compiled from packages/core sources via the core
       # build scripts (sass), so the core deps are required to produce dist/.
-      - name: Install Core dependencies
-        working-directory: packages/core
+      - name: Install workspace dependencies
         run: pnpm install --frozen-lockfile
 
       # Compiles packages/tegel-lite/dist (global.css, *-variables.css and the
@@ -84,10 +74,6 @@ jobs:
       - name: Build Tegel Lite
         working-directory: packages/core
         run: pnpm build:tegel-lite
-
-      - name: Install Tegel Lite dependencies
-        working-directory: packages/tegel-lite
-        run: pnpm install --frozen-lockfile
 
       - name: Run Tegel Lite Playwright tests
         working-directory: packages/tegel-lite

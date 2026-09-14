@@ -1,18 +1,14 @@
 name: Accessibility Tests
-
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
-
 jobs:
   playwright-axe:
     runs-on: ubuntu-22.04
-
     steps:
       - uses: actions/checkout@v3
-
       - uses: pnpm/action-setup@v6
         with:
           cache: true
@@ -21,8 +17,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
-        working-directory: packages/core
+      - name: Install workspace dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Tegel
