@@ -117,6 +117,10 @@ export class TdsDropdown {
 
   @State() filterQuery: string = '';
 
+  @State() direction: 'up' | 'down' = 'down';
+
+  @State() height: number = 260; // 260 is the max height for sm and xs dropdowns
+
   private dropdownList!: HTMLDivElement;
 
   private inputElement!: HTMLInputElement;
@@ -507,6 +511,8 @@ export class TdsDropdown {
         : [defaultValueStr];
       this.updateDropdownStateInternal(initialValue);
     }
+
+    this.getListOpenDirectionAndHeight();
   }
 
   /** Method to handle slot changes */
@@ -615,23 +621,68 @@ export class TdsDropdown {
     }
   };
 
-  private readonly getOpenDirection = () => {
+  /** This auxiliary function is meant to calculate both the open direction when it is set as auto
+   * as well as the ideal height, both for the dropdown list. It will prioritize opening down
+   * whenever possible. Only triggers a re-render if the State variables direction and height have
+   * changed. */
+  private readonly getListOpenDirectionAndHeight = () => {
+    let newHeight: number;
+    let newDirection: 'up' | 'down';
+
+    const rect = this.host.getBoundingClientRect();
+
+    const spaceAbove = rect.top - 32;
+    const spaceBelow = window.innerHeight - rect.bottom - 32;
+
+    const defaultHeight = this.size === 'sm' || this.size === 'xs' ? 260 : 312;
+
+    // Actual content height (fallback to default if not measurable)
+    const contentHeight =
+      this.dropdownList?.scrollHeight || this.dropdownList?.offsetHeight || defaultHeight;
+
+    // We never want to exceed the default design height
+    const desiredHeight = Math.min(contentHeight, defaultHeight);
+
     if (this.openDirection === 'auto' || !this.openDirection) {
-      const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
-      const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
-      const viewportHeight = window.innerHeight;
-      if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
-        return 'up';
+      if (spaceBelow >= desiredHeight) {
+        // Preferred placement
+        newDirection = 'down';
+        newHeight = desiredHeight;
+      } else if (spaceAbove >= desiredHeight) {
+        // Fallback
+        newDirection = 'up';
+        newHeight = desiredHeight;
+      } else if (spaceBelow >= spaceAbove) {
+        // Neither fits: choose the larger side
+        newDirection = 'down';
+        newHeight = Math.max(spaceBelow, 0);
+      } else {
+        newDirection = 'up';
+        newHeight = Math.max(spaceAbove, 0);
       }
-      return 'down';
+    } else {
+      newDirection = this.openDirection;
+
+      newHeight =
+        newDirection === 'down'
+          ? Math.min(desiredHeight, spaceBelow)
+          : Math.min(desiredHeight, spaceAbove);
     }
-    return this.openDirection;
+
+    if (this.direction !== newDirection) {
+      this.direction = newDirection;
+    }
+
+    if (this.height !== newHeight) {
+      this.height = newHeight;
+    }
   };
 
   private readonly handleToggleOpen = () => {
     if (!this.disabled) {
       this.open = !this.open;
       if (this.open) {
+        this.getListOpenDirectionAndHeight();
         if (this.filter) {
           this.focusInputElement();
         } else {
@@ -838,6 +889,14 @@ export class TdsDropdown {
     }
   };
 
+  private handleWindowChange = () => {
+    if (!this.open) {
+      return;
+    }
+
+    this.getListOpenDirectionAndHeight();
+  };
+
   componentDidRender() {
     const form = this.host.closest('form');
     if (form) {
@@ -848,11 +907,18 @@ export class TdsDropdown {
     this.updateDropdownListInertState();
   }
 
+  connectedCallback() {
+    window.addEventListener('resize', this.handleWindowChange);
+    window.addEventListener('scroll', this.handleWindowChange, true);
+  }
+
   disconnectedCallback() {
     const form = this.host.closest('form');
     if (form) {
       form.removeEventListener('reset', this.resetInput);
     }
+    window.removeEventListener('resize', this.handleWindowChange);
+    window.removeEventListener('scroll', this.handleWindowChange, true);
   }
 
   private updateDropdownListInertState() {
@@ -1098,13 +1164,14 @@ export class TdsDropdown {
           class={{
             'dropdown-list': true,
             [this.size]: true,
-            [this.getOpenDirection()]: true,
+            [this.direction]: true,
             'label-outside': !!(this.label && this.labelPosition === 'outside'),
             'open': this.open,
             'closed': !this.open,
             [`animation-enter-${this.animation}`]: this.animation !== 'none' && this.open,
             [`animation-exit-${this.animation}`]: this.animation !== 'none' && !this.open,
           }}
+          style={{ '--tds-dropdown-list-height': `${this.height}px` }}
         >
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (
