@@ -43,6 +43,10 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         env:
@@ -68,7 +72,7 @@ jobs:
           # package.json — this workflow never writes the bump back to develop, so the
           # in-repo version drifts. Bumping from npm is self-healing and avoids publishing
           # a version older than what's already live.
-          current_version=$(npm view "$PACKAGE_NAME@latest" version 2>/dev/null)
+          current_version=$(pnpm view "$PACKAGE_NAME@latest" version 2>/dev/null)
           if [[ -z "$current_version" ]]; then
             echo "Could not read published version from npm; falling back to package.json"
             current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
@@ -76,7 +80,7 @@ jobs:
           echo "Current (published) version: $current_version"
           jq ".version = \"$current_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
-          npm version ${{ inputs.version }} --no-git-tag-version
+          pnpm version ${{ inputs.version }} --no-git-tag-version
           new_version=$(jq -r '.version' package.json)
           echo "Setting new version: $new_version"
           echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
@@ -95,19 +99,19 @@ jobs:
           # run) so the push below can't fail with a non-fast-forward rejection.
           git push origin --delete "$BRANCH_NAME" 2>/dev/null || true
           git checkout -B "$BRANCH_NAME"
-          git add package.json package-lock.json
+          git add package.json
           git commit -m "chore(tegel-lite): bump version to ${{ steps.set-version.outputs.PACKAGE_VERSION }}"
           git push -u --no-verify origin "$BRANCH_NAME"
 
       - name: Install root dependencies
-        run: npm install
+        run: pnpm install
 
       - name: Install Core dependencies
         working-directory: packages/core
-        run: npm install
+        run: pnpm install
 
       - name: Build Tegel Lite package
-        run: npm run build:tegel-lite
+        run: pnpm build:tegel-lite
 
       - name: Check if Tegel Lite version already exists
         id: check-version
@@ -115,7 +119,7 @@ jobs:
         run: |
           PACKAGE_NAME=$(jq -r '.name' package.json)
           PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
-          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          if pnpm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
             echo "Version $PACKAGE_VERSION already exists. Skipping publish."
             echo "VERSION_EXISTS=true" >> $GITHUB_OUTPUT
           else
@@ -127,7 +131,7 @@ jobs:
         id: pack
         working-directory: packages/tegel-lite
         run: |
-          TARBALL=$(npm pack)
+          TARBALL=$(pnpm pack)
           echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
 
       - name: Upload tarball artifact (dry run)
@@ -142,7 +146,7 @@ jobs:
         working-directory: packages/tegel-lite
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public --tag latest
+        run: pnpm publish --access public --tag latest
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
