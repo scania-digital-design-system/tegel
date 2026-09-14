@@ -199,6 +199,10 @@ jobs:
           fi
           echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
 
+      - name: Angular-17 - Create exportable manifest (with `workspace:` replaced with actual versions)
+        working-directory: packages/angular-17
+        run: pnpm export:manifest
+
       - name: Angular-17 - Publish
         if: env.VERSION_EXISTS != 'true'
         working-directory: packages/angular-17/dist/components
