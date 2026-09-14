@@ -186,23 +186,8 @@
     transform: scaleY(0);
     pointer-events: none;
     background-color: var(--tds-dropdown-list-background-color);
+    max-height: var(--tds-dropdown-list-height);
     @include tds-scrollbar;
-
-    &.lg {
-      max-height: 312px;
-    }
-
-    &.md {
-      max-height: 312px;
-    }
-
-    &.sm {
-      max-height: 260px;
-    }
-
-    &.xs {
-      max-height: 260px;
-    }
 
     &.up {
       bottom: 100%;
