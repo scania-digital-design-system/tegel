@@ -527,41 +527,41 @@ jobs:
           git reset --hard develop
           git push --force --no-verify origin main
 
-  notify-teams:
-    needs:
-      [
-        create-release-branch,
-        release-core,
-        bump-wrappers-to-new-version,
-        release-angular-17,
-        release-react,
-      ]
-    runs-on: ubuntu-latest
-    if: always()
-    steps:
-      - name: Notify Teams
-        env:
-          TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
-        run: |
-          version="${{ needs.create-release-branch.outputs.version }}"
-          dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
+  # notify-teams:
+  #   needs:
+  #     [
+  #       create-release-branch,
+  #       release-core,
+  #       bump-wrappers-to-new-version,
+  #       release-angular-17,
+  #       release-react,
+  #     ]
+  #   runs-on: ubuntu-latest
+  #   if: always()
+  #   steps:
+  #     - name: Notify Teams
+  #       env:
+  #         TEAMS_WEBHOOK: ${{ secrets.TEAMS_WEBHOOK }}
+  #       run: |
+  #         version="${{ needs.create-release-branch.outputs.version }}"
+  #         dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
 
-          # Detect any failed jobs
-          if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
-             [ "${{ needs.release-core.result }}" == "failure" ] || \
-             [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
-             [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
-             [ "${{ needs.release-react.result }}" == "failure" ]; then
-            status="🔴 *Tegel Release ${version}* failed"
-          else
-            status="🟢 *Tegel Release ${version}* succeeded"
-          fi
+  #         # Detect any failed jobs
+  #         if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
+  #            [ "${{ needs.release-core.result }}" == "failure" ] || \
+  #            [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
+  #            [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
+  #            [ "${{ needs.release-react.result }}" == "failure" ]; then
+  #           status="🔴 *Tegel Release ${version}* failed"
+  #         else
+  #           status="🟢 *Tegel Release ${version}* succeeded"
+  #         fi
 
-          # Append dry-run info
-          if [ "$dry" == "true" ]; then
-            status="$status _(dry run)_"
-          fi
+  #         # Append dry-run info
+  #         if [ "$dry" == "true" ]; then
+  #           status="$status _(dry run)_"
+  #         fi
 
-          curl -H 'Content-Type: application/json' \
-            -d "{\"text\": \"$status\"}" \
-            $TEAMS_WEBHOOK
+  #         curl -H 'Content-Type: application/json' \
+  #           -d "{\"text\": \"$status\"}" \
+  #           $TEAMS_WEBHOOK
