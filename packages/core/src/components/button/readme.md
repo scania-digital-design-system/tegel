@@ -41,11 +41,15 @@
 ### Used by
 
  - [tds-card](../card)
+ - [tds-table-footer](../table/table-footer)
+ - [tds-table-toolbar](../table/table-toolbar)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-card --> tds-button
+  tds-table-footer --> tds-button
+  tds-table-toolbar --> tds-button
   style tds-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
