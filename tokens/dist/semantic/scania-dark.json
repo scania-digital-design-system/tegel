@@ -912,6 +912,118 @@
     }
   },
   "component": {
+    "table": {
+      "background": {
+        "footer-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.700}"
+        },
+        "header-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.700}"
+        },
+        "header-hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.650}"
+        },
+        "toolbar-default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.650}"
+        },
+        "cell": {
+          "primary-default": {
+            "$type": "color",
+            "$value": "{scania.color.grey.850}"
+          },
+          "primary-hover": {
+            "$type": "color",
+            "$value": "{scania.color.grey.750}"
+          },
+          "secondary-default": {
+            "$type": "color",
+            "$value": "{scania.color.grey.800}"
+          },
+          "secondary-hover": {
+            "$type": "color",
+            "$value": "{scania.color.grey.750}"
+          },
+          "selected-default": {
+            "$type": "color",
+            "$value": "{scania.color.grey.700}"
+          },
+          "selected-hover": {
+            "$type": "color",
+            "$value": "{scania.color.grey.650}"
+          },
+          "expanded-default": {
+            "$type": "color",
+            "$value": "{component.table.background.cell.selected-default}"
+          }
+        }
+      },
+      "border": {
+        "divider-default": {
+          "$type": "color",
+          "$value": "{color.border.discrete}"
+        },
+        "divider-hover": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.500}"
+        },
+        "radius-default": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        }
+      },
+      "text": {
+        "cell-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "footer-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "header-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "placeholder-default": {
+          "$type": "color",
+          "$value": "{color.text.subtle}"
+        },
+        "toolbar-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        },
+        "value-default": {
+          "$type": "color",
+          "$value": "{color.text.strong}"
+        }
+      },
+      "icon": {
+        "edit-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "expand-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "filter-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "prefix-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        },
+        "sort-default": {
+          "$type": "color",
+          "$value": "{color.icon.strong}"
+        }
+      }
+    },
     "stepper": {
       "background": {
         "item-default": {
@@ -2925,52 +3037,6 @@
         "extra-small": {
           "$type": "number",
           "$value": 3
-        }
-      }
-    },
-    "table": {
-      "cell": {
-        "$type": "color",
-        "$value": "{color.background.layer-01}"
-      },
-      "cell-hover": {
-        "$type": "color",
-        "$value": "#1C222B"
-      },
-      "icon": {
-        "accent": {
-          "default": {
-            "$type": "color",
-            "$value": "{traton.color.blue.400}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{traton.color.blue.400}"
-          },
-          "active": {
-            "$type": "color",
-            "$value": "{traton.color.blue.150}"
-          },
-          "visited": {
-            "$type": "color",
-            "$value": "{traton.color.blue.150}"
-          }
-        }
-      },
-      "pagination": {
-        "base": {
-          "$type": "color",
-          "$value": "#242C37"
-        },
-        "dropdown": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        }
-      },
-      "secondary": {
-        "cell": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
         }
       }
     },

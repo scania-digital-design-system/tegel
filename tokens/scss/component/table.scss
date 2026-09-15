@@ -8,30 +8,66 @@
 .scania.tds-mode-light,
 .scania .tl-mode-light,
 .scania.tl-mode-light {
-  --component-table-cell: var(--color-background-layer-01);
-  --component-table-cell-hover: #edeff3;
-  --component-table-icon-accent-default: var(--traton-color-blue-700);
-  --component-table-icon-accent-hover: var(--traton-color-blue-700);
-  --component-table-icon-accent-active: var(--traton-color-blue-950);
-  --component-table-icon-accent-visited: var(--traton-color-blue-950);
-  --component-table-pagination-base: #e0e5eb;
-  --component-table-pagination-dropdown: var(--color-background-base);
-  --component-table-secondary-cell: var(--color-background-layer-02);
+  --component-table-background-footer-default: var(--scania-color-grey-150);
+  --component-table-background-header-default: var(--scania-color-grey-150);
+  --component-table-background-header-hover: var(--scania-color-grey-200);
+  --component-table-background-toolbar-default: var(--scania-color-grey-200);
+  --component-table-background-cell-primary-default: var(--scania-color-grey-50);
+  --component-table-background-cell-primary-hover: var(--scania-color-grey-100);
+  --component-table-background-cell-secondary-default: var(--scania-color-base-white);
+  --component-table-background-cell-secondary-hover: var(--scania-color-grey-100);
+  --component-table-background-cell-selected-default: var(--scania-color-grey-150);
+  --component-table-background-cell-selected-hover: var(--scania-color-grey-200);
+  --component-table-background-cell-expanded-default: var(
+    --component-table-background-cell-selected-default
+  );
+  --component-table-border-divider-default: var(--color-border-discrete);
+  --component-table-border-divider-hover: var(--scania-color-transparent-250);
+  --component-table-border-radius-default: var(--scania-unit-4);
+  --component-table-text-cell-default: var(--color-text-strong);
+  --component-table-text-footer-default: var(--color-text-strong);
+  --component-table-text-header-default: var(--color-text-strong);
+  --component-table-text-placeholder-default: var(--color-text-subtle);
+  --component-table-text-toolbar-default: var(--color-text-strong);
+  --component-table-text-value-default: var(--color-text-strong);
+  --component-table-icon-edit-default: var(--color-icon-strong);
+  --component-table-icon-expand-default: var(--color-icon-strong);
+  --component-table-icon-filter-default: var(--color-icon-strong);
+  --component-table-icon-prefix-default: var(--color-icon-strong);
+  --component-table-icon-sort-default: var(--color-icon-strong);
 }
 
 .traton .tds-mode-light,
 .traton.tds-mode-light,
 .traton .tl-mode-light,
 .traton.tl-mode-light {
-  --component-table-cell: var(--color-background-layer-01);
-  --component-table-cell-hover: #d6d4c9;
-  --component-table-icon-accent-default: var(--traton-color-blue-700);
-  --component-table-icon-accent-hover: var(--traton-color-blue-700);
-  --component-table-icon-accent-active: var(--traton-color-blue-950);
-  --component-table-icon-accent-visited: var(--traton-color-blue-950);
-  --component-table-pagination-base: #d6d4c9;
-  --component-table-pagination-dropdown: var(--color-background-base);
-  --component-table-secondary-cell: var(--color-background-layer-02);
+  --component-table-background-footer-default: var(--traton-color-grey-200);
+  --component-table-background-header-default: var(--traton-color-grey-300);
+  --component-table-background-header-hover: var(--traton-color-grey-400);
+  --component-table-background-toolbar-default: var(--traton-color-grey-400);
+  --component-table-background-cell-primary-default: var(--color-background-layer-01);
+  --component-table-background-cell-primary-hover: var(--traton-color-grey-200);
+  --component-table-background-cell-secondary-default: var(--color-background-layer-02);
+  --component-table-background-cell-secondary-hover: var(--traton-color-grey-200);
+  --component-table-background-cell-selected-default: var(--traton-color-grey-300);
+  --component-table-background-cell-selected-hover: var(--traton-color-grey-400);
+  --component-table-background-cell-expanded-default: var(
+    --component-table-background-cell-selected-default
+  );
+  --component-table-border-divider-default: var(--color-border-discrete);
+  --component-table-border-divider-hover: var(--traton-color-transparent-400);
+  --component-table-border-radius-default: var(--traton-unit-4);
+  --component-table-text-cell-default: var(--color-text-strong);
+  --component-table-text-footer-default: var(--color-text-strong);
+  --component-table-text-header-default: var(--color-text-strong);
+  --component-table-text-placeholder-default: var(--color-text-subtle);
+  --component-table-text-toolbar-default: var(--color-text-strong);
+  --component-table-text-value-default: var(--color-text-strong);
+  --component-table-icon-edit-default: var(--color-icon-strong);
+  --component-table-icon-expand-default: var(--color-icon-strong);
+  --component-table-icon-filter-default: var(--color-icon-strong);
+  --component-table-icon-prefix-default: var(--color-icon-strong);
+  --component-table-icon-sort-default: var(--color-icon-strong);
 }
 
 .tds-mode-dark,
@@ -39,28 +75,64 @@
 .scania.tds-mode-dark,
 .scania .tl-mode-dark,
 .scania.tl-mode-dark {
-  --component-table-cell: var(--color-background-layer-01);
-  --component-table-cell-hover: #1c222b;
-  --component-table-icon-accent-default: var(--traton-color-blue-400);
-  --component-table-icon-accent-hover: var(--traton-color-blue-400);
-  --component-table-icon-accent-active: var(--traton-color-blue-150);
-  --component-table-icon-accent-visited: var(--traton-color-blue-150);
-  --component-table-pagination-base: #242c37;
-  --component-table-pagination-dropdown: var(--color-background-layer-01);
-  --component-table-secondary-cell: var(--color-background-layer-02);
+  --component-table-background-footer-default: var(--scania-color-grey-700);
+  --component-table-background-header-default: var(--scania-color-grey-700);
+  --component-table-background-header-hover: var(--scania-color-grey-650);
+  --component-table-background-toolbar-default: var(--scania-color-grey-650);
+  --component-table-background-cell-primary-default: var(--scania-color-grey-850);
+  --component-table-background-cell-primary-hover: var(--scania-color-grey-750);
+  --component-table-background-cell-secondary-default: var(--scania-color-grey-800);
+  --component-table-background-cell-secondary-hover: var(--scania-color-grey-750);
+  --component-table-background-cell-selected-default: var(--scania-color-grey-700);
+  --component-table-background-cell-selected-hover: var(--scania-color-grey-650);
+  --component-table-background-cell-expanded-default: var(
+    --component-table-background-cell-selected-default
+  );
+  --component-table-border-divider-default: var(--color-border-discrete);
+  --component-table-border-divider-hover: var(--scania-color-transparent-inverse-500);
+  --component-table-border-radius-default: var(--scania-unit-4);
+  --component-table-text-cell-default: var(--color-text-strong);
+  --component-table-text-footer-default: var(--color-text-strong);
+  --component-table-text-header-default: var(--color-text-strong);
+  --component-table-text-placeholder-default: var(--color-text-subtle);
+  --component-table-text-toolbar-default: var(--color-text-strong);
+  --component-table-text-value-default: var(--color-text-strong);
+  --component-table-icon-edit-default: var(--color-icon-strong);
+  --component-table-icon-expand-default: var(--color-icon-strong);
+  --component-table-icon-filter-default: var(--color-icon-strong);
+  --component-table-icon-prefix-default: var(--color-icon-strong);
+  --component-table-icon-sort-default: var(--color-icon-strong);
 }
 
 .traton .tds-mode-dark,
 .traton.tds-mode-dark,
 .traton .tl-mode-dark,
 .traton.tl-mode-dark {
-  --component-table-cell: var(--color-background-layer-01);
-  --component-table-cell-hover: #003137;
-  --component-table-icon-accent-default: var(--traton-color-blue-400);
-  --component-table-icon-accent-hover: var(--traton-color-blue-400);
-  --component-table-icon-accent-active: var(--traton-color-blue-150);
-  --component-table-icon-accent-visited: var(--traton-color-blue-150);
-  --component-table-pagination-base: #004852;
-  --component-table-pagination-dropdown: var(--color-background-layer-01);
-  --component-table-secondary-cell: var(--color-background-layer-02);
+  --component-table-background-footer-default: var(--traton-color-blue-800);
+  --component-table-background-header-default: var(--traton-color-blue-800);
+  --component-table-background-header-hover: var(--traton-color-blue-700);
+  --component-table-background-toolbar-default: var(--traton-color-blue-700);
+  --component-table-background-cell-primary-default: var(--color-background-layer-01);
+  --component-table-background-cell-primary-hover: var(--traton-color-blue-850);
+  --component-table-background-cell-secondary-default: var(--color-background-layer-02);
+  --component-table-background-cell-secondary-hover: var(--traton-color-blue-800);
+  --component-table-background-cell-selected-default: var(--traton-color-blue-800);
+  --component-table-background-cell-selected-hover: var(--traton-color-blue-700);
+  --component-table-background-cell-expanded-default: var(
+    --component-table-background-cell-selected-default
+  );
+  --component-table-border-divider-default: var(--color-border-discrete);
+  --component-table-border-divider-hover: var(--traton-color-transparent-inverse-400);
+  --component-table-border-radius-default: var(--traton-unit-4);
+  --component-table-text-cell-default: var(--color-text-strong);
+  --component-table-text-footer-default: var(--color-text-strong);
+  --component-table-text-header-default: var(--color-text-strong);
+  --component-table-text-placeholder-default: var(--color-text-subtle);
+  --component-table-text-toolbar-default: var(--color-text-strong);
+  --component-table-text-value-default: var(--color-text-strong);
+  --component-table-icon-edit-default: var(--color-icon-strong);
+  --component-table-icon-expand-default: var(--color-icon-strong);
+  --component-table-icon-filter-default: var(--color-icon-strong);
+  --component-table-icon-prefix-default: var(--color-icon-strong);
+  --component-table-icon-sort-default: var(--color-icon-strong);
 }
