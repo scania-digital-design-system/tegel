@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import { copyFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { getCatalogsFromWorkspaceManifest } from '@pnpm/catalogs.config';
@@ -28,12 +28,27 @@ const catalogs = getCatalogsFromWorkspaceManifest(workspaceManifest);
 const projectPath = path.resolve(cwd, projectDir);
 const exportablePath = path.resolve(cwd, exportableDir);
 
-const projectManifest = await readProjectManifestOnly(projectPath);
-const exportableManifest = await createExportableManifest(projectPath, projectManifest, {
-  catalogs,
-});
+const projectManifestPath = path.join(projectPath, 'package.json');
+const exportableManifestPath = path.join(exportablePath, 'package.json');
+const backupManifestPath = path.join(projectPath, 'package.json.bak');
 
-await writeFile(
-  path.join(exportablePath, 'package.json'),
-  JSON.stringify(exportableManifest, null, 2),
-);
+// Backup the original project manifest
+await copyFile(projectManifestPath, backupManifestPath);
+
+try {
+  // Temporarily replace the project manifest with the exportable manifest,
+  // so pnpm can resolve workspace dependencies / catalogs correctly
+  await copyFile(exportableManifestPath, projectManifestPath);
+
+  const projectManifest = await readProjectManifestOnly(projectPath);
+  const exportableManifest = await createExportableManifest(projectPath, projectManifest, {
+    catalogs,
+  });
+
+  // Write the exportable manifest back to the generated package
+  await writeFile(exportableManifestPath, JSON.stringify(exportableManifest, null, 2));
+} finally {
+  // Restore the original project manifest and remove the backup
+  await copyFile(backupManifestPath, projectManifestPath);
+  await rm(backupManifestPath, { force: true });
+}
