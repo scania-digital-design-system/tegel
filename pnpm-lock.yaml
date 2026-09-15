@@ -135,8 +135,8 @@ importers:
         specifier: ^22.1.0
         version: 22.1.5(@angular/common@22.1.5(@angular/core@22.1.5(@angular/compiler@22.1.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.5(@angular/compiler@22.1.5)(rxjs@7.8.2))(@angular/platform-browser@22.1.5(@angular/common@22.1.5(@angular/core@22.1.5(@angular/compiler@22.1.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.5(@angular/compiler@22.1.5)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@scania/tegel':
-        specifier: workspace:*
-        version: link:../core
+        specifier: file:../../core-tarball/scania-tegel-1.63.1.tgz
+        version: file:core-tarball/scania-tegel-1.63.1.tgz
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -269,8 +269,8 @@ importers:
         specifier: ^1.0.8
         version: 1.0.8(@types/react@19.2.18)
       '@scania/tegel':
-        specifier: workspace:*
-        version: link:../core
+        specifier: file:../../core-tarball/scania-tegel-1.63.1.tgz
+        version: file:core-tarball/scania-tegel-1.63.1.tgz
       '@stencil/react-output-target':
         specifier: 1.6.2
         version: 1.6.2(@stencil/core@4.44.2)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -3553,6 +3553,15 @@ packages:
         integrity: sha512-zuZMuBHMMhtuXagc+3p5PGeGfL0VnO/44cX1k9R4Q/Ipb863tF8ZBGeoTz3ypgANqrpREAp49mNTwv6qSyc6XQ==,
       }
     engines: { node: '>=18.0.0', npm: '>=8.0.0' }
+    hasBin: true
+
+  '@scania/tegel@file:core-tarball/scania-tegel-1.63.1.tgz':
+    resolution:
+      {
+        integrity: sha512-lmuy3uUCC8ccIiJjBX6Q/DkLyDPGvDRbqDSGMzaBuSqg82S7E8OVrd2+xYm3bXYX38u2BzLzrtpqTwIoU+FRFQ==,
+        tarball: file:core-tarball/scania-tegel-1.63.1.tgz,
+      }
+    version: 1.63.1
     hasBin: true
 
   '@schematics/angular@22.1.7':
@@ -11360,6 +11369,11 @@ snapshots:
     optionalDependencies:
       '@napi-rs/lzma-linux-x64-gnu': 1.5.1
       fsevents: 2.3.3
+
+  '@scania/tegel@file:core-tarball/scania-tegel-1.63.1.tgz':
+    dependencies:
+      '@popperjs/core': 2.11.8
+      '@stencil/core': 4.44.2
 
   '@schematics/angular@22.1.7(chokidar@5.0.0)':
     dependencies:
