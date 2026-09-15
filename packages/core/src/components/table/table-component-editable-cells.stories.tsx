@@ -59,6 +59,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    showIcon: {
+      name: 'Show edit icon',
+      description:
+        'Controls if edit icon appears on hover and focus. Should be set to false by the user if an input is disabled.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: true },
+      },
+    },
     disableHeaderPadding: {
       name: 'Disable header cell padding',
       description:
@@ -148,6 +159,7 @@ export default {
     disableHeaderPadding: false,
     verticalDivider: false,
     horizontalScrollWidth: '',
+    showIcon: true,
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -162,7 +174,7 @@ const EditableCellsTemplate = ({
   cellTextAlignment,
   compactDesign,
   responsiveDesign,
-
+  showIcon,
   disableHeaderPadding,
   verticalDivider,
   horizontalScrollWidth,
@@ -197,17 +209,17 @@ const EditableCellsTemplate = ({
 >
   <tds-table-header>
     <tds-header-cell cell-key="truck" cell-value="Truck type" disable-padding="${disableHeaderPadding}" ${
-    column1Width ? `custom-width="${column1Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+      column1Width ? `custom-width="${column1Width}"` : ''
+    } text-align="${headerTextAlignment}"></tds-header-cell>
     <tds-header-cell cell-key="driver" cell-value="Driver name" disable-padding="${disableHeaderPadding}" ${
-    column2Width ? `custom-width="${column2Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+      column2Width ? `custom-width="${column2Width}"` : ''
+    } text-align="${headerTextAlignment}"></tds-header-cell>
     <tds-header-cell cell-key="country" cell-value="Country" disable-padding="${disableHeaderPadding}" ${
-    column3Width ? `custom-width="${column3Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+      column3Width ? `custom-width="${column3Width}"` : ''
+    } text-align="${headerTextAlignment}"></tds-header-cell>
     <tds-header-cell cell-key="mileage" cell-value="Mileage" disable-padding="${disableHeaderPadding}" ${
-    column4Width ? `custom-width="${column4Width}"` : ''
-  } text-align="${headerTextAlignment}"></tds-header-cell>
+      column4Width ? `custom-width="${column4Width}"` : ''
+    } text-align="${headerTextAlignment}"></tds-header-cell>
   </tds-table-header>
 
   <tds-table-body>
@@ -215,16 +227,16 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="false">
           <label for="truck-input-1">Truck type</label>
-          <input id="truck-input-1" type="text" value="Test value 1" />
+          <input id="truck-input-1" type="text" value="Test value 1" disabled />
         </tds-table-body-input-wrapper>
       </tds-body-cell>
 
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-1">Driver name</label>
           <input id="driver-input-1" type="text" value="Test value 2" />
         </tds-table-body-input-wrapper>
@@ -233,7 +245,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-1">Country</label>
           <input id="country-input-1" type="text" value="Test value 3" />
         </tds-table-body-input-wrapper>
@@ -242,7 +254,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-1">Mileage</label>
           <input id="mileage-input-1" type="text" value="Test value 4" />
         </tds-table-body-input-wrapper>
@@ -253,7 +265,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="truck-input-2">Truck type</label>
           <input id="truck-input-2" type="text" value="Test value 5" />
         </tds-table-body-input-wrapper>
@@ -262,7 +274,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-2">Driver name</label>
           <input id="driver-input-2" type="text" value="Test value 6" />
         </tds-table-body-input-wrapper>
@@ -271,7 +283,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-2">Country</label>
           <input id="country-input-2" type="text" value="Test value 7" />
         </tds-table-body-input-wrapper>
@@ -280,7 +292,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-2">Mileage</label>
           <input id="mileage-input-2" type="text" value="Test value 8" />
         </tds-table-body-input-wrapper>
@@ -291,7 +303,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="truck-input-3">Truck type</label>
           <input id="truck-input-3" type="text" value="Test value 1" />
         </tds-table-body-input-wrapper>
@@ -300,7 +312,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-3">Driver name</label>
           <input id="driver-input-3" type="text" value="Test value 2" />
         </tds-table-body-input-wrapper>
@@ -309,7 +321,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-3">Country</label>
           <input id="country-input-3" type="text" value="Test value 3" />
         </tds-table-body-input-wrapper>
@@ -318,7 +330,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-3">Mileage</label>
           <input id="mileage-input-3" type="text" value="Test value 4" />
         </tds-table-body-input-wrapper>
@@ -329,7 +341,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="truck-input-4">Truck type</label>
           <input id="truck-input-4" type="text" value="Test value 5" />
         </tds-table-body-input-wrapper>
@@ -338,7 +350,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-4">Driver name</label>
           <input id="driver-input-4" type="text" value="Test value 6" />
         </tds-table-body-input-wrapper>
@@ -347,7 +359,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-4">Country</label>
           <input id="country-input-4" type="text" value="Test value 7" />
         </tds-table-body-input-wrapper>
@@ -356,7 +368,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-4">Mileage</label>
           <input id="mileage-input-4" type="text" value="Test value 8" />
         </tds-table-body-input-wrapper>
@@ -367,7 +379,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="truck-input-5">Truck type</label>
           <input id="truck-input-5" type="text" value="Test value 1" />
         </tds-table-body-input-wrapper>
@@ -376,7 +388,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-5">Driver name</label>
           <input id="driver-input-5" type="text" value="Test value 2" />
         </tds-table-body-input-wrapper>
@@ -385,7 +397,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-5">Country</label>
           <input id="country-input-5" type="text" value="Test value 3" />
         </tds-table-body-input-wrapper>
@@ -394,7 +406,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-5">Mileage</label>
           <input id="mileage-input-5" type="text" value="Test value 4" />
         </tds-table-body-input-wrapper>
@@ -405,7 +417,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="truck-input-6">Truck type</label>
           <input id="truck-input-6" type="text" value="Test value 5" />
         </tds-table-body-input-wrapper>
@@ -414,7 +426,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="driver" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="driver-input-6">Driver name</label>
           <input id="driver-input-6" type="text" value="Test value 6" />
         </tds-table-body-input-wrapper>
@@ -423,7 +435,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="country" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="country-input-6">Country</label>
           <input id="country-input-6" type="text" value="Test value 7" />
         </tds-table-body-input-wrapper>
@@ -432,7 +444,7 @@ const EditableCellsTemplate = ({
       <tds-body-cell cell-key="mileage" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
       }>
-        <tds-table-body-input-wrapper>
+        <tds-table-body-input-wrapper show-icon="${showIcon}">
           <label for="mileage-input-6">Mileage</label>
           <input id="mileage-input-6" type="text" value="Test value 8" />
         </tds-table-body-input-wrapper>

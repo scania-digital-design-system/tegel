@@ -37,16 +37,3 @@ tds-dropdown.tds-mode-variant-secondary {
 .traton tds-dropdown {
   --tds-dropdown-list-box-shadow: none;
 }
-
-tds-table-footer {
-  --tds-dropdown-bg: var(--component--input-background-secondary);
-  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
-  --tds-dropdown-border-color: transparent;
-  --tds-dropdown-border-color-hover: transparent;
-  --tds-dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px);
-  --tds-dropdown-value-color: var(--component--input-text-value-default);
-  --tds-dropdown-list-border-radius: calc(var(--component-dropdown-border-radius-default) * 1px);
-  --tds-dropdown-menu-icon-color: var(--component-dropdown-icon-default);
-  --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
-  --tds-placeholder-margin: calc(var(--unit-8) * 1px);
-}

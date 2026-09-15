@@ -51,7 +51,11 @@ export class TdsTableToolbar {
 
   @Element() host!: HTMLElement;
 
+  @State() showSearchBarInput = false;
+
   tableEl!: HTMLTdsTableElement | null;
+
+  textFieldEl!: HTMLTdsTextFieldElement | null;
 
   /** Used for sending users' input to the main parent tds-table the component,
    * can also be listened to in order to implement custom sorting logic. */
@@ -65,6 +69,42 @@ export class TdsTableToolbar {
     tableId: string | undefined;
     query: string;
   }>;
+
+  private shouldFocusSearch = false;
+
+  private openSearch = () => {
+    this.shouldFocusSearch = true;
+    this.showSearchBarInput = true;
+  };
+
+  componentDidRender() {
+    if (this.shouldFocusSearch && this.showSearchBarInput) {
+      this.shouldFocusSearch = false;
+
+      requestAnimationFrame(() => {
+        this.textFieldEl?.focusElement();
+      });
+    }
+  }
+
+  @Listen('click', { target: 'document' })
+  @Listen('keydown', { target: 'body' })
+  handleDocumentClick(event: MouseEvent | KeyboardEvent) {
+    if (!this.showSearchBarInput) return;
+
+    const value = this.textFieldEl?.value ?? '';
+
+    if (!value.trim()) {
+      if (
+        (event.type === 'keydown' && (event as KeyboardEvent).key === 'Tab') ||
+        (event.type === 'click' && !event.composedPath().includes(this.host))
+      ) {
+        requestAnimationFrame(() => {
+          this.showSearchBarInput = false;
+        });
+      }
+    }
+  }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -98,19 +138,10 @@ export class TdsTableToolbar {
 
   handleSearch(event) {
     const searchTerm = event.currentTarget.value.toLowerCase();
-    const tdsTableSearchBar = event.currentTarget.parentElement;
-
     this.tdsFilter.emit({
       tableId: this.tableId,
       query: searchTerm,
     });
-
-    /** NOTE: Could these be handles in pure CSS? */
-    if (searchTerm.length > 0) {
-      tdsTableSearchBar.classList.add('tds-table__searchbar--active');
-    } else {
-      tdsTableSearchBar.classList.remove('tds-table__searchbar--active');
-    }
   }
 
   private getStyles(): Record<string, string> {
@@ -143,16 +174,41 @@ export class TdsTableToolbar {
 
           <div class="tds-table__actionbar">
             {this.filter && (
-              <div class="tds-table__searchbar">
-                <input
-                  class="tds-table__searchbar-input"
+              <div
+                class={`tds-table__searchbar ${
+                  this.showSearchBarInput ? 'tds-table__searchbar--active' : ''
+                }`}
+              >
+                <tds-text-field
+                  ref={(el: HTMLTdsTextFieldElement | undefined) => {
+                    if (el) {
+                      this.textFieldEl = el;
+                    }
+                  }}
+                  id="search"
+                  size="sm"
+                  autoFocus={true}
+                  placeholder="Search..."
+                  class={`tds-table__searchbar-input ${
+                    this.showSearchBarInput ? 'tds-table__searchbar-input-show' : ''
+                  }`}
                   type="text"
                   onKeyUp={(event) => this.handleSearch(event)}
                   aria-label={this.tdsSearchAriaLabel}
-                />
-                <span class="tds-table__searchbar-icon">
-                  <tds-icon name="search" size="20px"></tds-icon>
-                </span>
+                >
+                  <tds-icon slot="suffix" name="search" size="16px"></tds-icon>
+                </tds-text-field>
+                <tds-button
+                  class={`tds-table__searchbar-icon ${
+                    this.showSearchBarInput ? 'tds-table__searchbar-icon-hide' : ''
+                  }`}
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={this.openSearch}
+                >
+                  <tds-icon slot="icon" name="search" size="20px"></tds-icon>
+                </tds-button>
               </div>
             )}
             <slot name="end" />

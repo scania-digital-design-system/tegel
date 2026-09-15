@@ -1,3 +1,6 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/focus-state' as *;
+
 :host {
   position: relative;
 }
@@ -10,17 +13,13 @@
 
 :host(.show-icon) {
   ::slotted(input) {
-    padding-right: var(--tds-spacing-element-24);
+    padding-right: var(--unit-24);
   }
 }
 
 :host(:hover) {
   tds-icon {
     display: inline-block;
-  }
-
-  ::slotted(input:not(:focus)) {
-    background-color: var(--tds-table-input-background-hover);
   }
 }
 
@@ -31,41 +30,41 @@ tds-icon.edit-icon {
   top: 1px;
   pointer-events: none;
   cursor: pointer;
+  color: var(--tds-table-edit-icon-color);
 }
 
 ::slotted(input) {
   box-sizing: border-box;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  padding-left: var(--tds-spacing-element-16);
-  padding-right: var(--tds-spacing-element-16);
-  color: var(--tds-table-color);
+  @include type-system-body-01;
+
+  padding-left: var(--unit-16);
+  padding-right: var(--unit-16);
+  color: var(--tds-table-input-value-text-color);
   background-color: transparent;
-  height: 48px;
+  height: var(--tds-table-row-height);
   border-radius: 0;
   border: 0;
-  border-bottom: 2px solid transparent;
   width: 100%;
   cursor: pointer;
 }
 
 ::slotted(input)::placeholder {
-  color: var(--tds-table-color);
+  color: var(--tds-table-input-placeholder-text-color);
 }
 
 ::slotted(input:disabled) {
-  background-color: var(--tds-table-input-background-disabled);
+  opacity: var(--tds-table-input-opacity-disabled);
+  cursor: not-allowed;
 }
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: var(--tds-table-input-background-focus);
-  border-bottom: 2px solid var(--tds-text-field-bar);
+  @include tds-focus-state;
 }
 
 /* Add compact-design specific styles here */
 :host(.tds-table__compact) {
   ::slotted(input) {
-    height: 32px; /* Reduced height for compact design */
+    height: var(--tds-table-row-height-compact); /* Reduced height for compact design */
   }
 }
