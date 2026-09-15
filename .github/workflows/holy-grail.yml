@@ -195,7 +195,7 @@ jobs:
         id: pack
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
-          TARBALL=$(pnpm pack)
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
           echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
 
       - name: Upload Core tarball
@@ -206,7 +206,7 @@ jobs:
           path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
 
       - name: Core - Publish (dry run)
-        if: github.event.inputs.dryVersion == 'true' && github.event_name != 'schedule'
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
 
@@ -319,12 +319,27 @@ jobs:
         run: pnpm build:angular-17
 
       - name: Angular-17 - Create exportable manifest (with `workspace:` replaced with actual versions)
-        working-directory: packages/angular-17
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: pnpm export:manifest
 
+      - name: Angular-17 - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
+        run: |
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload Angular-17 tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-17-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/dist/components/${{ steps.pack.outputs.TARBALL }}
+
       - name: Angular-17 - Publish (dry run)
-        if: github.event.inputs.dryVersion == 'true' && github.event_name != 'schedule'
-        working-directory: packages/angular-17/dist/components
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
 
       - name: Angular-17 - Publish
@@ -368,8 +383,23 @@ jobs:
       - name: React - Build
         run: pnpm build:react
 
+      - name: React - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload React tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
+
       - name: React - Publish (dry run)
-        if: github.event.inputs.dryVersion == 'true' && github.event_name != 'schedule'
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/react
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
 
