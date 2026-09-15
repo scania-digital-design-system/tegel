@@ -1,15 +1,5 @@
 tds-dropdown {
   --tds-dropdown-bg: var(--component--input-background-primary);
-  --tds-dropdown-border-color: var(--component--input-border-default);
-  --tds-dropdown-border-bottom-width: calc(var(--component--input-border-width-bottom) * 1px);
-  --tds-dropdown-border-left-width: calc(var(--component--input-border-width-left) * 1px);
-  --tds-dropdown-border-right-width: calc(var(--component--input-border-width-right) * 1px);
-  --tds-dropdown-border-top-width: calc(var(--component--input-border-width-top) * 1px);
-  --tds-dropdown-border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
-    calc(var(--component--input-border-radius-top-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-left) * 1px);
-  --tds-dropdown-border-color-hover: var(--component--input-border-hover);
   --tds-dropdown-value-color: var(--component--input-text-value-default);
   --tds-dropdown-label-color: var(--component--input-text-label-default);
   --tds-dropdown-label-inside-color: var(--component--input-text-label-default);
