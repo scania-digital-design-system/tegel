@@ -142,7 +142,7 @@ jobs:
         working-directory: packages/tegel-lite
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish --access public --tag latest
+        run: pnpm publish --access public --tag latest --no-git-checks
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
