@@ -13,7 +13,7 @@ Run `ng build components` to build the project. The build artifacts will be stor
 
 ## Publishing
 
-After building your library with `ng build components`, go to the dist folder `cd dist/components` and run `npm publish`.
+After building your library with `ng build components`, go to the dist folder `cd dist/components` and run `pnpm publish`.
 
 ## Running unit tests
 
