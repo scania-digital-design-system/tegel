@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/sorting/index.html';
 const componentName = 'tds-table';
 const testDescription = 'tds-table-sorting';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     let tableComponent;
 

@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/zebra-mode/rows-odd/i
 const componentName = 'tds-table';
 const testDescription = 'tds-table-zebra-mode-rows-odd';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
