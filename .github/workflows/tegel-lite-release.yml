@@ -127,7 +127,7 @@ jobs:
         id: pack
         working-directory: packages/tegel-lite
         run: |
-          TARBALL=$(pnpm pack)
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
           echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
 
       - name: Upload tarball artifact (dry run)
