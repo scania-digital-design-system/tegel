@@ -2,8 +2,7 @@ version: 2
 
 updates:
   - package-ecosystem: 'npm'
-    directories:
-      - '**/*'
+    directory: '/'
     schedule:
       interval: 'weekly'
       day: 'monday'
