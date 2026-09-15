@@ -162,6 +162,13 @@ jobs:
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
 
+      - name: Update @scania/tegel package version
+        working-directory: packages/core
+        run: |
+          echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} in package.json"
+          jq ".version = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+
       - name: Install workspace dependencies
         run: pnpm install --frozen-lockfile
 
@@ -249,6 +256,13 @@ jobs:
             exit 1
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
+
+      - name: Update @scania/tegel package version
+        working-directory: packages/core
+        run: |
+          echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} in package.json"
+          jq ".version = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
 
       - name: Install workspace dependencies
         run: pnpm install --frozen-lockfile
