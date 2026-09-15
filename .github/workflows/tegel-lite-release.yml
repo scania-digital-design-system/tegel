@@ -137,6 +137,11 @@ jobs:
           name: tegel-lite-tarball
           path: packages/tegel-lite/${{ steps.pack.outputs.TARBALL }}
 
+      - name: Publish Tegel Lite package (dry run)
+        if: inputs.dryRun == true && steps.check-version.outputs.VERSION_EXISTS != 'true'
+        working-directory: packages/tegel-lite
+        run: pnpm publish --access public --tag latest --no-git-checks --dry-run
+
       - name: Publish Tegel Lite package to NPM
         if: inputs.dryRun != true && steps.check-version.outputs.VERSION_EXISTS != 'true'
         working-directory: packages/tegel-lite
