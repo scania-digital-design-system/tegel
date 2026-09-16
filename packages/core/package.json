@@ -411,7 +411,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
-    "@playwright/test": "1.62.1",
+    "@playwright/test": "1.63.0",
     "@scania/tegel-lite": "^1.6.0",
     "@stencil/angular-output-target": "1.4.1",
     "@stencil/playwright": "^0.5.1",
