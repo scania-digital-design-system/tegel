@@ -17,7 +17,7 @@
     "test:lte": "pnpm build:tegel-lite:docker:playwright && pnpm run:tegel-lite:docker:playwright",
     "commit": "cz",
     "prepare": "husky install",
-    "reinstall": "rm -rf node_modules && pnpm install --fix-lockfile",
+    "reinstall": "find . -name node_modules -type d -prune -exec rm -rf '{}' + && pnpm install --fix-lockfile",
     "pack:core": "pnpm build && pnpm filter:core pack --pack-destination packages/core",
     "pack:react": "pnpm build:react && pnpm filter:react pack --pack-destination packages/react",
     "pack:angular-17": "pnpm build:angular-17 && pnpm filter:angular-17 pack-components",
