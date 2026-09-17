@@ -1,13 +1,13 @@
 {
   "name": "@scania/tegel-react",
-  "version": "1.63.0",
+  "version": "1.64.0",
   "description": "React wrappers for Tegel package",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "test": "node ./__tests__/react-library.test.js",
-    "build": "node scripts/patch-imports.mjs && npm run tsc",
+    "build": "node scripts/patch-imports.mjs && pnpm tsc",
     "tsc": "tsc -p . --outDir ./dist"
   },
   "files": [
@@ -27,12 +27,14 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
-    "@scania/tegel": "^1.63.0",
-    "@stencil/react-output-target": "^1.6.2"
+    "@lit/react": "^1.0.8",
+    "@scania/tegel": "workspace:*",
+    "@stencil/react-output-target": "1.6.2"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",
     "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "typescript": "^6.0.3"

@@ -92,7 +92,7 @@ export class TdsDatetime {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange!: EventEmitter<Event | { name: string; value: string }>;
+  tdsChange!: EventEmitter<globalThis.Event | { name: string; value: string }>;
 
   /** Blur event for the Datetime */
   @Event({
