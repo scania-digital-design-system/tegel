@@ -15,12 +15,9 @@ cd tegel
 ```
 
 ### 2. Set Up Your Development Environment
-Before you start developing, make sure your environment is set up correctly. This usually involves installing dependencies for the main project as well as for the core packages:
+Before you start developing, make sure your environment is set up correctly. This usually involves installing dependencies for the workspace:
 ```bash
-npm install
-cd packages/core
-npm install
-cd ../..
+pnpm install
 ```
 
 ### 3. Create a New Branch
@@ -48,8 +45,8 @@ Refer to the existing components for examples.
 ### 5. Build and Run Your Local Environment
 After developing your component, you need to build and run your local environment to see your changes:
 ```bash
-npm run build
-npm start
+pnpm build
+pnpm start
 ```
 This will compile your code and start a local server with Storybook where you can test your new component.
 
@@ -63,7 +60,7 @@ Stencil will automatically generate a README file for your component. Make sure 
 ### 8. Run Tests
 Make sure your code adheres to the project's coding standards and passes all tests:
 ```bash
-npm run test
+pnpm test
 ```
 
 ### 9. Commit Your Changes
@@ -76,7 +73,7 @@ git commit -m "feat(button): added new component"
 
 In case you find it tricky, there is possibility to use conventional commit script by running:
 ```bash
-npm run commit 
+pnpm commit 
 ```
 It will be a set of questions in terminal that will help you formulate correct commit message in couple of steps.
 

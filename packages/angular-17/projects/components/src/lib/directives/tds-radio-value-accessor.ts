@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ValueAccessor } from '../stencil-generated/value-accessor';
@@ -17,13 +17,17 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: TdsRadioValueAccessor,
+      useExisting: forwardRef(() => TdsRadioValueAccessor),
       multi: true,
     },
   ],
   standalone: false,
 })
 export class TdsRadioValueAccessor extends ValueAccessor {
+  constructor(el: ElementRef) {
+    super(el);
+  }
+
   writeValue(value: any) {
     this.el.nativeElement.checked = value === this.el.nativeElement.value;
   }

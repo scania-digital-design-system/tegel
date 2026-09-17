@@ -1,0 +1,18 @@
+packages:
+  - 'packages/core'
+  - 'packages/react'
+  - 'packages/angular-17'
+  - 'packages/angular-17/projects/components'
+  - 'packages/tegel-lite'
+  - 'packages/styles'
+  - 'color'
+  - 'grid-deprecated'
+
+catalog:
+  '@playwright/test': '1.63.0'
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true

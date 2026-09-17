@@ -8,26 +8,29 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.1-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - uses: actions/setup-node@v4
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           node-version: 24
 
-      - name: Install dependencies
-        working-directory: packages/core
-        run: npm ci
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build Tegel
         working-directory: packages/core
-        run: npm run build
+        run: pnpm build
 
       - name: Run Playwright tests
         working-directory: packages/core
-        run: HOME=/root npx playwright test
+        run: HOME=/root pnpm exec playwright test
 
       - uses: daun/playwright-report-summary@v3
         env:
@@ -48,9 +51,13 @@ jobs:
   test-lite:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.62.1-jammy
+      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - uses: actions/setup-node@v4
         env:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -59,23 +66,18 @@ jobs:
 
       # Tegel Lite CSS is compiled from packages/core sources via the core
       # build scripts (sass), so the core deps are required to produce dist/.
-      - name: Install Core dependencies
-        working-directory: packages/core
-        run: npm ci
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       # Compiles packages/tegel-lite/dist (global.css, *-variables.css and the
       # per-component CSS) that the test pages link to. dist/ is git-ignored.
       - name: Build Tegel Lite
         working-directory: packages/core
-        run: npm run build:tegel-lite
-
-      - name: Install Tegel Lite dependencies
-        working-directory: packages/tegel-lite
-        run: npm ci
+        run: pnpm build:tegel-lite
 
       - name: Run Tegel Lite Playwright tests
         working-directory: packages/tegel-lite
-        run: HOME=/root npx playwright test
+        run: HOME=/root pnpm exec playwright test
 
       - uses: daun/playwright-report-summary@1229105480a2a4bdd91598d8a146fbab41343fce # v3.11.0
         env:
