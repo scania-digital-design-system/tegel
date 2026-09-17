@@ -87,7 +87,7 @@ For components with diverse functionalities or states, use **subfolders** to gro
 ## Example Workflow
 
 1. **Create Tests** for new or updated components following the guidelines above.
-2. **Run Tests Locally**: Use `npm test` to verify that tests pass before pushing.
+2. **Run Tests Locally**: Use `pnpm test` to verify that tests pass before pushing.
 3. **Commit and Push**: Once tests are verified, commit with a message indicating added/updated tests.
 4. **Pull Request Review**: Tests will be automatically run on CI, and any issues will be flagged for review.
 

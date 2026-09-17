@@ -68,16 +68,12 @@ Tegel Lite’s styles reside in the Tegel Core package, ensuring consistency wit
 To **generate** the `@scania/tegel-lite` library, first navigate to project root and run: 
 
 ```bash
-npm i
+pnpm install
 ```
 then navigate to `packages/core` and run: 
 
 ```bash
-npm i
-```
-
-```bash
-npm run build:tegel-lite
+pnpm build:tegel-lite
 ```
 
 This command will compile all scss files related to Tegel Lite and output the compiled css to the `packages/tegel-lite/dist` folder. It will also copy assets that are needed and add neccessary exports to the `packages/tegel-lite/package.json` .
@@ -230,6 +226,14 @@ npm link @scania/tegel-lite
 
 The above command will symlink the Tegel Lite package into your app. Check node_modules to see if the package is linked correctly.
 You will now be able to import Tegel Lite components in your app.
+
+### Using a pnpm workspace
+
+If your application is part of the same pnpm workspace as Tegel, no manual linking is required. The workspace automatically links local packages using the `workspace:` protocol after running:
+
+```bash
+pnpm install
+```
 
 ---
 
@@ -514,7 +518,7 @@ Once your SCSS are in place, verify that the component compiles correctly.
 In the `packages/core` directory, run:
 
 ```bash
-npm run build:tegel-lite
+pnpm build:tegel-lite
 ```
 
 This will:

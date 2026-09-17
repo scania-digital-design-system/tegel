@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ValueAccessor } from '../stencil-generated/value-accessor';
@@ -16,10 +16,14 @@ import { ValueAccessor } from '../stencil-generated/value-accessor';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: TdsDropdownValueAccessor,
+      useExisting: forwardRef(() => TdsDropdownValueAccessor),
       multi: true,
     },
   ],
   standalone: false,
 })
-export class TdsDropdownValueAccessor extends ValueAccessor {}
+export class TdsDropdownValueAccessor extends ValueAccessor {
+  constructor(el: ElementRef) {
+    super(el);
+  }
+}
