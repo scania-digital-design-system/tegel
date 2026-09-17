@@ -48,10 +48,30 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 
 ### Setting up the development environment
 
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 22 at the time of writing).
-2. Make sure you have Docker installed. It is needed for running unit tests.
-3. Run `npm install` in the root directory.
-4. Run `npm install` in the `packages/core` directory.
+1. Make sure you are using the required Node.js version. If you use `nvm`, run:
+
+```bash
+nvm use
+```
+
+This uses the version specified in the repository's `.nvmrc` file (Node.js 22 at the time of writing).
+
+2. Enable Corepack, so that the correct version of `pnpm` is used:
+
+```bash
+corepack enable
+```
+
+3. Install the workspace dependencies from the root of the repository:
+
+```bash
+pnpm install
+```
+
+Tegel uses a **pnpm workspace**, so this installs and links the dependencies for all workspace packages. There is no need to run `pnpm install` inside individual packages.
+
+4. Make sure you have Docker installed. It is needed for running unit tests.
+
 5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `VITE_STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
 
 
@@ -59,8 +79,8 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 export VITE_STORYBOOK_ENV=dev
 ```
 
-6. Make sure you are in the root directory, and start the dev server with `npm run start`.
- - *Alternatively navigate to `packages/core` and start the dev server with `npm run storybook`*
+6. Make sure you are in the root directory, and start the dev server with `pnpm start`.
+ - *Alternatively navigate to `packages/core` and start the dev server with `pnpm start:storybook`*
 
 ## Community
 

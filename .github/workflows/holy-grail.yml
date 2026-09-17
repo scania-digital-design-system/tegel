@@ -73,23 +73,27 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch || 'develop' }}
 
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Angular 17 - Bump version
         id: angular-17-version
         working-directory: packages/angular-17/projects/components
-        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Core - Read package.json Version
         id: version
@@ -136,15 +140,15 @@ jobs:
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - name: Set up node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Clear npm cache
-        run: npm cache clean --force
-        continue-on-error: true
 
       - name: Set up Git for authentication
         env:
@@ -159,25 +163,31 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: Install dependencies in root
-        run: npm ci || (npm cache clean --force && npm ci)
+      - name: Update Tegel Lite version to latest
+        working-directory: packages/tegel-lite
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          # Source of truth is the latest published version on npm, not the version in the repository.
+          current_version=$(pnpm view "$PACKAGE_NAME@latest" version 2>/dev/null)
+          if [[ -z "$current_version" ]]; then
+            echo "Could not read published version from npm; falling back to package.json"
+            current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          fi
+          echo "Current (published) version: $current_version"
+          jq ".version = \"$current_version\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
 
-      - name: Core - Install
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: Core - Install latest Tegel Lite
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm install @scania/tegel-lite@latest --save-dev || (npm cache clean --force && npm install @scania/tegel-lite@latest --save-dev)
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Core - Run build
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm run build
+        run: pnpm build
 
         ## Consider to remove this step after bumping stencil
       - name: Core - Run build 2
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm run build
+        run: pnpm build
         ##
 
       - name: Core - Pack tarball (dry run only)
@@ -185,7 +195,7 @@ jobs:
         id: pack
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
-          TARBALL=$(npm pack)
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
           echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
 
       - name: Upload Core tarball
@@ -195,10 +205,15 @@ jobs:
           name: core-tarball
           path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
 
+      - name: Core - Publish (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
+
       - name: Core - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm publish --tag ${{ github.event.inputs.tags }}
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -225,15 +240,15 @@ jobs:
           ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - name: Set up node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Clear npm cache
-        run: npm cache clean --force
-        continue-on-error: true
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -246,38 +261,23 @@ jobs:
           path: core-tarball
           extract: true
 
-      - name: Angular 17 wrapper – install Core tarball (dry run)
+      - name: Angular 17 wrapper - install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17
         run: |
-          npm install ../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../core-tarball/*.tgz)
+          pnpm add ../../core-tarball/*.tgz
 
-      - name: Angular 17 Components wrapper – install Core tarball (dry run)
+      - name: Angular 17 Components wrapper - install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17/projects/components
         run: |
-          npm install ../../../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../../../core-tarball/*.tgz)
+          pnpm add ../../../../core-tarball/*.tgz
 
-      - name: React wrapper – install Core tarball (dry run)
+      - name: React wrapper - install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/react
         run: |
-          npm install ../../core-tarball/*.tgz || (npm cache clean --force && npm install ../../core-tarball/*.tgz)
-
-      - name: Angular 17 - Install latest tegel package
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
-        working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
-
-      - name: Angular 17 components - Install latest tegel package
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
-        working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
-
-      - name: React - Install latest tegel package
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
-        working-directory: packages/react
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact || (npm cache clean --force && npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }} --save-exact)
+          pnpm add ../../core-tarball/*.tgz
 
       - name: Wrappers Core increase - Commit and push changes
         run: |
@@ -302,38 +302,50 @@ jobs:
           ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - name: Set up node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Clear npm cache
-        run: npm cache clean --force
-        continue-on-error: true
-
-      - name: Install dependencies in root
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: Angular-17 workspace - Install
-        working-directory: packages/angular-17
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: Angular-17 wrapper - Install
-        working-directory: packages/angular-17/projects/components
-        run: npm ci || (npm cache clean --force && npm ci)
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Angular-17 - Run build
-        run: npm run build:angular-17
+        run: pnpm build:angular-17
+
+      - name: Angular-17 - Create exportable manifest (with `workspace:` replaced with actual versions)
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: pnpm export:manifest
+
+      - name: Angular-17 - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
+        run: |
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload Angular-17 tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-17-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/dist/components/${{ steps.pack.outputs.TARBALL }}
+
+      - name: Angular-17 - Publish (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
 
       - name: Angular-17 - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/dist/components
-        run: npm publish --tag ${{ github.event.inputs.tags }}
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -350,39 +362,51 @@ jobs:
           ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          cache: true
+
       - name: Set up node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Clear npm cache
-        run: npm cache clean --force
-        continue-on-error: true
-
       - name: React - Read package.json Version
         id: version
         working-directory: packages/react
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: Install dependencies in root
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm ci || (npm cache clean --force && npm ci)
-
-      - name: React - Install
-        working-directory: packages/react
-        run: npm ci || (npm cache clean --force && npm ci)
+      - name: Install workspace dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: React - Build
-        run: npm run build:react
+        run: pnpm build:react
+
+      - name: React - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          TARBALL=$(pnpm pack --json | jq --raw-output '.filename')
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload React tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
+
+      - name: React - Publish (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/react
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
 
       - name: React - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
-        run: npm publish --tag ${{ github.event.inputs.tags }}
+        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
