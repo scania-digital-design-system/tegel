@@ -1,0 +1,16 @@
+# Dependencies and build artifacts
+**/node_modules/
+**/dist/
+
+# Git
+.git/
+.gitignore
+
+# GitHub configuration and workflows
+.github/
+
+# Git hooks
+.husky/
+
+# Local editor configuration
+.vscode/

@@ -9,10 +9,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build components",
-    "npm_pack": "cd dist/components && npm pack",
-    "package": "npm run build && npm run npm_pack",
+    "pack-components": "pnpm export:manifest && pnpm --dir dist/components pack",
+    "package": "pnpm build && pnpm pack-components",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "export:manifest": "pnpm workspace export:manifest packages/angular-17/projects/components packages/angular-17/dist/components",
+    "workspace": "pnpm --workspace-root"
   },
   "private": false,
   "dependencies": {
@@ -22,7 +24,7 @@
     "@angular/forms": "^22.1.6",
     "@angular/platform-browser": "^22.1.6",
     "@angular/router": "^22.1.6",
-    "@scania/tegel": "1.63.0",
+    "@scania/tegel": "workspace:*",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

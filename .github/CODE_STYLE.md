@@ -24,7 +24,7 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 - Use the commit message to explain what the commit does and which component it affects.
 - example: `fix(banner): correct color`
 - There is commit lint configured to enforce conventional commit format. If you are not following the format, the commit will be rejected.
-- In case you need help, there is a script that will generate a conventional commit message for you. You can use it by running `npm run commit` and following the prompts.
+- In case you need help, there is a script that will generate a conventional commit message for you. You can use it by running `pnpm commit` and following the prompts.
 
 ## Unit testing approach
 
