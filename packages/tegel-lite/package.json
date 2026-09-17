@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
-    "@types/node": "^24.3.1",
+    "@types/node": "^26.4.1",
     "serve": "^14.2.5"
   },
   "license": "MIT"
