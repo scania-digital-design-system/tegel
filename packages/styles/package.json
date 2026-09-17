@@ -32,8 +32,8 @@
   },
   "homepage": "https://tegel.scania.com/home",
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "sass": "^1.32.8"
+    "autoprefixer": "^10.5.6",
+    "sass": "^1.104.1"
   },
   "dependencies": {
     "postcss": "^8.5.6",
