@@ -9,7 +9,7 @@ packages:
   - 'grid-deprecated'
 
 catalog:
-  '@playwright/test': '1.62.1'
+  '@playwright/test': '1.63.0'
 
 allowBuilds:
   '@parcel/watcher': true
