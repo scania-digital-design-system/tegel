@@ -40,7 +40,7 @@ importers:
         specifier: 1000.3.1
         version: 1000.3.1
       '@types/node':
-        specifier: ^26.1.2
+        specifier: ^26.5.0
         version: 26.5.0
       commitizen:
         specifier: ^4.3.0
@@ -52,7 +52,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(@types/node@26.5.0)(typescript@6.0.3)
       eslint:
-        specifier: ^10.9.1
+        specifier: ^10.10.0
         version: 10.10.0(jiti@2.6.1)
       eslint-config-prettier:
         specifier: ^10.1.8
@@ -64,16 +64,16 @@ importers:
         specifier: ^9.1.7
         version: 9.1.7
       lint-staged:
-        specifier: ^17.0.8
+        specifier: ^17.5.0
         version: 17.5.0
       prettier:
         specifier: ^3.9.6
         version: 3.9.6
       style-dictionary:
-        specifier: ^5.5.2
+        specifier: ^5.5.3
         version: 5.5.3
       stylelint:
-        specifier: ^17.12.0
+        specifier: ^17.15.0
         version: 17.15.0(typescript@6.0.3)
       stylelint-config-prettier-scss:
         specifier: ^1.0.0
@@ -88,7 +88,7 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
       typescript-eslint:
-        specifier: ^8.69.0
+        specifier: ^8.70.0
         version: 8.70.0(eslint@10.10.0(jiti@2.6.1))(typescript@6.0.3)
 
   color:
@@ -109,7 +109,7 @@ importers:
         specifier: ^6.0.0
         version: 6.1.1
       sass:
-        specifier: ^1.103.1
+        specifier: ^1.104.0
         version: 1.104.0
       scss-bundle:
         specifier: ^3.1.2
