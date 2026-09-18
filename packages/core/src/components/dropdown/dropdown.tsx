@@ -125,6 +125,8 @@ export class TdsDropdown {
 
   private inputElement!: HTMLInputElement;
 
+  private formElement?: HTMLFormElement;
+
   private hasFocus: boolean = false;
 
   private readonly pendingInvalidValues: Set<string> = new Set();
@@ -899,8 +901,9 @@ export class TdsDropdown {
 
   componentDidRender() {
     const form = this.host.closest('form');
-    if (form) {
-      form.addEventListener('reset', this.resetInput);
+    if (form && form !== this.formElement) {
+      this.formElement = form;
+      this.formElement.addEventListener('reset', this.resetInput);
     }
 
     /** Initialize inert state after rendering */
@@ -913,10 +916,9 @@ export class TdsDropdown {
   }
 
   disconnectedCallback() {
-    const form = this.host.closest('form');
-    if (form) {
-      form.removeEventListener('reset', this.resetInput);
-    }
+    this.formElement?.removeEventListener('reset', this.resetInput);
+    this.formElement = undefined;
+
     window.removeEventListener('resize', this.handleWindowChange);
     window.removeEventListener('scroll', this.handleWindowChange, true);
   }
