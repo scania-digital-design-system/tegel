@@ -1,5 +1,15 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/focus-state' as *;
+
 :host {
   position: relative;
+
+  tds-icon.search-icon {
+    color: var(--tds-table-filter-icon-color);
+    position: absolute;
+    left: 15px;
+    top: 1px;
+  }
 }
 
 :host(:hover) {
@@ -24,21 +34,14 @@
   }
 }
 
-tds-icon.search-icon {
-  color: var(--tds-table-input-header-icon);
-  position: absolute;
-  left: 15px;
-  top: 1px;
-}
-
 ::slotted(input) {
   box-sizing: border-box;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  color: var(--tds-table-color);
-  padding-left: var(--tds-spacing-element-16);
-  padding-right: var(--tds-spacing-element-16);
-  height: 48px;
+  @include type-system-body-01;
+
+  color: var(--tds-table-input-value-text-color);
+  padding-left: var(--unit-16);
+  padding-right: var(--unit-16);
+  height: var(--tds-table-row-height);
   border-radius: 0;
   background-color: transparent;
   border: 0;
@@ -46,17 +49,17 @@ tds-icon.search-icon {
 }
 
 ::slotted(input)::placeholder {
-  color: var(--tds-table-input-header-placeholder);
+  color: var(--tds-table-input-placeholder-text-color);
 }
 
 ::slotted(input:focus) {
-  outline: none;
-  background-color: var(--tds-table-input-header-background-focus);
-  border-bottom: 2px solid var(--tds-text-field-bar);
+  outline: 2px solid var(--component--focus-ring-color-strong);
+  box-shadow: inset 0 1px 0 3px var(--component--focus-ring-color-discrete);
+  outline-offset: -2px;
 }
 
 :host(.tds-table__compact) {
   ::slotted(input) {
-    height: 32px; /* Reduced height for compact design */
+    height: var(--tds-table-row-height-compact); /* Reduced height for compact design */
   }
 }

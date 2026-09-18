@@ -1,4 +1,9 @@
 @use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/input-border' as *;
+@use '../../../components/button/button-vars.scss' as *;
+@use '../../../components/text-field/text-field-vars.scss' as *;
 
 :host {
   @include tds-box-sizing;
@@ -6,11 +11,11 @@
   display: table-caption;
   position: relative;
   background-color: var(--tds-table-toolbar-background);
-  color: var(--tds-table-color);
-  padding: 0 var(--tds-spacing-element-16);
+  color: var(--tds-table-toolbar-text-color);
+  padding: 0 var(--unit-16);
   height: 64px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: var(--tds-table-border-radius);
+  border-top-right-radius: var(--tds-table-border-radius);
 
   .tds-table__upper-bar-flex {
     width: 100%;
@@ -24,11 +29,11 @@
   }
 
   .tds-table__title {
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    padding-top: var(--tds-spacing-element-16);
+    @include title-01;
+
+    padding-top: var(--unit-16);
     text-align: left;
-    margin-right: var(--tds-spacing-element-8);
+    margin-right: var(--unit-8);
   }
 
   .tds-table__actionbar,
@@ -41,77 +46,54 @@
   .tds-table__searchbar {
     display: flex;
     align-self: center;
+    align-items: center;
+    justify-content: flex-end;
     position: relative;
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
     border-radius: 4px 4px 0 0;
-    transition: background-color 250ms ease, width 250ms ease;
+    transition:
+      background-color 250ms ease,
+      width 250ms ease;
     overflow: hidden;
     background-color: transparent;
 
-    &::after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      position: absolute;
-      bottom: 0;
-      background-color: var(--tds-blue-400);
-      transform: scaleX(0);
-      transition: transform 150ms ease;
-    }
-
-    &:focus-within {
-      &::after {
-        transform: scaleX(100%);
-      }
-    }
-
-    &:focus-within,
     &.tds-table__searchbar--active {
-      width: 208px;
-      background-color: var(--tds-table-toolbar-searchbar-background);
-
-      &:hover {
-        background-color: var(--tds-table-toolbar-searchbar-background);
-      }
+      width: 250px;
+      padding-right: 8px;
     }
 
     .tds-table__searchbar-input {
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      color: var(--tds-table-color);
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      border: none;
-      padding: 0 36px 0 16px;
-      background-color: transparent;
-      outline: none;
+      display: none;
+      @include type-system-body-01;
+
+      color: var(--tds-table-input-value-text-color);
+      background-color: var(--tds-table-toolbar-background);
+      z-index: 2;
+      width: 204px;
+      height: 40px;
+      right: 5px;
       cursor: pointer;
 
-      :focus {
-        background-color: var(--tds-table-toolbar-searchbar-background);
+      &-show {
+        display: inline-flex;
       }
     }
 
-    &:hover {
-      background-color: var(--tds-table-toolbar-searchbar-background-hover);
-    }
-
     .tds-table__searchbar-icon {
-      z-index: 0;
-      position: absolute;
-      right: 9px;
-      top: 9px;
-      width: 20px;
-      height: 20px;
+      padding-right: 4px;
+      color: var(--tds-table-filter-icon-color);
+
+      &-hide {
+        display: none;
+      }
     }
   }
 }
 
 :host(.toolbar__horizontal-scroll) {
   position: absolute;
-  top: var(--tds-spacing-element-16);
+  top: var(--unit-16);
 }
 
 :host(.tds-table--compact) {
