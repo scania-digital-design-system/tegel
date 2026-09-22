@@ -422,7 +422,7 @@
     "@storybook/addon-docs": "10.6.0",
     "@storybook/builder-vite": "10.6.0",
     "@storybook/html-vite": "10.6.0",
-    "@types/node": "^22.10.7",
+    "@types/node": "catalog:",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vueless/storybook-dark-mode": "^10.0.8",

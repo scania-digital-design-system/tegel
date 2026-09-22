@@ -32,7 +32,7 @@
     "@stencil/react-output-target": "1.6.2"
   },
   "devDependencies": {
-    "@types/node": "^22.20.1",
+    "@types/node": "catalog:",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "react": "^19.2.8",
