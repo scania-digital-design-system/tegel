@@ -60,7 +60,7 @@
     "@pnpm/find-workspace-dir": "1000.1.5",
     "@pnpm/read-project-manifest": "1001.2.6",
     "@pnpm/workspace.read-manifest": "1000.3.1",
-    "@types/node": "^26.5.0",
+    "@types/node": "catalog:",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^10.10.0",
@@ -74,7 +74,7 @@
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript": "^6.0.3",
+    "typescript": "catalog:",
     "typescript-eslint": "^8.70.0"
   },
   "config": {
