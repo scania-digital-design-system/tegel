@@ -24,7 +24,8 @@
   }
 
   &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper,
-  &:has(.tl-text-field__input:disabled) .tl-text-field__label {
+  &:has(.tl-text-field__input:disabled) .tl-text-field__label,
+  &:has(.tl-text-field__input:disabled) .tl-text-field__bottom {
     opacity: var(--text-field-opacity-disabled);
   }
 
@@ -36,7 +37,10 @@
 .tl-text-field__input-wrapper {
   position: relative;
 
-  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled), .tl-text-field--hide-readonly-icon)
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(
+      :has(.tl-text-field__input:disabled),
+      .tl-text-field--hide-readonly-icon
+    )
     &::before {
     content: '';
     position: absolute;
@@ -83,7 +87,10 @@
     @include input-border-error;
   }
 
-  .tl-text-field--success:not(:has(.tl-text-field__input[readonly]), :has(.tl-text-field__input:disabled))
+  .tl-text-field--success:not(
+      :has(.tl-text-field__input[readonly]),
+      :has(.tl-text-field__input:disabled)
+    )
     &:not(:focus) {
     @include input-border-success;
   }
@@ -113,38 +120,41 @@
     pointer-events: none;
   }
 
-  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled), .tl-text-field--hide-readonly-icon)
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(
+      :has(.tl-text-field__input:disabled),
+      .tl-text-field--hide-readonly-icon
+    )
     & {
     padding-right: 54px;
   }
 
   .tl-text-field--lg & {
-    padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+    padding: var(--unit-20) var(--unit-16);
     height: 56px;
   }
 
   .tl-text-field--md & {
-    padding: var(--tds-spacing-element-16);
+    padding: var(--unit-16);
     height: 48px;
   }
 
   .tl-text-field--sm & {
-    padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
+    padding: var(--unit-12) var(--unit-16);
     height: 40px;
   }
 
   .tl-text-field--label-inside.tl-text-field--lg & {
-    padding-top: var(--tds-spacing-element-24);
+    padding-top: var(--unit-24);
     padding-bottom: 15px;
   }
 
   .tl-text-field--label-inside.tl-text-field--md & {
-    padding-top: var(--tds-spacing-element-20);
+    padding-top: var(--unit-20);
     padding-bottom: 11px;
   }
 
   .tl-text-field--label-inside.tl-text-field--sm &:not(:focus):placeholder-shown {
-    padding-top: var(--tds-spacing-element-16);
+    padding-top: var(--unit-16);
     padding-bottom: 7px;
   }
 
@@ -166,11 +176,6 @@
 
   .tl-text-field--label-inside &::placeholder {
     color: transparent !important;
-  }
-
-  // Default behavior (label outside) - disabled placeholder color
-  .tl-text-field:not(.tl-text-field--label-inside) &:disabled::placeholder {
-    color: var(--text-field-placeholder-disabled) !important;
   }
 }
 
@@ -270,16 +275,6 @@
     opacity: 0;
     visibility: hidden;
   }
-
-  // Disabled label gets disabled color but keeps same behavior
-  .tl-text-field--label-inside:has(.tl-text-field__input:disabled) & {
-    color: var(--text-field-label-disabled);
-  }
-
-  // Default behavior (label outside) - disabled state
-  .tl-text-field:not(.tl-text-field--label-inside):has(.tl-text-field__input:disabled) & {
-    color: var(--text-field-label-disabled);
-  }
 }
 
 .tl-text-field__bottom {
@@ -293,10 +288,6 @@
 
   color: var(--text-field-helper);
   position: relative;
-
-  :has(.tl-text-field__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
 
   .tl-text-field--error & {
     padding-left: 24px;
@@ -324,13 +315,12 @@
     }
   }
 
-  .tl-text-field--error:not(:has(.tl-text-field__input[readonly]), :has(.tl-text-field__input:disabled))
+  .tl-text-field--error:not(
+      :has(.tl-text-field__input[readonly]),
+      :has(.tl-text-field__input:disabled)
+    )
     & {
     color: var(--text-field-error);
-  }
-
-  .tl-text-field--error:has(.tl-text-field__input:disabled) &::before {
-    background-color: var(--color-text-disabled);
   }
 }
 
@@ -340,11 +330,10 @@
   margin-left: auto;
   color: var(--text-field-textcounter);
 
-  :has(.tl-text-field__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
-
-  .tl-text-field--error:not(:has(.tl-text-field__input[readonly]), :has(.tl-text-field__input:disabled))
+  .tl-text-field--error:not(
+      :has(.tl-text-field__input[readonly]),
+      :has(.tl-text-field__input:disabled)
+    )
     & {
     color: var(--text-field-error);
 
@@ -352,10 +341,6 @@
       color: var(--text-field-error);
     }
   }
-}
-
-.tl-text-field__charcounter-divider {
-  color: var(--color-text-disabled);
 }
 
 .tl-text-field__prefix {
@@ -368,23 +353,6 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-  }
-
-  :has(.tl-text-field__input:disabled) &--text,
-  :has(.tl-text-field__input:disabled) &--icon {
-    color: var(--text-field-affix-disabled);
-
-    > * {
-      color: var(--text-field-affix-disabled);
-    }
-
-    .tl-icon {
-      background-color: var(--text-field-affix-disabled);
-    }
-  }
-
-  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
-    background-color: var(--text-field-affix-disabled);
   }
 }
 
@@ -404,24 +372,6 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-  }
-
-  :has(.tl-text-field__input:disabled) &--text,
-  :has(.tl-text-field__input:disabled) &--icon {
-    color: var(--text-field-affix-disabled);
-
-    > * {
-      color: var(--text-field-affix-disabled);
-    }
-
-    .tl-icon,
-    > .tl-icon {
-      background-color: var(--text-field-affix-disabled) !important;
-    }
-  }
-
-  :has(.tl-text-field__input:disabled) &--icon.tl-icon {
-    background-color: var(--text-field-affix-disabled);
   }
 }
 

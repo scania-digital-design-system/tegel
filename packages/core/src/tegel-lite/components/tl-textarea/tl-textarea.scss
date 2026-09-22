@@ -144,7 +144,7 @@
   display: block;
   position: relative;
   width: 100%;
-  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  padding: var(--unit-20) var(--unit-16);
   color: var(--textarea-text);
   resize: vertical;
   z-index: 0;
@@ -209,10 +209,6 @@
     }
   }
 
-  .tl-textarea--label-inside &:disabled::placeholder {
-    color: var(--textarea-placeholder-disabled) !important;
-  }
-
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
     user-select: auto;
     caret-color: transparent;
@@ -258,13 +254,7 @@
     @include detail-07;
 
     top: 8px;
-    color: var(--textarea-label-disabled);
     transform: translateY(0);
-  }
-
-  // Default behavior (label outside) - disabled state
-  .tl-textarea:not(.tl-textarea--label-inside):has(.tl-textarea__input:disabled) & {
-    color: var(--textarea-label-disabled);
   }
 }
 
@@ -279,10 +269,6 @@
 
   color: var(--textarea-helper);
   position: relative;
-
-  :has(.tl-textarea__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
 
   .tl-textarea--error & {
     padding-left: 24px;
@@ -314,10 +300,6 @@
     & {
     color: var(--textarea-error);
   }
-
-  .tl-textarea--error:has(.tl-textarea__input:disabled) &::before {
-    background-color: var(--color-text-disabled);
-  }
 }
 
 .tl-textarea__charcounter {
@@ -325,10 +307,6 @@
 
   margin-left: auto;
   color: var(--textarea-textcounter);
-
-  :has(.tl-textarea__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
 
   .tl-textarea--error:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
     & {
@@ -338,10 +316,6 @@
       color: var(--textarea-error);
     }
   }
-}
-
-.tl-textarea__charcounter-divider {
-  color: var(--color-text-disabled);
 }
 
 @include focus-input-state {
