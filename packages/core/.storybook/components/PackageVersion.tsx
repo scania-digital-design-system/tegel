@@ -6,7 +6,7 @@ interface PackageVersionProps {
 }
 
 const style = {
-  textTansform: 'unset',
+  textTransform: 'unset',
   fontSize: '14px',
   fontStyle: 'normal',
   fontWeight: '400',
@@ -19,7 +19,7 @@ const style = {
   padding: '4px 12px',
 };
 
-export const PackageVersion: React.FC<PackageVersionProps> = memo(({ packageName, version }) => (
+export const PackageVersion = memo(({ packageName, version }: PackageVersionProps) => (
   <p style={style} className={'package-version'}>
     {`${packageName}: ${version}`}
   </p>

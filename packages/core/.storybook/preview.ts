@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 import { defineCustomElements } from '../loader';
-import type { Preview, Decorator } from '@storybook/html';
+import type { Preview, Decorator } from '@storybook/html-vite';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
 // Tegel Lite styles:
@@ -26,7 +26,7 @@ try {
   const channel = addons.getChannel();
 
   channel.on('DARK_MODE', (isDarkMode) => {
-    const body = document.body;
+    const { body } = document;
 
     body.classList.remove('tds-mode-light', 'tds-mode-dark');
     body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
@@ -98,42 +98,42 @@ const toggleBrandDecorator: Decorator = (StoryFn, context) => {
 
 const tegelViewports = {
   desktopMax: {
-    name: 'Desktop – Max',
+    name: 'Desktop - Max',
     styles: {
       width: '1584px',
       height: '900px',
     },
   },
   desktopLarge: {
-    name: 'Desktop – Large',
+    name: 'Desktop - Large',
     styles: {
       width: '1376px',
       height: '900px',
     },
   },
   desktopMedium: {
-    name: 'Desktop – Medium',
+    name: 'Desktop - Medium',
     styles: {
       width: '1184px',
       height: '900px',
     },
   },
   tabletLarge: {
-    name: 'Tablet – Large',
+    name: 'Tablet - Large',
     styles: {
       width: '992px',
       height: '900px',
     },
   },
   tabletMedium: {
-    name: 'Tablet – Medium',
+    name: 'Tablet - Medium',
     styles: {
       width: '800px',
       height: '900px',
     },
   },
   tabletSmall: {
-    name: 'Tablet – Small',
+    name: 'Tablet - Small',
     styles: {
       width: '608px',
       height: '900px',
@@ -163,7 +163,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: tegelViewports,
+      options: tegelViewports,
     },
     darkMode: {
       current: 'light',

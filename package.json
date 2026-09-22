@@ -16,7 +16,7 @@
     "test:axe": "pnpm filter:core test:axe",
     "test:lte": "pnpm build:tegel-lite:docker:playwright && pnpm run:tegel-lite:docker:playwright",
     "commit": "cz",
-    "prepare": "husky install",
+    "prepare": "husky",
     "reinstall": "find . -name node_modules -type d -prune -exec rm -rf '{}' + && pnpm install --fix-lockfile",
     "pack:core": "pnpm build && pnpm filter:core pack --pack-destination packages/core",
     "pack:react": "pnpm build:react && pnpm filter:react pack --pack-destination packages/react",
@@ -74,7 +74,7 @@
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript": "^6.0.3",
+    "typescript": "catalog:",
     "typescript-eslint": "^8.70.0"
   },
   "config": {
