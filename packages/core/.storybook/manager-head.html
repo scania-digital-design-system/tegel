@@ -10,7 +10,7 @@
       // Load Plausible script only on production
       const script = document.createElement('script');
       script.defer = true;
-      script.setAttribute('data-domain', 'tds-storybook.tegel.scania.com');
+      script.dataset.domain = 'tds-storybook.tegel.scania.com';
       script.src = 'https://plausible.io/js/script.manual.js';
       document.head.appendChild(script);
 
@@ -18,7 +18,8 @@
       window.plausible =
         window.plausible ||
         function () {
-          (window.plausible.q = window.plausible.q || []).push(arguments);
+          window.plausible.q = window.plausible.q || [];
+          window.plausible.q.push(arguments);
         };
 
       // Helper function for URL preparation
