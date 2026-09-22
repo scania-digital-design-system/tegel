@@ -1,76 +1,63 @@
 @use '../../../../../../tokens/scss/component/table';
 
 .tl-table {
-  /* Table-text */
-  --table-text: var(--color-foreground-text-strong);
-
-  /* Table-body-cell */
-  --table-body-cell-hover: var(--component-table-cell-hover);
-
-  /* Table-body-row */
-  --table-body-row: var(--component-table-cell);
-  --table-body-row-hover: var(--component-table-cell-hover);
-  --table-zebra-mode: var(--component-table-secondary-cell);
-  --table-body-row-selected: var(--color-background-surface-300);
-  --table-body-row-selected-hover: var(--color-background-surface-400);
-
-  /* Table input body */
-  --table-input-focus: var(--color-background-layer-02);
-  --table-input-hover: var(--color-background-layer-03);
-  --table-input-disabled: var(--color-background-layer-01);
-  --table-input-text-disabled: var(--color-foreground-text-subtle);
-
-  /* Table input header */
-  --table-input-header-icon: var(--color-foreground-icon-soft);
-  --table-input-header-placeholder: var(--color-foreground-text-subtle);
-  --table-input-header-focus: var(--color-background-layer-01);
-
-  /* Table-footer */
-  --table-footer: var(--component-table-pagination-base);
-  --table-footer-page-selector-input: var(--component-table-pagination-dropdown);
-  --table-footer-page-selector-input-hover: var(--color-background-layer-03);
-  --table-footer-page-selector-input-disabled: var(--color-background-layer-01);
-  --table-footer-button-hover: var(--color-background-surface-300);
+  --table-background: var(--table-body-row);
+  --table-cell-background: var(--table-body-row);
 
   /* Table-header */
-  --table-header: var(--color-background-surface-300);
-  --table-header-hover: var(--color-background-surface-400);
-  --table-header-button: var(--color-background-surface-200);
-  --table-header-button-hover: var(--color-background-surface-300);
-  --table-header-button-focus: var(--color-foreground-border-accent-focus);
+  --table-header: var(--component-table-background-header-default);
+  --table-header-hover: var(--component-table-background-header-hover);
+  --table-header-text-color: var(--component-table-text-header-default);
 
   /* Table-toolbar */
-  --table-toolbar: var(--color-background-surface-400);
-  --table-toolbar-searchbar: var(--component-table-pagination-dropdown);
-  --table-toolbar-searchbar-hover: var(--component-table-pagination-base);
-  --table-toolbar-searchbar-border-bottom: var(--color-foreground-border-accent-focus);
+  --table-toolbar: var(--component-table-background-toolbar-default);
+  --table-toolbar-text-color: var(--component-table-text-toolbar-default);
+
+  /* Table-footer */
+  --table-footer: var(--component-table-background-footer-default);
+  --table-footer-text-color: var(--component-table-text-footer-default);
+  --table-footer-page-selector-input-background: var(--component--input-background-secondary);
 
   /* Divider */
-  --table-divider: var(--color-foreground-border-discrete);
+  --table-divider: var(--component-table-border-divider-default);
+  --table-divider-hover: var(--component-table-border-divider-hover);
+  --table-border-radius: calc(var(--component-table-border-radius-default) * 1px);
+
+  /* Table-body-cell */
+  --table-body-cell-hover: var(--component-table-background-cell-primary-hover);
+  --table-body-cell-text-color: var(--component-table-text-cell-default);
+  --table-body-cell-background-expanded: var(--component-table-background-cell-expanded-default);
+
+  /* Table-body-row */
+  --table-body-row: var(--component-table-background-cell-primary-default);
+  --table-body-row-hover: var(--component-table-background-cell-primary-hover);
+  --table-zebra-mode: var(--component-table-background-cell-secondary-default);
+  --table-body-row-selected: var(--component-table-background-cell-selected-default);
+  --table-body-row-selected-hover: var(--component-table-background-cell-selected-hover);
+
+  /* Table input body */
+  --table-input-placeholder-text-color: var(--component-table-text-placeholder-default);
+  --table-input-value-text-color: var(--component-table-text-value-default);
+  --table-input-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   /* Table-icons */
-  --table-icon: var(--color-foreground-icon-strong);
-  --table-icon-disabled: var(--color-foreground-icon-disabled);
+  --table-edit-icon-color: var(--component-table-icon-edit-default);
+  --table-expand-icon-color: var(--component-table-icon-expand-default);
+  --table-filter-icon-color: var(--component-table-icon-filter-default);
+  --table-prefix-icon-color: var(--component-table-icon-prefix-default);
+  --table-sort-icon-color: var(--component-table-icon-sort-default);
 
   &.tl-table--primary {
-    --table-body-row: var(--component-table-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-body-cell-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-secondary-cell);
+    --table-body-row: var(--component-table-background-cell-primary-default);
+    --table-body-row-hover: var(--component-table-background-cell-primary-hover);
+    --table-body-cell-hover: var(--component-table-background-cell-primary-hover);
+    --table-zebra-mode: var(--component-table-background-cell-secondary-default);
   }
 
   &.tl-table--secondary {
-    --table-body-row: var(--component-table-secondary-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-body-cell-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-cell);
-  }
-}
-
-// Dark mode variant secondary
-.tl-mode-dark .tl-table {
-  &.tl-table--secondary {
-    --table-body-cell-hover: var(--color-background-surface-300);
-    --table-body-row-hover: var(--color-background-surface-300);
+    --table-body-row: var(--component-table-background-cell-secondary-default);
+    --table-body-row-hover: var(--component-table-background-cell-secondary-hover);
+    --table-body-cell-hover: var(--component-table-background-cell-secondary-hover);
+    --table-zebra-mode: var(--component-table-background-cell-primary-default);
   }
 }
