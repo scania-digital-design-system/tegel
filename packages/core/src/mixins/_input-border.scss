@@ -9,56 +9,32 @@
     calc(var(--component--input-border-radius-bottom-left) * 1px);
   border-style: solid;
 }
-@mixin tds-input-border-default {
+@mixin input-border-default {
   @include input-border;
 
   border-color: var(--component--input-border-default);
 }
 
-@mixin tds-input-border-hover {
+@mixin input-border-hover {
   @include input-border;
 
   border-color: var(--component--input-border-hover);
 }
 
-@mixin tds-input-border-error {
+@mixin input-border-error {
   @include input-border;
 
   border-color: var(--component--input-text-error-default);
 }
 
-@mixin tds-input-border-readonly {
+@mixin input-border-readonly {
   @include input-border;
 
   border-color: var(--color-border-defined);
 }
 
-@mixin tds-input-border-success {
+@mixin input-border-success {
   @include input-border;
 
   border-color: var(--component--input-border-success-default);
-}
-
-@mixin tl-dropdown-border {
-  border-bottom: var(--dropdown-border-bottom-width) solid var(--dropdown-border);
-  border-left: var(--dropdown-border-left-width) solid var(--dropdown-border);
-  border-right: var(--dropdown-border-right-width) solid var(--dropdown-border);
-  border-top: var(--dropdown-border-top-width) solid var(--dropdown-border);
-  border-radius: var(--dropdown-border-radius);
-}
-
-@mixin tl-dropdown-border-hover {
-  border-bottom: var(--dropdown-border-bottom-width) solid var(--dropdown-border-hover);
-  border-left: var(--dropdown-border-left-width) solid var(--dropdown-border-hover);
-  border-right: var(--dropdown-border-right-width) solid var(--dropdown-border-hover);
-  border-top: var(--dropdown-border-top-width) solid var(--dropdown-border-hover);
-  border-radius: var(--dropdown-border-radius);
-}
-
-@mixin tl-dropdown-border-error {
-  border-bottom: var(--dropdown-border-bottom-width) solid var(--dropdown-error);
-  border-left: var(--dropdown-border-left-width) solid var(--dropdown-error);
-  border-right: var(--dropdown-border-right-width) solid var(--dropdown-error);
-  border-top: var(--dropdown-border-top-width) solid var(--dropdown-error);
-  border-radius: var(--dropdown-border-radius);
 }

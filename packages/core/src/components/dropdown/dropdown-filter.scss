@@ -10,7 +10,7 @@
     justify-content: space-between;
     height: 100%;
     background-color: var(--tds-dropdown-bg);
-    @include tds-input-border-default;
+    @include input-border-default;
 
     padding-left: 16px;
 
@@ -19,7 +19,7 @@
     }
 
     &:hover {
-      @include tds-input-border-hover;
+      @include input-border-hover;
     }
 
     .value-wrapper {
@@ -81,7 +81,7 @@
 
     &:not(.disabled) {
       &.error {
-        @include tds-input-border-error;
+        @include input-border-error;
       }
     }
 

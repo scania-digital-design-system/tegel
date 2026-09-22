@@ -93,7 +93,7 @@
   // Brand-aware border: Scania emits bottom-only widths (0,0,1,0), Traton
   // emits all-sides widths (1,1,1,1). Tokens are unitless, so multiply by 1px.
   // The single border-color applies to whichever sides have non-zero width.
-  @include tds-input-border-default;
+  @include input-border-default;
 
   transition: border-color 200ms ease;
 
@@ -103,7 +103,7 @@
   }
 
   &:hover {
-    @include tds-input-border-hover;
+    @include input-border-hover;
 
     &::placeholder {
       color: var(--tds-textarea-placeholder-hover);
@@ -231,13 +231,13 @@
 
 .textarea-success {
   .textarea-input {
-    @include tds-input-border-success;
+    @include input-border-success;
   }
 }
 
 .textarea-error {
   .textarea-input {
-    @include tds-input-border-error;
+    @include input-border-error;
   }
 
   .textarea-helper {

@@ -1,6 +1,7 @@
 @use './_tl-textarea-mixins' as *;
 @use './tl-textarea-vars' as *;
 @use '../../../mixins/focus-state' as *;
+@use '../../../mixins/input-border' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-textarea {
@@ -138,6 +139,7 @@
 .tl-textarea__input {
   @include textarea-base;
   @include detail-02;
+  @include input-border-default;
 
   display: block;
   position: relative;
@@ -160,11 +162,11 @@
   }
 
   .tl-textarea:hover &:not(:focus, :disabled) {
-    border-color: var(--textarea-border-color-hover);
+    @include input-border-hover;
   }
 
   .tl-textarea--error & {
-    border-color: var(--textarea-border-color-error);
+    @include input-border-error;
 
     &:focus {
       @include tds-focus-state;
@@ -172,12 +174,12 @@
   }
 
   .tl-textarea--error:hover &:not(:focus, :disabled) {
-    border-color: var(--textarea-border-color-error);
+    @include input-border-error;
   }
 
   .tl-textarea--success:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
     &:not(:focus) {
-    border-color: var(--textarea-border-color-success);
+    @include input-border-success;
   }
 
   &:disabled {
@@ -186,7 +188,7 @@
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
-    border-color: var(--textarea-border-color-readonly);
+    @include input-border-readonly;
 
     &:focus {
       @include tds-focus-state;
@@ -194,7 +196,7 @@
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):hover &:not(:focus) {
-    border-color: var(--textarea-border-color-hover);
+    @include input-border-hover;
   }
 
   .tl-textarea--label-inside & {

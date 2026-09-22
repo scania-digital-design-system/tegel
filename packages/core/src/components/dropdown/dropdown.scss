@@ -28,7 +28,7 @@
     position: relative;
 
     button {
-      @include tds-input-border-default;
+      @include input-border-default;
     }
 
     &:not(.disabled) {
@@ -36,7 +36,7 @@
         transition: border-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
         &:hover {
-          @include tds-input-border-hover;
+          @include input-border-hover;
         }
 
         &:focus {
@@ -44,7 +44,7 @@
         }
 
         &.error {
-          @include tds-input-border-error;
+          @include input-border-error;
         }
       }
     }
