@@ -57,7 +57,7 @@
 
       .tds-table__page-selector-input {
         @include type-system-body-01;
-        @include tds-input-border-default;
+        @include input-border-default;
 
         background-color: var(--tds-table-footer-page-selector-input-background);
         color: var(--tds-table-footer-text-color);
@@ -72,7 +72,7 @@
         }
 
         &:disabled {
-          opacity: var(--tds-pagination-icon-opacity-disabled);
+          opacity: var(--tds-table-input-opacity-disabled);
         }
 
         &:focus-visible {
