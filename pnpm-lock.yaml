@@ -9,6 +9,9 @@ catalogs:
     '@playwright/test':
       specifier: 1.63.0
       version: 1.63.0
+    typescript:
+      specifier: 6.0.3
+      version: 6.0.3
 
 importers:
   .:
@@ -84,7 +87,7 @@ importers:
         specifier: ^17.0.0
         version: 17.0.0(postcss@8.5.28)(stylelint@17.15.0(typescript@6.0.3))
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
       typescript-eslint:
         specifier: ^8.70.0
@@ -160,7 +163,7 @@ importers:
         specifier: ^22.1.1
         version: 22.1.1(@angular/compiler-cli@22.1.6(@angular/compiler@22.1.6)(typescript@6.0.3))(tslib@2.8.1)(typescript@6.0.3)
       typescript:
-        specifier: ~6.0.2
+        specifier: 'catalog:'
         version: 6.0.3
       vitest:
         specifier: ^4.0.8
@@ -297,7 +300,7 @@ importers:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   packages/styles:
