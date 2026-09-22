@@ -1,7 +1,7 @@
 const sass = require('sass');
-const fs = require('fs-extra');
+const fs = require('node:fs');
 const glob = require('glob');
-const path = require('path');
+const path = require('node:path');
 const del = require('del');
 const outputFolder = 'dist';
 const { Bundler } = require('scss-bundle');
@@ -10,8 +10,8 @@ init();
 
 async function init() {
   await clean();
-  await createFolders();
-  await glob.sync('_grid-deprecated.scss').forEach(generateCss);
+  createFolders();
+  glob.sync('_grid-deprecated.scss').forEach(generateCss);
   (async () => {
     // Absolute project directory path.
     const projectDirectory = path.resolve(__dirname, './');
