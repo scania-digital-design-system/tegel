@@ -74,7 +74,7 @@
   box-sizing: border-box;
   @include type-system-body-01;
 
-  color: var(--table-body-cell-text-color);
+  color: var(--table-input-value-text-color);
   padding: 0 var(--unit-16);
   width: 100%;
   border-radius: 0;
@@ -127,12 +127,13 @@
     border-bottom: 1px solid var(--table-divider);
   }
 
-  &:not(&--selected, &--expanded) {
-    @include zebra-striping-rows;
+  &:hover:not(&--expanded, &--selected) {
+    --table-background: var(--table-body-row-hover);
+    --table-cell-background: var(--table-body-row-hover);
   }
 
   &--expanded {
-    --table-cell-background: var(--table-body-row-selected);
+    --table-cell-background: var(--table-body-row-expanded);
   }
 
   // Column zebra for each body cell needs to be defined here because the
@@ -143,9 +144,8 @@
     }
   }
 
-  &:hover:not(&--expanded, &--selected) {
-    --table-background: var(--table-body-row-hover);
-    --table-cell-background: var(--table-body-row-hover);
+  &:not(:hover, &--selected, &--expanded) {
+    @include zebra-striping-rows;
   }
 
   &--selected {
@@ -257,7 +257,7 @@
   border: none;
   cursor: pointer;
   transition: background-color 200ms ease;
-  @include headline-07;
+  @include title-01;
 
   color: var(--table-header-text-color);
   text-align: left;
@@ -522,7 +522,7 @@
   transition: background-color 200ms ease;
 
   &--expanded {
-    background-color: var(--table-body-row-selected);
+    background-color: var(--table-body-row-expanded);
     border-bottom: 1px solid var(--table-divider);
     display: table-row;
   }
