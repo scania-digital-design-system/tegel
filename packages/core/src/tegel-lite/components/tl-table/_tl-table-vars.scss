@@ -26,13 +26,13 @@
   /* Table-body-cell */
   --table-body-cell-hover: var(--component-table-background-cell-primary-hover);
   --table-body-cell-text-color: var(--component-table-text-cell-default);
-  --table-body-cell-background-expanded: var(--component-table-background-cell-expanded-default);
 
   /* Table-body-row */
   --table-body-row: var(--component-table-background-cell-primary-default);
   --table-body-row-hover: var(--component-table-background-cell-primary-hover);
   --table-zebra-mode: var(--component-table-background-cell-secondary-default);
   --table-body-row-selected: var(--component-table-background-cell-selected-default);
+  --table-body-row-expanded: var(--component-table-background-cell-expanded-default);
   --table-body-row-selected-hover: var(--component-table-background-cell-selected-hover);
 
   /* Table input body */

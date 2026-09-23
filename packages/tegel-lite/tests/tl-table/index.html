@@ -20,442 +20,345 @@
 </head>
 
 <body style="height: 100vh;">
-  <div class="demo-wrapper scania">
+  <div class="demo-wrapper">
 
     <div class="variant-wrapper">
 
-    <!-- Fist table: tests multiselect, expandable rows, zebra rows, action bar (with search), footer/pagination -->
-    <table class="tl-table tl-table--primary tl-table--zebra-rows-odd">
+      <!-- Fist table: tests multiselect, expandable rows, zebra rows, action bar (with search), footer/pagination -->
+      <table class="tl-table tl-table--primary tl-table--zebra-rows-odd">
         <caption class="tl-table__toolbar">
-        <div class="tl-table__upper-bar">
-          <div class="tl-table__actionbar-left">
-            <button
-              class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon"
-            >
-              <span class="tl-icon tl-icon--settings tl-icon--16" aria-hidden="true"></span>
-            </button>
-            <button class="tl-button tl-button--danger tl-button--sm">
-              Download
-            </button>
+          <div class="tl-table__upper-bar">
+            <div class="tl-table__actionbar-left">
+              <button class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
+                <span class="tl-icon tl-icon--settings tl-icon--16" aria-hidden="true"></span>
+              </button>
+              <button class="tl-button tl-button--danger tl-button--sm">
+                Download
+              </button>
+            </div>
+            <div class="tl-table__actionbar-right">
+              <div class="tl-text-field tl-text-field--sm">
+                <input class="tl-text-field__input" placeholder="Search..." type="text" />
+                <span class="tl-icon tl-icon--search tl-icon--16 tl-text-field__suffix--icon"></span>
+              </div>
+            </div>
           </div>
-          <div class="tl-table__actionbar-right">
-            <div class="tl-text-field tl-text-field--sm">
-              <input class="tl-text-field__input" placeholder="Search..." type="text" />
-              <span class="tl-icon tl-icon--search tl-icon--16 tl-text-field__suffix--icon"></span>
-            </div> 
-          </div>
-        </div>
-      </caption>
-      <thead class="tl-table__header">
-        <tr class="tl-table__row">
-          <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input tl-checkbox__input--indeterminate" />
-            </div>
-          </th>
-          <th class="tl-table__header-cell tl-table__header-cell--expand"></th>
-          <th class="tl-table__header-cell" data-column="0">Truck type</th>
-          <th class="tl-table__header-cell" data-column="1">Driver name</th>
-          <th class="tl-table__header-cell" data-column="2">Country</th>
-          <th class="tl-table__header-cell" data-column="3">Mileage</th>
-        </tr>
-      </thead>
-      <tbody class="tl-table__body">
-        <tr class="tl-table__row" data-row-id="1">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-              <button type="button" class="tl-table__expand-control"
-               aria-expanded="false" aria-controls="expandable-content-1" data-row-id="1" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+        </caption>
+        <thead class="tl-table__header">
+          <tr class="tl-table__row">
+            <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input tl-checkbox__input--indeterminate" />
+              </div>
+            </th>
+            <th class="tl-table__header-cell tl-table__header-cell--expand"></th>
+            <th class="tl-table__header-cell" data-column="0">Truck type</th>
+            <th class="tl-table__header-cell" data-column="1">Driver name</th>
+            <th class="tl-table__header-cell" data-column="2">Country</th>
+            <th class="tl-table__header-cell" data-column="3">Mileage</th>
+          </tr>
+        </thead>
+        <tbody class="tl-table__body">
+          <tr class="tl-table__row" data-row-id="1">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="false"
+                aria-controls="expandable-content-1" data-row-id="1">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 1</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 2</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 3</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 4</td>
-        </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-1" data-row-id="1">
-          <td class="tl-table__expand-row-cell" colspan="6">Hello world 1</td>
-        </tr>
-        <tr class="tl-table__row" data-row-id="2">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-           <button type="button" class="tl-table__expand-control"
-               aria-expanded="false" aria-controls="expandable-content-2" data-row-id="2" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 1</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 2</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 3</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 4</td>
+          </tr>
+          <tr class="tl-table__expand-row" id="expandable-content-1" data-row-id="1">
+            <td class="tl-table__expand-row-cell" colspan="6">Hello world 1</td>
+          </tr>
+          <tr class="tl-table__row" data-row-id="2">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="false"
+                aria-controls="expandable-content-2" data-row-id="2">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 5</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 6</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 7</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 8</td>
-        </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-2" data-row-id="2">
-          <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
-        </tr>
-        <tr class="tl-table__row tl-table__row--expanded" data-row-id="3">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-            <button type="button" class="tl-table__expand-control"
-               aria-expanded="true" aria-controls="expandable-content-3" data-row-id="3" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+          <tr class="tl-table__expand-row" id="expandable-content-2" data-row-id="2">
+            <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
+          </tr>
+          <tr class="tl-table__row tl-table__row--expanded" data-row-id="3">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="true"
+                aria-controls="expandable-content-3" data-row-id="3">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 9</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 10</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 11</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 12</td>
-        </tr>
-        <tr class="tl-table__expand-row tl-table__expand-row--expanded" id="expandable-content-3" data-row-id="3">
-          <td class="tl-table__expand-row-cell" colspan="6">
-            <button class="tl-button tl-button--primary tl-button--sm">Call to action</button>
-          </td>
-        </tr>
-         <tr class="tl-table__row tl-table__row--selected" data-row-id="4">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" checked />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-           <button type="button" class="tl-table__expand-control"
-               aria-expanded="false" aria-controls="expandable-content-4" data-row-id="4" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 9</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 10</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 11</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 12</td>
+          </tr>
+          <tr class="tl-table__expand-row tl-table__expand-row--expanded" id="expandable-content-3" data-row-id="3">
+            <td class="tl-table__expand-row-cell" colspan="6">
+              <button class="tl-button tl-button--primary tl-button--sm">Call to action</button>
+            </td>
+          </tr>
+          <tr class="tl-table__row tl-table__row--selected" data-row-id="4">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" checked />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="false"
+                aria-controls="expandable-content-4" data-row-id="4">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 5</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 6</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 7</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 8</td>
-        </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-4" data-row-id="4">
-          <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
-        </tr>
-         <tr class="tl-table__row" data-row-id="5">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-           <button type="button" class="tl-table__expand-control"
-               aria-expanded="false" aria-controls="expandable-content-5" data-row-id="5" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+          <tr class="tl-table__expand-row" id="expandable-content-4" data-row-id="4">
+            <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
+          </tr>
+          <tr class="tl-table__row" data-row-id="5">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="false"
+                aria-controls="expandable-content-5" data-row-id="5">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 5</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 6</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 7</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 8</td>
-        </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-5" data-row-id="5">
-          <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
-        </tr>
-        <tr class="tl-table__row" data-row-id="6">
-          <td class="tl-table__body-cell" data-column="0">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" />
-            </div>
-          </td>
-          <td class="tl-table__body-cell">
-           <button type="button" class="tl-table__expand-control"
-               aria-expanded="false" aria-controls="expandable-content-6" data-row-id="6" >
-              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+          <tr class="tl-table__expand-row" id="expandable-content-5" data-row-id="5">
+            <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
+          </tr>
+          <tr class="tl-table__row" data-row-id="6">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-checkbox">
+                <input type="checkbox" class="tl-checkbox__input" />
+              </div>
+            </td>
+            <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" aria-expanded="false"
+                aria-controls="expandable-content-6" data-row-id="6">
+                <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
               </button>
-          </td>
-          <td class="tl-table__body-cell" data-column="0">Test value 5</td>
-          <td class="tl-table__body-cell" data-column="1">Test value 6</td>
-          <td class="tl-table__body-cell" data-column="2">Test value 7</td>
-          <td class="tl-table__body-cell" data-column="3">Test value 8</td>
-        </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-6" data-row-id="6">
-          <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
-        </tr>
-      </tbody>
+            </td>
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+          <tr class="tl-table__expand-row" id="expandable-content-6" data-row-id="6">
+            <td class="tl-table__expand-row-cell" colspan="6">Hello to you too</td>
+          </tr>
+        </tbody>
 
-      <tfoot class="tl-table__footer">
-        <tr class="tl-table__footer-row">
-          <td class="tl-table__footer-cell" colspan="6">
-            <div class="tl-table__pagination">
-              <div class="tl-table__row-selector">
+        <tfoot class="tl-table__footer">
+          <tr class="tl-table__footer-row">
+            <td class="tl-table__footer-cell" colspan="6">
+              <div class="tl-table__pagination">
+                <div class="tl-table__row-selector">
                   <div class="tl-table__rows-per-page">
-                   <p class="tl-table__rows-per-page-label">Rows per page</p>
-                   <div class="tl-dropdown tl-dropdown--sm tl-dropdown--dropdown" id="tl-rows-per-page-dropdown">
-                     <button type="button" class="tl-dropdown__button" aria-expanded="false" id="tl-rows-per-page-button">
-                       <span class="tl-dropdown__text" id="tl-rows-per-page-text">10</span>
-                     </button>
-                     <ul class="tl-dropdown__list" id="tl-rows-per-page-list" role="listbox">
-                      <li class="tl-dropdown__option tl-dropdown__option--selected">10</li>
-                     </ul>
-                   </div>
+                    <p class="tl-table__rows-per-page-label">Rows per page</p>
+                    <div class="tl-dropdown tl-dropdown--sm tl-dropdown--dropdown" id="tl-rows-per-page-dropdown">
+                      <button type="button" class="tl-dropdown__button" aria-expanded="false"
+                        id="tl-rows-per-page-button">
+                        <span class="tl-dropdown__text" id="tl-rows-per-page-text">10</span>
+                      </button>
+                      <ul class="tl-dropdown__list" id="tl-rows-per-page-list" role="listbox">
+                        <li class="tl-dropdown__option tl-dropdown__option--selected">10</li>
+                      </ul>
+                    </div>
                   </div>
-              
-              </div>
 
-              <div class="tl-table__page-selector">
-                <div class="tl-text-field">
-                  <input class="tl-text-field__input" id="tl-current-page" value="1" type="number" min="1" max="4" pattern="[0-9]+" value="1">
                 </div>
-                <p class="tl-table__footer-text">of 4 pages</p>
-                <button disabled class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--16"></span></button>
-                <button disabled class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--16"></span></button>
-                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--16"></span></button>
-                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--16"></span></button>
+
+                <div class="tl-table__page-selector">
+                  <div class="tl-text-field">
+                    <input class="tl-text-field__input" id="tl-current-page" value="1" type="number" min="1" max="4"
+                      pattern="[0-9]+" value="1">
+                  </div>
+                  <p class="tl-table__footer-text">of 4 pages</p>
+                  <button disabled class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon"
+                    data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--16"></span></button>
+                  <button disabled class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon"
+                    data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--16"></span></button>
+                  <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon"
+                    data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--16"></span></button>
+                  <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon"
+                    data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--16"></span></button>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
 
-    <!-- Second table: tests column filtering, sorting, zebra columns, editable cells, compact, no padding, vertical dividers -->
-    <table class="tl-table tl-table--secondary tl-table--compact tl-table--no-padding tl-table--zebra-columns-even tl-table--vertical-dividers">
-  <thead class="tl-table__header">
-    <tr class="tl-table__row">
-      <th class="tl-table__header-cell tl-table__header-cell--sortable tl-table__header-cell--is-sorted" data-column="0" data-sort-key="col0">
-          <button class="tl-table__header-button">
-            <span class="tl-table__header-button-text">Truck type</span>
-            <span class="tl-table__header-button-icon tl-icon tl-icon--arrow_up tl-icon--16" aria-hidden="true"></span>
-          </button>
-      </th>
-      <th class="tl-table__header-cell" data-column="1">Driver name</th>
-      <th class="tl-table__header-cell" data-column="2">Country</th>
-      <th class="tl-table__header-cell" data-column="3">Mileage</th>
-    </tr>
-    <tr class="tl-table__row">
-          <th class="tl-table__header-cell" data-column="0">
-            <div class="tl-table__header-input-wrapper">
-              <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
-              <input
-                type="text"
-                class="tl-table__header-input"
-                placeholder="Search..."
-              />
-            </div>
-          </th>
-          <th class="tl-table__header-cell" data-column="1">
-            <div class="tl-table__header-input-wrapper">
-              <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
-              <input
-                type="text"
-                class="tl-table__header-input"
-                placeholder="Search..."
-              />
-            </div>
-          </th>
-          <th class="tl-table__header-cell" data-column="2">
-            <div class="tl-table__header-input-wrapper">
-              <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
-              <input
-                type="text"
-                class="tl-table__header-input"
-                placeholder="Search..."
-              />
-            </div>
-          </th>
-          <th class="tl-table__header-cell" data-column="3">
-            <div class="tl-table__header-input-wrapper">
-              <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
-              <input
-                type="text"
-                class="tl-table__header-input"
-                placeholder="Search..."
-              />
-            </div>
-          </th>
-        </tr>
-  </thead>
-  <tbody class="tl-table__body">
-    <tr class="tl-table__row" data-row="0">
-      <td class="tl-table__body-cell" data-column="0">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input id="truck-input-1" class="tl-text-field__input" type="text" value="Test value 1" />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+      <!-- Second table: tests column filtering, sorting, zebra columns, editable cells, compact, no padding, vertical dividers -->
+      <table
+        class="tl-table tl-table--secondary tl-table--compact tl-table--no-padding tl-table--zebra-columns-even tl-table--vertical-dividers">
+        <thead class="tl-table__header">
+          <tr class="tl-table__row">
+            <th class="tl-table__header-cell tl-table__header-cell--sortable tl-table__header-cell--is-sorted"
+              data-column="0" data-sort-key="col0">
+              <button class="tl-table__header-button">
+                <span class="tl-table__header-button-text">Truck type</span>
+                <span class="tl-table__header-button-icon tl-icon tl-icon--arrow_up tl-icon--16"
+                  aria-hidden="true"></span>
+              </button>
+            </th>
+            <th class="tl-table__header-cell" data-column="1">Driver name</th>
+            <th class="tl-table__header-cell" data-column="2">Country</th>
+            <th class="tl-table__header-cell" data-column="3">Mileage</th>
+          </tr>
+          <tr class="tl-table__row">
+            <th class="tl-table__header-cell" data-column="0">
+              <div class="tl-table__header-input-wrapper">
+                <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
+                <input type="text" class="tl-table__header-input" placeholder="Search..." />
+              </div>
+            </th>
+            <th class="tl-table__header-cell" data-column="1">
+              <div class="tl-table__header-input-wrapper">
+                <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
+                <input type="text" class="tl-table__header-input" placeholder="Search..." />
+              </div>
+            </th>
+            <th class="tl-table__header-cell" data-column="2">
+              <div class="tl-table__header-input-wrapper">
+                <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
+                <input type="text" class="tl-table__header-input" placeholder="Search..." />
+              </div>
+            </th>
+            <th class="tl-table__header-cell" data-column="3">
+              <div class="tl-table__header-input-wrapper">
+                <span class="tl-icon tl-icon--search tl-icon--16" aria-hidden="true"></span>
+                <input type="text" class="tl-table__header-input" placeholder="Search..." />
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="tl-table__body">
+          <tr class="tl-table__row" data-row="0">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="truck-input-1" class="tl-text-field__input" type="text" value="Test value 1" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="1">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="driver-input-1"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 2"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="1">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="driver-input-1" class="tl-text-field__input" type="text" value="Test value 2" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="2">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="country-input-1"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 3"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="2">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="country-input-1" class="tl-text-field__input" type="text" value="Test value 3" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="3">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="mileage-input-1"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 4"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
-    </tr>
-    <tr class="tl-table__row" data-row="1">
-      <td class="tl-table__body-cell" data-column="0">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input id="truck-input-2" class="tl-text-field__input" type="text" value="Test value 5" />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="3">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="mileage-input-1" class="tl-text-field__input" type="text" value="Test value 4" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
+          </tr>
+          <tr class="tl-table__row" data-row="1">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="truck-input-2" class="tl-text-field__input" type="text" value="Test value 5" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="1">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="driver-input-2"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 6"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="1">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="driver-input-2" class="tl-text-field__input" type="text" value="Test value 6" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="2">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="country-input-2"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 7"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="2">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="country-input-2" class="tl-text-field__input" type="text" value="Test value 7" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="3">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="mileage-input-2"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 8"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
-    </tr>
-    <tr class="tl-table__row" data-row="2">
-      <td class="tl-table__body-cell" data-column="0">
-        <div
-          class="tl-text-field tl-text-field--md tl-text-field--no-min-width tl-text-field--disabled"
-        >
-          <input
-            id="truck-input-3"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 1"
-            disabled
-          />
-          <span
-            class="tl-icon tl-icon--edit_inactive tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="3">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="mileage-input-2" class="tl-text-field__input" type="text" value="Test value 8" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
+          </tr>
+          <tr class="tl-table__row" data-row="2">
+            <td class="tl-table__body-cell" data-column="0">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width tl-text-field--disabled">
+                <input id="truck-input-3" class="tl-text-field__input" type="text" value="Test value 1" disabled />
+                <span class="tl-icon tl-icon--edit_inactive tl-icon--20 tl-text-field__suffix--icon"
+                  aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="1">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="driver-input-3"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 2"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="1">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="driver-input-3" class="tl-text-field__input" type="text" value="Test value 2" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="2">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="country-input-3"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 3"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
+            <td class="tl-table__body-cell" data-column="2">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="country-input-3" class="tl-text-field__input" type="text" value="Test value 3" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
 
-      <td class="tl-table__body-cell" data-column="3">
-        <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
-          <input
-            id="mileage-input-3"
-            class="tl-text-field__input"
-            type="text"
-            value="Test value 4"
-          />
-          <span
-            class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon"
-            aria-hidden="true"
-          ></span>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            <td class="tl-table__body-cell" data-column="3">
+              <div class="tl-text-field tl-text-field--md tl-text-field--no-min-width">
+                <input id="mileage-input-3" class="tl-text-field__input" type="text" value="Test value 4" />
+                <span class="tl-icon tl-icon--edit tl-icon--20 tl-text-field__suffix--icon" aria-hidden="true"></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </div>

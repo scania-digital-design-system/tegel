@@ -470,13 +470,12 @@
   display: none;
 }
 
-.tl-table__body-cell .tl-text-field:hover .tl-text-field__suffix--icon,
-.tl-table__body-cell .tl-text-field:has(.tl-text-field__input:focus) .tl-text-field__suffix--icon {
-  display: inline-block;
-}
-
-// Always show icon when disabled (edit_inactive icon)
-.tl-table__body-cell .tl-text-field.tl-text-field--disabled .tl-text-field__suffix--icon {
+.tl-table__body-cell
+  .tl-text-field:hover:not(.tl-text-field:has(.tl-text-field__input:disabled))
+  .tl-text-field__suffix--icon,
+.tl-table__body-cell
+  .tl-text-field:has(.tl-text-field__input:not(:disabled):focus)
+  .tl-text-field__suffix--icon {
   display: inline-block;
 }
 
