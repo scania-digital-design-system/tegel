@@ -83,7 +83,7 @@
       }
 
       &:disabled {
-        color: var(--table-input-opacity-disabled);
+        opacity: var(--table-input-opacity-disabled);
       }
     }
   }
