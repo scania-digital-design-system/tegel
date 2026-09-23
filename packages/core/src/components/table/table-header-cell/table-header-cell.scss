@@ -60,6 +60,8 @@
     }
 
     .tds-table__header-button-text {
+      @include title-01;
+
       text-align: left;
       color: var(--tds-table-header-text-color);
     }
