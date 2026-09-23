@@ -41,11 +41,13 @@ return (
 export default App;
 ```
 
-1. In your global css file import the tegel stylesheet.
+3. In your global css file import the tegel stylesheet.
 
 ```css
 @import url('@scania/tegel/dist/tegel/tegel.css');
 ```
+
+4. Default themes are Scania brand and Light mode, but we advise you to read through our Storybook > System Setup > Light-Dark modes / Brand themes pages.
 
 See all available components in the [Tegel Design System](https://tegel.scania.com/components/overview).
 
