@@ -173,12 +173,10 @@ export class TdsTableHeaderCell {
     }
   }
 
-  connectedCallback() {
+  componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-  }
 
-  componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
