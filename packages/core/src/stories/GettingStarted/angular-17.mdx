@@ -6,12 +6,13 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Using Tegel in Angular 17 and above
 
-Tegel offers two versions of Angular wrappers for all web components. `@scania/tegel-angular` and `@scania/tegel-angular-17`.
+Tegel offers two versions of Angular wrappers for all web components: `@scania/tegel-angular` and `@scania/tegel-angular-17`.
 
 - `@scania/tegel-angular` is the older version and is compatible up to Angular 16.
 - `@scania/tegel-angular-17` is the newer version and is compatible with Angular 17 and above.
 
-While the rendered components still maintain their core as web components, these wrappers significantly enhance the developer's experience by providing a more intuitive API and seamless integration with Angular. This document describes how to use the `@scania/tegel-angular-17` package, which is the recommended approach for integrating Tegel into an Angular application based on version 17 and above.
+While the rendered components still maintain their core as web components, these wrappers significantly enhance the developer's experience by providing a more intuitive API and seamless integration with Angular.
+This document describes how to use the `@scania/tegel-angular-17` package, which is the recommended approach for integrating Tegel into an Angular application based on version 17 and above.
 
 ## Prerequisites
 
@@ -26,48 +27,80 @@ Install the `@scania/tegel-angular-17` package via npm.
 npm install @scania/tegel-angular-17
 ```
 
-In your global css file import the tegel stylesheet.
+In your global css file, import the Tegel stylesheet.
 
 ```css
 @import url('@scania/tegel/dist/tegel/tegel.css');
 ```
 
-In your root module (app.component.ts) import the `TegelModule`.
+## Standalone applications
+
+Angular 17+ applications are commonly configured using standalone components.
+
+### 1. Register Tegel at application startup
+
+Add `TegelModule` to `importProvidersFrom()` when bootstrapping the application:
+
+```typescript
+import { importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { TegelModule } from '@scania/tegel-angular-17';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(
+      TegelModule,
+    ),
+  ],
+}).catch((err) => console.error(err));
+```
+
+`TegelModule` registers the Tegel web components during application initialization, so you do not need to call `defineCustomElements()` manually.
+
+### 2. Import `TegelModule` into your component
+
+Import `TegelModule` in each standalone component that uses Tegel components:
 
 ```typescript
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { TegelModule } from '@scania/tegel-angular-17';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-component',
   standalone: true,
-  imports: [RouterOutlet, TegelModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [TegelModule],
+  templateUrl: './my-component.component.html',
 })
-export class AppComponent {
-  title = 'my-app';
-}
+export class MyComponent {}
 ```
 
-In your main.ts import and call defineCustomElement.
+### 3. Use Tegel components
 
-```typescript
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
-import { defineCustomElements } from '@scania/tegel/loader';
-
-defineCustomElements(window);
-
-bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
-```
-
-After this, all TDS components will be available in your template files. Example:
+Tegel components can now be used in your `MyComponent` template:
 
 ```html
-<tds-button text="Click me!" variant="primary" size="sm">
-  <tds-icon slot="icon" name="truck"> </tds-icon>
+<tds-button variant="primary" text="Click me!" size="sm">
+  <tds-icon slot="icon" name="truck"></tds-icon>
 </tds-button>
 ```
+
+## NgModule-based applications
+
+For applications that use `NgModule`, import `TegelModule` into the appropriate Angular module:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { TegelModule } from '@scania/tegel-angular-17';
+
+@NgModule({
+  imports: [
+    TegelModule,
+  ]
+})
+export class AppModule {}
+```
+
+`TegelModule` makes the Tegel Angular wrappers available to the module and registers the Tegel web components during application initialization.
+
+No manual call to `defineCustomElements()` is required.
