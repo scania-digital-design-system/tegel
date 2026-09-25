@@ -6,6 +6,7 @@
 :host(.tds-animation-enter-fade) {
   animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter)
     forwards;
+  pointer-events: auto;
 }
 
 :host(.tds-animation-exit-fade) {
