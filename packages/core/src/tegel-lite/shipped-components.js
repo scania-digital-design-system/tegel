@@ -40,6 +40,7 @@ export const SHIPPED_COMPONENTS = [
   'tl-radio-button',
   'tl-side-menu',
   'tl-stepper',
+  'tl-table',
   'tl-tabs',
   'tl-text-field',
   'tl-textarea',

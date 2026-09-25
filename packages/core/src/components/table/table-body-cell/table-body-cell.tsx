@@ -101,12 +101,9 @@ export class TdsTableBodyCell {
     }
   }
 
-  connectedCallback() {
+  componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-  }
-
-  componentWillLoad() {
     if (this.tableEl) {
       relevantTableProps.forEach((tablePropName) => {
         this[tablePropName] = this.tableEl?.[tablePropName];
@@ -123,12 +120,12 @@ export class TdsTableBodyCell {
   }
 
   render() {
-    let paddingStyle = 'var(--tds-spacing-element-16)'; // Default padding
+    let paddingStyle = 'var(--unit-16)'; // Default padding
 
     if (this.disablePadding) {
       paddingStyle = '0';
     } else if (this.compactDesign) {
-      paddingStyle = 'var(--tds-spacing-element-8) var(--tds-spacing-element-16)';
+      paddingStyle = 'var(--unit-8) var(--unit-16)';
     }
 
     const dynamicStyles = {

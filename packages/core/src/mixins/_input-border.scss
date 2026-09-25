@@ -1,0 +1,40 @@
+@mixin input-border {
+  border-width: calc(var(--component--input-border-width-top) * 1px)
+    calc(var(--component--input-border-width-right) * 1px)
+    calc(var(--component--input-border-width-bottom) * 1px)
+    calc(var(--component--input-border-width-left) * 1px);
+  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
+    calc(var(--component--input-border-radius-top-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-right) * 1px)
+    calc(var(--component--input-border-radius-bottom-left) * 1px);
+  border-style: solid;
+}
+@mixin input-border-default {
+  @include input-border;
+
+  border-color: var(--component--input-border-default);
+}
+
+@mixin input-border-hover {
+  @include input-border;
+
+  border-color: var(--component--input-border-hover);
+}
+
+@mixin input-border-error {
+  @include input-border;
+
+  border-color: var(--component--input-text-error-default);
+}
+
+@mixin input-border-readonly {
+  @include input-border;
+
+  border-color: var(--color-border-defined);
+}
+
+@mixin input-border-success {
+  @include input-border;
+
+  border-color: var(--component--input-border-success-default);
+}

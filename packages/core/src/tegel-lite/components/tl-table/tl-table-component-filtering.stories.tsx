@@ -99,15 +99,14 @@ export default {
       },
       if: { arg: 'noMinWidth', eq: true },
     },
-    showInput: {
-      name: 'Show input',
-      description:
-        'Controls whether the search input field is visible. When false, only the search icon is visible.',
+    activeSearch: {
+      name: 'Active Search',
+      description: 'Shows the active search bar.',
       control: {
         type: 'boolean',
       },
       table: {
-        defaultValue: { summary: true },
+        defaultValue: { summary: false },
       },
     },
   },
@@ -121,7 +120,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
-    showInput: true,
+    activeSearch: false,
   },
 };
 
@@ -135,7 +134,7 @@ const FilteringTemplate = ({
   column2Width,
   column3Width,
   column4Width,
-  showInput,
+  activeSearch,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
   const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
@@ -162,12 +161,14 @@ const FilteringTemplate = ({
             <div class="tl-table__title">Filter</div>
           </div>
           <div class="tl-table__actionbar-right">
-            <div class="tl-text-field tl-text-field--sm ${
-              showInput ? 'tl-text-field--input-visible' : ''
-            }">
-              <input class="tl-text-field__input" type="text" />
-              <span class="tl-icon tl-icon--search tl-icon--20 tl-text-field__suffix--icon"></span>
-            </div>
+          ${
+            activeSearch
+              ? `<div class="tl-text-field tl-text-field--sm">
+              <input class="tl-text-field__input" placeholder="Search..." type="text" />
+              <span class="tl-icon tl-icon--search tl-icon--16 tl-text-field__suffix--icon"></span>
+            </div> `
+              : `<button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon"><span class="tl-icon tl-icon--search tl-icon--16" ></span> </button>`
+          }
           </div>
         </div>
       </caption>

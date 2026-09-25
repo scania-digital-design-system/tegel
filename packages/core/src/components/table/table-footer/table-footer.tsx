@@ -149,12 +149,10 @@ export class TdsTableFooter {
     this.columnsNumber = totalColumns;
   }
 
-  connectedCallback() {
+  componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-  }
 
-  componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
@@ -312,7 +310,7 @@ export class TdsTableFooter {
                         modeVariant="secondary"
                         id="rows-dropdown"
                         class="page-dropdown"
-                        size="xs"
+                        size="sm"
                         tdsAriaLabel={this.rowsPerPageDropdownAriaLabel}
                         defaultValue={`${this.rowsPerPageValue}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
@@ -343,38 +341,48 @@ export class TdsTableFooter {
                     onAnimationEnd={removeShakeAnimation}
                   />
                   <p class="tds-table__footer-text">{this.renderPaginationLabel()}</p>
-                  <button
-                    type="button"
-                    class="tds-table__footer-btn"
-                    disabled={this.paginationValue <= 1}
-                    onClick={() => this.firstPage()}
-                  >
-                    <tds-icon name="skip_backwards" size="20px"></tds-icon>
-                  </button>
-                  <button
-                    type="button"
-                    class="tds-table__footer-btn"
-                    disabled={this.paginationValue <= 1}
-                    onClick={() => this.previousPage()}
-                  >
-                    <tds-icon name="chevron_left" size="20px"></tds-icon>
-                  </button>
-                  <button
-                    type="button"
-                    class="tds-table__footer-btn"
-                    disabled={this.paginationValue >= this.pages}
-                    onClick={() => this.nextPage()}
-                  >
-                    <tds-icon name="chevron_right" size="20px"></tds-icon>
-                  </button>
-                  <button
-                    type="button"
-                    class="tds-table__footer-btn"
-                    disabled={this.paginationValue >= this.pages}
-                    onClick={() => this.lastPage()}
-                  >
-                    <tds-icon name="skip_forward" size="20px"></tds-icon>
-                  </button>
+                  <div class="tds-table__page-selector-navigation">
+                    <tds-button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      class="tds-table__footer-btn"
+                      disabled={this.paginationValue <= 1}
+                      onClick={() => this.firstPage()}
+                    >
+                      <tds-icon slot="icon" name="skip_backwards"></tds-icon>
+                    </tds-button>
+                    <tds-button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      class="tds-table__footer-btn"
+                      disabled={this.paginationValue <= 1}
+                      onClick={() => this.previousPage()}
+                    >
+                      <tds-icon slot="icon" name="chevron_left"></tds-icon>
+                    </tds-button>
+                    <tds-button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      class="tds-table__footer-btn"
+                      disabled={this.paginationValue >= this.pages}
+                      onClick={() => this.nextPage()}
+                    >
+                      <tds-icon slot="icon" name="chevron_right" size="20px"></tds-icon>
+                    </tds-button>
+                    <tds-button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      class="tds-table__footer-btn"
+                      disabled={this.paginationValue >= this.pages}
+                      onClick={() => this.lastPage()}
+                    >
+                      <tds-icon slot="icon" name="skip_forward" size="20px"></tds-icon>
+                    </tds-button>
+                  </div>
                 </div>
               </div>
             )}

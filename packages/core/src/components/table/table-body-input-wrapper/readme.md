@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                        | Type      | Default |
-| ---------- | ----------- | ---------------------------------- | --------- | ------- |
-| `showIcon` | `show-icon` | Controls if the edit icon is shown | `boolean` | `true`  |
+| Property   | Attribute   | Description                                                                               | Type      | Default |
+| ---------- | ----------- | ----------------------------------------------------------------------------------------- | --------- | ------- |
+| `showIcon` | `show-icon` | Controls if the edit icon is shown. Should be set to false if there is an input disabled. | `boolean` | `true`  |
 
 
 ## Slots

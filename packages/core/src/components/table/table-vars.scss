@@ -1,129 +1,68 @@
-:root,
-.tds-mode-light {
-  /* Table-color */
-  --tds-table-color: var(--tds-grey-950);
-
-  /* Table-body-cell */
-  --tds-table-body-cell-background-hover: var(--tds-grey-100);
-
-  /* Table-body-row */
-  --tds-table-body-row-background: var(--tds-grey-50);
-  --tds-table-body-row-background-hover: var(--tds-grey-200);
-  --tds-table-zebra-mode-backround: var(--tds-white);
-
-  .tds-mode-variant-primary {
-    --tds-table-body-row-background: var(--tds-grey-50);
-    --tds-table-zebra-mode-backround: var(--tds-white);
-    --tds-table-body-row-background-selected: var(--tds-grey-100);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-table-body-row-background: var(--tds-white);
-    --tds-table-zebra-mode-backround: var(--tds-grey-50);
-    --tds-table-body-row-background-selected: var(--tds-grey-100);
-  }
-
-  --tds-table-body-row-background-hover: var(--tds-grey-100);
-  --tds-table-body-row-background-selected-hover: var(--tds-grey-100);
-
-  /* Table input */
-  --tds-table-input-background-focus: var(--tds-white);
-  --tds-table-input-background-hover: var(--tds-white);
-  --tds-table-input-background-disabled: var(--tds-grey-100);
-  --tds-table-input-header-icon: var(--tds-grey-950);
-  --tds-table-input-header-placeholder: var(--tds-grey-950);
-  --tds-table-input-header-background-focus: var(--tds-white);
+tds-table {
+  --tds-table-background: var(--tds-table-body-row-background);
+  --tds-table-row-height: var(--unit-48);
+  --tds-table-row-height-compact: var(--unit-32);
 
   /* Table-footer */
-  --tds-table-footer-background: var(--tds-grey-150);
-  --tds-table-footer-page-selector-input-background: var(--tds-white);
-  --tds-table-footer-page-selector-input-background-hover: var(--tds-white);
-  --tds-table-footer-page-selector-icon: var(--tds-grey-950);
-  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-500);
-  --tds-table-footer-btn-hover: var(--tds-grey-150);
+  --tds-table-footer-background: var(--component-table-background-footer-default);
+  --tds-table-footer-text-color: var(--component-table-text-footer-default);
+  --tds-table-footer-page-selector-input-background: var(--component--input-background-secondary);
 
   /* Table-header */
-  --tds-table-header-background: var(--tds-grey-150);
-  --tds-table-header-background-hover: var(--tds-grey-200);
-  --tds-table-header-btn-color: var(--tds-grey-950);
-  --tds-table-header-btn-background: var(--tds-grey-200);
-  --tds-table-header-btn-background-hover: var(--tds-grey-200);
-  --tds-table-header-btn-focus: var(--tds-blue-400);
+  --tds-table-header-background: var(--component-table-background-header-default);
+  --tds-table-header-background-hover: var(--component-table-background-header-hover);
+  --tds-table-header-text-color: var(--component-table-text-header-default);
 
   /* Table-toolbar */
-  --tds-table-toolbar-background: var(--tds-grey-200);
-  --tds-table-toolbar-searchbar-background: var(--tds-grey-50);
-  --tds-table-toolbar-searchbar-background-hover: var(--tds-grey-300);
+  --tds-table-toolbar-background: var(--component-table-background-toolbar-default);
+  --tds-table-toolbar-text-color: var(--component-table-text-toolbar-default);
 
   /* Divider */
-  --tds-table-divider: var(
-    --tds-grey-150
-  ); // light divider is grey-300 but expandable row is the same color when selected
+  --tds-table-divider: var(--component-table-border-divider-default);
+  --tds-table-divider-hover: var(--component-table-border-divider-hover);
+  --tds-table-border-radius: calc(var(--component-table-border-radius-default) * 1px);
 
-  --tds-table-divider-hover: var(--tds-grey-350);
+  /* Table-body-cell */
+  --tds-table-body-cell-background-hover: var(--component-table-background-cell-primary-hover);
+  --tds-table-body-cell-text-color: var(--component-table-text-cell-default);
+  --tds-table-body-cell-background-expanded: var(
+    --component-table-background-cell-expanded-default
+  );
+
+  /* Table-body-row */
+  --tds-table-body-row-background: var(--component-table-background-cell-primary-default);
+  --tds-table-zebra-mode-backround: var(--component-table-background-cell-secondary-default);
+  --tds-table-body-row-background-hover: var(--component-table-background-cell-primary-hover);
+  --tds-table-body-row-background-selected: var(--component-table-background-cell-selected-default);
+  --tds-table-body-row-background-selected-hover: var(
+    --component-table-background-cell-selected-hover
+  );
+
+  /* Table input */
+  --tds-table-input-placeholder-text-color: var(--component-table-text-placeholder-default);
+  --tds-table-input-value-text-color: var(--component-table-text-value-default);
+  --tds-table-input-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
+
+  /* Table Icons */
+  --tds-table-edit-icon-color: var(--component-table-icon-edit-default);
+  --tds-table-expand-icon-color: var(--component-table-icon-expand-default);
+  --tds-table-filter-icon-color: var(--component-table-icon-filter-default);
+  --tds-table-prefix-icon-color: var(--component-table-icon-prefix-default);
+  --tds-table-sort-icon-color: var(--component-table-icon-sort-default);
 }
 
-.tds-mode-dark {
-  /* Table-body */
-  --tds-table-color: var(--tds-grey-50);
+.tds-mode-variant-primary tds-table,
+tds-table.tds-mode-variant-primary {
+  --tds-table-body-cell-background-hover: var(--component-table-background-cell-primary-hover);
+  --tds-table-body-row-background: var(--component-table-background-cell-primary-default);
+  --tds-table-zebra-mode-backround: var(--component-table-background-cell-secondary-default);
+  --tds-table-body-row-background-hover: var(--component-table-background-cell-primary-hover);
+}
 
-  /* Table-body-cell */
-  --tds-table-body-cell-background-hover: var(--tds-grey-750);
-
-  /* Table-body-row */
-  --tds-table-body-row-background: var(--tds-grey-850);
-  --tds-table-body-row-background-hover: var(--tds-grey-800);
-  --tds-table-zebra-mode-backround: var(--tds-grey-900);
-  --tds-table-body-row-background-hover: var(--tds-grey-750);
-
-  .tds-mode-variant-primary {
-    --tds-table-body-row-background: var(--tds-grey-850);
-    --tds-table-zebra-mode-backround: var(--tds-grey-900);
-    --tds-table-body-row-background-selected: var(--tds-grey-700);
-    --tds-table-body-row-background-selected-hover: var(--tds-grey-800);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-table-body-row-background: var(--tds-grey-900);
-    --tds-table-zebra-mode-backround: var(--tds-grey-850);
-    --tds-table-body-row-background-selected: var(--tds-grey-700);
-    --tds-table-body-row-background-selected-hover: var(--tds-grey-800);
-  }
-
-  --tds-table-body-row-background-selected: var(--tds-grey-700);
-  --tds-table-body-row-background-selected-hover: var(--tds-grey-800);
-
-  /* Table input */
-  --tds-table-input-background-focus: var(--tds-grey-800);
-  --tds-table-input-background-hover: var(--tds-white-50);
-  --tds-table-input-background-disabled: var(--tds-grey-800);
-  --tds-table-input-header-icon: var(--tds-grey-50);
-  --tds-table-input-header-placeholder: var(--tds-grey-50);
-  --tds-table-input-header-background-focus: var(--tds-grey-900);
-
-  /* Table-footer */
-  --tds-table-footer-background: var(--tds-grey-700);
-  --tds-table-footer-page-selector-input-background: var(--tds-grey-950);
-  --tds-table-footer-page-selector-input-background-hover: var(--tds-grey-950);
-  --tds-table-footer-page-selector-input-background-disabled: var(--tds-grey-700);
-  --tds-table-footer-btn-hover: var(--tds-grey-700);
-  --tds-table-footer-page-selector-icon: var(--tds-grey-50);
-  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-300);
-
-  /* Table-header */
-  --tds-table-header-background: var(--tds-grey-700);
-  --tds-table-header-background-hover: var(--tds-grey-650);
-  --tds-table-header-btn-color: var(--tds-grey-50);
-  --tds-table-header-btn-background: var(--tds-grey-650);
-  --tds-table-header-btn-background-hover: var(--tds-grey-650);
-  --tds-table-header-btn-focus: var(--tds-blue-300);
-
-  /* Table-toolbar */
-  --tds-table-toolbar-background: var(--tds-grey-650);
-  --tds-table-toolbar-searchbar-background: var(--tds-grey-950);
-  --tds-table-toolbar-searchbar-background-hover: var(--tds-grey-600);
-
-  /* Divider */
-  --tds-table-divider: var(--tds-grey-600);
-  --tds-table-divider-hover: var(--tds-grey-400);
+.tds-mode-variant-secondary tds-table,
+tds-table.tds-mode-variant-secondary {
+  --tds-table-body-cell-background-hover: var(--component-table-background-cell-secondary-hover);
+  --tds-table-body-row-background: var(--component-table-background-cell-secondary-default);
+  --tds-table-zebra-mode-backround: var(--component-table-background-cell-primary-default);
+  --tds-table-body-row-background-hover: var(--component-table-background-cell-secondary-hover);
 }

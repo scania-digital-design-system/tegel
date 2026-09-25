@@ -172,17 +172,17 @@ export class TdsTableBodyRowExpandable {
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
-  connectedCallback() {
-    /* if user did set a prop we use that as default behaviour */
+  componentWillLoad() {
+    /* if user did set a prop we use that as default behaviour 
+      Moved to componentWillLoad since expanded Prop is not 
+      defined yet in React during connectedCallback */
     if (this.expanded !== undefined) {
       this.isExpanded = this.expanded;
     }
 
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-  }
 
-  componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });

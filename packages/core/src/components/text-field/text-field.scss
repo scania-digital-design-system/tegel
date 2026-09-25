@@ -1,4 +1,5 @@
 @use '../../mixins/focus-state' as *;
+@use '../../mixins/input-border' as *;
 @use '../../../../../typography/mixins/type-styles' as *;
 
 @mixin text-field-base {
@@ -46,7 +47,7 @@
   @include detail-02;
 
   letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  padding: var(--unit-20) var(--unit-16);
 }
 
 .text-field-input-md {
@@ -55,7 +56,7 @@
   @include detail-02;
 
   letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-16);
+  padding: var(--unit-16);
 }
 
 .text-field-input-sm {
@@ -64,7 +65,7 @@
   @include detail-02;
 
   letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-16);
+  padding: var(--unit-16);
 }
 
 // Container for input field and prefix/suffix
@@ -78,22 +79,12 @@
   // Brand-aware border: Scania emits bottom-only widths (0,0,1,0), Traton emits
   // all-sides widths (1,1,1,1). Tokens are unitless numbers, so multiply by 1px.
   // The single border-color applies to whichever sides have non-zero width.
-  border-style: solid;
-  border-color: var(--tds-text-field-border-bottom);
-  border-width: calc(var(--component--input-border-width-top) * 1px)
-    calc(var(--component--input-border-width-right) * 1px)
-    calc(var(--component--input-border-width-bottom) * 1px)
-    calc(var(--component--input-border-width-left) * 1px);
+  @include input-border-default;
 
-  // Brand-aware radius: Scania top-only (4,4,0,0), Traton all corners (4,4,4,4).
-  border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
-    calc(var(--component--input-border-radius-top-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-left) * 1px);
   transition: border-color 200ms ease;
 
   &:hover {
-    border-color: var(--tds-text-field-border-bottom-hover);
+    @include input-border-hover;
   }
 
   .form-text-field-md & {
@@ -126,7 +117,7 @@
 
   letter-spacing: var(--tds-detail-05-ls);
   display: block;
-  margin-bottom: var(--tds-spacing-element-8);
+  margin-bottom: var(--unit-8);
   color: var(--tds-text-field-label-color);
 }
 
@@ -174,7 +165,7 @@
 // Handling position, focus and transition for label inside
 .form-text-field.text-field-container-label-inside {
   .text-field-input-lg {
-    padding-top: var(--tds-spacing-element-24);
+    padding-top: var(--unit-24);
     padding-bottom: 15px;
 
     ~ .text-field-label-inside {
@@ -185,7 +176,7 @@
   }
 
   .text-field-input-md {
-    padding-top: var(--tds-spacing-element-20);
+    padding-top: var(--unit-20);
     padding-bottom: 11px;
 
     ~ .text-field-label-inside {
@@ -196,7 +187,7 @@
   }
 
   .text-field-input-sm {
-    padding-top: var(--tds-spacing-element-20);
+    padding-top: var(--unit-20);
     padding-bottom: 11px;
 
     ~ .text-field-label-inside {
@@ -254,7 +245,7 @@
   }
 
   flex-basis: 100%;
-  padding-top: var(--tds-spacing-element-4);
+  padding-top: var(--unit-4);
   color: var(--tds-text-field-helper);
 }
 
@@ -300,7 +291,7 @@
   cursor: default;
 
   .text-field-container {
-    border-color: var(--tds-text-field-border-bottom-readonly);
+    @include input-border-readonly;
   }
 
   .text-field-icon__readonly {
@@ -326,7 +317,7 @@
 // Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    border-color: var(--tds-text-field-border-bottom-success);
+    @include input-border-success;
   }
 }
 
@@ -337,7 +328,7 @@
   }
 
   .text-field-container {
-    border-color: var(--tds-text-field-border-bottom-error);
+    @include input-border-error;
   }
 }
 

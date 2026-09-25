@@ -1,6 +1,7 @@
 @use './_tl-textarea-mixins' as *;
 @use './tl-textarea-vars' as *;
 @use '../../../mixins/focus-state' as *;
+@use '../../../mixins/input-border' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-textarea {
@@ -138,11 +139,12 @@
 .tl-textarea__input {
   @include textarea-base;
   @include detail-02;
+  @include input-border-default;
 
   display: block;
   position: relative;
   width: 100%;
-  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  padding: var(--unit-20) var(--unit-16);
   color: var(--textarea-text);
   resize: vertical;
   z-index: 0;
@@ -160,11 +162,11 @@
   }
 
   .tl-textarea:hover &:not(:focus, :disabled) {
-    border-color: var(--textarea-border-color-hover);
+    @include input-border-hover;
   }
 
   .tl-textarea--error & {
-    border-color: var(--textarea-border-color-error);
+    @include input-border-error;
 
     &:focus {
       @include tds-focus-state;
@@ -172,12 +174,12 @@
   }
 
   .tl-textarea--error:hover &:not(:focus, :disabled) {
-    border-color: var(--textarea-border-color-error);
+    @include input-border-error;
   }
 
   .tl-textarea--success:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
     &:not(:focus) {
-    border-color: var(--textarea-border-color-success);
+    @include input-border-success;
   }
 
   &:disabled {
@@ -186,7 +188,7 @@
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
-    border-color: var(--textarea-border-color-readonly);
+    @include input-border-readonly;
 
     &:focus {
       @include tds-focus-state;
@@ -194,7 +196,7 @@
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):hover &:not(:focus) {
-    border-color: var(--textarea-border-color-hover);
+    @include input-border-hover;
   }
 
   .tl-textarea--label-inside & {
@@ -205,10 +207,6 @@
       color: transparent;
       transform: translateY(1px);
     }
-  }
-
-  .tl-textarea--label-inside &:disabled::placeholder {
-    color: var(--textarea-placeholder-disabled) !important;
   }
 
   :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
@@ -256,13 +254,7 @@
     @include detail-07;
 
     top: 8px;
-    color: var(--textarea-label-disabled);
     transform: translateY(0);
-  }
-
-  // Default behavior (label outside) - disabled state
-  .tl-textarea:not(.tl-textarea--label-inside):has(.tl-textarea__input:disabled) & {
-    color: var(--textarea-label-disabled);
   }
 }
 
@@ -277,10 +269,6 @@
 
   color: var(--textarea-helper);
   position: relative;
-
-  :has(.tl-textarea__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
 
   .tl-textarea--error & {
     padding-left: 24px;
@@ -312,10 +300,6 @@
     & {
     color: var(--textarea-error);
   }
-
-  .tl-textarea--error:has(.tl-textarea__input:disabled) &::before {
-    background-color: var(--color-text-disabled);
-  }
 }
 
 .tl-textarea__charcounter {
@@ -323,10 +307,6 @@
 
   margin-left: auto;
   color: var(--textarea-textcounter);
-
-  :has(.tl-textarea__input:disabled) & {
-    color: var(--color-text-disabled);
-  }
 
   .tl-textarea--error:not(:has(.tl-textarea__input[readonly]), :has(.tl-textarea__input:disabled))
     & {
@@ -336,10 +316,6 @@
       color: var(--textarea-error);
     }
   }
-}
-
-.tl-textarea__charcounter-divider {
-  color: var(--color-text-disabled);
 }
 
 @include focus-input-state {

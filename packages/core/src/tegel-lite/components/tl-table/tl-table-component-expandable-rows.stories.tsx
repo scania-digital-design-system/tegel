@@ -191,17 +191,11 @@ const ExpandableRowTemplate = ({
       </thead>
       <tbody class="tl-table__body">
         <tr class="tl-table__row ${expandedClass}" data-row-id="1">
-          <td class="tl-table__body-cell tl-table__body-cell--expand">
-            <label class="tl-table__expand-control-container">
-              <input class="tl-table__expand-input" type="checkbox" ${
-                expanded ? 'checked' : ''
-              } aria-expanded="${expanded}" aria-controls="expandable-content-1" data-row-id="1" />
-              <span class="tl-table__expand-icon">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.273 9.783a1 1 0 0 1 1.415 0l9.888 9.888a.6.6 0 0 0 .848 0l9.888-9.888a1 1 0 1 1 1.415 1.414l-9.889 9.889a2.6 2.6 0 0 1-3.677 0l-9.888-9.889a1 1 0 0 1 0-1.414Z" fill="currentColor" />
-                </svg>
-              </span>
-            </label>
+          <td class="tl-table__body-cell">
+              <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
+               aria-expanded="${expanded}" aria-controls="expandable-content-1" data-row-id="1" >
+              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+              </button>
           </td>
           <td class="tl-table__body-cell" data-column="0">Test value 1</td>
           <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -213,58 +207,48 @@ const ExpandableRowTemplate = ({
         }" id="expandable-content-1" data-row-id="1">
           <td class="tl-table__expand-row-cell ${overflowClass}" colspan="5">Hello world 1</td>
         </tr>
-        <tr class="tl-table__row" data-row-id="2">
-          <td class="tl-table__body-cell tl-table__body-cell--expand">
-            <label class="tl-table__expand-control-container">
-              <input class="tl-table__expand-input" type="checkbox" aria-expanded="false" aria-controls="expandable-content-2" data-row-id="2" />
-              <span class="tl-table__expand-icon">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.273 9.783a1 1 0 0 1 1.415 0l9.888 9.888a.6.6 0 0 0 .848 0l9.888-9.888a1 1 0 1 1 1.415 1.414l-9.889 9.889a2.6 2.6 0 0 1-3.677 0l-9.888-9.889a1 1 0 0 1 0-1.414Z" fill="currentColor" />
-                </svg>
-              </span>
-            </label>
+        <tr class="tl-table__row ${expandedClass}" data-row-id="2">
+          <td class="tl-table__body-cell">
+           <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
+               aria-expanded="${expanded}" aria-controls="expandable-content-2" data-row-id="2" >
+              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+              </button>
           </td>
           <td class="tl-table__body-cell" data-column="0">Test value 5</td>
           <td class="tl-table__body-cell" data-column="1">Test value 6</td>
           <td class="tl-table__body-cell" data-column="2">Test value 7</td>
           <td class="tl-table__body-cell" data-column="3" style="text-align: right;">Test value 8</td>
         </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-2" data-row-id="2">
+        <tr class="tl-table__expand-row  ${
+          expanded ? 'tl-table__expand-row--expanded' : ''
+        }" id="expandable-content-2" data-row-id="2">
           <td class="tl-table__expand-row-cell ${overflowClass}" colspan="5">Hello to you too</td>
         </tr>
-        <tr class="tl-table__row" data-row-id="3">
-          <td class="tl-table__body-cell tl-table__body-cell--expand">
-            <label class="tl-table__expand-control-container">
-              <input class="tl-table__expand-input" type="checkbox" aria-expanded="false" aria-controls="expandable-content-3" data-row-id="3" />
-              <span class="tl-table__expand-icon">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.273 9.783a1 1 0 0 1 1.415 0l9.888 9.888a.6.6 0 0 0 .848 0l9.888-9.888a1 1 0 1 1 1.415 1.414l-9.889 9.889a2.6 2.6 0 0 1-3.677 0l-9.888-9.889a1 1 0 0 1 0-1.414Z" fill="currentColor" />
-                </svg>
-              </span>
-            </label>
+        <tr class="tl-table__row ${expandedClass}" data-row-id="3">
+          <td class="tl-table__body-cell">
+            <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
+               aria-expanded="${expanded}" aria-controls="expandable-content-3" data-row-id="3" >
+              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+              </button>
           </td>
           <td class="tl-table__body-cell" data-column="0">Test value 9</td>
           <td class="tl-table__body-cell" data-column="1">Test value 10</td>
           <td class="tl-table__body-cell" data-column="2">Test value 11</td>
           <td class="tl-table__body-cell" data-column="3" style="text-align: right;">Test value 12</td>
         </tr>
-        <tr class="tl-table__expand-row" id="expandable-content-3" data-row-id="3">
+        <tr class="tl-table__expand-row  ${
+          expanded ? 'tl-table__expand-row--expanded' : ''
+        }" id="expandable-content-3" data-row-id="3">
           <td class="tl-table__expand-row-cell ${overflowClass}" colspan="5">
             <button class="tl-button tl-button--primary tl-button--sm">Call to action</button>
           </td>
         </tr>
         <tr class="tl-table__row ${expandedClass}" data-row-id="4">
-          <td class="tl-table__body-cell tl-table__body-cell--expand">
-            <label class="tl-table__expand-control-container">
-              <input class="tl-table__expand-input" type="checkbox" ${
-                expanded ? 'checked' : ''
-              } aria-expanded="${expanded}" aria-controls="expandable-content-4" data-row-id="4" />
-              <span class="tl-table__expand-icon">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.273 9.783a1 1 0 0 1 1.415 0l9.888 9.888a.6.6 0 0 0 .848 0l9.888-9.888a1 1 0 1 1 1.415 1.414l-9.889 9.889a2.6 2.6 0 0 1-3.677 0l-9.888-9.889a1 1 0 0 1 0-1.414Z" fill="currentColor" />
-                </svg>
-              </span>
-            </label>
+          <td class="tl-table__body-cell">
+           <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
+               aria-expanded="${expanded}" aria-controls="expandable-content-4" data-row-id="4" >
+              <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-table__expand-icon"></span>
+              </button>
           </td>
           <td class="tl-table__body-cell" data-column="0">Demo overflow 1</td>
           <td class="tl-table__body-cell" data-column="1">Demo overflow 2</td>
@@ -291,49 +275,6 @@ const ExpandableRowTemplate = ({
         const table = document.querySelector('.tl-table');
         if (!table) return;
 
-        const expandInputs = table.querySelectorAll('.tl-table__expand-input');
-        const expandRows = table.querySelectorAll('.tl-table__expand-row');
-
-        expandInputs.forEach(input => {
-          const rowId = input.getAttribute('data-row-id');
-          const rowItem = input.closest('.tl-table__row');
-          const expandRow = table.querySelector(\`#expandable-content-\${rowId}\`);
-          const icon = input.parentElement.querySelector('.tl-table__expand-icon');
-
-          if (!expandRow || !rowItem || !icon) return;
-
-          // Set initial state
-          if (input.checked) {
-            rowItem.classList.add('tl-table__row--expanded');
-            expandRow.classList.add('tl-table__expand-row--expanded');
-            icon.style.transform = 'rotate(180deg)';
-          } else {
-            rowItem.classList.remove('tl-table__row--expanded');
-            expandRow.classList.remove('tl-table__expand-row--expanded');
-            icon.style.transform = 'rotate(0deg)';
-          }
-
-          input.addEventListener('change', (e) => {
-            const isExpanded = e.target.checked;
-
-            if (isExpanded) {
-              // Expand
-              rowItem.classList.add('tl-table__row--expanded');
-              expandRow.classList.add('tl-table__expand-row--expanded');
-              icon.style.transform = 'rotate(180deg)';
-              input.setAttribute('aria-expanded', 'true');
-
-              console.log('Row with id:', rowId, 'is expanded');
-            } else {
-              // Collapse
-              rowItem.classList.remove('tl-table__row--expanded');
-              expandRow.classList.remove('tl-table__expand-row--expanded');
-              icon.style.transform = 'rotate(0deg)';
-              input.setAttribute('aria-expanded', 'false');
-            }
-          });
-        });
-
         // Column hover highlighting
         const headerCells = table.querySelectorAll('.tl-table__header-cell');
         const bodyCells = table.querySelectorAll('.tl-table__body-cell');
@@ -359,6 +300,26 @@ const ExpandableRowTemplate = ({
           });
         });
       })();
+
+      function toggleExpandState(event) {
+        const button = event.target.closest("button");
+        console.log("button", button);
+
+        const ariaControls = button.getAttribute("aria-controls");
+        console.log("aria-controls", ariaControls);
+
+        const controlRow = button.closest(".tl-table__row");
+        const expandable = document.getElementById(ariaControls);
+        console.log("expandable", expandable);
+
+        const expanded = controlRow.classList.toggle("tl-table__row--expanded");
+
+        if (expanded) {
+          expandable.classList.add("tl-table__expand-row--expanded");
+        } else {
+          expandable.classList.remove("tl-table__expand-row--expanded");
+        }
+      }
     </script>
   `);
 };

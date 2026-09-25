@@ -19,23 +19,7 @@
   --textarea-error-icon: var(--component--input-icon-error-default);
   --textarea-textcounter: var(--component--input-text-counter-default);
   --textarea-resize-icon: var(--component-textarea-icon-resize-default);
-  --textarea-opacity-disabled: var(--component--input-opacity-disabled);
-
-  // Per-corner radius sourced from brand-aware input-field tokens
-  // (Scania: 4/4/0/0, Traton: 4/4/4/4).
-  --textarea-border-radius: calc(var(--component--input-border-radius-top-left) * 1px)
-    calc(var(--component--input-border-radius-top-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-right) * 1px)
-    calc(var(--component--input-border-radius-bottom-left) * 1px);
-
-  // Border color states. Per-side widths come from --component--input-
-  // border-width-* and are applied in the mixin; the single color applies to
-  // whichever sides have non-zero width (Scania bottom-only, Traton all 4).
-  --textarea-border-color: var(--component--input-border-default);
-  --textarea-border-color-hover: var(--component--input-border-hover);
-  --textarea-border-color-success: var(--component--input-border-success-default);
-  --textarea-border-color-error: var(--component--input-border-error-default);
-  --textarea-border-color-readonly: var(--color-border-strong);
+  --textarea-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Focus ring radius — primary by default, swapped per mode variant
   --textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
