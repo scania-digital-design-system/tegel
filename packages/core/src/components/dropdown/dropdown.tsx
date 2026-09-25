@@ -934,15 +934,19 @@ export class TdsDropdown {
     const children = this.getChildren();
 
     const values: string[] = children
-      .filter((child) =>
-        this.normalizeString(child?.textContent ?? '')
-          .toLowerCase()
-          .includes(this.normalizeString(this.filterQuery).toLowerCase()),
+      .filter(
+        (child) =>
+          !child.disabled &&
+          this.normalizeString(child?.textContent ?? '')
+            .toLowerCase()
+            .includes(this.normalizeString(this.filterQuery).toLowerCase()),
       )
       .map((child) => child?.value?.toString())
       .filter((value) => value !== undefined);
 
-    this.updateDropdownState(values, true);
+    // Consider already selected options before the select filtered was clicked
+    const newSelectedValues = Array.from(new Set([...values, ...this.selectedOptions]));
+    this.updateDropdownState(newSelectedValues, true);
   }
 
   private handleClearAll() {
