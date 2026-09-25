@@ -602,6 +602,26 @@ export class TdsDropdown {
       .filter(Boolean);
   };
 
+  /** Function to return the number of existing options in the list. */
+  private getNumberOfAvailableOptions() {
+    return this.getChildren().filter((child) => !child.disabled).length;
+  }
+
+  /** Function to check whether the filtered options are all selected. */
+  private checkSelectedAndFilteredOptions() {
+    const filteredOptions = this.getChildren()
+      .filter(
+        (child) =>
+          !child.disabled &&
+          this.normalizeString(child?.textContent ?? '')
+            .toLowerCase()
+            .includes(this.normalizeString(this.filterQuery).toLowerCase()),
+      )
+      .map((option) => option.value?.toString());
+
+    return filteredOptions.every((option) => this.selectedOptions.includes(option!));
+  }
+
   private readonly getSelectedChildrenLabels = () =>
     this.getSelectedChildren()?.map((element?: HTMLTdsDropdownOptionElement) =>
       element?.textContent?.trim(),
@@ -899,6 +919,40 @@ export class TdsDropdown {
     this.getListOpenDirectionAndHeight();
   };
 
+  private handleSelectAll() {
+    const children = this.getChildren();
+
+    const values: string[] = children
+      .filter((child) => !child.disabled)
+      .map((child) => child.value?.toString())
+      .filter((value) => value !== undefined);
+
+    this.updateDropdownState(values, true);
+  }
+
+  private handleSelectFiltered() {
+    const children = this.getChildren();
+
+    const values: string[] = children
+      .filter(
+        (child) =>
+          !child.disabled &&
+          this.normalizeString(child?.textContent ?? '')
+            .toLowerCase()
+            .includes(this.normalizeString(this.filterQuery).toLowerCase()),
+      )
+      .map((child) => child?.value?.toString())
+      .filter((value) => value !== undefined);
+
+    // Consider already selected options before the select filtered was clicked
+    const newSelectedValues = Array.from(new Set([...values, ...this.selectedOptions]));
+    this.updateDropdownState(newSelectedValues, true);
+  }
+
+  private handleClearAll() {
+    this.updateDropdownState([], true);
+  }
+
   componentDidRender() {
     const form = this.host.closest('form');
     if (form && form !== this.formElement) {
@@ -1178,6 +1232,37 @@ export class TdsDropdown {
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (
             <div class={`no-result ${this.size}`}>{this.noResultText}</div>
+          )}
+          {this.multiselect && (
+            <div class="dropdown-list-actions">
+              <button
+                class="select"
+                onClick={() => {
+                  if (this.filter && this.filterQuery.length > 0) {
+                    this.handleSelectFiltered();
+                  } else {
+                    this.handleSelectAll();
+                  }
+                }}
+                disabled={
+                  this.filter && this.filterQuery.length > 0
+                    ? this.checkSelectedAndFilteredOptions()
+                    : this.selectedOptions.length === this.getNumberOfAvailableOptions()
+                }
+              >
+                {this.filter && this.filterQuery.length > 0 ? 'Select filtered' : 'Select all'}
+              </button>
+              <button
+                class="clear"
+                onClick={() => {
+                  console.log('clear');
+                  this.handleClearAll();
+                }}
+                disabled={this.selectedOptions.length === 0}
+              >
+                Clear all
+              </button>
+            </div>
           )}
         </div>
         {/* DROPDOWN LIST */}

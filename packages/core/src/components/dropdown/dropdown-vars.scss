@@ -26,6 +26,7 @@ tds-dropdown {
   --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
   --tds-placeholder-margin: calc(var(--unit-8) * 1px);
   --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
+  --tds-dropdown-option-border: var(--component-dropdown-border-item-divider-default);
 }
 
 .tds-mode-variant-primary tds-dropdown,
