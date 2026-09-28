@@ -52,7 +52,7 @@
     transition: background-color 200ms ease;
 
     &:focus {
-      @include tds-focus-state;
+      @include tds-focus-state-table-cell;
 
       .tds-table__header-button-icon {
         opacity: 1;
