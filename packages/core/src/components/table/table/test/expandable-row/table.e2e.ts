@@ -38,8 +38,10 @@ test.describe.parallel(componentName, () => {
     await tableComponent.waitFor({ state: 'visible' });
   });
 
-  test('each row has expand checkbox', async ({ page }) => {
-    const tableBodyRowsExpandInput = page.getByRole('cell').getByRole('checkbox');
-    await expect(tableBodyRowsExpandInput).toHaveCount(3);
+  test('each row has expand button', async ({ page }) => {
+    const expandButtons = page.locator(
+      'tds-table-body-row-expandable button.tds-table__expand-control',
+    );
+    await expect(expandButtons).toHaveCount(3);
   });
 });

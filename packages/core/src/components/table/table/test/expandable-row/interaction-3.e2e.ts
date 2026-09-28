@@ -22,7 +22,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
       const tableBodyRowThirdIcon = page
         .locator('tds-table-body-row-expandable')
         .nth(2)
-        .locator('.tds-expendable-row-icon');
+        .locator('.tds-expandable-row-icon');
 
       const tableBodyRowButton = page.getByText(/Call to action/);
 

@@ -20,7 +20,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
       const tableBodyRowSecondIcon = page
         .locator('tds-table-body-row-expandable')
         .nth(1)
-        .locator('.tds-expendable-row-icon');
+        .locator('.tds-expandable-row-icon');
       const tableBodyExpandableRowSlot = page
         .locator('tds-table-body-row-expandable')
         .nth(1)
