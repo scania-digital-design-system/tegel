@@ -336,6 +336,12 @@
     --table-cell-background: var(--table-body-cell-hover);
   }
 
+  .tl-table__row--selected & {
+    &--column-highlight {
+      --table-cell-background: var(--table-body-row-selected-hover);
+    }
+  }
+
   .tl-table--compact & {
     height: 32px;
     padding: 8px 16px;
@@ -361,6 +367,11 @@
     border-right: 1px solid var(--table-divider);
   }
 
+  .tl-table--vertical-dividers .tl-table__row--expanded & {
+    &:not(:has(.tl-table__expand-control)) {
+      border-bottom: 1px solid var(--table-divider);
+    }
+  }
   @include text-align-modifiers('cell');
 
   .tl-table--no-padding & {
