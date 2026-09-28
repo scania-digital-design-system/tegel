@@ -248,7 +248,7 @@ const PaginationTemplate = ({
               <tds-header-cell cell-key='country' cell-value='Country' ${
                 column3Width ? `custom-width="${column3Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' ${
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>

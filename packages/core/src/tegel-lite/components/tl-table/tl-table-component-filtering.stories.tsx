@@ -167,7 +167,7 @@ const FilteringTemplate = ({
               <input class="tl-text-field__input" placeholder="Search..." type="text" />
               <span class="tl-icon tl-icon--search tl-icon--16 tl-text-field__suffix--icon"></span>
             </div> `
-              : `<button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon"><span class="tl-icon tl-icon--search tl-icon--16" ></span> </button>`
+              : `<button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon" style="margin-right: 4px"><span class="tl-icon tl-icon--search tl-icon--16" ></span> </button>`
           }
           </div>
         </div>
@@ -218,6 +218,8 @@ const FilteringTemplate = ({
           <td class="tl-table__body-cell" data-column="3" ${col4Style}>Test value 8</td>
         </tr>
       </tbody>
+      <tfoot class="tl-table__footer">
+      </tfoot>
     </table>
 
     <!-- Script for column hover highlighting -->
