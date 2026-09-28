@@ -46,7 +46,7 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
       await page.waitForChanges(); // wait for the state change
 
       // Check if the button has aria-expanded false and the row is collapsed
-      expect(expandButton).toHaveAttribute('aria-expanded', 'false');
+      await expect(expandButton).toHaveAttribute('aria-expanded', 'false');
       await expect(tableBodyExpandableRowSlot).toBeHidden();
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
