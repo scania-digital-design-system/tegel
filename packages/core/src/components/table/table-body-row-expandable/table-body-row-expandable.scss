@@ -23,6 +23,7 @@
     border-bottom: none;
 
     --tds-table-background: var(--tds-table-body-cell-background-expanded);
+    --tds-table-body-cell-background-hover: var(--tds-table-body-row-background-selected-hover);
   }
 
   .tds-table__row--selected {
