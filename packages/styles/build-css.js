@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 import * as sass from 'sass';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import { glob } from 'glob';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -70,4 +70,4 @@ async function compileAllSassFiles() {
   }
 }
 
-compileAllSassFiles();
+await compileAllSassFiles();
