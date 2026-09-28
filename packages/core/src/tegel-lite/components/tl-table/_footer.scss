@@ -66,7 +66,7 @@
 .tl-table__page-selector {
   .tl-text-field {
     min-width: unset;
-    width: 58px;
+    width: 87px;
 
     .tl-text-field__input {
       @include type-system-body-01;
@@ -74,9 +74,9 @@
       background-color: var(--table-footer-page-selector-input-background);
       color: var(--table-footer-text-color);
       margin-right: var(--unit-10);
-      width: 48px;
+      width: 77px;
       height: 40px;
-      text-align: center;
+      padding-left: 16px;
 
       &:hover {
         background-color: var(--table-footer-page-selector-input-background);
