@@ -26,9 +26,11 @@
   }
 
   .tds-table__row--selected {
-    background-color: var(--tds-table-body-cell-background-expanded);
+    --tds-table-background: var(--tds-table-body-row-background-selected);
 
-    --tds-table-background: var(--tds-table-body-cell-background-expanded);
+    background-color: var(--tds-table-background);
+
+    --tds-table-body-cell-background-hover: var(--tds-table-body-row-background-selected-hover);
   }
 
   .tds-table__row:hover,
@@ -36,6 +38,12 @@
     background-color: var(--tds-table-body-row-background-hover);
 
     --tds-table-background: var(--tds-table-body-row-background-hover);
+
+    &.tds-table__row--selected {
+      --tds-table-background: var(--tds-table-body-row-background-selected-hover);
+
+      background-color: var(--tds-table-background);
+    }
   }
 
   .tds-table__body-cell--checkbox {
@@ -147,7 +155,7 @@
 }
 
 :host(.tds-table--divider) {
-  .tds-table__cell-expand {
+  .tds-table__body-cell:has(.tds-table__expand-control) {
     border-right: 1px solid var(--tds-table-divider);
   }
 
