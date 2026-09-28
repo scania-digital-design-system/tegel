@@ -57,10 +57,12 @@
       width 250ms ease;
     overflow: hidden;
     background-color: transparent;
+    padding-right: 2px;
 
     &.tds-table__searchbar--active {
       width: 250px;
       padding-right: 8px;
+      margin-right: 0;
     }
 
     .tds-table__searchbar-input {
