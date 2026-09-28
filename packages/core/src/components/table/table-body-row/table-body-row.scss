@@ -24,6 +24,7 @@
 
 :host(.tds-table__row--selected) {
   --tds-table-background: var(--tds-table-body-row-background-selected);
+  --tds-table-body-cell-background-hover: var(--tds-table-body-row-background-selected-hover);
 }
 
 :host(.tds-table__row--selected:hover) {

@@ -18,7 +18,7 @@
 }
 
 :host(.tds-table__body-cell--hover) td {
-  background-color: var(--tds-table-body-cell-background-hover);
+  --tds-table-background: var(--tds-table-body-cell-background-hover);
 }
 
 :host(.tds-table__compact) td {
@@ -27,6 +27,7 @@
 
 :host(.tds-table--divider) td {
   border-right: 1px solid var(--tds-table-divider);
+  border-bottom: 1px solid var(--tds-table-divider);
 }
 
 :host(.tds-table--divider:last-of-type) td {
