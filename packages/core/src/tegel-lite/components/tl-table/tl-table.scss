@@ -342,6 +342,12 @@
     }
   }
 
+  .tl-table__row--expanded & {
+    &--column-highlight {
+      --table-cell-background: var(--table-body-row-selected-hover);
+    }
+  }
+
   .tl-table--compact & {
     height: 32px;
     padding: 8px 16px;
