@@ -17,10 +17,10 @@ The design system supports the design and development of digital solutions at Sc
 
 ## Installation
 
-Install the packages
+Install the package
 
 ```bash
-npm install @scania/tegel-angular-17 @scania/tegel
+npm install @scania/tegel-angular-17
 ```
 
 In your global CSS file, import the Tegel stylesheet:
