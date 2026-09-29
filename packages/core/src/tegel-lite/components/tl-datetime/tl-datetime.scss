@@ -1,5 +1,7 @@
 @use './tl-datetime-vars' as *;
 @use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/input-border' as *;
+@use '../../../mixins/focus-state' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-datetime {
@@ -24,21 +26,23 @@
   }
 }
 
+.tl-datetime:has(input:disabled) {
+  opacity: var(--datetime-opacity-disabled);
+}
+
 .tl-datetime__label {
-  @include detail-05;
+  @include label-01;
 
   display: block;
-  margin-bottom: var(--tds-spacing-element-8);
+  margin-bottom: var(--unit-8);
   color: var(--datetime-label);
 
   .tl-datetime:has(input:disabled) & {
-    color: var(--datetime-label-disabled);
     cursor: not-allowed;
   }
 }
 
 .tl-datetime__wrapper {
-  border-radius: var(--datetime-border-radius);
   position: relative;
   height: 56px;
   box-sizing: border-box;
@@ -73,21 +77,16 @@
   .tl-datetime--error & {
     color: var(--datetime-icon-error);
   }
-
-  .tl-datetime:has(input:disabled) & {
-    color: var(--datetime-icon-disabled);
-  }
 }
 
 .tl-datetime__input {
   @include tds-box-sizing;
-  @include detail-02;
+  @include type-system-body-01;
+  @include input-border-default;
 
-  border-radius: var(--datetime-border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  border: none;
   outline: none;
   height: 100%;
   color: var(--datetime-text);
@@ -97,27 +96,19 @@
   transition: box-shadow 0.2s;
 
   &:focus {
-    box-shadow: inset var(--datetime-box-shadow-focus);
+    @include tds-focus-state;
   }
 
-  .tl-datetime:hover &:not(:focus, :disabled) {
-    box-shadow: inset var(--datetime-box-shadow-hover);
+  .tl-datetime:hover &:not(:focus, :disabled) :not(&--error) {
+    @include input-border-hover;
   }
 
   .tl-datetime--error & {
-    box-shadow: inset var(--datetime-box-shadow-error);
-
-    &:focus {
-      box-shadow: inset var(--datetime-box-shadow-error-focus);
-    }
+    @include input-border-error;
   }
 
-  .tl-datetime--error:hover &:not(:focus, :disabled) {
-    box-shadow: inset var(--datetime-box-shadow-error-hover);
-  }
-
-  .tl-datetime--error &:disabled {
-    box-shadow: inset var(--datetime-box-shadow-error);
+  .tl-datetime--success & {
+    @include input-border-success;
   }
 
   &::placeholder {
@@ -155,11 +146,12 @@
       }
     }
 
+    // the success and error states are set in their dedicated classes
     &:focus {
       &::-webkit-datetime-edit,
       &::-webkit-datetime-edit-fields-wrapper {
-        color: var(--datetime-placeholder-focus);
-        -webkit-text-fill-color: var(--datetime-placeholder-focus);
+        color: var(--datetime-text);
+        -webkit-text-fill-color: var(--datetime-text);
       }
     }
   }
@@ -202,55 +194,7 @@
   }
 
   &:disabled {
-    background-color: var(--datetime-background-disabled);
-    color: var(--datetime-text-disabled);
-    box-shadow: inset var(--datetime-box-shadow-disabled);
     cursor: not-allowed;
-
-    &::placeholder {
-      color: var(--datetime-placeholder-disabled);
-    }
-
-    ~ .tl-datetime__label-inside {
-      color: var(--datetime-label-disabled);
-    }
-
-    /* WebKit datetime fields - disabled state */
-    &::-webkit-datetime-edit-text {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-month-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-day-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-year-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-hour-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-minute-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-second-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-millisecond-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
-
-    &::-webkit-datetime-edit-meridiem-field {
-      -webkit-text-fill-color: var(--datetime-text-disabled);
-    }
   }
 
   .tl-datetime--label-inside & {
@@ -269,7 +213,7 @@
 }
 
 .tl-datetime__label-inside {
-  @include detail-07;
+  @include label-02;
 
   position: absolute;
   pointer-events: none;
@@ -291,7 +235,7 @@
 }
 
 .tl-datetime__helper {
-  @include detail-05;
+  @include label-01;
 
   display: inline-flex;
   gap: 8px;
@@ -322,6 +266,6 @@
 
   /* Disabled state (should not override error text/icon color) */
   .tl-datetime:has(input:disabled):not(.tl-datetime--error) & {
-    color: var(--color-foreground-text-disabled);
+    color: var(--datetime-text);
   }
 }
