@@ -1,6 +1,6 @@
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/focus-state' as *;
-@use '../../mixins/input-border' as *; // this wont work because the mixin changed in the table branch
+@use '../../mixins/input-border' as *;
 @use '../../../../../typography/mixins/type-styles' as *;
 
 @mixin datetime-base {
