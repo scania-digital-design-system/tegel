@@ -50,14 +50,13 @@
     justify-content: flex-end;
     position: relative;
     height: 48px;
-    width: 48px;
+    width: 50px;
     border-radius: 4px 4px 0 0;
     transition:
       background-color 250ms ease,
       width 250ms ease;
     overflow: hidden;
     background-color: transparent;
-    padding-right: 2px;
 
     &.tds-table__searchbar--active {
       width: 250px;
@@ -83,7 +82,8 @@
     }
 
     .tds-table__searchbar-icon {
-      padding-right: 4px;
+      padding-right: 0;
+      margin-right: 6px;
       color: var(--tds-table-filter-icon-color);
 
       &-hide {

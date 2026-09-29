@@ -303,15 +303,9 @@ const ExpandableRowTemplate = ({
 
       function toggleExpandState(event) {
         const button = event.target.closest("button");
-        console.log("button", button);
-
         const ariaControls = button.getAttribute("aria-controls");
-        console.log("aria-controls", ariaControls);
-
         const controlRow = button.closest(".tl-table__row");
         const expandable = document.getElementById(ariaControls);
-        console.log("expandable", expandable);
-
         const expanded = controlRow.classList.toggle("tl-table__row--expanded");
 
         if (expanded) {
