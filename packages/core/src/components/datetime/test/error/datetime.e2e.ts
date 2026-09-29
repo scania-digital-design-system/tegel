@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/datetime/test/error/index.html';
 const componentName = 'tds-datetime';
 const testDescription = 'tds-datetime-error';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -28,9 +28,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       const errorIcon = page.getByRole('img', { name: 'error' });
       await expect(errorIcon).toBeVisible();
 
-      const css = config.theme === 'lightmode' ? 'rgb(209, 0, 27)' : 'rgb(234, 72, 81)';
-
-      await expect(page.getByText(errorText)).toHaveCSS('color', css);
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
     // Browser locale is forced to en-US in playwright.config.ts, so the date format is MM/dd/yyyy.

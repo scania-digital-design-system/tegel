@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/datetime/test/disabled/index.html';
 const componentName = 'tds-datetime';
 const testDescription = 'tds-datetime-disabled';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -50,6 +50,6 @@ test.describe.parallel(componentName, () => {
     await label.hover();
     await expect(label).toHaveCSS('cursor', 'not-allowed');
 
-    await expect(helperText).not.toHaveCSS('pointer-events', 'none');
+    await expect(helperText).not.toHaveCSS('cursor', 'not-allowed');
   });
 });
