@@ -207,16 +207,16 @@ const MultiselectExpandableTemplate = ({
               <tds-header-cell cell-key='country' cell-value='Country' ${
                 column3Width ? `custom-width="${column3Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align="right" ${
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
             <tds-table-body-row-expandable expanded="${expanded}" auto-collapse="${autoCollapse}" overflow="${overflow}" row-id="1">
-              <tds-body-cell cell-key="truck" cell-value="L-series"></tds-body-cell>
-              <tds-body-cell cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell>
-              <tds-body-cell cell-key="country" cell-value="Brazil"></tds-body-cell>
-              <tds-body-cell cell-key="mileage" cell-value="123987" text-align="right"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="truck" cell-value="L-series"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="country" cell-value="Brazil"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="mileage" cell-value="123987" text-align="right"></tds-body-cell>
               <div slot="expand-row">
                 <p><strong>Additional Details:</strong></p>
                 <p>Truck Model: L-series Premium</p>
@@ -226,10 +226,10 @@ const MultiselectExpandableTemplate = ({
             </tds-table-body-row-expandable>
             
             <tds-table-body-row-expandable auto-collapse="${autoCollapse}" overflow="${overflow}" row-id="2">
-              <tds-body-cell cell-key="truck" cell-value="P-series"></tds-body-cell>
-              <tds-body-cell cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell>
-              <tds-body-cell cell-key="country" cell-value="Sweden"></tds-body-cell>
-              <tds-body-cell cell-key="mileage" cell-value="2000852" text-align="right"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="truck" cell-value="P-series"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="country" cell-value="Sweden"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="mileage" cell-value="2000852" text-align="right"></tds-body-cell>
               <div slot="expand-row">
                 <p><strong>Additional Details:</strong></p>
                 <p>Truck Model: P-series Long Haul</p>
@@ -239,10 +239,10 @@ const MultiselectExpandableTemplate = ({
             </tds-table-body-row-expandable>
             
             <tds-table-body-row-expandable auto-collapse="${autoCollapse}" overflow="${overflow}" row-id="3" selected>
-              <tds-body-cell cell-key="truck" cell-value="G-series"></tds-body-cell>
-              <tds-body-cell cell-key="driver" cell-value="Ferrell Wallace"></tds-body-cell>
-              <tds-body-cell cell-key="country" cell-value="Germany"></tds-body-cell>
-              <tds-body-cell cell-key="mileage" cell-value="564" text-align="right"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="truck" cell-value="G-series"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="driver" cell-value="Ferrell Wallace"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="country" cell-value="Germany"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="mileage" cell-value="564" text-align="right"></tds-body-cell>
               <div slot="expand-row">
                 <p><strong>Additional Details:</strong></p>
                 <p>Truck Model: G-series Construction</p>
@@ -253,10 +253,10 @@ const MultiselectExpandableTemplate = ({
             </tds-table-body-row-expandable>
             
             <tds-table-body-row-expandable auto-collapse="${autoCollapse}" overflow="${overflow}" row-id="4">
-              <tds-body-cell cell-key="truck" cell-value="R-series"></tds-body-cell>
-              <tds-body-cell cell-key="driver" cell-value="Cox Burris"></tds-body-cell>
-              <tds-body-cell cell-key="country" cell-value="Spain"></tds-body-cell>
-              <tds-body-cell cell-key="mileage" cell-value="1789357" text-align="right"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="truck" cell-value="R-series"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="driver" cell-value="Cox Burris"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="country" cell-value="Spain"></tds-body-cell>
+              <tds-body-cell vertical-align="middle" cell-key="mileage" cell-value="1789357" text-align="right"></tds-body-cell>
               <div slot="expand-row">
                 <p><strong>Additional Details:</strong></p>
                 <p>Truck Model: R-series Heavy Duty</p>

@@ -119,11 +119,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [tds-checkbox](../../checkbox)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-table-body-row-expandable --> tds-checkbox
+  tds-table-body-row-expandable --> tds-icon
   style tds-table-body-row-expandable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

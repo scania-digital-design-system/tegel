@@ -116,11 +116,11 @@ button {
       }
 
       &:hover {
-        @each $prop in $props {
-          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-hover);
-        }
-
         &:not(.disabled) {
+          @each $prop in $props {
+            #{$prop}: var(--tds-btn-#{$type}-#{$prop}-hover);
+          }
+
           ::slotted([slot='icon']) {
             @each $prop in $iconProps {
               fill: var(--tds-btn-icon-#{$type}-#{$prop}-hover);
@@ -145,11 +145,11 @@ button {
 
       &:active,
       &.active {
-        @each $prop in $props {
-          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-active);
-        }
-
         &:not(.disabled) {
+          @each $prop in $props {
+            #{$prop}: var(--tds-btn-#{$type}-#{$prop}-active);
+          }
+
           ::slotted([slot='icon']) {
             @each $prop in $iconProps {
               fill: var(--tds-btn-icon-#{$type}-#{$prop}-active);

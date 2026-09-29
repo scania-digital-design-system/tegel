@@ -16,70 +16,50 @@
     border-bottom: 1px solid var(--tds-table-divider);
     background-color: var(--tds-table-body-row-background);
     transition: background-color 200ms ease;
-    color: var(--tds-table-color);
+    color: var(--tds-table-body-cell-text-color);
   }
 
   .tds-table__row--expanded {
     border-bottom: none;
+
+    --tds-table-background: var(--tds-table-body-cell-background-expanded);
+    --tds-table-body-cell-background-hover: var(--tds-table-body-row-background-selected-hover);
   }
 
   .tds-table__row--selected {
-    background-color: var(--tds-table-body-row-background-selected);
+    --tds-table-background: var(--tds-table-body-row-background-selected);
+
+    background-color: var(--tds-table-background);
+
+    --tds-table-body-cell-background-hover: var(--tds-table-body-row-background-selected-hover);
   }
 
   .tds-table__row:hover,
   .tds-table__row-extend:hover {
     background-color: var(--tds-table-body-row-background-hover);
-  }
 
-  .tds-table__row--selected:hover {
-    background-color: var(--tds-table-body-row-background-selected-hover);
+    --tds-table-background: var(--tds-table-body-row-background-hover);
+
+    &.tds-table__row--selected {
+      --tds-table-background: var(--tds-table-body-row-background-selected-hover);
+
+      background-color: var(--tds-table-background);
+    }
   }
 
   .tds-table__body-cell--checkbox {
-    min-width: 48px;
-    width: 48px;
+    min-width: var(--unit-48);
+    width: var(--unit-48);
     padding: 0;
   }
 
   .tds-form-label--table {
     width: 100%;
-    height: 48px;
+    height: var(--tds-table-row-height);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-  }
-
-  .tds-table__expand-control-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    cursor: pointer;
-    padding: 0 16px;
-    position: relative;
-
-    .tds-table__expand-input {
-      all: unset;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      cursor: pointer;
-
-      &:focus {
-        @include tds-focus-state;
-      }
-    }
-
-    .tds-expendable-row-icon {
-      height: 16px;
-      width: 16px;
-      transition: transform 200ms ease;
-      transform: rotate(0);
-    }
   }
 
   .tds-table__row-expand {
@@ -93,8 +73,8 @@
     .tds-table__cell-expand {
       max-width: 1px;
       overflow: auto;
-      padding: 16px 16px 16px 66px;
-      color: var(--tds-table-color);
+      padding: var(--unit-16) var(--unit-16) var(--unit-16) var(--unit-66);
+      color: var(--tds-table-body-cell-text-color);
     }
 
     .tds-table__cell-expand--overflow-visible {
@@ -105,39 +85,69 @@
       overflow: hidden;
     }
   }
+
+  .tds-table__expand-control {
+    all: unset;
+    position: absolute;
+    padding: 0;
+    display: flex;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:focus {
+      @include tds-focus-state;
+    }
+
+    .tds-expandable-row-icon {
+      height: var(--unit-16);
+      width: var(--unit-16);
+      transition: transform 200ms ease;
+      transform: rotate(0);
+      color: var(--tds-table-expand-icon-color);
+    }
+  }
 }
 
 :host(.tds-table__row-expand--active) {
   .tds-table__row {
-    background-color: var(--tds-table-body-row-background-selected);
+    background-color: var(--tds-table-body-cell-background-expanded);
+
+    --tds-table-background: not(.tds-table__row-expand--active);
   }
 
-  .tds-table__expand-control-container {
-    .tds-expendable-row-icon {
+  .tds-table__expand-control {
+    .tds-expandable-row-icon {
       transform: rotate(180deg);
     }
   }
 
   .tds-table__row-expand {
-    background-color: var(--tds-table-body-row-background-selected);
+    background-color: var(--tds-table-body-cell-background-expanded);
     display: table-row;
+  }
+
+  ::slotted([slot='expand-row']) {
+    padding: 4px;
   }
 }
 
 // test
 :host(.tds-table__compact) {
-  .tds-table__expand-control-container {
-    height: 30px;
+  .tds-table__expand-control {
+    height: var(--unit-30);
   }
 
   .tds-table__row-expand {
     .tds-table__cell-expand {
-      padding: 8px 16px 8px 66px;
+      padding: var(--unit-8) var(--unit-16) var(--unit-8) var(--unit-66);
     }
   }
 
   .tds-form-label--table {
-    height: 32px;
+    height: var(--tds-table-row-height-compact);
   }
 }
 
@@ -146,11 +156,12 @@
 }
 
 :host(.tds-table--divider) {
-  .tds-table__cell-expand {
+  .tds-table__body-cell:has(.tds-table__expand-control) {
     border-right: 1px solid var(--tds-table-divider);
   }
 
   .tds-table__body-cell--checkbox {
     border-right: 1px solid var(--tds-table-divider);
+    border-bottom: 1px solid var(--tds-table-divider);
   }
 }

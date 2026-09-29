@@ -5,7 +5,11 @@
 .tds-table {
   border-collapse: collapse;
   display: table;
+  background-color: var(--tds-table-header-background);
   @include tds-box-sizing;
+
+  border-top-left-radius: var(--tds-table-border-radius);
+  border-top-right-radius: var(--tds-table-border-radius);
 }
 
 :host(.tds-table--responsive),

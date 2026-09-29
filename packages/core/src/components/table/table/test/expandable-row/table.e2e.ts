@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/expandable-row/index.
 const componentName = 'tds-table';
 const testDescription = 'tds-table-expandable-row';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -38,8 +38,10 @@ test.describe.parallel(componentName, () => {
     await tableComponent.waitFor({ state: 'visible' });
   });
 
-  test('each row has expand checkbox', async ({ page }) => {
-    const tableBodyRowsExpandInput = page.getByRole('cell').getByRole('checkbox');
-    await expect(tableBodyRowsExpandInput).toHaveCount(3);
+  test('each row has expand button', async ({ page }) => {
+    const expandButtons = page.locator(
+      'tds-table-body-row-expandable button.tds-table__expand-control',
+    );
+    await expect(expandButtons).toHaveCount(3);
   });
 });
