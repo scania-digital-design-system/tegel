@@ -1,5 +1,5 @@
 @use '../../mixins/z-index' as *;
-@use '../../mixins/dropdown-border' as *;
+@use '../../mixins/input-border' as *;
 @use './dropdown-button' as *;
 @use './dropdown-filter' as *;
 @use '../../mixins/scrollbar' as *;
@@ -28,7 +28,7 @@
     position: relative;
 
     button {
-      @include tds-dropdown-border;
+      @include input-border-default;
     }
 
     &:not(.disabled) {
@@ -36,7 +36,7 @@
         transition: border-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
         &:hover {
-          @include tds-dropdown-border-hover;
+          @include input-border-hover;
         }
 
         &:focus {
@@ -44,7 +44,7 @@
         }
 
         &.error {
-          @include tds-dropdown-border-error;
+          @include input-border-error;
         }
       }
     }
@@ -109,6 +109,10 @@
       &.xs {
         line-height: 1;
         margin-top: 0;
+      }
+
+      &.sm {
+        margin-top: 2px;
       }
     }
 

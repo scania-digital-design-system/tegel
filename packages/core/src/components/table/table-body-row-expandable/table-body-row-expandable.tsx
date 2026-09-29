@@ -172,17 +172,17 @@ export class TdsTableBodyRowExpandable {
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
-  connectedCallback() {
-    /* if user did set a prop we use that as default behaviour */
+  componentWillLoad() {
+    /* if user did set a prop we use that as default behaviour 
+      Moved to componentWillLoad since expanded Prop is not 
+      defined yet in React during connectedCallback */
     if (this.expanded !== undefined) {
       this.isExpanded = this.expanded;
     }
 
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-  }
 
-  componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
     });
@@ -215,8 +215,8 @@ export class TdsTableBodyRowExpandable {
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
-  onChangeHandler(event) {
-    this.isExpanded = event.currentTarget.checked === true;
+  onChangeHandler() {
+    this.isExpanded = !this.isExpanded;
     this.sendValue();
   }
 
@@ -233,7 +233,6 @@ export class TdsTableBodyRowExpandable {
     return (
       <Host
         class={{
-          'tds-table__row': true,
           'tds-table__row-expand--active': this.isExpanded,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
@@ -249,40 +248,31 @@ export class TdsTableBodyRowExpandable {
           part="row"
         >
           {this.multiselect && (
-            <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">
-              <tds-checkbox
-                onTdsChange={(event) => this.handleCheckboxChange(event)}
-                checked={this.selected}
-                disabled={this.disabled}
-              ></tds-checkbox>
+            <td class="tds-table__body-cell--checkbox">
+              <div class="tds-form-label tds-form-label--table">
+                <tds-checkbox
+                  onTdsChange={(event) => this.handleCheckboxChange(event)}
+                  checked={this.selected}
+                  disabled={this.disabled}
+                ></tds-checkbox>
+              </div>
             </td>
           )}
           <td
             class={{
-              'tds-table__cell-expand': true,
+              'tds-table__body-cell': true,
             }}
           >
-            <label class="tds-table__expand-control-container">
-              <input
-                class="tds-table__expand-input"
-                type="checkbox"
-                onChange={(event) => this.onChangeHandler(event)}
-                checked={this.isExpanded}
-                aria-expanded={this.isExpanded ? 'true' : 'false'}
-                aria-controls={`expandable-content-${this.rowId}`}
-                aria-label={this.tdsAriaLabelExpandButton}
-              />
-              <span class="tds-expendable-row-icon">
-                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M4.273 9.783a1 1 0 0 1 1.415 0l9.888 9.888a.6.6 0 0 0 .848 0l9.888-9.888a1 1 0 1 1 1.415 1.414l-9.889 9.889a2.6 2.6 0 0 1-3.677 0l-9.888-9.889a1 1 0 0 1 0-1.414Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-            </label>
+            <button
+              class="tds-table__expand-control"
+              type="button"
+              onClick={() => this.onChangeHandler()}
+              aria-expanded={this.isExpanded ? 'true' : 'false'}
+              aria-controls={`expandable-content-${this.rowId}`}
+              aria-label={this.tdsAriaLabelExpandButton}
+            >
+              <tds-icon class="tds-expandable-row-icon" name="chevron_down" size="16"></tds-icon>
+            </button>
           </td>
           <slot />
         </tr>

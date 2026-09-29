@@ -115,7 +115,7 @@ export default {
     batchArea: formatHtmlPreview(
       `<div class="tl-table__actionbar-left">
         <div class="tl-table__title">Batch action</div>
-        <div class="tl-dropdown tl-dropdown--sm" style="width: 126px;">
+        <div class="tl-dropdown tl-dropdown--sm" style="width: 150px;">
           <select class="tl-dropdown__select">
             <option value="" disabled selected>Data Source</option>
             <option value="option-1">SE</option>
@@ -126,11 +126,11 @@ export default {
       </div>
       <div class="tl-table__actionbar-right">
         <button
-          class="tl-button tl-button--only-icon tl-button--secondary tl-button--sm tl-button--icon"
+          class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon"
         >
           <span class="tl-icon tl-icon--settings tl-icon--16" aria-hidden="true"></span>
         </button>
-        <button class="tl-button tl-button--secondary tl-button--sm">
+        <button class="tl-button tl-button--primary tl-button--sm">
           Download
         </button>
       </div>`,

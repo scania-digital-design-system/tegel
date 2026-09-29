@@ -14,7 +14,7 @@ tds-textarea {
   --tds-textarea-disabled-label: var(--color-text-disabled);
   --tds-textarea-helper-disabled: var(--color-text-disabled);
   --tds-textarea-textcounter-disabled: var(--color-text-disabled);
-  --tds-textarea-opacity-disabled: var(--component--input-opacity-disabled);
+  --tds-textarea-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Label
   --tds-textarea-label-color: var(--component--input-text-label-default);
@@ -54,7 +54,6 @@ tds-textarea {
   .tds-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
-    --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--color-background-layer-02);
     --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-primary);
   }
@@ -62,7 +61,6 @@ tds-textarea {
   .tds-mode-variant-secondary {
     --tds-textarea-background: var(--tds-textarea-background-secondary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
-    --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--color-background-layer-01);
     --tds-textarea-focus-ring-radius: var(--component-textarea-focus-ring-radius-secondary);
   }

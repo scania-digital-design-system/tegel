@@ -40,6 +40,7 @@
  - [tds-slider](../slider)
  - [tds-step](../stepper/step)
  - [tds-table-body-input-wrapper](../table/table-body-input-wrapper)
+ - [tds-table-body-row-expandable](../table/table-body-row-expandable)
  - [tds-table-footer](../table/table-footer)
  - [tds-table-header-input-wrapper](../table/table-header-input-wrapper)
  - [tds-table-toolbar](../table/table-toolbar)
@@ -72,6 +73,7 @@ graph TD;
   tds-slider --> tds-icon
   tds-step --> tds-icon
   tds-table-body-input-wrapper --> tds-icon
+  tds-table-body-row-expandable --> tds-icon
   tds-table-footer --> tds-icon
   tds-table-header-input-wrapper --> tds-icon
   tds-table-toolbar --> tds-icon

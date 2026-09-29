@@ -2,7 +2,7 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../mixins/focus-state' as *;
 @use '../../../mixins/tl-scrollbar' as *;
-@use '../../../mixins/dropdown-border' as *;
+@use '../../../mixins/input-border' as *;
 
 .tl-dropdown {
   width: 208px;
@@ -33,13 +33,12 @@
   }
 
   @include type-system-body-01;
-  @include tl-dropdown-border;
+  @include input-border-default;
 
   width: 100%;
   appearance: none;
   background: var(--dropdown-background);
   color: var(--dropdown-text);
-  border-radius: var(--dropdown-border-radius);
   position: relative;
   outline: none;
   text-align: left;
@@ -54,7 +53,7 @@
   justify-content: flex-start;
 
   &:hover {
-    @include tl-dropdown-border-hover;
+    @include input-border-hover;
   }
 
   &:focus {
@@ -62,11 +61,11 @@
   }
 
   .tl-dropdown--error & {
-    @include tl-dropdown-border-error;
+    @include input-border-error;
   }
 
   &:disabled {
-    @include tl-dropdown-border;
+    @include input-border-default;
 
     box-shadow: none;
     cursor: not-allowed;
@@ -766,7 +765,6 @@
 .tl-dropdown__input::placeholder,
 .tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
   color: var(--dropdown-placeholder);
-  border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   transition: box-shadow 0.2s;
 }
@@ -792,7 +790,7 @@
   box-shadow: none;
 
   &:hover:not(:disabled) {
-    @include tl-dropdown-border-hover;
+    @include input-border-hover;
   }
 
   &:focus-visible {
@@ -801,11 +799,11 @@
 }
 
 .tl-dropdown__select {
-  @include tl-dropdown-border;
+  @include input-border-default;
 }
 
 :is(.traton, .scania) .tl-dropdown--error .tl-dropdown__select {
-  border-color: var(--dropdown-error);
+  @include input-border-error;
 
   &:disabled {
     border-color: transparent;
