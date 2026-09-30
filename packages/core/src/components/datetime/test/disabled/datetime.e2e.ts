@@ -34,7 +34,7 @@ test.describe.parallel(componentName, () => {
     });
   });
 
-  test('when in disabled state all but helper text should have pointer events none', async ({
+  test('when in disabled state all but helper text should have cursor not allowed', async ({
     page,
   }) => {
     // Check for disabled state of the datetime input
