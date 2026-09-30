@@ -34,7 +34,7 @@
   @include label-01;
 
   display: block;
-  margin-bottom: var(--unit-8);
+  margin-bottom: var(--unit-4);
   color: var(--datetime-label);
 
   .tl-datetime:has(input:disabled) & {
