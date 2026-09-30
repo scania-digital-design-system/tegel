@@ -24,6 +24,28 @@
       opacity: 0;
     }
   }
+
+  &:not(&--success, &--error) {
+    .tl-datetime__input-placeholder {
+      @supports selector(input::-webkit-datetime-edit) {
+        &:not(:focus) {
+          &::-webkit-datetime-edit,
+          &::-webkit-datetime-edit-fields-wrapper {
+            color: var(--datetime-placeholder);
+            -webkit-text-fill-color: var(--datetime-placeholder);
+          }
+        }
+
+        &:focus {
+          &::-webkit-datetime-edit,
+          &::-webkit-datetime-edit-fields-wrapper {
+            color: var(--datetime-text);
+            -webkit-text-fill-color: var(--datetime-text);
+          }
+        }
+      }
+    }
+  }
 }
 
 .tl-datetime:has(input:disabled) {
@@ -130,25 +152,25 @@
     }
   }
 
-  &-placeholder {
-    @supports selector(input::-webkit-datetime-edit) {
-      &:not(:focus) {
-        &::-webkit-datetime-edit,
-        &::-webkit-datetime-edit-fields-wrapper {
-          color: var(--datetime-placeholder);
-          -webkit-text-fill-color: var(--datetime-placeholder);
-        }
-      }
+  // &-placeholder {
+  //   @supports selector(input::-webkit-datetime-edit) {
+  //     &:not(:focus) {
+  //       &::-webkit-datetime-edit,
+  //       &::-webkit-datetime-edit-fields-wrapper {
+  //         color: var(--datetime-placeholder);
+  //         -webkit-text-fill-color: var(--datetime-placeholder);
+  //       }
+  //     }
 
-      &:focus {
-        &::-webkit-datetime-edit,
-        &::-webkit-datetime-edit-fields-wrapper {
-          color: var(--datetime-text);
-          -webkit-text-fill-color: var(--datetime-text);
-        }
-      }
-    }
-  }
+  //     &:focus {
+  //       &::-webkit-datetime-edit,
+  //       &::-webkit-datetime-edit-fields-wrapper {
+  //         color: var(--datetime-text);
+  //         -webkit-text-fill-color: var(--datetime-text);
+  //       }
+  //     }
+  //   }
+  // }
 
   &:disabled {
     cursor: not-allowed;
