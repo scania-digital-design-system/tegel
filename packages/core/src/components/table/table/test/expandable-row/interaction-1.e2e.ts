@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/expandable-row/index.
 const componentName = 'tds-table';
 const testDescription = 'tds-table-expandable-row-first';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -20,7 +20,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       const tableBodyRowFirstIcon = page
         .locator('tds-table-body-row-expandable')
         .first()
-        .locator('.tds-expendable-row-icon');
+        .locator('.tds-expandable-row-icon');
       const tableBodyExpandableRowSlot = page
         .locator('tds-table-body-row-expandable')
         .first()

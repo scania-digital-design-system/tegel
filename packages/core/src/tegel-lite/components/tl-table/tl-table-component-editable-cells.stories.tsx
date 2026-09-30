@@ -200,7 +200,7 @@ const EditableCellsTemplate = ({
   // Helper function to create editable cell
   const createEditableCell = (inputId, value, columnIndex, colStyle, disabled = false) => {
     const cellStyle = colStyle || '';
-    const iconClass = disabled ? 'tl-icon--edit_inactive' : 'tl-icon--edit';
+    const iconClass = 'tl-icon--edit';
     const textFieldDisabledClass = disabled ? 'tl-text-field--disabled' : '';
     const textFieldSizeClass = compactDesign ? 'tl-text-field--sm' : 'tl-text-field--md';
     const iconSizeClass = compactDesign ? 'tl-icon--16' : 'tl-icon--20';

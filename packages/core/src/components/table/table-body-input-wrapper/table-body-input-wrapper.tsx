@@ -11,7 +11,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesig
 export class TdsTableBodyInputWrapper {
   @Element() host!: HTMLElement;
 
-  /** Controls if the edit icon is shown */
+  /** Controls if the edit icon is shown. Should be set to false if there is an input disabled. */
   @Prop({ reflect: true }) showIcon: boolean = true;
 
   @State() renderSlot: boolean = true;

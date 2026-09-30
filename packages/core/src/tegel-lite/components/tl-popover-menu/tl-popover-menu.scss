@@ -29,10 +29,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--popover-menu-item-outline-focus);
-    box-shadow: inset 0 0 0 3px var(--component--focus-ring-color-discrete);
-    outline-offset: -2px;
-    z-index: 1;
+    @include tds-focus-state-inset;
   }
 }
 

@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/expandable-row-expand
 const componentName = 'tds-table';
 const testDescription = 'tds-table-expandable-row-expanded';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
@@ -32,19 +32,21 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('click on expand-input -> should become unchecked for row-id 1', async ({ page }) => {
       // Locate the expandable row with row-id="1"
       const tableRow = page.locator('tds-table-body-row-expandable[row-id="1"]');
-      const expandInput = tableRow.locator('td > label > input[type="checkbox"]');
+      const expandButton = tableRow.locator('button.tds-table__expand-control');
       const tableBodyExpandableRowSlot = tableRow.locator('div[slot="expand-row"]');
 
+      // Check if the button has aria-expanded true and the row is expanded
+      await expect(expandButton).toHaveAttribute('aria-expanded', 'true');
+      await expect(tableBodyExpandableRowSlot).toBeVisible();
       // Click to collapse
       await page.evaluate(
-        (checkbox) => (checkbox as HTMLElement).click(),
-        await expandInput.elementHandle(),
+        (button) => (button as HTMLElement).click(),
+        await expandButton.elementHandle(),
       );
       await page.waitForChanges(); // wait for the state change
 
-      // Check if the input is unchecked and the row is collapsed
-      const isCheckedAfter = await expandInput.isChecked();
-      expect(isCheckedAfter).toBe(false);
+      // Check if the button has aria-expanded false and the row is collapsed
+      await expect(expandButton).toHaveAttribute('aria-expanded', 'false');
       await expect(tableBodyExpandableRowSlot).toBeHidden();
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });

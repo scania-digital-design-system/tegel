@@ -136,7 +136,7 @@ const BasicTemplate = ({
           }></tds-header-cell>
           <tds-header-cell cell-key='mileage' cell-value='Mileage' ${
             column4Width ? `custom-width="${column4Width}"` : ''
-          } text-align='right'></tds-header-cell>
+          } ></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
           <tds-table-body-row>

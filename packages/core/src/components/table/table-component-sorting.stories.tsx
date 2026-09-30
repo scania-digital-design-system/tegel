@@ -205,17 +205,17 @@ const SortingTemplate = ({
       <tds-table-toolbar table-title="Sorting"></tds-table-toolbar>
           <tds-table-header>
               <tds-header-cell cell-key='truck' cell-value='Truck type' sortable="${column1sortable}" ${
-    column1Width ? `custom-width="${column1Width}"` : ''
-  }></tds-header-cell>
+                column1Width ? `custom-width="${column1Width}"` : ''
+              }></tds-header-cell>
               <tds-header-cell cell-key='driver' cell-value='Driver name' sortable="${column2sortable}" ${
-    column2Width ? `custom-width="${column2Width}"` : ''
-  }></tds-header-cell>
+                column2Width ? `custom-width="${column2Width}"` : ''
+              }></tds-header-cell>
               <tds-header-cell cell-key='country' cell-value='Country' sortable="${column3sortable}" ${
-    column3Width ? `custom-width="${column3Width}"` : ''
-  }></tds-header-cell>
-              <tds-header-cell cell-key='mileage' cell-value='Mileage' sortable="${column4sortable}" text-align='right' ${
-    column4Width ? `custom-width="${column4Width}"` : ''
-  }></tds-header-cell>
+                column3Width ? `custom-width="${column3Width}"` : ''
+              }></tds-header-cell>
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' sortable="${column4sortable}" ${
+                column4Width ? `custom-width="${column4Width}"` : ''
+              }></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
             <tds-table-body-row>
