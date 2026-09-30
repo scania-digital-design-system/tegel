@@ -73,10 +73,6 @@
   @supports (-moz-appearance: none) {
     display: none;
   }
-
-  .tl-datetime--error & {
-    color: var(--datetime-icon-error);
-  }
 }
 
 .tl-datetime__input {
@@ -92,8 +88,6 @@
   color: var(--datetime-text);
   background-color: var(--datetime-background);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
-  box-shadow: inset var(--datetime-box-shadow);
-  transition: box-shadow 0.2s;
 
   &:focus {
     @include tds-focus-state;
@@ -109,15 +103,6 @@
 
   .tl-datetime--success & {
     @include input-border-success;
-  }
-
-  &::placeholder {
-    opacity: 1;
-    color: var(--datetime-placeholder);
-  }
-
-  &:focus::placeholder {
-    color: var(--datetime-placeholder-focus);
   }
 
   /*
@@ -138,59 +123,31 @@
    * token to mirror the `::placeholder` rule above.
    */
   @supports selector(input::-webkit-datetime-edit) {
-    &:not(:focus) {
-      &::-webkit-datetime-edit,
-      &::-webkit-datetime-edit-fields-wrapper {
-        color: var(--datetime-placeholder);
-        -webkit-text-fill-color: var(--datetime-placeholder);
-      }
-    }
-
-    // the success and error states are set in their dedicated classes
-    &:focus {
-      &::-webkit-datetime-edit,
-      &::-webkit-datetime-edit-fields-wrapper {
-        color: var(--datetime-text);
-        -webkit-text-fill-color: var(--datetime-text);
-      }
+    &::-webkit-datetime-edit,
+    &::-webkit-datetime-edit-fields-wrapper {
+      color: var(--datetime-text);
+      -webkit-text-fill-color: var(--datetime-text);
     }
   }
 
-  /* WebKit datetime fields */
-  &::-webkit-datetime-edit-text {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
+  &-placeholder {
+    @supports selector(input::-webkit-datetime-edit) {
+      &:not(:focus) {
+        &::-webkit-datetime-edit,
+        &::-webkit-datetime-edit-fields-wrapper {
+          color: var(--datetime-placeholder);
+          -webkit-text-fill-color: var(--datetime-placeholder);
+        }
+      }
 
-  &::-webkit-datetime-edit-month-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-day-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-year-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-hour-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-minute-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-second-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-millisecond-field {
-    -webkit-text-fill-color: var(--datetime-text);
-  }
-
-  &::-webkit-datetime-edit-meridiem-field {
-    -webkit-text-fill-color: var(--datetime-text);
+      &:focus {
+        &::-webkit-datetime-edit,
+        &::-webkit-datetime-edit-fields-wrapper {
+          color: var(--datetime-text);
+          -webkit-text-fill-color: var(--datetime-text);
+        }
+      }
+    }
   }
 
   &:disabled {
