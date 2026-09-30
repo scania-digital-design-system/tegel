@@ -32,7 +32,7 @@
   },
   "homepage": "https://tegel.scania.com/home",
   "devDependencies": {
-    "autoprefixer": "^10.6.0",
+    "autoprefixer": "^10.6.1",
     "glob": "catalog:",
     "sass": "catalog:"
   },
