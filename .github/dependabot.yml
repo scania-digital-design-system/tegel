@@ -7,19 +7,10 @@ updates:
       interval: 'weekly'
       day: 'monday'
     groups:
-      prod-minor-and-patch:
+      minor-and-patch:
         applies-to: 'version-updates'
         patterns:
           - '*'
-        dependency-type: 'production'
-        update-types:
-          - 'minor'
-          - 'patch'
-      dev-minor-and-patch:
-        applies-to: 'version-updates'
-        patterns:
-          - '*'
-        dependency-type: 'development'
         update-types:
           - 'minor'
           - 'patch'

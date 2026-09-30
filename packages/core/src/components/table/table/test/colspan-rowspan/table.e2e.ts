@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/table/table/test/colspan-rowspan/index
 const componentName = 'tds-table';
 const testDescription = 'tds-table-colspan-rowspan';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

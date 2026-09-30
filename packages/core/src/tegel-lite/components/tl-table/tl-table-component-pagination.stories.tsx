@@ -190,7 +190,7 @@ const PaginationTemplate = ({
                                   ? `
                   <div class="tl-table__rows-per-page">
                    <p class="tl-table__rows-per-page-label">Rows per page</p>
-                   <div class="tl-dropdown tl-dropdown--sm tl-dropdown--dropdown" style="width:70px;" id="tl-rows-per-page-dropdown">
+                   <div class="tl-dropdown tl-dropdown--sm tl-dropdown--dropdown" id="tl-rows-per-page-dropdown">
                      <button type="button" class="tl-dropdown__button" aria-expanded="false" id="tl-rows-per-page-button">
                        <span class="tl-dropdown__text" id="tl-rows-per-page-text"></span>
                      </button>
@@ -203,12 +203,14 @@ const PaginationTemplate = ({
               </div>
 
               <div class="tl-table__page-selector">
-                <input class="tl-table__page-selector-input" id="tl-current-page" value="1" type="number" min="1" max="4" pattern="[0-9]+" dir="rtl">
+                <div class="tl-text-field">
+                  <input class="tl-text-field__input" id="tl-current-page" value="1" type="number" min="1" max="4" pattern="[0-9]+" >
+                </div>
                 <p class="tl-table__footer-text">of <span id="tl-total-pages">${pages}</span> pages</p>
-                <button class="tl-table__footer-button" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--20"></span></button>
-                <button class="tl-table__footer-button" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--20"></span></button>
-                <button class="tl-table__footer-button" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--20"></span></button>
-                <button class="tl-table__footer-button" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--20"></span></button>
+                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--16"></span></button>
+                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--16"></span></button>
+                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--16"></span></button>
+                <button class="tl-button tl-button--ghost tl-button--only-icon tl-button--sm tl-button--icon" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--16"></span></button>
               </div>
             </div>
           </td>
@@ -248,11 +250,12 @@ const PaginationTemplate = ({
       console.log(name, detail);
     }
 
-    var buttons = document.querySelectorAll('.tl-table__footer-button');
-    var buttonFirst = document.querySelector('.tl-table__footer-button[data-action="first"]');
-    var buttonPrev = document.querySelector('.tl-table__footer-button[data-action="prev"]');
-    var buttonNext = document.querySelector('.tl-table__footer-button[data-action="next"]');
-    var buttonLast = document.querySelector('.tl-table__footer-button[data-action="last"]');
+    var footerPageSelector = document.querySelector('.tl-table__page-selector');
+    var buttons = footerPageSelector.querySelectorAll('.tl-button');
+    var buttonFirst = footerPageSelector.querySelector('.tl-button[data-action="first"]');
+    var buttonPrev = footerPageSelector.querySelector('.tl-button[data-action="prev"]');
+    var buttonNext = footerPageSelector.querySelector('.tl-button[data-action="next"]');
+    var buttonLast = footerPageSelector.querySelector('.tl-button[data-action="last"]');
 
     function updateButtonStates(current) {
       if (!buttonFirst || !buttonPrev || !buttonNext || !buttonLast) return;

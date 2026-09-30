@@ -189,7 +189,7 @@ const MultiselectTemplate = ({
       </thead>
       <tbody class="tl-table__body">
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
+          <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
@@ -200,7 +200,7 @@ const MultiselectTemplate = ({
           <td class="tl-table__body-cell" data-column="4">123987</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
+          <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
@@ -211,7 +211,7 @@ const MultiselectTemplate = ({
           <td class="tl-table__body-cell" data-column="4">2000852</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
+          <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
@@ -222,7 +222,7 @@ const MultiselectTemplate = ({
           <td class="tl-table__body-cell" data-column="4">564</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
+          <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
@@ -241,13 +241,23 @@ const MultiselectTemplate = ({
       const table = document.querySelector('.tl-table');
       const headerCheckbox = table.querySelector('thead .tl-checkbox__input');
       const rowCheckboxes = table.querySelectorAll('tbody .tl-checkbox__input');
-      
+
       // Header checkbox functionality
       headerCheckbox.addEventListener('change', function() {
         const isChecked = this.checked;
+
+        headerCheckbox.classList.remove("tl-checkbox__input--indeterminate");
+        
         rowCheckboxes.forEach(checkbox => {
           checkbox.checked = isChecked;
-        });
+          const row = checkbox.closest('tr');
+          if(isChecked && !row.classList.contains('tl-table__row--selected'))  {
+            row.classList.add('tl-table__row--selected');
+          }
+          if(!isChecked && row.classList.contains('tl-table__row--selected'))  {
+            row.classList.remove('tl-table__row--selected');
+          }
+        }); 
       });
       
       // Row checkbox functionality
@@ -255,17 +265,23 @@ const MultiselectTemplate = ({
         checkbox.addEventListener('change', function() {
           const checkedCount = Array.from(rowCheckboxes).filter(cb => cb.checked).length;
           const totalCount = rowCheckboxes.length;
-          
+          const row = checkbox.closest('tr');
+          if(checkbox.checked && !row.classList.contains('tl-table__row--selected'))  {
+            row.classList.add('tl-table__row--selected');
+          }
+          if(!checkbox.checked && row.classList.contains('tl-table__row--selected'))  {
+            row.classList.remove('tl-table__row--selected');
+          }
           // Update header checkbox state
           if (checkedCount === 0) {
             headerCheckbox.checked = false;
-            headerCheckbox.indeterminate = false;
+            headerCheckbox.classList.remove("tl-checkbox__input--indeterminate");
           } else if (checkedCount === totalCount) {
             headerCheckbox.checked = true;
-            headerCheckbox.indeterminate = false;
+            headerCheckbox.classList.remove("tl-checkbox__input--indeterminate");
           } else {
             headerCheckbox.checked = false;
-            headerCheckbox.indeterminate = true;
+            headerCheckbox.classList.add("tl-checkbox__input--indeterminate");
           }
         });
       });

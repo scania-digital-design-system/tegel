@@ -623,6 +623,30 @@ export class TdsDropdown {
     }
   };
 
+  /**
+   * Returns the nearest vertically scrollable ancestor of the given element.
+   * Used to determine the available space for the dropdown within its scroll
+   * container. If no scrollable ancestor is found, the viewport is used instead.
+   *
+   * Note: This identifies the nearest scrollable ancestor, not necessarily the
+   * clipping ancestor in more complex layouts.
+   */
+  private getScrollParent(element: HTMLElement): HTMLElement | null {
+    let parent = element.parentElement;
+
+    while (parent) {
+      const { overflowY } = getComputedStyle(parent);
+
+      if (/(auto|scroll|overlay)/.test(overflowY)) {
+        return parent;
+      }
+
+      parent = parent.parentElement;
+    }
+
+    return null;
+  }
+
   /** This auxiliary function is meant to calculate both the open direction when it is set as auto
    * as well as the ideal height, both for the dropdown list. It will prioritize opening down
    * whenever possible. Only triggers a re-render if the State variables direction and height have
@@ -633,8 +657,17 @@ export class TdsDropdown {
 
     const rect = this.host.getBoundingClientRect();
 
-    const spaceAbove = rect.top - 32;
-    const spaceBelow = window.innerHeight - rect.bottom - 32;
+    const scrollParent = this.getScrollParent(this.host);
+
+    const containerRect = scrollParent
+      ? scrollParent.getBoundingClientRect()
+      : {
+          top: 0,
+          bottom: window.innerHeight,
+        };
+
+    const spaceAbove = rect.top - containerRect.top - 32;
+    const spaceBelow = containerRect.bottom - rect.bottom - 32;
 
     const defaultHeight = this.size === 'sm' || this.size === 'xs' ? 260 : 312;
 
