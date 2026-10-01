@@ -159,8 +159,8 @@ importers:
         specifier: ^22.1.8
         version: 22.2.0(@angular/common@22.2.0(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(@angular/platform-browser@22.2.0(@angular/common@22.2.0(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@scania/tegel':
-        specifier: workspace:*
-        version: link:../core
+        specifier: file:../../core-tarball/scania-tegel-1.64.1.tgz
+        version: file:core-tarball/scania-tegel-1.64.1.tgz
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -299,8 +299,8 @@ importers:
         specifier: ^1.0.8
         version: 1.0.8(@types/react@19.3.0)
       '@scania/tegel':
-        specifier: workspace:*
-        version: link:../core
+        specifier: file:../../core-tarball/scania-tegel-1.64.1.tgz
+        version: file:core-tarball/scania-tegel-1.64.1.tgz
       '@stencil/react-output-target':
         specifier: 1.6.2
         version: 1.6.2(@stencil/core@4.45.1)(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -3695,6 +3695,15 @@ packages:
       }
     cpu: [x64]
     os: [win32]
+
+  '@scania/tegel@file:core-tarball/scania-tegel-1.64.1.tgz':
+    resolution:
+      {
+        integrity: sha512-WXlMdjQGCrqSmkl+/AVckZz07EgKq9ByFYbFJ0vAPIvz8T0wCWfPl4mkx0DAt8oOJ//aT/N5l4KSywznyub39Q==,
+        tarball: file:core-tarball/scania-tegel-1.64.1.tgz,
+      }
+    version: 1.64.1
+    hasBin: true
 
   '@schematics/angular@22.2.0':
     resolution:
@@ -11691,6 +11700,11 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.63.1':
     optional: true
+
+  '@scania/tegel@file:core-tarball/scania-tegel-1.64.1.tgz':
+    dependencies:
+      '@popperjs/core': 2.11.8
+      '@stencil/core': 4.45.1
 
   '@schematics/angular@22.2.0(chokidar@5.0.0)':
     dependencies:
