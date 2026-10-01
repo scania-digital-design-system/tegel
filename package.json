@@ -34,7 +34,7 @@
     "export:manifest": "node ./scripts/create-exportable-manifest.mjs",
     "build:core:docker:playwright": "docker build --file playwright.Dockerfile --target core --tag tegel-playwright:core .",
     "build:tegel-lite:docker:playwright": "docker build --file playwright.Dockerfile --target tegel-lite --tag tegel-playwright:tegel-lite .",
-    "run:core:docker:playwright": "docker run --env TEST_TARGET=core --mount type=bind,source=$(pwd)/packages/core/src/components,target=/app/packages/core/src/components --init --ipc=host --rm tegel-playwright:core",
+    "run:core:docker:playwright": "docker run --env TEST_TARGET=core --mount type=bind,source=$(pwd)/packages/core/src,target=/app/packages/core/src --init --ipc=host --rm tegel-playwright:core",
     "run:tegel-lite:docker:playwright": "docker run --env TEST_TARGET=tegel-lite --mount type=bind,source=$(pwd)/packages/tegel-lite/tests,target=/app/packages/tegel-lite/tests --init --ipc=host --rm tegel-playwright:tegel-lite",
     "filter:core": "pnpm --filter @scania/tegel",
     "filter:angular-17": "pnpm --filter angular-17",
