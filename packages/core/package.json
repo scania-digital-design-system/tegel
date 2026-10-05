@@ -431,7 +431,7 @@
     "glob": "catalog:",
     "highlight.js": "11.12.0",
     "markdown-to-jsx": "^9.10.3",
-    "prettier": "3.9.9",
+    "prettier": "3.9.8",
     "sass": "catalog:",
     "serve": "^14.2.4",
     "storybook": "10.6.1",
