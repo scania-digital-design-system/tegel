@@ -106,6 +106,15 @@ export class TdsDropdown {
   /** Enables Select All/Clear All actions in the Dropdown list. */
   @Prop({ reflect: true }) showSelectionActions: boolean = false;
 
+  /** Select All text to allow for language support. Defaults to english. */
+  @Prop({ reflect: true }) selectAllText: string = 'Select all';
+
+  /** Select Filtered text to allow for language support. Defaults to english. */
+  @Prop({ reflect: true }) selectFilteredText: string = 'Select filtered';
+
+  /** Clear All text to allow for language support. Defaults to english. */
+  @Prop({ reflect: true }) clearAllText: string = 'Clear all';
+
   @State() open: boolean = false;
 
   @State() internalValue: string = '';
@@ -1286,7 +1295,9 @@ export class TdsDropdown {
                     : this.selectedOptions.length === this.getNumberOfAvailableOptions()
                 }
               >
-                {this.filter && this.filterQuery.length > 0 ? 'Select filtered' : 'Select all'}
+                {this.filter && this.filterQuery.length > 0
+                  ? this.selectFilteredText
+                  : this.selectAllText}
               </button>
               <button
                 class="clear"
@@ -1295,7 +1306,7 @@ export class TdsDropdown {
                 }}
                 disabled={this.selectedOptions.length === 0}
               >
-                Clear all
+                {this.clearAllText}
               </button>
             </div>
           )}

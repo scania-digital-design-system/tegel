@@ -147,6 +147,40 @@ export default {
       table: {
         defaultValue: { summary: 'false' },
       },
+      if: { arg: 'multiselect', eq: true },
+    },
+    selectAllText: {
+      name: 'Select all text',
+      type: 'string',
+      description:
+        'Text that appears on the left side of the actions in the dropdown list, meant to select all options',
+      table: {
+        defaultValue: { summary: 'Select all' },
+      },
+      control: 'text',
+      if: { arg: 'showSelectionActions', eq: true },
+    },
+    clearAllText: {
+      name: 'Clear all text',
+      type: 'string',
+      description:
+        'Text that appears on the right side of the actions in the dropdown list, meant to clear the selection of the options',
+      table: {
+        defaultValue: { summary: 'Clear all' },
+      },
+      control: 'text',
+      if: { arg: 'showSelectionActions', eq: true },
+    },
+    selectFilteredText: {
+      name: 'Select filtered text',
+      type: 'string',
+      description:
+        'Text that appears on the left side of the actions in the dropdown list, meant to select the filtered options',
+      table: {
+        defaultValue: { summary: 'Select filtered' },
+      },
+      control: 'text',
+      if: { arg: 'showSelectionActions', eq: true },
     },
     openDirection: {
       name: 'Open direction',
@@ -211,6 +245,9 @@ export default {
     placeholder: 'Placeholder',
     disabled: false,
     showSelectionActions: false,
+    selectAllText: 'Select all',
+    selectFilteredText: 'Select filtered',
+    clearAllText: 'Clear all',
     openDirection: 'Auto',
     defaultOption: 'No default',
     animation: 'slide',
@@ -256,6 +293,9 @@ const Template = ({
   modeVariant,
   disabled,
   showSelectionActions,
+  selectAllText,
+  selectFilteredText,
+  clearAllText,
   defaultOption,
   multiDefaultOption,
   noResultText,
@@ -308,6 +348,9 @@ const Template = ({
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
           ${showSelectionActions ? 'show-selection-actions' : ''}
+          select-all-text="${selectAllText}"
+          select-filtered-text="${selectFilteredText}"
+          clear-all-text="${clearAllText}"
           ${animation !== 'None' ? `animation="${animation}"` : ''}
           open-direction="${openDirection.toLowerCase()}"
           tds-aria-label="${tdsAriaLabel}"
