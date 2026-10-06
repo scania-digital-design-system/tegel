@@ -62,9 +62,10 @@ Apply these classes to the `.tl-datetime` element.
 
 Apply these classes to the `.tl-datetime` element.
 
-| Modifier              | Description                    |
-| --------------------- | ------------------------------ |
-| `.tl-datetime--error` | Error state with error styling |
+| Modifier                | Description                        |
+| ----------------------- | ---------------------------------- |
+| `.tl-datetime--error`.  | Error state with error styling     |
+| `.tl-datetime--success` | Success state with success styling |
 
 **Note:** Use the native `disabled` attribute on the `<input>` element for disabled state.
 
@@ -78,3 +79,12 @@ Apply these classes to the `.tl-datetime` element.
 | `.tl-datetime--no-min-width`  | Removes minimum width constraint (208px) |
 
 **Note:** Label is positioned outside the input wrapper by default.
+
+
+### DateTime Input Style Modifiers
+
+Apply these classes to the `.tl-datetime__input` element.
+
+| Modifier                           | Description                                          |
+| ---------------------------------- | ---------------------------------------------------- |
+| `.tl-datetime__input-placeholder`  | Changes the input text style to one of a placeholder |

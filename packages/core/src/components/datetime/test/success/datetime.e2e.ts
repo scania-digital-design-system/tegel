@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/datetime/test/success/index.html';
 const componentName = 'tds-datetime';
 const testDescription = 'tds-datetime-success';
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
