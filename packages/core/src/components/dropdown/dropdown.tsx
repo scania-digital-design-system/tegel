@@ -103,6 +103,9 @@ export class TdsDropdown {
   /** Defines aria-label attribute for input */
   @Prop({ reflect: true }) tdsAriaLabel?: string;
 
+  /** Enables Select All/Clear All actions in the Dropdown list. */
+  @Prop({ reflect: true }) showSelectionActions: boolean = false;
+
   @State() open: boolean = false;
 
   @State() internalValue: string = '';
@@ -1266,7 +1269,7 @@ export class TdsDropdown {
           {this.filterResult === 0 && this.noResultText !== '' && (
             <div class={`no-result ${this.size}`}>{this.noResultText}</div>
           )}
-          {this.multiselect && (
+          {this.multiselect && this.showSelectionActions && (
             <div class="dropdown-list-actions">
               <button
                 class="select"
@@ -1288,7 +1291,6 @@ export class TdsDropdown {
               <button
                 class="clear"
                 onClick={() => {
-                  console.log('clear');
                   this.handleClearAll();
                 }}
                 disabled={this.selectedOptions.length === 0}

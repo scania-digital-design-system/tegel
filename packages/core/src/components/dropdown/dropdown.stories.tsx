@@ -138,6 +138,16 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
+    showSelectionActions: {
+      name: 'Show selection actions',
+      description: 'Enables the Select All/Clear All actions in the Dropdown list',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
     openDirection: {
       name: 'Open direction',
       description: 'The direction the Dropdown will open.',
@@ -200,6 +210,7 @@ export default {
     helperText: 'Helper text',
     placeholder: 'Placeholder',
     disabled: false,
+    showSelectionActions: false,
     openDirection: 'Auto',
     defaultOption: 'No default',
     animation: 'slide',
@@ -244,6 +255,7 @@ const Template = ({
   openDirection,
   modeVariant,
   disabled,
+  showSelectionActions,
   defaultOption,
   multiDefaultOption,
   noResultText,
@@ -295,6 +307,7 @@ const Template = ({
           ${normalizeText ? '' : `normalize-text="false"`}
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
+          ${showSelectionActions ? 'show-selection-actions' : ''}
           ${animation !== 'None' ? `animation="${animation}"` : ''}
           open-direction="${openDirection.toLowerCase()}"
           tds-aria-label="${tdsAriaLabel}"
