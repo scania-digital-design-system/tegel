@@ -340,7 +340,7 @@ jobs:
       - name: Angular-17 - Publish (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
-        run: pnpm publish --tag "${{ github.event.inputs.tags || env.TAG }}"" --no-git-checks --dry-run
+        run: pnpm publish --tag "${{ github.event.inputs.tags || env.TAG }}" --no-git-checks --dry-run
 
       - name: Angular-17 - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
