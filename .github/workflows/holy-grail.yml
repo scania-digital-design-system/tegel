@@ -208,7 +208,7 @@ jobs:
       - name: Core - Publish (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
+        run: pnpm publish --tag "${{ github.event.inputs.tags || env.TAG }}" --no-git-checks --dry-run
 
       - name: Core - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
@@ -340,7 +340,7 @@ jobs:
       - name: Angular-17 - Publish (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}/dist/components
-        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
+        run: pnpm publish --tag "${{ github.event.inputs.tags || env.TAG }}" --no-git-checks --dry-run
 
       - name: Angular-17 - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
@@ -401,7 +401,7 @@ jobs:
       - name: React - Publish (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/react
-        run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks --dry-run
+        run: pnpm publish --tag "${{ github.event.inputs.tags || env.TAG }}" --no-git-checks --dry-run
 
       - name: React - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
