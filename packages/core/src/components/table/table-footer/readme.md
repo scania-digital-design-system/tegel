@@ -35,6 +35,7 @@
 
 - [tds-dropdown](../../dropdown)
 - [tds-dropdown-option](../../dropdown/dropdown-option)
+- [tds-button](../../button)
 - [tds-icon](../../icon)
 
 ### Graph
@@ -42,6 +43,7 @@
 graph TD;
   tds-table-footer --> tds-dropdown
   tds-table-footer --> tds-dropdown-option
+  tds-table-footer --> tds-button
   tds-table-footer --> tds-icon
   tds-dropdown --> tds-icon
   tds-dropdown-option --> tds-checkbox

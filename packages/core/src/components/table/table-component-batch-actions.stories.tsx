@@ -106,7 +106,7 @@ export default {
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
       `<div slot="start">
-         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide">
+         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide" style="width: 150px">
            <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
            <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
            <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
@@ -162,7 +162,7 @@ const BatchActionTemplate = ({
               } cell-key='country' cell-value='Country'></tds-header-cell>
               <tds-header-cell ${
                 column4Width ? `style="width: ${column4Width};"` : ''
-              } cell-key='mileage' cell-value='Mileage' text-align='right'></tds-header-cell>
+              } cell-key='mileage' cell-value='Mileage'></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
           <tds-table-body-row>

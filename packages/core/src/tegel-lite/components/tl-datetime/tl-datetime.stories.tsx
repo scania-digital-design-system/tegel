@@ -145,15 +145,27 @@ const Template = ({
     ${labelOutside}
     <div class="tl-datetime__wrapper">
       <input
-        class="tl-datetime__input"
+        class="tl-datetime__input tl-datetime__input-placeholder"
         type="${typeLookup[type]}"
         ${disabledAttr}
+        onchange="onDatetimeChange(event)"
       />
       ${labelInside}
       <span class="tl-icon tl-icon--${iconName} tl-icon--20 tl-datetime__icon" aria-hidden="true"></span>
     </div>
     ${helperHtml}
   </div>
+  <script>
+    function onDatetimeChange(event) {
+      const datetimeInput = event.target;
+      const value = datetimeInput.value;
+      if(value) {
+        datetimeInput.classList.remove('tl-datetime__input-placeholder');
+      } else {
+        datetimeInput.classList.add('tl-datetime__input-placeholder');
+      }
+    }
+  </script>
   `);
 };
 

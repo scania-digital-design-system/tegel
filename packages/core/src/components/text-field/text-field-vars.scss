@@ -15,7 +15,7 @@ tds-text-field {
   --tds-text-field-label-disabled: var(--color-text-disabled);
   --tds-text-field-ps-color-disabled: var(--color-text-disabled);
   --tds-text-field-helper-disabled: var(--color-text-disabled);
-  --tds-text-field-opacity-disabled: var(--component--input-opacity-disabled);
+  --tds-text-field-opacity-disabled: calc(var(--component--input-opacity-disabled) / 100);
 
   // Label
   --tds-text-field-label-color: var(--component--input-text-label-default);

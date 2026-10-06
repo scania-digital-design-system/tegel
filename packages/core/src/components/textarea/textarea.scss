@@ -1,4 +1,5 @@
 @use '../../mixins/focus-state' as *;
+@use '../../mixins/input-border' as *;
 @use '../../../../../typography/mixins/type-styles' as *;
 
 @mixin textfield-base {
@@ -85,19 +86,15 @@
   @include detail-02;
 
   letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  padding: var(--unit-20) var(--unit-16);
   display: block;
   resize: vertical;
 
   // Brand-aware border: Scania emits bottom-only widths (0,0,1,0), Traton
   // emits all-sides widths (1,1,1,1). Tokens are unitless, so multiply by 1px.
   // The single border-color applies to whichever sides have non-zero width.
-  border-style: solid;
-  border-color: var(--tds-textarea-border-bottom);
-  border-width: calc(var(--component--input-border-width-top) * 1px)
-    calc(var(--component--input-border-width-right) * 1px)
-    calc(var(--component--input-border-width-bottom) * 1px)
-    calc(var(--component--input-border-width-left) * 1px);
+  @include input-border-default;
+
   transition: border-color 200ms ease;
 
   // Display none only works in Chrome
@@ -106,7 +103,7 @@
   }
 
   &:hover {
-    border-color: var(--tds-textarea-border-bottom-hover);
+    @include input-border-hover;
 
     &::placeholder {
       color: var(--tds-textarea-placeholder-hover);
@@ -143,7 +140,7 @@
   letter-spacing: var(--tds-detail-05-ls);
   display: block;
   z-index: 1;
-  margin-bottom: var(--tds-spacing-element-8);
+  margin-bottom: var(--unit-8);
   color: var(--tds-textarea-label-color);
 }
 
@@ -159,8 +156,8 @@
 
       color: var(--tds-textarea-label-inside-color);
       position: absolute;
-      top: var(--tds-spacing-element-20);
-      left: var(--tds-spacing-element-16);
+      top: var(--unit-20);
+      left: var(--unit-16);
     }
 
     .textarea-input {
@@ -174,7 +171,7 @@
         @include detail-07;
 
         letter-spacing: var(--tds-detail-07-ls);
-        top: var(--tds-spacing-element-8);
+        top: var(--unit-8);
       }
     }
   }
@@ -185,7 +182,7 @@
         @include detail-07;
 
         letter-spacing: var(--tds-detail-07-ls);
-        top: var(--tds-spacing-element-8);
+        top: var(--unit-8);
       }
     }
   }
@@ -210,7 +207,7 @@
 
   flex-basis: 100%;
   text-align: right;
-  padding-top: var(--tds-spacing-element-4);
+  padding-top: var(--unit-4);
 }
 
 .textarea-helper {
@@ -220,7 +217,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  padding-top: var(--tds-spacing-element-4);
+  padding-top: var(--unit-4);
   color: var(--tds-textarea-helper);
   flex-grow: 2;
   flex-basis: auto;
@@ -234,13 +231,13 @@
 
 .textarea-success {
   .textarea-input {
-    border-color: var(--tds-textarea-border-bottom-success);
+    @include input-border-success;
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-color: var(--tds-textarea-border-bottom-error);
+    @include input-border-error;
   }
 
   .textarea-helper {

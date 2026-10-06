@@ -33,12 +33,19 @@
 
 ### Depends on
 
+- [tds-text-field](../../text-field)
 - [tds-icon](../../icon)
+- [tds-button](../../button)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-table-toolbar --> tds-text-field
   tds-table-toolbar --> tds-icon
+  tds-table-toolbar --> tds-button
+  tds-text-field --> tds-tooltip
+  tds-text-field --> tds-icon
+  tds-tooltip --> tds-popover-core
   style tds-table-toolbar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

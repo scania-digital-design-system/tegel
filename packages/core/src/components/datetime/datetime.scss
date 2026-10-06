@@ -1,27 +1,24 @@
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/focus-state' as *;
+@use '../../mixins/input-border' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 @mixin datetime-base {
   @include tds-box-sizing;
+  @include type-system-body-01;
 
-  border-radius: 4px 4px 0 0;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  border: none;
-  outline: none;
   height: 100%;
+  outline: none;
+  border: none;
   color: var(--tds-datetime-color);
   background-color: var(--tds-datetime-background);
+  @include input-border-default;
 
   &:disabled {
-    background-color: var(--tds-datetime-background-disabled);
-    color: var(--tds-datetime-color-disabled);
     cursor: not-allowed;
-
-    ~ .tds-datetime-label-inside {
-      color: var(--tds-datetime-label-disabled);
-    }
   }
 }
 
@@ -30,11 +27,12 @@
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
   // only apply styling if browser supports
-  @supports selector(input::-webkit-datetime-edit) {    
+  @supports selector(input::-webkit-datetime-edit) {
     // placeholder text
     &:not(:focus)::-webkit-datetime-edit {
       color: var(--tds-datetime-placeholder-color);
     }
+
     // the success and error states are set in their dedicated classes
   }
 
@@ -69,13 +67,15 @@
   }
 }
 
-//Sizes
+// Sizes
 .tds-datetime-input {
   @include datetime-base;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  padding: var(--unit-20) var(--unit-16);
+
+  &:hover:not(:disabled) {
+    @include input-border-hover;
+  }
 
   &.iphone {
     padding: 0;
@@ -84,31 +84,20 @@
 
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
-  @include datetime-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  padding: var(--tds-spacing-element-16);
+  padding: var(--unit-16);
 
   &.iphone {
     padding: 0;
   }
 }
 
-//Container for input field and prefix/suffix
+// Container for input field and prefix/suffix
 .tds-datetime-container {
-  border-radius: 4px 4px 0 0;
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--tds-datetime-background);
-  border-bottom: 1px solid var(--tds-datetime-border-bottom);
-  transition: border-bottom-color 200ms ease;
-
-  &:hover {
-    border-bottom-color: var(--tds-datetime-border-bottom-hover);
-  }
+  transition: border-color 200ms ease;
 
   .tds-form-datetime-md & {
     height: 48px;
@@ -136,19 +125,19 @@
 }
 
 .tds-datetime-label {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include label-01;
+
   display: block;
-  margin-bottom: var(--tds-spacing-element-8);
+  margin-bottom: var(--unit-4);
   color: var(--tds-datetime-label-color);
 }
 
 .tds-datetime-label-inside {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include label-02;
+
   position: absolute;
   pointer-events: none;
-  color: var(--tds-datetime-label-inside-color);
+  color: var(--tds-datetime-label-color);
   left: 16px;
 }
 
@@ -156,7 +145,7 @@
   transition: 0.1s ease all;
 }
 
-//Form control
+// Form control
 .tds-form-datetime {
   display: block;
   min-width: 208px;
@@ -165,18 +154,22 @@
   &-nomin {
     min-width: auto;
   }
+
+  &-disabled {
+    opacity: var(--tds-datetime-opacity-disabled);
+
+    .tds-datetime-label {
+      cursor: not-allowed;
+    }
+  }
 }
 
-//Datetime container with label inside
-//Handling position, focus and transition for label inside
+// Datetime container with label inside
+// Handling position, focus and transition for label inside
 .tds-form-datetime.tds-datetime-container-label-inside {
   .tds-datetime-input {
-    padding-top: var(--tds-spacing-element-24);
+    padding-top: var(--unit-24);
     padding-bottom: 15px;
-
-    ~ .tds-datetime-label-inside {
-      top: 20px;
-    }
 
     &.iphone {
       padding: 0;
@@ -185,7 +178,7 @@
 
   .tds-datetime-input-md,
   .tds-datetime-input-sm {
-    padding-top: var(--tds-spacing-element-20);
+    padding-top: var(--unit-20);
     padding-bottom: 11px;
 
     ~ .tds-datetime-label-inside {
@@ -199,16 +192,15 @@
 
   .tds-datetime-input-sm ~ .tds-datetime-label-inside,
   .tds-datetime-input-md ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
+    @include label-02;
     @include label-inside-transition;
 
     top: 8px;
   }
 
-  .tds-datetime-input ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
+  .tds-datetime-input:not(.tds-datetime-input-sm, .tds-datetime-input-md)
+    ~ .tds-datetime-label-inside {
+    @include label-02;
     @include label-inside-transition;
 
     top: 12px;
@@ -220,22 +212,17 @@
   .tds-datetime-input,
   .tds-datetime-input-md,
   .tds-datetime-input-sm {
-    border-radius: 0;
-    @include tds-focus-state-inset;
-  }
-
-  .tds-datetime-container {
-    border-bottom: none;
+    @include tds-focus-state;
   }
 }
 
-//Helper text
+// Helper text
 .tds-datetime-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include label-01;
+
   display: block;
   flex-basis: 100%;
-  padding: var(--tds-spacing-element-4) 0;
+  padding: var(--unit-4) 0;
   color: var(--tds-datetime-helper);
 
   .tds-helper {
@@ -244,70 +231,35 @@
   }
 }
 
-//Disabled state
-.tds-form-datetime-disabled {
-  .tds-datetime-container {
-    border-bottom-color: transparent;
-  }
-
-  .datetime-icon {
-    tds-icon {
-      color: var(--tds-datetime-icon-disabled);
-    }
-  }
-
-  .tds-datetime-label {
-    color: var(--tds-datetime-label-disabled);
-    cursor: not-allowed;
-  }
-
-  .tds-datetime-helper {
-    color: var(--tds-datetime-helper-disabled);
-  }
-}
-
-//Success state
+// Success state
 .tds-form-datetime-success {
   .tds-datetime-input::-webkit-datetime-edit {
-    color: var(--tds-datetime-color-success);;
+    color: var(--tds-datetime-color);
   }
 
-  .tds-datetime-container {
-    border-bottom-color: var(--tds-datetime-border-bottom-success);
+  .tds-datetime-input {
+    @include input-border-success;
   }
 }
 
-//Error State
+// Error State
 .tds-form-datetime-error {
-    .tds-datetime-input::-webkit-datetime-edit {
-    color: var(--tds-datetime-helper-error);
-    }
+  .tds-datetime-input::-webkit-datetime-edit {
+    color: var(--tds-datetime-color);
+  }
 
   .tds-datetime-helper {
     color: var(--tds-datetime-helper-error);
 
     .tds-helper {
       display: flex;
-      gap: var(--tds-spacing-element-8);
+      gap: var(--unit-8);
       flex-wrap: nowrap;
     }
   }
 
-  .tds-datetime-container {
-    border-bottom-color: var(--tds-datetime-border-bottom-error);
-  }
-}
-
-.tds-datetime-textcounter {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-datetime-textcounter);
-  float: right;
-
-  & .tds-datetime-textcounter-divider {
-    // font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
-    color: var(--tds-datetime-textcounter-divider);
+  .tds-datetime-input {
+    @include input-border-error;
   }
 }
 

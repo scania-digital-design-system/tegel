@@ -19,7 +19,7 @@ const click = async (page: E2EPage, id: string) => {
   await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 };
 
-testConfigurations.withModeVariants.forEach((config) => {
+testConfigurations.withModeVariantsAndBrands.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

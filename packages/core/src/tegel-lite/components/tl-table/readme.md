@@ -62,8 +62,7 @@ The Table component displays data in a structured tabular format with support fo
 | `.tl-table__actionbar-left`          | `<div>`      | Left action bar section         |
 | `.tl-table__actionbar-right`         | `<div>`      | Right action bar section        |
 | `.tl-table__title`                   | `<div>`      | Table title                     |
-| `.tl-table__expand-control-container`| `<div>`      | Expand button container         |
-| `.tl-table__expand-input`            | `<button>`   | Expand button                   |
+| `.tl-table__expand-control`            | `<button>`   | Expand button                   |
 | `.tl-table__expand-icon`             | `<span>`     | Expand icon                     |
 | `.tl-table__expand-row`              | `<tr>`       | Expandable row                  |
 | `.tl-table__expand-row-cell`         | `<td>`       | Expandable row cell             |
@@ -74,7 +73,6 @@ The Table component displays data in a structured tabular format with support fo
 | `.tl-table__rows-per-page`           | `<div>`      | Rows per page section           |
 | `.tl-table__rows-per-page-label`     | `<p>`        | Rows per page label             |
 | `.tl-table__page-selector`           | `<div>`      | Page selector container         |
-| `.tl-table__page-selector-input`     | `<input>`    | Page selector input             |
 | `.tl-icon`                           | `<span>`     | Icon element (optional)         |
 
 > **Note:** `.tl-text-field` is implemented for filtering in the toolbar and for editable cells. Please refer to the documentation for Text Field to learn more about the component. <br />
@@ -177,8 +175,6 @@ Apply these classes to `.tl-table__body-cell` elements.
 
 | Modifier                                | Description                     |
 | --------------------------------------- | ------------------------------- |
-| `.tl-table__body-cell--checkbox`        | Checkbox column cell            |
-| `.tl-table__body-cell--expand`          | Expand column cell              |
 | `.tl-table__body-cell--column-highlight`| Column highlight state          |
 
 ### Table Expand Row Modifiers
