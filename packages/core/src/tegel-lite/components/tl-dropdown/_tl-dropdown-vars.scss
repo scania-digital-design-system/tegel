@@ -20,6 +20,7 @@
   --dropdown-option-background-selected: var(--component-dropdown-background-item-selected-default);
   --dropdown-option-opacity-disabled: calc(var(--component-dropdown-opacity-disabled) / 100);
   --dropdown-option-border: var(--component-dropdown-border-item-divider-default);
+  --dropdown-border-color: var(--component--input-text-label-default);
   --dropdown-list-background-color: var(--component-dropdown-background-secondary);
 
   &--primary {
