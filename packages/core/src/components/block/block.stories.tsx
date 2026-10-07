@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Block/Default',
   parameters: {
@@ -20,8 +18,7 @@ export default {
 };
 
 const SingleTemplate = ({ modeVariant, componentTag }) =>
-  formatHtmlPreview(
-    `
+  `
       <tds-block 
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
@@ -29,8 +26,7 @@ const SingleTemplate = ({ modeVariant, componentTag }) =>
         component-tag="${componentTag}">
         <div style="height: 150px"></div>
       </tds-block>
-    `,
-  );
+    `;
 
 export const Default = SingleTemplate.bind({});
 Default.argTypes = {

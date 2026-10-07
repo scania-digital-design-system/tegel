@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
 
 export default {
@@ -68,8 +67,7 @@ export default {
 };
 
 const Template = ({ text, size, variant, prefix }) =>
-  formatHtmlPreview(
-    `
+  `
     <style>
       /* demo-wrapper is for demonstration purposes only*/
       .demo-wrapper {
@@ -90,8 +88,7 @@ const Template = ({ text, size, variant, prefix }) =>
         }
       </tds-tag>
     </div>
-    `,
-  );
+    `;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 const validators = {
   'Always valid': (_value: string) => true,
   'Always invalid': (_value: string) => false,
@@ -264,8 +262,7 @@ const datetimeTemplate = ({
     } else return false;
   };
 
-  return formatHtmlPreview(
-    `
+  return `
     <style>
         /* Note: Demo classes used here are just for demo purposes in Storybook */
         .demo-wrapper {
@@ -316,8 +313,7 @@ const datetimeTemplate = ({
         console.log(event);
       });
     </script>
-`,
-  );
+  `;
 };
 
 export const Default = datetimeTemplate.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Pagination',
 
@@ -223,7 +221,7 @@ const PaginationTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
     <h1>⚠️ Warning ⚠️</h1>
     <p>This pagination demo is not fully functional. It shows the base elements expected for the pagination, but the consumer of Tegel is responsible for handling the pagination events.</p>
     <p>For a functional example, please refer to our 
@@ -328,6 +326,6 @@ const PaginationTemplate = ({
     });
   </script>
 
-  `);
+  `;
 
 export const Default = PaginationTemplate.bind({});

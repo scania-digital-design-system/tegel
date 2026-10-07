@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Header',
   parameters: {
@@ -27,8 +25,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
   <tds-header>
     <tds-header-title>
       Example: default
@@ -59,7 +56,6 @@ const Template = () =>
   <main class="tds-u-w-100 tds-u-p3" style="box-sizing: border-box;">
     <p>Find complete examples under the <a href="/?path=/story/patterns-navigation-basic--basic">Patterns section</a>.</p>
   </main>
-  `,
-  );
+  `;
 
 export const Default = Template.bind({});

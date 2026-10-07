@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Chip',
   parameters: {
@@ -110,7 +108,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled, tdsAri
 
   const disabledAttribute = disabled ? ' disabled' : '';
 
-  return formatHtmlPreview(`
+  return `
   ${
     inputType === 'Button'
       ? `<tds-chip type="button" size="${
@@ -356,7 +354,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled, tdsAri
   }
 
 
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

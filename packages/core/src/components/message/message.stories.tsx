@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Message',
   parameters: {
@@ -121,8 +119,7 @@ const Template = ({
   tdsAlertDialog,
   tdsAriaLabel,
 }) =>
-  formatHtmlPreview(
-    `
+  `
     <style>
       .demo-wrapper {
         max-width: 380px;
@@ -145,7 +142,6 @@ const Template = ({
       ${extendedMessage}
       </tds-message>
     </div>
-    `,
-  );
+    `;
 
 export const Default = Template.bind({});

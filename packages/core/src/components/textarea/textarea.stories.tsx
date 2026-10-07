@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Textarea',
   parameters: {
@@ -196,7 +194,7 @@ const Template = ({
     'Inside': 'inside',
     'Outside': 'outside',
   };
-  return formatHtmlPreview(`
+  return `
   <style>
   /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
@@ -253,7 +251,7 @@ const Template = ({
       textElement.value = 'Lorem ipsum odor amet, consectetuer adipiscing elit. Quis nunc facilisi ante, proin eros morbi.'
     }
   </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

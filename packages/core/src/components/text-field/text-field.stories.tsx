@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Text Field',
   parameters: {
@@ -324,8 +322,7 @@ const Template = ({
     Medium: 'md',
     Small: 'sm',
   };
-  return formatHtmlPreview(
-    `
+  return `
     <style>
     /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
@@ -401,8 +398,7 @@ const Template = ({
     }
 
   </script>
-  `,
-  );
+  `;
 };
 
 export const Default = Template.bind({});

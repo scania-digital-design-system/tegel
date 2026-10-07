@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Radio Button',
   parameters: {
@@ -57,7 +55,7 @@ export default {
 };
 
 const Template = ({ label, checkedIndex, disabledIndex }) =>
-  formatHtmlPreview(`
+  `
   <style>
   .demo-fieldset-reset {
     border: 0;
@@ -156,6 +154,6 @@ const Template = ({ label, checkedIndex, disabledIndex }) =>
     customElements.whenDefined('tds-radio-button').then(applySelection);
   })();
   </script>
-  `);
+  `;
 
 export const Default = Template.bind({});

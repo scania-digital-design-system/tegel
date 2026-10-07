@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Custom Width',
   parameters: {
@@ -131,7 +129,7 @@ const BasicTemplate = ({
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
   const getColumnStyle = (width) => (width ? `style="min-width: ${width}"` : '');
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -271,7 +269,7 @@ const BasicTemplate = ({
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = BasicTemplate.bind({});

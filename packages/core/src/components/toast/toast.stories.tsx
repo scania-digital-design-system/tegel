@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Toast',
   parameters: {
@@ -80,8 +78,7 @@ export default {
 };
 
 const Template = ({ variant, header, subheader, actions, hidden, closable }) =>
-  formatHtmlPreview(
-    `<tds-toast
+  `<tds-toast
         variant="${variant.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
@@ -96,6 +93,5 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) =>
             console.log(event)
         })
     </script>
-    `,
-  );
+    `;
 export const Default = Template.bind({});

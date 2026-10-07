@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Block/Default',
   parameters: {
@@ -36,8 +34,7 @@ export default {
 };
 
 const Template = ({ modeVariant, componentTag }) =>
-  formatHtmlPreview(
-    `
+  `
       <!-- Required stylesheets:
         "@scania/tegel-lite/global.css"
         "@scania/tegel-lite/tl-block.css"
@@ -48,7 +45,6 @@ const Template = ({ modeVariant, componentTag }) =>
           <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
         </${componentTag}>
       </div>
-    `,
-  );
+    `;
 
 export const Default = Template.bind({});

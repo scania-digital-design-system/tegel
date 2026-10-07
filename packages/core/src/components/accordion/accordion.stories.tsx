@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Accordion',
   argTypes: {
@@ -106,7 +104,7 @@ const Template = ({
   const hideLastBorderAttr = hideLastBorder ? 'hide-last-border' : '';
   const ariaLevelValueAttr = `aria-level="${ariaLevelValue}"`;
 
-  return formatHtmlPreview(`
+  return `
     <tds-accordion ${
       modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
     } ${hideLastBorderAttr}>
@@ -129,7 +127,7 @@ const Template = ({
         console.log(event)
       })
     }
-  </script>`);
+  </script>`;
 };
 
 export const Default = Template.bind({});

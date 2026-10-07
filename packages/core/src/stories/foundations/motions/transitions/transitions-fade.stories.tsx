@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Transitions/Fade',
   tags: ['!autodocs'],
@@ -16,8 +14,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
     <h2>Fade</h2>
     <p>
@@ -81,7 +78,6 @@ const Template = () =>
         animation: var(--tds-motion-fade-out);
       }
     </style>
-    `,
-  );
+    `;
 
 export const Fade = Template.bind({});

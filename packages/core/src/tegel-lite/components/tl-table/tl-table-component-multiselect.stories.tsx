@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Multiselect',
   parameters: {
@@ -151,7 +149,7 @@ const MultiselectTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
     <!-- Required stylesheets: 
     "@scania/tegel-lite/tl-global.css"
     "@scania/tegel-lite/tl-table.css"
@@ -319,6 +317,6 @@ const MultiselectTemplate = ({
     
     setupMultiselectDemo();
     </script>
-  `);
+  `;
 
 export const Default = MultiselectTemplate.bind({});

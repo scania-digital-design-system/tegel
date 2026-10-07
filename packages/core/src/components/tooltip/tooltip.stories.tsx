@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Tooltip',
   parameters: {
@@ -138,8 +136,7 @@ const ComponentTooltip = ({
   offsetDistance,
   offsetSkidding,
 }) => {
-  return formatHtmlPreview(
-    `
+  return `
     <style>
     /* demo-wrapper is for demonstration purposes only*/
      .demo-wrapper{
@@ -180,8 +177,7 @@ const ComponentTooltip = ({
       text='Hover me'>
     </tds-button>
    </div>
-  `,
-  );
+  `;
 };
 
 export const Default = ComponentTooltip.bind({});

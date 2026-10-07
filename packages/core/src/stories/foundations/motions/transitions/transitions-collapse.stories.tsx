@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Transitions/Collapse',
   tags: ['!autodocs'],
@@ -16,8 +14,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
       <h2>Collapse</h2>
       
@@ -92,7 +89,6 @@ const Template = () =>
         animation: var(--tds-motion-collapse-out);
       }
     </style>
-    `,
-  );
+    `;
 
 export const Collapse = Template.bind({});

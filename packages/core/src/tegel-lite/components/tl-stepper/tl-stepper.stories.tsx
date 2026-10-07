@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Stepper',
   parameters: {
@@ -120,7 +118,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
     })
     .join('');
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/scania-variables.css" (or traton-variables.css)
@@ -132,7 +130,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
         ${items}
       </ol>
     </div>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

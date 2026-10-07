@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Utilities/Text Color',
   parameters: {
@@ -86,8 +84,7 @@ const Template = ({ color, greyScale, blueScale, redScale }) => {
       scale = blueScale;
       break;
   }
-  return formatHtmlPreview(
-    `
+  return `
     <!-- Style tag for demo purposes -->
   <style>
     .demo-wrapper h1 {
@@ -101,8 +98,7 @@ const Template = ({ color, greyScale, blueScale, redScale }) => {
     <h1 class="tds-text-${color}-${scale}">A text ${color} heading</h1>
     <p class="tds-text-${color}-${scale}">A text ${color} paragraph</p>
   </div>
-  `,
-  );
+  `;
 };
 
 export const Default = Template.bind({});

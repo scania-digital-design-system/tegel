@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Popover Menu',
   parameters: {
@@ -109,8 +107,7 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
 
   const modeVariantValue = modeVariant === 'Inherit from parent' ? '' : modeVariant.toLowerCase();
 
-  return formatHtmlPreview(
-    `
+  return `
     <style>
       /* demo-wrapper styles is for demonstration purposes only */
       .demo-wrapper {
@@ -135,8 +132,8 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
         <tds-divider></tds-divider>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
-      fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
-    } </a>
+            fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
+          } </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
@@ -180,8 +177,7 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
         }
       })();
     </script>
-    `,
-  );
+    `;
 };
 
 export const Default = Template.bind({});

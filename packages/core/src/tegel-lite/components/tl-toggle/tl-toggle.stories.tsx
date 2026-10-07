@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Toggle',
   parameters: {
@@ -62,7 +60,7 @@ export default {
 };
 
 const Template = ({ size, headline, label, checked, disabled }) =>
-  formatHtmlPreview(`
+  `
     <!-- Required stylesheet 
       "@scania/tegel-lite/global.css";
       "@scania/tegel-lite/tl-toggle.css";
@@ -83,5 +81,5 @@ const Template = ({ size, headline, label, checked, disabled }) =>
         />
         <label class="tl-toggle__label" for="tl-toggle">${label}</label>
     </div>
-  `);
+  `;
 export const Default = Template.bind({});

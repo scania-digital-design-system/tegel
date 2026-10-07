@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Popover Canvas',
   parameters: {
@@ -81,8 +79,7 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation, modeVariant }) => {
 
   const modeVariantValue = modeVariant === 'Inherit from parent' ? '' : modeVariant.toLowerCase();
 
-  return formatHtmlPreview(
-    `
+  return `
       <style>
         /* demo-wrapper and demo-styles is for demonstration purposes only */
         .demo-wrapper {
@@ -139,7 +136,6 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation, modeVariant }) => {
           }
         })();
       </script>
-    `,
-  );
+    `;
 };
 export const Default = ComponentPopoverCanvas.bind({});

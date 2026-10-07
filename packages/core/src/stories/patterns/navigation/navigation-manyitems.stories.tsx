@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Patterns/Navigation/Many Navigation Items',
   parameters: {
@@ -40,8 +38,7 @@ export default {
 };
 
 const Template = ({ dummyHtml }) =>
-  formatHtmlPreview(
-    `
+  `
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
       window.demoSideMenu = document.querySelector('#demo-side-menu');
@@ -283,7 +280,6 @@ const Template = ({ dummyHtml }) =>
       </main>
     </div>
   </div>
-  `,
-  );
+  `;
 
 export const ManyNavigationItems = Template.bind({});

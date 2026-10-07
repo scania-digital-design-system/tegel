@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
 
 export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal' }) => ({
@@ -205,7 +204,7 @@ export const SliderTemplate = ({
   readonly,
   disabled,
 }) =>
-  formatHtmlPreview(`
+  `
    <!-- Style code below is just for demo purposes -->
       <style>
         .demo-wrapper {
@@ -253,4 +252,4 @@ export const SliderTemplate = ({
         slider.removeEventListener('tdsInput', handleTdsInput);
         slider.addEventListener('tdsInput', handleTdsInput);
       </script>
-    `);
+    `;

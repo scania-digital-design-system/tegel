@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Breadcrumbs',
   parameters: {
@@ -34,8 +32,7 @@ export default {
 };
 
 const Template = ({ tdsAriaLabel }) =>
-  formatHtmlPreview(
-    `   
+  `   
       <tds-breadcrumbs tds-aria-label="${tdsAriaLabel}">
         <tds-breadcrumb>
           <a href="#">Page 1</a>
@@ -47,7 +44,6 @@ const Template = ({ tdsAriaLabel }) =>
           <a href="#">Page 3</a>
         </tds-breadcrumb>
       </tds-breadcrumbs>
-      `,
-  );
+      `;
 
 export const Default = Template.bind({});

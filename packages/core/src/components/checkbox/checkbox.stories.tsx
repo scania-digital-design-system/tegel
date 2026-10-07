@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Checkbox',
   parameters: {
@@ -73,7 +71,7 @@ export default {
 };
 
 const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
-  formatHtmlPreview(`
+  `
     <tds-checkbox
       ${checked ? 'checked' : ''}
       ${disabled ? 'disabled' : ''}
@@ -98,6 +96,6 @@ const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
         console.log(event);
       });
     </script>
-  `);
+  `;
 
 export const Default = Template.bind({});

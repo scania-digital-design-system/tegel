@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 // import readme from './readme.md';
 
@@ -106,7 +105,7 @@ const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
       : '';
   const buttonText = !onlyIcon || isXs ? 'Button' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-button.css";
@@ -119,7 +118,7 @@ const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
         ${buttonText}
         ${iconElement}
       </button>
-    `);
+    `;
 };
 
 export const Default = Template.bind({});

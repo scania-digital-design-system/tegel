@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Popover Canvas',
   parameters: {
@@ -48,7 +46,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
     animationMap[animation] === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-global.css"
       "@scania/tegel-lite/tl-popover-canvas.css"
@@ -139,7 +137,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
         popover.addEventListener('click', (e) => e.stopPropagation());
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

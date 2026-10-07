@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Deprecated/Grid (Deprecated)',
   tags: ['!autodocs'],
@@ -29,7 +27,7 @@ export default {
 };
 
 // Styling for grid templates
-const style = formatHtmlPreview(`
+const style = `
   <style>
     /* Demo code for presentation purposes */
     .tds-container,
@@ -59,10 +57,10 @@ const style = formatHtmlPreview(`
       margin-top: 16px;
     }
 
-  </style>`);
+  </style>`;
 
 const GridTemplate = ({ fluidContainer, padding }) =>
-  formatHtmlPreview(`
+  `
   ${style}
   <h4>Grid (Deprecated)</h4>
   <p>This is a deprecated grid. Please use the new grid from the <a href="/foundations/grid">Foundations/Grid</a> page.</p>
@@ -143,13 +141,13 @@ const GridTemplate = ({ fluidContainer, padding }) =>
       </div>
     </div>
   </div>
-  `);
+  `;
 
 // Controls for the grid
 export const Default = GridTemplate.bind({});
 
 const GridAutoColTemplate = ({ fluidContainer, padding }) =>
-  formatHtmlPreview(`
+  `
   ${style}
 
   <h4>Grid Auto columns (Deprecated)</h4>
@@ -233,12 +231,12 @@ const GridAutoColTemplate = ({ fluidContainer, padding }) =>
       </div>
     </div>
   </div>
-  `);
+  `;
 
 export const Auto = GridAutoColTemplate.bind({});
 
 const GridPushTemplate = ({ fluidContainer, collapse, padding }) =>
-  formatHtmlPreview(`
+  `
   ${style}
 
   <h4>Grid Push (Deprecated)</h4>
@@ -249,8 +247,8 @@ const GridPushTemplate = ({ fluidContainer, collapse, padding }) =>
     <div class="tds-sidebar ${collapse ? 'tds-sidebar-collapse' : ''}">
     </div>
     <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
-    padding === false ? 'tds-no-padding' : ''
-  }">
+      padding === false ? 'tds-no-padding' : ''
+    }">
       <div class="tds-row">
         <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
@@ -291,7 +289,7 @@ const GridPushTemplate = ({ fluidContainer, collapse, padding }) =>
       </div>
     </div>
   </div>
-  `);
+  `;
 
 export const Push = GridPushTemplate.bind({});
 
@@ -300,7 +298,7 @@ Push.args = {
 };
 
 const GridOffsetTemplate = ({ fluidContainer, padding }) =>
-  formatHtmlPreview(`
+  `
   ${style}
 
   <h4>Grid Offset (Deprecated)</h4>
@@ -308,8 +306,8 @@ const GridOffsetTemplate = ({ fluidContainer, padding }) =>
 
 
     <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
-    padding === false ? 'tds-no-padding' : ''
-  }">
+      padding === false ? 'tds-no-padding' : ''
+    }">
       <div class="tds-row">
         <div class="tds-col-max-1 tds-col-max-2-offset tds-col-xxlg-1 tds-col-xxlg-2-offset tds-col-xlg-1 tds-col-xlg-2-offset tds-col-lg-1 tds-col-lg-2-offset tds-col-md-1 tds-col-md-2-offset tds-col-sm-1 tds-col-sm-2-offset tds-col-xs-1 tds-col-xs-2-offset">
           <div class="inside-demo">Offset</div>
@@ -322,12 +320,12 @@ const GridOffsetTemplate = ({ fluidContainer, padding }) =>
         </div>
       </div>
     </div>
-  `);
+  `;
 
 export const Offset = GridOffsetTemplate.bind({});
 
 const GridNoPaddingTemplate = ({ fluidContainer, padding }) =>
-  formatHtmlPreview(`
+  `
     ${style}
 
     <h4>Grid no-padding (Deprecated)</h4>
@@ -356,7 +354,7 @@ const GridNoPaddingTemplate = ({ fluidContainer, padding }) =>
         </div>
       </div>
     </div>
-  `);
+  `;
 
 export const NoPadding = GridNoPaddingTemplate.bind({});
 
@@ -365,7 +363,7 @@ NoPadding.args = {
 };
 
 const GridFluidTemplate = ({ fluidContainer = true, padding }) =>
-  formatHtmlPreview(`
+  `
     ${style}
 
     <h4>Grid fluid (Deprecated)</h4>
@@ -380,20 +378,20 @@ const GridFluidTemplate = ({ fluidContainer = true, padding }) =>
       </div>
     </div>
     <div class="${fluidContainer ? 'tds-container-fluid' : 'tds-container'} ${
-    padding === false ? 'tds-no-padding' : ''
-  } container-demo">
+      padding === false ? 'tds-no-padding' : ''
+    } container-demo">
       <div class="tds-row">
         <div class="tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
           <div class="inside-demo">container</div>
         </div>
       </div>
     </div>
-  `);
+  `;
 
 export const Fluid = GridFluidTemplate.bind({});
 
 const GridNestedTemplate = ({ fluidContainer, padding }) =>
-  formatHtmlPreview(`
+  `
  ${style}
 
  <h4>Nested (Deprecated)</h4>
@@ -430,12 +428,12 @@ const GridNestedTemplate = ({ fluidContainer, padding }) =>
      </div>
    </div>
   </div>
- `);
+ `;
 
 export const Nested = GridNestedTemplate.bind({});
 
 const GridHideShow = ({ fluidContainer }) =>
-  formatHtmlPreview(`
+  `
   ${style}
 
   <h4>Hide/show element (Deprecated)</h4>
@@ -454,6 +452,6 @@ const GridHideShow = ({ fluidContainer }) =>
       </div>
     </div>
   </div>
-  `);
+  `;
 
 export const ShowHide = GridHideShow.bind({});

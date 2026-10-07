@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Badge',
   parameters: {
@@ -82,8 +80,7 @@ export default {
 };
 
 const Template = ({ value, size, hidden, demoCode, tdsAriaLive }) =>
-  formatHtmlPreview(
-    `
+  `
     ${
       demoCode
         ? `<style>
@@ -120,7 +117,6 @@ const Template = ({ value, size, hidden, demoCode, tdsAriaLive }) =>
       </tds-badge>
     </div>
 
-    `,
-  );
+    `;
 
 export const Default = Template.bind({});

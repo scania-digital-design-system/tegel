@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Editable Cells',
   parameters: {
@@ -216,7 +214,7 @@ const EditableCellsTemplate = ({
     `;
   };
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -302,7 +300,7 @@ const EditableCellsTemplate = ({
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = EditableCellsTemplate.bind({});

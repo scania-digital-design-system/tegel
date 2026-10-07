@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Expandable Rows',
 
@@ -157,7 +155,7 @@ const ExpandableRowTemplate = ({
   overflow,
   autoCollapse,
 }) =>
-  formatHtmlPreview(`
+  `
   <tds-table
     expandable-rows
     vertical-dividers="${verticalDivider}"
@@ -232,6 +230,6 @@ const ExpandableRowTemplate = ({
         }
       })();
     </script>
-`);
+`;
 
 export const Default = ExpandableRowTemplate.bind({});

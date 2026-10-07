@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Sorting',
   parameters: {
@@ -202,7 +200,7 @@ const SortingTemplate = ({
     `;
   };
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -333,7 +331,7 @@ const SortingTemplate = ({
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = SortingTemplate.bind({});

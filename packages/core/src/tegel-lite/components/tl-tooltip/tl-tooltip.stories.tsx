@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 function initTooltipDemo(position: string, offset: number, skidding: number, isClick: boolean) {
   const triggerEl = document.querySelector('.tl-tooltip-trigger');
   const tooltip = document.getElementById('tooltip-id');
@@ -201,7 +199,7 @@ const Template = ({ position, label, trigger, triggerElement, offsetSkidding, of
   const resolvedPosition = positionLookup[position as keyof typeof positionLookup];
   const isClick = trigger.toLowerCase() === 'click';
 
-  const html = formatHtmlPreview(`
+  const html = `
       <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-tooltip.css"
@@ -226,7 +224,7 @@ const Template = ({ position, label, trigger, triggerElement, offsetSkidding, of
       >
         ${label}
       </div>
-  `);
+  `;
 
   requestAnimationFrame(() => {
     initTooltipDemo(resolvedPosition, offsetDistance, offsetSkidding, isClick);

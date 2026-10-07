@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Filtering',
 
@@ -116,7 +114,7 @@ const FilteringTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
    <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
@@ -201,6 +199,6 @@ const FilteringTemplate = ({
     document.getElementById('event-name-textarea').value = e.type;
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
   });
-</script>`);
+</script>`;
 
 export const Default = FilteringTemplate.bind({});

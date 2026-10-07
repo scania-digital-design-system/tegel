@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../formatHtmlPreview';
 import { scaniaIconNames } from '../../types/ScaniaIcons';
 import { tratonIconNames } from '../../types/TratonIcons';
 
@@ -38,8 +37,7 @@ const Template = () => {
       </tds-block>
   `,
   );
-  return formatHtmlPreview(
-    `
+  return `
     <style>
         .grid-container {
             display: grid;
@@ -104,8 +102,7 @@ const Template = () => {
             }
         });
     </script>
-    `,
-  );
+    `;
 };
 
 export const Default = Template.bind({});

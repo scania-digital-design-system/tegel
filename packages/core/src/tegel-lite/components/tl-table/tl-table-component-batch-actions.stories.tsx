@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Batch Actions',
   parameters: {
@@ -112,8 +110,7 @@ export default {
     modeVariant: 'Primary',
     compactDesign: false,
     responsiveDesign: false,
-    batchArea: formatHtmlPreview(
-      `<div class="tl-table__actionbar-left">
+    batchArea: `<div class="tl-table__actionbar-left">
         <div class="tl-table__title">Batch action</div>
         <div class="tl-dropdown tl-dropdown--sm" style="width: 150px;">
           <select class="tl-dropdown__select">
@@ -134,7 +131,6 @@ export default {
           Download
         </button>
       </div>`,
-    ),
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -168,7 +164,7 @@ const BatchActionTemplate = ({
   const col3Style = column3Width ? `style="width: ${column3Width}"` : '';
   const col4Style = column4Width ? `style="width: ${column4Width}"` : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -258,7 +254,7 @@ const BatchActionTemplate = ({
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = BatchActionTemplate.bind({});

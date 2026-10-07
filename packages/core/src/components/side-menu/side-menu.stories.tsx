@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Side Menu',
   parameters: {
@@ -64,8 +62,7 @@ type TemplateProps = {
 const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
   const isScania = document.getElementsByClassName('scania').length !== 0;
   const itemIconSize = isScania ? '24px' : '16px'; // Should be 16px if TRATON brand
-  return formatHtmlPreview(
-    `
+  return `
     <script>
     /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
     window.demoSideMenu = document.querySelector('#demo-side-menu');
@@ -275,8 +272,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
       console.log(event)
     })
   </script>
-  `,
-  );
+  `;
 };
 
 export const Default = Template.bind({});

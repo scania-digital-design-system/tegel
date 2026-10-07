@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Block/Nested',
   parameters: {
@@ -28,7 +26,7 @@ export default {
 };
 
 const Template = ({ outerModeVariant, componentTag }) =>
-  formatHtmlPreview(`
+  `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-block.css"
@@ -45,6 +43,6 @@ const Template = ({ outerModeVariant, componentTag }) =>
         </article>
       </${componentTag}>
     </div>
-  `);
+  `;
 
 export const Nested = Template.bind({});
