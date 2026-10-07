@@ -418,10 +418,10 @@
     "@stencil/playwright": "^0.5.1",
     "@stencil/react-output-target": "1.6.2",
     "@stencil/sass": "3.3.3",
-    "@storybook/addon-a11y": "10.6.0",
-    "@storybook/addon-docs": "10.6.0",
-    "@storybook/builder-vite": "10.6.0",
-    "@storybook/html-vite": "10.6.0",
+    "@storybook/addon-a11y": "10.6.1",
+    "@storybook/addon-docs": "10.6.1",
+    "@storybook/builder-vite": "10.6.1",
+    "@storybook/html-vite": "10.6.1",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
@@ -431,11 +431,11 @@
     "glob": "catalog:",
     "highlight.js": "11.12.0",
     "markdown-to-jsx": "^9.10.3",
-    "prettier": "2.7.1",
+    "prettier": "3.9.9",
     "sass": "catalog:",
     "serve": "^14.2.4",
-    "storybook": "10.6.0",
-    "vite": "^8.3.1"
+    "storybook": "10.6.1",
+    "vite": "^8.3.2"
   },
   "license": "MIT"
 }
