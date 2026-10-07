@@ -628,6 +628,11 @@
       border: 1px solid var(--dropdown-border-color);
       border-radius: 4px;
     }
+
+    &:disabled {
+      opacity: var(--dropdown-opacity-disabled);
+      cursor: not-allowed;
+    }
   }
 
   &--clear {
@@ -644,6 +649,11 @@
     &:hover:not(&:disabled) {
       border: 1px solid var(--dropdown-border-color);
       border-radius: 4px;
+    }
+
+    &:disabled {
+      opacity: var(--dropdown-opacity-disabled);
+      cursor: not-allowed;
     }
   }
 }
