@@ -68,7 +68,7 @@
     "eslint-plugin-storybook": "10.6.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.9",
     "style-dictionary": "^5.5.5",
     "stylelint": "^17.15.0",
     "stylelint-config-prettier-scss": "^1.0.0",
