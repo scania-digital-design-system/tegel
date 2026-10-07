@@ -178,6 +178,9 @@ export function getFilterMarkup(
     ? ''
     : '<li class="tl-dropdown__option tl-dropdown__option--no-result" role="option">No result</li>';
 
+  const actions = multiselect
+    ? '<li class="tl-dropdown__actions"><button class="tl-dropdown__actions--select">Select all</button><button class="tl-dropdown__actions--clear">Clear all</button></li>'
+    : '';
   return `
     <div class="tl-dropdown__input-wrapper">
       <input class="tl-dropdown__input" id="${
@@ -193,6 +196,7 @@ export function getFilterMarkup(
       ${baseItems}
       ${disabledItem}
       ${noResult}
+      ${actions}
     </ul>`;
 }
 
