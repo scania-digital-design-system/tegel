@@ -1,6 +1,6 @@
 import prettier from 'prettier/standalone';
-import parserBabel from 'prettier/parser-babel';
-import parserHtml from 'prettier/parser-html';
+import * as parserBabel from 'prettier/plugins/babel';
+import * as parserHtml from 'prettier/plugins/html';
 import { Options } from 'prettier';
 
 const prettierOptions: Options = {
