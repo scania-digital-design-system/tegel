@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Editable Cells',
 
@@ -184,7 +182,7 @@ const EditableCellsTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
 
   <div>
     <style>
@@ -453,6 +451,6 @@ const EditableCellsTemplate = ({
   </tds-table-body>
 </tds-table>
   </div>  
-  `);
+  `;
 
 export const Default = EditableCellsTemplate.bind({});

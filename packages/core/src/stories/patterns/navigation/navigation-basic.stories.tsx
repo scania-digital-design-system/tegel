@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Patterns/Navigation/Basic',
   parameters: {
@@ -27,8 +25,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
   <tds-header>
     <tds-header-title>
       Example: default
@@ -81,7 +78,6 @@ const Template = () =>
   <main class="tds-u-w-100 tds-u-p3" style="box-sizing: border-box;">
     <p>If the Header only contains a title, launcher, and logo, no side menu is needed.</p>
   </main>
-  `,
-  );
+  `;
 
 export const Basic = Template.bind({});

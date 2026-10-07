@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Horizontal Scroll',
 
@@ -113,11 +111,9 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
-    batchArea: formatHtmlPreview(
-      `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
+    batchArea: `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
-    ),
   },
 };
 
@@ -134,7 +130,7 @@ const HorizontalScrollTemplate = ({
   column4Width,
   batchArea,
 }) =>
-  formatHtmlPreview(`
+  `
     <tds-table
       table-id='pagination-table'
       vertical-dividers="${verticalDivider}"
@@ -224,6 +220,6 @@ const HorizontalScrollTemplate = ({
     });
   </script>
   
-  `);
+  `;
 
 export const Default = HorizontalScrollTemplate.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 const CardThumbnailSVG = `data:image/svg+xml;utf8,${encodeURIComponent(
   `<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'></svg>`,
 )}`;
@@ -175,8 +173,7 @@ const Template = ({
   expandable,
   expanded,
 }) =>
-  formatHtmlPreview(
-    `<style>
+  `<style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
         max-width: 600px;
@@ -228,7 +225,6 @@ const Template = ({
     `
         : ''
     }
-  `,
-  );
+  `;
 
 export const Default = Template.bind({});

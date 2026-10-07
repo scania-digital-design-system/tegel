@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
@@ -83,7 +82,7 @@ const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIco
   const firstItemLabel = fluidWidth ? 'The menu width adjusts to the widest word' : 'Action';
   const otherItemLabel = 'Action';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-global.css"
       "@scania/tegel-lite/tl-popover-menu.css"
@@ -169,7 +168,7 @@ const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIco
         popover.addEventListener('click', (e) => e.stopPropagation());
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

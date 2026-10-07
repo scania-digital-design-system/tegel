@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Basic',
   parameters: {
@@ -219,7 +217,7 @@ const BasicTemplate = ({
   column4Width,
   clickable,
 }) =>
-  formatHtmlPreview(`
+  `
   <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
@@ -290,6 +288,6 @@ const BasicTemplate = ({
     });
   })();
 </script>
-`);
+`;
 
 export const Default = BasicTemplate.bind({});

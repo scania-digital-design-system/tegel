@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Transitions/Slide Short',
   tags: ['!autodocs'],
@@ -16,8 +14,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
       <h2>Slide Short</h2>
       <p>
@@ -179,7 +176,6 @@ const Template = () =>
         animation: var(--tds-motion-slide-out-short-left);
       }
     </style>
-    `,
-  );
+    `;
 
 export const SlideShort = Template.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Col and Row Span',
   parameters: {
@@ -71,7 +69,7 @@ allowing cells to span multiple columns or rows — the same as HTML's native \`
 };
 
 const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSpan }) =>
-  formatHtmlPreview(`
+  `
   <tds-table
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
   >
@@ -112,6 +110,6 @@ const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSp
       </tds-table-body-row>
     </tds-table-body>
   </tds-table>
-`);
+`;
 
 export const ColAndRowSpan = ColRowSpanTemplate.bind({});

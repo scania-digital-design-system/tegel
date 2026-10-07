@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Modal',
   parameters: {
@@ -122,7 +120,7 @@ const ModalTemplate = ({
   closable,
   tdsAlertDialog,
 }) =>
-  formatHtmlPreview(`
+  `
     <!-- The button below is just for demo purposes -->
     <tds-button id="my-modal-button" text="Open Modal"></tds-button>
     
@@ -159,6 +157,6 @@ const ModalTemplate = ({
       }
     })();
   </script>
-  `);
+  `;
 
 export const Default = ModalTemplate.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Toast',
   parameters: {
@@ -94,7 +92,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
     ? `<button class="tl-toast__close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></button>`
     : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-toast.css"
@@ -111,7 +109,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
       </div>
       ${closeButton}
     </div>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

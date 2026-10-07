@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 //Reorder of iconsNames to have download and redirect first for UX reasons
@@ -46,7 +45,7 @@ const standaloneLinkTemplate = ({ disabled, underline, iconEnabled, icon }) => {
   const underlineClass = underline ? 'tl-link--underline' : '';
   const disabledClass = disabled ? 'tl-link--disabled' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-link.css"
       ${iconEnabled ? '"@scania/tegel-lite/tl-icon.css"' : ''}
@@ -59,7 +58,7 @@ const standaloneLinkTemplate = ({ disabled, underline, iconEnabled, icon }) => {
           : ''
       }
     </a>
-  `);
+  `;
 };
 
 //Link within text
@@ -67,7 +66,7 @@ const linkWithinTextTemplate = ({ disabled, underline }) => {
   const underlineClass = underline ? 'tl-link--underline' : '';
   const disabledClass = disabled ? 'tl-link--disabled' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-link.css"
     -->
@@ -76,7 +75,7 @@ const linkWithinTextTemplate = ({ disabled, underline }) => {
       Design System is for digital products and services at Scania.
       It enables an efficient development process and ensures a premium experience across all of Scania's digital touchpoints.    
     </p>
-  `);
+  `;
 };
 
 export const StandaloneLink = standaloneLinkTemplate.bind({});

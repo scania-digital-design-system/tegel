@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Filtering',
   parameters: {
@@ -147,7 +145,7 @@ const FilteringTemplate = ({
   const col3Style = column3Width ? `style="min-width: ${column3Width}"` : '';
   const col4Style = column4Width ? `style="min-width: ${column4Width}"` : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -253,7 +251,7 @@ const FilteringTemplate = ({
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = FilteringTemplate.bind({});

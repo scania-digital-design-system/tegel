@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Side Menu',
   parameters: {
@@ -72,7 +70,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
 
   const iconSize = isTraton ? 'tl-icon--16' : 'tl-icon--24';
 
-  return formatHtmlPreview(`
+  return `
 <!-- Required stylesheets:
   "@scania/tegel-lite/global.css"
   "@scania/tegel-lite/tl-side-menu.css"
@@ -437,6 +435,6 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
     }) ();
 </script>
 
-`);
+`;
 };
 export const Default = Template.bind({});

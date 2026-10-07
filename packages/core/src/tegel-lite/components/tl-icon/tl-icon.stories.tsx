@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { scaniaIconNames } from '../../../types/ScaniaIcons';
 import { tratonIconNames } from '../../../types/TratonIcons';
 
@@ -34,11 +33,11 @@ export default {
 };
 
 const Template = ({ icon, size }) =>
-  formatHtmlPreview(`
+  `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-icon.css"
   -->
     <span class="tl-icon tl-icon--${icon} tl-icon--${size}" aria-hidden="true"></span>
-  `);
+  `;
 
 export const Default = Template.bind({});

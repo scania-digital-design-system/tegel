@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Expandable Rows',
   parameters: {
@@ -171,7 +169,7 @@ const ExpandableRowTemplate = ({
 
   const expandedClass = expanded ? 'tl-table__row--expanded' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -315,7 +313,7 @@ const ExpandableRowTemplate = ({
         }
       }
     </script>
-  `);
+  `;
 };
 
 export const Default = ExpandableRowTemplate.bind({});

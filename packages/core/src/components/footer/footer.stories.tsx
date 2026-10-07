@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Footer',
   parameters: {
@@ -62,8 +60,7 @@ export default {
 };
 
 const Template = ({ topSlot, startSlot, endSlot, modeVariant, extraLinks }) =>
-  formatHtmlPreview(
-    `
+  `
     <main>
       <div class="tds-u-p3 ">
         <div class="tds-body-01">
@@ -238,7 +235,6 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant, extraLinks }) =>
           : ''
       }
     </tds-footer>
-  `,
-  );
+  `;
 
 export const Default = Template.bind({});

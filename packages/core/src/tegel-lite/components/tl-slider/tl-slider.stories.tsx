@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Slider',
   parameters: {
@@ -497,7 +495,7 @@ const Template = ({
     </script>
   `;
 
-  return formatHtmlPreview(markup + script);
+  return markup + script;
 };
 
 export const Default = Template.bind({});

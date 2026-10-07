@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Patterns/Navigation/User Menu',
   parameters: {
@@ -37,8 +35,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
       window.demoSideMenu = document.querySelector('#demo-side-menu');
@@ -136,7 +133,6 @@ const Template = () =>
         <p><i>Tip: Resize the window to see the user menu move in to a side menu drawer.</i></p>
       </main>
     </div>
-  `,
-  );
+  `;
 
 export const UserMenu = Template.bind({});

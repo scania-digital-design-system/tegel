@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Typography',
   tags: ['!autodocs'],
@@ -19,8 +17,7 @@ export default {
 };
 
 const Template = ({ type }) =>
-  formatHtmlPreview(
-    `
+  `
     <style>
     /* Demo code for presentation purposes */
     .demo-wrapper h1 {
@@ -47,8 +44,7 @@ const Template = ({ type }) =>
           type === 'expressive' ? `${type}-` : ''
         }headline-07">A sub headline, which is most commonly paired with detail-02 </h7>
     </div>
-  `,
-  );
+  `;
 
 export const Headlines = Template.bind({});
 Headlines.args = {

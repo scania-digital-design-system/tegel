@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Stepper',
   parameters: {
@@ -77,8 +75,7 @@ const sizeLookUp = {
   Small: 'sm',
 };
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
-  formatHtmlPreview(
-    `
+  `
       <tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
         orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
       } orientation="${orientation.toLowerCase()}">
@@ -95,6 +92,5 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
           <div slot="label">Upcoming step</div>
         </tds-step>
       </tds-stepper>
-        `,
-  );
+        `;
 export const Default = Template.bind({});

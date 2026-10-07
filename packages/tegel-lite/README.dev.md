@@ -465,8 +465,6 @@ To document and test the component, create a `.stories.tsx` file in inside the c
 
 ```tsx
 
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite (CSS)/Alert',
   parameters: {
@@ -500,13 +498,13 @@ export default {
 };
 
 const Template = ({ variant, message }) =>
-  formatHtmlPreview(`
+  `
       <!-- Required stylesheet 
     "@scania/tegel-lite/tl-alert.css"
   -->
 
     <span class="tl-alert tl-alert--${variant}">${message}</span>
-  `);
+  `;
 
 export const Default = Template.bind({});
 
@@ -530,6 +528,5 @@ This will:
 - Automatically copy required assets and update the exports in `packages/tegel-lite/package.json`.
 
 After the build, check `packages/tegel-lite/dist/`: You should see a CSS file for your new component (e.g., `tl-alert.css`).
-
 
 

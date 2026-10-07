@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Block/Nested',
   parameters: {
@@ -8,7 +6,7 @@ export default {
 };
 
 const NestedTemplate = ({ outerModeVariant, componentTag }) =>
-  formatHtmlPreview(`
+  `
     <div ${
       outerModeVariant !== 'Inherit from parent'
         ? `class="tds-mode-variant-${outerModeVariant.toLowerCase()}"`
@@ -24,7 +22,7 @@ const NestedTemplate = ({ outerModeVariant, componentTag }) =>
         </tds-block>
       </tds-block>
     </div>
-  `);
+  `;
 
 export const Nested = NestedTemplate.bind({});
 Nested.argTypes = {

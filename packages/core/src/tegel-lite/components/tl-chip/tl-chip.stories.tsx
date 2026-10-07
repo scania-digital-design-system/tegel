@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
@@ -67,7 +66,7 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
 
   const iconHtml = hasIcon ? `<span class="tl-icon tl-icon--${icon} tl-icon--16"></span>` : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-chip.css"
@@ -115,7 +114,7 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

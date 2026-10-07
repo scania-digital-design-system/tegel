@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Tabs/Folder Tabs',
   parameters: { backgrounds: { default: 'white' }, layout: 'padded' },
@@ -75,7 +73,7 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
       `
     : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-folder-tab.css";
@@ -106,7 +104,7 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

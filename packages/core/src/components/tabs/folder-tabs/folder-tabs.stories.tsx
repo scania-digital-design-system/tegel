@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Tabs/Folder Tabs',
   parameters: {
@@ -66,7 +64,7 @@ export default {
 };
 
 const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
-  formatHtmlPreview(`
+  `
     <tds-folder-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
@@ -103,6 +101,6 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
       console.log(event)
     })
     </script>
-`);
+`;
 
 export const Default = Template.bind({});

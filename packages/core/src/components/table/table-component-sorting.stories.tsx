@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Sorting',
 
@@ -191,7 +189,7 @@ const SortingTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
     <tds-table
       table-id='tds-table-sorting-example'
       vertical-dividers="${verticalDivider}"
@@ -281,6 +279,6 @@ const SortingTemplate = ({
     document.getElementById('event-name-textarea').value = e.type;
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
   });
-  </script>`);
+  </script>`;
 
 export const Default = SortingTemplate.bind({});
