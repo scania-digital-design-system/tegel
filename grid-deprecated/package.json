@@ -21,7 +21,7 @@
   "author": "IXCD@Scania <designtoolsandsystems@scania.com> (https://tegel.scania.com)",
   "license": "MIT",
   "devDependencies": {
-    "del": "^6.0.0",
+    "del": "^8.0.1",
     "glob": "catalog:",
     "sass": "catalog:",
     "scss-bundle": "^3.1.2"
