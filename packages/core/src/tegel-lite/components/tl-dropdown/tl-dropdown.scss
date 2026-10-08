@@ -623,6 +623,8 @@
     padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
 
     &:hover:not(&:disabled) {
       border: 1px solid var(--dropdown-border-color);
@@ -645,6 +647,8 @@
     padding: 8px;
     box-sizing: border-box;
     cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
 
     &:hover:not(&:disabled) {
       border: 1px solid var(--dropdown-border-color);

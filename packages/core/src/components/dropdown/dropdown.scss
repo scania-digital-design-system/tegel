@@ -276,6 +276,8 @@
         width: fit-content;
         height: 24px;
         padding: 8px;
+        border: 1px solid transparent;
+        border-radius: 4px;
 
         &:hover:not(&:disabled) {
           border: 1px solid var(--tds-dropdown-border-color);
@@ -289,6 +291,8 @@
         width: fit-content;
         height: 24px;
         padding: 8px;
+        border: 1px solid transparent;
+        border-radius: 4px;
 
         &:hover:not(&:disabled) {
           border: 1px solid var(--tds-dropdown-border-color);
