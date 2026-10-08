@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Spacing',
   tags: ['!autodocs'],
@@ -9,8 +7,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
   <style>
    /* Demo code for presentation purposes */
     .demo-wrapper {
@@ -101,8 +98,7 @@ const Template = () =>
       <td><span class="demo-wrapper" style="width: var(--tds-spacing-layout-160); height: var(--tds-spacing-layout-160);"></span></td>
     </tr>
   </table>
-  `,
-  );
+  `;
 
 export const SpacingLayout = Template.bind({});
 SpacingLayout.args = {};

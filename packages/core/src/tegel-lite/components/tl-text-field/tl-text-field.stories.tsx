@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Text Field',
   parameters: {
@@ -190,7 +188,7 @@ const Template = ({
 
   const styleAttr = noMinWidth ? ' style="width: calc(100vw - 40px); max-width: 208px;"' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-text-field.css"
@@ -233,7 +231,7 @@ const Template = ({
     </script>`
       : ''
   }
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

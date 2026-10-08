@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Transitions/Other',
   tags: ['!autodocs'],
@@ -16,8 +14,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
     <h2>Other</h2>
     <p>
@@ -142,7 +139,6 @@ const Template = () =>
 
       
     </style>
-    `,
-  );
+    `;
 
 export const Other = Template.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Spinner',
   parameters: {
@@ -49,7 +47,7 @@ const Template = ({ size, variant }) => {
   const sizeClass = size ? `tl-spinner--${sizeMap[size]}` : '';
   const variantClass = variant ? `tl-spinner--${variantMap[variant]}` : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-spinner.css"
     -->
@@ -63,7 +61,7 @@ const Template = ({ size, variant }) => {
         <circle class="tl-spinner__circle"/>
       </svg>
     </div>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

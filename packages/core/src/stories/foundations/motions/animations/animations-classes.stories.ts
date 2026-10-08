@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Animations/All',
   tags: ['!autodocs'],
@@ -16,8 +14,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
 
     <h2>Enter</h2>
@@ -216,7 +213,6 @@ const Template = () =>
       }
 
       </style>
-  `,
-  );
+  `;
 
 export const All = Template.bind({});

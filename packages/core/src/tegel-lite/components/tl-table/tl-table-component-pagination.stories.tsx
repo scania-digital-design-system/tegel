@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Table/Pagination',
   parameters: {
@@ -137,7 +135,7 @@ const PaginationTemplate = ({
   const col3Style = column3Width ? `style="width: ${column3Width}"` : '';
   const col4Style = column4Width ? `style="width: ${column4Width}"` : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
@@ -375,7 +373,7 @@ const PaginationTemplate = ({
 })();
 </script>
 
-  `);
+  `;
 };
 
 export const Default = PaginationTemplate.bind({});

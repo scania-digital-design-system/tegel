@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Motion/Transitions/Zoom',
   tags: ['!autodocs'],
@@ -15,8 +13,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <main>
       <h2>Zoom</h2>
       <p>
@@ -80,7 +77,6 @@ const Template = () =>
         animation: var(--tds-motion-zoom-out);
       }
     </style>
-    `,
-  );
+    `;
 
 export const Zoom = Template.bind({});

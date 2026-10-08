@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Utilities/Background Color',
 
@@ -87,8 +85,7 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
       scale = blueScale;
       break;
   }
-  return formatHtmlPreview(
-    `
+  return `
         <!-- Style tag for demo purposes -->
         <style>
             .demo-wrapper{
@@ -104,8 +101,7 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
         <div class="tds-background-${backgroundColor}-${scale} demo-wrapper">
             <h5>Background color: ${backgroundColor}-${scale}</h5>
         </div>
-          `,
-  );
+          `;
 };
 
 export const Default = Template.bind({});

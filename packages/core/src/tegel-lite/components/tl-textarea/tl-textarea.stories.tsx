@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Textarea',
   parameters: {
@@ -144,7 +142,7 @@ const Template = ({
       ? `<div class="tl-textarea__bottom">${helperContent}${charCounterContent}</div>`
       : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-textarea.css"
@@ -175,7 +173,7 @@ const Template = ({
         </script>`
         : ''
     }
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

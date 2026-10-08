@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { initDropdownKeyboard } from './_dropdownKeyboard';
 import {
   tlDropdownSingleScriptDemo as _tlDropdownSingleScriptDemo,
@@ -345,12 +344,12 @@ function getDropdownScript(props: {
   return `<!-- Script tag for demo purposes -->\n<script>\n  ${comment}\n  ${fn}\n</script>`;
 }
 
-const Template = (props: TemplateProps): Promise<string> => {
+const Template = (props: TemplateProps): string => {
   const dropUp = props.direction === 'Up';
   const optionOrder = dropUp ? [OPTIONS[1], OPTIONS[0]] : [...OPTIONS];
   const markup = getDropdownMarkup(props, optionOrder);
   const script = getDropdownScript(props);
-  return formatHtmlPreview(`${markup}\n${script}`);
+  return `${markup}\n${script}`;
 };
 
 export default {

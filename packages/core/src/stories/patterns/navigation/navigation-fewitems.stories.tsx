@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Patterns/Navigation/Few Navigation Items',
   parameters: {
@@ -27,8 +25,7 @@ export default {
 };
 
 const Template = () =>
-  formatHtmlPreview(
-    `
+  `
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
       window.demoSideMenu = document.querySelector('#demo-side-menu');
@@ -255,7 +252,6 @@ const Template = () =>
         <p><i>Note: This example has an alterate launcher menu with a grid layout.</i></p>
       </main>
     </div>
-  `,
-  );
+  `;
 
 export const FewNavigationItems = Template.bind({});

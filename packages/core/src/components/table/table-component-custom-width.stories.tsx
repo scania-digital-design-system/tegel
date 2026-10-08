@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Custom Width',
 
@@ -116,7 +114,7 @@ const BasicTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
   <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
@@ -176,6 +174,6 @@ const BasicTemplate = ({
               <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
           </tds-table-body-row>
       </tds-table-body>
-  </tds-table>`);
+  </tds-table>`;
 
 export const Default = BasicTemplate.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Radio Button',
   parameters: {
@@ -62,7 +60,7 @@ export default {
 };
 
 const Template = ({ label, checkedIndex, disabledIndex, name }) =>
-  formatHtmlPreview(`
+  `
 <!-- Required stylesheets:
   "@scania/tegel-lite/global.css"
   "@scania/tegel-lite/tl-radio-button.css"
@@ -112,6 +110,6 @@ const Template = ({ label, checkedIndex, disabledIndex, name }) =>
       <label class="tl-radio-button__label" for="${name}-3">${label} 3</label>
     </div>
 </fieldset>
-`);
+`;
 
 export const Default = Template.bind({});

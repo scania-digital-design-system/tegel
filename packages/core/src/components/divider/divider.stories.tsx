@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Divider',
   parameters: {
@@ -67,10 +65,10 @@ export default {
 };
 
 const Template = ({ orientation, variant, width, height }) =>
-  formatHtmlPreview(`
+  `
   <div style="${orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`}">
     <tds-divider orientation="${orientation.toLowerCase()}" variant="${variant.toLowerCase()}"></tds-divider>
   </div>
-`);
+`;
 
 export const Default = Template.bind({});

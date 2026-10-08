@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 export default {
@@ -64,7 +63,7 @@ const Template = ({
   includeHeaderItemIconOnly,
   icon,
 }) =>
-  formatHtmlPreview(`
+  `
 
 <!-- Required stylesheet 
   "@scania/tegel-lite/global.css";
@@ -281,6 +280,6 @@ const Template = ({
     });
   });
 </script>
-`);
+`;
 
 export const Default = Template.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Modal',
   parameters: {
@@ -90,7 +88,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
   };
   const sizeClass = sizeMap[size] || 'lg';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-modal.css"
@@ -144,7 +142,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       }
     </style>
 
-  `);
+  `;
 };
 
 export const Default = ModalTemplate.bind({});

@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Tabs/Inline Tabs',
   parameters: {
@@ -71,7 +69,7 @@ export default {
 };
 
 const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPadding }) =>
-  formatHtmlPreview(`
+  `
   <tds-inline-tabs
     ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
     ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
@@ -109,6 +107,6 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
     console.log(event);
   });
   </script>
-`);
+`;
 
 export const Default = Template.bind({});

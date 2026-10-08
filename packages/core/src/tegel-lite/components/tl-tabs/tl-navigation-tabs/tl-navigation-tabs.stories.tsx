@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Tabs/Navigation Tabs',
   parameters: { backgrounds: { default: 'white' } },
@@ -71,7 +69,7 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
        </button>`
     : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-navigation-tab.css";
@@ -102,7 +100,7 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
         });
       })();
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

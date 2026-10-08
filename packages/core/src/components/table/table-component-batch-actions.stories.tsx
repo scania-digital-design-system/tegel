@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Batch Actions',
 
@@ -104,8 +102,7 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
-    batchArea: formatHtmlPreview(
-      `<div slot="start">
+    batchArea: `<div slot="start">
          <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide" style="width: 150px">
            <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
            <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
@@ -115,7 +112,6 @@ export default {
       <div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
-    ),
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -137,7 +133,7 @@ const BatchActionTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
    <tds-table
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
@@ -203,6 +199,6 @@ const BatchActionTemplate = ({
           </tds-table-body-row>
       </tds-table-body>
   </tds-table>
-  `);
+  `;
 
 export const Default = BatchActionTemplate.bind({});

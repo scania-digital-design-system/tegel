@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Toggle',
   parameters: {
@@ -74,7 +72,7 @@ export default {
 };
 
 const Template = ({ size, headline, label, checked, disabled }) =>
-  formatHtmlPreview(`
+  `
       <tds-toggle
         ${label && `tds-aria-label="${label}"`}
         ${checked ? 'checked' : ''}
@@ -92,5 +90,5 @@ const Template = ({ size, headline, label, checked, disabled }) =>
         console.log(event)
       })
     </script>
-  `);
+  `;
 export const Default = Template.bind({});

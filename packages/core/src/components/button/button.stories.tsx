@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
 
 export default {
@@ -204,8 +203,7 @@ const WebComponentTemplate = ({
     Reset: 'reset',
   };
 
-  return formatHtmlPreview(
-    `
+  return `
     <style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper{
@@ -245,8 +243,7 @@ const WebComponentTemplate = ({
           console.log(event)
         })
   </script>
-  `,
-  );
+  `;
 };
 
 /** Button as a web component */

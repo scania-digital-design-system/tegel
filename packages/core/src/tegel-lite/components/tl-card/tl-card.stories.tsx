@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { iconsNames } from '../../../components/icon/iconsArray';
 
 const thumbSVG = `data:image/svg+xml;utf8,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>
@@ -265,7 +264,7 @@ const Template = ({
     `${bodyHtml}${actionsHtml}` +
     `</${wrapperEl}>`;
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-card.css";
@@ -302,7 +301,7 @@ const Template = ({
       }
     });
   </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

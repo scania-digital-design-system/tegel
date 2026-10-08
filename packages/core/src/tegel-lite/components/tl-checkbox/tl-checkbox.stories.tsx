@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Checkbox',
   parameters: {
@@ -39,7 +37,7 @@ export default {
 };
 
 const Template = ({ label, checked, disabled, indeterminate }) => {
-  return formatHtmlPreview(`
+  return `
 		<!-- Required stylesheet 
       "@scania/tegel-lite/global.css"
     	"@scania/tegel-lite/tl-checkbox.css";
@@ -54,7 +52,7 @@ const Template = ({ label, checked, disabled, indeterminate }) => {
       />
       <label class="tl-checkbox__label" for="tl-checkbox">${label}</label>
     </div>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

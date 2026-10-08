@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Message',
   parameters: {
@@ -59,7 +57,7 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
   const minimalClass = minimal ? 'tl-message--minimal' : '';
   const noIconClass = noIcon ? 'tl-message--no-icon' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-message.css"
   -->
@@ -82,6 +80,6 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
         </div>
       </div>
     </div>
-  `);
+  `;
 };
 export const Default = Template.bind({});

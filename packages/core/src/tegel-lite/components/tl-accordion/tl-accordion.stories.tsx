@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Accordion',
   parameters: {
@@ -78,7 +76,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
   const paddingClass = paddingReset ? 'tl-accordion__item--less-padding' : '';
   const expandedClass = 'tl-accordion__item--expanded';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets: 
     "@scania/tegel-lite/global.css"
     "@scania/tegel-lite/tl-accordion.css"
@@ -152,7 +150,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
       setupAccordion();
 
     </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

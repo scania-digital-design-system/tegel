@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Multiselect + Expandable',
 
@@ -180,7 +178,7 @@ const MultiselectExpandableTemplate = ({
   overflow,
   autoCollapse,
 }) =>
-  formatHtmlPreview(`
+  `
     <tds-table
         table-id="multiselect-expandable-table"
         multiselect
@@ -315,6 +313,6 @@ const MultiselectExpandableTemplate = ({
     }
   });
 </script>
-  `);
+  `;
 
 export const Default = MultiselectExpandableTemplate.bind({});

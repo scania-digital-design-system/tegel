@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { scaniaIconNames as iconsNames } from '../../types/ScaniaIcons';
 
 export default {
@@ -59,7 +58,7 @@ export default {
 };
 
 const IconTemplate = (args) =>
-  formatHtmlPreview(`
+  `
   <tds-icon 
     name="${args.icon}" 
     size="${`${args.size.toString()}px`}" 
@@ -67,6 +66,6 @@ const IconTemplate = (args) =>
     ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
     >   
   </tds-icon> 
-  `);
+  `;
 
 export const Default = IconTemplate.bind({});

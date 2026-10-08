@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Datetime',
   parameters: {
@@ -134,7 +132,7 @@ const Template = ({
 
   const iconName = typeLookup[type] === 'time' ? 'clock' : 'calendar';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-datetime.css"
@@ -166,7 +164,7 @@ const Template = ({
       }
     }
   </script>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

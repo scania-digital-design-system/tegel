@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Spinner',
   parameters: {
@@ -51,14 +49,12 @@ const Template = ({ size, variant }) => {
   const sizeLookup = { 'Large': 'lg', 'Medium': 'md', 'Small': 'sm', 'Extra small': 'xs' };
   const variantLookup = { Standard: 'standard', Inverted: 'inverted' };
 
-  return formatHtmlPreview(
-    `
+  return `
   <tds-spinner 
     size="${sizeLookup[size]}"  
     variant="${variantLookup[variant]}">
   </tds-spinner>
-  `,
-  );
+  `;
 };
 
 export const Default = Template.bind({});

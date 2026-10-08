@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Divider',
   parameters: {
@@ -58,14 +56,14 @@ const Template = ({ orientation, variant, width, height }) => {
   const variantClass = variant.toLowerCase();
   const style = orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`;
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-divider.css"
     -->
         <div style="${style}">
           <div class="tl-divider tl-divider--${variantClass} tl-divider--${orientationClass}"/>
         </div>
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

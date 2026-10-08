@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Badge',
   parameters: {
@@ -73,7 +71,7 @@ const Template = ({ value, size, hidden, demoCode }) => {
   const shapeClass = shape ? `tl-badge--pill` : '';
   const hiddenClass = hidden ? 'tl-badge--hidden' : '';
 
-  return formatHtmlPreview(`
+  return `
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-badge.css"
@@ -109,7 +107,7 @@ const Template = ({ value, size, hidden, demoCode }) => {
         ${text ? `<span class="tl-badge__text" aria-hidden="true">${text}</span>` : ''}
       </div>
     ${demoCode ? '</div>' : ''}
-  `);
+  `;
 };
 
 export const Default = Template.bind({});

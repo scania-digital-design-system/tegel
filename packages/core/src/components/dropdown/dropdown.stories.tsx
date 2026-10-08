@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Dropdown',
   parameters: {
@@ -303,7 +301,7 @@ const Template = ({
   responsive,
   tdsAriaLabel,
 }) =>
-  formatHtmlPreview(`
+  `
   <style>
   /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
@@ -407,6 +405,6 @@ const Template = ({
         }
       })();
     </script>    
-  `);
+  `;
 
 export const Default = Template.bind({});

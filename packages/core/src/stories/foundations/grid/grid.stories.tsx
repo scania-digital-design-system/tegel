@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
-
 export default {
   title: 'Foundations/Grid',
   tags: ['!autodocs'],
@@ -9,7 +7,7 @@ export default {
 };
 
 // Styling for grid templates
-const style = formatHtmlPreview(`
+const style = `
   <style>
     /* Demo code for presentation purposes */
     .tds-grid-fixed,
@@ -24,10 +22,10 @@ const style = formatHtmlPreview(`
       text-align: center;
     }
   </style>
-`);
+`;
 
 const GridFixedTemplate = () =>
-  formatHtmlPreview(`
+  `
     <h4>Fixed</h4>
     
     <div class="tds-grid-container">
@@ -47,12 +45,12 @@ const GridFixedTemplate = () =>
       </div>  
     </div>
     ${style}
-  `);
+  `;
 
 export const Fixed = GridFixedTemplate.bind({});
 
 const GridFluidTemplate = () =>
-  formatHtmlPreview(`
+  `
     <h4>Fluid</h4>
     
     <div class="tds-grid-container">
@@ -72,6 +70,6 @@ const GridFluidTemplate = () =>
       </div>  
     </div>
     ${style}
-  `);
+  `;
 
 export const Fluid = GridFluidTemplate.bind({});

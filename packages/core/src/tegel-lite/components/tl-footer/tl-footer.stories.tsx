@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-
 export default {
   title: 'Tegel Lite/Footer',
   parameters: {
@@ -168,7 +166,7 @@ const Template = ({
     </footer>
   `;
 
-  return formatHtmlPreview(footerMarkup);
+  return footerMarkup;
 };
 
 export const Default = Template.bind({});

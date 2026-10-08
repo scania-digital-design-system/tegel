@@ -1,5 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
-
 export default {
   title: 'Components/Table/Multiselect',
 
@@ -143,7 +141,7 @@ const MultiselectTemplate = ({
   column3Width,
   column4Width,
 }) =>
-  formatHtmlPreview(`
+  `
     <tds-table
         table-id="multiselect-table"
         multiselect
@@ -239,6 +237,6 @@ const MultiselectTemplate = ({
     document.getElementById('selected-rows-textarea').value = JSON.stringify(e.detail.selectedRows,null, 2);
   });
 </script>
-  `);
+  `;
 
 export const Default = MultiselectTemplate.bind({});

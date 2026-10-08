@@ -1,4 +1,3 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
 
 // FIXME: CMS: Change state to type in Code tab of component
@@ -85,7 +84,7 @@ export default {
 };
 
 const Template = ({ roleType, variant, icon, header, subheader, actions }) =>
-  formatHtmlPreview(`
+  `
       <tds-banner
           role-type="${roleType}"
           ${variant !== 'Default' ? `variant="${variant.toLowerCase()}"` : ''}
@@ -102,6 +101,6 @@ const Template = ({ roleType, variant, icon, header, subheader, actions }) =>
           console.log(event)
         })
       </script>
-    `);
+    `;
 
 export const Default = Template.bind({});
