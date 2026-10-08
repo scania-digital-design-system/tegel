@@ -58,6 +58,7 @@ The Custom variant provides a fully customizable dropdown interface using a butt
 | `.tl-dropdown__filter`  | `<input>`    | Filter/search input (Filter variant)       |
 | `.tl-dropdown__list`    | `<ul>`       | Options list container             |
 | `.tl-dropdown__option`  | `<li>`       | Individual option                  |
+| `.tl-dropdown__actions`  | `<li>`       | Slot to put buttons to select all and clear all                  |
 | `.tl-dropdown__helper`  | `<div>`      | Helper text container              |
 
 ## Modifiers
@@ -92,6 +93,15 @@ Apply these classes to `.tl-dropdown__option` elements.
 | `.tl-dropdown__option--hidden`      | Hidden (filtered out) option |
 
 **Note:** Individual options cannot be disabled in the custom dropdown variant. To prevent selection of specific options, consider removing them from the list or using the native select variant instead.
+
+### Actions Buttons
+
+Apply these classes to `.tl-dropdown__actions` `<button>` elements.
+
+| Modifier                            | Description                  |
+| ----------------------------------- | ---------------------------- |
+| `.tl-dropdown__actions--select`    | Select all/filtered button              |
+| `.tl-dropdown__actions--clear` | Clear all button           |
 
 ## JavaScript Required
 

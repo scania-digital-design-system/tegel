@@ -131,6 +131,8 @@ export function getMultiselectMarkup(
 
   const items = opts.map((o, i) => checkboxItem(o, `${IDS.multi}-${i}`)).join('');
   const disabledItem = checkboxItem('Option disabled', `${IDS.multi}-disabled`, true);
+  const actions =
+    '<li class="tl-dropdown__actions"><button class="tl-dropdown__actions--select">Select all</button><button class="tl-dropdown__actions--clear">Clear all</button></li>';
 
   return `
     <button type="button" class="tl-dropdown__button" ${
@@ -141,6 +143,7 @@ export function getMultiselectMarkup(
     <ul class="tl-dropdown__list" id="${IDS.multi}" role="listbox" aria-multiselectable="true">
       ${items}
       ${disabledItem}
+      ${actions}
     </ul>`;
 }
 
@@ -174,6 +177,9 @@ export function getFilterMarkup(
     ? ''
     : '<li class="tl-dropdown__option tl-dropdown__option--no-result" role="option">No result</li>';
 
+  const actions = multiselect
+    ? '<li class="tl-dropdown__actions"><button class="tl-dropdown__actions--select">Select all</button><button class="tl-dropdown__actions--clear">Clear all</button></li>'
+    : '';
   return `
     <div class="tl-dropdown__input-wrapper">
       <input class="tl-dropdown__input" id="${
@@ -189,6 +195,7 @@ export function getFilterMarkup(
       ${baseItems}
       ${disabledItem}
       ${noResult}
+      ${actions}
     </ul>`;
 }
 
