@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+* Tegel Header Launcher List component. Composed by one Header Launcher List Title component and at least one Header Launcher List Item component.
+
 ## Slots
 
 | Slot          | Description                          |

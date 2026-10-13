@@ -3,6 +3,7 @@ import getPreviousNestedChildOfSiblingsMatching from '../../../utils/getPrevious
 import isHeadingElement from '../../../utils/isHeadingElement';
 
 /**
+ * Tegel Header Launcher Grid component. Composed by one Header Launcher Grid Title component and at least one Header Launcher Grid Item component.
  * @slot <default> - <b>Unnamed slot.</b> For a grid item element.
  */
 @Component({

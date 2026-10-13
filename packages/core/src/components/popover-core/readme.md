@@ -4,6 +4,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A lower-level building block associated with Tegel's popover implementation. Not established here as a recommended standalone public component.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                                                                                                                                                                                  | Type                                                                                                                                                                                                         | Default     |

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Side Menu component. Can contain Side Menu Items, Side Menu Dropdowns, or a Side Menu User menu.
+
 ## Properties
 
 | Property     | Attribute    | Description                                                                                                                                                                                      | Type      | Default |

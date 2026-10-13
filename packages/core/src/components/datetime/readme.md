@@ -14,6 +14,10 @@ These issues stem from the use of the native HTML <code style="font-size: inheri
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Datetime component. It uses the native input HTML element.
+
 ## Properties
 
 | Property             | Attribute              | Description                                                                                                                                                                                            | Type                                                        | Default                                |

@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Footer Group component. Composed by at least one TDS Footer Item.
+
 ## Properties
 
 | Property           | Attribute             | Description                                                                                                              | Type                  | Default     |

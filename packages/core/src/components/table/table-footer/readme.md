@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Provides the table footer, including pagination-related controls.
+
 ## Properties
 
 | Property                           | Attribute                               | Description                                                                                                                                                                                                                                | Type                       | Default                  |

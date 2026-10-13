@@ -2,6 +2,9 @@ import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { Attributes } from '../../../types/Attributes';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
+/**
+ * Tegel Header Launcher button component. It toggles the Header Launcher component (list/grid).
+ */
 @Component({
   tag: 'tds-header-launcher-button',
   styleUrl: 'header-launcher-button.scss',
