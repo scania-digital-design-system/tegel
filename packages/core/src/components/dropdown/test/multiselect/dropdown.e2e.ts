@@ -82,5 +82,36 @@ testConfigurations.withModeVariantsAndBrands.forEach((config) => {
       /* also check screenshot diff to make sure */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+
+    test('selects all available options and clears all selections', async ({ page }) => {
+      const dropdown = page.getByTestId('tds-dropdown-testid');
+      const triggerButton = dropdown.getByRole('button', { name: 'Label text' });
+      const selectAllButton = page.getByRole('button', { name: 'Select all' });
+      const clearAllButton = page.getByRole('button', { name: 'Clear all' });
+
+      await triggerButton.click();
+
+      await expect(selectAllButton).toBeEnabled();
+      await expect(clearAllButton).toBeDisabled();
+
+      await selectAllButton.click();
+
+      await expect(page.getByRole('checkbox', { name: 'Option 1' })).toBeChecked();
+      await expect(page.getByRole('checkbox', { name: 'Option 2' })).not.toBeChecked();
+      await expect(page.getByRole('checkbox', { name: 'Option 3' })).toBeChecked();
+      await expect(page.getByRole('checkbox', { name: 'Option 4' })).toBeChecked();
+      await expect(dropdown).toHaveAttribute('value', 'option-1,option-3,option-4');
+      await expect(selectAllButton).toBeDisabled();
+      await expect(clearAllButton).toBeEnabled();
+
+      await clearAllButton.click();
+
+      await expect(page.getByRole('checkbox', { name: 'Option 1' })).not.toBeChecked();
+      await expect(page.getByRole('checkbox', { name: 'Option 3' })).not.toBeChecked();
+      await expect(page.getByRole('checkbox', { name: 'Option 4' })).not.toBeChecked();
+      await expect(dropdown).not.toHaveAttribute('value');
+      await expect(selectAllButton).toBeEnabled();
+      await expect(clearAllButton).toBeDisabled();
+    });
   });
 });
