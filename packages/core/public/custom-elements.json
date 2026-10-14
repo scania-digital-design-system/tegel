@@ -831,6 +831,285 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/button/button.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsButton",
+          "slots": [
+            {
+              "description": "Slot for the text injection. Serves as alternative to text prop.",
+              "name": "label"
+            },
+            {
+              "description": "Slot used to display an Icon in the Button.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Text displayed inside the Button"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'",
+              "description": "Button's type"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
+              },
+              "default": "'primary'",
+              "description": "Variation of Button's design"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg'"
+              },
+              "default": "'lg'",
+              "description": "Size of a Button"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Control for disabled state of a component"
+            },
+            {
+              "kind": "field",
+              "name": "fullbleed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When enabled, the Button takes 100% width"
+            },
+            {
+              "kind": "field",
+              "name": "modeVariant",
+              "type": {
+                "text": "'primary' | 'secondary' | null"
+              },
+              "default": "null",
+              "description": "Set the mode variant of the Button."
+            },
+            {
+              "kind": "field",
+              "name": "animation",
+              "type": {
+                "text": "'none' | 'fade'"
+              },
+              "default": "'none'",
+              "description": "Determines if and how the button should animate."
+            },
+            {
+              "kind": "field",
+              "name": "tdsAriaLabel",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The value to be used for the aria-label attribute if onlyIcon is set to true"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The name attribute allows for different ways of accessing the button element"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The value attribute can be used when handling a form submission"
+            },
+            {
+              "kind": "field",
+              "name": "onlyIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyUp",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "description": "Text displayed inside the Button",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "type",
+              "fieldName": "type",
+              "default": "'button'",
+              "description": "Button's type",
+              "type": {
+                "text": "'button' | 'submit' | 'reset'"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "default": "'primary'",
+              "description": "Variation of Button's design",
+              "type": {
+                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "default": "'lg'",
+              "description": "Size of a Button",
+              "type": {
+                "text": "'xs' | 'sm' | 'md' | 'lg'"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "default": "false",
+              "description": "Control for disabled state of a component",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "fullbleed",
+              "fieldName": "fullbleed",
+              "default": "false",
+              "description": "When enabled, the Button takes 100% width",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "mode-variant",
+              "fieldName": "modeVariant",
+              "default": "null",
+              "description": "Set the mode variant of the Button.",
+              "type": {
+                "text": "'primary' | 'secondary' | null"
+              }
+            },
+            {
+              "name": "animation",
+              "fieldName": "animation",
+              "default": "'none'",
+              "description": "Determines if and how the button should animate.",
+              "type": {
+                "text": "'none' | 'fade'"
+              }
+            },
+            {
+              "name": "tds-aria-label",
+              "fieldName": "tdsAriaLabel",
+              "description": "The value to be used for the aria-label attribute if onlyIcon is set to true",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "description": "The name attribute allows for different ways of accessing the button element",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "description": "The value attribute can be used when handling a form submission",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-button",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsButton",
+          "declaration": {
+            "name": "TdsButton",
+            "module": "src/components/button/button.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-button",
+          "declaration": {
+            "name": "TdsButton",
+            "module": "src/components/button/button.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/checkbox/checkbox.tsx",
       "declarations": [
         {
@@ -1199,156 +1478,30 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button/button.tsx",
+      "path": "src/components/divider/divider.tsx",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "TdsButton",
-          "slots": [
-            {
-              "description": "Slot for the text injection. Serves as alternative to text prop.",
-              "name": "label"
-            },
-            {
-              "description": "Slot used to display an Icon in the Button.",
-              "name": "icon"
-            }
-          ],
+          "name": "TdsDivider",
           "members": [
             {
               "kind": "field",
-              "name": "host",
+              "name": "orientation",
               "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "text",
-              "type": {
-                "text": "string | undefined"
+                "text": "'horizontal' | 'vertical'"
               },
-              "description": "Text displayed inside the Button"
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'button' | 'submit' | 'reset'"
-              },
-              "default": "'button'",
-              "description": "Button's type"
+              "default": "'horizontal'",
+              "description": "Orientation of the Divider, horizontal if not specified."
             },
             {
               "kind": "field",
               "name": "variant",
               "type": {
-                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
+                "text": "'discrete' | 'subtle' | 'soft' | 'defined' | 'strong' | 'expressive' | 'dark-blue'"
               },
-              "default": "'primary'",
-              "description": "Variation of Button's design"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg'"
-              },
-              "default": "'lg'",
-              "description": "Size of a Button"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Control for disabled state of a component"
-            },
-            {
-              "kind": "field",
-              "name": "fullbleed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When enabled, the Button takes 100% width"
-            },
-            {
-              "kind": "field",
-              "name": "modeVariant",
-              "type": {
-                "text": "'primary' | 'secondary' | null"
-              },
-              "default": "null",
-              "description": "Set the mode variant of the Button."
-            },
-            {
-              "kind": "field",
-              "name": "animation",
-              "type": {
-                "text": "'none' | 'fade'"
-              },
-              "default": "'none'",
-              "description": "Determines if and how the button should animate."
-            },
-            {
-              "kind": "field",
-              "name": "tdsAriaLabel",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The value to be used for the aria-label attribute if onlyIcon is set to true"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The name attribute allows for different ways of accessing the button element"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The value attribute can be used when handling a form submission"
-            },
-            {
-              "kind": "field",
-              "name": "onlyIcon",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyUp",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
+              "default": "'subtle'",
+              "description": "Variant of the Divider, subtle if not specified. `dark-blue` is a deprecated alias for `expressive`."
             },
             {
               "kind": "method",
@@ -1357,102 +1510,25 @@
           ],
           "attributes": [
             {
-              "name": "text",
-              "fieldName": "text",
-              "description": "Text displayed inside the Button",
+              "name": "orientation",
+              "fieldName": "orientation",
+              "default": "'horizontal'",
+              "description": "Orientation of the Divider, horizontal if not specified.",
               "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "type",
-              "fieldName": "type",
-              "default": "'button'",
-              "description": "Button's type",
-              "type": {
-                "text": "'button' | 'submit' | 'reset'"
+                "text": "'horizontal' | 'vertical'"
               }
             },
             {
               "name": "variant",
               "fieldName": "variant",
-              "default": "'primary'",
-              "description": "Variation of Button's design",
+              "default": "'subtle'",
+              "description": "Variant of the Divider, subtle if not specified. `dark-blue` is a deprecated alias for `expressive`.",
               "type": {
-                "text": "'primary' | 'secondary' | 'ghost' | 'danger'"
-              }
-            },
-            {
-              "name": "size",
-              "fieldName": "size",
-              "default": "'lg'",
-              "description": "Size of a Button",
-              "type": {
-                "text": "'xs' | 'sm' | 'md' | 'lg'"
-              }
-            },
-            {
-              "name": "disabled",
-              "fieldName": "disabled",
-              "default": "false",
-              "description": "Control for disabled state of a component",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "fullbleed",
-              "fieldName": "fullbleed",
-              "default": "false",
-              "description": "When enabled, the Button takes 100% width",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "mode-variant",
-              "fieldName": "modeVariant",
-              "default": "null",
-              "description": "Set the mode variant of the Button.",
-              "type": {
-                "text": "'primary' | 'secondary' | null"
-              }
-            },
-            {
-              "name": "animation",
-              "fieldName": "animation",
-              "default": "'none'",
-              "description": "Determines if and how the button should animate.",
-              "type": {
-                "text": "'none' | 'fade'"
-              }
-            },
-            {
-              "name": "tds-aria-label",
-              "fieldName": "tdsAriaLabel",
-              "description": "The value to be used for the aria-label attribute if onlyIcon is set to true",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "name",
-              "fieldName": "name",
-              "description": "The name attribute allows for different ways of accessing the button element",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "value",
-              "fieldName": "value",
-              "description": "The value attribute can be used when handling a form submission",
-              "type": {
-                "text": "string"
+                "text": "'discrete' | 'subtle' | 'soft' | 'defined' | 'strong' | 'expressive' | 'dark-blue'"
               }
             }
           ],
-          "tagName": "tds-button",
+          "tagName": "tds-divider",
           "events": [],
           "customElement": true
         }
@@ -1460,257 +1536,18 @@
       "exports": [
         {
           "kind": "js",
-          "name": "TdsButton",
+          "name": "TdsDivider",
           "declaration": {
-            "name": "TdsButton",
-            "module": "src/components/button/button.tsx"
+            "name": "TdsDivider",
+            "module": "src/components/divider/divider.tsx"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "tds-button",
+          "name": "tds-divider",
           "declaration": {
-            "name": "TdsButton",
-            "module": "src/components/button/button.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/chip/chip.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsChip",
-          "slots": [
-            {
-              "description": "Slot for the prefix icon.",
-              "name": "prefix"
-            },
-            {
-              "description": "Slot for the label text.",
-              "name": "label"
-            },
-            {
-              "description": "Slot for the suffix icon.",
-              "name": "suffix"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'button' | 'radio' | 'checkbox'"
-              },
-              "default": "'button'",
-              "description": "Type of Chip, depends on usage"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'sm' | 'lg'"
-              },
-              "default": "'lg'",
-              "description": "Size of the Chip component"
-            },
-            {
-              "kind": "field",
-              "name": "chipId",
-              "type": {
-                "text": "string"
-              },
-              "description": "ID used for internal Chip functionality and events, must be unique.\n\n**NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,\nas the default ID is random and will be different every time."
-            },
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Controls component's checked attribute. Valid only for type checkbox and radio."
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio."
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Value of input. Valid only for type checkbox and radio."
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Sets the Chip in a disabled state"
-            },
-            {
-              "kind": "field",
-              "name": "tdsAriaLabel",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Value to be used for the aria-label attribute"
-            },
-            {
-              "kind": "field",
-              "name": "handleChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "handleInternalRadioChange",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "CustomEvent<{ chipId: string; checked: boolean; groupName: string }>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "handleClick",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "renderInputAttributes",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "fieldName": "type",
-              "default": "'button'",
-              "description": "Type of Chip, depends on usage",
-              "type": {
-                "text": "'button' | 'radio' | 'checkbox'"
-              }
-            },
-            {
-              "name": "size",
-              "fieldName": "size",
-              "default": "'lg'",
-              "description": "Size of the Chip component",
-              "type": {
-                "text": "'sm' | 'lg'"
-              }
-            },
-            {
-              "name": "chip-id",
-              "fieldName": "chipId",
-              "description": "ID used for internal Chip functionality and events, must be unique.\n\n**NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,\nas the default ID is random and will be different every time.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "checked",
-              "fieldName": "checked",
-              "default": "false",
-              "description": "Controls component's checked attribute. Valid only for type checkbox and radio.",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "name",
-              "fieldName": "name",
-              "description": "Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "value",
-              "fieldName": "value",
-              "description": "Value of input. Valid only for type checkbox and radio.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "disabled",
-              "fieldName": "disabled",
-              "default": "false",
-              "description": "Sets the Chip in a disabled state",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "tds-aria-label",
-              "fieldName": "tdsAriaLabel",
-              "description": "Value to be used for the aria-label attribute",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-chip",
-          "events": [
-            {
-              "name": "tdsChange",
-              "type": {
-                "text": "EventEmitter<{\n    chipId: string;\n    value: string | undefined;\n    checked?: boolean;\n  }>"
-              },
-              "description": "Sends unique Chip identifier and value when it is changed (checked/unchecked).\nValid only for type checkbox and radio.\nIf no ID is specified, a random one will be generated.\nTo use this listener, don't use the randomized ID, use a specific one of your choosing."
-            },
-            {
-              "name": "tdsClick",
-              "type": {
-                "text": "EventEmitter<{\n    chipId: string;\n  }>"
-              },
-              "description": "Sends unique Chip identifier when Chip is clicked.\nValid only for type button.\nIf no ID is specified, a random one will be generated.\nTo use this listener, don't use the randomized ID, use a specific one of your choosing."
-            }
-          ],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsChip",
-          "declaration": {
-            "name": "TdsChip",
-            "module": "src/components/chip/chip.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-chip",
-          "declaration": {
-            "name": "TdsChip",
-            "module": "src/components/chip/chip.tsx"
+            "name": "TdsDivider",
+            "module": "src/components/divider/divider.tsx"
           }
         }
       ]
@@ -2263,30 +2100,128 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/divider/divider.tsx",
+      "path": "src/components/chip/chip.tsx",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "TdsDivider",
+          "name": "TdsChip",
+          "slots": [
+            {
+              "description": "Slot for the prefix icon.",
+              "name": "prefix"
+            },
+            {
+              "description": "Slot for the label text.",
+              "name": "label"
+            },
+            {
+              "description": "Slot for the suffix icon.",
+              "name": "suffix"
+            }
+          ],
           "members": [
             {
               "kind": "field",
-              "name": "orientation",
+              "name": "host",
               "type": {
-                "text": "'horizontal' | 'vertical'"
-              },
-              "default": "'horizontal'",
-              "description": "Orientation of the Divider, horizontal if not specified."
+                "text": "HTMLElement"
+              }
             },
             {
               "kind": "field",
-              "name": "variant",
+              "name": "type",
               "type": {
-                "text": "| 'discrete'\n    | 'subtle'\n    | 'soft'\n    | 'defined'\n    | 'strong'\n    | 'expressive'\n    | 'dark-blue'"
+                "text": "'button' | 'radio' | 'checkbox'"
               },
-              "default": "'subtle'",
-              "description": "Variant of the Divider, subtle if not specified. `dark-blue` is a deprecated alias for `expressive`."
+              "default": "'button'",
+              "description": "Type of Chip, depends on usage"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'sm' | 'lg'"
+              },
+              "default": "'lg'",
+              "description": "Size of the Chip component"
+            },
+            {
+              "kind": "field",
+              "name": "chipId",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID used for internal Chip functionality and events, must be unique.\n\n**NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,\nas the default ID is random and will be different every time."
+            },
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Controls component's checked attribute. Valid only for type checkbox and radio."
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio."
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Value of input. Valid only for type checkbox and radio."
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Sets the Chip in a disabled state"
+            },
+            {
+              "kind": "field",
+              "name": "tdsAriaLabel",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Value to be used for the aria-label attribute"
+            },
+            {
+              "kind": "field",
+              "name": "handleChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "handleInternalRadioChange",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "CustomEvent<{ chipId: string; checked: boolean; groupName: string }>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "handleClick",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "renderInputAttributes",
+              "privacy": "private"
             },
             {
               "kind": "method",
@@ -2295,44 +2230,109 @@
           ],
           "attributes": [
             {
-              "name": "orientation",
-              "fieldName": "orientation",
-              "default": "'horizontal'",
-              "description": "Orientation of the Divider, horizontal if not specified.",
+              "name": "type",
+              "fieldName": "type",
+              "default": "'button'",
+              "description": "Type of Chip, depends on usage",
               "type": {
-                "text": "'horizontal' | 'vertical'"
+                "text": "'button' | 'radio' | 'checkbox'"
               }
             },
             {
-              "name": "variant",
-              "fieldName": "variant",
-              "default": "'subtle'",
-              "description": "Variant of the Divider, subtle if not specified. `dark-blue` is a deprecated alias for `expressive`.",
+              "name": "size",
+              "fieldName": "size",
+              "default": "'lg'",
+              "description": "Size of the Chip component",
               "type": {
-                "text": "| 'discrete'\n    | 'subtle'\n    | 'soft'\n    | 'defined'\n    | 'strong'\n    | 'expressive'\n    | 'dark-blue'"
+                "text": "'sm' | 'lg'"
+              }
+            },
+            {
+              "name": "chip-id",
+              "fieldName": "chipId",
+              "description": "ID used for internal Chip functionality and events, must be unique.\n\n**NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,\nas the default ID is random and will be different every time.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "checked",
+              "fieldName": "checked",
+              "default": "false",
+              "description": "Controls component's checked attribute. Valid only for type checkbox and radio.",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "name",
+              "fieldName": "name",
+              "description": "Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "value",
+              "fieldName": "value",
+              "description": "Value of input. Valid only for type checkbox and radio.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "fieldName": "disabled",
+              "default": "false",
+              "description": "Sets the Chip in a disabled state",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "tds-aria-label",
+              "fieldName": "tdsAriaLabel",
+              "description": "Value to be used for the aria-label attribute",
+              "type": {
+                "text": "string"
               }
             }
           ],
-          "tagName": "tds-divider",
-          "events": [],
+          "tagName": "tds-chip",
+          "events": [
+            {
+              "name": "tdsChange",
+              "type": {
+                "text": "EventEmitter<{\n    chipId: string;\n    value: string | undefined;\n    checked?: boolean;\n  }>"
+              },
+              "description": "Sends unique Chip identifier and value when it is changed (checked/unchecked).\nValid only for type checkbox and radio.\nIf no ID is specified, a random one will be generated.\nTo use this listener, don't use the randomized ID, use a specific one of your choosing."
+            },
+            {
+              "name": "tdsClick",
+              "type": {
+                "text": "EventEmitter<{\n    chipId: string;\n  }>"
+              },
+              "description": "Sends unique Chip identifier when Chip is clicked.\nValid only for type button.\nIf no ID is specified, a random one will be generated.\nTo use this listener, don't use the randomized ID, use a specific one of your choosing."
+            }
+          ],
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "TdsDivider",
+          "name": "TdsChip",
           "declaration": {
-            "name": "TdsDivider",
-            "module": "src/components/divider/divider.tsx"
+            "name": "TdsChip",
+            "module": "src/components/chip/chip.tsx"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "tds-divider",
+          "name": "tds-chip",
           "declaration": {
-            "name": "TdsDivider",
-            "module": "src/components/divider/divider.tsx"
+            "name": "TdsChip",
+            "module": "src/components/chip/chip.tsx"
           }
         }
       ]
@@ -6850,6 +6850,112 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/tag/tag.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsTag",
+          "slots": [
+            {
+              "description": "Slot used to display an icon or other content before the tag text.",
+              "name": "prefix"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              },
+              "description": "The element host"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "The title text to display in the tag"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'lg' | 'sm'"
+              },
+              "default": "'lg'",
+              "description": "Sets the size of the tag"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "| 'success'\n    | 'warning'\n    | 'new'\n    | 'neutral'\n    | 'information'\n    | 'error'\n    | 'Success'\n    | 'Warning'\n    | 'New'\n    | 'Neutral'\n    | 'Information'\n    | 'Error'"
+              },
+              "default": "'Neutral'",
+              "description": "Sets the variant mode of the tag"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "fieldName": "text",
+              "description": "The title text to display in the tag",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "size",
+              "fieldName": "size",
+              "default": "'lg'",
+              "description": "Sets the size of the tag",
+              "type": {
+                "text": "'lg' | 'sm'"
+              }
+            },
+            {
+              "name": "variant",
+              "fieldName": "variant",
+              "default": "'Neutral'",
+              "description": "Sets the variant mode of the tag",
+              "type": {
+                "text": "| 'success'\n    | 'warning'\n    | 'new'\n    | 'neutral'\n    | 'information'\n    | 'error'\n    | 'Success'\n    | 'Warning'\n    | 'New'\n    | 'Neutral'\n    | 'Information'\n    | 'Error'"
+              }
+            }
+          ],
+          "tagName": "tds-tag",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsTag",
+          "declaration": {
+            "name": "TdsTag",
+            "module": "src/components/tag/tag.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-tag",
+          "declaration": {
+            "name": "TdsTag",
+            "module": "src/components/tag/tag.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/text-field/text-field.tsx",
       "declarations": [
         {
@@ -8723,52 +8829,101 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/tag/tag.tsx",
+      "path": "src/components/accordion/accordion-item/accordion-item.tsx",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "TdsTag",
+          "name": "TdsAccordionItem",
           "slots": [
             {
-              "description": "Slot used to display an icon or other content before the tag text.",
-              "name": "prefix"
+              "description": "<b>Unnamed slot.</b> For content of an expanded accordion.",
+              "name": "<default>"
+            },
+            {
+              "description": "Slot for the Accordion Item header.",
+              "name": "header"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              },
-              "description": "The element host"
-            },
-            {
-              "kind": "field",
-              "name": "text",
+              "name": "header",
               "type": {
                 "text": "string"
               },
-              "description": "The title text to display in the tag"
+              "default": "''",
+              "description": "The header gives users the context about the additional information available inside the panel"
             },
             {
               "kind": "field",
-              "name": "size",
+              "name": "expandIconPosition",
               "type": {
-                "text": "'lg' | 'sm'"
+                "text": "'start' | 'end'"
               },
-              "default": "'lg'",
-              "description": "Sets the size of the tag"
+              "default": "'end'",
+              "description": "Changes position of the expand icon."
             },
             {
               "kind": "field",
-              "name": "variant",
+              "name": "disabled",
               "type": {
-                "text": "| 'success'\n    | 'warning'\n    | 'new'\n    | 'neutral'\n    | 'information'\n    | 'error'\n    | 'Success'\n    | 'Warning'\n    | 'New'\n    | 'Neutral'\n    | 'Information'\n    | 'Error'"
+                "text": "boolean"
               },
-              "default": "'Neutral'",
-              "description": "Sets the variant mode of the tag"
+              "default": "false",
+              "description": "Disabled option in `boolean`."
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Set to true to expand panel open"
+            },
+            {
+              "kind": "field",
+              "name": "paddingReset",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, 16px on right padding instead of 64px"
+            },
+            {
+              "kind": "field",
+              "name": "ariaLevelValue",
+              "type": {
+                "text": "'1' | '2' | '3' | '4' | '5' | '6'"
+              },
+              "default": "'6'",
+              "description": "Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6."
+            },
+            {
+              "kind": "method",
+              "name": "toggleAccordionItem",
+              "description": "Method for toggling the expanded state of the Accordion Item."
+            },
+            {
+              "kind": "method",
+              "name": "expand",
+              "description": "Method for expanding the Accordion Item"
+            },
+            {
+              "kind": "method",
+              "name": "collapse",
+              "description": "Method for collapsing the Accordion Item"
+            },
+            {
+              "kind": "method",
+              "name": "isExpanded",
+              "return": {
+                "type": {
+                  "text": "Promise<boolean>"
+                }
+              },
+              "description": "Returns the expanded state of the Accordion Item."
             },
             {
               "kind": "method",
@@ -8777,52 +8932,88 @@
           ],
           "attributes": [
             {
-              "name": "text",
-              "fieldName": "text",
-              "description": "The title text to display in the tag",
+              "name": "header",
+              "fieldName": "header",
+              "default": "''",
+              "description": "The header gives users the context about the additional information available inside the panel",
               "type": {
                 "text": "string"
               }
             },
             {
-              "name": "size",
-              "fieldName": "size",
-              "default": "'lg'",
-              "description": "Sets the size of the tag",
+              "name": "expand-icon-position",
+              "fieldName": "expandIconPosition",
+              "default": "'end'",
+              "description": "Changes position of the expand icon.",
               "type": {
-                "text": "'lg' | 'sm'"
+                "text": "'start' | 'end'"
               }
             },
             {
-              "name": "variant",
-              "fieldName": "variant",
-              "default": "'Neutral'",
-              "description": "Sets the variant mode of the tag",
+              "name": "disabled",
+              "fieldName": "disabled",
+              "default": "false",
+              "description": "Disabled option in `boolean`.",
               "type": {
-                "text": "| 'success'\n    | 'warning'\n    | 'new'\n    | 'neutral'\n    | 'information'\n    | 'error'\n    | 'Success'\n    | 'Warning'\n    | 'New'\n    | 'Neutral'\n    | 'Information'\n    | 'Error'"
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "expanded",
+              "fieldName": "expanded",
+              "default": "false",
+              "description": "Set to true to expand panel open",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "padding-reset",
+              "fieldName": "paddingReset",
+              "default": "false",
+              "description": "When true, 16px on right padding instead of 64px",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "aria-level-value",
+              "fieldName": "ariaLevelValue",
+              "default": "'6'",
+              "description": "Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6.",
+              "type": {
+                "text": "'1' | '2' | '3' | '4' | '5' | '6'"
               }
             }
           ],
-          "tagName": "tds-tag",
-          "events": [],
+          "tagName": "tds-accordion-item",
+          "events": [
+            {
+              "name": "tdsToggle",
+              "type": {
+                "text": "EventEmitter<{\n    expanded: boolean;\n  }>"
+              },
+              "description": "Fires when the Accordion Item is clicked, but before it is closed or opened."
+            }
+          ],
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "TdsTag",
+          "name": "TdsAccordionItem",
           "declaration": {
-            "name": "TdsTag",
-            "module": "src/components/tag/tag.tsx"
+            "name": "TdsAccordionItem",
+            "module": "src/components/accordion/accordion-item/accordion-item.tsx"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "tds-tag",
+          "name": "tds-accordion-item",
           "declaration": {
-            "name": "TdsTag",
-            "module": "src/components/tag/tag.tsx"
+            "name": "TdsAccordionItem",
+            "module": "src/components/accordion/accordion-item/accordion-item.tsx"
           }
         }
       ]
@@ -9110,301 +9301,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/accordion-item/accordion-item.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsAccordionItem",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For content of an expanded accordion.",
-              "name": "<default>"
-            },
-            {
-              "description": "Slot for the Accordion Item header.",
-              "name": "header"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "header",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The header gives users the context about the additional information available inside the panel"
-            },
-            {
-              "kind": "field",
-              "name": "expandIconPosition",
-              "type": {
-                "text": "'start' | 'end'"
-              },
-              "default": "'end'",
-              "description": "Changes position of the expand icon."
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disabled option in `boolean`."
-            },
-            {
-              "kind": "field",
-              "name": "expanded",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Set to true to expand panel open"
-            },
-            {
-              "kind": "field",
-              "name": "paddingReset",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When true, 16px on right padding instead of 64px"
-            },
-            {
-              "kind": "field",
-              "name": "ariaLevelValue",
-              "type": {
-                "text": "'1' | '2' | '3' | '4' | '5' | '6'"
-              },
-              "default": "'6'",
-              "description": "Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6."
-            },
-            {
-              "kind": "method",
-              "name": "toggleAccordionItem",
-              "description": "Method for toggling the expanded state of the Accordion Item."
-            },
-            {
-              "kind": "method",
-              "name": "expand",
-              "description": "Method for expanding the Accordion Item"
-            },
-            {
-              "kind": "method",
-              "name": "collapse",
-              "description": "Method for collapsing the Accordion Item"
-            },
-            {
-              "kind": "method",
-              "name": "isExpanded",
-              "return": {
-                "type": {
-                  "text": "Promise<boolean>"
-                }
-              },
-              "description": "Returns the expanded state of the Accordion Item."
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "header",
-              "fieldName": "header",
-              "default": "''",
-              "description": "The header gives users the context about the additional information available inside the panel",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "expand-icon-position",
-              "fieldName": "expandIconPosition",
-              "default": "'end'",
-              "description": "Changes position of the expand icon.",
-              "type": {
-                "text": "'start' | 'end'"
-              }
-            },
-            {
-              "name": "disabled",
-              "fieldName": "disabled",
-              "default": "false",
-              "description": "Disabled option in `boolean`.",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "expanded",
-              "fieldName": "expanded",
-              "default": "false",
-              "description": "Set to true to expand panel open",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "padding-reset",
-              "fieldName": "paddingReset",
-              "default": "false",
-              "description": "When true, 16px on right padding instead of 64px",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "aria-level-value",
-              "fieldName": "ariaLevelValue",
-              "default": "'6'",
-              "description": "Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6.",
-              "type": {
-                "text": "'1' | '2' | '3' | '4' | '5' | '6'"
-              }
-            }
-          ],
-          "tagName": "tds-accordion-item",
-          "events": [
-            {
-              "name": "tdsToggle",
-              "type": {
-                "text": "EventEmitter<{\n    expanded: boolean;\n  }>"
-              },
-              "description": "Fires when the Accordion Item is clicked, but before it is closed or opened."
-            }
-          ],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsAccordionItem",
-          "declaration": {
-            "name": "TdsAccordionItem",
-            "module": "src/components/accordion/accordion-item/accordion-item.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-accordion-item",
-          "declaration": {
-            "name": "TdsAccordionItem",
-            "module": "src/components/accordion/accordion-item/accordion-item.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/header/core-header-item/core-header-item.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsCoreHeaderItem",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For content.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-core-header-item",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsCoreHeaderItem",
-          "declaration": {
-            "name": "TdsCoreHeaderItem",
-            "module": "src/components/header/core-header-item/core-header-item.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-core-header-item",
-          "declaration": {
-            "name": "TdsCoreHeaderItem",
-            "module": "src/components/header/core-header-item/core-header-item.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/footer/footer-item/footer-item.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsFooterItem",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For slotting a link, button, or similar.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "parentIsTopPart",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-footer-item",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsFooterItem",
-          "declaration": {
-            "name": "TdsFooterItem",
-            "module": "src/components/footer/footer-item/footer-item.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-footer-item",
-          "declaration": {
-            "name": "TdsFooterItem",
-            "module": "src/components/footer/footer-item/footer-item.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/footer/footer-group/footer-group.tsx",
       "declarations": [
         {
@@ -9541,6 +9437,110 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/footer/footer-item/footer-item.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsFooterItem",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For slotting a link, button, or similar.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "parentIsTopPart",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-footer-item",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsFooterItem",
+          "declaration": {
+            "name": "TdsFooterItem",
+            "module": "src/components/footer/footer-item/footer-item.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-footer-item",
+          "declaration": {
+            "name": "TdsFooterItem",
+            "module": "src/components/footer/footer-item/footer-item.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/header/core-header-item/core-header-item.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsCoreHeaderItem",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For content.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-core-header-item",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsCoreHeaderItem",
+          "declaration": {
+            "name": "TdsCoreHeaderItem",
+            "module": "src/components/header/core-header-item/core-header-item.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-core-header-item",
+          "declaration": {
+            "name": "TdsCoreHeaderItem",
+            "module": "src/components/header/core-header-item/core-header-item.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/header/header-brand-symbol/header-brand-symbol.tsx",
       "declarations": [
         {
@@ -9586,231 +9586,6 @@
           "declaration": {
             "name": "TdsHeaderBrandSymbol",
             "module": "src/components/header/header-brand-symbol/header-brand-symbol.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/header/header-dropdown-list/header-dropdown-list.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsHeaderDropdownList",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For a dropdown list item.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "slotListeners",
-              "type": {
-                "text": "Map<HTMLSlotElement, EventListener>"
-              },
-              "privacy": "private",
-              "default": "new Map()"
-            },
-            {
-              "kind": "field",
-              "name": "size",
-              "type": {
-                "text": "'lg' | 'md'"
-              },
-              "default": "'md'",
-              "description": "The size of the component."
-            },
-            {
-              "kind": "field",
-              "name": "headingElement",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "processAssignedElements",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "slot",
-                  "type": {
-                    "text": "HTMLSlotElement"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "size",
-              "fieldName": "size",
-              "default": "'md'",
-              "description": "The size of the component.",
-              "type": {
-                "text": "'lg' | 'md'"
-              }
-            }
-          ],
-          "tagName": "tds-header-dropdown-list",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsHeaderDropdownList",
-          "declaration": {
-            "name": "TdsHeaderDropdownList",
-            "module": "src/components/header/header-dropdown-list/header-dropdown-list.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-header-dropdown-list",
-          "declaration": {
-            "name": "TdsHeaderDropdownList",
-            "module": "src/components/header/header-dropdown-list/header-dropdown-list.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsHeaderDropdownListLgUser",
-          "slots": [
-            {
-              "description": "Slot for the thumbnail.",
-              "name": "thumbnail"
-            },
-            {
-              "description": "Slot for the header.",
-              "name": "header"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "imgUrl",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Image URL."
-            },
-            {
-              "kind": "field",
-              "name": "imgAlt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Image alt text."
-            },
-            {
-              "kind": "field",
-              "name": "header",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Header text, usually the users first name and last name."
-            },
-            {
-              "kind": "field",
-              "name": "subheader",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Subheader text."
-            },
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "img-url",
-              "fieldName": "imgUrl",
-              "description": "Image URL.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "img-alt",
-              "fieldName": "imgAlt",
-              "description": "Image alt text.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "header",
-              "fieldName": "header",
-              "description": "Header text, usually the users first name and last name.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "subheader",
-              "fieldName": "subheader",
-              "description": "Subheader text.",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-header-dropdown-list-user",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsHeaderDropdownListLgUser",
-          "declaration": {
-            "name": "TdsHeaderDropdownListLgUser",
-            "module": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-header-dropdown-list-user",
-          "declaration": {
-            "name": "TdsHeaderDropdownListLgUser",
-            "module": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx"
           }
         }
       ]
@@ -10001,6 +9776,110 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/header/header-dropdown-list/header-dropdown-list.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsHeaderDropdownList",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For a dropdown list item.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "slotListeners",
+              "type": {
+                "text": "Map<HTMLSlotElement, EventListener>"
+              },
+              "privacy": "private",
+              "default": "new Map()"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "'lg' | 'md'"
+              },
+              "default": "'md'",
+              "description": "The size of the component."
+            },
+            {
+              "kind": "field",
+              "name": "headingElement",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "processAssignedElements",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slot",
+                  "type": {
+                    "text": "HTMLSlotElement"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "fieldName": "size",
+              "default": "'md'",
+              "description": "The size of the component.",
+              "type": {
+                "text": "'lg' | 'md'"
+              }
+            }
+          ],
+          "tagName": "tds-header-dropdown-list",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsHeaderDropdownList",
+          "declaration": {
+            "name": "TdsHeaderDropdownList",
+            "module": "src/components/header/header-dropdown-list/header-dropdown-list.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-header-dropdown-list",
+          "declaration": {
+            "name": "TdsHeaderDropdownList",
+            "module": "src/components/header/header-dropdown-list/header-dropdown-list.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/header/header-dropdown-list-item/header-dropdown-list-item.tsx",
       "declarations": [
         {
@@ -10084,6 +9963,127 @@
           "declaration": {
             "name": "TdsHeaderDropdownListItem",
             "module": "src/components/header/header-dropdown-list-item/header-dropdown-list-item.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsHeaderDropdownListLgUser",
+          "slots": [
+            {
+              "description": "Slot for the thumbnail.",
+              "name": "thumbnail"
+            },
+            {
+              "description": "Slot for the header.",
+              "name": "header"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "imgUrl",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Image URL."
+            },
+            {
+              "kind": "field",
+              "name": "imgAlt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Image alt text."
+            },
+            {
+              "kind": "field",
+              "name": "header",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Header text, usually the users first name and last name."
+            },
+            {
+              "kind": "field",
+              "name": "subheader",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Subheader text."
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "img-url",
+              "fieldName": "imgUrl",
+              "description": "Image URL.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "img-alt",
+              "fieldName": "imgAlt",
+              "description": "Image alt text.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "header",
+              "fieldName": "header",
+              "description": "Header text, usually the users first name and last name.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "subheader",
+              "fieldName": "subheader",
+              "description": "Subheader text.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-header-dropdown-list-user",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsHeaderDropdownListLgUser",
+          "declaration": {
+            "name": "TdsHeaderDropdownListLgUser",
+            "module": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-header-dropdown-list-user",
+          "declaration": {
+            "name": "TdsHeaderDropdownListLgUser",
+            "module": "src/components/header/header-dropdown-list-user/header-dropdown-list-user.tsx"
           }
         }
       ]
@@ -10286,6 +10286,142 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/header/header-launcher/header-launcher.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Tegel Header Launcher component. Expandable component that can either contain a list or a grid.",
+          "name": "TdsHeaderLauncher",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For a launcher list (or grid) element.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "buttonEl",
+              "type": {
+                "text": "HTMLTdsHeaderLauncherButtonElement | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hasListTypeMenu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "tdsAriaLabel",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Value to be used by the aria-label attribute of the launcher button"
+            },
+            {
+              "kind": "field",
+              "name": "uuid",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "ariaAttributes",
+              "type": {
+                "text": "Attributes"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "onAnyClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyDown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleLauncher"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "tds-aria-label",
+              "fieldName": "tdsAriaLabel",
+              "description": "Value to be used by the aria-label attribute of the launcher button",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-header-launcher",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsHeaderLauncher",
+          "declaration": {
+            "name": "TdsHeaderLauncher",
+            "module": "src/components/header/header-launcher/header-launcher.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-header-launcher",
+          "declaration": {
+            "name": "TdsHeaderLauncher",
+            "module": "src/components/header/header-launcher/header-launcher.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/header/header-launcher-button/header-launcher-button.tsx",
       "declarations": [
         {
@@ -10424,142 +10560,6 @@
           "declaration": {
             "name": "TdsHeaderLauncherGrid",
             "module": "src/components/header/header-launcher-grid/header-launcher-grid.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/header/header-launcher/header-launcher.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Tegel Header Launcher component. Expandable component that can either contain a list or a grid.",
-          "name": "TdsHeaderLauncher",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For a launcher list (or grid) element.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "buttonEl",
-              "type": {
-                "text": "HTMLTdsHeaderLauncherButtonElement | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hasListTypeMenu",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "tdsAriaLabel",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Value to be used by the aria-label attribute of the launcher button"
-            },
-            {
-              "kind": "field",
-              "name": "uuid",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "ariaAttributes",
-              "type": {
-                "text": "Attributes"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "onAnyClick",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleKeyDown",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "toggleLauncher"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "tds-aria-label",
-              "fieldName": "tdsAriaLabel",
-              "description": "Value to be used by the aria-label attribute of the launcher button",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-header-launcher",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsHeaderLauncher",
-          "declaration": {
-            "name": "TdsHeaderLauncher",
-            "module": "src/components/header/header-launcher/header-launcher.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-header-launcher",
-          "declaration": {
-            "name": "TdsHeaderLauncher",
-            "module": "src/components/header/header-launcher/header-launcher.tsx"
           }
         }
       ]
@@ -10757,50 +10757,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/header/header-title/header-title.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Tegel Header Title component. To display the header's title.",
-          "name": "TdsHeaderTitle",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For the header title text.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-header-title",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsHeaderTitle",
-          "declaration": {
-            "name": "TdsHeaderTitle",
-            "module": "src/components/header/header-title/header-title.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-header-title",
-          "declaration": {
-            "name": "TdsHeaderTitle",
-            "module": "src/components/header/header-title/header-title.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/header/header-launcher-list-title/header-launcher-list-title.tsx",
       "declarations": [
         {
@@ -10860,57 +10816,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsSideMenuCloseButton",
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleClick",
-              "privacy": "private",
-              "static": true
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-side-menu-close-button",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsSideMenuCloseButton",
-          "declaration": {
-            "name": "TdsSideMenuCloseButton",
-            "module": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-side-menu-close-button",
-          "declaration": {
-            "name": "TdsSideMenuCloseButton",
-            "module": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/popover-menu/popover-menu-item/popover-menu-item.tsx",
       "declarations": [
         {
@@ -10963,6 +10868,50 @@
           "declaration": {
             "name": "TdsPopoverMenuItem",
             "module": "src/components/popover-menu/popover-menu-item/popover-menu-item.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/header/header-title/header-title.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Tegel Header Title component. To display the header's title.",
+          "name": "TdsHeaderTitle",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For the header title text.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-header-title",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsHeaderTitle",
+          "declaration": {
+            "name": "TdsHeaderTitle",
+            "module": "src/components/header/header-title/header-title.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-header-title",
+          "declaration": {
+            "name": "TdsHeaderTitle",
+            "module": "src/components/header/header-title/header-title.tsx"
           }
         }
       ]
@@ -11055,6 +11004,57 @@
           "declaration": {
             "name": "TdsSideMenuCollapseButton",
             "module": "src/components/side-menu/side-menu-collapse-button/side-menu-collapse-button.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsSideMenuCloseButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "privacy": "private",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-side-menu-close-button",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsSideMenuCloseButton",
+          "declaration": {
+            "name": "TdsSideMenuCloseButton",
+            "module": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-side-menu-close-button",
+          "declaration": {
+            "name": "TdsSideMenuCloseButton",
+            "module": "src/components/side-menu/side-menu-close-button/side-menu-close-button.tsx"
           }
         }
       ]
@@ -11287,6 +11287,85 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsSideMenuDropdownList",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For injection of <code>tds-side-menu-dropdown-list-item</code> subcomponents.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "collapsed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "sideMenuEl",
+              "type": {
+                "text": "HTMLTdsSideMenuElement | null"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "collapsedSideMenuEventHandler",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "CustomEvent<CollapseEvent>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-side-menu-dropdown-list",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsSideMenuDropdownList",
+          "declaration": {
+            "name": "TdsSideMenuDropdownList",
+            "module": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-side-menu-dropdown-list",
+          "declaration": {
+            "name": "TdsSideMenuDropdownList",
+            "module": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/side-menu/side-menu-dropdown-list-item/side-menu-dropdown-list-item.tsx",
       "declarations": [
         {
@@ -11396,123 +11475,6 @@
           "declaration": {
             "name": "TdsSideMenuDropdownListItem",
             "module": "src/components/side-menu/side-menu-dropdown-list-item/side-menu-dropdown-list-item.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsSideMenuOverlay",
-          "members": [
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-side-menu-overlay",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsSideMenuOverlay",
-          "declaration": {
-            "name": "TdsSideMenuOverlay",
-            "module": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-side-menu-overlay",
-          "declaration": {
-            "name": "TdsSideMenuOverlay",
-            "module": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsSideMenuDropdownList",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For injection of <code>tds-side-menu-dropdown-list-item</code> subcomponents.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "collapsed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "sideMenuEl",
-              "type": {
-                "text": "HTMLTdsSideMenuElement | null"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "collapsedSideMenuEventHandler",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "CustomEvent<CollapseEvent>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-side-menu-dropdown-list",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsSideMenuDropdownList",
-          "declaration": {
-            "name": "TdsSideMenuDropdownList",
-            "module": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-side-menu-dropdown-list",
-          "declaration": {
-            "name": "TdsSideMenuDropdownList",
-            "module": "src/components/side-menu/side-menu-dropdown-list/side-menu-dropdown-list.tsx"
           }
         }
       ]
@@ -11679,59 +11641,19 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx",
+      "path": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "TdsSideMenuUserImage",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.",
-              "name": "<default>"
-            }
-          ],
+          "name": "TdsSideMenuOverlay",
           "members": [
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The image source."
-            },
-            {
-              "kind": "field",
-              "name": "alt",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The image alt text."
-            },
             {
               "kind": "method",
               "name": "render"
             }
           ],
-          "attributes": [
-            {
-              "name": "src",
-              "fieldName": "src",
-              "description": "The image source.",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "alt",
-              "fieldName": "alt",
-              "description": "The image alt text.",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-side-menu-user-image",
+          "tagName": "tds-side-menu-overlay",
           "events": [],
           "customElement": true
         }
@@ -11739,18 +11661,18 @@
       "exports": [
         {
           "kind": "js",
-          "name": "TdsSideMenuUserImage",
+          "name": "TdsSideMenuOverlay",
           "declaration": {
-            "name": "TdsSideMenuUserImage",
-            "module": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx"
+            "name": "TdsSideMenuOverlay",
+            "module": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "tds-side-menu-user-image",
+          "name": "tds-side-menu-overlay",
           "declaration": {
-            "name": "TdsSideMenuUserImage",
-            "module": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx"
+            "name": "TdsSideMenuOverlay",
+            "module": "src/components/side-menu/side-menu-overlay/side-menu-overlay.tsx"
           }
         }
       ]
@@ -11861,6 +11783,84 @@
           "declaration": {
             "name": "TdsSideMenuUser",
             "module": "src/components/side-menu/side-menu-user/side-menu-user.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsSideMenuUserImage",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The image source."
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "The image alt text."
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "fieldName": "src",
+              "description": "The image source.",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "alt",
+              "fieldName": "alt",
+              "description": "The image alt text.",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-side-menu-user-image",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsSideMenuUserImage",
+          "declaration": {
+            "name": "TdsSideMenuUserImage",
+            "module": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-side-menu-user-image",
+          "declaration": {
+            "name": "TdsSideMenuUserImage",
+            "module": "src/components/side-menu/side-menu-user-image/side-menu-user-image.tsx"
           }
         }
       ]
@@ -12090,6 +12090,1054 @@
           "declaration": {
             "name": "TdsStep",
             "module": "src/components/stepper/step/step.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/folder-tabs/folder-tabs.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsFolderTabs",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For the tab elements.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "modeVariant",
+              "type": {
+                "text": "'primary' | 'secondary' | null"
+              },
+              "default": "null",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
+            },
+            {
+              "kind": "field",
+              "name": "defaultSelectedIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Sets the default selected Tab."
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndex",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollLeftAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollRightAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "buttonWidth",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "showLeftScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "showRightScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "navWrapperElement",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "componentWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "buttonsWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "scrollableWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "tabElements",
+              "type": {
+                "text": "Array<HTMLTdsFolderTabElement>"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "clickHandlers",
+              "privacy": "private",
+              "default": "new WeakMap<HTMLElement, EventListener>()"
+            },
+            {
+              "kind": "method",
+              "name": "selectTab",
+              "return": {
+                "type": {
+                  "text": "Promise<{ selectedTabIndex: number | undefined }>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "tabIndex",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Sets the passed tabindex as the selected Tab."
+            },
+            {
+              "kind": "method",
+              "name": "reinitialize",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "description": "Reinitializes the component."
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedIndexUpdate",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "evaluateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "addResizeObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListenerToTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "removeEventListenerFromTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeTabs",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "initializeSelectedTab",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode-variant",
+              "fieldName": "modeVariant",
+              "default": "null",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
+              "type": {
+                "text": "'primary' | 'secondary' | null"
+              }
+            },
+            {
+              "name": "default-selected-index",
+              "fieldName": "defaultSelectedIndex",
+              "default": "0",
+              "description": "Sets the default selected Tab.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "selected-index",
+              "fieldName": "selectedIndex",
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "tds-scroll-left-aria-label",
+              "fieldName": "tdsScrollLeftAriaLabel",
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tds-scroll-right-aria-label",
+              "fieldName": "tdsScrollRightAriaLabel",
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-folder-tabs",
+          "events": [
+            {
+              "name": "tdsChange",
+              "type": {
+                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
+              },
+              "description": "Event emitted when the selected Tab is changed."
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsFolderTabs",
+          "declaration": {
+            "name": "TdsFolderTabs",
+            "module": "src/components/tabs/folder-tabs/folder-tabs.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-folder-tabs",
+          "declaration": {
+            "name": "TdsFolderTabs",
+            "module": "src/components/tabs/folder-tabs/folder-tabs.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/inline-tabs/inline-tabs.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsInlineTabs",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For the tab elements.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "modeVariant",
+              "type": {
+                "text": "'primary' | 'secondary'"
+              },
+              "default": "'primary'",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
+            },
+            {
+              "kind": "field",
+              "name": "defaultSelectedIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Sets the default selected Tab."
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndex",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollLeftAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollRightAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "leftPadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "32",
+              "description": "Custom left padding value for the wrapper element."
+            },
+            {
+              "kind": "field",
+              "name": "showLeftScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "showRightScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "navWrapperElement",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "componentWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "buttonsWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "scrollableWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "tabElements",
+              "type": {
+                "text": "Array<HTMLTdsInlineTabElement>"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "clickHandlers",
+              "privacy": "private",
+              "default": "new WeakMap<HTMLElement, EventListener>()"
+            },
+            {
+              "kind": "method",
+              "name": "selectTab",
+              "return": {
+                "type": {
+                  "text": "Promise<{ selectedTabIndex: number | undefined }>"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "tabIndex",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Selects a Tab based on tabindex, will not select a disabled Tab."
+            },
+            {
+              "kind": "method",
+              "name": "reinitialize",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "description": "Reinitializes the component."
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedIndexUpdate",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "evaluateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "addResizeObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListenerToTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "removeEventListenerFromTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeTabs",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "initializeSelectedTab",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode-variant",
+              "fieldName": "modeVariant",
+              "default": "'primary'",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
+              "type": {
+                "text": "'primary' | 'secondary'"
+              }
+            },
+            {
+              "name": "default-selected-index",
+              "fieldName": "defaultSelectedIndex",
+              "default": "0",
+              "description": "Sets the default selected Tab.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "selected-index",
+              "fieldName": "selectedIndex",
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "tds-scroll-left-aria-label",
+              "fieldName": "tdsScrollLeftAriaLabel",
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tds-scroll-right-aria-label",
+              "fieldName": "tdsScrollRightAriaLabel",
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "left-padding",
+              "fieldName": "leftPadding",
+              "default": "32",
+              "description": "Custom left padding value for the wrapper element.",
+              "type": {
+                "text": "number"
+              }
+            }
+          ],
+          "tagName": "tds-inline-tabs",
+          "events": [
+            {
+              "name": "tdsChange",
+              "type": {
+                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
+              },
+              "description": "Event emitted when the selected Tab is changed."
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsInlineTabs",
+          "declaration": {
+            "name": "TdsInlineTabs",
+            "module": "src/components/tabs/inline-tabs/inline-tabs.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-inline-tabs",
+          "declaration": {
+            "name": "TdsInlineTabs",
+            "module": "src/components/tabs/inline-tabs/inline-tabs.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/navigation-tabs/navigation-tabs.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsNavigationTabs",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For the tab elements.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "modeVariant",
+              "type": {
+                "text": "'primary' | 'secondary'"
+              },
+              "default": "'primary'",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
+            },
+            {
+              "kind": "field",
+              "name": "defaultSelectedIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Sets the default selected Tab."
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndex",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
+            },
+            {
+              "kind": "field",
+              "name": "leftPadding",
+              "type": {
+                "text": "number"
+              },
+              "default": "32",
+              "description": "Custom left padding value for the wrapper element."
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollLeftAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "tdsScrollRightAriaLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button"
+            },
+            {
+              "kind": "field",
+              "name": "showLeftScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "showRightScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "navWrapperElement",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "componentWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "buttonsWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "scrollableWidth",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "tabElements",
+              "type": {
+                "text": "Array<HTMLTdsNavigationTabElement>"
+              },
+              "privacy": "private",
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "clickHandlers",
+              "privacy": "private",
+              "default": "new WeakMap<HTMLElement, EventListener>()"
+            },
+            {
+              "kind": "method",
+              "name": "selectTab",
+              "parameters": [
+                {
+                  "name": "tabIndex",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Sets the passed tabindex as the selected Tab."
+            },
+            {
+              "kind": "method",
+              "name": "reinitialize",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              },
+              "description": "Reinitializes the component."
+            },
+            {
+              "kind": "method",
+              "name": "handleSelectedIndexUpdate"
+            },
+            {
+              "kind": "method",
+              "name": "scrollRight",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "scrollLeft",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "evaluateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "addResizeObserver",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "addEventListenerToTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "removeEventListenerFromTabs",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "initializeTabs",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "initializeSelectedTab",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateScrollButtons",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mode-variant",
+              "fieldName": "modeVariant",
+              "default": "'primary'",
+              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
+              "type": {
+                "text": "'primary' | 'secondary'"
+              }
+            },
+            {
+              "name": "default-selected-index",
+              "fieldName": "defaultSelectedIndex",
+              "default": "0",
+              "description": "Sets the default selected Tab.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "selected-index",
+              "fieldName": "selectedIndex",
+              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "left-padding",
+              "fieldName": "leftPadding",
+              "default": "32",
+              "description": "Custom left padding value for the wrapper element.",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "name": "tds-scroll-left-aria-label",
+              "fieldName": "tdsScrollLeftAriaLabel",
+              "default": "'Scroll left'",
+              "description": "Defines aria-label on left scroll button",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "tds-scroll-right-aria-label",
+              "fieldName": "tdsScrollRightAriaLabel",
+              "default": "'Scroll right'",
+              "description": "Defines aria-label on right scroll button",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "tagName": "tds-navigation-tabs",
+          "events": [
+            {
+              "name": "tdsChange",
+              "type": {
+                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
+              },
+              "description": "Event emitted when the selected Tab is changed."
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsNavigationTabs",
+          "declaration": {
+            "name": "TdsNavigationTabs",
+            "module": "src/components/tabs/navigation-tabs/navigation-tabs.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-navigation-tabs",
+          "declaration": {
+            "name": "TdsNavigationTabs",
+            "module": "src/components/tabs/navigation-tabs/navigation-tabs.tsx"
           }
         }
       ]
@@ -12526,156 +13574,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/table/table-body/table-body.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsTableBody",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For table rows.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "multiselect",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "enablePaginationTableBody",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "expandableRows",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "multiselectArray",
-              "type": {
-                "text": "array"
-              },
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "multiselectArrayJSON",
-              "type": {
-                "text": "string"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "mainCheckboxStatus",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "columnsNumber",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "zebraMode",
-              "type": {
-                "text": "'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none'"
-              },
-              "default": "'none'"
-            },
-            {
-              "kind": "field",
-              "name": "tableId",
-              "type": {
-                "text": "string | undefined"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "field",
-              "name": "tableEl",
-              "type": {
-                "text": "HTMLTdsTableElement | null"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "internalTdsPropChangeListener",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "CustomEvent<InternalTdsTablePropChange>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "bodyCheckBoxClicked"
-            },
-            {
-              "kind": "method",
-              "name": "bodyCheckboxListener"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "tagName": "tds-table-body",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsTableBody",
-          "declaration": {
-            "name": "TdsTableBody",
-            "module": "src/components/table/table-body/table-body.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-table-body",
-          "declaration": {
-            "name": "TdsTableBody",
-            "module": "src/components/table/table-body/table-body.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/table/table-body-cell/table-body-cell.tsx",
       "declarations": [
         {
@@ -12936,6 +13834,156 @@
           "declaration": {
             "name": "TdsTableBodyCell",
             "module": "src/components/table/table-body-cell/table-body-cell.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/table/table-body/table-body.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsTableBody",
+          "slots": [
+            {
+              "description": "<b>Unnamed slot.</b> For table rows.",
+              "name": "<default>"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "multiselect",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "enablePaginationTableBody",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "expandableRows",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "multiselectArray",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "multiselectArrayJSON",
+              "type": {
+                "text": "string"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "mainCheckboxStatus",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "columnsNumber",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "zebraMode",
+              "type": {
+                "text": "'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none'"
+              },
+              "default": "'none'"
+            },
+            {
+              "kind": "field",
+              "name": "tableId",
+              "type": {
+                "text": "string | undefined"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "tableEl",
+              "type": {
+                "text": "HTMLTdsTableElement | null"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "internalTdsPropChangeListener",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "CustomEvent<InternalTdsTablePropChange>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "bodyCheckBoxClicked"
+            },
+            {
+              "kind": "method",
+              "name": "bodyCheckboxListener"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "tagName": "tds-table-body",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsTableBody",
+          "declaration": {
+            "name": "TdsTableBody",
+            "module": "src/components/table/table-body/table-body.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-table-body",
+          "declaration": {
+            "name": "TdsTableBody",
+            "module": "src/components/table/table-body/table-body.tsx"
           }
         }
       ]
@@ -14719,6 +15767,133 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TdsTableHeaderInputWrapper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "HTMLElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "description": "Controls if the search icon is shown"
+            },
+            {
+              "kind": "field",
+              "name": "renderSlot",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "inputFocused",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "compactDesign",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "tableId",
+              "type": {
+                "text": "string | null"
+              },
+              "default": "''"
+            },
+            {
+              "kind": "method",
+              "name": "internalTdsPropChangeListener",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "CustomEvent<InternalTdsTablePropChange>"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "validateSlot",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "show-icon",
+              "fieldName": "showIcon",
+              "default": "true",
+              "description": "Controls if the search icon is shown",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "name": "compact-design",
+              "fieldName": "compactDesign",
+              "default": "false",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "tagName": "tds-table-header-input-wrapper",
+          "events": [],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TdsTableHeaderInputWrapper",
+          "declaration": {
+            "name": "TdsTableHeaderInputWrapper",
+            "module": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "tds-table-header-input-wrapper",
+          "declaration": {
+            "name": "TdsTableHeaderInputWrapper",
+            "module": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/table/table-toolbar/table-toolbar.tsx",
       "declarations": [
         {
@@ -14959,1181 +16134,6 @@
           "declaration": {
             "name": "TdsTableToolbar",
             "module": "src/components/table/table-toolbar/table-toolbar.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsTableHeaderInputWrapper",
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "showIcon",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "description": "Controls if the search icon is shown"
-            },
-            {
-              "kind": "field",
-              "name": "renderSlot",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true"
-            },
-            {
-              "kind": "field",
-              "name": "inputFocused",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "compactDesign",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "tableId",
-              "type": {
-                "text": "string | null"
-              },
-              "default": "''"
-            },
-            {
-              "kind": "method",
-              "name": "internalTdsPropChangeListener",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "CustomEvent<InternalTdsTablePropChange>"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "validateSlot",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "show-icon",
-              "fieldName": "showIcon",
-              "default": "true",
-              "description": "Controls if the search icon is shown",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "name": "compact-design",
-              "fieldName": "compactDesign",
-              "default": "false",
-              "type": {
-                "text": "boolean"
-              }
-            }
-          ],
-          "tagName": "tds-table-header-input-wrapper",
-          "events": [],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsTableHeaderInputWrapper",
-          "declaration": {
-            "name": "TdsTableHeaderInputWrapper",
-            "module": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-table-header-input-wrapper",
-          "declaration": {
-            "name": "TdsTableHeaderInputWrapper",
-            "module": "src/components/table/table-header-input-wrapper/table-header-input-wrapper.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/folder-tabs/folder-tabs.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsFolderTabs",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For the tab elements.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "modeVariant",
-              "type": {
-                "text": "'primary' | 'secondary' | null"
-              },
-              "default": "null",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
-            },
-            {
-              "kind": "field",
-              "name": "defaultSelectedIndex",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Sets the default selected Tab."
-            },
-            {
-              "kind": "field",
-              "name": "selectedIndex",
-              "type": {
-                "text": "number | undefined"
-              },
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollLeftAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollRightAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "buttonWidth",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "showLeftScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "showRightScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "navWrapperElement",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "componentWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "buttonsWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "scrollableWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "tabElements",
-              "type": {
-                "text": "Array<HTMLTdsFolderTabElement>"
-              },
-              "privacy": "private",
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "clickHandlers",
-              "privacy": "private",
-              "default": "new WeakMap<HTMLElement, EventListener>()"
-            },
-            {
-              "kind": "method",
-              "name": "selectTab",
-              "return": {
-                "type": {
-                  "text": "Promise<{ selectedTabIndex: number | undefined }>"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "tabIndex",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Sets the passed tabindex as the selected Tab."
-            },
-            {
-              "kind": "method",
-              "name": "reinitialize",
-              "return": {
-                "type": {
-                  "text": "Promise<void>"
-                }
-              },
-              "description": "Reinitializes the component."
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedIndexUpdate",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "scrollRight",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "scrollLeft",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "evaluateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "addResizeObserver",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "addEventListenerToTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "removeEventListenerFromTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "initializeTabs",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "initializeSelectedTab",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "updateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "mode-variant",
-              "fieldName": "modeVariant",
-              "default": "null",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
-              "type": {
-                "text": "'primary' | 'secondary' | null"
-              }
-            },
-            {
-              "name": "default-selected-index",
-              "fieldName": "defaultSelectedIndex",
-              "default": "0",
-              "description": "Sets the default selected Tab.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "selected-index",
-              "fieldName": "selectedIndex",
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "tds-scroll-left-aria-label",
-              "fieldName": "tdsScrollLeftAriaLabel",
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "tds-scroll-right-aria-label",
-              "fieldName": "tdsScrollRightAriaLabel",
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-folder-tabs",
-          "events": [
-            {
-              "name": "tdsChange",
-              "type": {
-                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
-              },
-              "description": "Event emitted when the selected Tab is changed."
-            }
-          ],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsFolderTabs",
-          "declaration": {
-            "name": "TdsFolderTabs",
-            "module": "src/components/tabs/folder-tabs/folder-tabs.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-folder-tabs",
-          "declaration": {
-            "name": "TdsFolderTabs",
-            "module": "src/components/tabs/folder-tabs/folder-tabs.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/inline-tabs/inline-tabs.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsInlineTabs",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For the tab elements.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "modeVariant",
-              "type": {
-                "text": "'primary' | 'secondary'"
-              },
-              "default": "'primary'",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
-            },
-            {
-              "kind": "field",
-              "name": "defaultSelectedIndex",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Sets the default selected Tab."
-            },
-            {
-              "kind": "field",
-              "name": "selectedIndex",
-              "type": {
-                "text": "number | undefined"
-              },
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollLeftAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollRightAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "leftPadding",
-              "type": {
-                "text": "number"
-              },
-              "default": "32",
-              "description": "Custom left padding value for the wrapper element."
-            },
-            {
-              "kind": "field",
-              "name": "showLeftScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "showRightScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "navWrapperElement",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "componentWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "buttonsWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "scrollableWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "tabElements",
-              "type": {
-                "text": "Array<HTMLTdsInlineTabElement>"
-              },
-              "privacy": "private",
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "clickHandlers",
-              "privacy": "private",
-              "default": "new WeakMap<HTMLElement, EventListener>()"
-            },
-            {
-              "kind": "method",
-              "name": "selectTab",
-              "return": {
-                "type": {
-                  "text": "Promise<{ selectedTabIndex: number | undefined }>"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "tabIndex",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Selects a Tab based on tabindex, will not select a disabled Tab."
-            },
-            {
-              "kind": "method",
-              "name": "reinitialize",
-              "return": {
-                "type": {
-                  "text": "Promise<void>"
-                }
-              },
-              "description": "Reinitializes the component."
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedIndexUpdate",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "scrollRight",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "scrollLeft",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "evaluateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "addResizeObserver",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "addEventListenerToTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "removeEventListenerFromTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "initializeTabs",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "initializeSelectedTab",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "updateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "mode-variant",
-              "fieldName": "modeVariant",
-              "default": "'primary'",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
-              "type": {
-                "text": "'primary' | 'secondary'"
-              }
-            },
-            {
-              "name": "default-selected-index",
-              "fieldName": "defaultSelectedIndex",
-              "default": "0",
-              "description": "Sets the default selected Tab.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "selected-index",
-              "fieldName": "selectedIndex",
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "tds-scroll-left-aria-label",
-              "fieldName": "tdsScrollLeftAriaLabel",
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "tds-scroll-right-aria-label",
-              "fieldName": "tdsScrollRightAriaLabel",
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "left-padding",
-              "fieldName": "leftPadding",
-              "default": "32",
-              "description": "Custom left padding value for the wrapper element.",
-              "type": {
-                "text": "number"
-              }
-            }
-          ],
-          "tagName": "tds-inline-tabs",
-          "events": [
-            {
-              "name": "tdsChange",
-              "type": {
-                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
-              },
-              "description": "Event emitted when the selected Tab is changed."
-            }
-          ],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsInlineTabs",
-          "declaration": {
-            "name": "TdsInlineTabs",
-            "module": "src/components/tabs/inline-tabs/inline-tabs.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-inline-tabs",
-          "declaration": {
-            "name": "TdsInlineTabs",
-            "module": "src/components/tabs/inline-tabs/inline-tabs.tsx"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/navigation-tabs/navigation-tabs.tsx",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TdsNavigationTabs",
-          "slots": [
-            {
-              "description": "<b>Unnamed slot.</b> For the tab elements.",
-              "name": "<default>"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "host",
-              "type": {
-                "text": "HTMLElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "modeVariant",
-              "type": {
-                "text": "'primary' | 'secondary'"
-              },
-              "default": "'primary'",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50"
-            },
-            {
-              "kind": "field",
-              "name": "defaultSelectedIndex",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Sets the default selected Tab."
-            },
-            {
-              "kind": "field",
-              "name": "selectedIndex",
-              "type": {
-                "text": "number | undefined"
-              },
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user."
-            },
-            {
-              "kind": "field",
-              "name": "leftPadding",
-              "type": {
-                "text": "number"
-              },
-              "default": "32",
-              "description": "Custom left padding value for the wrapper element."
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollLeftAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "tdsScrollRightAriaLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button"
-            },
-            {
-              "kind": "field",
-              "name": "showLeftScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "showRightScroll",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "navWrapperElement",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "componentWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "buttonsWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "scrollableWidth",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "tabElements",
-              "type": {
-                "text": "Array<HTMLTdsNavigationTabElement>"
-              },
-              "privacy": "private",
-              "default": "[]"
-            },
-            {
-              "kind": "field",
-              "name": "clickHandlers",
-              "privacy": "private",
-              "default": "new WeakMap<HTMLElement, EventListener>()"
-            },
-            {
-              "kind": "method",
-              "name": "selectTab",
-              "parameters": [
-                {
-                  "name": "tabIndex",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Sets the passed tabindex as the selected Tab."
-            },
-            {
-              "kind": "method",
-              "name": "reinitialize",
-              "return": {
-                "type": {
-                  "text": "Promise<void>"
-                }
-              },
-              "description": "Reinitializes the component."
-            },
-            {
-              "kind": "method",
-              "name": "handleSelectedIndexUpdate"
-            },
-            {
-              "kind": "method",
-              "name": "scrollRight",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "scrollLeft",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "evaluateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "addResizeObserver",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "addEventListenerToTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "removeEventListenerFromTabs",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "initializeTabs",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "initializeSelectedTab",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "updateScrollButtons",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "handleSlotChange",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "render"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "mode-variant",
-              "fieldName": "modeVariant",
-              "default": "'primary'",
-              "description": "Variant of the Tabs, primary= on white, secondary= on grey50",
-              "type": {
-                "text": "'primary' | 'secondary'"
-              }
-            },
-            {
-              "name": "default-selected-index",
-              "fieldName": "defaultSelectedIndex",
-              "default": "0",
-              "description": "Sets the default selected Tab.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "selected-index",
-              "fieldName": "selectedIndex",
-              "description": "Sets the selected Tab.\nIf this is set, all Tab changes need to be handled by the user.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "left-padding",
-              "fieldName": "leftPadding",
-              "default": "32",
-              "description": "Custom left padding value for the wrapper element.",
-              "type": {
-                "text": "number"
-              }
-            },
-            {
-              "name": "tds-scroll-left-aria-label",
-              "fieldName": "tdsScrollLeftAriaLabel",
-              "default": "'Scroll left'",
-              "description": "Defines aria-label on left scroll button",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "name": "tds-scroll-right-aria-label",
-              "fieldName": "tdsScrollRightAriaLabel",
-              "default": "'Scroll right'",
-              "description": "Defines aria-label on right scroll button",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "tagName": "tds-navigation-tabs",
-          "events": [
-            {
-              "name": "tdsChange",
-              "type": {
-                "text": "EventEmitter<{\n    selectedTabIndex: number;\n  }>"
-              },
-              "description": "Event emitted when the selected Tab is changed."
-            }
-          ],
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "TdsNavigationTabs",
-          "declaration": {
-            "name": "TdsNavigationTabs",
-            "module": "src/components/tabs/navigation-tabs/navigation-tabs.tsx"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "tds-navigation-tabs",
-          "declaration": {
-            "name": "TdsNavigationTabs",
-            "module": "src/components/tabs/navigation-tabs/navigation-tabs.tsx"
           }
         }
       ]
