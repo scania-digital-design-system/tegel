@@ -42,6 +42,7 @@ export const tratonIconNames = [
   'edit',
   'edit_inactive',
   'email',
+  'email_open',
   'error',
   'export',
   'export_inactive',
