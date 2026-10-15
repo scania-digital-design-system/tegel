@@ -28,6 +28,7 @@
     "./traton-variables.css": "./dist/traton-variables.css",
     "./components.css": "./dist/components.css",
     "./tl-accordion.css": "./dist/tl-accordion.css",
+    "./tl-badge.css": "./dist/tl-badge.css",
     "./tl-banner.css": "./dist/tl-banner.css",
     "./tl-block.css": "./dist/tl-block.css",
     "./tl-breadcrumbs.css": "./dist/tl-breadcrumbs.css",
