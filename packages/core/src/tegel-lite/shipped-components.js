@@ -19,6 +19,7 @@
  */
 export const SHIPPED_COMPONENTS = [
   'tl-accordion',
+  'tl-badge',
   'tl-banner',
   'tl-block',
   'tl-breadcrumbs',
