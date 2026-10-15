@@ -2,6 +2,7 @@ import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core'
 import hasSlot from '../../../utils/hasSlot';
 
 /**
+ * Tegel Footer Group component. Composed by at least one TDS Footer Item.
  * @slot <default> - <b>Unnamed slot.</b> For footer items.
  * @slot title - Slot for the title of the group. Should contain a heading element adjusted to the rest of the website in terms of heading nesting, for accessibility.
  */

@@ -23,6 +23,9 @@ function removeShakeAnimation(e: AnimationEvent) {
   (e.target as HTMLElement | null)?.classList.remove('tds-table__page-selector-input--shake');
 }
 
+/**
+ * Provides the table footer, including pagination-related controls.
+ */
 @Component({
   tag: 'tds-table-footer',
   styleUrl: 'table-footer.scss',

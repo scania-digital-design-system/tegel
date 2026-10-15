@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Table Header component. Contains the column headings and provides the structure for identifying table data. Composed by TDS Table Header Cells.
+
 ## Properties
 
 | Property        | Attribute       | Description                                                                                 | Type                   | Default     |

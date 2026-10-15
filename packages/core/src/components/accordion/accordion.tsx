@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
+ * Tegel Accordion component. Composed by TDS Accordion Items.
  * @slot <default> - <b>Unnamed slot.</b> For accordion items.
  */
 @Component({

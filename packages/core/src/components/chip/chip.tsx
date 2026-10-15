@@ -98,7 +98,7 @@ export class TdsChip {
   };
 
   @Listen('internalRadioOnChange', { target: 'body' })
-  handleInternaRadioChange(
+  handleInternalRadioChange(
     event: CustomEvent<{ chipId: string; checked: boolean; groupName: string }>,
   ) {
     const { chipId, checked, groupName } = event.detail;

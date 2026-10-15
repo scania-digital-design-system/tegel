@@ -16,6 +16,9 @@ import type { Placement, Instance } from '@popperjs/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import { generateClassList } from '../../utils/classList';
 
+/**
+ * A lower-level building block associated with Tegel's popover implementation. Not established here as a recommended standalone public component.
+ */
 @Component({
   tag: 'tds-popover-core',
   styleUrl: 'tds-popover-core.scss',

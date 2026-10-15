@@ -1,6 +1,7 @@
 import { Component, h, Element, Prop } from '@stencil/core';
 
 /**
+ * Tegel Breadcrumbs component. Composed by at least one TDS Breadcrumb.
  * @slot <default> - <b>Unnamed slot.</b> For the breadcrumb elements.
  */
 @Component({

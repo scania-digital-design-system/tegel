@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Breadcrumbs component. Composed by at least one TDS Breadcrumb.
+
 ## Properties
 
 | Property       | Attribute        | Description                                       | Type                  | Default     |

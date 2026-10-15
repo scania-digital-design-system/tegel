@@ -17,7 +17,7 @@ const SUPPORTS_CSS_D =
   styleUrl: 'icon.scss',
   shadow: true,
 })
-export class Icon {
+export class TdsIcon {
   @Element() host!: HTMLTdsIconElement;
 
   /** Pass the name of the icon.

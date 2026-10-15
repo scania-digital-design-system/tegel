@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Header Launcher component. Expandable component that can either contain a list or a grid.
+
 ## Properties
 
 | Property       | Attribute        | Description                                                         | Type                  | Default     |

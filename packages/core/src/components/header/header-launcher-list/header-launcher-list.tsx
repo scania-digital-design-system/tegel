@@ -2,6 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
 
 /**
+ *  * Tegel Header Launcher List component. Composed by one Header Launcher List Title component and at least one Header Launcher List Item component.
  * @slot <default> - <b>Unnamed slot.</b> For list items.
  */
 @Component({

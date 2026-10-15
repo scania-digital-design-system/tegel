@@ -25,6 +25,7 @@ export type InternalTdsSideMenuPropChange = {
 
 const GRID_LG_BREAKPOINT: number = 992;
 /**
+ * Tegel Side Menu component. Can contain Side Menu Items, Side Menu Dropdowns, or a Side Menu User menu.
  * @slot overlay - Used of injection of tds-side-menu-overlay
  * @slot close-button - Used for injection of tds-side-menu-close-button that is show when in mobile view
  * @slot <default> - <b>Unnamed slot.</b> For primary content of the side menu - like buttons.
