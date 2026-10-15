@@ -86,6 +86,7 @@ export const scaniaIconNames = [
   'edit',
   'edit_inactive',
   'email',
+  'email_open',
   'employee',
   'engine',
   'engine_inactive',
