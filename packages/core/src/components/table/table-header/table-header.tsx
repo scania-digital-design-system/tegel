@@ -22,6 +22,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
+ * Tegel Table Header component. Contains the column headings and provides the structure for identifying table data. Composed by TDS Table Header Cells.
  * @slot <default> - <b>Unnamed slot.</b> For the header cells.
  */
 @Component({

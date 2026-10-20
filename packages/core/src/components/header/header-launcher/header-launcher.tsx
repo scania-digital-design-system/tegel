@@ -4,6 +4,7 @@ import generateUniqueId from '../../../utils/generateUniqueId';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
 /**
+ * Tegel Header Launcher component. Expandable component that can either contain a list or a grid.
  * @slot <default> - <b>Unnamed slot.</b> For a launcher list (or grid) element.
  */
 @Component({

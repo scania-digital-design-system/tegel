@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Header component. Possible to be composed by multiple TDS Header sub-elements.
+
 ## Slots
 
 | Slot          | Description                                                                                          |

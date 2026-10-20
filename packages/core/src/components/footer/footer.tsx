@@ -2,6 +2,7 @@ import { Component, h, Element, Host, Prop } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
 /**
+ * Tegel Footer component. Composed by at least one TDS Footer Group.
  * @slot top - Slot for the top part of the Footer.
  * @slot start - Slot for start (left side) of the Footers main part.
  * @slot end - Slot for the end (right side) of the Footers main part.

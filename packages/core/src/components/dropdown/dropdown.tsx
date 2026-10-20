@@ -39,6 +39,7 @@ function getTypedQuery(rawValue: string, displayValue: string): string {
 }
 
 /**
+ * Tegel Dropdown component. Composed by at least one TDS Dropdown Option.
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
  */
 @Component({

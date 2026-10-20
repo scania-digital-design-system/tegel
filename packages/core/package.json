@@ -404,7 +404,9 @@
     "copy:assets-tegel-lite": "node scripts/copy-tegel-lite-assets.js",
     "lint:css:tl": "stylelint \"src/tegel-lite/**/*.scss\"",
     "lint:css:tl:fix": "stylelint \"src/tegel-lite/**/*.scss\" --fix",
-    "workspace": "pnpm --workspace-root"
+    "workspace": "pnpm --workspace-root",
+    "manifest": "cem analyze",
+    "manifest:watch": "cem analyze --watch"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
@@ -412,6 +414,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
     "@playwright/test": "catalog:",
     "@scania/tegel-lite": "workspace:*",
     "@stencil/angular-output-target": "1.5.0",
@@ -420,6 +423,7 @@
     "@stencil/sass": "3.3.3",
     "@storybook/addon-a11y": "10.6.1",
     "@storybook/addon-docs": "10.6.1",
+    "@storybook/addon-mcp": "10.6.1",
     "@storybook/builder-vite": "10.6.1",
     "@storybook/html-vite": "10.6.1",
     "@types/node": "catalog:",

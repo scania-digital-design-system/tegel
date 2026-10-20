@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Table Header Cell component. Displays a column heading and can participate in sortable and searchable table interactions.
+
 ## Properties
 
 | Property                 | Attribute                    | Description                                                                                             | Type                                                | Default     |
@@ -24,7 +28,7 @@
 
 | Event     | Description                                                                                                                                              | Type                                                                                                                |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to implement custom-sorting logic. | `CustomEvent<{ tableId: string \| undefined; columnKey: string \| undefined; sortingDirection: "desc" \| "asc"; }>` |
+| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to implement custom-sorting logic. | `CustomEvent<{ tableId: string \| undefined; columnKey: string \| undefined; sortingDirection: "asc" \| "desc"; }>` |
 
 
 ## Slots

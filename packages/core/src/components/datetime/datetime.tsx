@@ -11,6 +11,9 @@ import {
 } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
+/**
+ * Tegel Datetime component. It uses the native input HTML element.
+ */
 @Component({
   tag: 'tds-datetime',
   styleUrl: 'datetime.scss',

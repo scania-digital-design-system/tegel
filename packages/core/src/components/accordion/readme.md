@@ -3,6 +3,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Accordion component. Composed by TDS Accordion Items.
+
 ## Properties
 
 | Property         | Attribute          | Description                                           | Type                               | Default |

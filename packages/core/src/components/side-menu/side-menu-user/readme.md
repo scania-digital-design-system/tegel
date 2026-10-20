@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Side Menu User component. Contains a Side Menu User Image and Label.
+
 ## Properties
 
 | Property               | Attribute    | Description          | Type                  | Default     |

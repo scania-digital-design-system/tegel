@@ -21,6 +21,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
+ * Tegel Table Header Cell component. Displays a column heading and can participate in sortable and searchable table interactions.
  * @slot <default> - <b>Unnamed slot.</b> For the cell contents.
  */
 

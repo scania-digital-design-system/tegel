@@ -3,6 +3,7 @@ import updateListChildrenRoles from '../../utils/updateListChildrenRoles';
 import inheritAriaAttributes from '../../utils/inheritAriaAttributes';
 
 /**
+ * Tegel Header component. Possible to be composed by multiple TDS Header sub-elements.
  * @slot <default> - <b>Unnamed slot.</b> Slot for the left-aligned content consisting of buttons, dropdowns, links, etc.
  * @slot hamburger - Slot for the hamburger button for opening the mobile menu.
  * @slot title - Slot for the title.

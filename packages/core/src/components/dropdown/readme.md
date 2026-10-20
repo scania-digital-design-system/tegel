@@ -20,6 +20,10 @@ dropdown.updateDisplay();
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Dropdown component. Composed by at least one TDS Dropdown Option.
+
 ## Properties
 
 | Property               | Attribute                | Description                                                                                                                                                | Type                                               | Default             |

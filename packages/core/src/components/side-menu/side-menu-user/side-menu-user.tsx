@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
+ * Tegel Side Menu User component. Contains a Side Menu User Image and Label.
  * @slot <default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
  * */
 

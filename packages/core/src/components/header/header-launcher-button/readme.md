@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Header Launcher button component. It toggles the Header Launcher component (list/grid).
+
 ## Properties
 
 | Property       | Attribute        | Description                                                                                                                      | Type                  | Default     |

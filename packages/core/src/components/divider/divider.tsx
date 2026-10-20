@@ -5,19 +5,13 @@ import { Component, Prop, Host, h } from '@stencil/core';
   styleUrl: 'divider.scss',
   shadow: true,
 })
-export class Divider {
+export class TdsDivider {
   /** Orientation of the Divider, horizontal if not specified. */
   @Prop({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Variant of the Divider, subtle if not specified. `dark-blue` is a deprecated alias for `expressive`. */
   @Prop({ reflect: true }) variant:
-    | 'discrete'
-    | 'subtle'
-    | 'soft'
-    | 'defined'
-    | 'strong'
-    | 'expressive'
-    | 'dark-blue' = 'subtle';
+    'discrete' | 'subtle' | 'soft' | 'defined' | 'strong' | 'expressive' | 'dark-blue' = 'subtle';
 
   render() {
     return (
@@ -27,16 +21,16 @@ export class Divider {
       >
         <div
           class={{
-            'divider': true,
-            'vertical': this.orientation === 'vertical',
-            'horizontal': this.orientation === 'horizontal',
-            'discrete': this.variant === 'discrete',
-            'subtle': this.variant === 'subtle',
-            'soft': this.variant === 'soft',
-            'defined': this.variant === 'defined',
-            'strong': this.variant === 'strong',
+            divider: true,
+            vertical: this.orientation === 'vertical',
+            horizontal: this.orientation === 'horizontal',
+            discrete: this.variant === 'discrete',
+            subtle: this.variant === 'subtle',
+            soft: this.variant === 'soft',
+            defined: this.variant === 'defined',
+            strong: this.variant === 'strong',
             // `expressive` is the canonical name; `dark-blue` is kept as a deprecated alias.
-            'expressive': this.variant === 'expressive' || this.variant === 'dark-blue',
+            expressive: this.variant === 'expressive' || this.variant === 'dark-blue',
           }}
         />
       </Host>

@@ -31,6 +31,10 @@ function loadStories(): string[] {
 export default defineMain({
   framework: '@storybook/html-vite',
   stories: loadStories(),
+  features: {
+    // Maybe not necessary
+    componentsManifest: true,
+  },
   core: {
     builder: {
       name: '@storybook/builder-vite',
@@ -42,7 +46,11 @@ export default defineMain({
   addons: [
     '@vueless/storybook-dark-mode',
     '@storybook/addon-docs',
+    path.resolve(import.meta.dirname, './component-manifest-preset.mjs'),
+    // Enrich the manifests after addon-docs has collected the MDX notes.
+    path.resolve(import.meta.dirname, './component-docs-preset.mjs'),
     ...(IS_DEV ? ['@storybook/addon-a11y'] : []),
+    '@storybook/addon-mcp',
   ],
   staticDirs: ['../public', { from: '../dist/tegel/assets/icons', to: '/dist/tegel/assets/icons' }],
 

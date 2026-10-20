@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Tegel Header Title component. To display the header's title.
+
 ## Slots
 
 | Slot          | Description                                     |
