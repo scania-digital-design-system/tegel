@@ -114,9 +114,8 @@ export class Icon {
     } as { [key: string]: string };
 
     return (
-      <Host>
+      <Host ariaHidden={this.tdsAriaHidden}>
         <svg
-          aria-hidden={this.tdsAriaHidden}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
           aria-labelledby={this.svgTitle ? `title-${this.name}` : undefined}
