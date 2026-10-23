@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Text Field - Multiple Readonly fields</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+        import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+        defineCustomElements();
+    </script>
+</head>
+
+<body>
+    <tds-text-field mode-variant="primary" label="Readonly with suffix 1" label-position="no label" read-only placeholder="Readonly with suffix 1" tds-aria-label="first-text-field">
+    </tds-text-field>
+    <tds-text-field mode-variant="secondary" label="Readonly with suffix 2" label-position="no label" read-only placeholder="Readonly with suffix 2" tds-aria-label="second-text-field">
+    </tds-text-field>
+    <tds-text-field label="Readonly with suffix 3" label-position="no label" read-only placeholder="Readonly with suffix 3" tds-aria-label="third-text-field">
+    </tds-text-field>
+</body>
+
+</html>
