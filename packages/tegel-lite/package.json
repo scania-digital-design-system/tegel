@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "1.8.0",
+  "version": "1.9.1",
   "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
@@ -28,6 +28,7 @@
     "./traton-variables.css": "./dist/traton-variables.css",
     "./components.css": "./dist/components.css",
     "./tl-accordion.css": "./dist/tl-accordion.css",
+    "./tl-badge.css": "./dist/tl-badge.css",
     "./tl-banner.css": "./dist/tl-banner.css",
     "./tl-block.css": "./dist/tl-block.css",
     "./tl-breadcrumbs.css": "./dist/tl-breadcrumbs.css",
@@ -51,6 +52,7 @@
     "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-radio-button.css": "./dist/tl-radio-button.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
+    "./tl-spinner.css": "./dist/tl-spinner.css",
     "./tl-stepper.css": "./dist/tl-stepper.css",
     "./tl-table.css": "./dist/tl-table.css",
     "./tl-text-field.css": "./dist/tl-text-field.css",
