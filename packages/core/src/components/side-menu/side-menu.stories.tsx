@@ -146,7 +146,7 @@ const Template = ({ persistent, collapsible, collapsed }: TemplateProps) => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="${itemIconSize}"></tds-icon>
+            <tds-icon name="timer" size="${itemIconSize}" tds-aria-hidden svg-title="this shouldn't be read by voiceover"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
