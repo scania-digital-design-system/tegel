@@ -435,7 +435,7 @@
     "sass": "catalog:",
     "serve": "^14.2.4",
     "storybook": "10.6.2",
-    "vite": "^8.3.4"
+    "vite": "^8.3.5"
   },
   "license": "MIT"
 }
