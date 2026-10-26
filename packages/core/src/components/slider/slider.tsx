@@ -774,7 +774,6 @@ export class TdsSlider {
                   min={this.min}
                   max={this.max}
                   readOnly={this.readOnly}
-                  disabled={this.disabled}
                   onTdsChange={(e) => console.log(e)}
                   tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
                   onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
