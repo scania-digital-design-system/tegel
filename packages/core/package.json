@@ -411,17 +411,17 @@
     "@stencil/core": "^4.45.2"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.13.0",
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "catalog:",
     "@scania/tegel-lite": "workspace:*",
     "@stencil/angular-output-target": "1.5.2",
-    "@stencil/playwright": "^0.5.1",
+    "@stencil/playwright": "^0.6.0",
     "@stencil/react-output-target": "1.6.5",
     "@stencil/sass": "3.3.3",
-    "@storybook/addon-a11y": "10.6.2",
-    "@storybook/addon-docs": "10.6.2",
-    "@storybook/builder-vite": "10.6.2",
-    "@storybook/html-vite": "10.6.2",
+    "@storybook/addon-a11y": "10.6.3",
+    "@storybook/addon-docs": "10.6.3",
+    "@storybook/builder-vite": "10.6.3",
+    "@storybook/html-vite": "10.6.3",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
@@ -434,7 +434,7 @@
     "prettier": "3.9.10",
     "sass": "catalog:",
     "serve": "^14.2.4",
-    "storybook": "10.6.2",
+    "storybook": "10.6.3",
     "vite": "^8.3.5"
   },
   "license": "MIT"
