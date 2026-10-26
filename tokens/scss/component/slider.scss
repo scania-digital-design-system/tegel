@@ -1,0 +1,70 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root,
+.tds-mode-light,
+.scania .tds-mode-light,
+.scania.tds-mode-light,
+.scania .tl-mode-light,
+.scania.tl-mode-light {
+  --component-slider-background-divider-default: var(--component-slider-background-track-default);
+  --component-slider-background-track-default: var(--scania-color-grey-350);
+  --component-slider-background-selected-default: var(--component-slider-background-thumb-default);
+  --component-slider-background-thumb-default: var(--scania-color-grey-950);
+  --component-slider-background-halo-hover: var(--scania-color-transparent-200);
+  --component-slider-background-halo-active: var(--scania-color-transparent-250);
+  --component-slider-icon-control-default: var(--color-icon-defined);
+  --component-slider-opacity-disabled: var(--scania-opacity-25);
+  --component-slider-text-label-default: var(--scania-color-grey-950);
+  --component-slider-text-value-default: var(--color-text-defined);
+}
+
+.traton .tds-mode-light,
+.traton.tds-mode-light,
+.traton .tl-mode-light,
+.traton.tl-mode-light {
+  --component-slider-background-divider-default: var(--component-slider-background-track-default);
+  --component-slider-background-track-default: var(--traton-color-grey-500);
+  --component-slider-background-selected-default: var(--component-slider-background-thumb-default);
+  --component-slider-background-thumb-default: var(--traton-color-blue-950);
+  --component-slider-background-halo-hover: var(--color-icon-discrete);
+  --component-slider-background-halo-active: var(--color-icon-disabled);
+  --component-slider-icon-control-default: var(--color-icon-defined);
+  --component-slider-opacity-disabled: var(--traton-opacity-25);
+  --component-slider-text-label-default: var(--traton-color-blue-950);
+  --component-slider-text-value-default: var(--color-text-defined);
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark,
+.scania.tds-mode-dark,
+.scania .tl-mode-dark,
+.scania.tl-mode-dark {
+  --component-slider-background-divider-default: var(--component-slider-background-track-default);
+  --component-slider-background-track-default: var(--scania-color-grey-400);
+  --component-slider-background-selected-default: var(--component-slider-background-thumb-default);
+  --component-slider-background-thumb-default: var(--scania-color-grey-50);
+  --component-slider-background-halo-hover: var(--color-icon-discrete);
+  --component-slider-background-halo-active: var(--color-icon-disabled);
+  --component-slider-icon-control-default: var(--color-icon-defined);
+  --component-slider-opacity-disabled: var(--scania-opacity-25);
+  --component-slider-text-label-default: var(--scania-color-grey-50);
+  --component-slider-text-value-default: var(--color-text-defined);
+}
+
+.traton .tds-mode-dark,
+.traton.tds-mode-dark,
+.traton .tl-mode-dark,
+.traton.tl-mode-dark {
+  --component-slider-background-divider-default: var(--component-slider-background-track-default);
+  --component-slider-background-track-default: var(--traton-color-blue-850);
+  --component-slider-background-selected-default: var(--component-slider-background-thumb-default);
+  --component-slider-background-thumb-default: var(--traton-color-base-white);
+  --component-slider-background-halo-hover: var(--color-icon-discrete);
+  --component-slider-background-halo-active: var(--color-icon-disabled);
+  --component-slider-icon-control-default: var(--color-icon-defined);
+  --component-slider-opacity-disabled: var(--traton-opacity-25);
+  --component-slider-text-label-default: var(--traton-color-base-white);
+  --component-slider-text-value-default: var(--color-text-defined);
+}
