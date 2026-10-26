@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/slider/test/default/index.html';
 const componentName = 'tds-slider';
 const testDescription = 'tds-slider-default';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
