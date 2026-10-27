@@ -329,9 +329,9 @@ export class TdsTextField {
               <tds-tooltip
                 placement="top-end"
                 text="This field is non-editable"
-                selector="#readonly-tooltip"
+                selector={`#readonly-tooltip-${this.uuid}`}
               />
-              <tds-icon id="readonly-tooltip" name="edit_inactive" size="20px" />
+              <tds-icon id={`readonly-tooltip-${this.uuid}`} name="edit_inactive" size="20px" />
             </span>
           )}
         </div>

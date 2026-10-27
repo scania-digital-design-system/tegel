@@ -29,14 +29,14 @@
   "dependencies": {
     "@lit/react": "^1.0.8",
     "@scania/tegel": "workspace:*",
-    "@stencil/react-output-target": "1.6.2"
+    "@stencil/react-output-target": "1.6.5"
   },
   "devDependencies": {
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "typescript": "catalog:"
   }
 }

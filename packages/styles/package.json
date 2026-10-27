@@ -37,6 +37,6 @@
     "sass": "catalog:"
   },
   "dependencies": {
-    "postcss": "^8.5.6"
+    "postcss": "^8.5.30"
   }
 }
