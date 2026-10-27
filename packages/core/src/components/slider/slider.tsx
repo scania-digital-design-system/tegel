@@ -677,7 +677,7 @@ export class TdsSlider {
                 aria-label="Decrease value"
                 tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
-                <tds-icon name="minus" size="16px"></tds-icon>
+                <tds-icon svgTitle="minus_icon" name="minus" size="16px"></tds-icon>
               </div>
             </div>
           )}
@@ -775,7 +775,7 @@ export class TdsSlider {
                   max={this.max}
                   readOnly={this.readOnly}
                   onTdsChange={(e) => console.log(e)}
-                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
+                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : ariaLabel}
                   onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
                 ></tds-text-field>
@@ -792,7 +792,7 @@ export class TdsSlider {
                 aria-label="Increase value"
                 tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
-                <tds-icon name="plus" size="16px"></tds-icon>
+                <tds-icon svgTitle="plus_icon" name="plus" size="16px"></tds-icon>
               </div>
             </div>
           )}

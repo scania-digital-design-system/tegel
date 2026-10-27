@@ -2,7 +2,7 @@ import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 import { tegelAnalyze } from '../../../../utils/axeHelpers';
 
-const componentTestPath = 'src/components/slider/test/read-only/index.html';
+const componentTestPath = 'src/components/slider/test/with-input-field/index.html';
 
 test.describe.parallel('Slider read-only accessibility test', () => {
   test('Should render read-only behavior without detected accessibility issues', async ({
