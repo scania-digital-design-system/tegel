@@ -18,7 +18,7 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
 
     test('renders default slider correctly', async ({ page }) => {
       const slider = page.locator('tds-slider');
-      await expect(slider).toHaveCount(1);
+      await expect(slider).toHaveCount(2);
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -32,57 +32,87 @@ test.describe.parallel(componentName, () => {
   });
 
   test('value is set to 50', async ({ page }) => {
-    const sliderValue = page.locator('.tds-slider__value');
+    const sliderValue = page.getByLabel('First slider').locator('.tds-slider__value');
     await expect(sliderValue).toHaveText('50');
   });
 
   test('min value is set to 0', async ({ page }) => {
     /* Find thumb and pull it towards a left and check if min value is 0 */
-    await page.locator('.tds-slider__thumb-inner').hover();
+    const firstSliderSection = page.getByLabel('First slider');
+    await firstSliderSection.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
     await page.mouse.move(0, 0);
     await page.mouse.up();
 
     /* Compare value with initial one */
-    const thumbValue = page.locator('.tds-slider__value');
+    const thumbValue = firstSliderSection.locator('.tds-slider__value');
     await expect(thumbValue).toHaveText('0');
   });
 
   test('max value is set to 100', async ({ page }) => {
     /* Find thumb and pull it towards a right and check if min value is 0 */
-    await page.locator('.tds-slider__thumb-inner').hover();
+    const firstSliderSection = page.getByLabel('First slider');
+    await firstSliderSection.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
     await page.mouse.move(2000, 0);
     await page.mouse.up();
 
     /* Compare value with initial one */
-    const thumbValue = page.locator('.tds-slider__value');
+    const thumbValue = firstSliderSection.locator('.tds-slider__value');
     await expect(thumbValue).toHaveText('100');
   });
 
   test('label is hidden', async ({ page }) => {
-    const slider = page.locator('tds-slider');
+    const slider = page.getByLabel('First slider').locator('tds-slider');
     const sliderLabel = slider.locator('label');
     await expect(sliderLabel).toHaveText('');
   });
 
   test('slider is not read only or disabled', async ({ page }) => {
     /* Find thumb and pull it towards a left and check if value in thumb is changing */
-    await page.locator('.tds-slider__thumb-inner').hover();
+    const firstSliderSection = page.getByLabel('First slider');
+
+    await firstSliderSection.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
     await page.mouse.move(100, 0);
     await page.mouse.up();
 
     /* Compare value with initial one */
-    const thumbValue = page.locator('.tds-slider__value');
+    const thumbValue = firstSliderSection.locator('.tds-slider__value');
     await expect(thumbValue).not.toHaveText('50');
   });
 
   test('thumb is size large', async ({ page }) => {
-    const sliderThumb = page.locator('.tds-slider__thumb-inner');
+    const sliderThumb = page.getByLabel('First slider').locator('.tds-slider__thumb-inner');
     const sliderThumbWidth = await sliderThumb.evaluate((style) => getComputedStyle(style).width);
     const sliderThumbHeight = await sliderThumb.evaluate((style) => getComputedStyle(style).height);
     expect(sliderThumbWidth).toBe('20px');
     expect(sliderThumbHeight).toBe('20px');
+  });
+
+  test('controls on second slider change the value', async ({ page }) => {
+    const secondSliderSection = page.getByLabel('Second slider');
+
+    // At start, value is 40
+    const thumbValue = secondSliderSection.locator('.tds-slider__value');
+    await expect(thumbValue).toHaveText('40');
+
+    // Use plus control to change value...
+    const plusControl = secondSliderSection.locator('.tds-slider__control-plus');
+    await expect(plusControl).toBeVisible();
+
+    // Click plus control
+    await plusControl.click();
+    // Expect value to have increased
+    await expect(thumbValue).toHaveText('41');
+
+    // Use minus control to change value...
+    const minusControl = secondSliderSection.locator('.tds-slider__control-minus');
+    await expect(minusControl).toBeVisible();
+
+    // Click minus control
+    await minusControl.click();
+    // Expect value to have decreased
+    await expect(thumbValue).toHaveText('40');
   });
 });
