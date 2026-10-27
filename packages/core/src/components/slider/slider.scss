@@ -58,11 +58,11 @@ tds-slider {
       cursor: pointer;
 
       &.tds-slider__control-minus {
-        padding: 18px 18px 18px 0;
+        padding: 14px 14px 14px 0;
       }
 
       &.tds-slider__control-plus {
-        padding: 18px 0 18px 18px;
+        padding: 14px 0 14px 14px;
       }
 
       &:focus {
@@ -135,11 +135,11 @@ tds-slider {
     user-select: none;
     position: absolute;
     color: var(--tds-slider-label-color);
-    padding-bottom: 16px;
+    padding-bottom: 26px;
     transform: translateY(-100%);
 
     &.offset {
-      padding-bottom: 34px;
+      padding-bottom: 44px;
     }
   }
 
@@ -374,6 +374,7 @@ tds-slider {
       &.tds-slider__control-minus,
       &.tds-slider__control-plus {
         tds-icon {
+          padding: 4px;
           color: var(--tds-slider-controls-color);
         }
       }
