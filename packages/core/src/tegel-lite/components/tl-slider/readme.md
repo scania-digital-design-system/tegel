@@ -12,9 +12,8 @@ The Slider component provides an interactive range input control with optional v
     <div class="tl-slider__track">
       <div class="tl-slider__track-fill" style="width: 50%;"></div>
       <div class="tl-slider__thumb" style="left: 50%;">
-        <div class="tl-slider__thumb-inner">
-          <div class="tl-slider__value-tooltip">50</div>
-        </div>
+        <div class="tl-slider__thumb-inner"></div>
+        <div class="tl-slider__value-tooltip">50</div>
       </div>
     </div>
     <span class="tl-slider__value">50</span>
