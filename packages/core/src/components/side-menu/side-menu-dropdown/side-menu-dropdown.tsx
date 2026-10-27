@@ -153,6 +153,7 @@ export class TdsSideMenuDropdown {
                     name="chevron_down"
                     size="16px"
                     svgTitle="Chevron Down"
+                    tdsAriaHidden={true}
                   ></tds-icon>
                 </Fragment>
               )}
