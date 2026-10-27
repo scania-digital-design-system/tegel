@@ -110,6 +110,7 @@ tds-slider {
         text-align: center;
         appearance: textfield;
         color: var(--tds-slider-inputfield-number-color);
+        background-color: var(--tds-slider-inputfield-background);
       }
 
       tds-text-field .text-field-input[type='number']::-webkit-outer-spin-button,
@@ -150,7 +151,8 @@ tds-slider {
     padding: 8px 12px;
     position: absolute;
     transform: translate(-50%, -100%);
-    top: -24px;
+    top: -20px;
+    left: 0;
     background-color: var(--tds-slider-value-tooltip-background);
     color: var(--tds-slider-value-tooltip-color);
 
@@ -359,7 +361,7 @@ tds-slider {
     }
 
     .tds-slider__value {
-      top: -22px;
+      top: -18px;
     }
   }
 }
