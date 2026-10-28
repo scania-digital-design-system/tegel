@@ -179,10 +179,10 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot          | Description                                        |
-| ------------- | -------------------------------------------------- |
-|               | The default slot                                   |
-| `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
+| Slot          | Description                                                                          |
+| ------------- | ------------------------------------------------------------------------------------ |
+|               | The default slot                                                                     |
+| `"<default>"` | <b>Unnamed slot.</b> For dropdown option, group title, and group separator elements. |
 
 
 ## Dependencies

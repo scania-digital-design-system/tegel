@@ -299,60 +299,43 @@ const buildDropdownAttributes = ({
   multiDefaultOption,
   noResultText,
   animation,
-  responsive,
   tdsAriaLabel,
 }) =>
   `
-  <style>
-  /* demo-wrapper is for demonstration purposes only*/
-  .demo-wrapper {
-    width: ${responsive ? 'calc(100vw - 40px)' : '200px'};
-    max-width: 960px;
-    height:200px;
-  }
-  .hej {
-    margin-top: 79px;
-  }
-  </style>
-
-    <div class="demo-wrapper">
-        <tds-dropdown
-        ${
-          defaultOption && defaultOption !== 'No default'
-            ? `default-value="${defaultOptionLookUp[defaultOption]}"`
-            : ''
-        }
-        ${
-          multiDefaultOption?.length
-            ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
-            : ''
-        }
-        ${
-          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-        }
-          name="${name}"
-          label="${labelText}"
-          ${
-            labelPosition && labelPosition !== 'None'
-              ? `label-position="${labelPosition.toLowerCase()}"`
-              : ''
-          }
-          placeholder="${placeholder}"
-          helper="${helperText}"
-          size="${sizeLookUp[size]}"
-          ${error ? 'error' : ''}
-          ${filter ? 'filter' : ''}
-          ${filter ? `no-result-text="${noResultText}"` : ''}
-          ${normalizeText ? '' : `normalize-text="false"`}
-          ${multiselect ? 'multiselect' : ''}
-          ${disabled ? 'disabled' : ''}
-          ${showSelectionActions ? 'show-selection-actions' : ''}
-          select-all-text="${selectAllText}"
-          select-filtered-text="${selectFilteredText}"
-          clear-all-text="${clearAllText}"
-          ${animation !== 'None' ? `animation="${animation}"` : ''}
-          open-direction="${openDirection.toLowerCase()}"
-          tds-aria-label="${tdsAriaLabel}"`;
+    ${
+      defaultOption && defaultOption !== 'No default'
+        ? `default-value="${defaultOptionLookUp[defaultOption]}"`
+        : ''
+    }
+    ${
+      multiDefaultOption?.length
+        ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
+        : ''
+    }
+    ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+    name="${name}"
+    label="${labelText}"
+    ${
+      labelPosition && labelPosition !== 'None'
+        ? `label-position="${labelPosition.toLowerCase()}"`
+        : ''
+    }
+    placeholder="${placeholder}"
+    helper="${helperText}"
+    size="${sizeLookUp[size]}"
+    ${error ? 'error' : ''}
+    ${filter ? 'filter' : ''}
+    ${filter ? `no-result-text="${noResultText}"` : ''}
+    ${normalizeText ? '' : `normalize-text="false"`}
+    ${multiselect ? 'multiselect' : ''}
+    ${disabled ? 'disabled' : ''}
+    ${showSelectionActions ? 'show-selection-actions' : ''}
+    select-all-text="${selectAllText}"
+    select-filtered-text="${selectFilteredText}"
+    clear-all-text="${clearAllText}"
+    ${animation !== 'None' ? `animation="${animation}"` : ''}
+    open-direction="${openDirection.toLowerCase()}"
+    tds-aria-label="${tdsAriaLabel}"`;
 
 const buildDropdownChangeScript = (selector: string, filter: boolean) => `
     <script>
@@ -397,7 +380,7 @@ const Template = ({
   responsive,
   tdsAriaLabel,
 }) =>
-  formatHtmlPreview(`
+  `
   <style>
   /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
@@ -483,10 +466,8 @@ const Template = ({
           }
         }
       })();
-    </script>    
+    </script>
   `;
-    ${buildDropdownChangeScript('tds-dropdown', filter)}
-  `);
 
 export const Default = Template.bind({});
 
@@ -508,7 +489,7 @@ const GroupedMultiselectTemplate = ({
   responsive,
   tdsAriaLabel,
 }) =>
-  formatHtmlPreview(`
+  `
   <style>
     .demo-wrapper {
       width: ${responsive ? 'calc(100vw - 40px)' : '320px'};
@@ -576,7 +557,7 @@ const GroupedMultiselectTemplate = ({
   </div>
 
   ${buildDropdownChangeScript('tds-dropdown[name="scania-products"]', filter)}
-`);
+`;
 
 export const MultiselectWithGroups = GroupedMultiselectTemplate.bind({});
 MultiselectWithGroups.storyName = 'Multiselect with groups';
