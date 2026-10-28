@@ -31,6 +31,9 @@ tds-slider {
   // Tooltip
   --tds-slider-value-tooltip-background: var(--component-tooltip-background-default);
   --tds-slider-value-tooltip-color: var(--component-tooltip-text-default);
+  --tds-slider-value-tooltip-border-radius: calc(
+    var(--component-tooltip-border-radius-default) * 1px
+  );
 }
 
 .tds-mode-variant-primary tds-slider,
