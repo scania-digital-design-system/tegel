@@ -29,6 +29,18 @@ testConfigurations.basic.forEach((config) => {
       await expect(dropdown).toHaveAttribute('value', 'r-series,s-series');
     });
 
+    test('selects only group children when Select all is used', async ({ page }) => {
+      const dropdown = page.getByTestId('tds-dropdown-testid');
+      const inputElement = page.getByRole('textbox');
+      const selectAllButton = page.getByRole('button', { name: 'Select all' });
+
+      await inputElement.click();
+      await selectAllButton.click();
+
+      await expect(dropdown).toHaveAttribute('value', 'r-series,s-series,citywide');
+      await expect(selectAllButton).toBeDisabled();
+    });
+
     test('shows disabled selected children individually when enabled group children are fully selected', async ({
       page,
     }) => {

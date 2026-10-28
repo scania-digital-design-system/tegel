@@ -875,26 +875,27 @@ export class TdsDropdown {
     return matchingGroup?.groupTitle?.textContent?.trim() ?? group;
   };
 
+  /** Returns options that can be selected directly, excluding group controls. */
+  private readonly getSelectableOptions = () =>
+    this.getChildren().filter((child) => !child.disabled && !child.groupParent);
+
   /** Function to return the number of existing options in the list. */
   private getNumberOfAvailableOptions() {
-    return this.getChildren().filter((child) => !child.disabled).length;
+    return this.getSelectableOptions().length;
   }
 
   /** Function to check whether the filtered options are all selected. */
   private checkSelectedAndFilteredOptions() {
-    const filteredOptions = this.getChildren()
-      .filter(
-        (child) =>
-          !child.disabled &&
-          this.normalizeString(child?.textContent ?? '')
-            .toLowerCase()
-            .includes(this.normalizeString(this.filterQuery).toLowerCase()),
+    const filteredOptions = this.getSelectableOptions()
+      .filter((child) =>
+        this.normalizeString(child?.textContent ?? '')
+          .toLowerCase()
+          .includes(this.normalizeString(this.filterQuery).toLowerCase()),
       )
       .map((option) => option.value?.toString());
 
     return filteredOptions.every((option) => this.selectedOptions.includes(option!));
   }
-
 
   private readonly getSelectedChildrenLabels = (): string[] => {
     const labels: string[] = [];
@@ -1282,10 +1283,7 @@ export class TdsDropdown {
   };
 
   private handleSelectAll() {
-    const children = this.getChildren();
-
-    const values: string[] = children
-      .filter((child) => !child.disabled)
+    const values: string[] = this.getSelectableOptions()
       .map((child) => child.value?.toString())
       .filter((value) => value !== undefined);
 
@@ -1293,15 +1291,11 @@ export class TdsDropdown {
   }
 
   private handleSelectFiltered() {
-    const children = this.getChildren();
-
-    const values: string[] = children
-      .filter(
-        (child) =>
-          !child.disabled &&
-          this.normalizeString(child?.textContent ?? '')
-            .toLowerCase()
-            .includes(this.normalizeString(this.filterQuery).toLowerCase()),
+    const values: string[] = this.getSelectableOptions()
+      .filter((child) =>
+        this.normalizeString(child?.textContent ?? '')
+          .toLowerCase()
+          .includes(this.normalizeString(this.filterQuery).toLowerCase()),
       )
       .map((child) => child?.value?.toString())
       .filter((value) => value !== undefined);
