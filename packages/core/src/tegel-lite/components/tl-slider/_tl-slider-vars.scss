@@ -16,6 +16,7 @@
   --slider-opacity-disabled: calc(var(--component-slider-opacity-disabled) / 100);
   --slider-value-tooltip-background: var(--component-tooltip-background-default);
   --slider-value-tooltip: var(--component-tooltip-text-default);
+  --slider-value-tooltip-border-radius: calc(var(--component-tooltip-border-radius-default) * 1px);
   --slider-input-background: var(--component--input-background-primary);
   --slider-controls-color: var(--component-slider-icon-control-default);
 }
