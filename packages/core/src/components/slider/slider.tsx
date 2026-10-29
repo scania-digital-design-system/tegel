@@ -662,7 +662,7 @@ export class TdsSlider {
             {this.label}
           </label>
 
-          {this.useInput && (
+          {this.useInput && !this.showTickNumbers && (
             <div class="tds-slider__input-values">
               <div class="tds-slider__input-value min-value">{this.min}</div>
             </div>
@@ -677,7 +677,7 @@ export class TdsSlider {
                 aria-label="Decrease value"
                 tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
-                <tds-icon name="minus" size="16px"></tds-icon>
+                <tds-icon svgTitle="minus_icon" name="minus" size="16px"></tds-icon>
               </div>
             </div>
           )}
@@ -743,7 +743,7 @@ export class TdsSlider {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M8.15882 12.6915L0.990487 1.54076C0.562658 0.875246 1.0405 0 1.83167 0H16.1683C16.9595 0 17.4373 0.875246 17.0095 1.54076L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
+                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
                         fill="currentColor"
                       />
                     </svg>
@@ -761,10 +761,15 @@ export class TdsSlider {
           </div>
 
           {this.useInput && (
-            <div class="tds-slider__input-values">
-              <div class="tds-slider__input-value" onClick={(event) => this.stepLeft(event)}>
-                {this.max}
-              </div>
+            <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
+              {!this.showTickNumbers && (
+                <div
+                  class="tds-slider__input-value max-value"
+                  onClick={(event) => this.stepLeft(event)}
+                >
+                  {this.max}
+                </div>
+              )}
               <div class="tds-slider__input-field-wrapper">
                 <tds-text-field
                   noMinWidth
@@ -774,9 +779,8 @@ export class TdsSlider {
                   min={this.min}
                   max={this.max}
                   readOnly={this.readOnly}
-                  disabled={this.disabled}
                   onTdsChange={(e) => console.log(e)}
-                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
+                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : ariaLabel}
                   onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
                 ></tds-text-field>
@@ -793,7 +797,7 @@ export class TdsSlider {
                 aria-label="Increase value"
                 tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
-                <tds-icon name="plus" size="16px"></tds-icon>
+                <tds-icon svgTitle="plus_icon" name="plus" size="16px"></tds-icon>
               </div>
             </div>
           )}

@@ -1,4 +1,6 @@
 @use '../../mixins/box-sizing' as *;
+@use '../../mixins/focus-state' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 tds-slider {
   @include tds-box-sizing;
@@ -43,10 +45,7 @@ tds-slider {
 
     &:focus-within {
       .tds-slider__thumb-inner {
-        outline: var(--tds-slider-thumb-focus-outline);
-        box-shadow: var(--tds-slider-thumb-focus-box-shadow);
-        outline-offset: var(--tds-slider-thumb-focus-outline-offset);
-        z-index: 1;
+        @include tds-focus-state;
       }
     }
   }
@@ -59,11 +58,21 @@ tds-slider {
       cursor: pointer;
 
       &.tds-slider__control-minus {
-        padding: 18px 18px 18px 0;
+        padding: 14px 14px 14px 0;
       }
 
       &.tds-slider__control-plus {
-        padding: 18px 0 18px 18px;
+        padding: 14px 0 14px 14px;
+      }
+
+      &:focus {
+        outline: none;
+
+        tds-icon {
+          @include tds-focus-state;
+
+          border-radius: 4px;
+        }
       }
     }
   }
@@ -75,17 +84,23 @@ tds-slider {
     flex-wrap: nowrap;
     align-items: center;
 
+    &.tick-numbers {
+      top: -30px;
+    }
+
     .tds-slider__input-value {
       user-select: none;
-      padding: 18px;
-      color: var(--tds-slider-input-value-color);
+      padding: 16px;
+      color: var(--tds-slider-text-value-color);
 
-      //@include type-style('detail-02');
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include type-system-body-01;
 
       &.min-value {
         padding-left: 0;
+      }
+
+      &.max-value {
+        padding-right: 0;
       }
     }
 
@@ -95,13 +110,16 @@ tds-slider {
       align-items: center;
       justify-content: center;
       border-radius: 4px 4px 0 0;
+      margin-left: 16px;
 
       // Remove arrows for number inputs inside tds-text-field used by slider
       tds-text-field .text-field-input[type='number'] {
-        width: auto;
+        width: 50px;
         padding: 12px;
         text-align: center;
         appearance: textfield;
+        color: var(--tds-slider-inputfield-number-color);
+        background-color: var(--tds-slider-inputfield-background);
       }
 
       tds-text-field .text-field-input[type='number']::-webkit-outer-spin-button,
@@ -121,29 +139,36 @@ tds-slider {
   }
 
   label {
-    // @include type-style('detail-05');
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include label-01;
+
     user-select: none;
     position: absolute;
     color: var(--tds-slider-label-color);
-    padding-bottom: 16px;
+    padding-bottom: 26px;
     transform: translateY(-100%);
 
     &.offset {
-      padding-bottom: 34px;
+      padding-bottom: 44px;
+    }
+  }
+
+  &:has(.tds-slider__controls) {
+    label {
+      margin-left: 4px;
     }
   }
 
   .tds-slider__value {
-    font: var(--tds-detail-01);
-    letter-spacing: var(--tds-detail-01-ls);
+    @include label-01;
+
     user-select: none;
-    border-radius: 4px;
-    padding: 8px 11px;
+    border-radius: var(--tds-slider-value-tooltip-border-radius);
+    padding: 8px 12px;
     position: absolute;
     transform: translate(-50%, -100%);
-    top: -24px;
+    top: -20px;
+    left: 0;
+    z-index: 2;
     background-color: var(--tds-slider-value-tooltip-background);
     color: var(--tds-slider-value-tooltip-color);
 
@@ -152,7 +177,7 @@ tds-slider {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 34px;
+      bottom: -7px;
     }
   }
 
@@ -171,7 +196,7 @@ tds-slider {
       border-radius: 100%;
       background-color: var(--tds-slider-thumb-color);
       position: absolute;
-      top: 50%;
+      top: 0.8px;
       left: 50%;
       transform: translate(-50%, -50%);
       cursor: pointer;
@@ -231,11 +256,9 @@ tds-slider {
       span {
         display: block;
         user-select: none;
-        color: var(-tds-grey-700);
 
-        // @include type-style('detail-05');
-        font: var(--tds-detail-05);
-        letter-spacing: var(--tds-detail-05-ls);
+        @include label-01;
+
         position: relative;
         top: -7px;
         left: 50%;
@@ -249,7 +272,7 @@ tds-slider {
   .tds-slider__track {
     width: 100%;
     height: 2px;
-    border-radius: 1px;
+    bottom: 1px;
     background-color: var(--tds-slider-track-color);
     position: relative;
     cursor: pointer;
@@ -258,10 +281,7 @@ tds-slider {
     &::after {
       content: '';
       position: absolute;
-      left: 0;
-      right: 0;
-      top: -10px;
-      bottom: -10px;
+      inset: -10px 0;
       cursor: pointer;
       z-index: 0;
     }
@@ -273,18 +293,12 @@ tds-slider {
         .tds-slider__thumb-inner {
           width: 24px;
           height: 24px;
-
-          &::before {
-            display: block;
-            opacity: 0.08;
-          }
         }
       }
     }
 
     .tds-slider__track-fill {
       background-color: var(--tds-slider-track-fill-color);
-      border-radius: 2px;
       height: 4px;
       position: absolute;
       left: 0;
@@ -297,15 +311,11 @@ tds-slider {
   }
 
   &.disabled {
-    // pointer-events: none;
     cursor: not-allowed;
+    opacity: var(--tds-slider-opacity-disabled);
 
     > * {
       pointer-events: none;
-    }
-
-    label {
-      color: var(--tds-slider-label-disabled);
     }
 
     .tds-slider__controls {
@@ -315,18 +325,12 @@ tds-slider {
     }
 
     .tds-slider__input-values {
-      .tds-slider__input-value {
-        color: var(--tds-slider-input-value-disabled);
-      }
-
       .tds-slider__input-field-wrapper {
         pointer-events: none;
 
         input.tds-slider__input-field {
-          color: var(--tds-slider-inputfield-number-disabled);
           box-shadow: none;
           pointer-events: none;
-          background: var(--tds-slider-inputfield-background-disabled);
         }
       }
     }
@@ -337,28 +341,12 @@ tds-slider {
 
     .tds-slider__track {
       cursor: not-allowed;
-      background-color: var(--tds-slider-track-disabled);
-
-      .tds-slider__track-fill {
-        background-color: var(--tds-slider-track-disabled);
-      }
-    }
-
-    .tds-slider__value-dividers {
-      .tds-slider__value-divider {
-        background-color: var(--tds-slider-divider-disabled);
-
-        span {
-          color: var(--tds-slider-divider-values-disabled);
-        }
-      }
     }
 
     .tds-slider__thumb {
       pointer-events: none;
 
       .tds-slider__thumb-inner {
-        background-color: var(--tds-slider-thumb-disabled);
         cursor: default;
       }
     }
@@ -381,6 +369,10 @@ tds-slider {
         }
       }
     }
+
+    .tds-slider__value {
+      top: -18px;
+    }
   }
 }
 
@@ -392,6 +384,7 @@ tds-slider {
       &.tds-slider__control-minus,
       &.tds-slider__control-plus {
         tds-icon {
+          padding: 4px;
           color: var(--tds-slider-controls-color);
         }
       }
@@ -402,13 +395,6 @@ tds-slider {
     .tds-slider__controls {
       .tds-slider__control {
         cursor: default;
-
-        &.tds-slider__control-minus,
-        &.tds-slider__control-plus {
-          tds-icon {
-            color: var(--tds-slider-controls-disabled);
-          }
-        }
       }
     }
   }

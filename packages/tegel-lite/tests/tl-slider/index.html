@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tegel Lite - Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <link rel="stylesheet" href="../../dist/scania-variables.css" />
+    <link rel="stylesheet" href="../../dist/traton-variables.css" />
+    <link rel="stylesheet" href="../../dist/global.css" />
+    <link rel="stylesheet" href="../../dist/tl-slider.css" />
+    <link rel="stylesheet" href="../../dist/tl-icon.css" />
+    <link rel="stylesheet" href="../../dist/tl-button.css" />
+    <link rel="stylesheet" href="../../dist/tl-text-field.css" />
+  </head>
+
+  <body style="height: 100vh">
+    <div class="demo-wrapper">
+      <div class="variant-wrapper">
+        <div class="tl-slider">
+          <label class="tl-slider__label">Label</label>
+
+          <input
+            type="range"
+            class="tl-slider__native-input"
+            min="0"
+            max="100"
+            value="35"
+            step="1"
+          />
+
+          <div class="tl-slider__track-wrapper">
+            <button
+              class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus"
+              type="button"
+            >
+              <span class="tl-icon tl-icon--minus tl-icon--16"></span>
+            </button>
+
+            <div class="tl-slider__track">
+              <div class="tl-slider__value-dividers">
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">0</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">50</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">100</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+              </div>
+
+              <div class="tl-slider__track-fill" style="width: 35%"></div>
+
+              <div class="tl-slider__thumb" style="left: 35%">
+                <div class="tl-slider__thumb-inner" tabindex="0"></div>
+                <!-- tooltip forcefully displayed for the snapshot -->
+                <div class="tl-slider__value-tooltip" style="display: block">35</div>
+              </div>
+            </div>
+
+            <button
+              class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus"
+              type="button"
+            >
+              <span class="tl-icon tl-icon--plus tl-icon--16"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tl-slider tl-slider--small">
+          <label class="tl-slider__label">Label</label>
+
+          <input
+            type="range"
+            class="tl-slider__native-input"
+            min="0"
+            max="100"
+            value="70"
+            step="1"
+          />
+
+          <div class="tl-slider__track-wrapper">
+            <div class="tl-slider__value tl-slider__value--min">0</div>
+
+            <div class="tl-slider__track">
+              <div class="tl-slider__value-dividers">
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">0</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">25</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">50</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">75</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">100</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+              </div>
+
+              <div class="tl-slider__track-fill" style="width: 70%"></div>
+
+              <div class="tl-slider__thumb" style="left: 70%">
+                <div class="tl-slider__thumb-inner tl-slider__thumb-inner--pressed" tabindex="0"></div>
+                <!-- tooltip forcefully displayed for the snapshot -->
+                <div class="tl-slider__value-tooltip" style="display: block;">70</div>
+              </div>
+            </div>
+
+            <div class="tl-slider__value tl-slider__value--max">100</div>
+            <div
+              class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper"
+            >
+              <input
+                type="number"
+                class="tl-text-field__input tl-slider__input-field"
+                value="70"
+                min="0"
+                max="100"
+                step="1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <style>
+    .variant-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    /* .demo-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    } */
+  </style>
+</html>
