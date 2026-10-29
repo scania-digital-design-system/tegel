@@ -61,7 +61,7 @@ const IconTemplate = (args) =>
   `
   <tds-icon 
     name="${args.icon}" 
-    size="${`${args.size.toString()}px`}" 
+    size="${`${args.size ? args.size.toString() : '32'}px`}" 
     ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
     ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
     >   
