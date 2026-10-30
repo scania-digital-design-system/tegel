@@ -1,5 +1,5 @@
-# Use the official Playwright image with Playwright 1.64.0 and Ubuntu 22.04 (Jammy)
-FROM mcr.microsoft.com/playwright:v1.64.0-jammy AS base
+# Use the official Playwright image with Playwright 1 and Ubuntu 22.04 (Jammy)
+FROM mcr.microsoft.com/playwright:v1.64.1-jammy AS base
 
 # Set /app as the working directory inside the container
 WORKDIR /app
