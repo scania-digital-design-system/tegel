@@ -18,7 +18,7 @@
     <div class="demo-wrapper">
       <div class="variant-wrapper">
         <div class="tl-slider">
-          <label class="tl-slider__label">Label</label>
+          <label class="tl-slider__label">Pressed slider</label>
 
           <input
             type="range"
@@ -58,7 +58,10 @@
               <div class="tl-slider__track-fill" style="width: 35%"></div>
 
               <div class="tl-slider__thumb" style="left: 35%">
-                <div class="tl-slider__thumb-inner" tabindex="0"></div>
+                <div
+                  class="tl-slider__thumb-inner tl-slider__thumb-inner--pressed"
+                  tabindex="0"
+                ></div>
                 <!-- tooltip forcefully displayed for the snapshot -->
                 <div class="tl-slider__value-tooltip" style="display: block">35</div>
               </div>
@@ -74,7 +77,7 @@
         </div>
 
         <div class="tl-slider tl-slider--small">
-          <label class="tl-slider__label">Label</label>
+          <label class="tl-slider__label">Read-only slider</label>
 
           <input
             type="range"
@@ -83,6 +86,7 @@
             max="100"
             value="70"
             step="1"
+            readonly
           />
 
           <div class="tl-slider__track-wrapper">
@@ -110,9 +114,9 @@
               <div class="tl-slider__track-fill" style="width: 70%"></div>
 
               <div class="tl-slider__thumb" style="left: 70%">
-                <div class="tl-slider__thumb-inner tl-slider__thumb-inner--pressed" tabindex="0"></div>
+                <div class="tl-slider__thumb-inner" tabindex="0"></div>
                 <!-- tooltip forcefully displayed for the snapshot -->
-                <div class="tl-slider__value-tooltip" style="display: block;">70</div>
+                <div class="tl-slider__value-tooltip" style="display: block">70</div>
               </div>
             </div>
 
@@ -120,19 +124,22 @@
             <div
               class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper"
             >
-              <input
-                type="number"
-                class="tl-text-field__input tl-slider__input-field"
-                value="70"
-                min="0"
-                max="100"
-                step="1"
-              />
+              <div class="tl-text-field__input-wrapper">
+                <input
+                  type="number"
+                  class="tl-text-field__input tl-slider__input-field"
+                  value="70"
+                  min="0"
+                  max="100"
+                  step="1"
+                  readonly
+                />
+              </div>
             </div>
           </div>
         </div>
 
-         <div class="tl-slider tl-slider--reverse">
+        <div class="tl-slider tl-slider--reverse">
           <label class="tl-slider__label">Reverse slider</label>
 
           <input
@@ -145,7 +152,6 @@
           />
 
           <div class="tl-slider__track-wrapper">
-
             <div class="tl-slider__track">
               <div class="tl-slider__value-dividers">
                 <div class="tl-slider__value-divider">
@@ -175,22 +181,95 @@
               <div class="tl-slider__thumb" style="left: 35%">
                 <div class="tl-slider__thumb-inner" tabindex="0"></div>
                 <!-- tooltip forcefully displayed for the snapshot -->
-                <div class="tl-slider__value-tooltip" style="display: block;">35</div>
+                <div class="tl-slider__value-tooltip" style="display: block">35</div>
               </div>
             </div>
 
             <div
               class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper"
             >
-              <input
-                type="number"
-                class="tl-text-field__input tl-slider__input-field"
-                value="35"
-                min="0"
-                max="100"
-                step="1"
-              />
+              <div class="tl-text-field__input-wrapper">
+                <input
+                  type="number"
+                  class="tl-text-field__input tl-slider__input-field"
+                  value="35"
+                  min="0"
+                  max="100"
+                  step="1"
+                />
+              </div>
             </div>
+          </div>
+        </div>
+
+        <div class="tl-slider">
+          <label class="tl-slider__label">Disabled slider</label>
+
+          <input
+            type="range"
+            class="tl-slider__native-input"
+            min="0"
+            max="100"
+            value="50"
+            step="1"
+            disabled
+          />
+
+          <div class="tl-slider__track-wrapper">
+            <button
+              aria-label="decrease"
+              class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus"
+              type="button"
+              disabled
+            >
+              <span class="tl-icon tl-icon--minus tl-icon--16"></span>
+            </button>
+
+            <div class="tl-slider__track">
+              <div class="tl-slider__value-dividers">
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">0</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">25</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">50</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">75</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+
+                <div class="tl-slider__value-divider">
+                  <span class="tl-slider__value-divider-label">100</span>
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+              </div>
+
+              <div class="tl-slider__track-fill" style="width: 50%"></div>
+
+              <div class="tl-slider__thumb" style="left: 50%">
+                <div class="tl-slider__thumb-inner" tabindex="0"></div>
+
+                <div class="tl-slider__value-tooltip">50</div>
+              </div>
+            </div>
+
+            <button
+              aria-label="increase"
+              class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus"
+              type="button"
+              disabled
+            >
+              <span class="tl-icon tl-icon--plus tl-icon--16"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -203,11 +282,5 @@
       gap: 12px;
       padding: 20px;
     }
-
-    /* .demo-wrapper {
-      display: flex;
-      flex-direction: row;
-      gap: 24px;
-    } */
   </style>
 </html>
