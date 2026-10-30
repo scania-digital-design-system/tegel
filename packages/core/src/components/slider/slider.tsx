@@ -22,6 +22,9 @@ export class TdsSlider {
   /** Text for label */
   @Prop({ reflect: true }) label: string = '';
 
+  /** Slider type */
+  @Prop({ reflect: true }) type: 'standard' | 'reverse' = 'standard';
+
   /** Initial value */
   @Prop({ reflect: true, mutable: true }) value: string = '0';
 
@@ -286,6 +289,13 @@ export class TdsSlider {
     const percentageFilled = (this.thumbLeft / trackWidth) * 100;
     if (this.trackFillElement) {
       this.trackFillElement.style.width = `${percentageFilled}%`;
+      this.trackFillElement.style.left = '0';
+      this.trackFillElement.style.right = 'unset';
+      if (this.type === 'reverse') {
+        this.trackFillElement.style.width = `${100 - percentageFilled}%`;
+        this.trackFillElement.style.left = 'unset';
+        this.trackFillElement.style.right = '0';
+      }
     }
   }
 
