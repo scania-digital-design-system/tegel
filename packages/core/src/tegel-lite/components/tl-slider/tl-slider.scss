@@ -69,6 +69,10 @@
     width: 24px;
     height: 24px;
     border-radius: 4px;
+
+    &:disabled {
+      opacity: 1;
+    }
   }
 
   .tl-icon {
@@ -146,6 +150,10 @@
 
   .tl-slider__track-wrapper:not(:has(.tl-slider__value)) & {
     top: -10px;
+  }
+
+  &:has(.tl-text-field__input:disabled) .tl-text-field__input-wrapper {
+    opacity: 1;
   }
 }
 
