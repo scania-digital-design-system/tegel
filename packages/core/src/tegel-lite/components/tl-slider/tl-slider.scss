@@ -337,6 +337,11 @@
   left: 0;
   top: -1px;
   z-index: 1;
+
+  .tl-slider--reverse & {
+    right: 0;
+    left: unset;
+  }
 }
 
 .tl-slider__native-input {

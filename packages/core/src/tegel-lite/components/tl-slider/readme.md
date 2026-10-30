@@ -62,6 +62,8 @@ Apply these classes to the `.tl-slider` element.
 | Modifier               | Description                    |
 | ---------------------- | ------------------------------ |
 | `.tl-slider--small`    | Small thumb size variant             |
+| `.tl-slider--reverse` | Reverse slider variant             |
+
 
 **Note:** Use the native `disabled` and `readonly` attributes on the `<input type="range">` element for disabled and read-only states. The component will automatically style these states.
 

@@ -7,6 +7,17 @@ export default {
     },
   },
   argTypes: {
+    type: {
+      name: 'Slider type',
+      description: 'Determines the type of the slider',
+      control: {
+        type: 'radio',
+      },
+      options: ['standard', 'reverse'],
+      table: {
+        defaultValue: { summary: 'standard' },
+      },
+    },
     min: {
       name: 'Min. value',
       description: 'Sets the minimum value for the slider.',
@@ -169,6 +180,7 @@ export default {
   },
   args: {
     useDecimals: false,
+    type: 'standard',
     min: 0,
     max: 100,
     initialValue: 50,
@@ -189,6 +201,7 @@ export default {
 
 const Template = ({
   useDecimals,
+  type,
   min,
   max,
   initialValue,
@@ -211,11 +224,16 @@ const Template = ({
   const clampedInitialValue = Math.max(actualMin, Math.min(actualMax, initialValue));
   const actualInitialValue = useDecimals ? 0.5 : clampedInitialValue;
 
-  const sliderClasses = ['tl-slider', thumbSize === 'Small' ? 'tl-slider--small' : '']
+  const sliderClasses = [
+    'tl-slider',
+    thumbSize === 'Small' ? 'tl-slider--small' : '',
+    type === 'reverse' ? 'tl-slider--reverse' : '',
+  ]
     .filter(Boolean)
     .join(' ');
 
   const percentage = ((actualInitialValue - actualMin) / (actualMax - actualMin)) * 100;
+  const fillPercentage = type === 'reverse' ? 100 - percentage : percentage;
 
   const formatTickValue = (tickValue: number): string => {
     if (tickValue % 1 === 0) {
@@ -301,7 +319,7 @@ const Template = ({
         
         <div class="tl-slider__track">
           ${generateTicks()}
-          <div class="tl-slider__track-fill" style="width: ${percentage}%;"></div>
+          <div class="tl-slider__track-fill" style="width: ${fillPercentage}%; "></div>
           
           <div class="tl-slider__thumb" style="left: ${percentage}%;">
             <div class="tl-slider__thumb-inner" tabindex="0">
@@ -419,8 +437,9 @@ const Template = ({
           currentValue = Math.max(min, Math.min(max, newValue));
           currentValue = formatValue(currentValue);
           const percentage = ((currentValue - min) / (max - min)) * 100;
+          const fillPercentage = ${type === 'reverse' ? '100 - percentage' : 'percentage'};
           
-          trackFill.style.width = percentage + '%';
+          trackFill.style.width = fillPercentage + '%';
           thumb.style.left = percentage + '%';
           ${showInput ? 'if (inputField) inputField.value = currentValue;' : ''}
           if (nativeInput) nativeInput.value = currentValue;
