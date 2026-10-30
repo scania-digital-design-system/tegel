@@ -308,7 +308,7 @@ const Template = ({
         `
             : showControls
               ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus" type="button" ${
+        <button aria-label="decrease" class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--minus tl-icon--16"></span>
@@ -359,7 +359,7 @@ const Template = ({
         `
             : showControls
               ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus" type="button" ${
+        <button aria-label="increase" class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--plus tl-icon--16"></span>
