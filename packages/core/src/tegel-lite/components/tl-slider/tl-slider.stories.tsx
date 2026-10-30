@@ -242,17 +242,17 @@ const Template = ({
 
     const stepStr = actualStep.toString();
     const decimalPlaces = (stepStr.split('.')[1] || '').length;
-    const rounded = parseFloat(tickValue.toFixed(Math.max(decimalPlaces, 10)));
+    const rounded = parseFloat(tickValue.toFixed(decimalPlaces));
     return rounded.toString().replace(/\.?0+$/, '');
   };
 
   const generateTicks = () => {
-    if (!showTicks || numTicks < 2) return '';
+    if (!showTicks || numTicks < 1) return '';
 
     const ticks: string[] = [];
-    const tickStep = (actualMax - actualMin) / (numTicks - 1);
+    const tickStep = (actualMax - actualMin) / (numTicks + 1);
 
-    for (let i = 0; i < numTicks; i++) {
+    for (let i = 0; i <= numTicks + 1; i++) {
       const tickValue = actualMin + tickStep * i;
       const formattedValue = formatTickValue(tickValue);
 
