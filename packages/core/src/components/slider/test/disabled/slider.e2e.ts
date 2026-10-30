@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/slider/test/disabled/index.html';
 const componentName = 'tds-slider';
 const testDescription = 'tds-slider-disabled';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.basicWithBrandVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);

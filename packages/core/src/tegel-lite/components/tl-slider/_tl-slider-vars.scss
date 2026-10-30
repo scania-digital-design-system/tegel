@@ -1,26 +1,32 @@
+@use '../../../../../../tokens/scss/component/slider';
+@use '../../../../../../tokens/scss/component/tooltip';
+@use '../../../../../../tokens/scss/component/-input';
+
 .tl-slider {
-  --slider-label: var(--color-foreground-text-strong);
-  --slider-thumb: var(--color-foreground-icon-strong);
-  --slider-track: var(--color-background-surface-300);
-  --slider-track-fill: var(--color-foreground-icon-strong);
-  --slider-divider: var(--color-background-surface-300);
-  --slider-divider-values: var(--color-foreground-text-defined);
-  --slider-input-focused: var(--color-foreground-border-accent-focus);
-  --slider-input-value: var(--color-foreground-text-defined);
-  --slider-disabled: var(--color-background-surface-300);
-  --slider-disabled-text: var(--color-foreground-text-disabled);
-  --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
-  --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
-  --slider-input-background: var(--color-background-layer-01);
-  --slider-input-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --slider-label: var(--component-slider-text-label-default);
+  --slider-thumb: var(--component-slider-background-thumb-default);
+  --slider-thumb-hover: var(--component-slider-background-halo-hover);
+  --slider-thumb-active: var(--component-slider-background-halo-active);
+  --slider-track: var(--component-slider-background-track-default);
+  --slider-track-fill: var(--component-slider-background-selected-default);
+  --slider-divider: var(--component-slider-background-divider-default);
+  --slider-divider-values: var(--component-slider-text-value-default);
+  --slider-text-value: var(--component-slider-text-value-default);
+  --slider-input-value: var(--component--input-text-placeholder-default);
+  --slider-opacity-disabled: calc(var(--component-slider-opacity-disabled) / 100);
+  --slider-value-tooltip-background: var(--component-tooltip-background-default);
+  --slider-value-tooltip: var(--component-tooltip-text-default);
+  --slider-value-tooltip-border-radius: calc(var(--component-tooltip-border-radius-default) * 1px);
+  --slider-input-background: var(--component--input-background-primary);
+  --slider-controls-color: var(--component-slider-icon-control-default);
 }
 
-.tl-slider,
-.scania .tl-slider {
-  --slider-border-radius: 4px 4px 0 0;
+.tl-mode-variant-primary .tl-slider,
+.tds-mode-variant-primary .tl-slider {
+  --slider-input-background: var(--component--input-background-primary);
 }
 
-.traton .tl-slider {
-  --slider-border-radius: 4px;
-  --slider-input-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+.tl-mode-variant-secondary .tl-slider,
+.tds-mode-variant-secondary .tl-slider {
+  --slider-input-background: var(--component--input-background-secondary);
 }

@@ -78,7 +78,7 @@ export default {
       control: {
         type: 'boolean',
       },
-      if: { arg: 'showInput', eq: false },
+      // if: { arg: 'showInput', eq: false },
       table: {
         defaultValue: { summary: false },
       },
@@ -241,7 +241,7 @@ const Template = ({
       ticks.push(`
         <div class="tl-slider__value-divider">
           ${
-            showTickNumbers && !showInput
+            showTickNumbers
               ? `<span class="tl-slider__value-divider-label">${formattedValue}</span>`
               : ''
           }
@@ -280,13 +280,13 @@ const Template = ({
           step="${actualStep}"
           ${disabled ? 'disabled' : ''}
           ${readonly ? 'readonly' : ''}
-      />
+        />
       
       <div class="tl-slider__track-wrapper">
         ${
           showInput
             ? `
-        <div class="tl-slider__value tl-slider__value--min">${actualMin}</div>
+        ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--min">${actualMin}</div>` : ''}
         `
             : showControls
               ? `
@@ -304,26 +304,27 @@ const Template = ({
           <div class="tl-slider__track-fill" style="width: ${percentage}%;"></div>
           
           <div class="tl-slider__thumb" style="left: ${percentage}%;">
-            <div class="tl-slider__thumb-inner" tabindex="-1">
-              ${
-                showTooltip
-                  ? `
-              <div class="tl-slider__value-tooltip">
-                ${actualInitialValue}
-              </div>
-              `
-                  : ''
-              }
+            <div class="tl-slider__thumb-inner" tabindex="0">
             </div>
+            ${
+              showTooltip
+                ? `
+            <div class="tl-slider__value-tooltip">
+              ${actualInitialValue}
+            </div>
+            `
+                : ''
+            }
           </div>
         </div>
         
         ${
           showInput
             ? `
-        <div class="tl-slider__value tl-slider__value--max">${actualMax}</div>
+        ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--max">${actualMax}</div>` : ''}
         <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper">
-          <input 
+          <div class="tl-text-field__input-wrapper">
+            <input 
             type="number" 
             class="tl-text-field__input tl-slider__input-field${
               useDecimals ? ' tl-slider__input-field--decimal' : ''
@@ -335,6 +336,7 @@ const Template = ({
             ${disabled ? 'disabled' : ''}
             ${readonly ? 'readonly' : ''}
           />
+          </div>
         </div>
         `
             : showControls
