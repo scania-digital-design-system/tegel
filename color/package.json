@@ -22,7 +22,7 @@
   "author": "IXCD@Scania <designtoolsandsystems@scania.com> (https://tegel.scania.com)",
   "license": "ISC",
   "devDependencies": {
-    "del": "^9.0.1",
+    "del": "catalog:",
     "glob": "catalog:",
     "sass": "catalog:",
     "scss-bundle": "^3.1.2"

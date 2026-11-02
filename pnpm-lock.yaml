@@ -18,6 +18,9 @@ catalogs:
     '@types/react-dom':
       specifier: 19.3.0
       version: 19.3.0
+    del:
+      specifier: 9.0.1
+      version: 9.0.1
     glob:
       specifier: 13.0.6
       version: 13.0.6
@@ -112,7 +115,7 @@ importers:
   color:
     devDependencies:
       del:
-        specifier: ^9.0.1
+        specifier: 'catalog:'
         version: 9.0.1
       glob:
         specifier: 'catalog:'
@@ -127,7 +130,7 @@ importers:
   grid-deprecated:
     devDependencies:
       del:
-        specifier: ^9.0.1
+        specifier: 'catalog:'
         version: 9.0.1
       glob:
         specifier: 'catalog:'
