@@ -23,15 +23,21 @@ export class TdsSlider {
   @Prop({ reflect: true }) label: string = '';
 
   /** Slider type */
-  @Prop({ reflect: true }) type: 'standard' | 'reverse' = 'standard';
+  @Prop({ reflect: true }) type: 'standard' | 'reverse' | 'range' = 'standard';
 
   /** Initial value */
   @Prop({ reflect: true, mutable: true }) value: string = '0';
 
-  /** Minimum value */
+  /** Initial left value */
+  @Prop({ reflect: true, mutable: true }) leftValue: string = '0';
+
+  /** Initial right value */
+  @Prop({ reflect: true, mutable: true }) rightValue: string = '10';
+
+  /** Minimum limit */
   @Prop({ reflect: true }) min: string = '0';
 
-  /** Maximum value */
+  /** Maximum limit */
   @Prop({ reflect: true }) max: string = '100';
 
   /** Number of tick markers (tick for min- and max-value will be added automatically) */
@@ -78,17 +84,25 @@ export class TdsSlider {
 
   private wrapperElement: HTMLElement | null = null;
 
-  private thumbElement: HTMLElement | null = null;
+  private leftThumbElement: HTMLElement | null = null;
 
-  private thumbInnerElement: HTMLElement | null = null;
+  private rightThumbElement: HTMLElement | null = null;
+
+  private leftThumbInnerElement: HTMLElement | null = null;
+
+  private rightThumbInnerElement: HTMLElement | null = null;
 
   private trackElement: HTMLElement | null = null;
 
   private trackFillElement: HTMLElement | null = null;
 
-  private thumbGrabbed: boolean = false;
+  private leftThumbGrabbed: boolean = false;
 
-  private thumbLeft: number = 0;
+  private rightThumbGrabbed: boolean = false;
+
+  private thumbLeftLeft: number = 0;
+
+  private thumbLeftRight: number = 0;
 
   private tickValues: Array<number> = [];
 
@@ -104,7 +118,9 @@ export class TdsSlider {
 
   private resizeObserverAdded: boolean = false;
 
-  private initialValue: string = '0';
+  private initialLeftValue: string = '0';
+
+  private initialRightValue: string = '0';
 
   private resetEventListenerAdded: boolean = false;
 
@@ -182,27 +198,39 @@ export class TdsSlider {
     }
   }
 
+  // TODO implement with range slider
   @Listen('mouseup', { target: 'window' })
   @Listen('touchend', { target: 'window' })
   handleRelease(event: MouseEvent | TouchEvent) {
-    if (!this.thumbGrabbed) {
+    if (!this.leftThumbGrabbed && !this.rightThumbGrabbed) {
       const clickedOnTrack =
         event.target === this.trackElement || event.target === this.trackFillElement;
 
       if (clickedOnTrack) {
-        this.thumbCore(event);
+        this.thumbCore(event, false);
         this.trackElement?.focus();
       }
 
       return;
     }
 
-    this.thumbGrabbed = false;
-    this.thumbInnerElement?.classList.remove('pressed');
-    if (this.thumbElement) {
-      this.thumbElement.setAttribute('aria-grabbed', 'false');
+    if (this.leftThumbGrabbed) {
+      this.leftThumbGrabbed = false;
+      this.leftThumbInnerElement?.classList.remove('pressed');
+      // if (this.leftThumbElement) {
+      //   this.leftThumbElement.setAttribute('aria-grabbed', 'false');
+      // }
+      this.updateValue(event, false);
     }
-    this.updateValue(event);
+
+    if (this.rightThumbGrabbed) {
+      this.rightThumbGrabbed = false;
+      this.rightThumbInnerElement?.classList.remove('pressed');
+      // if (this.leftThumbElement) {
+      //   this.leftThumbElement.setAttribute('aria-grabbed', 'false');
+      // }
+      this.updateValue(event, true);
+    }
 
     this.trackElement?.focus();
   }
@@ -210,17 +238,36 @@ export class TdsSlider {
   @Listen('mousemove', { target: 'window' })
   @Listen('touchmove', { target: 'window' })
   handleMove(event: MouseEvent | TouchEvent) {
-    if (!this.thumbGrabbed) {
+    if (!this.leftThumbGrabbed && !this.rightThumbGrabbed) {
       return;
     }
 
-    this.thumbCore(event);
+    let right = true;
+    if (this.leftThumbGrabbed) {
+      right = false;
+    }
+
+    this.thumbCore(event, right);
   }
 
   @Watch('value')
   handleValueUpdate(newValue: string) {
-    this.calculateThumbLeftFromValue(newValue);
+    this.calculateThumbLeftFromValue(newValue, false);
     this.value = newValue;
+    this.updateTrack();
+  }
+
+  @Watch('leftValue')
+  handleLeftValueUpdate(newValue: string) {
+    this.calculateThumbLeftFromValue(newValue, false);
+    this.leftValue = newValue;
+    this.updateTrack();
+  }
+
+  @Watch('rightValue')
+  handleRightValueUpdate(newValue: string) {
+    this.calculateThumbLeftFromValue(newValue, true);
+    this.rightValue = newValue;
     this.updateTrack();
   }
 
@@ -228,16 +275,17 @@ export class TdsSlider {
     if (this.readOnly || this.disabled) {
       return;
     }
-    this.forceValueUpdate(this.min);
+    this.forceValueUpdate(this.min, false);
   }
 
   private setToMaxValue() {
     if (this.readOnly || this.disabled) {
       return;
     }
-    this.forceValueUpdate(this.max);
+    this.forceValueUpdate(this.max, true);
   }
 
+  // TODO implement with range slider
   private updateSupposedValueSlot(localLeft) {
     const numTicks = parseInt(this.ticks);
     const trackWidth = this.getTrackWidth();
@@ -258,7 +306,8 @@ export class TdsSlider {
     return snappedLocalLeft;
   }
 
-  private thumbCore(event) {
+  // TODO update with range slider
+  private thumbCore(event, right: boolean) {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement?.getBoundingClientRect();
     if (!trackRect) return;
@@ -276,17 +325,25 @@ export class TdsSlider {
       localLeft = this.updateSupposedValueSlot(localLeft);
     }
 
-    this.thumbLeft = this.constrainThumb(localLeft);
-    if (this.thumbElement) {
-      this.thumbElement.style.left = `${this.thumbLeft}px`;
+    if (right) {
+      this.thumbLeftRight = this.constrainThumb(localLeft);
+      if (this.rightThumbElement) {
+        this.rightThumbElement.style.left = `${this.thumbLeftRight}px`;
+      }
+    } else {
+      this.thumbLeftLeft = this.constrainThumb(localLeft);
+      if (this.leftThumbElement) {
+        this.leftThumbElement.style.left = `${this.thumbLeftLeft}px`;
+      }
     }
 
-    this.updateValue(event);
+    this.updateValue(event, right);
   }
 
+  // TODO update with range slider
   private updateTrack() {
     const trackWidth = this.getTrackWidth();
-    const percentageFilled = (this.thumbLeft / trackWidth) * 100;
+    const percentageFilled = (this.thumbLeftLeft / trackWidth) * 100;
     if (this.trackFillElement) {
       this.trackFillElement.style.width = `${percentageFilled}%`;
       this.trackFillElement.style.left = '0';
@@ -313,8 +370,8 @@ export class TdsSlider {
       }`;
     }, 50);
   }
-
-  private updateValue(event) {
+  // TODO implement with range slider
+  private updateValue(event, right: boolean) {
     const trackWidth = this.getTrackWidth();
     const min = parseFloat(this.min);
     const max = parseFloat(this.max);
@@ -324,20 +381,37 @@ export class TdsSlider {
     // the slider's thumb position and internal value.
     if (this.useSnapping && this.supposedValueSlot >= 0) {
       const snappedValue = this.tickValues[this.supposedValueSlot];
-      this.value = snappedValue.toString();
-      this.calculateThumbLeftFromValue(snappedValue);
+      if (right) {
+        this.rightValue = snappedValue.toString();
+      } else {
+        this.leftValue = snappedValue.toString();
+      }
+      this.calculateThumbLeftFromValue(snappedValue, right);
     } else {
-      const percentage = this.thumbLeft / trackWidth;
+      const thumbLeft = right ? this.thumbLeftRight : this.thumbLeftLeft;
+      const percentage = thumbLeft / trackWidth;
       const calculatedValue = min + percentage * (max - min);
 
-      this.value = this.roundToStep(calculatedValue).toString();
+      if (right) {
+        this.rightValue = this.roundToStep(calculatedValue).toString();
+      } else {
+        this.leftValue = this.roundToStep(calculatedValue).toString();
+      }
     }
     this.updateTrack();
 
-    // Update ARIA attributes
-    if (this.thumbElement) {
-      this.thumbElement.setAttribute('aria-valuenow', this.value);
-      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+    if (right) {
+      // Update ARIA attributes
+      if (this.rightThumbElement) {
+        this.rightThumbElement.setAttribute('aria-valuenow', this.value);
+        this.rightThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+      }
+    } else {
+      // Update ARIA attributes
+      if (this.leftThumbElement) {
+        this.leftThumbElement.setAttribute('aria-valuenow', this.value);
+        this.leftThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+      }
     }
 
     this.tdsInput.emit({ value: this.value });
@@ -349,14 +423,21 @@ export class TdsSlider {
     }
   }
 
-  private forceValueUpdate(newValue: string) {
-    this.calculateThumbLeftFromValue(newValue);
+  private forceValueUpdate(newValue: string, right: boolean) {
+    this.calculateThumbLeftFromValue(newValue, right);
     this.value = newValue;
 
     // Update ARIA attributes
-    if (this.thumbElement) {
-      this.thumbElement.setAttribute('aria-valuenow', this.value);
-      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+    if (right) {
+      if (this.rightThumbElement) {
+        this.rightThumbElement.setAttribute('aria-valuenow', this.value);
+        this.rightThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+      }
+    } else {
+      if (this.leftThumbElement) {
+        this.leftThumbElement.setAttribute('aria-valuenow', this.value);
+        this.leftThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+      }
     }
 
     this.tdsChange.emit({ value: this.value });
@@ -386,7 +467,7 @@ export class TdsSlider {
     return trackRect.right - trackRect.left;
   }
 
-  private calculateThumbLeftFromValue(value) {
+  private calculateThumbLeftFromValue(value, right: boolean) {
     const initValue = value;
     const trackWidth = this.getTrackWidth();
 
@@ -395,12 +476,20 @@ export class TdsSlider {
 
     const calculatedLeft = (normalizedValue / normalizedMax) * trackWidth;
 
-    this.thumbLeft = calculatedLeft;
-    this.updateSupposedValueSlot(this.thumbLeft);
-
-    if (this.thumbElement) {
-      this.thumbElement.style.left = `${this.thumbLeft}px`;
-      this.thumbElement.setAttribute('aria-valuenow', this.value);
+    if (right) {
+      this.thumbLeftRight = calculatedLeft;
+      this.updateSupposedValueSlot(this.thumbLeftRight);
+      if (this.rightThumbElement) {
+        this.rightThumbElement.style.left = `${this.thumbLeftRight}px`;
+        this.rightThumbElement.setAttribute('aria-valuenow', this.value);
+      }
+    } else {
+      this.thumbLeftLeft = calculatedLeft;
+      this.updateSupposedValueSlot(this.thumbLeftLeft);
+      if (this.leftThumbElement) {
+        this.leftThumbElement.style.left = `${this.thumbLeftLeft}px`;
+        this.leftThumbElement.setAttribute('aria-valuenow', this.value);
+      }
     }
   }
 
@@ -425,7 +514,7 @@ export class TdsSlider {
     }
     const rounded = this.roundToStep(newValue);
 
-    this.forceValueUpdate(rounded.toString());
+    this.forceValueUpdate(rounded.toString(), false); //FIXME
   }
 
   /** Updates the slider value when using tds-text-field (reads value from host element) */
@@ -448,7 +537,7 @@ export class TdsSlider {
     }
 
     const rounded = this.roundToStep(newValue);
-    this.forceValueUpdate(rounded.toString());
+    this.forceValueUpdate(rounded.toString(), false); //FIXME
   }
 
   /** Updates the slider value based on the current input value when enter is pressed */
@@ -461,14 +550,26 @@ export class TdsSlider {
     }
   }
 
-  private grabThumb() {
+  private grabThumb({
+    right = false,
+    innerElement,
+    element,
+  }: {
+    right?: boolean;
+    innerElement: HTMLElement | null;
+    element: HTMLElement | null;
+  }) {
     if (this.readOnly) {
       return;
     }
-    this.thumbGrabbed = true;
-    this.thumbInnerElement?.classList.add('pressed');
-    if (this.thumbElement) {
-      this.thumbElement.setAttribute('aria-grabbed', 'true');
+    if (right) {
+      this.rightThumbGrabbed = true;
+    } else {
+      this.leftThumbGrabbed = true;
+    }
+    innerElement?.classList.add('pressed');
+    if (element) {
+      element.setAttribute('aria-grabbed', 'true');
     }
   }
 
@@ -509,10 +610,10 @@ export class TdsSlider {
       } else if (this.supposedValueSlot > numTicks + 1) {
         this.supposedValueSlot = numTicks + 1;
       }
-      this.updateValue(event);
+      this.updateValue(event, false);
     } else {
       const trackWidth = this.getTrackWidth();
-      const percentage = this.thumbLeft / trackWidth;
+      const percentage = this.thumbLeftLeft / trackWidth;
 
       let currentValue =
         parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min));
@@ -527,7 +628,7 @@ export class TdsSlider {
       }
 
       this.value = `${currentValue}`;
-      this.forceValueUpdate(this.value);
+      this.forceValueUpdate(this.value, false);
     }
   }
 
@@ -540,7 +641,10 @@ export class TdsSlider {
   }
 
   private resetToInitialValue = () => {
-    this.forceValueUpdate(this.initialValue);
+    this.forceValueUpdate(this.initialLeftValue, false);
+    if (this.type === 'range') {
+      this.forceValueUpdate(this.initialRightValue, true);
+    }
     this.reset();
   };
 
@@ -593,29 +697,55 @@ export class TdsSlider {
     if (!this.resizeObserverAdded && typeof ResizeObserver !== 'undefined') {
       this.resizeObserverAdded = true;
 
-      const resizeObserver = new ResizeObserver(() => {
-        this.calculateThumbLeftFromValue(this.value);
-        this.updateTrack();
-      });
+      let resizeObserver;
+      if (this.type === 'range') {
+        resizeObserver = new ResizeObserver(() => {
+          this.calculateThumbLeftFromValue(this.rightValue, true);
+          this.calculateThumbLeftFromValue(this.leftValue, false);
+          this.updateTrack();
+        });
+      } else {
+        resizeObserver = new ResizeObserver(() => {
+          this.calculateThumbLeftFromValue(this.value, false);
+          this.updateTrack();
+        });
+      }
 
       if (this.wrapperElement) resizeObserver.observe(this.wrapperElement);
     }
 
-    this.calculateThumbLeftFromValue(this.value);
+    if (this.type === 'range') {
+      this.calculateThumbLeftFromValue(this.leftValue, false);
+      this.calculateThumbLeftFromValue(this.rightValue, true);
+    } else {
+      this.calculateThumbLeftFromValue(this.value, false);
+    }
     this.updateTrack();
 
     // Only set the initial value once:
-    if (!this.initialValue) {
-      this.initialValue = this.value;
+    if (!this.initialLeftValue) {
+      this.initialLeftValue = this.value;
+    }
+    if (!this.initialRightValue) {
+      this.initialRightValue = this.value;
     }
 
     // Set initial aria attributes
-    if (this.thumbElement) {
-      this.thumbElement.setAttribute('aria-valuenow', this.value);
-      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+    if (this.leftThumbElement) {
+      this.leftThumbElement.setAttribute('aria-valuenow', this.value);
+      this.leftThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
 
       // Ensure the thumb can receive focus via keyboard
-      this.thumbElement.tabIndex = this.disabled ? -1 : 0;
+      this.leftThumbElement.tabIndex = this.disabled ? -1 : 0;
+    }
+    if (this.type === 'range') {
+      if (this.rightThumbElement) {
+        this.rightThumbElement.setAttribute('aria-valuenow', this.value);
+        this.rightThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+
+        // Ensure the thumb can receive focus via keyboard
+        this.rightThumbElement.tabIndex = this.disabled ? -1 : 0;
+      }
     }
   }
 
@@ -640,7 +770,7 @@ export class TdsSlider {
 
   render() {
     const ariaLabel = this.readOnly ? this.tdsReadOnlyAriaLabel : this.label || this.tdsAriaLabel;
-    return (
+    return this.type !== 'range' ? (
       <div
         class={{
           'tds-slider-wrapper': true,
@@ -721,8 +851,8 @@ export class TdsSlider {
               tabindex={this.disabled ? '-1' : '0'}
               role="presentation"
               onFocus={() => {
-                if (this.thumbElement) {
-                  this.thumbElement.focus();
+                if (this.leftThumbElement) {
+                  this.leftThumbElement.focus();
                 }
               }}
             >
@@ -736,17 +866,27 @@ export class TdsSlider {
               <div
                 class="tds-slider__thumb"
                 ref={(el) => {
-                  this.thumbElement = el as HTMLElement;
+                  this.leftThumbElement = el as HTMLElement;
                 }}
-                onMouseDown={() => this.grabThumb()}
-                onTouchStart={() => this.grabThumb()}
+                onMouseDown={() =>
+                  this.grabThumb({
+                    innerElement: this.leftThumbInnerElement,
+                    element: this.leftThumbElement,
+                  })
+                }
+                onTouchStart={() =>
+                  this.grabThumb({
+                    innerElement: this.leftThumbInnerElement,
+                    element: this.leftThumbElement,
+                  })
+                }
                 role="slider"
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
                 aria-valuenow={this.value}
                 aria-valuetext={`${this.value} of ${this.max}`}
                 aria-labelledby={`${this.sliderId}-label`}
-                aria-grabbed={this.thumbGrabbed ? 'true' : 'false'}
+                aria-grabbed={this.leftThumbGrabbed ? 'true' : 'false'}
                 aria-label={ariaLabel}
                 tabindex={this.disabled ? '-1' : '0'}
               >
@@ -771,7 +911,7 @@ export class TdsSlider {
                 <div
                   class="tds-slider__thumb-inner"
                   ref={(el) => {
-                    this.thumbInnerElement = el as HTMLElement;
+                    this.leftThumbInnerElement = el as HTMLElement;
                   }}
                 ></div>
               </div>
@@ -781,12 +921,7 @@ export class TdsSlider {
           {this.useInput && (
             <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
               {!this.showTickNumbers && (
-                <div
-                  class="tds-slider__input-value max-value"
-                  onClick={(event) => this.stepLeft(event)}
-                >
-                  {this.max}
-                </div>
+                <div class="tds-slider__input-value max-value">{this.max}</div>
               )}
               <div class="tds-slider__input-field-wrapper">
                 <tds-text-field
@@ -819,6 +954,180 @@ export class TdsSlider {
               </div>
             </div>
           )}
+        </div>
+      </div>
+    ) : (
+      <div
+        class={{
+          'tds-slider-wrapper': true,
+          'read-only': this.readOnly,
+        }}
+      >
+        <div
+          class={{
+            'tds-slider': true,
+            'disabled': this.disabled,
+            'tds-slider-small': this.useSmall,
+          }}
+          ref={(el) => {
+            this.wrapperElement = el as HTMLElement;
+          }}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+        >
+          <label id={`${this.sliderId}-label`} class={{ offset: this.showTickNumbers }}>
+            {this.label}
+          </label>
+
+          <div class="tds-slider__input-values">
+            <div class="tds-slider__input-value min-value">{this.min}</div>
+          </div>
+
+          <div class="tds-slider-inner" tabIndex={-1}>
+            {this.tickValues.length > 0 && (
+              <div class="tds-slider__value-dividers-wrapper">
+                <div class="tds-slider__value-dividers">
+                  {this.tickValues.map((value) => (
+                    <div class="tds-slider__value-divider">
+                      {this.showTickNumbers && <span>{value}</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div
+              class="tds-slider__track"
+              ref={(el) => {
+                this.trackElement = el as HTMLElement;
+              }}
+              tabindex={this.disabled ? '-1' : '0'}
+              role="presentation"
+              // onFocus={() => { // TODO
+              //   if (this.thumbElement) {
+              //     this.thumbElement.focus();
+              //   }
+              // }}
+            >
+              <div
+                class="tds-slider__track-fill"
+                ref={(el) => {
+                  this.trackFillElement = el as HTMLElement;
+                }}
+              ></div>
+
+              <div
+                class="tds-slider__thumb"
+                ref={(el) => {
+                  this.leftThumbElement = el as HTMLElement;
+                }}
+                onMouseDown={() =>
+                  this.grabThumb({
+                    innerElement: this.leftThumbInnerElement,
+                    element: this.leftThumbElement,
+                  })
+                }
+                onTouchStart={() =>
+                  this.grabThumb({
+                    innerElement: this.leftThumbInnerElement,
+                    element: this.leftThumbElement,
+                  })
+                }
+                role="slider"
+                aria-valuemin={this.min}
+                aria-valuemax={this.rightValue}
+                aria-valuenow={this.leftValue}
+                aria-valuetext={`${this.leftValue} of ${this.max}`}
+                aria-labelledby={`${this.sliderId}-label`}
+                // aria-grabbed={this.leftThumbGrabbed ? 'true' : 'false'}
+                aria-label={ariaLabel}
+                tabindex={this.disabled ? '-1' : '0'}
+              >
+                {this.tooltip && (
+                  <div class="tds-slider__value">
+                    {this.value}
+                    <svg
+                      width="18"
+                      height="14"
+                      viewBox="0 0 18 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                )}
+
+                <div
+                  class="tds-slider__thumb-inner"
+                  ref={(el) => {
+                    this.leftThumbInnerElement = el as HTMLElement;
+                  }}
+                ></div>
+              </div>
+
+              <div
+                class="tds-slider__thumb"
+                ref={(el) => {
+                  this.rightThumbElement = el as HTMLElement;
+                }}
+                onMouseDown={() =>
+                  this.grabThumb({
+                    right: true,
+                    innerElement: this.rightThumbInnerElement,
+                    element: this.rightThumbElement,
+                  })
+                }
+                onTouchStart={() =>
+                  this.grabThumb({
+                    right: true,
+                    innerElement: this.rightThumbInnerElement,
+                    element: this.rightThumbElement,
+                  })
+                }
+                role="slider"
+                aria-valuemin={this.leftValue}
+                aria-valuemax={this.max}
+                aria-valuenow={this.rightValue}
+                aria-valuetext={`${this.rightValue} of ${this.max}`}
+                aria-labelledby={`${this.sliderId}-label`}
+                // aria-grabbed={this.leftThumbGrabbed ? 'true' : 'false'}
+                aria-label={ariaLabel}
+                tabindex={this.disabled ? '-1' : '0'}
+              >
+                {this.tooltip && (
+                  <div class="tds-slider__value">
+                    {this.value}
+                    <svg
+                      width="18"
+                      height="14"
+                      viewBox="0 0 18 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </div>
+                )}
+
+                <div
+                  class="tds-slider__thumb-inner"
+                  ref={(el) => {
+                    this.rightThumbInnerElement = el as HTMLElement;
+                  }}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tds-slider__input-values">
+            <div class="tds-slider__input-value max-value">{this.max}</div>
+          </div>
         </div>
       </div>
     );

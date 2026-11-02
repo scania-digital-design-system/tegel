@@ -7,7 +7,7 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
     control: {
       type: 'radio',
     },
-    options: ['standard', 'reverse'],
+    options: ['standard', 'reverse', 'range'],
     table: {
       defaultValue: { summary: 'standard' },
     },
@@ -38,8 +38,31 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
     control: {
       type: 'number',
     },
+    if: { arg: 'type', neq: 'range' },
     table: {
       defaultValue: { summary: 0 },
+    },
+  },
+  initialLeftValue: {
+    name: 'Initial left side value',
+    description: 'Sets the initial left side value for the range slider.',
+    control: {
+      type: 'number',
+    },
+    if: { arg: 'type', eq: 'range' },
+    table: {
+      defaultValue: { summary: 0 },
+    },
+  },
+  initialRightValue: {
+    name: 'Initial right side value',
+    description: 'Sets the initial right side value for the range slider.',
+    control: {
+      type: 'number',
+    },
+    if: { arg: 'type', eq: 'range' },
+    table: {
+      defaultValue: { summary: 10 },
     },
   },
   showLabel: {
@@ -114,6 +137,7 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
     control: {
       type: 'boolean',
     },
+    if: { arg: 'type', neq: 'range' },
     table: {
       defaultValue: { summary: false },
     },
@@ -202,6 +226,8 @@ export const SliderTemplate = ({
   min,
   max,
   initialValue,
+  initialLeftValue,
+  initialRightValue,
   showLabel,
   labelText,
   showTicks,
@@ -231,13 +257,13 @@ export const SliderTemplate = ({
           min="${min}"
           max="${max}"
           ${step ? `step="${step}"` : ''}
-          value="${initialValue}"
+          ${type === 'range' ? `left-value="${initialLeftValue}" right-value=${initialRightValue}` : `value="${initialValue}"`}
           ${showTicks ? `ticks="${numTicks}"` : ''}
           ${showTickNumbers ? 'show-tick-numbers' : ''}
           ${snapToTicks ? 'snap' : ''}
           ${showLabel ? `label="${labelText}"` : ''}
           ${showTooltip ? 'tooltip' : ''}
-          ${showControls ? 'controls' : ''}
+          ${type !== 'range' && showControls ? 'controls' : ''}
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
           thumb-size="${sizeLookUp[thumbSize]}"
