@@ -7,6 +7,7 @@ export default {
   }),
   parameters: SliderParameters,
   args: {
+    type: 'standard',
     min: 0,
     max: 1,
     initialValue: 0.5,

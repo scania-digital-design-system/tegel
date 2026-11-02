@@ -1,6 +1,17 @@
 import readme from './readme.md';
 
 export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal' }) => ({
+  type: {
+    name: 'Slider type',
+    description: 'Determines the type of the slider.',
+    control: {
+      type: 'radio',
+    },
+    options: ['standard', 'reverse'],
+    table: {
+      defaultValue: { summary: 'standard' },
+    },
+  },
   min: {
     name: 'Min. value',
     description: 'Sets the minimum value for the slider.',
@@ -187,6 +198,7 @@ const sizeLookUp = {
 };
 
 export const SliderTemplate = ({
+  type,
   min,
   max,
   initialValue,
@@ -215,6 +227,7 @@ export const SliderTemplate = ({
   
      <div class="demo-wrapper">
        <tds-slider 
+          type="${type}"
           min="${min}"
           max="${max}"
           ${step ? `step="${step}"` : ''}

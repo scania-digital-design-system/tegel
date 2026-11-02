@@ -22,6 +22,9 @@ export class TdsSlider {
   /** Text for label */
   @Prop({ reflect: true }) label: string = '';
 
+  /** Slider type */
+  @Prop({ reflect: true }) type: 'standard' | 'reverse' = 'standard';
+
   /** Initial value */
   @Prop({ reflect: true, mutable: true }) value: string = '0';
 
@@ -286,6 +289,13 @@ export class TdsSlider {
     const percentageFilled = (this.thumbLeft / trackWidth) * 100;
     if (this.trackFillElement) {
       this.trackFillElement.style.width = `${percentageFilled}%`;
+      this.trackFillElement.style.left = '0';
+      this.trackFillElement.style.right = 'unset';
+      if (this.type === 'reverse') {
+        this.trackFillElement.style.width = `${100 - percentageFilled}%`;
+        this.trackFillElement.style.left = 'unset';
+        this.trackFillElement.style.right = '0';
+      }
     }
   }
 
@@ -484,7 +494,15 @@ export class TdsSlider {
     /* if snapping is enabled, instead just increment or decrement the current "fixed" value from our ticknumber array */
     if (this.useSnapping && numTicks > 0) {
       const stepDir = delta > 0 ? 1 : -1;
-      this.supposedValueSlot += stepDir;
+
+      if (this.tickValues.includes(Number(this.value))) {
+        this.supposedValueSlot += stepDir;
+      } else if (
+        (this.tickValues[this.supposedValueSlot] < Number(this.value) && delta > 0) ||
+        (this.tickValues[this.supposedValueSlot] >= Number(this.value) && delta < 0)
+      ) {
+        this.supposedValueSlot += stepDir;
+      }
 
       if (this.supposedValueSlot < 0) {
         this.supposedValueSlot = 0;
