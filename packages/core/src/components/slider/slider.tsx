@@ -494,7 +494,15 @@ export class TdsSlider {
     /* if snapping is enabled, instead just increment or decrement the current "fixed" value from our ticknumber array */
     if (this.useSnapping && numTicks > 0) {
       const stepDir = delta > 0 ? 1 : -1;
-      this.supposedValueSlot += stepDir;
+
+      if (this.tickValues.includes(Number(this.value))) {
+        this.supposedValueSlot += stepDir;
+      } else if (
+        (this.tickValues[this.supposedValueSlot] < Number(this.value) && delta > 0) ||
+        (this.tickValues[this.supposedValueSlot] >= Number(this.value) && delta < 0)
+      ) {
+        this.supposedValueSlot += stepDir;
+      }
 
       if (this.supposedValueSlot < 0) {
         this.supposedValueSlot = 0;
