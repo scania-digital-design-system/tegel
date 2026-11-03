@@ -1,17 +1,6 @@
 import { Component, h, Prop, Host, Element, Watch, State } from '@stencil/core';
 import { IconNames } from '../../types/Icons';
 
-// Feature-detect the CSS `d` property once per module load. Where it is
-// supported (Chromium, Firefox, Safari 18+) the path renders reactively from
-// the brand-scoped --tds-icon-<name>-d variable via the CSS `d` property, so
-// none of the imperative getComputedStyle / MutationObserver fallback runs —
-// those engines pay no per-icon runtime cost. Only engines without it (older
-// Safari/WebKit) fall back to resolving the `d` attribute in JS.
-const SUPPORTS_CSS_D =
-  typeof CSS !== 'undefined' &&
-  typeof CSS.supports === 'function' &&
-  CSS.supports('d', 'path("M0 0Z")');
-
 @Component({
   tag: 'tds-icon',
   styleUrl: 'icon.scss',
@@ -36,27 +25,33 @@ export class Icon {
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop({ reflect: true }) svgDescription?: string;
 
+  // SVG properties resolved from brand-specific CSS custom properties.
+  // Stored as state so Stencil re-renders the icon when they change.
   @State() private pathD: string = '';
+  @State() private clipRule: string | number | undefined = undefined;
+  @State() private fillRule: 'nonzero' | 'evenodd' | 'inherit' | undefined = undefined;
 
   private brandObserver?: MutationObserver;
 
-  componentWillLoad() {
-    if (SUPPORTS_CSS_D) return;
-    this.resolvePath();
+  componentDidLoad() {
+    // Resolve icon properties after the initial render, when the host
+    // element is available and its CSS custom properties can be read.
+    this.resolveIconProperties();
   }
 
   connectedCallback() {
-    // The CSS `d` property handles brand-aware rendering reactively where
-    // supported, so the JS fallback below only runs on engines without it.
-    if (SUPPORTS_CSS_D) return;
-    // When the icon is nested in another component's shadow tree, its load
-    // lifecycle runs while the subtree is still detached, so the synchronous
-    // getComputedStyle read in resolvePath yields nothing. Retry on the next
-    // frame once the subtree is attached and the CSS variables resolve.
-    this.resolvePath();
+    // Resolve properties when the component is connected or reconnected.
+    // Some icons may initially be inside a detached Shadow DOM subtree,
+    // where getComputedStyle() cannot yet resolve the expected values.
+    this.resolveIconProperties();
+
+    // Retry on the next animation frame if the path was not available.
+    // This allows the parent subtree to finish attaching to the DOM.
     if (!this.pathD) {
-      requestAnimationFrame(() => this.resolvePath());
+      requestAnimationFrame(() => this.resolveIconProperties());
     }
+
+    // Watch for runtime brand changes (e.g. Scania <-> Traton).
     this.observeBrandChanges();
   }
 
@@ -67,52 +62,61 @@ export class Icon {
 
   @Watch('name')
   nameChanged() {
-    if (SUPPORTS_CSS_D) return;
-    this.resolvePath();
+    // Each icon name maps to a different set of CSS custom properties.
+    // Re-resolve them whenever the requested icon changes.
+    this.resolveIconProperties();
   }
 
   private observeBrandChanges() {
-    // The JS `d` attribute fallback is read imperatively via getComputedStyle,
-    // so it must re-resolve when the brand changes at runtime. The brand is
-    // selected by a `.scania`/`.traton` class on the document root, so watch
-    // the root's class attribute and re-resolve on change.
+    // The active brand is controlled by a class on the document root.
+    // Re-resolve the icon when that class changes so the correct
+    // brand-specific SVG path and rules are applied.
     if (this.brandObserver) return;
-    this.brandObserver = new MutationObserver(() => this.resolvePath());
+
+    this.brandObserver = new MutationObserver(() => this.resolveIconProperties());
+
     this.brandObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class'],
     });
   }
 
-  private resolvePath() {
-    // Path data lives on the brand-scoped CSS variable --tds-icon-<name>-d
-    // (see tokens/scss/component/icon.scss), shaped as `path('M...')`. Resolve
-    // it to an SVG `d` attribute here as the fallback for engines without CSS
-    // `d` support. An unknown icon name — brands have different icon sets, so a
-    // name may not exist in the active brand — simply yields no match and
-    // renders an empty path.
-    const raw = getComputedStyle(this.host).getPropertyValue(`--tds-icon-${this.name}-d`).trim();
-    const match = raw.match(/^path\(\s*(['"])([\s\S]*)\1\s*\)$/);
-    this.pathD = match ? match[2] : '';
+  private resolveIconProperties() {
+    // Icon definitions are stored in brand-specific CSS custom properties:
+    // --tds-icon-<name>-d
+    // --tds-icon-<name>-fill-rule
+    // --tds-icon-<name>-clip-rule
+    //
+    // Read them from the host so the active brand's values are used.
+    const styles = getComputedStyle(this.host);
+
+    const rawPath = styles.getPropertyValue(`--tds-icon-${this.name}-d`).trim();
+
+    // The path token uses CSS syntax: path("M...").
+    // Extract the SVG path commands so they can be assigned directly
+    // to the native SVG 'd' attribute.
+    //
+    // This avoids relying on the CSS 'd' property, which is not
+    // supported by some older browsers, including older Safari versions.
+    const pathMatch = rawPath.match(/^path\(\s*(['"])([\s\S]*)\1\s*\)$/);
+
+    this.pathD = pathMatch ? pathMatch[2] : '';
+
+    const clipRule = styles.getPropertyValue(`--tds-icon-${this.name}-clip-rule`).trim();
+
+    const fillRule = styles.getPropertyValue(`--tds-icon-${this.name}-fill-rule`).trim();
+
+    // Use undefined when no rule is defined, allowing SVG defaults.
+    this.clipRule = clipRule || undefined;
+
+    // Only assign valid SVG fill-rule values.
+    this.fillRule =
+      fillRule === 'evenodd' || fillRule === 'nonzero' || fillRule === 'inherit'
+        ? fillRule
+        : undefined;
   }
 
   render() {
-    // Brand-aware path data is supplied two ways so it works everywhere:
-    //   1. The CSS `d` property bound to the brand-scoped --tds-icon-<name>-d
-    //      variable. The CSS cascade resolves and updates this reactively when
-    //      the .scania/.traton brand class changes — no JS, no timing races.
-    //      Supported in Chromium, Firefox and Safari 18+.
-    //   2. The `d` attribute resolved imperatively (this.pathD), as a fallback
-    //      for engines that ignore the CSS `d` property (older Safari/WebKit).
-    // Where the CSS `d` property is supported it overrides the `d` attribute,
-    // so the two coexist: supporting engines use (1) and never populate (2);
-    // others fall back to (2). See SUPPORTS_CSS_D above.
-    const pathStyle = {
-      d: `var(--tds-icon-${this.name}-d)`,
-      fillRule: `var(--tds-icon-${this.name}-fill-rule, unset)`,
-      clipRule: `var(--tds-icon-${this.name}-clip-rule, unset)`,
-    } as { [key: string]: string };
-
     return (
       <Host>
         <svg
@@ -122,13 +126,20 @@ export class Icon {
           aria-labelledby={this.svgTitle ? `title-${this.name}` : undefined}
           aria-describedby={this.svgDescription ? `desc-${this.name}` : undefined}
           role="img"
-          style={{ fontSize: this.size }}
           height={this.size}
           width={this.size}
         >
           {this.svgTitle && <title id={`title-${this.name}`}>{this.svgTitle}</title>}
           {this.svgDescription && <desc id={`desc-${this.name}`}>{this.svgDescription}</desc>}
-          <path fill="currentColor" style={pathStyle} d={this.pathD} />
+          {/* Use native SVG attributes instead of inline styles.
+              This preserves compatibility with strict Content Security
+              Policies (CSP) that prohibit inline style attributes. */}
+          <path
+            fill="currentColor"
+            d={this.pathD}
+            fill-rule={this.fillRule}
+            clip-rule={this.clipRule}
+          />
         </svg>
       </Host>
     );
