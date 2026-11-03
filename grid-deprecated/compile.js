@@ -24,9 +24,9 @@ async function init() {
 }
 
 // Remove dist
-function clean() {
+async function clean() {
   console.log(`removing ${outputFolder}...`);
-  return del(outputFolder);
+  return del.deleteAsync(outputFolder);
 }
 
 // Setup up the folders
