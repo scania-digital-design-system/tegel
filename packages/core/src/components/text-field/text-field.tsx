@@ -331,7 +331,12 @@ export class TdsTextField {
                 text="This field is non-editable"
                 selector={`#readonly-tooltip-${this.uuid}`}
               />
-              <tds-icon id={`readonly-tooltip-${this.uuid}`} name="edit_inactive" size="20px" />
+              <tds-icon
+                id={`readonly-tooltip-${this.uuid}`}
+                name="edit_inactive"
+                size="20px"
+                svgTitle={`readonly-icon-${this.uuid}`}
+              />
             </span>
           )}
         </div>
