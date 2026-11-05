@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Range Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <div style="padding: 20px; width: 500px;">
+      <tds-slider
+        type="range"
+        min="0"
+        max="100"
+        left-value="25"
+        right-value="75"
+        step="5"
+        tooltip-mode="always"
+        thumb-size="lg"
+        label="First"
+      ></tds-slider>
+    </div>
+    <div style="padding: 20px; width: 500px;">
+      <tds-slider
+        type="range"
+        min="0"
+        max="100"
+        left-value="20"
+        right-value="80"
+        step="1"
+        ticks="3"
+        snap
+        input
+        label="Second"
+      ></tds-slider>
+    </div>
+    <div style="padding: 20px; width: 500px;">
+      <tds-slider
+        type="range"
+        min="0"
+        max="100"
+        left-value="42"
+        right-value="45"
+        step="1"
+        ticks="3"
+        tooltip-mode="press"
+        snap
+        input
+        label="Both thumbs left of shared tick"
+      ></tds-slider>
+    </div>
+    <div style="padding: 20px; width: 500px;">
+      <tds-slider
+        type="range"
+        min="0"
+        max="100"
+        left-value="48"
+        right-value="52"
+        step="1"
+        ticks="3"
+        tooltip-mode="press"
+        snap
+        input
+        label="Thumbs straddling shared tick"
+      ></tds-slider>
+    </div>
+    <div style="padding: 20px; width: 500px;">
+      <tds-slider
+        type="range"
+        min="0"
+        max="100"
+        left-value="55"
+        right-value="58"
+        step="1"
+        ticks="3"
+        tooltip-mode="press"
+        snap
+        input
+        label="Both thumbs right of shared tick"
+      ></tds-slider>
+    </div>
+  </body>
+</html>
