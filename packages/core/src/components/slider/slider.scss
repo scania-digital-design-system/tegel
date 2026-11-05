@@ -43,7 +43,7 @@ tds-slider {
     height: 20px;
     position: relative;
 
-    &:focus-within {
+    .tds-slider__thumb:focus {
       .tds-slider__thumb-inner {
         @include tds-focus-state;
       }
@@ -110,7 +110,7 @@ tds-slider {
       align-items: center;
       justify-content: center;
       border-radius: 4px 4px 0 0;
-      margin-left: 16px;
+      margin: 0 16px;
 
       // Remove arrows for number inputs inside tds-text-field used by slider
       tds-text-field .text-field-input[type='number'] {
@@ -149,6 +149,16 @@ tds-slider {
 
     &.offset {
       padding-bottom: 44px;
+    }
+
+    &.range {
+      padding-bottom: 44px;
+    }
+  }
+
+  &:has(.tds-slider__input-field-wrapper) {
+    label.range {
+      margin-left: 16px;
     }
   }
 

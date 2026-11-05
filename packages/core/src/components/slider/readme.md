@@ -8,37 +8,38 @@
 
 ## Properties
 
-| Property               | Attribute                  | Description                                                                      | Type                                 | Default              |
-| ---------------------- | -------------------------- | -------------------------------------------------------------------------------- | ------------------------------------ | -------------------- |
-| `controls`             | `controls`                 | Decide to show the controls or not                                               | `boolean`                            | `false`              |
-| `disabled`             | `disabled`                 | Sets the disabled state for the whole component                                  | `boolean`                            | `false`              |
-| `input`                | `input`                    | Decide to show the input field or not                                            | `boolean`                            | `false`              |
-| `label`                | `label`                    | Text for label                                                                   | `string`                             | `''`                 |
-| `leftValue`            | `left-value`               | Initial left value                                                               | `string`                             | `'0'`                |
-| `max`                  | `max`                      | Maximum limit                                                                    | `string`                             | `'100'`              |
-| `min`                  | `min`                      | Minimum limit                                                                    | `string`                             | `'0'`                |
-| `name`                 | `name`                     | Name property (will be inherited by the native slider component)                 | `string`                             | `''`                 |
-| `readOnly`             | `read-only`                | Sets the read only state for the whole component                                 | `boolean`                            | `false`              |
-| `rightValue`           | `right-value`              | Initial right value                                                              | `string`                             | `'10'`               |
-| `showTickNumbers`      | `show-tick-numbers`        | Decide to show numbers above the tick markers or not                             | `boolean`                            | `false`              |
-| `sliderId`             | `slider-id`                | ID for the Slider's input element, randomly generated if not specified.          | `string`                             | `generateUniqueId()` |
-| `snap`                 | `snap`                     | Snap to the tick's grid                                                          | `boolean`                            | `false`              |
-| `step`                 | `step`                     | Defines how much to increment/decrement the value when using controls            | `string`                             | `'1'`                |
-| `tdsAriaLabel`         | `tds-aria-label`           | Sets the aria-label for the slider control.                                      | `string`                             | `''`                 |
-| `tdsReadOnlyAriaLabel` | `tds-read-only-aria-label` | Sets the read only aria label for the input field                                | `string`                             | `''`                 |
-| `thumbSize`            | `thumb-size`               | Sets the size of the thumb                                                       | `"lg" \| "sm"`                       | `'lg'`               |
-| `ticks`                | `ticks`                    | Number of tick markers (tick for min- and max-value will be added automatically) | `string`                             | `'0'`                |
-| `tooltip`              | `tooltip`                  | Decide to show the tooltip or not                                                | `boolean`                            | `false`              |
-| `type`                 | `type`                     | Slider type                                                                      | `"range" \| "reverse" \| "standard"` | `'standard'`         |
-| `value`                | `value`                    | Initial value                                                                    | `string`                             | `'0'`                |
+| Property               | Attribute                  | Description                                                                                               | Type                                        | Default              |
+| ---------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------- | -------------------- |
+| `controls`             | `controls`                 | Decide to show the controls or not. Not compatible with input nor the range slider                        | `boolean`                                   | `false`              |
+| `disabled`             | `disabled`                 | Sets the disabled state for the whole component                                                           | `boolean`                                   | `false`              |
+| `input`                | `input`                    | Decide to show the input field or not. Not compatible with controls                                       | `boolean`                                   | `false`              |
+| `label`                | `label`                    | Text for label                                                                                            | `string`                                    | `''`                 |
+| `leftValue`            | `left-value`               | Initial left value for the range slider                                                                   | `string`                                    | `'0'`                |
+| `max`                  | `max`                      | Maximum limit                                                                                             | `string`                                    | `'100'`              |
+| `min`                  | `min`                      | Minimum limit                                                                                             | `string`                                    | `'0'`                |
+| `name`                 | `name`                     | Name property (will be inherited by the native slider component)                                          | `string`                                    | `''`                 |
+| `readOnly`             | `read-only`                | Sets the read only state for the whole component                                                          | `boolean`                                   | `false`              |
+| `rightValue`           | `right-value`              | Initial right value for the range slider                                                                  | `string`                                    | `'10'`               |
+| `showTickNumbers`      | `show-tick-numbers`        | Decide to show numbers above the tick markers or not                                                      | `boolean`                                   | `false`              |
+| `sliderId`             | `slider-id`                | ID for the Slider's input element, randomly generated if not specified.                                   | `string`                                    | `generateUniqueId()` |
+| `snap`                 | `snap`                     | Snap to the tick's grid                                                                                   | `boolean`                                   | `false`              |
+| `step`                 | `step`                     | Defines how much to increment/decrement the value when using controls                                     | `string`                                    | `'1'`                |
+| `tdsAriaLabel`         | `tds-aria-label`           | Sets the aria-label for the slider control.                                                               | `string`                                    | `''`                 |
+| `tdsReadOnlyAriaLabel` | `tds-read-only-aria-label` | Sets the read only aria label for the input field                                                         | `string`                                    | `''`                 |
+| `thumbSize`            | `thumb-size`               | Sets the size of the thumb                                                                                | `"lg" \| "sm"`                              | `'lg'`               |
+| `ticks`                | `ticks`                    | Number of tick markers (tick for min- and max-value will be added automatically)                          | `string`                                    | `'0'`                |
+| `tooltip`              | `tooltip`                  | <span style="color:red">**[DEPRECATED]**</span> Deprecated, use tooltipMode instead.<br/><br/>            | `boolean`                                   | `false`              |
+| `tooltipMode`          | `tooltip-mode`             | Defines how/when to show the tooltip. If type is range, controls when the tooltip is shown on both thumbs | `"always" \| "hover" \| "never" \| "press"` | `'never'`            |
+| `type`                 | `type`                     | Slider type                                                                                               | `"range" \| "reverse" \| "standard"`        | `'standard'`         |
+| `value`                | `value`                    | Initial value for the standard/reverse slider                                                             | `string`                                    | `'0'`                |
 
 
 ## Events
 
-| Event       | Description                                                                                      | Type                              |
-| ----------- | ------------------------------------------------------------------------------------------------ | --------------------------------- |
-| `tdsChange` | Sends the value of the slider when changed. Fires after mouse up and touch end events.           | `CustomEvent<{ value: string; }>` |
-| `tdsInput`  | Sends the value of the slider while moving the thumb. Fires on mouse move and touch move events. | `CustomEvent<{ value: string; }>` |
+| Event       | Description                                                                                      | Type                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `tdsChange` | Sends the value of the slider when changed. Fires after mouse up and touch end events.           | `CustomEvent<{ value: string; rightValue?: string \| undefined; }>` |
+| `tdsInput`  | Sends the value of the slider while moving the thumb. Fires on mouse move and touch move events. | `CustomEvent<{ value: string; rightValue?: string \| undefined; }>` |
 
 
 ## Methods

@@ -121,9 +121,21 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: false },
     },
   },
-  showTooltip: {
-    name: 'Show tooltip',
-    description: 'Toggles if the tooltip should be shown or hidden.',
+  tooltipMode: {
+    name: 'When/How to show tooltip',
+    description: 'Control when/how the tooltip should be shown.',
+    control: {
+      type: 'radio',
+    },
+    options: ['hover', 'press', 'always', 'never'],
+    table: {
+      defaultValue: { summary: 'hover' },
+    },
+  },
+  tooltip: {
+    name: 'Control visibility of the tooltip',
+    description:
+      'DEPRECATED. Was used for standard and reverse slider to control the visibility of the tooltip. Please use show-tooltip instead.',
     control: {
       type: 'boolean',
     },
@@ -160,7 +172,6 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
     control: {
       type: 'boolean',
     },
-    if: { arg: 'showControls', eq: false },
     table: {
       defaultValue: { summary: false },
     },
@@ -234,7 +245,8 @@ export const SliderTemplate = ({
   numTicks,
   showTickNumbers,
   snapToTicks,
-  showTooltip,
+  tooltipMode,
+  tooltip,
   showControls,
   step,
   showInput,
@@ -262,7 +274,8 @@ export const SliderTemplate = ({
           ${showTickNumbers ? 'show-tick-numbers' : ''}
           ${snapToTicks ? 'snap' : ''}
           ${showLabel ? `label="${labelText}"` : ''}
-          ${showTooltip ? 'tooltip' : ''}
+          tooltip-mode=${tooltipMode}
+          ${tooltip ? 'tooltip' : ''}
           ${type !== 'range' && showControls ? 'controls' : ''}
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
