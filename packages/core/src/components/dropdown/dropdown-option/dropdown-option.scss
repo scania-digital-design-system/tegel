@@ -94,6 +94,15 @@
           padding: 7px 16px 8px;
         }
 
+        &.group-child {
+          &.lg,
+          &.md,
+          &.sm,
+          &.xs {
+            padding-left: 32px;
+          }
+        }
+
         input[type='checkbox']:hover::before {
           box-shadow: none;
         }
