@@ -14,8 +14,8 @@ catalog:
   '@types/react': '19.3.0'
   '@types/react-dom': '19.3.0'
   del: '9.0.1'
-  glob: '14.0.2'
-  sass: '1.106.1'
+  glob: '14.0.4'
+  sass: '1.107.1'
   typescript: '7.0.2'
 
 allowBuilds:
