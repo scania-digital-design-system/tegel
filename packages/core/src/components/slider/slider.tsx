@@ -104,12 +104,6 @@ export class TdsSlider {
   /** This is only used for the range slider and it corresponds to the right thumb element */
   private rightThumbElement: HTMLElement | null = null;
 
-  // /** This can be the thumb inner element for the standard/reverse slider or the left thumb inner element for the range slider */
-  // private leftThumbInnerElement: HTMLElement | null = null;
-
-  // /** This is only used for the range slider and it corresponds to the right thumb inner element */
-  // private rightThumbInnerElement: HTMLElement | null = null;
-
   private trackElement: HTMLElement | null = null;
 
   private trackFillElement: HTMLElement | null = null;
@@ -147,13 +141,13 @@ export class TdsSlider {
   private ariaLiveElement: HTMLElement | null = null;
 
   private roundToStep(val: number): number {
-    const stepNum = parseFloat(this.step);
+    const stepNum = Number.parseFloat(this.step);
     if (!stepNum) {
-      return parseFloat(val.toFixed());
+      return Number.parseFloat(val.toFixed());
     }
     const rounded = Math.round(val / stepNum) * stepNum;
     const precision = (stepNum.toString().split('.')[1] || '').length;
-    return parseFloat(rounded.toFixed(precision));
+    return Number.parseFloat(rounded.toFixed(precision));
   }
 
   private roundToTick(val: number, right: boolean): number {
@@ -172,7 +166,7 @@ export class TdsSlider {
     }
 
     const precision = (tick.toString().split('.')[1] || '').length;
-    return parseFloat(rounded.toFixed(precision));
+    return Number.parseFloat(rounded.toFixed(precision));
   }
 
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
@@ -208,7 +202,7 @@ export class TdsSlider {
   @Listen('keydown')
   handleKeydown(event) {
     const target = event.target as HTMLElement;
-    const right = target.id === `${'right-thumb-' + this.sliderId}`;
+    const right = target.id === `right-thumb-${this.sliderId}`;
     switch (event.key) {
       case 'ArrowLeft':
       case 'ArrowDown':
@@ -325,41 +319,14 @@ export class TdsSlider {
     this.forceValueUpdate(this.max, true);
   }
 
-  private updateSupposedValueSlot(localLeft, right: boolean) {
-    const numTicks = parseInt(this.ticks);
-    const trackWidth = this.getTrackWidth();
-    const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
-    const snappedLocalLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
-
-    let minNum = 0;
-    let maxNum = trackWidth;
-    if (this.type === 'range') {
-      // if the closest tick to each of the thumbs is the same and they are both to the left or to the right of the tick, then they can only move away from each other
-      if (
-        this.supposedValueSlot === this.supposedValueSlotRight &&
-        (Number(this.leftValue) - this.tickValues[this.supposedValueSlot]) *
-          (Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight]) >=
-          0
-      ) {
-        if (right && localLeft < this.thumbLeftRight) {
-          return this.thumbLeftRight;
-        } else if (!right && localLeft > this.thumbLeftLeft) {
-          return this.thumbLeftLeft;
-        }
-      }
-      if (right) {
-        minNum =
-          (Number(this.leftValue) - this.tickValues[this.supposedValueSlot] > 0
-            ? this.supposedValueSlot + 1
-            : this.supposedValueSlot) * distanceBetweenTicks;
-      } else {
-        maxNum =
-          (Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight] < 0
-            ? this.supposedValueSlotRight - 1
-            : this.supposedValueSlotRight) * distanceBetweenTicks;
-      }
-    }
-
+  // Helper function used in updateSupposedValueSlot to update the supposedValueSlot and supposedValueSlotRight variables
+  private updateSupposedValueSlotHelper(
+    snappedLocalLeft: number,
+    minNum: number,
+    maxNum: number,
+    distanceBetweenTicks: number,
+    right: boolean,
+  ) {
     let thumbPositionPX = 0;
     if (snappedLocalLeft >= minNum && snappedLocalLeft <= maxNum) {
       thumbPositionPX = snappedLocalLeft;
@@ -374,14 +341,85 @@ export class TdsSlider {
     } else {
       this.supposedValueSlot = Math.round(thumbPositionPX / distanceBetweenTicks);
     }
+  }
 
+  private areThumbsOnSameSideOfSharedSupposedSlot() {
+    return (
+      this.supposedValueSlot === this.supposedValueSlotRight &&
+      (Number(this.leftValue) - this.tickValues[this.supposedValueSlot]) *
+        (Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight]) >
+        0
+    );
+  }
+
+  private getMinSnapBound() {
+    return Number(this.leftValue) - this.tickValues[this.supposedValueSlot] > 0
+      ? this.supposedValueSlot + 1
+      : this.supposedValueSlot;
+  }
+
+  private getMaxSnapBound() {
+    return Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight] < 0
+      ? this.supposedValueSlotRight - 1
+      : this.supposedValueSlotRight;
+  }
+
+  private updateSupposedValueSlot(localLeft, right: boolean) {
+    const numTicks = parseInt(this.ticks);
+    const trackWidth = this.getTrackWidth();
+    const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
+    const snappedLocalLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
+
+    let minNum = 0;
+    let maxNum = trackWidth;
+    if (this.type === 'range') {
+      // if the closest tick to each of the thumbs is the same and they are both to the left or to the right of the tick, then they can only move away from each other
+      if (this.areThumbsOnSameSideOfSharedSupposedSlot()) {
+        if (
+          (right && localLeft < this.thumbLeftRight) ||
+          (!right && localLeft > this.thumbLeftLeft)
+        ) {
+          return;
+        }
+      }
+      if (right) {
+        minNum = this.getMinSnapBound() * distanceBetweenTicks;
+      } else {
+        maxNum = this.getMaxSnapBound() * distanceBetweenTicks;
+      }
+    }
+
+    this.updateSupposedValueSlotHelper(
+      snappedLocalLeft,
+      minNum,
+      maxNum,
+      distanceBetweenTicks,
+      right,
+    );
+  }
+
+  private getSnappedLocalLeft(localLeft, right: boolean) {
+    const numTicks = parseInt(this.ticks);
+    const trackWidth = this.getTrackWidth();
+    const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
+    const snappedLocalLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
+
+    if (this.type === 'range') {
+      // if the closest tick to each of the thumbs is the same and they are both to the left or to the right of the tick, then they can only move away from each other
+      if (this.areThumbsOnSameSideOfSharedSupposedSlot()) {
+        if (right && localLeft < this.thumbLeftRight) {
+          return this.thumbLeftRight;
+        } else if (!right && localLeft > this.thumbLeftLeft) {
+          return this.thumbLeftLeft;
+        }
+      }
+    }
     return snappedLocalLeft;
   }
 
-  private thumbCore(event, right: boolean) {
-    const numTicks = parseInt(this.ticks);
+  private getLocalLeftFromEvent(event) {
     const trackRect = this.trackElement?.getBoundingClientRect();
-    if (!trackRect) return;
+    if (!trackRect) return null;
 
     let localLeft = 0;
     if (event.type === 'mousemove' || event.type === 'mouseup') {
@@ -390,34 +428,49 @@ export class TdsSlider {
       localLeft = event.touches[0].clientX - trackRect.left;
     } else console.warn('Slider component: Unsupported event!');
 
+    return localLeft;
+  }
+
+  private moveThumb(localLeft: number, right: boolean) {
+    const numTicks = parseInt(this.ticks);
+    let snappedLocalLeft = localLeft;
+    if (this.useSnapping && numTicks > 0) {
+      this.updateSupposedValueSlot(localLeft, right);
+      snappedLocalLeft = this.getSnappedLocalLeft(localLeft, right);
+    }
+    if (right) {
+      this.thumbLeftRight = this.constrainThumb(snappedLocalLeft, right);
+      if (this.rightThumbElement) {
+        this.rightThumbElement.style.left = `${this.thumbLeftRight}px`;
+      }
+      this.rightThumbElement?.focus();
+    } else {
+      this.thumbLeftLeft = this.constrainThumb(snappedLocalLeft, right);
+      if (this.leftThumbElement) {
+        this.leftThumbElement.style.left = `${this.thumbLeftLeft}px`;
+      }
+      this.leftThumbElement?.focus();
+    }
+  }
+
+  private thumbCore(event, right: boolean) {
+    const localLeft = this.getLocalLeftFromEvent(event);
+    if (!localLeft) return;
+
     let isRight = right;
     // If there is a click on the track to the right of the right thumb, then we move the right one. Every other click moves the left one
     // If we are dragging, the "right" boolean is passed correctly and there is no need to overwrite it
     if (!this.leftThumbGrabbed && !this.rightThumbGrabbed && localLeft > this.thumbLeftRight) {
       isRight = true;
     }
+
     if (isRight) {
       this.supposedValueSlotRight = -1;
     } else {
       this.supposedValueSlot = -1;
     }
 
-    if (this.useSnapping && numTicks > 0) {
-      localLeft = this.updateSupposedValueSlot(localLeft, isRight);
-    }
-    if (isRight) {
-      this.thumbLeftRight = this.constrainThumb(localLeft, isRight);
-      if (this.rightThumbElement) {
-        this.rightThumbElement.style.left = `${this.thumbLeftRight}px`;
-      }
-      this.rightThumbElement?.focus();
-    } else {
-      this.thumbLeftLeft = this.constrainThumb(localLeft, isRight);
-      if (this.leftThumbElement) {
-        this.leftThumbElement.style.left = `${this.thumbLeftLeft}px`;
-      }
-      this.leftThumbElement?.focus();
-    }
+    this.moveThumb(localLeft, isRight);
 
     this.updateValue(event, isRight);
   }
@@ -459,56 +512,45 @@ export class TdsSlider {
     clearTimeout(this.announcementDebounceTimeout);
     this.announcementDebounceTimeout = setTimeout(() => {
       if (!this.ariaLiveElement) return;
-      this.ariaLiveElement.textContent = `${this.label ? this.label + ' ' : ''}${right ? this.rightValue : this.type === 'range' ? this.leftValue : this.value} of ${
+      const value = right ? this.rightValue : this.type === 'range' ? this.leftValue : this.value;
+      this.ariaLiveElement.textContent = `${this.label ? this.label + ' ' : ''}${value} of ${
         this.max
       }`;
     }, 50);
   }
-  private updateValue(event, right: boolean) {
+
+  private updateValueHelper(event, valueVarName: string) {
     const trackWidth = this.getTrackWidth();
-    const min = parseFloat(this.min);
-    const max = parseFloat(this.max);
-
-    if (right) {
-      if (this.useSnapping && this.supposedValueSlotRight >= 0) {
-        const snappedValue = this.tickValues[this.supposedValueSlotRight];
-        this.rightValue = snappedValue.toString();
-        this.calculateThumbLeftFromValue(snappedValue, true);
-      } else {
-        const percentage = this.thumbLeftRight / trackWidth;
-        const calculatedValue = min + percentage * (max - min);
-        this.rightValue = this.roundToStep(calculatedValue).toString();
-      }
-
-      this.updateElementsAfterValueUpdate(event, true, this.rightValue);
+    const min = Number.parseFloat(this.min);
+    const max = Number.parseFloat(this.max);
+    const right = valueVarName.includes('right');
+    const supposedSlot = right ? this.supposedValueSlotRight : this.supposedValueSlot;
+    if (this.useSnapping && supposedSlot >= 0) {
+      const snappedValue = this.tickValues[supposedSlot];
+      this[valueVarName] = snappedValue.toString();
+      this.calculateThumbLeftFromValue(snappedValue, right);
     } else {
       // If snapping is enabled and a valid supposedValueSlot is available,
       // snap the value to the closest tick. Use the snapped value to update
       // the slider's thumb position and internal value.
-      if (this.useSnapping && this.supposedValueSlot >= 0) {
-        const snappedValue = this.tickValues[this.supposedValueSlot];
-        if (this.type === 'range') {
-          this.leftValue = snappedValue.toString();
-        } else {
-          this.value = snappedValue.toString();
-        }
-        this.calculateThumbLeftFromValue(snappedValue, false);
-      } else {
-        const percentage = this.thumbLeftLeft / trackWidth;
-        const calculatedValue = min + percentage * (max - min);
-        if (this.type === 'range') {
-          this.leftValue = this.roundToStep(calculatedValue).toString();
-        } else {
-          this.value = this.roundToStep(calculatedValue).toString();
-        }
-      }
-      this.updateElementsAfterValueUpdate(
-        event,
-        false,
-        this.type === 'range' ? this.leftValue : this.value,
-      );
+      const percentage = (right ? this.thumbLeftRight : this.thumbLeftLeft) / trackWidth;
+      const calculatedValue = min + percentage * (max - min);
+      this[valueVarName] = this.roundToStep(calculatedValue).toString();
+    }
+
+    this.updateElementsAfterValueUpdate(event, right, this[valueVarName]);
+  }
+
+  private updateValue(event, right: boolean) {
+    if (right) {
+      this.updateValueHelper(event, 'rightValue');
+    } else if (this.type === 'range') {
+      this.updateValueHelper(event, 'leftValue');
+    } else {
+      this.updateValueHelper(event, 'value');
     }
   }
+
   // Follow up to updateValue, to be used for all: value, leftValue and RightValue
   private updateElementsAfterValueUpdate(event, right: boolean, value: string) {
     this.updateTrack();
@@ -545,8 +587,8 @@ export class TdsSlider {
     if (right) {
       this.rightValue = newValue;
       if (this.rightThumbElement) {
-        this.rightThumbElement.setAttribute('aria-valuenow', this.rightValue);
-        this.rightThumbElement.setAttribute('aria-valuetext', `${this.rightValue} of ${this.max}`);
+        this.rightThumbElement.setAttribute('aria-valuenow', newValue);
+        this.rightThumbElement.setAttribute('aria-valuetext', `${newValue} of ${this.max}`);
       }
     } else if (this.leftThumbElement) {
       if (this.type === 'range') {
@@ -555,7 +597,7 @@ export class TdsSlider {
         this.value = newValue;
       }
       this.leftThumbElement.setAttribute('aria-valuenow', newValue);
-      this.leftThumbElement.setAttribute('aria-valuetext', `${newValue}`);
+      this.leftThumbElement.setAttribute('aria-valuetext', `${newValue} of ${this.max}`);
     }
 
     if (this.type === 'range') {
@@ -603,8 +645,8 @@ export class TdsSlider {
     const initValue = value;
     const trackWidth = this.getTrackWidth();
 
-    const normalizedValue = initValue - parseFloat(this.min);
-    const normalizedMax = parseFloat(this.max) - parseFloat(this.min);
+    const normalizedValue = initValue - Number.parseFloat(this.min);
+    const normalizedMax = Number.parseFloat(this.max) - Number.parseFloat(this.min);
 
     const calculatedLeft = (normalizedValue / normalizedMax) * trackWidth;
 
@@ -634,12 +676,12 @@ export class TdsSlider {
     const name = inputElement.name;
     const numTicks = parseInt(this.ticks);
 
-    let newValue = parseFloat(inputElement.value);
+    let newValue = Number.parseFloat(inputElement.value);
 
     // Check if the new value is different from the current value
     if (
       newValue ===
-      parseFloat(
+      Number.parseFloat(
         name === 'right-value-input'
           ? this.rightValue
           : name === 'left-value-input'
@@ -650,8 +692,8 @@ export class TdsSlider {
       return; // Exit the function if the new value is the same as the current value
     }
 
-    const minNum = parseFloat(name === 'right-value-input' ? this.leftValue : this.min);
-    const maxNum = parseFloat(name === 'left-value-input' ? this.rightValue : this.max);
+    const minNum = Number.parseFloat(name === 'right-value-input' ? this.leftValue : this.min);
+    const maxNum = Number.parseFloat(name === 'left-value-input' ? this.rightValue : this.max);
 
     if (newValue < minNum) {
       newValue = minNum;
@@ -670,15 +712,15 @@ export class TdsSlider {
     const hostEl = event.target as HTMLTdsTextFieldElement; // tds-text-field host element exposes a value prop
     const name = hostEl.name;
     const raw = hostEl && typeof hostEl.value !== 'undefined' ? hostEl.value : '';
-    let newValue = parseFloat(raw);
+    let newValue = Number.parseFloat(raw);
     const numTicks = parseInt(this.ticks);
 
     if (Number.isNaN(newValue)) {
       return;
     }
 
-    const minNum = parseFloat(name === 'right-value-input' ? this.leftValue : this.min);
-    const maxNum = parseFloat(name === 'left-value-input' ? this.rightValue : this.max);
+    const minNum = Number.parseFloat(name === 'right-value-input' ? this.leftValue : this.min);
+    const maxNum = Number.parseFloat(name === 'left-value-input' ? this.rightValue : this.max);
 
     if (newValue < minNum) {
       newValue = minNum;
@@ -759,11 +801,43 @@ export class TdsSlider {
     this.updateValue(event, supposedSlotVarName === 'supposedValueSlotRight');
   }
 
+  private manageStepWithoutSnap(right: boolean, delta: number) {
+    const trackWidth = this.getTrackWidth();
+    const percentage = (right ? this.thumbLeftRight : this.thumbLeftLeft) / trackWidth;
+
+    let currentValue =
+      Number.parseFloat(this.min) +
+      percentage * (Number.parseFloat(this.max) - Number.parseFloat(this.min));
+
+    currentValue += delta;
+    currentValue = this.roundToStep(currentValue);
+    const minNum = right ? Number.parseFloat(this.leftValue) : Number.parseFloat(this.min);
+    const maxNum =
+      !right && this.type === 'range'
+        ? Number.parseFloat(this.rightValue)
+        : Number.parseFloat(this.max);
+
+    if (currentValue < minNum) {
+      currentValue = minNum;
+    } else if (currentValue > maxNum) {
+      currentValue = maxNum;
+    }
+
+    if (right) {
+      this.rightValue = `${currentValue}`;
+    } else if (this.type === 'range') {
+      this.leftValue = `${currentValue}`;
+    } else {
+      this.value = `${currentValue}`;
+    }
+
+    this.forceValueUpdate(`${currentValue}`, right);
+  }
+
   private controlsStep(delta: number, event: KeyboardEvent) {
     if (this.readOnly || this.disabled) {
       return;
     }
-
     const target = event.target as HTMLElement;
     const right = target.id === `${'right-thumb-' + this.sliderId}`;
     const numTicks = parseInt(this.ticks);
@@ -772,28 +846,20 @@ export class TdsSlider {
     if (this.useSnapping && numTicks > 0) {
       const stepDir = delta > 0 ? 1 : -1;
 
-      //simple case - works for stamdard and reverse slider
       let minNum = 0;
       let maxNum = numTicks + 1;
+      //simple case - works for standard and reverse slider
       if (!right && this.type !== 'range') {
         this.manageStepWithSnap(event, 'supposedValueSlot', this.value, minNum, maxNum, stepDir);
       } else {
         // if the closest tick to each of the thumbs is the same and they are both to the left or to the right of the tick, then they can only move away from each other
-        if (
-          this.supposedValueSlot === this.supposedValueSlotRight &&
-          (Number(this.leftValue) - this.tickValues[this.supposedValueSlot]) *
-            (Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight]) > // if 50-50 remove the =
-            0
-        ) {
+        if (this.areThumbsOnSameSideOfSharedSupposedSlot()) {
           if ((right && stepDir < 0) || (!right && stepDir > 0)) {
             return;
           }
         }
         if (right) {
-          minNum =
-            Number(this.leftValue) - this.tickValues[this.supposedValueSlot] > 0 // if 50-50 remove the =
-              ? this.supposedValueSlot + 1
-              : this.supposedValueSlot;
+          minNum = this.getMinSnapBound();
           this.manageStepWithSnap(
             event,
             'supposedValueSlotRight',
@@ -803,10 +869,7 @@ export class TdsSlider {
             stepDir,
           );
         } else {
-          maxNum =
-            Number(this.rightValue) - this.tickValues[this.supposedValueSlotRight] < 0 // if 50-50 remove the =
-              ? this.supposedValueSlotRight - 1
-              : this.supposedValueSlotRight;
+          maxNum = this.getMaxSnapBound();
           this.manageStepWithSnap(
             event,
             'supposedValueSlot',
@@ -818,44 +881,16 @@ export class TdsSlider {
         }
       }
     } else {
-      const trackWidth = this.getTrackWidth();
-      const percentage = (right ? this.thumbLeftRight : this.thumbLeftLeft) / trackWidth;
-
-      let currentValue =
-        parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min));
-
-      currentValue += delta;
-      currentValue = this.roundToStep(currentValue);
-      const minNum = right ? parseFloat(this.leftValue) : parseFloat(this.min);
-      const maxNum =
-        target.id === `${'left-thumb-' + this.sliderId}`
-          ? parseFloat(this.rightValue)
-          : parseFloat(this.max);
-
-      if (currentValue < minNum) {
-        currentValue = minNum;
-      } else if (currentValue > maxNum) {
-        currentValue = maxNum;
-      }
-
-      if (right) {
-        this.rightValue = `${currentValue}`;
-      } else if (this.type === 'range') {
-        this.leftValue = `${currentValue}`;
-      } else {
-        this.value = `${currentValue}`;
-      }
-
-      this.forceValueUpdate(`${currentValue}`, right);
+      this.manageStepWithoutSnap(right, delta);
     }
   }
 
   private stepLeft(event) {
-    this.controlsStep(-parseFloat(this.step), event);
+    this.controlsStep(-Number.parseFloat(this.step), event);
   }
 
   private stepRight(event) {
-    this.controlsStep(parseFloat(this.step), event);
+    this.controlsStep(Number.parseFloat(this.step), event);
   }
 
   private resetToInitialValue = () => {
@@ -874,17 +909,17 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
 
     if (numTicks > 0) {
-      this.tickValues = [parseFloat(this.min)];
+      this.tickValues = [Number.parseFloat(this.min)];
 
-      const interval = (parseFloat(this.max) - parseFloat(this.min)) / (numTicks + 1);
-      const precision = (parseFloat(this.step).toString().split('.')[1] || '').length;
+      const interval = (Number.parseFloat(this.max) - Number.parseFloat(this.min)) / (numTicks + 1);
+      const precision = (Number.parseFloat(this.step).toString().split('.')[1] || '').length;
 
       for (let i = 1; i <= numTicks; i++) {
-        const raw = parseFloat(this.min) + interval * i;
-        this.tickValues.push(parseFloat(raw.toFixed(precision)));
+        const raw = Number.parseFloat(this.min) + interval * i;
+        this.tickValues.push(Number.parseFloat(raw.toFixed(precision)));
       }
 
-      this.tickValues.push(parseFloat(this.max));
+      this.tickValues.push(Number.parseFloat(this.max));
     }
 
     this.useInput = false;
@@ -909,8 +944,8 @@ export class TdsSlider {
     this.useSmall = this.thumbSize === 'sm';
     this.useSnapping = this.snap;
 
-    const min = parseFloat(this.min);
-    const max = parseFloat(this.max);
+    const min = Number.parseFloat(this.min);
+    const max = Number.parseFloat(this.max);
 
     if (min > max) {
       console.warn(
@@ -919,8 +954,8 @@ export class TdsSlider {
       this.disabled = true;
     }
 
-    const initialLeft = parseFloat(this.leftValue);
-    const initialRight = parseFloat(this.rightValue);
+    const initialLeft = Number.parseFloat(this.leftValue);
+    const initialRight = Number.parseFloat(this.rightValue);
 
     if (initialLeft > initialRight) {
       console.warn(
@@ -988,8 +1023,8 @@ export class TdsSlider {
     }
     if (this.type === 'range') {
       if (this.rightThumbElement) {
-        this.rightThumbElement.setAttribute('aria-valuenow', this.value);
-        this.rightThumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+        this.rightThumbElement.setAttribute('aria-valuenow', this.rightValue);
+        this.rightThumbElement.setAttribute('aria-valuetext', `${this.rightValue} of ${this.max}`);
 
         // Ensure the thumb can receive focus via keyboard
         this.rightThumbElement.tabIndex = this.disabled ? -1 : 0;
@@ -1016,9 +1051,177 @@ export class TdsSlider {
     }
   }
 
-  render() {
-    const ariaLabel = this.readOnly ? this.tdsReadOnlyAriaLabel : this.label || this.tdsAriaLabel;
-    return this.type !== 'range' ? (
+  private renderLabel() {
+    return (
+      <label
+        id={`${this.sliderId}-label`}
+        class={{ offset: this.showTickNumbers, range: this.type === 'range' }}
+      >
+        {this.label}
+      </label>
+    );
+  }
+
+  private renderTickValues() {
+    return (
+      <div class="tds-slider__value-dividers-wrapper">
+        <div class="tds-slider__value-dividers">
+          {this.tickValues.map((value) => (
+            <div class="tds-slider__value-divider">
+              {this.showTickNumbers && <span>{value}</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  private renderControls(controlType: 'plus' | 'minus') {
+    return (
+      <div class="tds-slider__controls">
+        <div
+          class={`tds-slider__control tds-slider__control-${controlType}`}
+          onClick={(event) =>
+            controlType === 'minus' ? this.stepLeft(event) : this.stepRight(event)
+          }
+          role="button"
+          aria-label={`${controlType === 'minus' ? 'Decrease' : 'Increase'} value`}
+          tabindex={this.disabled || this.readOnly ? '-1' : '0'}
+        >
+          <tds-icon svgTitle={`${controlType}_icon`} name={controlType} size="16px"></tds-icon>
+        </div>
+      </div>
+    );
+  }
+
+  private renderInputWrapper({
+    side,
+    value,
+    min,
+    max,
+    ariaLabel,
+    name,
+  }: {
+    side: 'min' | 'max';
+    value: string;
+    min: string;
+    max: string;
+    ariaLabel: string;
+    name: string;
+  }) {
+    return (
+      <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
+        {side === 'max' && !this.showTickNumbers && (
+          <div class={`tds-slider__input-value ${side}-value`}>{this[side]}</div>
+        )}
+        {this.useInput && (
+          <div class="tds-slider__input-field-wrapper">
+            <tds-text-field
+              noMinWidth
+              size="sm"
+              type="number"
+              value={value}
+              min={min}
+              max={max}
+              readOnly={this.readOnly}
+              onTdsChange={(e) => console.log(e)}
+              tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : ariaLabel}
+              onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
+              onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+              name={name}
+            ></tds-text-field>
+          </div>
+        )}
+        {side === 'min' && !this.showTickNumbers && (
+          <div class={`tds-slider__input-value ${side}-value`}>{this[side]}</div>
+        )}
+      </div>
+    );
+  }
+
+  private renderThumb({
+    right,
+    min,
+    max,
+    value,
+    ariaLabel,
+    id,
+    tooltipControlName,
+  }: {
+    right: boolean;
+    min: string;
+    max: string;
+    value: string;
+    ariaLabel: string;
+    id: string;
+    tooltipControlName: 'tooltipControl' | 'tooltipControlRight';
+  }) {
+    return (
+      <div
+        class="tds-slider__thumb"
+        ref={(el) => {
+          if (right) {
+            this.rightThumbElement = el as HTMLElement;
+          } else {
+            this.leftThumbElement = el as HTMLElement;
+          }
+        }}
+        onMouseDown={() => this.grabThumb(right)}
+        onTouchStart={() => this.grabThumb(right)}
+        onFocus={() => {
+          if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
+            this[tooltipControlName] = true;
+        }}
+        onBlur={() => {
+          if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
+            this[tooltipControlName] = false;
+        }}
+        role="slider"
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-valuetext={`${value} of ${this.max}`}
+        aria-labelledby={`${this.sliderId}-label`}
+        aria-label={ariaLabel}
+        tabindex={this.disabled ? '-1' : '0'}
+        id={id}
+      >
+        {this[tooltipControlName] && (
+          <div class="tds-slider__value">
+            {value}
+            <svg
+              width="18"
+              height="14"
+              viewBox="0 0 18 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        )}
+
+        <div
+          class={{
+            'tds-slider__thumb-inner': true,
+            'pressed': right ? this.rightThumbGrabbed : this.leftThumbGrabbed,
+          }}
+          onMouseEnter={() => {
+            if (this.tooltipMode === 'hover') this[tooltipControlName] = true;
+          }}
+          onMouseLeave={() => {
+            if (this.tooltipMode === 'hover') this[tooltipControlName] = false;
+          }}
+        ></div>
+      </div>
+    );
+  }
+
+  private renderSlider(ariaLabel: string) {
+    return (
       <div
         class={{
           'tds-slider-wrapper': true,
@@ -1054,9 +1257,7 @@ export class TdsSlider {
           }}
           aria-disabled={this.disabled ? 'true' : 'false'}
         >
-          <label id={`${this.sliderId}-label`} class={{ offset: this.showTickNumbers }}>
-            {this.label}
-          </label>
+          {this.renderLabel()}
 
           {!this.showTickNumbers && !this.controls && (
             <div class="tds-slider__input-values">
@@ -1064,32 +1265,10 @@ export class TdsSlider {
             </div>
           )}
 
-          {this.useControls && (
-            <div class="tds-slider__controls">
-              <div
-                class="tds-slider__control tds-slider__control-minus"
-                onClick={(event) => this.stepLeft(event)}
-                role="button"
-                aria-label="Decrease value"
-                tabindex={this.disabled || this.readOnly ? '-1' : '0'}
-              >
-                <tds-icon svgTitle="minus_icon" name="minus" size="16px"></tds-icon>
-              </div>
-            </div>
-          )}
+          {this.useControls && this.renderControls('minus')}
 
           <div class="tds-slider-inner" tabIndex={-1}>
-            {this.tickValues.length > 0 && (
-              <div class="tds-slider__value-dividers-wrapper">
-                <div class="tds-slider__value-dividers">
-                  {this.tickValues.map((value) => (
-                    <div class="tds-slider__value-divider">
-                      {this.showTickNumbers && <span>{value}</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {this.tickValues.length > 0 && this.renderTickValues()}
 
             <div
               class="tds-slider__track"
@@ -1105,103 +1284,35 @@ export class TdsSlider {
                 }}
               ></div>
 
-              <div
-                class="tds-slider__thumb"
-                ref={(el) => {
-                  this.leftThumbElement = el as HTMLElement;
-                }}
-                onMouseDown={() => this.grabThumb(false)}
-                onTouchStart={() => this.grabThumb(false)}
-                onFocus={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControl = true;
-                }}
-                onBlur={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControl = false;
-                }}
-                role="slider"
-                aria-valuemin={this.min}
-                aria-valuemax={this.max}
-                aria-valuenow={this.value}
-                aria-valuetext={`${this.value} of ${this.max}`}
-                aria-labelledby={`${this.sliderId}-label`}
-                aria-label={ariaLabel}
-                tabindex={this.disabled ? '-1' : '0'}
-              >
-                {this.tooltipControl && (
-                  <div class="tds-slider__value">
-                    {this.value}
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                )}
-
-                <div
-                  class={{ 'tds-slider__thumb-inner': true, 'pressed': this.leftThumbGrabbed }}
-                  // ref={(el) => {
-                  //   this.leftThumbInnerElement = el as HTMLElement;
-                  // }}
-                  onMouseEnter={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControl = true;
-                  }}
-                  onMouseLeave={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControl = false;
-                  }}
-                ></div>
-              </div>
+              {this.renderThumb({
+                right: false,
+                min: this.min,
+                max: this.max,
+                value: this.value,
+                ariaLabel,
+                id: `thumb-${this.sliderId}`,
+                tooltipControlName: 'tooltipControl',
+              })}
             </div>
           </div>
 
-          <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
-            {!this.showTickNumbers && !this.controls && (
-              <div class="tds-slider__input-value max-value">{this.max}</div>
-            )}
-            {this.useInput && (
-              <div class="tds-slider__input-field-wrapper">
-                <tds-text-field
-                  noMinWidth
-                  size="sm"
-                  type="number"
-                  value={this.value}
-                  min={this.min}
-                  max={this.max}
-                  readOnly={this.readOnly}
-                  onTdsChange={(e) => console.log(e)}
-                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : ariaLabel}
-                  onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
-                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
-                ></tds-text-field>
-              </div>
-            )}
-          </div>
+          {this.renderInputWrapper({
+            side: 'max',
+            value: this.value,
+            min: this.min,
+            max: this.max,
+            ariaLabel,
+            name: 'input-value',
+          })}
 
-          {this.useControls && (
-            <div class="tds-slider__controls">
-              <div
-                class="tds-slider__control tds-slider__control-plus"
-                onClick={(event) => this.stepRight(event)}
-                role="button"
-                aria-label="Increase value"
-                tabindex={this.disabled || this.readOnly ? '-1' : '0'}
-              >
-                <tds-icon svgTitle="plus_icon" name="plus" size="16px"></tds-icon>
-              </div>
-            </div>
-          )}
+          {this.useControls && this.renderControls('plus')}
         </div>
       </div>
-    ) : (
+    );
+  }
+
+  private renderRangeSlider(ariaLabel: string) {
+    return (
       <div
         class={{
           'tds-slider-wrapper': true,
@@ -1220,51 +1331,19 @@ export class TdsSlider {
           aria-disabled={this.disabled ? 'true' : 'false'}
           aria-label={ariaLabel}
         >
-          <label
-            id={`${this.sliderId}-label`}
-            class={{ offset: this.showTickNumbers, range: true }}
-          >
-            {this.label}
-          </label>
+          {this.renderLabel()}
 
-          <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
-            {this.useInput && (
-              <div class="tds-slider__input-field-wrapper">
-                <tds-text-field
-                  noMinWidth
-                  size="sm"
-                  type="number"
-                  value={this.leftValue}
-                  min={this.min}
-                  max={this.rightValue}
-                  readOnly={this.readOnly}
-                  onTdsChange={(e) => console.log(e)}
-                  tdsAriaLabel={
-                    this.readOnly ? this.tdsReadOnlyAriaLabel : `input-${ariaLabel}-left`
-                  }
-                  onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
-                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
-                  name="left-value-input"
-                ></tds-text-field>
-              </div>
-            )}
-            {!this.showTickNumbers && (
-              <div class="tds-slider__input-value min-value">{this.min}</div>
-            )}
-          </div>
+          {this.renderInputWrapper({
+            side: 'min',
+            value: this.leftValue,
+            min: this.min,
+            max: this.rightValue,
+            ariaLabel: `input-${ariaLabel}-left`,
+            name: 'left-value-input',
+          })}
 
           <div class="tds-slider-inner">
-            {this.tickValues.length > 0 && (
-              <div class="tds-slider__value-dividers-wrapper">
-                <div class="tds-slider__value-dividers">
-                  {this.tickValues.map((value) => (
-                    <div class="tds-slider__value-divider">
-                      {this.showTickNumbers && <span>{value}</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {this.tickValues.length > 0 && this.renderTickValues()}
 
             <div
               class="tds-slider__track"
@@ -1280,146 +1359,43 @@ export class TdsSlider {
                 }}
               ></div>
 
-              <div
-                class="tds-slider__thumb"
-                ref={(el) => {
-                  this.leftThumbElement = el as HTMLElement;
-                }}
-                onMouseDown={() => this.grabThumb(false)}
-                onTouchStart={() => this.grabThumb(false)}
-                onFocus={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControl = true;
-                }}
-                onBlur={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControl = false;
-                }}
-                role="slider"
-                aria-valuemin={this.min}
-                aria-valuemax={this.rightValue}
-                aria-valuenow={this.leftValue}
-                aria-valuetext={`${this.leftValue} of ${this.max}`}
-                aria-label={`thumb-${ariaLabel}-left`}
-                tabindex={this.disabled ? '-1' : '0'}
-                id={`left-thumb-${this.sliderId}`}
-              >
-                {this.tooltipControl && (
-                  <div class="tds-slider__value">
-                    {this.leftValue}
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                )}
+              {this.renderThumb({
+                right: false,
+                min: this.min,
+                max: this.rightValue,
+                value: this.leftValue,
+                ariaLabel: `thumb-${ariaLabel}-left`,
+                id: `left-thumb-${this.sliderId}`,
+                tooltipControlName: 'tooltipControl',
+              })}
 
-                <div
-                  class={{ 'tds-slider__thumb-inner': true, 'pressed': this.leftThumbGrabbed }}
-                  // ref={(el) => {
-                  //   this.leftThumbInnerElement = el as HTMLElement;
-                  // }}
-                  onMouseEnter={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControl = true;
-                  }}
-                  onMouseLeave={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControl = false;
-                  }}
-                ></div>
-              </div>
-
-              <div
-                class="tds-slider__thumb"
-                ref={(el) => {
-                  this.rightThumbElement = el as HTMLElement;
-                }}
-                onMouseDown={() => this.grabThumb(true)}
-                onTouchStart={() => this.grabThumb(true)}
-                onFocus={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControlRight = true;
-                }}
-                onBlur={() => {
-                  if (this.tooltipMode === 'hover' || this.tooltipMode === 'press')
-                    this.tooltipControlRight = false;
-                }}
-                role="slider"
-                aria-valuemin={this.leftValue}
-                aria-valuemax={this.max}
-                aria-valuenow={this.rightValue}
-                aria-valuetext={`${this.rightValue} of ${this.max}`}
-                aria-label={`thumb-${ariaLabel}-right`}
-                tabindex={this.disabled ? '-1' : '0'}
-                id={`right-thumb-${this.sliderId}`}
-              >
-                {this.tooltipControlRight && (
-                  <div class="tds-slider__value">
-                    {this.rightValue}
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.15882 12.6915L0 0H18L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                )}
-
-                <div
-                  class={{ 'tds-slider__thumb-inner': true, 'pressed': this.rightThumbGrabbed }}
-                  // ref={(el) => {
-                  //   this.rightThumbInnerElement = el as HTMLElement;
-                  // }}
-                  onMouseEnter={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControlRight = true;
-                  }}
-                  onMouseLeave={() => {
-                    if (this.tooltipMode === 'hover') this.tooltipControlRight = false;
-                  }}
-                ></div>
-              </div>
+              {this.renderThumb({
+                right: true,
+                min: this.leftValue,
+                max: this.max,
+                value: this.rightValue,
+                ariaLabel: `thumb-${ariaLabel}-right`,
+                id: `right-thumb-${this.sliderId}`,
+                tooltipControlName: 'tooltipControlRight',
+              })}
             </div>
           </div>
-          <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
-            {!this.showTickNumbers && (
-              <div class="tds-slider__input-value max-value">{this.max}</div>
-            )}
-            {this.useInput && (
-              <div class="tds-slider__input-field-wrapper">
-                <tds-text-field
-                  noMinWidth
-                  size="sm"
-                  type="number"
-                  value={this.rightValue}
-                  min={this.leftValue}
-                  max={this.max}
-                  readOnly={this.readOnly}
-                  onTdsChange={(e) => console.log(e)}
-                  tdsAriaLabel={
-                    this.readOnly ? this.tdsReadOnlyAriaLabel : `input-${ariaLabel}-right`
-                  }
-                  onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
-                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
-                  name="right-value-input"
-                ></tds-text-field>
-              </div>
-            )}
-          </div>
+
+          {this.renderInputWrapper({
+            side: 'max',
+            value: this.rightValue,
+            min: this.leftValue,
+            max: this.max,
+            ariaLabel: `input-${ariaLabel}-right`,
+            name: 'right-value-input',
+          })}
         </div>
       </div>
     );
+  }
+
+  render() {
+    const ariaLabel = this.readOnly ? this.tdsReadOnlyAriaLabel : this.label || this.tdsAriaLabel;
+    return this.type !== 'range' ? this.renderSlider(ariaLabel) : this.renderRangeSlider(ariaLabel);
   }
 }
