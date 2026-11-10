@@ -91,7 +91,9 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       await expect(slider).toHaveCount(5);
 
       /* Check diff on screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      /* Needs the maxDiffPixels due to browser rendering being slightly different
+      locally versus pipeline */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 50 });
     });
   });
 });
