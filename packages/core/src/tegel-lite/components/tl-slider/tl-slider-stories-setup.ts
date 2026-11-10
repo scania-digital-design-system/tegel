@@ -425,35 +425,6 @@ export const SliderTemplate = ({
         
         ${showInput ? "const inputFields = slider.querySelectorAll('.tl-slider__input-field');" : ''}
         
-        ${
-          showInput
-            ? `
-        // Calculate input field width based on max value length
-        if (inputFields.length) {
-          const isDisabled = ${disabled};
-          const isReadonly = ${readonly};
-          
-          const precision = (${step.toString().split('.')[1] || ''}).length;
-          const maxLength = Math.max(
-            Math.abs(${min} + precision).toString().length,
-            Math.abs(${max}).toString().length,
-            Math.abs(${step}).toString().length,
-          );
-          
-          // When disabled, ignore readonly width adjustments
-          const baseWidth = (!isDisabled && isReadonly) ? 58 : 44;
-          const charWidth = 8;
-          const readonlyExtra = (!isDisabled && isReadonly) ? 12 : 0;
-          
-        //   const calculatedWidth = baseWidth + (Math.max(0, maxLength - 2) * charWidth) + readonlyExtra;
-        //   for(inputField of inputFields) {
-        //     inputField.style.width = calculatedWidth + 'px';
-        //   }
-        }
-        `
-            : ''
-        }
-        
         const nativeInput = slider.querySelector('.tl-slider__native-input');
         
         // Exit early if disabled (but after setting width)
@@ -495,7 +466,7 @@ export const SliderTemplate = ({
             
             trackFill.style.width = fillPercentage + '%';
             thumbs[1].style.left = rightPercentage + '%';
-            ${showInput ? 'if (inputField) inputField.value = currentRightValue;' : ''}
+            ${showInput ? 'if (inputFields) {inputFields[1].value = currentRightValue;}' : ''}
             ${showTooltip ? 'if (tooltips) tooltips[1].childNodes[0].textContent = currentRightValue;' : ''}
           } else if(${type !== 'range'}) {
             currentValue = Math.max(min, Math.min(max, newValue));
@@ -505,7 +476,7 @@ export const SliderTemplate = ({
             
             trackFill.style.width = fillPercentage + '%';
             thumbs[0].style.left = percentage + '%';
-            ${showInput ? 'if (inputField) inputField.value = currentValue;' : ''}
+            ${showInput ? 'if (inputFields) inputFields[0].value = currentValue;' : ''}
             if (nativeInput) nativeInput.value = currentValue;
             ${showTooltip ? 'if (tooltips) tooltips[0].childNodes[0].textContent = currentValue;' : ''}
           } else {
@@ -520,7 +491,7 @@ export const SliderTemplate = ({
             trackFill.style.width = fillPercentage + '%';
             trackFill.style.left = leftPercentage + '%';
             thumbs[0].style.left = leftPercentage + '%';
-            ${showInput ? 'if (inputField) inputField.value = currentValue;' : ''}
+            ${showInput ? 'if (inputFields) inputFields[0].value = currentValue;' : ''}
             ${showTooltip ? 'if (tooltips) tooltips[0].childNodes[0].textContent = currentValue;' : ''}
           }
         }
@@ -594,9 +565,15 @@ export const SliderTemplate = ({
         ${
           showInput && !readonly
             ? `
-        inputField.addEventListener('change', (e) => {
-          updateValue(parseFloat(e.target.value));
-        });`
+        inputFields[0].addEventListener('change', (e) => {
+          updateValue(parseFloat(e.target.value), false);
+        });
+        if(${type === 'range'}) {
+          inputFields[1].addEventListener('change', (e) => {
+            updateValue(parseFloat(e.target.value), true);
+          });
+        }  
+        `
             : ''
         }
         ${
