@@ -178,6 +178,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky header',
+      description:
+        'Keeps the header visible while scrolling. Extra rows are rendered in the demo to make scrolling possible.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -196,6 +207,7 @@ export default {
     column3Width: '',
     column4Width: '',
     clickable: false,
+    stickyHeader: false,
   },
 };
 
@@ -216,12 +228,14 @@ const BasicTemplate = ({
   column3Width,
   column4Width,
   clickable,
+  stickyHeader,
 }) =>
   `
   <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
+      ${stickyHeader ? 'sticky-header' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
@@ -241,7 +255,7 @@ const BasicTemplate = ({
           } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-          ${[...Array(6)]
+          ${[...Array(stickyHeader ? 40 : 6)]
             .map(
               (_, index) => `
             <tds-table-body-row ${clickable ? 'clickable' : ''}>

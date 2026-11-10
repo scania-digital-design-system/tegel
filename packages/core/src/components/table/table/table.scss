@@ -17,6 +17,12 @@
   width: 100%;
 }
 
+:host([sticky-header]) ::slotted(tds-table-header) {
+  position: sticky;
+  top: var(--tds-table-sticky-header-offset, 0);
+  z-index: 1;
+}
+
 .tds-table--horizontal-scroll {
   display: block;
   overflow-x: scroll;

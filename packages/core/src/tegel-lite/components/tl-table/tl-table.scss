@@ -111,6 +111,12 @@
 
 .tl-table__header {
   display: table-header-group;
+
+  .tl-table--sticky-header & {
+    position: sticky;
+    top: var(--tl-table-sticky-header-offset, 0);
+    z-index: 1;
+  }
 }
 
 .tl-table__body {

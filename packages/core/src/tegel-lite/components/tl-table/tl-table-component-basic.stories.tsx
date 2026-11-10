@@ -127,6 +127,17 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+    stickyHeader: {
+      name: 'Sticky header',
+      description:
+        'Keeps the header visible while scrolling. Extra rows are rendered in the demo to make scrolling possible.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
     modeVariant: 'Primary',
@@ -140,6 +151,7 @@ export default {
     horizontalScrollWidth: '',
     noMinWidth: false,
     clickable: false,
+    stickyHeader: false,
   },
 };
 
@@ -155,6 +167,7 @@ const Template = ({
   disablePadding,
   disableHeaderPadding,
   horizontalScrollWidth,
+  stickyHeader,
 }) => {
   const compactClass = compact ? 'tl-table--compact' : '';
   const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
@@ -169,6 +182,20 @@ const Template = ({
   const disablePaddingClass = disablePadding ? 'tl-table--no-padding' : '';
   const disableHeaderPaddingClass = disableHeaderPadding ? 'tl-table--no-header-padding' : '';
   const horizontalScrollClass = horizontalScrollWidth ? 'tl-table--horizontal-scroll' : '';
+  const stickyHeaderClass = stickyHeader ? 'tl-table--sticky-header' : '';
+  const extraRows = stickyHeader
+    ? [...Array(40)]
+        .map(
+          (_, index) => `
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell" data-column="0">Extra value ${index + 1}</td>
+            <td class="tl-table__body-cell" data-column="1">Extra value ${index + 1}</td>
+            <td class="tl-table__body-cell" data-column="2">Extra value ${index + 1}</td>
+            <td class="tl-table__body-cell" data-column="3">Extra value ${index + 1}</td>
+          </tr>`,
+        )
+        .join('')
+    : '';
 
   // Create inline style for horizontal scroll width
   const horizontalScrollStyle = horizontalScrollWidth
@@ -180,7 +207,7 @@ const Template = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-table.css"
     -->
-    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
+    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass} ${stickyHeaderClass}" ${horizontalScrollStyle}>
         <thead class="tl-table__header">
           <tr class="tl-table__row">
             <th class="tl-table__header-cell" data-column="0">Truck type</th>
@@ -214,6 +241,7 @@ const Template = ({
             <td class="tl-table__body-cell" data-column="2">Test value 7</td>
             <td class="tl-table__body-cell" data-column="3">Test value 8</td>
           </tr>
+          ${extraRows}
         </tbody>
     </table>
 

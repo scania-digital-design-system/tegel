@@ -69,6 +69,9 @@ export class TdsTable {
   /** Enables Table to take 100% available width with equal spacing of columns */
   @Prop({ reflect: true }) responsive: boolean = false;
 
+  /** Keeps the Table header visible at the top of the scroll container while scrolling */
+  @Prop({ reflect: true }) stickyHeader: boolean = false;
+
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
