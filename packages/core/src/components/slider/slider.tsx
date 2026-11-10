@@ -765,12 +765,17 @@ export class TdsSlider {
   private calculateInputSizeFromMax() {
     const inputs = this.host.querySelectorAll('tds-text-field input[type="number"]');
     for (const input of inputs) {
+      let offset = (Number(this.max) + Number(this.step)).toString().length;
       if (input) {
         if (this.readOnly) {
           // explicit size to fit suffix icon
-          (input as HTMLElement).style.width = `${52 + this.max.length * 8}px`;
+          offset = this.value.length;
+          if (this.type === 'range') {
+            offset = Math.max(this.leftValue.length, this.rightValue.length);
+          }
+          (input as HTMLElement).style.width = `${52 + offset * 8}px`;
         } else {
-          input.setAttribute('size', `${this.max.length}`);
+          (input as HTMLElement).style.width = `${offset * 12 + 16}px`;
         }
       }
     }
