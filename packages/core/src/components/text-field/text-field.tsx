@@ -293,7 +293,11 @@ export class TdsTextField {
               }}
               aria-invalid={getAriaInvalid(this.host, this.state)}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
-              aria-describedby={`text-field-helper-element-${this.uuid}`}
+              aria-describedby={
+                this.helper || (!this.hideMaxLength && (this.maxLength ?? 0) > 0)
+                  ? `text-field-helper-element-${this.uuid}`
+                  : ''
+              }
               aria-readonly={this.readOnly}
               id={`text-field-input-element-${this.uuid}`}
               required={this.required}
