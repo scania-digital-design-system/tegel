@@ -316,8 +316,8 @@ export const SliderTemplate = ({
       <div class="tl-slider__track-wrapper">
         ${
           showInput
-            ? (type === 'range'
-                ? `
+            ? type === 'range'
+              ? `
         <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper">
           <div class="tl-text-field__input-wrapper">
             <input 
@@ -332,10 +332,7 @@ export const SliderTemplate = ({
           />
           </div>
         </div>`
-                : '') +
-              `
-        ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--min">${min}</div>` : ''}
-        `
+              : ''
             : showControls
               ? `
         <button aria-label="decrease" class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus" type="button" ${
@@ -346,6 +343,7 @@ export const SliderTemplate = ({
         `
               : ''
         }
+        ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--min">${min}</div>` : ''}
         
         <div class="tl-slider__track">
           ${generateTicks()}
@@ -382,11 +380,10 @@ export const SliderTemplate = ({
               : ''
           }
         </div>
-        
+         ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--max">${max}</div>` : ''}
         ${
           showInput
             ? `
-        ${!showTickNumbers ? `<div class="tl-slider__value tl-slider__value--max">${max}</div>` : ''}
         <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper">
           <div class="tl-text-field__input-wrapper">
             <input 
