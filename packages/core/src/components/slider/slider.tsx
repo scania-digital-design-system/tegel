@@ -1116,7 +1116,7 @@ export class TdsSlider {
   }) {
     return (
       <div class={{ 'tds-slider__input-values': true, 'tick-numbers': this.showTickNumbers }}>
-        {side === 'max' && !this.showTickNumbers && (
+        {side === 'max' && !this.showTickNumbers && !this.controls && (
           <div class={`tds-slider__input-value ${side}-value`}>{this[side]}</div>
         )}
         {this.useInput && (
@@ -1137,7 +1137,7 @@ export class TdsSlider {
             ></tds-text-field>
           </div>
         )}
-        {side === 'min' && !this.showTickNumbers && (
+        {side === 'min' && !this.showTickNumbers && !this.controls && (
           <div class={`tds-slider__input-value ${side}-value`}>{this[side]}</div>
         )}
       </div>
