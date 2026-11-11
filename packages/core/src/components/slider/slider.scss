@@ -58,11 +58,11 @@ tds-slider {
       cursor: pointer;
 
       &.tds-slider__control-minus {
-        padding: 14px 14px 14px 0;
+        padding: 13px 14px 15px 0;
       }
 
       &.tds-slider__control-plus {
-        padding: 14px 0 14px 14px;
+        padding: 13px 0 15px 14px;
       }
 
       &:focus {
@@ -90,7 +90,7 @@ tds-slider {
 
     .tds-slider__input-value {
       user-select: none;
-      padding: 16px;
+      padding: 17px 16px 15px;
       color: var(--tds-slider-text-value-color);
 
       @include type-system-body-01;
@@ -144,16 +144,33 @@ tds-slider {
     user-select: none;
     position: absolute;
     color: var(--tds-slider-label-color);
-    padding-bottom: 26px;
+    padding-bottom: 24px; // no tick numbers, no ticks, no input
     transform: translateY(-100%);
 
     &.offset {
       padding-bottom: 44px;
     }
+  }
 
-    &.range {
-      padding-bottom: 44px;
-    }
+  &:has(label.offset):not(
+      :has(.tds-slider__value-dividers-wrapper, .tds-slider__input-field-wrapper)
+    )
+    label,
+  &:has(.tds-slider__value-dividers-wrapper):not(
+      :has(.tds-slider__value-dividers-wrapper span, .tds-slider__input-field-wrapper)
+    )
+    label {
+    padding-bottom: 24px;
+  }
+
+  &:has(.tds-slider__input-field-wrapper) label {
+    // Input is present but no tick numbers
+    padding-bottom: 36px; // 1/2 height of the input + 16px padding
+  }
+
+  &:has(.tds-slider__value-dividers-wrapper span) label {
+    // Ticks are present but no tick numbers
+    padding-bottom: 44px; // height of the tick + tick number + 16px padding
   }
 
   &:has(.tds-slider__input-field-wrapper) {
