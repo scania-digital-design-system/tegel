@@ -526,6 +526,7 @@ export const SliderTemplate = ({
         thumbsInner[0].addEventListener('mousedown', (e) => {
           isDragging = true;
           thumbsInner[0].classList.add('tl-slider__thumb-inner--pressed');
+          thumbsInner[0].focus();
           e.preventDefault();
         });
 
@@ -535,6 +536,7 @@ export const SliderTemplate = ({
             ? `thumbsInner[1].addEventListener('mousedown', (e) => {
           isDraggingRight = true;
           thumbsInner[1].classList.add('tl-slider__thumb-inner--pressed');
+          thumbsInner[1].focus();
           e.preventDefault();
         });`
             : ''
