@@ -3,14 +3,13 @@
 
 :host {
   @include tds-box-sizing;
+  @include detail-02;
 
-  [role='list'] {
+  ol {
     padding: 0;
     margin: 0;
-    @include detail-02;
-
     display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
+    flex-flow: row wrap;
+    list-style: none;
   }
 }

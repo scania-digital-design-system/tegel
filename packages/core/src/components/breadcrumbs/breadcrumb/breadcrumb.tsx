@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Prop, Watch } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a native <code>&lt;a></code> element.
@@ -9,19 +9,37 @@ import { Component, h, Host, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsBreadcrumb {
+  @Element() host!: HTMLElement;
+
   /** Boolean for the current link */
   @Prop({ reflect: true }) current: boolean = false;
 
+  componentDidLoad() {
+    this.syncCurrentLink();
+  }
+
+  @Watch('current')
+  currentChanged() {
+    this.syncCurrentLink();
+  }
+
+  private syncCurrentLink() {
+    const slot = this.host.shadowRoot?.querySelector('slot');
+    const link = slot?.assignedElements().find((element) => element.tagName === 'A') as
+      HTMLAnchorElement | undefined;
+
+    if (this.current) {
+      link?.setAttribute('aria-current', 'page');
+    } else {
+      link?.removeAttribute('aria-current');
+    }
+  }
+
   render() {
     return (
-      <Host role="listitem">
-        <div
-          class={{ current: this.current }}
-          {...(this.current ? { 'aria-current': 'page' } : {})}
-        >
-          <slot />
-        </div>
-      </Host>
+      <li>
+        <slot onSlotchange={() => this.syncCurrentLink()} />
+      </li>
     );
   }
 }

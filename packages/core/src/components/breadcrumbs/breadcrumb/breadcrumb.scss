@@ -1,53 +1,35 @@
 @use '../../../mixins/focus-state' as *;
 
-:host([role='listitem']) {
-  div {
-    ::slotted(*) {
-      color: var(--tds-breadcrumb-color);
-      text-decoration: none;
-    }
-
-    &:hover {
-      ::slotted(*) {
-        color: var(--tds-breadcrumb-color-hover);
-        text-decoration: underline;
-      }
-    }
-
-    ::slotted(*:focus-visible) {
-      @include tds-focus-state;
-    }
-
-    &.current,
-    [aria-current='page'] {
-      ::slotted(*) {
-        pointer-events: none;
-        cursor: default;
-        color: var(--tds-breadcrumb-color-current);
-      }
-
-      &:hover {
-        ::slotted(*) {
-          text-decoration: none;
-          cursor: not-allowed;
-        }
-      }
-    }
-
-    &::after {
-      content: '\203A';
-      color: var(--tds-breadcrumb-separator-color);
-      margin-right: 4px;
-      margin-left: 4px;
-      display: inline-block;
-      width: 4px;
-      height: 8px;
-    }
+:host {
+  li {
+    display: flex;
+    flex-flow: row wrap;
   }
 
-  .current {
-    &::after {
-      display: none;
-    }
+  ::slotted(*) {
+    color: var(--tds-breadcrumb-color);
+    text-decoration: none;
+    cursor: pointer;
   }
+
+  ::slotted(*:hover) {
+    color: var(--tds-breadcrumb-color-hover);
+    text-decoration: underline;
+  }
+
+  ::slotted(*:focus-visible) {
+    @include tds-focus-state;
+  }
+}
+
+:host(:not(:last-child)) li::after {
+  content: '\203A';
+  display: inline-block;
+  margin-inline: var(--unit-8);
+  color: var(--tds-breadcrumb-separator-color);
+}
+
+:host([current]) ::slotted(*) {
+  color: var(--tds-breadcrumb-color-current);
+  pointer-events: none;
 }

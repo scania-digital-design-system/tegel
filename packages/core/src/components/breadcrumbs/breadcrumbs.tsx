@@ -15,13 +15,11 @@ export class TdsBreadcrumbs {
   @Prop({ reflect: true }) tdsAriaLabel?: string;
 
   render() {
-    this.host.children[this.host.children.length - 1]?.classList.add('last');
-
     return (
       <nav aria-label={this.tdsAriaLabel}>
-        <div role="list" class="tds-breadcrumb">
+        <ol>
           <slot></slot>
-        </div>
+        </ol>
       </nav>
     );
   }
