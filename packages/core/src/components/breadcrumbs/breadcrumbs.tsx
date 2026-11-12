@@ -19,9 +19,9 @@ export class TdsBreadcrumbs {
 
     return (
       <nav aria-label={this.tdsAriaLabel}>
-        <div role="list" class="tds-breadcrumb">
+        <ol class="tds-breadcrumb">
           <slot></slot>
-        </div>
+        </ol>
       </nav>
     );
   }
