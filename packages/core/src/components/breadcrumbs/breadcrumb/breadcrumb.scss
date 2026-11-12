@@ -1,10 +1,8 @@
 @use '../../../mixins/focus-state' as *;
 
 :host {
-  li {
-    display: flex;
-    flex-flow: row wrap;
-  }
+  display: flex;
+  flex-flow: row wrap;
 
   ::slotted(a) {
     color: var(--tds-breadcrumb-color);
@@ -23,7 +21,7 @@
   }
 }
 
-:host(:not(:last-child)) li::after {
+:host(:not(:last-child))::after {
   content: '\203A';
   display: inline-block;
   margin-inline: var(--unit-8);

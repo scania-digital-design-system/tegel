@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a native <code>&lt;a></code> element.
@@ -37,9 +37,9 @@ export class TdsBreadcrumb {
 
   render() {
     return (
-      <li>
+      <Host role="listitem">
         <slot onSlotchange={() => this.syncCurrentLink()} />
-      </li>
+      </Host>
     );
   }
 }
