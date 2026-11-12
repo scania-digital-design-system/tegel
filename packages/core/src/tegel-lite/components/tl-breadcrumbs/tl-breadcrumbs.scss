@@ -5,42 +5,32 @@
 
 .tl-breadcrumbs {
   @include tds-box-sizing;
+  @include detail-02;
 
   ol {
-    @include detail-02;
-
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
+    flex-flow: row wrap;
+    list-style: none;
   }
 
   li {
-    display: inline-block;
+    display: flex;
+    flex-flow: row wrap;
 
-    &::after {
+    &:not(:last-child)::after {
       content: '\203A';
-      color: var(--breadcrumb-separator-color);
-      margin-right: var(--breadcrumb-separator-margin);
-      margin-left: var(--breadcrumb-separator-margin);
       display: inline-block;
-      width: var(--breadcrumb-separator-width);
-      height: var(--breadcrumb-separator-height);
-    }
-
-    &:has([aria-current]) {
-      &::after {
-        display: none;
-      }
+      margin-inline: var(--breadcrumb-separator-margin);
+      color: var(--breadcrumb-separator-color);
     }
   }
 
   a {
-    @include detail-02;
-
     color: var(--breadcrumb-label);
     text-decoration: none;
+    cursor: pointer;
     transition: color 0.2s ease;
 
     &:hover {
@@ -52,15 +42,9 @@
       @include tds-focus-state;
     }
 
-    &[aria-current='page'] {
-      pointer-events: none;
-      cursor: default;
+    &[aria-current] {
       color: var(--breadcrumb-current);
-
-      &:hover {
-        text-decoration: none;
-        cursor: not-allowed;
-      }
+      pointer-events: none;
     }
   }
 }

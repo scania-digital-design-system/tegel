@@ -8,9 +8,7 @@
   --breadcrumb-separator-color: var(--component-breadcrumbs-text-separator-default);
 
   // Spacing
-  --breadcrumb-separator-margin: 4px;
-  --breadcrumb-separator-width: 4px;
-  --breadcrumb-separator-height: 8px;
+  --breadcrumb-separator-margin: var(--unit-8);
 
   // Focus
   --breadcrumb-focus-outline-color: var(--color-system-info-default);

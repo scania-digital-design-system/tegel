@@ -10,6 +10,7 @@
     color: var(--tds-breadcrumb-color);
     text-decoration: none;
     cursor: pointer;
+    transition: color 0.2s ease;
   }
 
   ::slotted(a:hover) {

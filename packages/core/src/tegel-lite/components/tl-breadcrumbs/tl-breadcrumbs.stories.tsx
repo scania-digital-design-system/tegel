@@ -11,13 +11,19 @@ const Template = () =>
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-breadcrumbs.css"
     -->
-    <nav class="tl-breadcrumbs">
+    <nav class="tl-breadcrumbs" aria-label="A breadcrumbs component">
       <ol>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#" aria-current="page">Current Page</a></li>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Products</a>
+        </li>
+        <li>
+          <a href="#" aria-current="page">Current Page</a>
+        </li>
       </ol>
     </nav>
-      `;
+  `;
 
 export const Default = Template.bind({});
