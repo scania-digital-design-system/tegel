@@ -293,7 +293,11 @@ export class TdsTextField {
               }}
               aria-invalid={getAriaInvalid(this.host, this.state)}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
-              aria-describedby={`text-field-helper-element-${this.uuid}`}
+              aria-describedby={
+                this.helper || (!this.hideMaxLength && (this.maxLength ?? 0) > 0)
+                  ? `text-field-helper-element-${this.uuid}`
+                  : ''
+              }
               aria-readonly={this.readOnly}
               id={`text-field-input-element-${this.uuid}`}
               required={this.required}
@@ -331,7 +335,12 @@ export class TdsTextField {
                 text="This field is non-editable"
                 selector={`#readonly-tooltip-${this.uuid}`}
               />
-              <tds-icon id={`readonly-tooltip-${this.uuid}`} name="edit_inactive" size="20px" />
+              <tds-icon
+                id={`readonly-tooltip-${this.uuid}`}
+                name="edit_inactive"
+                size="20px"
+                svgTitle={`readonly-icon-${this.uuid}`}
+              />
             </span>
           )}
         </div>

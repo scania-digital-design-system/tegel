@@ -35,7 +35,13 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
     test('press on first slider looks correct', async ({ page }) => {
       const sliderPrimaryThumb = page.getByLabel('Primary').locator('.tds-slider__thumb-inner');
 
-      await sliderPrimaryThumb.hover();
+      const thumbBox = await sliderPrimaryThumb.boundingBox();
+
+      if (!thumbBox) {
+        throw new Error('Could not find the range slider track and thumb');
+      }
+
+      await page.mouse.move(thumbBox.x + thumbBox.width / 2, thumbBox.y + thumbBox.height / 2);
 
       // Press and hold the mouse button
       await page.mouse.down();
