@@ -1,6 +1,7 @@
 # tl-slider
 
 The Slider component provides an interactive range input control with optional value display and increment buttons.
+Track fill width and thumb positions should be controlled by the user. Please refer to our docs for examples.
 
 ## Usage
 
@@ -63,17 +64,11 @@ Apply these classes to the `.tl-slider` element.
 | ---------------------- | ------------------------------ |
 | `.tl-slider--small`    | Small thumb size variant             |
 | `.tl-slider--reverse` | Reverse slider variant             |
+| `.tl-slider--range` | Range slider variant             |
+| `.tl-slider--disabled` | Disabled slider             |
 
 
-**Note:** Use the native `disabled` and `readonly` attributes on the `<input type="range">` element for disabled and read-only states. The component will automatically style these states.
-
-### Slider Input Field Modifiers
-
-Apply these classes to the `.tl-slider__input-field` element.
-
-| Modifier                         | Description                  |
-| -------------------------------- | ---------------------------- |
-| `.tl-slider__input-field--decimal` | Decimal value input        |
+**Note:** Use the native `readonly` attribute on the `<input type="range">` element for read-only state. The component will automatically style this state.
 
 ### Slider Thumb State Modifiers
 
