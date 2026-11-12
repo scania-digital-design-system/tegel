@@ -6,18 +6,18 @@
     flex-flow: row wrap;
   }
 
-  ::slotted(*) {
+  ::slotted(a) {
     color: var(--tds-breadcrumb-color);
     text-decoration: none;
     cursor: pointer;
   }
 
-  ::slotted(*:hover) {
+  ::slotted(a:hover) {
     color: var(--tds-breadcrumb-color-hover);
     text-decoration: underline;
   }
 
-  ::slotted(*:focus-visible) {
+  ::slotted(a:focus-visible) {
     @include tds-focus-state;
   }
 }
@@ -29,7 +29,7 @@
   color: var(--tds-breadcrumb-separator-color);
 }
 
-:host([current]) ::slotted(*) {
+:host([current]) ::slotted(a) {
   color: var(--tds-breadcrumb-color-current);
   pointer-events: none;
 }
