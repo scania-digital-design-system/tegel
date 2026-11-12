@@ -272,6 +272,80 @@
             </button>
           </div>
         </div>
+
+        <div class="tl-slider tl-slider--range">
+          <label class="tl-slider__label">Range slider</label>
+
+          <div class="tl-slider__track-wrapper">
+
+            <div
+              class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper"
+            >
+              <div class="tl-text-field__input-wrapper">
+                <input
+                  type="number"
+                  class="tl-text-field__input tl-slider__input-field"
+                  value="25"
+                  min="0"
+                  max="100"
+                  step="1"
+                />
+              </div>
+            </div>
+
+            <div class="tl-slider__value tl-slider__value--min">0</div>
+
+            <div class="tl-slider__track">
+              <div class="tl-slider__value-dividers">
+                <div class="tl-slider__value-divider">
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+                <div class="tl-slider__value-divider">
+                  <div class="tl-slider__value-divider-line"></div>
+                </div>
+              </div>
+
+              <div class="tl-slider__track-fill" style="width: 50%; left: 25%;"></div>
+
+              <div class="tl-slider__thumb" style="left: 25%">
+                <div class="tl-slider__thumb-inner" tabindex="0"></div>
+                <!-- tooltip forcefully displayed for the snapshot -->
+                <div class="tl-slider__value-tooltip" style="display: block">25</div>
+              </div>
+              <div class="tl-slider__thumb" style="left: 75%">
+                <div class="tl-slider__thumb-inner" tabindex="0"></div>
+                <!-- tooltip forcefully displayed for the snapshot -->
+                <div class="tl-slider__value-tooltip" style="display: block">75</div>
+              </div>
+            </div>
+
+            <div class="tl-slider__value tl-slider__value--max">100</div>
+
+            <div
+              class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper"
+            >
+              <div class="tl-text-field__input-wrapper">
+                <input
+                  type="number"
+                  class="tl-text-field__input tl-slider__input-field"
+                  value="75"
+                  min="0"
+                  max="100"
+                  step="1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

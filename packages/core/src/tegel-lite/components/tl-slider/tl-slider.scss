@@ -14,7 +14,7 @@
     pointer-events: none;
   }
 
-  &:has(input[type='range']:disabled) {
+  &.tl-slider--disabled {
     pointer-events: none;
     cursor: not-allowed;
     opacity: var(--slider-opacity-disabled);
@@ -113,10 +113,6 @@
     }
   }
 
-  &:focus-within .tl-slider__thumb-inner {
-    @include tds-focus-state;
-  }
-
   &:disabled {
     cursor: not-allowed;
 
@@ -137,7 +133,7 @@
 
 .tl-slider__input-wrapper.tl-text-field {
   flex-shrink: 0;
-  width: auto;
+  width: fit-content;
   height: auto;
   min-width: auto;
   margin-left: 0;
@@ -145,7 +141,7 @@
 
   &.tl-text-field:not(:has(.tl-text-field__input[readonly])),
   &.tl-text-field.tl-text-field--hide-readonly-icon {
-    width: 50px;
+    width: fit-content;
   }
 
   .tl-slider__track-wrapper:not(:has(.tl-slider__value)) & {
@@ -157,8 +153,8 @@
   }
 }
 
-.tl-slider__input-wrapper .tl-slider__input-field {
-  width: 50px;
+.tl-slider__input-wrapper .tl-text-field__input.tl-slider__input-field {
+  width: fit-content;
   padding: 12px;
   text-align: center;
   appearance: textfield;
@@ -176,7 +172,7 @@
     :has(.tl-text-field__input:disabled)
   )
   .tl-slider__input-field[readonly] {
-  width: 74px;
+  width: fit-content;
   padding-right: 39px;
 }
 
@@ -251,6 +247,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &:focus {
+    @include tds-focus-state;
   }
 
   &:hover::before {
@@ -348,6 +348,10 @@
 
   .tl-slider--reverse & {
     right: 0;
+    left: unset;
+  }
+
+  .tl-slider--range & {
     left: unset;
   }
 }

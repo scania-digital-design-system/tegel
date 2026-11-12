@@ -7,8 +7,8 @@ WORKDIR /app
 # Configure pnpm home directory
 ENV PNPM_HOME=/pnpm
 
-# Enable Corepack so that pnpm can be used
-RUN corepack enable
+# Install pnpm globally, using npm
+RUN npm install --global pnpm
 
 # Copy the project into the container
 # Files and directories excluded by .dockerignore are not copied
