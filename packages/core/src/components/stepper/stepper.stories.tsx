@@ -27,6 +27,30 @@ export default {
         defaultValue: { summary: 'lg' },
       },
     },
+    width: {
+      name: 'Width',
+      description: 'Width of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['600px', '700px', '800px', '900px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Horizontal' },
+      table: {
+        defaultValue: { summary: 'not defined' },
+      },
+    },
+    height: {
+      name: 'Height',
+      description: 'Height of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['300px', '400px', '500px', '600px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Vertical' },
+      table: {
+        defaultValue: { summary: 'not defined' },
+      },
+    },
     orientation: {
       name: 'Orientation',
       description: 'Sets the orientation which the Stepper is displayed.',
@@ -67,6 +91,8 @@ export default {
     orientation: 'Horizontal',
     labelPosition: 'Below',
     hideLabels: false,
+    height: 'not defined',
+    width: 'not defined',
   },
 };
 
@@ -74,8 +100,11 @@ const sizeLookUp = {
   Large: 'lg',
   Small: 'sm',
 };
-const Template = ({ size, orientation, labelPosition, hideLabels }) =>
-  `
+const Template = ({ size, orientation, labelPosition, hideLabels, width, height }) => {
+  const widthStyle = width !== 'not defined' ? `width: ${width};` : '';
+  const heightStyle = height !== 'not defined' ? `height: ${height};` : '';
+  return `
+    <div style="${widthStyle} ${heightStyle}">
       <tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
         orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
       } orientation="${orientation.toLowerCase()}">
@@ -92,5 +121,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
           <div slot="label">Upcoming step</div>
         </tds-step>
       </tds-stepper>
+      </div>
         `;
+};
 export const Default = Template.bind({});

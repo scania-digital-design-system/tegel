@@ -77,26 +77,35 @@ export class TdsStep {
             this.hideLabels ? 'hide-labels' : ''
           }`}
         >
-          <span class={`${this.state} content-container`}>
-            {this.state === 'success' || this.state === 'error' ? (
-              <tds-icon
-                aria-hidden="true"
-                svgTitle={`tds-step-icon-${this.stepperId}`}
-                class={'tds-step-icon'}
-                name={this.state === 'success' ? 'tick' : 'warning'}
-                size={this.size === 'lg' ? '20px' : '16px'}
-              ></tds-icon>
-            ) : (
-              <span aria-hidden="true" class="index-container">
-                {this.index}
-              </span>
+          <div class={`step-container text-${this.labelPosition}`}>
+            <span class={`${this.state} content-container`}>
+              <div class="left-divider"></div>
+              {this.state === 'success' || this.state === 'error' ? (
+                <tds-icon
+                  aria-hidden="true"
+                  svgTitle={`tds-step-icon-${this.stepperId}`}
+                  class={'tds-step-icon'}
+                  name={this.state === 'success' ? 'tick' : 'warning'}
+                  size={this.size === 'lg' ? '20px' : '16px'}
+                ></tds-icon>
+              ) : (
+                <span aria-hidden="true" class="index-container">
+                  {this.index}
+                </span>
+              )}
+              {(this.labelPosition === 'below' || this.orientation === 'vertical') && (
+                <div class="right-divider"></div>
+              )}
+            </span>
+            {!this.hideLabels && (
+              <div aria-hidden="true" class={`label ${this.size} ${this.state}`}>
+                <slot name="label"></slot>
+              </div>
             )}
-          </span>
-          {!this.hideLabels && (
-            <div aria-hidden="true" class={`label ${this.size} ${this.state}`}>
-              <slot name="label"></slot>
-            </div>
-          )}
+            {this.orientation === 'horizontal' && this.labelPosition === 'aside' && (
+              <div class="right-divider"></div>
+            )}
+          </div>
         </div>
       </Host>
     );
