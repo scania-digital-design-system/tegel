@@ -17,7 +17,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
 /**
  * @slot header - Slot for header text
  * @slot body - Slot for main content of modal
- * @slot actions - Slot for extra buttons
+ * @slot actions - Slot for extra buttons on the left side
+ * @slot actions-right - Slot for extra buttons on the right side
  * */
 @Component({
   tag: 'tds-modal',
@@ -358,7 +359,9 @@ export class TdsModal {
 
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
+    const usesSubHeaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+    const usesActionsRightSlot = hasSlot('actions-right', this.host);
 
     const hasLabel = this.header || usesHeaderSlot;
 
@@ -380,12 +383,15 @@ export class TdsModal {
           tabindex="-1"
         >
           <div class="header">
-            {this.header && (
-              <h1 id={this.headerId} class="header-text">
-                {this.header}
-              </h1>
-            )}
-            {usesHeaderSlot && <slot name="header" />}
+            <div class="cenaitas" style={{ display: 'flex', flexDirection: 'column' }}>
+              {this.header && (
+                <h1 id={this.headerId} class="header-text">
+                  {this.header}
+                </h1>
+              )}
+              {usesHeaderSlot && <slot name="header" />}
+              {usesSubHeaderSlot && <slot name="subheader" />}
+            </div>
 
             {this.closable && (
               <button
@@ -402,7 +408,10 @@ export class TdsModal {
             <slot name="body" />
           </div>
 
-          {usesActionsSlot && <slot name="actions" />}
+          <div class="tds-modal__actions">
+            {usesActionsSlot && <slot name="actions" />}
+            {usesActionsRightSlot && <slot name="actions-right" />}
+          </div>
         </div>
       </Host>
     );

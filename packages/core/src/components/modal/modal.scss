@@ -101,6 +101,24 @@ $modals: (
   pointer-events: auto;
   @include modal-scrollbar;
 
+  slot[name='subheader'] {
+    @include label-01;
+  }
+
+  .tds-modal__actions {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+
+    &:has(slot[name='actions']):has(slot[name='actions-right']) {
+      justify-content: space-between;
+    }
+
+    &:not(:has(slot[name='actions'])):has(slot[name='actions-right']) {
+      justify-content: end;
+    }
+  }
+
   &__actions-sticky {
     overflow: hidden;
     display: flex;
@@ -113,7 +131,8 @@ $modals: (
       overflow-y: auto;
     }
 
-    slot[name='actions'] {
+    slot[name='actions'],
+    slot[name='actions-right'] {
       bottom: -1px;
       left: 0;
       right: 0;
@@ -125,7 +144,8 @@ $modals: (
   }
 
   &__actions-static {
-    slot[name='actions'] {
+    slot[name='actions'],
+    slot[name='actions-right'] {
       background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
@@ -166,6 +186,17 @@ $modals: (
     @include modal-header-title;
   }
 }
+
+// .stepper {
+//   padding: 0 16px 16px 16px;
+//   display: flex;
+//   position: sticky;
+//   background-color: var(--tds-modal-background);
+//   z-index: 1;
+//   justify-content: center;
+//   width: 100%;
+
+// }
 
 .body {
   @include modal-body;
