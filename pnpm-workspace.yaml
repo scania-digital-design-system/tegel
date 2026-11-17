@@ -16,7 +16,7 @@ catalog:
   del: '9.0.1'
   glob: '14.0.2'
   sass: '1.106.1'
-  typescript: '7.0.2'
+  typescript: '6.0.3'
 
 allowBuilds:
   '@parcel/watcher': true
