@@ -9,13 +9,13 @@ packages:
   - 'grid-deprecated'
 
 catalog:
-  '@playwright/test': '1.64.1'
+  '@playwright/test': '1.65.0'
   '@types/node': '26.6.6'
   '@types/react': '19.3.0'
   '@types/react-dom': '19.3.0'
   del: '9.0.1'
-  glob: '14.0.2'
-  sass: '1.106.1'
+  glob: '14.0.6'
+  sass: '1.108.1'
   typescript: '6.0.3'
 
 allowBuilds:

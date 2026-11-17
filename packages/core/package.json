@@ -408,34 +408,34 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
-    "@stencil/core": "^4.45.2"
+    "@stencil/core": "^4.45.3"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "catalog:",
     "@scania/tegel-lite": "workspace:*",
     "@stencil/angular-output-target": "1.5.3",
-    "@stencil/playwright": "^0.6.0",
-    "@stencil/react-output-target": "1.6.5",
+    "@stencil/playwright": "^0.6.1",
+    "@stencil/react-output-target": "1.8.0",
     "@stencil/sass": "3.3.3",
-    "@storybook/addon-a11y": "10.6.5",
-    "@storybook/addon-docs": "10.6.5",
-    "@storybook/builder-vite": "10.6.5",
-    "@storybook/html-vite": "10.6.5",
+    "@storybook/addon-a11y": "10.6.7",
+    "@storybook/addon-docs": "10.6.7",
+    "@storybook/builder-vite": "10.6.7",
+    "@storybook/html-vite": "10.6.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vueless/storybook-dark-mode": "^10.0.8",
     "axe-core": "^4.14.0",
-    "concurrently": "10.0.6",
+    "concurrently": "10.0.7",
     "glob": "catalog:",
     "highlight.js": "11.12.0",
-    "markdown-to-jsx": "^9.10.4",
+    "markdown-to-jsx": "^9.10.6",
     "prettier": "3.9.10",
     "sass": "catalog:",
-    "serve": "^14.2.7",
-    "storybook": "10.6.5",
-    "vite": "^8.3.5"
+    "serve": "^14.2.8",
+    "storybook": "10.6.7",
+    "vite": "^8.3.8"
   },
   "license": "MIT"
 }
