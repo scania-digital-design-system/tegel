@@ -47,6 +47,10 @@ on:
           - 'true'
           - 'false'
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   beta-release-core:
     runs-on: ubuntu-latest

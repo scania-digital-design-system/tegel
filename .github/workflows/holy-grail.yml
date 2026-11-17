@@ -49,6 +49,10 @@ env:
   NODE_VERSION: '22.22.3'
   TAG: latest
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   check-npm-status:
     runs-on: ubuntu-latest
