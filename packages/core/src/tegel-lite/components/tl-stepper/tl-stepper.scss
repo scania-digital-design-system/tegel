@@ -5,11 +5,13 @@
 
 .tl-stepper {
   @include tds-box-sizing;
+
+  height: 100%;
 }
 
 .tl-stepper__list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   min-width: 100%;
   list-style: none;
   margin: 0;
@@ -19,19 +21,9 @@
     width: 100%;
   }
 
-  .tl-stepper--horizontal:not(.tl-stepper--label-aside) & {
-    justify-content: flex-start;
-  }
-
   .tl-stepper--horizontal.tl-stepper--label-aside & {
     display: flex;
-    justify-content: flex-start;
     min-width: 100%;
-  }
-
-  .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels & {
-    display: flex;
-    justify-content: flex-start;
   }
 
   .tl-stepper--vertical & {

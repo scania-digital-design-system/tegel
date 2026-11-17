@@ -19,7 +19,7 @@ export default {
     actionsPosition: {
       name: 'Actions position',
       description:
-        "Defines the postion of Modal action's slot - if slot scrolls or stays on top of the content.",
+        "Defines the position of Modal action's slot - if slot scrolls or stays on top of the content.",
       control: {
         type: 'radio',
       },
@@ -138,9 +138,11 @@ const ModalTemplate = ({
         ${bodyContent}
       </span>
       <span slot='actions' class='tds-u-flex tds-u-gap2'>
-        <tds-button data-dismiss-modal size="sm" text="Button Text" variant="primary"></tds-button>
-        <tds-button data-dismiss-modal size="sm" text="Button Text" variant="secondary"></tds-button>
-      </span>      
+        <tds-button data-dismiss-modal size="sm" text="Close" variant="secondary"></tds-button>
+        </span>      
+      <span slot='actions-right' class='tds-u-flex tds-u-gap2'>
+        <tds-button data-dismiss-modal size="sm" text="Done" variant="primary"></tds-button>
+        </span>      
   </tds-modal>
   
   <!-- The script below is just for demo purposes -->
