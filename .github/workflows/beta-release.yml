@@ -87,6 +87,9 @@ jobs:
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
 
+      - name: Check NPM version
+        run: npm --version
+
       - name: Core - Update version with beta name
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
