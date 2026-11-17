@@ -59,16 +59,45 @@ export default {
         },
       },
     },
+    width: {
+      name: 'Width',
+      description: 'Width of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['600px', '700px', '800px', '900px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Horizontal' },
+      table: {
+        defaultValue: { summary: 'not defined' },
+      },
+    },
+    height: {
+      name: 'Height',
+      description: 'Height of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['300px', '400px', '500px', '600px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Vertical' },
+      table: {
+        defaultValue: { summary: 'not defined' },
+      },
+    },
   },
   args: {
     size: 'Large',
     orientation: 'Horizontal',
     labelPosition: 'Below',
     hideLabels: false,
+    width: 'not defined',
+    height: 'not defined',
   },
 };
 
-const Template = ({ size, orientation, labelPosition, hideLabels }) => {
+const Template = ({ size, orientation, labelPosition, hideLabels, width, height }) => {
+  const widthStyle = width !== 'not defined' ? `width: ${width};` : '';
+  const heightStyle = height !== 'not defined' ? `height: ${height};` : '';
+
   const containerClasses = [
     'tl-stepper',
     orientation === 'Vertical' ? 'tl-stepper--vertical' : 'tl-stepper--horizontal',
@@ -81,7 +110,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   const steps = [
     {
-      label: 'Success step',
+      label: 'Success step step step step step step step step',
       state: 'tl-stepper__step--success',
       index: 1,
     },
@@ -125,10 +154,12 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
       "@scania/tegel-lite/tl-stepper.css";
     -->
 
-    <div class="${containerClasses}">
-      <ol class="tl-stepper__list">
-        ${items}
-      </ol>
+    <div style="${widthStyle} ${heightStyle}">
+      <div class="${containerClasses}">
+        <ol class="tl-stepper__list">
+          ${items}
+        </ol>
+      </div>
     </div>
   `;
 };
