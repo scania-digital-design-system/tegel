@@ -9,7 +9,7 @@
 
 :host(:first-of-type) {
   &:has(div.horizontal) {
-    justify-content: start !important;
+    justify-content: start;
   }
 
   [role='listitem'] {
@@ -24,20 +24,40 @@
 
 :host(:last-of-type) {
   &:has(div.horizontal) {
-    justify-content: end !important;
+    justify-content: end;
 
     &:has(div.text-aside) {
-      flex: 0 0 auto !important;
+      flex: 0 0 auto;
     }
   }
 
   [role='listitem'] {
-    &.horizontal {
-      padding-right: 0 !important;
+    &.horizontal.text-aside,
+    &.horizontal.text-below {
+      padding-right: 0;
     }
 
     .right-divider {
-      display: none !important;
+      display: none;
+    }
+  }
+}
+
+:host(:not(:last-of-type)) {
+  [role='listitem'] {
+    &.horizontal {
+      &.text-aside {
+        .step-container {
+          .right-divider {
+            display: flex;
+            flex: 1;
+            height: 1px;
+            width: 100%;
+            min-width: 8px;
+            background-color: var(--tds-stepper-divider-line);
+          }
+        }
+      }
     }
   }
 }
@@ -124,14 +144,7 @@
           flex-direction: row;
           flex: 1;
 
-          .right-divider {
-            display: flex;
-            flex: 1;
-            height: 1px;
-            width: 100%;
-            min-width: 8px;
-            background-color: var(--tds-stepper-divider-line);
-          }
+          // right-divider styles declared above in :host(:not(:last-of-type))
 
           .content-container {
             .left-divider {
