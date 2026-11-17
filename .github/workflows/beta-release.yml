@@ -135,8 +135,6 @@ jobs:
       - name: Core - Publish
         if: env.VERSION_EXISTS != 'true'
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --access public --tag beta --no-git-checks
 
     outputs:
@@ -231,8 +229,6 @@ jobs:
       - name: Angular-17 - Publish
         if: env.VERSION_EXISTS != 'true'
         working-directory: packages/angular-17/dist/components
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --access public --tag beta --no-git-checks
 
     outputs:
@@ -318,8 +314,6 @@ jobs:
       - name: Publish React package to NPM
         if: env.VERSION_EXISTS != 'true'
         working-directory: packages/react
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --tag beta --no-git-checks
 
     outputs:
@@ -398,8 +392,6 @@ jobs:
       - name: Publish Tegel Lite package to NPM
         if: env.VERSION_EXISTS != 'true'
         working-directory: packages/tegel-lite
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --tag beta --no-git-checks
 
     outputs:
