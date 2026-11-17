@@ -102,16 +102,12 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
-    batchArea: `<div slot="start">
-         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide" style="width: 150px">
-           <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
-           <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
-           <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
-         </tds-dropdown>
-      </div>
-      <div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
-      <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
-    </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
+    batchArea: `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1">
+  <tds-button type="ghost" size="sm">
+    <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
+  </tds-button>
+  <tds-button  type="primary" size="sm" text="Download"></tds-button>
+</div>`,
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -144,8 +140,8 @@ const BatchActionTemplate = ({
         }
       >
           <tds-table-toolbar table-title="Batch action">
-          ${batchArea}
-        </tds-table-toolbar>
+            ${batchArea}
+          </tds-table-toolbar>
           <tds-table-header>
               <tds-header-cell ${
                 column1Width ? `style="width: ${column1Width};"` : ''
