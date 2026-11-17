@@ -110,7 +110,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels, width, height 
 
   const steps = [
     {
-      label: 'Success step step step step step step step step',
+      label: 'Success step',
       state: 'tl-stepper__step--success',
       index: 1,
     },
