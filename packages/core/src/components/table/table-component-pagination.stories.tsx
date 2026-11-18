@@ -45,6 +45,38 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    stickyFooter: {
+      name: 'Sticky Footer',
+      description: 'Enables sticky footer.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
+      },
+    },
     pagination: {
       name: 'Pagination',
       description: 'Pagination enabled on the table footer',
@@ -184,6 +216,9 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
+    stickyHeader: false,
+    stickyFooter: false,
+    verticalScrollHeight: '',
     pagination: true,
     paginationLabel: 'of {pages} pages',
     pages: 4,
@@ -206,6 +241,9 @@ const PaginationTemplate = ({
   compactDesign,
   responsiveDesign,
   verticalDivider,
+  stickyHeader,
+  stickyFooter,
+  verticalScrollHeight,
   pagination,
   paginationLabel,
   pages,
@@ -229,12 +267,15 @@ const PaginationTemplate = ({
     <tds-link><a href="https://angular-17-demo.tegel.scania.com/">Angular</a></tds-link> Demo pages.</p> 
     <br/> 
     <tds-table
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
+      ${stickyFooter ? `sticky-footer="${stickyFooter}"` : ''}
       table-id='pagination-table'
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
       >
           <tds-table-header>
               <tds-header-cell cell-key='truck' cell-value='Truck type' ${

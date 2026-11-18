@@ -24,6 +24,27 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
+      },
+    },
     responsiveDesign: {
       name: 'Responsive Table',
       description:
@@ -109,6 +130,8 @@ export default {
   <tds-button  type="primary" size="sm" text="Download"></tds-button>
 </div>`,
     verticalDivider: false,
+    stickyHeader: false,
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -123,6 +146,8 @@ const BatchActionTemplate = ({
   responsiveDesign,
   batchArea,
   verticalDivider,
+  stickyHeader,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -131,6 +156,7 @@ const BatchActionTemplate = ({
 }) =>
   `
    <tds-table
+        ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
         responsive="${responsiveDesign}"
@@ -138,6 +164,7 @@ const BatchActionTemplate = ({
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
       >
           <tds-table-toolbar table-title="Batch action">
             ${batchArea}

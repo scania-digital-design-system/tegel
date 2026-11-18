@@ -65,6 +65,10 @@
   }
 }
 
+:host(.tds-table--header-sticky) {
+  position: sticky;
+}
+
 :host(.tds-table--compact) {
   .tds-table__header-cell--checkbox {
     height: var(--tds-table-row-height-compact);

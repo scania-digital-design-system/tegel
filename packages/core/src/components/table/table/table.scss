@@ -12,6 +12,12 @@
   border-top-right-radius: var(--tds-table-border-radius);
 }
 
+:host(.tds-table--divider),
+.tds-table--divider {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
 :host(.tds-table--responsive),
 .tds-table--responsive {
   width: 100%;
@@ -22,6 +28,13 @@
   overflow-x: scroll;
   white-space: nowrap;
   @include tds-scrollbar(horizontal);
+}
+
+.tds-table--vertical-scroll {
+  display: block;
+  overflow-y: scroll;
+  white-space: nowrap;
+  @include tds-scrollbar(vertical);
 }
 
 .tds-table--horizontal-scroll-toolbar {

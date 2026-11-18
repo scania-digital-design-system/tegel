@@ -17,6 +17,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'horizontalScrollWidth',
   'multiselect',
   'expandableRows',
+  'stickyFooter',
 ];
 
 function removeShakeAnimation(e: AnimationEvent) {
@@ -73,6 +74,9 @@ export class TdsTableFooter {
 
   /* State to track if expandableRows is enabled on parent table. */
   @State() expandableRows: boolean = false;
+
+  /* State to enable sticky footer. */
+  @State() stickyFooter: boolean = false;
 
   @State() lastCorrectValue: number = 1;
 
@@ -293,6 +297,7 @@ export class TdsTableFooter {
     return (
       <Host
         class={{
+          'tds-table--footer-sticky': this.stickyFooter,
           'tds-table--compact': this.compactDesign,
           'footer__horizontal-scroll': !!this.horizontalScrollWidth,
         }}

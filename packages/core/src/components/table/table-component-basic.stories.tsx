@@ -111,6 +111,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -130,6 +141,16 @@ export default {
       },
       table: {
         defaultValue: { summary: '300px' },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
       },
     },
     column1Width: {
@@ -189,7 +210,9 @@ export default {
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
+    stickyHeader: false,
     horizontalScrollWidth: '',
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -209,7 +232,9 @@ const BasicTemplate = ({
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
+  stickyHeader,
   horizontalScrollWidth,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -222,9 +247,11 @@ const BasicTemplate = ({
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
     >
       <tds-table-header >
           <tds-header-cell cell-key='truck' cell-value='Truck type' disable-padding="${disableHeaderPadding}" ${
@@ -241,7 +268,7 @@ const BasicTemplate = ({
           } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-          ${[...Array(6)]
+          ${[...Array(12)]
             .map(
               (_, index) => `
             <tds-table-body-row ${clickable ? 'clickable' : ''}>
