@@ -2,7 +2,6 @@
   "name": "@scania/tegel",
   "version": "1.68.0",
   "description": "Tegel Design System",
-  "type": "module",
   "keywords": [
     "tegel",
     "scania",
