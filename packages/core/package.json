@@ -15,12 +15,10 @@
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/components/components.esm.js",
+  "unpkg": "dist/tegel/tegel.esm.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts"
@@ -29,9 +27,7 @@
       "types": "./dist/types/components.d.ts"
     },
     "./dist/components/*.js": {
-      "import": "./dist/components/*.js",
-      "types": "./dist/components/*.d.ts",
-      "default": "./dist/components/*.js"
+      "import": "./dist/components/*.js"
     },
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
     "./tds-accordion-item": {
@@ -355,13 +351,13 @@
       "types": "./dist/components/tds-toggle.d.ts"
     },
     "./tds-tooltip": {
-      "types": "./dist/components/tds-tooltip.d.ts",
-      "import": "./dist/components/tds-tooltip.js"
+      "import": "./dist/components/tds-tooltip.js",
+      "types": "./dist/components/tds-tooltip.d.ts"
     },
     "./loader": {
-      "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs"
+      "require": "./loader/index.cjs.js",
+      "types": "./loader/index.d.ts"
     }
   },
   "repository": {
