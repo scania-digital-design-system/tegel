@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import { InternalTdsTablePropChange, TextAlign } from '../table/table';
+import { InternalTdsRowExpandedProps } from '../table-body-row-expandable/table-body-row-expandable';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
@@ -47,11 +48,15 @@ export class TdsTableBodyCell {
 
   @State() verticalDividers: boolean = false;
 
+  @State() isExpanded: boolean = false;
+
   @State() compactDesign: boolean = false;
 
   @State() noMinWidth: boolean = false;
 
   @State() tableId: string | undefined = '';
+
+  @State() rowId: string | undefined = '';
 
   @Element() host!: HTMLElement;
 
@@ -68,6 +73,13 @@ export class TdsTableBodyCell {
           }
           this[changedProp] = event.detail[changedProp];
         });
+    }
+  }
+
+  @Listen('internalTdsRowExpanded', { target: 'body' })
+  internalTdsRowExpandedListener(event: CustomEvent<InternalTdsRowExpandedProps>) {
+    if (this.tableId === event.detail.tableId && this.rowId === event.detail.rowId) {
+      this.isExpanded = event.detail.isExpanded;
     }
   }
 
@@ -104,6 +116,12 @@ export class TdsTableBodyCell {
   componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
+
+    const rowEl: HTMLTdsTableBodyRowExpandableElement | null = this.host.closest(
+      'tds-table-body-row-expandable',
+    );
+    this.rowId = rowEl?.rowId;
+
     if (this.tableEl) {
       relevantTableProps.forEach((tablePropName) => {
         this[tablePropName] = this.tableEl?.[tablePropName];
@@ -138,6 +156,7 @@ export class TdsTableBodyCell {
       <Host
         class={{
           'tds-table__body-cell': true,
+          'tds-table__body-cell-expanded': this.isExpanded,
           'tds-table__body-cell--hover': this.activeSorting,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,

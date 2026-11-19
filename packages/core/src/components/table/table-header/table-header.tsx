@@ -12,6 +12,7 @@ import {
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { InternalTdsRowExpandedProps } from '../table-body-row-expandable/table-body-row-expandable';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -19,6 +20,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
   'compactDesign',
   'noMinWidth',
+  'stickyHeader',
 ];
 
 /**
@@ -41,6 +43,8 @@ export class TdsTableHeaderRow {
 
   /** Prop for controlling the indeterminate state of the "All selected"-checkbox. */
   @Prop({ reflect: true }) indeterminate: boolean = false;
+
+  @State() stickyHeader: boolean = false;
 
   @State() multiselect: boolean = false;
 
@@ -94,8 +98,8 @@ export class TdsTableHeaderRow {
   }
 
   @Listen('internalTdsRowExpanded', { target: 'body' })
-  internalTdsRowExpandedListener(event: CustomEvent<object>) {
-    if (this.tableId === event.detail[0]) {
+  internalTdsRowExpandedListener(event: CustomEvent<InternalTdsRowExpandedProps>) {
+    if (this.tableId === event.detail.tableId) {
       // TODO: Improve this logic. Why we get late repose in DOM?
       setTimeout(() => {
         this.bodyExpandClicked();
@@ -137,6 +141,21 @@ export class TdsTableHeaderRow {
       this.enableToolbarDesign =
         closestTable?.getElementsByTagName('tds-table-toolbar').length >= 1;
     }
+
+    if (this.stickyHeader) {
+      const headers = closestTable?.getElementsByTagName('tds-table-header');
+      if (headers && headers.length >= 1) {
+        for (let index = 0; index < headers.length; index++) {
+          if (headers[index].id === this.host.id) {
+            const toolbarHeight = this.compactDesign ? 56 : 64;
+            const topDistance = this.compactDesign ? 32 * index : 48 * index;
+            (headers[index] as HTMLElement).style.top = this.enableToolbarDesign
+              ? `${toolbarHeight + topDistance}px`
+              : `${topDistance}px`;
+          }
+        }
+      }
+    }
   }
 
   @Watch('selected')
@@ -158,6 +177,7 @@ export class TdsTableHeaderRow {
     return (
       <Host
         class={{
+          'tds-table--header-sticky': this.stickyHeader,
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--toolbar-available': this.enableToolbarDesign,

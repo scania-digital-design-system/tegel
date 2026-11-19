@@ -25,6 +25,9 @@ type Props = {
   modeVariant: 'primary' | 'secondary' | null;
   textAlign: string;
   horizontalScrollWidth?: string;
+  verticalScrollHeight?: string;
+  stickyHeader: boolean;
+  stickyFooter: boolean;
   sortColumnKey?: string;
   sortDirection?: SortDirection;
   zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none';
@@ -74,16 +77,21 @@ export class TdsTable {
 
   /** Enables zebra stripe mode on the table rows or columns. */
   @Prop({ reflect: true }) zebraMode:
-    | 'rows-odd'
-    | 'rows-even'
-    | 'columns-odd'
-    | 'columns-even'
-    | 'none' = 'none';
+    'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none' = 'none';
 
   /** Width of the table, used as the constraint for horizontal scrolling.
    * **NOTE**: this will disable usage of the responsive flag
    * */
   @Prop({ reflect: true }) horizontalScrollWidth?: string | null = null;
+
+  /** Height of the table, used as the constraint for vertical scrolling. */
+  @Prop({ reflect: true }) verticalScrollHeight: string | null = null;
+
+  /** Prop to set the header as sticky. */
+  @Prop({ reflect: true }) stickyHeader: boolean = false;
+
+  /** Prop to set the footer as sticky. */
+  @Prop({ reflect: true }) stickyFooter: boolean = false;
 
   /** Column key for the currently sorted column. */
   @Prop({ reflect: true }) sortColumnKey?: string;
@@ -164,10 +172,18 @@ export class TdsTable {
     return selectedRowsData;
   }
 
-  private getStyles(): Record<string, string> {
+  private getWidthStyles(): Record<string, string> {
     const styles: Record<string, string> = {};
     if (this.horizontalScrollWidth) {
       styles.width = `${this.horizontalScrollWidth}px`;
+    }
+    return styles;
+  }
+
+  private getHeightStyles(): Record<string, string> {
+    const styles: Record<string, string> = {};
+    if (this.verticalScrollHeight) {
+      styles.maxHeight = `${this.verticalScrollHeight}px`;
     }
     return styles;
   }
@@ -212,6 +228,21 @@ export class TdsTable {
     this.emitInternalTdsPropChange('horizontalScrollWidth', newValue);
   }
 
+  @Watch('verticalScrollHeight')
+  heightChanged(newValue: string) {
+    this.emitInternalTdsPropChange('verticalScrollHeight', newValue);
+  }
+
+  @Watch('stickyHeader')
+  stickyHeaderChanged(newValue: string) {
+    this.emitInternalTdsPropChange('stickyHeader', newValue);
+  }
+
+  @Watch('stickyFooter')
+  stickyFooterChanged(newValue: string) {
+    this.emitInternalTdsPropChange('stickyFooter', newValue);
+  }
+
   @Watch('sortColumnKey')
   sortColumnKeyChanged(newValue: string | undefined) {
     this.emitInternalTdsPropChange('sortColumnKey', newValue);
@@ -238,14 +269,20 @@ export class TdsTable {
   render() {
     return (
       <Host
+        style={this.responsive ? this.getHeightStyles() : undefined}
         class={{
+          'tds-table--vertical-scroll': !!this.verticalScrollHeight && this.responsive,
           'tds-table--responsive': this.responsive,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
         <table
-          style={this.getStyles()}
+          style={
+            !this.responsive
+              ? { ...this.getWidthStyles(), ...this.getHeightStyles() }
+              : this.getWidthStyles()
+          }
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
@@ -253,6 +290,7 @@ export class TdsTable {
             'tds-table--no-min-width': !!this.noMinWidth,
             'tds-table--responsive': this.responsive,
             'tds-table--horizontal-scroll': !!this.horizontalScrollWidth,
+            'tds-table--vertical-scroll': !!this.verticalScrollHeight && !this.responsive,
             'tds-table--horizontal-scroll-toolbar':
               this.enableHorizontalScrollToolbarDesign && !this.compactDesign,
             'tds-table--horizontal-scroll-toolbar-compact':

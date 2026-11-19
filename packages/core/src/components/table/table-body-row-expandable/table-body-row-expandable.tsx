@@ -22,6 +22,12 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
 ];
 
+export type InternalTdsRowExpandedProps = {
+  tableId: string;
+  rowId: string;
+  isExpanded: boolean;
+};
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the cells.
  * @slot expand-row - Slot for the expanded row.
@@ -91,7 +97,7 @@ export class TdsTableBodyRowExpandable {
     cancelable: false,
     composed: true,
   })
-  internalTdsRowExpanded!: EventEmitter<object>;
+  internalTdsRowExpanded!: EventEmitter<InternalTdsRowExpandedProps>;
 
   /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
   @Event({
@@ -211,7 +217,13 @@ export class TdsTableBodyRowExpandable {
   }
 
   sendValue() {
-    this.internalTdsRowExpanded.emit([this.tableId, this.isExpanded]);
+    if (this.tableId) {
+      this.internalTdsRowExpanded.emit({
+        tableId: this.tableId,
+        rowId: this.rowId,
+        isExpanded: this.isExpanded,
+      });
+    }
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 

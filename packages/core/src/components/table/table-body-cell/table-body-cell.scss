@@ -14,7 +14,12 @@
   padding: var(--unit-16);
   min-width: 192px;
   background-color: var(--tds-table-background);
+  border-bottom: 1px solid var(--tds-table-divider);
   transition: background-color 200ms ease;
+}
+
+:host(.tds-table__body-cell-expanded):not(:host(.tds-table--divider)) td {
+  border-bottom: none;
 }
 
 :host(.tds-table__body-cell--hover) td {
@@ -27,7 +32,6 @@
 
 :host(.tds-table--divider) td {
   border-right: 1px solid var(--tds-table-divider);
-  border-bottom: 1px solid var(--tds-table-divider);
 }
 
 :host(.tds-table--divider:last-of-type) td {

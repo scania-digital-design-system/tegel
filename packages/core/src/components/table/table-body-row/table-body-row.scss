@@ -6,7 +6,6 @@
   @include tds-box-sizing;
 
   display: table-row;
-  border-bottom: 1px solid var(--tds-table-divider);
   background-color: var(--tds-table-background);
   transition: background-color 200ms ease;
   color: var(--tds-table-body-cell-text-color);
@@ -14,7 +13,9 @@
   .tds-table__body-cell--checkbox {
     min-width: var(--unit-48);
     width: var(--unit-48);
+    height: 49px;
     padding: 0;
+    border-bottom: 1px solid var(--tds-table-divider);
   }
 }
 
