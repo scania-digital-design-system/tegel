@@ -375,8 +375,8 @@
     "copy-assets": "./scripts/copy-assets.mjs"
   },
   "scripts": {
-    "build:css": "node scripts/build-css.js",
-    "watch:css": "node scripts/build-css.js --watch",
+    "build:css": "node scripts/build-css.mjs",
+    "watch:css": "node scripts/build-css.mjs --watch",
     "verify:csp": "node scripts/verify-csp.mjs",
     "build:core": "stencil build && stencil build --docs && pnpm build:css && pnpm verify:csp",
     "build": "pnpm build:core && pnpm build:tegel-lite",
@@ -394,8 +394,8 @@
     "build-stencil:storybook": "pnpm build && pnpm build:storybook",
     "start:core": "concurrently --raw 'pnpm:build-stencil:watch' 'pnpm:start:storybook'",
     "build:tegel-lite": "pnpm compile:scss && pnpm update:tegel-lite-exports && pnpm copy:assets-tegel-lite",
-    "compile:scss": "node scripts/compile-tegel-lite-components.js",
-    "update:tegel-lite-exports": "node scripts/update-tegel-lite-exports.js",
+    "compile:scss": "node scripts/compile-tegel-lite-components.mjs",
+    "update:tegel-lite-exports": "node scripts/update-tegel-lite-exports.mjs",
     "copy:assets-tegel-lite": "node scripts/copy-tegel-lite-assets.mjs",
     "lint:css:tl": "stylelint \"src/tegel-lite/**/*.scss\"",
     "lint:css:tl:fix": "stylelint \"src/tegel-lite/**/*.scss\" --fix",
