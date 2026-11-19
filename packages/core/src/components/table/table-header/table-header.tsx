@@ -12,6 +12,7 @@ import {
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { InternalTdsRowExpandedProps } from '../table-body-row-expandable/table-body-row-expandable';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -97,8 +98,8 @@ export class TdsTableHeaderRow {
   }
 
   @Listen('internalTdsRowExpanded', { target: 'body' })
-  internalTdsRowExpandedListener(event: CustomEvent<object>) {
-    if (this.tableId === event.detail[0]) {
+  internalTdsRowExpandedListener(event: CustomEvent<InternalTdsRowExpandedProps>) {
+    if (this.tableId === event.detail.tableId) {
       // TODO: Improve this logic. Why we get late repose in DOM?
       setTimeout(() => {
         this.bodyExpandClicked();
@@ -147,8 +148,7 @@ export class TdsTableHeaderRow {
         for (let index = 0; index < headers.length; index++) {
           if (headers[index].id === this.host.id) {
             const toolbarHeight = this.compactDesign ? 56 : 64;
-            const offset = this.verticalDividers ? 0 : 1;
-            const topDistance = this.compactDesign ? (32 + offset) * index : (48 + offset) * index;
+            const topDistance = this.compactDesign ? 32 * index : 48 * index;
             (headers[index] as HTMLElement).style.top = this.enableToolbarDesign
               ? `${toolbarHeight + topDistance}px`
               : `${topDistance}px`;
