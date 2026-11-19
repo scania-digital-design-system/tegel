@@ -15,7 +15,7 @@ export default defineConfig([
     '**/*.config.js',
     '**/*.config.ts',
     '**/_beta',
-    'build-css.js',
+    'build-css.mjs',
     'packages/core/components',
     'packages/core/loader',
     'packages/core/stencil.config.ts',

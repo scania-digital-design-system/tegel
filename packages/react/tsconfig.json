@@ -1,23 +1,23 @@
 {
   "extends": "../../tsconfig.json",
-    "compilerOptions": {
-      "paths": {
-        "components": ["./dist/components"]
-      },
-      "rootDir": "./lib",
-      "outDir": "./dist",
-      "lib": ["dom", "es2017"],
-      "module": "esnext",
-      "moduleResolution": "bundler",
-      "target": "es2017",
-      "skipLibCheck": true,
-      "jsx": "react",
-      "jsxFactory": "React.createElement",
-      "jsxFragmentFactory": "React.Fragment",
-      "allowSyntheticDefaultImports": true,
-      "declaration": true,
-      "declarationDir": "./dist/types",
+  "compilerOptions": {
+    "paths": {
+      "components": ["./dist/components"]
     },
-    "include": ["lib"],
-    "exclude": ["node_modules"]
-  }
+    "rootDir": "./lib",
+    "outDir": "./dist",
+    "lib": ["dom", "es2017"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2017",
+    "skipLibCheck": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
+  },
+  "include": ["lib"],
+  "exclude": ["node_modules"]
+}

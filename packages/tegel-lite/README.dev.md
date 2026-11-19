@@ -90,11 +90,11 @@ The files used as source for `@scania/tegel-lite` library are located in `packag
 
 The following scripts are used during build of `Tegel Lite`:
 
-- **packages/core/scripts/compile-tegel-lite-components.js**: Handling compilation of scss files & output css to `packages/tegel-lite/dist`.
+- **packages/core/scripts/compile-tegel-lite-components.mjs**: Handling compilation of scss files & output css to `packages/tegel-lite/dist`.
 
-- **packages/core/scripts/update-tegel-lite-exports.js**: Handling update of exports in `packages/tegel-lite/package.json`
+- **packages/core/scripts/update-tegel-lite-exports.mjs**: Handling update of exports in `packages/tegel-lite/package.json`
 
-- **packages/core/scripts/copy-tegel-lite-assets.js**: Handling copy and output of assets neccessary for the `Tegel Lite` library.
+- **packages/core/scripts/copy-tegel-lite-assets.mjs**: Handling copy and output of assets neccessary for the `Tegel Lite` library.
 
 - Brand variables (Scania & Traton) are compiled into separate CSS files: `scania-variables.css` and `traton-variables.css`.
 - Component tokens are compiled into `global.css` containing component-level CSS variables.
