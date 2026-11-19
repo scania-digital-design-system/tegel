@@ -172,11 +172,16 @@ export class TdsTable {
     return selectedRowsData;
   }
 
-  private getStyles(): Record<string, string> {
+  private getWidthStyles(): Record<string, string> {
     const styles: Record<string, string> = {};
     if (this.horizontalScrollWidth) {
       styles.width = `${this.horizontalScrollWidth}px`;
     }
+    return styles;
+  }
+
+  private getHeightStyles(): Record<string, string> {
+    const styles: Record<string, string> = {};
     if (this.verticalScrollHeight) {
       styles.maxHeight = `${this.verticalScrollHeight}px`;
     }
@@ -264,14 +269,20 @@ export class TdsTable {
   render() {
     return (
       <Host
+        style={this.responsive ? this.getHeightStyles() : undefined}
         class={{
+          'tds-table--vertical-scroll': !!this.verticalScrollHeight && this.responsive,
           'tds-table--responsive': this.responsive,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
         <table
-          style={this.getStyles()}
+          style={
+            !this.responsive
+              ? { ...this.getWidthStyles(), ...this.getHeightStyles() }
+              : this.getWidthStyles()
+          }
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
@@ -279,7 +290,7 @@ export class TdsTable {
             'tds-table--no-min-width': !!this.noMinWidth,
             'tds-table--responsive': this.responsive,
             'tds-table--horizontal-scroll': !!this.horizontalScrollWidth,
-            'tds-table--vertical-scroll': !!this.verticalScrollHeight,
+            'tds-table--vertical-scroll': !!this.verticalScrollHeight && !this.responsive,
             'tds-table--horizontal-scroll-toolbar':
               this.enableHorizontalScrollToolbarDesign && !this.compactDesign,
             'tds-table--horizontal-scroll-toolbar-compact':

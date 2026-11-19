@@ -25,6 +25,7 @@
   @include tds-scrollbar(horizontal);
 }
 
+:host(.tds-table--vertical-scroll),
 .tds-table--vertical-scroll {
   display: block;
   overflow-y: scroll;
