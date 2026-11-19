@@ -396,7 +396,7 @@
     "build:tegel-lite": "pnpm compile:scss && pnpm update:tegel-lite-exports && pnpm copy:assets-tegel-lite",
     "compile:scss": "node scripts/compile-tegel-lite-components.js",
     "update:tegel-lite-exports": "node scripts/update-tegel-lite-exports.js",
-    "copy:assets-tegel-lite": "node scripts/copy-tegel-lite-assets.js",
+    "copy:assets-tegel-lite": "node scripts/copy-tegel-lite-assets.mjs",
     "lint:css:tl": "stylelint \"src/tegel-lite/**/*.scss\"",
     "lint:css:tl:fix": "stylelint \"src/tegel-lite/**/*.scss\" --fix",
     "workspace": "pnpm --workspace-root"
