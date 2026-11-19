@@ -18,7 +18,7 @@
   transition: background-color 200ms ease;
 }
 
-:host(.tds-table__body-cell-expanded) td {
+:host(.tds-table__body-cell-expanded):not(:host(.tds-table--divider)) td {
   border-bottom: none;
 }
 
