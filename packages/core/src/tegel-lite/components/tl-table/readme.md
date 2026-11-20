@@ -25,6 +25,26 @@ The Table component displays data in a structured tabular format with support fo
 
 <br />
 
+### Empty State
+
+When there are no rows to show, render a placeholder row in the body.
+Use `.tl-table__empty-state-row` instead of `.tl-table__row` and
+`.tl-table__empty-state-cell` instead of `.tl-table__body-cell`.
+Set `colspan` to the total number of columns, including any selection
+or expand controls.
+
+```html
+<tbody class="tl-table__body">
+  <tr class="tl-table__empty-state-row">
+    <td class="tl-table__empty-state-cell" colspan="3">No records yet</td>
+  </tr>
+</tbody>
+```
+
+The application should choose the content based on whether the data source is empty
+or active filters return no matches, and should replace the placeholder with data rows
+when they are available.
+
 ### Required Stylesheets
 
 ```

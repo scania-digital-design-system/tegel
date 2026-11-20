@@ -139,7 +139,7 @@ export class TdsTableBody {
 
         {/* Empty state row */}
         <tr class="tds-table__empty-state-row">
-          <td class="tds-table__empty-state" colSpan={this.totalColSpan}>
+          <td class="tds-table__empty-state-cell" colSpan={this.totalColSpan}>
             <slot name="no-data" />
             <slot name="no-filtered-data" />
           </td>

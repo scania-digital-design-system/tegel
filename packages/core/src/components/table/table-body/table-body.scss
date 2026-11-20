@@ -81,7 +81,7 @@ tds-table-body {
   }
 
   // Style the empty state cell without styling the slotted layout.
-  > .tds-table__empty-state-row > .tds-table__empty-state {
+  > .tds-table__empty-state-row > .tds-table__empty-state-cell {
     padding: var(--unit-16);
     background-color: var(--tds-table-body-row-background);
   }
