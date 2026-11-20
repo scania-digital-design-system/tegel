@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Column Filtering',
   parameters: {
@@ -115,11 +117,6 @@ export default {
     column4Width: '',
   },
 };
-
-const renderEmptyStateSlot = (emptyState: string) =>
-  emptyState === 'no-data'
-    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
-    : '<strong>No matching records</strong><div>Try a different filter.</div>';
 
 const ColumnFilteringTemplate = ({
   modeVariant,
@@ -247,7 +244,7 @@ const ColumnFilteringTemplate = ({
             : `
           <tr class="tl-table__empty-state-row">
             <td class="tl-table__empty-state-cell" colspan="4">
-              ${renderEmptyStateSlot(emptyState)}
+              ${renderEmptyStateSlot(emptyState, 'lite')}
             </td>
           </tr>
         `

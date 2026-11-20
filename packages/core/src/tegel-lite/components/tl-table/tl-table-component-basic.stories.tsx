@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Basic',
   parameters: {
@@ -149,11 +151,6 @@ export default {
   },
 };
 
-const renderEmptyStateSlot = (emptyState: string) =>
-  emptyState === 'no-data'
-    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
-    : '<strong>No matching records</strong><div>Try a different filter.</div>';
-
 const Template = ({
   compact,
   modeVariant,
@@ -233,7 +230,7 @@ const Template = ({
               : `
             <tr class="tl-table__empty-state-row">
               <td class="tl-table__empty-state-cell" colspan="4">
-                ${renderEmptyStateSlot(emptyState)}
+                ${renderEmptyStateSlot(emptyState, 'lite')}
               </td>
             </tr>
           `

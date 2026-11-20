@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Col and Row Span',
   parameters: {
@@ -74,50 +76,6 @@ allowing cells to span multiple columns or rows — the same as HTML's native \`
   },
 };
 
-const renderEmptyStateSlot = (emptyState: string) =>
-  emptyState === 'no-data'
-    ? `
-      <div class="tds-u-flex-center" style="padding: var(--unit-80);">
-        <div class="tds-u-flex tds-u-gap2" style="max-width: 560px;">
-          <tds-icon name="truck" size="28px" aria-hidden="true"></tds-icon>
-          <div>
-            <h4 class="tds-headline-04" style="margin: 0;">No vehicles yet</h4>
-            <p class="tds-body-02" style="margin-block: var(--unit-16) 0; color: var(--color-text-defined);">
-              Add a vehicle to start building your fleet, or choose a vehicle type to get started.
-            </p>
-            <div class="tds-u-flex tds-u-flex-wrap tds-u-gap2" style="margin-block-start: var(--unit-32);" role="group" aria-label="Vehicle types">
-              ${['Trucks', 'Buses', 'Vans', 'Trailers', 'Other']
-                .map(
-                  (label) =>
-                    `<tds-chip type="button" size="lg"><span slot="label">${label}</span></tds-chip>`,
-                )
-                .join('')}
-            </div>
-            <div class="tds-u-flex tds-u-flex-wrap tds-u-gap2" style="align-items: center; margin-block-start: var(--unit-32);">
-              <tds-button variant="primary" size="sm" text="Add vehicle"></tds-button>
-              <tds-button variant="secondary" size="sm" text="Import vehicles"></tds-button>
-              <tds-button variant="ghost" size="sm" text="View sample fleet"></tds-button>
-              <tds-link underline><a href="#">Explore Scania</a></tds-link>
-            </div>
-          </div>
-        </div>
-      </div>
-    `
-    : `
-      <div class="tds-u-flex-center" style="padding: var(--unit-80);">
-        <div class="tds-u-flex tds-u-gap2" style="max-width: 448px;">
-          <tds-icon name="search" size="28px" aria-hidden="true"></tds-icon>
-          <div>
-            <h4 class="tds-headline-04" style="margin: 0;">No data found</h4>
-            <p class="tds-body-02" style="margin-block: var(--unit-16) 0; color: var(--color-text-defined);">
-              There's nothing to show here yet. Try adjusting your filters or check back later.
-            </p>
-            <tds-button type="primary" size="sm" text="Clear filters" style="margin-block-start: var(--unit-32);"></tds-button>
-          </div>
-        </div>
-      </div>
-    `;
-
 const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSpan, emptyState }) =>
   `
   <tds-table
@@ -164,7 +122,7 @@ const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSp
       `
           : `
         <div slot="${emptyState}">
-          ${renderEmptyStateSlot(emptyState)}
+          ${renderEmptyStateSlot(emptyState, 'core')}
         </div>
       `
       }
