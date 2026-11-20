@@ -97,6 +97,11 @@ export default {
       },
       options: ['rows-odd', 'rows-even', 'columns-odd', 'columns-even', 'none'],
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -158,6 +163,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     zebraMode: 'rows-odd',
+    emptyState: 'none',
     headerTextAlignment: 'left',
     cellTextAlignment: 'left',
     compactDesign: false,
@@ -174,6 +180,11 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const ZebraModeTemplate = ({
   modeVariant,
   headerTextAlignment,
@@ -185,6 +196,7 @@ const ZebraModeTemplate = ({
   verticalDivider,
   horizontalScrollWidth,
   zebraMode,
+  emptyState,
   noMinWidth,
   column1Width,
   column2Width,
@@ -215,7 +227,10 @@ const ZebraModeTemplate = ({
             column4Width ? `custom-width="${column4Width}"` : ''
           } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
-      <tds-table-body>
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
@@ -300,6 +315,13 @@ const ZebraModeTemplate = ({
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
               }></tds-body-cell>
           </tds-table-body-row>
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState)}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>`;
 

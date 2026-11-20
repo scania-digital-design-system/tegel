@@ -73,6 +73,11 @@ export default {
         defaultValue: { summary: '500' },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     column1Width: {
       name: 'Column 1 width',
       description:
@@ -117,12 +122,18 @@ export default {
     verticalDivider: false,
     noMinWidth: false,
     horizontalScrollWidth: '500',
+    emptyState: 'none',
     column1Width: '',
     column2Width: '',
     column3Width: '',
     column4Width: '',
   },
 };
+
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
 
 const HorizontalScrollTemplate = ({
   modeVariant,
@@ -131,6 +142,7 @@ const HorizontalScrollTemplate = ({
   verticalDivider,
   noMinWidth,
   horizontalScrollWidth,
+  emptyState,
   column1Width,
   column2Width,
   column3Width,
@@ -178,6 +190,9 @@ const HorizontalScrollTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row">
           <td class="tl-table__body-cell" data-column="0">Test value 1</td>
           <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -214,6 +229,15 @@ const HorizontalScrollTemplate = ({
           <td class="tl-table__body-cell" data-column="2">Test value 7</td>
           <td class="tl-table__body-cell" data-column="3">Test value 8</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="4">
+              ${renderEmptyStateSlot(emptyState)}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

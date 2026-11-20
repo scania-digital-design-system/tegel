@@ -43,6 +43,11 @@ export default {
         type: 'boolean',
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     compactDesign: {
       name: 'Compact design',
       description: 'Enables compact design of the Table, rows with less height.',
@@ -123,6 +128,7 @@ export default {
     modeVariant: 'Primary',
     allSelected: false,
     allIndeterminate: false,
+    emptyState: 'none',
     allDisabled: false,
     compactDesign: false,
     responsive: false,
@@ -135,10 +141,16 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const MultiselectTemplate = ({
   modeVariant,
   allSelected,
   allIndeterminate,
+  emptyState,
   allDisabled,
   compactDesign,
   responsive,
@@ -186,6 +198,9 @@ const MultiselectTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row">
           <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
@@ -230,6 +245,15 @@ const MultiselectTemplate = ({
           <td class="tl-table__body-cell" data-column="3">Spain</td>
           <td class="tl-table__body-cell" data-column="4">1789357</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="5">
+              ${renderEmptyStateSlot(emptyState)}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

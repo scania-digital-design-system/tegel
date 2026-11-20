@@ -41,6 +41,11 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     responsiveDesign: {
       name: 'Responsive Table',
       description:
@@ -125,6 +130,7 @@ export default {
     modeVariant: 'Primary',
     compactDesign: false,
     expanded: false,
+    emptyState: 'none',
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -136,10 +142,16 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
   expanded,
+  emptyState,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -188,6 +200,9 @@ const ExpandableRowTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row ${expandedClass}" data-row-id="1">
           <td class="tl-table__body-cell">
               <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
@@ -264,6 +279,15 @@ const ExpandableRowTemplate = ({
             <!-- end of demo block -->
           </td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="5">
+              ${renderEmptyStateSlot(emptyState)}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

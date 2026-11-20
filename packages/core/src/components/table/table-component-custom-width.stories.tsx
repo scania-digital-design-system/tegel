@@ -35,6 +35,11 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -94,6 +99,7 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     verticalDivider: true,
     noMinWidth: true,
     column1Width: '321px',
@@ -103,10 +109,16 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const BasicTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -136,7 +148,10 @@ const BasicTemplate = ({
             column4Width ? `custom-width="${column4Width}"` : ''
           } ></tds-header-cell>
       </tds-table-header>
-      <tds-table-body>
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
               <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -173,6 +188,13 @@ const BasicTemplate = ({
               <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
               <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
           </tds-table-body-row>
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState)}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>`;
 

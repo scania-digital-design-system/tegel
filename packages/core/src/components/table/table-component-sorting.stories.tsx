@@ -98,6 +98,11 @@ export default {
         defaultValue: { summary: 'asc' },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -163,6 +168,7 @@ export default {
     column4sortable: true,
     sortColumnKey: 'None',
     sortDirection: 'asc',
+    emptyState: 'none',
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -171,6 +177,11 @@ export default {
     column4Width: '',
   },
 };
+
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
 
 const SortingTemplate = ({
   modeVariant,
@@ -182,6 +193,7 @@ const SortingTemplate = ({
   column4sortable,
   sortColumnKey,
   sortDirection,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -215,7 +227,10 @@ const SortingTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row>
                 <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -252,6 +267,13 @@ const SortingTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState)}
+              </div>
+            `
+            }
           </tds-table-body>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->

@@ -59,16 +59,27 @@ allowing cells to span multiple columns or rows — the same as HTML's native \`
         defaultValue: { summary: 1 },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     headerColSpan: 1,
     bodyColSpan: 1,
     bodyRowSpan: 1,
+    emptyState: 'none',
   },
 };
 
-const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSpan }) =>
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
+const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSpan, emptyState }) =>
   `
   <tds-table
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
@@ -81,7 +92,10 @@ const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSp
       ${headerColSpan < 2 ? '<tds-header-cell cell-value="Column B"></tds-header-cell>' : ''}
       ${headerColSpan < 3 ? '<tds-header-cell cell-value="Column C"></tds-header-cell>' : ''}
     </tds-table-header>
-    <tds-table-body>
+    <tds-table-body empty-state="${emptyState}">
+      ${
+        emptyState === 'none'
+          ? `
       <tds-table-body-row>
         <tds-body-cell
           cell-value="Spans ${bodyColSpan} col${bodyColSpan > 1 ? 's' : ''}"
@@ -108,6 +122,13 @@ const ColRowSpanTemplate = ({ modeVariant, headerColSpan, bodyColSpan, bodyRowSp
         <tds-body-cell cell-value="B4"></tds-body-cell>
         <tds-body-cell cell-value="C4"></tds-body-cell>
       </tds-table-body-row>
+      `
+          : `
+        <div slot="${emptyState}">
+          ${renderEmptyStateSlot(emptyState)}
+        </div>
+      `
+      }
     </tds-table-body>
   </tds-table>
 `;

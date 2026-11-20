@@ -51,6 +51,11 @@ export default {
         type: 'text',
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -123,6 +128,7 @@ export default {
     Download
   </button>
 </div>`,
+    emptyState: 'none',
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -132,11 +138,17 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const BatchActionTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
   batchArea,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -179,6 +191,9 @@ const BatchActionTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row">
           <td class="tl-table__body-cell" data-column="0">Test value 1</td>
           <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -215,6 +230,15 @@ const BatchActionTemplate = ({
           <td class="tl-table__body-cell" data-column="2">Test value 7</td>
           <td class="tl-table__body-cell" data-column="3">Test value 8</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="4">
+              ${renderEmptyStateSlot(emptyState)}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

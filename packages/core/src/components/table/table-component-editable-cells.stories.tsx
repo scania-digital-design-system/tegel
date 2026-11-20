@@ -68,6 +68,11 @@ export default {
         defaultValue: { summary: true },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     disableHeaderPadding: {
       name: 'Disable header cell padding',
       description:
@@ -158,6 +163,7 @@ export default {
     verticalDivider: false,
     horizontalScrollWidth: '',
     showIcon: true,
+    emptyState: 'none',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -166,6 +172,11 @@ export default {
   },
 };
 
+const renderEmptyStateSlot = (emptyState: string) =>
+  emptyState === 'no-data'
+    ? '<strong>No records yet</strong><div>New records will appear here.</div>'
+    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+
 const EditableCellsTemplate = ({
   modeVariant,
   headerTextAlignment,
@@ -173,6 +184,7 @@ const EditableCellsTemplate = ({
   compactDesign,
   responsiveDesign,
   showIcon,
+  emptyState,
   disableHeaderPadding,
   verticalDivider,
   horizontalScrollWidth,
@@ -220,7 +232,10 @@ const EditableCellsTemplate = ({
     } text-align="${headerTextAlignment}"></tds-header-cell>
   </tds-table-header>
 
-  <tds-table-body>
+  <tds-table-body empty-state="${emptyState}">
+    ${
+      emptyState === 'none'
+        ? `
     <tds-table-body-row>
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
@@ -448,6 +463,13 @@ const EditableCellsTemplate = ({
         </tds-table-body-input-wrapper>
       </tds-body-cell>
     </tds-table-body-row>
+    `
+        : `
+      <div slot="${emptyState}">
+        ${renderEmptyStateSlot(emptyState)}
+      </div>
+    `
+    }
   </tds-table-body>
 </tds-table>
   </div>  
