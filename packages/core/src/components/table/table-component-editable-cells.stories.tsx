@@ -175,7 +175,20 @@ export default {
 const renderEmptyStateSlot = (emptyState: string) =>
   emptyState === 'no-data'
     ? '<strong>No records yet</strong><div>New records will appear here.</div>'
-    : '<strong>No matching records</strong><div>Try a different filter.</div>';
+    : `
+      <div class="tds-u-flex-center" style="padding: var(--unit-80);">
+        <div class="tds-u-flex tds-u-gap2" style="max-width: 447px;">
+          <tds-icon name="search" size="28px" aria-hidden="true"></tds-icon>
+          <div>
+            <h4 class="tds-headline-04" style="margin: 0;">No data found</h4>
+            <p class="tds-body-02" style="margin-block: var(--unit-16) 0; color: var(--color-text-defined);">
+              There's nothing to show here yet. Try adjusting your filters or check back later.
+            </p>
+            <tds-button type="primary" size="sm" text="Clear filters" style="margin-top: var(--unit-32);"></tds-button>
+          </div>
+        </div>
+      </div>
+    `;
 
 const EditableCellsTemplate = ({
   modeVariant,
