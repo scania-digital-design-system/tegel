@@ -28,7 +28,7 @@ const coreNoDataSlot = `
 
 const coreNoFilteredDataSlot = `
   <div class="tds-u-flex-center" style="padding: var(--unit-80);">
-    <div class="tds-u-flex tds-u-gap2" style="max-width: 448px;">
+    <div class="tds-u-flex tds-u-gap2" style="max-width: 560px;">
       <tds-icon name="search" size="28px" aria-hidden="true"></tds-icon>
       <div>
         <h4 class="tds-headline-04" style="margin: 0;">No data found</h4>
@@ -41,11 +41,34 @@ const coreNoFilteredDataSlot = `
   </div>
 `;
 
-const liteNoDataSlot = '<strong>No records yet</strong><div>New records will appear here.</div>';
+const liteNoDataSlot = `
+  <div class="tds-u-flex-center" style="padding: var(--unit-80);">
+    <div class="tds-u-flex tds-u-gap2" style="max-width: 560px;">
+      <span class="tl-icon tl-icon--truck tl-icon--28" aria-hidden="true"></span>
+      <div>
+        <h4 class="tds-headline-04" style="margin: 0;">No vehicles yet</h4>
+        <p class="tds-body-02" style="margin-block: var(--unit-16) 0; color: var(--color-text-defined);">
+          Add a vehicle to start building your fleet, or choose a vehicle type to get started.
+        </p>
+        <div class="tds-u-flex tds-u-flex-wrap tds-u-gap2" style="margin-block-start: var(--unit-32);" role="group" aria-label="Vehicle types">
+          ${['Trucks', 'Buses', 'Vans', 'Trailers', 'Other']
+            .map((label) => `<button type="button" class="tl-chip tl-chip--lg">${label}</button>`)
+            .join('')}
+        </div>
+        <div class="tds-u-flex tds-u-flex-wrap tds-u-gap2" style="align-items: center; margin-block-start: var(--unit-32);">
+          <button type="button" class="tl-button tl-button--primary tl-button--sm">Add vehicle</button>
+          <button type="button" class="tl-button tl-button--secondary tl-button--sm">Import vehicles</button>
+          <button type="button" class="tl-button tl-button--ghost tl-button--sm">View sample fleet</button>
+          <a class="tl-link tl-link--underline" href="#">Explore Scania</a>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
 
 const liteNoFilteredDataSlot = `
   <div class="tds-u-flex-center" style="padding: var(--unit-80);">
-    <div class="tds-u-flex tds-u-gap2" style="max-width: 448px;">
+    <div class="tds-u-flex tds-u-gap2" style="max-width: 560px;">
       <span class="tl-icon tl-icon--search tl-icon--28" aria-hidden="true"></span>
       <div>
         <h4 class="tds-headline-04" style="margin: 0;">No data found</h4>
