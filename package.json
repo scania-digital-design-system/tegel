@@ -63,19 +63,19 @@
     "@types/node": "catalog:",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.13.0",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-storybook": "10.6.5",
+    "eslint-plugin-storybook": "10.6.7",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "prettier": "^3.9.10",
-    "style-dictionary": "^5.7.1",
+    "style-dictionary": "^5.8.0",
     "stylelint": "^17.16.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "catalog:",
-    "typescript-eslint": "^8.72.0"
+    "typescript-eslint": "^8.72.2"
   },
   "config": {
     "commitizen": {
@@ -126,11 +126,11 @@
     "**/*.{js,jsx,ts,tsx,scss,md,yml,yaml}": "prettier --write"
   },
   "engines": {
-    "pnpm": "^10.0.0",
+    "pnpm": "^12.0.0",
     "node": ">=22.11.0"
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3"
   },
-  "packageManager": "pnpm@10.34.5"
+  "packageManager": "pnpm@12.21.0"
 }

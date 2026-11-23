@@ -49,6 +49,10 @@ env:
   NODE_VERSION: '22.22.3'
   TAG: latest
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   check-npm-status:
     runs-on: ubuntu-latest
@@ -214,8 +218,6 @@ jobs:
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Core - Commit and push changes
         run: |
@@ -346,8 +348,6 @@ jobs:
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/dist/components
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   #RELEASE REACT
   release-react:
@@ -407,8 +407,6 @@ jobs:
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
         run: pnpm publish --tag ${{ github.event.inputs.tags }} --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   #ON FAILURE
   on-failure:
