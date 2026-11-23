@@ -1,5 +1,5 @@
-# Use the official Playwright image with Playwright 1.64.0 and Ubuntu 22.04 (Jammy)
-FROM mcr.microsoft.com/playwright:v1.64.0-jammy AS base
+# Use the official Playwright image with Playwright 1 and Ubuntu 22.04 (Jammy)
+FROM mcr.microsoft.com/playwright:v1.65.0-jammy AS base
 
 # Set /app as the working directory inside the container
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Configure pnpm home directory
 ENV PNPM_HOME=/pnpm
 
-# Enable Corepack so that pnpm can be used
-RUN corepack enable
+# Install pnpm globally, using npm
+RUN npm install --global pnpm
 
 # Copy the project into the container
 # Files and directories excluded by .dockerignore are not copied

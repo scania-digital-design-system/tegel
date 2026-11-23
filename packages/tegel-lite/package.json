@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
@@ -79,7 +79,7 @@
   "devDependencies": {
     "@playwright/test": "catalog:",
     "@types/node": "catalog:",
-    "serve": "^14.2.5"
+    "serve": "^14.2.8"
   },
   "license": "MIT"
 }

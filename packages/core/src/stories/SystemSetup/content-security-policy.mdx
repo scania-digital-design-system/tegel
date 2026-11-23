@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="System Setup/Content Security Policy" />
+
+**Published: 2026-11-05**
+
+# Content Security Policy (CSP) 🔒
+
+If your application restricts inline styles with a Content Security Policy (CSP), provide a nonce for the styles Stencil creates for Tegel components.
+
+## Set up a nonce
+
+On your server (or at the edge), generate a new, unpredictable, base64-encoded nonce of at least 128 bits for **each HTTP response** (for example, `crypto.randomBytes(16).toString('base64')` in Node.js). Set a CSP response header containing that nonce:
+
+```http
+Content-Security-Policy: style-src 'self' 'nonce-{NONCE}'; script-src 'self' 'nonce-{NONCE}'
+```
+
+Pass the same server-generated nonce to Stencil using the approach for your output target below. Adjust the example policy for any other resources your application loads.
+
+### Client-side applications: `dist`
+
+If you use the Tegel loader (for example, in Angular or plain JavaScript), call `setNonce()` in your application entrypoint **before** Tegel components are registered or rendered:
+
+```typescript
+import { setNonce } from '@scania/tegel/loader';
+
+setNonce(nonce);
+```
+
+### React wrappers and custom elements: `dist-custom-elements`
+
+Tegel's React wrappers use the custom-elements output. Set the nonce from that output target **before** rendering components:
+
+```typescript
+import { setNonce } from '@scania/tegel/dist/components/index.js';
+
+setNonce(nonce);
+```
+
+In both examples, `nonce` is the value generated for this response and supplied to your application. If you use Angular, also [configure Angular's nonce](https://angular.dev/best-practices/security#content-security-policy) for its own styles.
+
+### Stencil server-side rendering: `www`
+
+When using Stencil's WWW output for SSR, include the nonce in a meta tag in the served HTML `<head>`:
+
+```html
+<meta name="csp-nonce" content="{NONCE}">
+```
+
+Insert the same per-response value as in the CSP header. For static pre-rendered pages, use a server-side mechanism to inject a fresh nonce or choose a hash-based policy instead.
+
+## Why Stencil's internal inline styles work
+
+Inside Tegel components, Stencil applies JSX `style` objects by setting individual JavaScript style properties. For example, `<tds-icon>` sets `fontSize` on its internal SVG as `svg.style.fontSize = '16px'`. These client-side property assignments work under a restrictive `style-src` policy, even though developer tools may display a `style` attribute.
+
+This does not apply to HTML `style` attributes in your application. Write application styles in a stylesheet or set individual JavaScript style properties instead. A nonce allows matching `<style>` elements, not `style` attributes. See [MDN's `style-src` examples](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src#violation_cases).
+
+## Troubleshooting
+
+- If a Stencil-generated `<style>` element is blocked, check that the nonce was supplied before rendering and matches the CSP header.
+- If a stylesheet or script URL is blocked, allow its origin in the corresponding CSP directive.
+- Test with your production CSP and monitor browser CSP violations.
+
+## Further reading
+
+- [Stencil: CSP nonces and output targets](https://stenciljs.com/docs/csp-nonce)
+- [MDN: CSP nonces and hashes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)
+- [Angular: Content security policy](https://angular.dev/best-practices/security#content-security-policy)
+
+## Want to get in touch? 📞
+
+Awesome! We are available via Teams and have two support channels. One for [development](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac) and one for [design](https://teams.microsoft.com/l/channel/19%3A8d30ded56af14672b471062ec1e66345%40thread.skype/Design%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac).
+
+If you want to submit a bug report or feature request, please do so via our [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
+
+All the best,  
+The Tegel Team.

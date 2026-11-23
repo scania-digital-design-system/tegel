@@ -113,13 +113,6 @@
     @include input-border-hover;
   }
 
-  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
-    user-select: auto;
-    caret-color: transparent;
-    cursor: default;
-    pointer-events: none;
-  }
-
   .tl-text-field:has(.tl-text-field__input[readonly]):not(
       :has(.tl-text-field__input:disabled),
       .tl-text-field--hide-readonly-icon
@@ -177,6 +170,14 @@
   .tl-text-field--label-inside &::placeholder {
     color: transparent !important;
   }
+}
+
+.tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled))
+  .tl-text-field__input[readonly] {
+  user-select: auto;
+  caret-color: transparent;
+  cursor: default;
+  pointer-events: none;
 }
 
 .tl-text-field__label {

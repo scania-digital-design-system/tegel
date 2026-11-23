@@ -30,6 +30,10 @@ on:
         default: true
         type: boolean
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+
 jobs:
   release-tegel-lite:
     runs-on: ubuntu-latest
@@ -145,8 +149,6 @@ jobs:
       - name: Publish Tegel Lite package to NPM
         if: inputs.dryRun != true && steps.check-version.outputs.VERSION_EXISTS != 'true'
         working-directory: packages/tegel-lite
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --access public --tag latest --no-git-checks
 
     outputs:

@@ -79,6 +79,7 @@ test.describe.parallel(componentName, () => {
 
     /* Compare value with initial one */
     const thumbValue = firstSliderSection.locator('.tds-slider__value');
+    await expect(thumbValue).toBeVisible();
     await expect(thumbValue).not.toHaveText('50');
   });
 

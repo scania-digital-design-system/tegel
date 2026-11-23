@@ -23,7 +23,9 @@ testConfigurations.basicWithBrandVariants.forEach((config) => {
       );
       expect(sliderCursorStyle).toBe('pointer');
       /* Check diff on screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      /* Needs the maxDiffPixels due to browser rendering being slightly different
+      locally versus pipeline */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 30 });
     });
   });
 });

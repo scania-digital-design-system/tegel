@@ -151,15 +151,12 @@ export class TdsCard {
       [`${this.imagePlacement}-stretch`]: this.stretch,
     };
 
-    const ariaLabel = this.header ? this.header : `Card ${this.cardId}`;
-
     return (
       <Host class={{ [`tds-mode-variant-${this.modeVariant}`]: !!this.modeVariant }}>
         {this.clickable ? (
           <button
             class={cardStyle}
             onClick={this.handleClick}
-            aria-label={ariaLabel}
             aria-describedby={`header-${this.cardId}`}
           >
             {this.getCardContent()}
