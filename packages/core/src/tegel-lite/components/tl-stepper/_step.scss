@@ -1,5 +1,6 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-stepper-vars' as *;
+@use '../tl-icon/icon-list' as *;
 
 @mixin divider {
   content: ' ';
@@ -287,6 +288,29 @@
 
   .tl-stepper__step--error &::after {
     mask-image: var(--icon-warning-svg);
+  }
+
+  .tl-stepper__step--current &,
+  .tl-stepper__step--upcoming & {
+    @each $icon in $icons {
+      &.tl-stepper__node--#{$icon}::after {
+        content: '';
+        display: block;
+        width: 20px; // Default to lg size
+        height: 20px;
+
+        .tl-stepper--sm & {
+          width: 16px;
+          height: 16px;
+        }
+
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        background-color: currentcolor;
+        mask-image: var(--icon-#{$icon}-svg);
+      }
+    }
   }
 }
 

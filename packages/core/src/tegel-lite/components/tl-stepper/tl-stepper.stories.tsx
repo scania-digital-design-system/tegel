@@ -1,3 +1,8 @@
+import { scaniaIconNames } from '../../../types/ScaniaIcons';
+import { tratonIconNames } from '../../../types/TratonIcons';
+
+const iconsNames = [...new Set([...scaniaIconNames, ...tratonIconNames])];
+
 export default {
   title: 'Tegel Lite/Stepper',
   parameters: {
@@ -83,6 +88,14 @@ export default {
         defaultValue: { summary: 'not defined' },
       },
     },
+    iconForCurrentStep: {
+      name: 'Icon for current step',
+      description: 'Declares the icon that should appear inside the current step node.',
+      control: {
+        type: 'select',
+      },
+      options: iconsNames,
+    },
   },
   args: {
     size: 'Large',
@@ -91,10 +104,19 @@ export default {
     hideLabels: false,
     width: 'not defined',
     height: 'not defined',
+    iconForCurrentStep: 'truck',
   },
 };
 
-const Template = ({ size, orientation, labelPosition, hideLabels, width, height }) => {
+const Template = ({
+  size,
+  orientation,
+  labelPosition,
+  hideLabels,
+  width,
+  height,
+  iconForCurrentStep,
+}) => {
   const widthStyle = width !== 'not defined' ? `width: ${width};` : '';
   const heightStyle = height !== 'not defined' ? `height: ${height};` : '';
 
@@ -121,26 +143,28 @@ const Template = ({ size, orientation, labelPosition, hideLabels, width, height 
     },
     {
       label: 'Current step',
+      icon: iconForCurrentStep !== undefined && iconForCurrentStep !== 'undefined',
       state: 'tl-stepper__step--current',
       index: 3,
     },
     {
       label: 'Upcoming step',
+      icon: false,
       state: 'tl-stepper__step--upcoming',
       index: 4,
     },
   ];
 
   const items = steps
-    .map(({ label, state, index }) => {
+    .map(({ label, state, index, icon }) => {
       const nodeContent =
-        state === 'tl-stepper__step--success' || state === 'tl-stepper__step--error'
+        state === 'tl-stepper__step--success' || state === 'tl-stepper__step--error' || icon
           ? '' // Icons are rendered via ::after pseudo-element
           : String(index);
 
       return `
         <li class="tl-stepper__step ${state || ''}">
-          <div class="tl-stepper__node">${nodeContent}</div>
+          <div class="tl-stepper__node ${icon ? `tl-stepper__node--${iconForCurrentStep}` : ''}">${nodeContent}</div>
           <div class="tl-stepper__label">${label}</div>
         </li>
       `;
