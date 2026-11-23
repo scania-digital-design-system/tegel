@@ -2,6 +2,10 @@
   "name": "@scania/tegel-angular-17",
   "version": "1.68.0",
   "description": "Angular wrappers for Tegel package using Angular 17 and above",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
+  },
   "peerDependencies": {
     "@angular/common": ">=17.0.0",
     "@angular/core": ">=17.0.0",
