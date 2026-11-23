@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import sass from 'sass';
+import * as sass from 'sass';
 import { SHIPPED_COMPONENTS } from '../src/tegel-lite/shipped-components.js';
 
 // Define __dirname equivalent for ES modules
