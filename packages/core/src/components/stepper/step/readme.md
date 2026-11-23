@@ -1,6 +1,6 @@
-# tds-stepper-item
+# tds-step
 
-
+Custom icons in each step are supported as long as state is **current** or **upcoming**. If no icon name is defined, step node will contain the index of the step.
 
 <!-- Auto Generated Below -->
 
