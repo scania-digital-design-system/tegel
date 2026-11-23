@@ -9,6 +9,7 @@
 
 | Property         | Attribute          | Description                                                                        | Type                                              | Default      |
 | ---------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
+| `iconName`       | `icon-name`        | Icon to show in step if state is current or upcoming.                              | `string \| undefined`                             | `undefined`  |
 | `index`          | `index`            | Index of the step. Will be displayed in the step if the state is current/upcoming. | `string \| undefined`                             | `undefined`  |
 | `state`          | `state`            | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
 | `tdsAriaCurrent` | `tds-aria-current` |                                                                                    | `string \| undefined`                             | `undefined`  |

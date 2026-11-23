@@ -25,6 +25,9 @@ export class TdsStep {
 
   @Prop({ reflect: true }) tdsAriaCurrent?: string;
 
+  /** Icon to show in step if state is current or upcoming. */
+  @Prop({ reflect: true }) iconName?: string;
+
   @State() hideLabels?: boolean;
 
   @State() size?: 'sm' | 'lg';
@@ -32,6 +35,8 @@ export class TdsStep {
   @State() orientation?: 'horizontal' | 'vertical';
 
   @State() labelPosition?: 'aside' | 'below';
+
+  @State() icon?: string;
 
   @Element() el!: HTMLElement;
 
@@ -49,6 +54,7 @@ export class TdsStep {
     this.size = this.stepperEl.size;
     this.hideLabels = this.stepperEl.hideLabels;
     this.stepperId = this.stepperEl.stepperId;
+    this.icon = this.iconName;
   }
 
   @Listen('internalTdsPropsChange', { target: 'body' })
@@ -61,6 +67,32 @@ export class TdsStep {
           this[propToStateMap[changedProp]] = event.detail[changedProp];
         }
       });
+    }
+  }
+
+  private renderStepNode() {
+    if (this.state === 'error') {
+      this.icon = 'warning';
+    } else if (this.state === 'success') {
+      this.icon = 'tick';
+    }
+
+    if (this.icon && this.icon !== '' && this.icon !== 'undefined') {
+      return (
+        <tds-icon
+          aria-hidden="true"
+          svgTitle={`tds-step-icon-${this.stepperId}`}
+          class={'tds-step-icon'}
+          name={this.icon}
+          size={this.size === 'lg' ? '20px' : '16px'}
+        ></tds-icon>
+      );
+    } else {
+      return (
+        <span aria-hidden="true" class="index-container">
+          {this.index}
+        </span>
+      );
     }
   }
 
@@ -80,19 +112,7 @@ export class TdsStep {
           <div class={`step-container text-${this.labelPosition}`}>
             <span class={`${this.state} content-container`}>
               <div class="left-divider"></div>
-              {this.state === 'success' || this.state === 'error' ? (
-                <tds-icon
-                  aria-hidden="true"
-                  svgTitle={`tds-step-icon-${this.stepperId}`}
-                  class={'tds-step-icon'}
-                  name={this.state === 'success' ? 'tick' : 'warning'}
-                  size={this.size === 'lg' ? '20px' : '16px'}
-                ></tds-icon>
-              ) : (
-                <span aria-hidden="true" class="index-container">
-                  {this.index}
-                </span>
-              )}
+              {this.renderStepNode()}
               {(this.labelPosition === 'below' || this.orientation === 'vertical') && (
                 <div class="right-divider"></div>
               )}

@@ -1,3 +1,5 @@
+import { scaniaIconNames as iconsNames } from '../../types/ScaniaIcons';
+
 export default {
   title: 'Components/Stepper',
   parameters: {
@@ -85,6 +87,14 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    iconNameForCurrentStep: {
+      name: 'Icon name for current step',
+      description: 'Changes the icon for the current step. Also possible in upcoming step.',
+      control: {
+        type: 'select',
+      },
+      options: iconsNames,
+    },
   },
   args: {
     size: 'Large',
@@ -93,6 +103,7 @@ export default {
     hideLabels: false,
     height: 'not defined',
     width: 'not defined',
+    iconNameForCurrentStep: 'pause',
   },
 };
 
@@ -100,7 +111,15 @@ const sizeLookUp = {
   Large: 'lg',
   Small: 'sm',
 };
-const Template = ({ size, orientation, labelPosition, hideLabels, width, height }) => {
+const Template = ({
+  size,
+  orientation,
+  labelPosition,
+  hideLabels,
+  width,
+  height,
+  iconNameForCurrentStep,
+}) => {
   const widthStyle = width !== 'not defined' ? `width: ${width};` : '';
   const heightStyle = height !== 'not defined' ? `height: ${height};` : '';
   return `
@@ -114,7 +133,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels, width, height 
         <tds-step state="error" index="2">
           <div slot="label">Error step</div>
         </tds-step>
-        <tds-step state="current" index="3" tds-aria-current="step">
+        <tds-step state="current" index="3" tds-aria-current="step" icon-name=${iconNameForCurrentStep}>
           <div slot="label">Current step</div>
         </tds-step>
         <tds-step index="4">
