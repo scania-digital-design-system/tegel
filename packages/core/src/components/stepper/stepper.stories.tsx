@@ -133,7 +133,7 @@ const Template = ({
         <tds-step state="error" index="2">
           <div slot="label">Error step</div>
         </tds-step>
-        <tds-step state="current" index="3" tds-aria-current="step" icon-name=${iconNameForCurrentStep}>
+        <tds-step state="current" index="3" tds-aria-current="step" icon-name="${iconNameForCurrentStep}">
           <div slot="label">Current step</div>
         </tds-step>
         <tds-step index="4">
