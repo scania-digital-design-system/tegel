@@ -37,6 +37,7 @@
  - [tds-side-menu-close-button](../side-menu/side-menu-close-button)
  - [tds-side-menu-collapse-button](../side-menu/side-menu-collapse-button)
  - [tds-side-menu-dropdown](../side-menu/side-menu-dropdown)
+ - [tds-side-panel](../side-panel)
  - [tds-slider](../slider)
  - [tds-step](../stepper/step)
  - [tds-table-body-input-wrapper](../table/table-body-input-wrapper)
@@ -70,6 +71,7 @@ graph TD;
   tds-side-menu-close-button --> tds-icon
   tds-side-menu-collapse-button --> tds-icon
   tds-side-menu-dropdown --> tds-icon
+  tds-side-panel --> tds-icon
   tds-slider --> tds-icon
   tds-step --> tds-icon
   tds-table-body-input-wrapper --> tds-icon
