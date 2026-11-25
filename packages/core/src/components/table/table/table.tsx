@@ -269,40 +269,40 @@ export class TdsTable {
   render() {
     return (
       <Host
-        style={this.responsive ? this.getHeightStyles() : undefined}
         class={{
-          'tds-table--vertical-scroll': !!this.verticalScrollHeight && this.responsive,
           'tds-table--responsive': this.responsive,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
-        <table
-          style={
-            !this.responsive
-              ? { ...this.getWidthStyles(), ...this.getHeightStyles() }
-              : this.getWidthStyles()
-          }
+        <div
+          style={{ ...this.getHeightStyles(), ...this.getWidthStyles() }}
           class={{
-            'tds-table': true,
-            'tds-table--compact': this.compactDesign,
-            'tds-table--divider': this.verticalDividers,
-            'tds-table--no-min-width': !!this.noMinWidth,
-            'tds-table--responsive': this.responsive,
+            'tds-table--vertical-scroll': !!this.verticalScrollHeight,
             'tds-table--horizontal-scroll': !!this.horizontalScrollWidth,
-            'tds-table--vertical-scroll': !!this.verticalScrollHeight && !this.responsive,
-            'tds-table--horizontal-scroll-toolbar':
-              this.enableHorizontalScrollToolbarDesign && !this.compactDesign,
-            'tds-table--horizontal-scroll-toolbar-compact':
-              this.enableHorizontalScrollToolbarDesign && this.compactDesign,
-            'tds-table--horizontal-scroll-footer':
-              this.enableHorizontalScrollFooterDesign && !this.compactDesign,
-            'tds-table--horizontal-scroll-footer-compact':
-              this.enableHorizontalScrollFooterDesign && this.compactDesign,
+            'tds-table--responsive': this.responsive,
           }}
         >
-          <slot />
-        </table>
+          <table
+            class={{
+              'tds-table': true,
+              'tds-table--compact': this.compactDesign,
+              'tds-table--divider': this.verticalDividers,
+              'tds-table--no-min-width': !!this.noMinWidth,
+              'tds-table--responsive': this.responsive,
+              'tds-table--horizontal-scroll-toolbar':
+                this.enableHorizontalScrollToolbarDesign && !this.compactDesign,
+              'tds-table--horizontal-scroll-toolbar-compact':
+                this.enableHorizontalScrollToolbarDesign && this.compactDesign,
+              'tds-table--horizontal-scroll-footer':
+                this.enableHorizontalScrollFooterDesign && !this.compactDesign,
+              'tds-table--horizontal-scroll-footer-compact':
+                this.enableHorizontalScrollFooterDesign && this.compactDesign,
+            }}
+          >
+            <slot />
+          </table>
+        </div>
       </Host>
     );
   }
