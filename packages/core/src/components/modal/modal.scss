@@ -187,17 +187,6 @@ $modals: (
   }
 }
 
-// .stepper {
-//   padding: 0 16px 16px 16px;
-//   display: flex;
-//   position: sticky;
-//   background-color: var(--tds-modal-background);
-//   z-index: 1;
-//   justify-content: center;
-//   width: 100%;
-
-// }
-
 .body {
   @include modal-body;
 }
