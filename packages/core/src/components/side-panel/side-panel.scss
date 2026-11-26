@@ -1,0 +1,139 @@
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/focus-state' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
+@use './side-panel-vars' as *;
+@use '../../mixins/z-index' as *;
+@use '../../mixins/scrollbar' as *;
+@use '../button/button.scss' as *;
+
+@mixin side-panel-position {
+  position: fixed;
+  inset: 0;
+}
+
+@mixin side-panel-button {
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+:host(.tds-side-panel--full-height) {
+  height: 100%;
+  top: 0;
+}
+
+:host {
+  height: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: tds-z-index(side-panel);
+
+  .tds-side-panel__overlay {
+    @include tds-box-sizing;
+    @include side-panel-position;
+
+    background-color: var(--tds-side-panel-overlay-background);
+    pointer-events: auto;
+  }
+
+  .tds-side-panel__arrow {
+    position: absolute;
+    right: calc(360px + 32px); // side panel width + padding
+    top: 0;
+    height: 100%;
+
+    .tds-side-panel__collapse-button {
+      @include side-panel-button;
+
+      height: 48px;
+      width: 48px;
+      background-color: var(--tds-side-panel-background);
+      box-shadow: var(--tds-side-panel-box-shadow);
+      color: var(--tds-side-panel-text-color);
+
+      &:focus {
+        @include tds-focus-state;
+      }
+    }
+
+    &--collapsed {
+      right: 0;
+
+      .tds-side-panel__collapse-button {
+        right: 8px;
+      }
+    }
+
+    .tds-collapsed-side-panel {
+      padding: 16px 0;
+      position: absolute;
+      width: 8px;
+      right: 0;
+      top: 0;
+      height: 100%;
+      box-shadow: var(--tds-side-panel-box-shadow);
+      background-color: var(--tds-side-panel-background);
+    }
+  }
+
+  .tds-side-panel {
+    padding: 16px;
+    box-shadow: var(--tds-side-panel-box-shadow);
+    position: relative;
+    height: 100%;
+    width: 360px;
+    pointer-events: auto;
+    background-color: var(--tds-side-panel-background);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    white-space: nowrap;
+
+    @include tds-scrollbar;
+
+    &--collapsed {
+      display: none;
+    }
+
+    .tds-side-panel__top-content {
+      display: flex;
+      flex-direction: column;
+
+      button.tds-side-panel__close {
+        @include side-panel-button;
+
+        margin: 0 0 auto auto;
+        background-color: transparent;
+        padding: 0;
+        appearance: unset;
+        height: 24px;
+        width: 24px;
+      }
+
+      .tds-side-panel__close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        color: var(--tds-side-panel-text-color);
+
+        &:focus {
+          @include tds-focus-state;
+        }
+      }
+
+      .header-text {
+        @include headline-05;
+
+        margin: 0;
+      }
+
+      .subheader-text {
+        @include label-01;
+      }
+    }
+  }
+}

@@ -2,7 +2,8 @@
 @use 'sass:list';
 
 @function tds-z-index($element) {
-  $z-index: default, dropdown, tab, header, banner, side-menu, overlay, modal, toast, tooltip;
+  $z-index:
+    default, dropdown, tab, header, banner, side-panel, side-menu, overlay, modal, toast, tooltip;
   $value: list.index($z-index, $element);
 
   @if $value {

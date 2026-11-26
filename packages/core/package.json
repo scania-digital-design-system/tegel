@@ -291,6 +291,10 @@
       "import": "./dist/components/tds-side-menu.js",
       "types": "./dist/components/tds-side-menu.d.ts"
     },
+    "./tds-side-panel": {
+      "import": "./dist/components/tds-side-panel.js",
+      "types": "./dist/components/tds-side-panel.d.ts"
+    },
     "./tds-slider": {
       "import": "./dist/components/tds-slider.js",
       "types": "./dist/components/tds-slider.d.ts"

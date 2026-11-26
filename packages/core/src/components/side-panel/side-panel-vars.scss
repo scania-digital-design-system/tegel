@@ -1,0 +1,12 @@
+tds-side-panel {
+  --tds-side-panel-overlay-background: color-mix(
+    in srgb,
+    var(--component-overlay-background-default) calc(var(--component-overlay-opacity-default) * 1%),
+    transparent
+  );
+  --tds-side-panel-background: var(--component-modal-background-default);
+  --tds-side-panel-text-color: var(--component-modal-text-title-default);
+  --tds-side-panel-body-text-color: var(--component-modal-text-body-default);
+  --tds-side-panel-icon-color: var(--component-modal-icon-dismiss-default);
+  --tds-side-panel-box-shadow: 0 3px 3px 0 rgb(0, 0, 0, 0.15), 0 -1px 1px 0 rgb(0, 0, 0, 0.1);
+}
