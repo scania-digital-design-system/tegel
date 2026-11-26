@@ -1,5 +1,6 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-stepper-vars' as *;
+@use '../tl-icon/icon-list' as *;
 
 @mixin divider {
   content: ' ';
@@ -14,6 +15,7 @@
   flex-direction: row;
   align-items: center;
   gap: 8px;
+  flex: 1 0 auto;
 
   .tl-stepper--label-below & {
     flex-direction: column;
@@ -35,23 +37,18 @@
     min-inline-size: 60px; // Prevent overlap: node (30px) + label + spacing
   }
 
-  .tl-stepper--horizontal.tl-stepper--label-aside .tl-stepper__list > & {
-    flex: 0 0 auto;
+  .tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels)
+    .tl-stepper__list
+    > & {
     min-inline-size: auto;
   }
 
   .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
-    min-inline-size: 40px;
+    justify-content: center;
   }
 
   .tl-stepper--horizontal.tl-stepper--sm:not(.tl-stepper--label-aside) .tl-stepper__list > & {
     min-inline-size: 40px;
-  }
-
-  .tl-stepper--horizontal.tl-stepper--sm.tl-stepper--label-aside.tl-stepper--hide-labels
-    .tl-stepper__list
-    > & {
-    min-inline-size: 48px;
   }
 
   .tl-stepper--lg &:last-of-type,
@@ -79,10 +76,19 @@
     &::after {
       @include divider;
 
-      height: 36px;
       width: 1px;
-      top: 40px;
-      left: 36px;
+      top: calc(50% + 15px + 8px);
+      bottom: -26px;
+      left: 35px;
+    }
+
+    &::before {
+      @include divider;
+
+      width: 1px;
+      bottom: calc(50% + 15px + 8px);
+      top: -26px;
+      left: 35px;
     }
   }
 
@@ -91,7 +97,7 @@
       @include divider;
 
       height: 1px;
-      left: calc(50% + 32px);
+      left: calc(50% + 24px);
       right: 0;
       top: 16px;
     }
@@ -100,31 +106,9 @@
       @include divider;
 
       height: 1px;
-      right: calc(50% + 32px);
+      right: calc(50% + 24px);
       left: 0;
       top: 16px;
-    }
-  }
-
-  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
-    &::after {
-      @include divider;
-
-      height: 1px;
-      top: 16px;
-      left: auto;
-      right: -10px;
-      width: 10px;
-    }
-
-    &::before {
-      @include divider;
-
-      height: 1px;
-      top: 16px;
-      left: -10px;
-      right: auto;
-      width: 10px;
     }
   }
 
@@ -133,7 +117,7 @@
       @include divider;
 
       height: 1px;
-      left: calc(50% + 16px + 8px);
+      left: calc(50% + 15px + 8px);
       right: 0;
       top: 16px;
     }
@@ -142,7 +126,7 @@
       @include divider;
 
       height: 1px;
-      right: calc(50% + 16px + 8px);
+      right: calc(50% + 15px + 8px);
       left: 0;
       top: 16px;
     }
@@ -152,9 +136,18 @@
     &::after {
       @include divider;
 
-      height: 20px;
       width: 1px;
-      top: 34px;
+      top: calc(50% + 12px + 8px);
+      bottom: -18px;
+      left: 32px;
+    }
+
+    &::before {
+      @include divider;
+
+      width: 1px;
+      bottom: calc(50% + 12px + 8px);
+      top: -18px;
       left: 32px;
     }
   }
@@ -164,7 +157,7 @@
       @include divider;
 
       height: 1px;
-      left: calc(50% + 12px + 16px);
+      left: calc(50% + 12px + 8px);
       right: 0;
       top: 13px;
     }
@@ -174,30 +167,37 @@
 
       height: 1px;
       left: 0;
-      right: calc(50% + 12px + 16px);
+      right: calc(50% + 12px + 8px);
       top: 13px;
     }
   }
 
-  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
-    &::after {
-      @include divider;
+  .tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
+    justify-content: stretch;
+    gap: 8px;
+    padding-right: 8px;
+    padding-left: 0;
 
-      height: 1px;
-      left: auto;
-      right: -10px;
-      width: 10px;
-      top: 13px;
+    &:not(:last-of-type) {
+      &::after {
+        @include divider;
+
+        position: static;
+        display: flex;
+        height: 1px;
+        width: 100%;
+        min-width: 8px;
+        flex: 1;
+      }
+    }
+
+    &:last-of-type {
+      justify-content: end;
+      flex: 0 0 auto;
     }
 
     &::before {
-      @include divider;
-
-      height: 1px;
-      top: 13px;
-      left: -10px;
-      right: auto;
-      width: 10px;
+      display: none;
     }
   }
 
@@ -289,6 +289,29 @@
   .tl-stepper__step--error &::after {
     mask-image: var(--icon-warning-svg);
   }
+
+  .tl-stepper__step--current &,
+  .tl-stepper__step--upcoming & {
+    @each $icon in $icons {
+      &.tl-stepper__node--#{$icon}::after {
+        content: '';
+        display: block;
+        width: 20px; // Default to lg size
+        height: 20px;
+
+        .tl-stepper--sm & {
+          width: 16px;
+          height: 16px;
+        }
+
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+        background-color: currentcolor;
+        mask-image: var(--icon-#{$icon}-svg);
+      }
+    }
+  }
 }
 
 // Override icon size for small variant
@@ -300,6 +323,11 @@
 
 .tl-stepper__label {
   text-align: center;
+  max-width: 150px;
+
+  .tl-stepper--vertical & {
+    text-align: start;
+  }
 
   .tl-stepper__step--error & {
     color: var(--stepper-label-text-color-warning);

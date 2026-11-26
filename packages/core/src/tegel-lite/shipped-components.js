@@ -7,8 +7,8 @@
  * plus tl-icon, which provides icon assets required by the migrated set.
  *
  * Consumed by:
- *  - packages/core/scripts/compile-tegel-lite-components.js (per-component CSS emit)
- *  - packages/core/scripts/update-tegel-lite-exports.js (package.json exports map)
+ *  - packages/core/scripts/compile-tegel-lite-components.mjs (per-component CSS emit)
+ *  - packages/core/scripts/update-tegel-lite-exports.mjs (package.json exports map)
  *  - packages/core/.storybook/main.ts (prod-Storybook story-file allowlist)
  *  - packages/core/src/tegel-lite/components.scss (manual sync — npm components.css bundle)
  *

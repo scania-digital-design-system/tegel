@@ -26,7 +26,7 @@ packageJson.exports = {
 };
 
 // Iterate over the compiled CSS files in dist/ and re-add an export entry
-// for each. compile-tegel-lite-components.js only emits CSS for shipped
+// for each. compile-tegel-lite-components.mjs only emits CSS for shipped
 // components, so this naturally produces the allowlisted set.
 fs.readdirSync(componentsCssDir).forEach((file) => {
   if (file.endsWith('.css')) {

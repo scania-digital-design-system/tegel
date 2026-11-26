@@ -196,11 +196,13 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot        | Description                    |
-| ----------- | ------------------------------ |
-| `"actions"` | Slot for extra buttons         |
-| `"body"`    | Slot for main content of modal |
-| `"header"`  | Slot for header text           |
+| Slot              | Description                              |
+| ----------------- | ---------------------------------------- |
+| `"actions"`       | Slot for extra buttons on the left side  |
+| `"actions-right"` | Slot for extra buttons on the right side |
+| `"body"`          | Slot for main content of modal           |
+| `"header"`        | Slot for header text                     |
+| `"subheader"`     |                                          |
 
 
 ## Dependencies

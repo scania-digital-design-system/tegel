@@ -13,6 +13,7 @@ import {
 
 import { InternalTdsTablePropChange } from '../table/table';
 import { InternalTdsRowExpandedProps } from '../table-body-row-expandable/table-body-row-expandable';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -65,6 +66,8 @@ export class TdsTableHeaderRow {
   @State() enableToolbarDesign: boolean = false;
 
   @State() tableId: string | undefined = '';
+
+  @State() id: string = generateUniqueId();
 
   @Element() host!: HTMLElement;
 
@@ -128,6 +131,7 @@ export class TdsTableHeaderRow {
   componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
+    this.host.id = this.id;
 
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
@@ -141,21 +145,21 @@ export class TdsTableHeaderRow {
       this.enableToolbarDesign =
         closestTable?.getElementsByTagName('tds-table-toolbar').length >= 1;
     }
+    if (!this.stickyHeader) return;
 
-    if (this.stickyHeader) {
-      const headers = closestTable?.getElementsByTagName('tds-table-header');
-      if (headers && headers.length >= 1) {
-        for (let index = 0; index < headers.length; index++) {
-          if (headers[index].id === this.host.id) {
-            const toolbarHeight = this.compactDesign ? 56 : 64;
-            const topDistance = this.compactDesign ? 32 * index : 48 * index;
-            (headers[index] as HTMLElement).style.top = this.enableToolbarDesign
-              ? `${toolbarHeight + topDistance}px`
-              : `${topDistance}px`;
-          }
-        }
-      }
-    }
+    const headers = closestTable?.getElementsByTagName('tds-table-header');
+
+    if (!headers) return;
+
+    const index = Array.from(headers).findIndex((header) => header.id === this.id);
+
+    if (index < 0) return;
+
+    const toolbarHeight = this.compactDesign ? 56 : 64;
+    const topDistance = this.compactDesign ? 32 * index : 48 * index;
+    (headers[index] as HTMLElement).style.top = this.enableToolbarDesign
+      ? `${toolbarHeight + topDistance}px`
+      : `${topDistance}px`;
   }
 
   @Watch('selected')

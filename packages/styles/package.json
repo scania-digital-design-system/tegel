@@ -10,7 +10,7 @@
     "dist/css/"
   ],
   "scripts": {
-    "build": "node build-css.js"
+    "build": "node build-css.mjs"
   },
   "repository": {
     "type": "git",

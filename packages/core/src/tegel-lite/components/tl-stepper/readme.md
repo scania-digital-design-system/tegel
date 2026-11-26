@@ -78,6 +78,14 @@ Apply these classes to `.tl-stepper__step` elements.
 | `.tl-stepper__step--current`   | Current/active step state       |
 | `.tl-stepper__step--upcoming`  | Upcoming/inactive step state    |
 
+### Stepper Step Icon Modifiers
+
+Apply these classes to `.tl-stepper__node` elements. Will only work for **current** and **upcoming** steps, and upon using dedicated icons, one should not have any index number inside the div.
+
+| Modifier                       | Description                     |
+| ------------------------------ | ------------------------------- |
+| `.tl-stepper__node--${iconName}`   | Will render the declared iconName inside the node    |
+
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*

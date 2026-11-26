@@ -51,7 +51,7 @@ env:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
 
 jobs:
   check-npm-status:
@@ -87,17 +87,17 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version --no-git-checks
 
       - name: Angular 17 - Bump version
         id: angular-17-version
         working-directory: packages/angular-17/projects/components
-        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version --no-git-checks
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+        run: pnpm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version --no-git-checks
 
       - name: Core - Read package.json Version
         id: version
