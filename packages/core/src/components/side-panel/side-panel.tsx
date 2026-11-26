@@ -5,6 +5,7 @@ import {
   EventEmitter,
   h,
   Host,
+  Method,
   Prop,
   State,
   Watch,
@@ -77,6 +78,19 @@ export class TdsSidePanel {
     bubbles: true,
   })
   tdsOpen!: EventEmitter<void>;
+
+  /** Shows the Modal.  */
+  @Method()
+  async openSidePanel() {
+    this.isCollapsed = false;
+    this.focusOnCollapseButton();
+  }
+
+  /** Closes the Modal. */
+  @Method()
+  async closeSidePanel() {
+    this.isCollapsed = true;
+  }
 
   @Watch('collapsed')
   collapsedChanged(newValue: boolean) {

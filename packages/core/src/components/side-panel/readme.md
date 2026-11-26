@@ -27,6 +27,29 @@
 | `tdsOpen`  | Emits just before Side Panel is opened. | `CustomEvent<void>`  |
 
 
+## Methods
+
+### `closeSidePanel() => Promise<void>`
+
+Closes the Modal.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `openSidePanel() => Promise<void>`
+
+Shows the Modal.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot        | Description                         |
