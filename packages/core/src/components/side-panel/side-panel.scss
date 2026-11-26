@@ -17,6 +17,11 @@
   border: none;
 }
 
+:host(.tds-side-panel--full-height) {
+  height: 100%;
+  top: 0;
+}
+
 :host {
   height: 100%;
   display: block;

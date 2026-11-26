@@ -97,6 +97,16 @@ export class TdsSidePanel {
     this.isCollapsed = newValue;
   }
 
+  @Watch('top')
+  topChanged(newValue: number) {
+    this.topPosition = newValue;
+  }
+
+  @Watch('bottom')
+  bottomChanged(newValue: number) {
+    this.bottomPosition = newValue;
+  }
+
   private handleClose = (event: Event) => {
     const closeEvent = this.tdsClose.emit(event);
     if (closeEvent.defaultPrevented) return;
@@ -121,7 +131,6 @@ export class TdsSidePanel {
   }
 
   private handleReferenceElementClick = (event: PointerEvent | KeyboardEvent) => {
-    console.log('ran ');
     if (!this.isCollapsed) {
       this.handleClose(event);
     } else {
@@ -164,7 +173,6 @@ export class TdsSidePanel {
 
     if (this.top || this.bottom) {
       this.hasOverlay = false;
-      console.log('top or bottom is defined', this.hasOverlay);
     } else {
       this.hasOverlay = this.overlay;
     }
@@ -196,13 +204,14 @@ export class TdsSidePanel {
   }
 
   render() {
-    // const usesHeaderSlot = hasSlot('header', this.host);
-    //ref={(el) => {this.overlayRef = el}}
     return (
       <Host onClick={(event: PointerEvent) => this.handleOverlayClick(event)}>
         {this.hasOverlay && !this.isCollapsed && <div class="tds-side-panel__overlay" />}
         <div
-          class={`tds-side-panel__arrow ${this.isCollapsed ? 'tds-side-panel__arrow--collapsed' : ''}`}
+          class={{
+            'tds-side-panel__arrow': true,
+            'tds-side-panel__arrow--collapsed': this.isCollapsed,
+          }}
         >
           <button
             class="tds-side-panel__collapse-button"
