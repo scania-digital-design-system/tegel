@@ -2,21 +2,22 @@
   [role='list'] {
     display: flex;
     min-width: 100%;
+    gap: 8px;
 
     &.vertical {
+      &.sm {
+        --tds-stepper-vertical-gap: 36px;
+      }
+
+      &.lg {
+        --tds-stepper-vertical-gap: 52px;
+      }
+
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: unset;
-      gap: 52px;
-
-      &.sm {
-        gap: 36px;
-      }
-    }
-
-    &.horizontal.text-position-aside {
-      justify-content: unset;
+      gap: var(--tds-stepper-vertical-gap);
     }
   }
 }

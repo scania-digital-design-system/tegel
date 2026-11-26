@@ -1,3 +1,5 @@
+import { scaniaIconNames as iconsNames } from '../../types/ScaniaIcons';
+
 export default {
   title: 'Components/Stepper',
   parameters: {
@@ -25,6 +27,30 @@ export default {
       options: ['Large', 'Small'],
       table: {
         defaultValue: { summary: 'lg' },
+      },
+    },
+    width: {
+      name: 'Width',
+      description: 'Width of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['600px', '700px', '800px', '900px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Horizontal' },
+      table: {
+        defaultValue: { summary: 'not defined' },
+      },
+    },
+    height: {
+      name: 'Height',
+      description: 'Height of the container for demonstration purposes',
+      control: {
+        type: 'radio',
+      },
+      options: ['300px', '400px', '500px', '600px', 'not defined'],
+      if: { arg: 'orientation', eq: 'Vertical' },
+      table: {
+        defaultValue: { summary: 'not defined' },
       },
     },
     orientation: {
@@ -61,12 +87,23 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    iconNameForCurrentStep: {
+      name: 'Icon name for current step',
+      description: 'Changes the icon for the current step. Also possible in upcoming step.',
+      control: {
+        type: 'select',
+      },
+      options: iconsNames,
+    },
   },
   args: {
     size: 'Large',
     orientation: 'Horizontal',
     labelPosition: 'Below',
     hideLabels: false,
+    height: 'not defined',
+    width: 'not defined',
+    iconNameForCurrentStep: 'pause',
   },
 };
 
@@ -74,8 +111,19 @@ const sizeLookUp = {
   Large: 'lg',
   Small: 'sm',
 };
-const Template = ({ size, orientation, labelPosition, hideLabels }) =>
-  `
+const Template = ({
+  size,
+  orientation,
+  labelPosition,
+  hideLabels,
+  width,
+  height,
+  iconNameForCurrentStep,
+}) => {
+  const widthStyle = width !== 'not defined' ? `width: ${width};` : '';
+  const heightStyle = height !== 'not defined' ? `height: ${height};` : '';
+  return `
+    <div style="${widthStyle} ${heightStyle}">
       <tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
         orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
       } orientation="${orientation.toLowerCase()}">
@@ -85,12 +133,14 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
         <tds-step state="error" index="2">
           <div slot="label">Error step</div>
         </tds-step>
-        <tds-step state="current" index="3" tds-aria-current="step">
+        <tds-step state="current" index="3" tds-aria-current="step" icon-name="${iconNameForCurrentStep}">
           <div slot="label">Current step</div>
         </tds-step>
         <tds-step index="4">
           <div slot="label">Upcoming step</div>
         </tds-step>
       </tds-stepper>
+      </div>
         `;
+};
 export const Default = Template.bind({});
