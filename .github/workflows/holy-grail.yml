@@ -51,7 +51,7 @@ env:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
 
 jobs:
   check-npm-status:
