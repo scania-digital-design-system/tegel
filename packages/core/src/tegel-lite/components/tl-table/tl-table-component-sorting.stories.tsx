@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Sorting',
   parameters: {
@@ -82,6 +84,11 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -145,6 +152,7 @@ export default {
     column2sortable: true,
     column3sortable: true,
     column4sortable: true,
+    emptyState: 'none',
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -162,6 +170,7 @@ const SortingTemplate = ({
   column2sortable,
   column3sortable,
   column4sortable,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -223,6 +232,9 @@ const SortingTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row" data-row="0">
           <td class="tl-table__body-cell" data-column="0">Test value 1</td>
           <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -259,6 +271,15 @@ const SortingTemplate = ({
           <td class="tl-table__body-cell" data-column="2">Test value 7</td>
           <td class="tl-table__body-cell" data-column="3">Test value 8</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="4">
+              ${renderEmptyStateSlot(emptyState, 'lite')}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

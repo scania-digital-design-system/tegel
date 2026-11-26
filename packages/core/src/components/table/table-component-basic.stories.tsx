@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Basic',
   parameters: {
@@ -78,6 +80,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     disablePadding: {
       name: 'Disable cell padding',
@@ -207,6 +214,7 @@ export default {
     cellVerticalAlignment: 'top',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
@@ -229,6 +237,7 @@ const BasicTemplate = ({
   cellVerticalAlignment,
   compactDesign,
   responsiveDesign,
+  emptyState,
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
@@ -267,7 +276,10 @@ const BasicTemplate = ({
             column4Width ? `custom-width="${column4Width}"` : ''
           } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
-      <tds-table-body>
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
           ${[...Array(12)]
             .map(
               (_, index) => `
@@ -298,6 +310,13 @@ const BasicTemplate = ({
           `,
             )
             .join('')}
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState, 'core')}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>
 

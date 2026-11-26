@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Zebra',
   parameters: {
@@ -31,6 +33,11 @@ export default {
       table: {
         defaultValue: { summary: 'rows-odd' },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     compact: {
       name: 'Compact design',
@@ -142,6 +149,7 @@ export default {
   args: {
     modeVariant: 'Primary',
     zebraMode: 'rows-odd',
+    emptyState: 'none',
     headerTextAlign: 'none',
     cellTextAlign: 'none',
     compact: false,
@@ -160,6 +168,7 @@ const Template = ({
   modeVariant,
   verticalDividers,
   zebraMode,
+  emptyState,
   responsive,
   headerTextAlign,
   cellTextAlign,
@@ -204,6 +213,9 @@ const Template = ({
           </tr>
         </thead>
         <tbody class="tl-table__body">
+          ${
+            emptyState === 'none'
+              ? `
           <tr class="tl-table__row">
             <td class="tl-table__body-cell" data-column="0">Test value 1</td>
             <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -240,6 +252,15 @@ const Template = ({
             <td class="tl-table__body-cell" data-column="2">Test value 7</td>
             <td class="tl-table__body-cell" data-column="3">Test value 8</td>
           </tr>
+          `
+              : `
+            <tr class="tl-table__empty-state-row">
+              <td class="tl-table__empty-state-cell" colspan="4">
+                ${renderEmptyStateSlot(emptyState, 'lite')}
+              </td>
+            </tr>
+          `
+          }
         </tbody>
     </table>
 

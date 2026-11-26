@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Editable Cells',
 
@@ -67,6 +69,11 @@ export default {
       table: {
         defaultValue: { summary: true },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     disableHeaderPadding: {
       name: 'Disable header cell padding',
@@ -158,6 +165,7 @@ export default {
     verticalDivider: false,
     horizontalScrollWidth: '',
     showIcon: true,
+    emptyState: 'none',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -173,6 +181,7 @@ const EditableCellsTemplate = ({
   compactDesign,
   responsiveDesign,
   showIcon,
+  emptyState,
   disableHeaderPadding,
   verticalDivider,
   horizontalScrollWidth,
@@ -220,7 +229,10 @@ const EditableCellsTemplate = ({
     } text-align="${headerTextAlignment}"></tds-header-cell>
   </tds-table-header>
 
-  <tds-table-body>
+  <tds-table-body empty-state="${emptyState}">
+    ${
+      emptyState === 'none'
+        ? `
     <tds-table-body-row>
       <tds-body-cell cell-key="truck" disable-padding="true" ${
         cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
@@ -448,6 +460,13 @@ const EditableCellsTemplate = ({
         </tds-table-body-input-wrapper>
       </tds-body-cell>
     </tds-table-body-row>
+    `
+        : `
+      <div slot="${emptyState}">
+        ${renderEmptyStateSlot(emptyState, 'core')}
+      </div>
+    `
+    }
   </tds-table-body>
 </tds-table>
   </div>  

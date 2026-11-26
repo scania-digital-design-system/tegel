@@ -7,9 +7,9 @@ tds-table-body {
   display: table-row-group;
 }
 
-// Zebra mode: rows and columns
-
 tds-table-body {
+  // Zebra mode: rows and columns
+
   // ODD rows
   &.tds-table--zebra-mode-rows-odd {
     tds-table-body-row:nth-child(odd) {
@@ -62,5 +62,45 @@ tds-table-body {
         --tds-table-background: var(--tds-table-body-cell-background-hover);
       }
     }
+  }
+
+  // Empty state
+
+  // Hide empty state slots while Stencil moves them into their correct position.
+  // Also hide the empty state row by default.
+  > :is([slot='no-data'], [slot='no-filtered-data']),
+  > .tds-table__empty-state-row {
+    display: none;
+  }
+
+  // When in empty state, hide all direct children except the empty state row.
+  &:is([empty-state='no-data'], [empty-state='no-filtered-data']) {
+    > :not(.tds-table__empty-state-row) {
+      display: none;
+    }
+  }
+
+  // Style the empty state cell without styling the slotted layout.
+  > .tds-table__empty-state-row > .tds-table__empty-state-cell {
+    padding: var(--unit-16);
+    background-color: var(--color-background-base);
+    border: 1px solid var(--tds-table-divider);
+  }
+
+  // Show the empty state row only when an empty state slot has been mounted
+  // (and the table is in the corresponding empty state).
+  &[empty-state='no-data'] > .tds-table__empty-state-row:has(> td > [slot='no-data']),
+  &[empty-state='no-filtered-data']
+    > .tds-table__empty-state-row:has(> td > [slot='no-filtered-data']) {
+    display: table-row;
+  }
+
+  // Hide the empty state slots when not in any empty state.
+  &:not([empty-state='no-data']) > .tds-table__empty-state-row > td > [slot='no-data'],
+  &:not([empty-state='no-filtered-data'])
+    > .tds-table__empty-state-row
+    > td
+    > [slot='no-filtered-data'] {
+    display: none;
   }
 }

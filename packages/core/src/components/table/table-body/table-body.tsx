@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, State } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, Listen, Prop, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
 
@@ -10,6 +10,8 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For table rows.
+ * @slot no-data - Content shown when the unfiltered data source is empty.
+ * @slot no-filtered-data - Content shown when filters match no rows.
  */
 @Component({
   tag: 'tds-table-body',
@@ -18,6 +20,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableBody {
   @Element() host!: HTMLElement;
+
+  /** Selects a custom empty layout, or shows the normal rows when set to `none`. */
+  @Prop({ reflect: true }) emptyState: 'no-data' | 'no-filtered-data' | 'none' = 'none';
 
   @State() multiselect: boolean = false;
 
@@ -31,13 +36,38 @@ export class TdsTableBody {
 
   @State() mainCheckboxStatus: boolean = false;
 
-  @State() columnsNumber: number = 0;
+  @State() totalColSpan: number = 0;
 
   @State() zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none' = 'none';
 
   @State() tableId: string | undefined = '';
 
   tableEl!: HTMLTdsTableElement | null;
+
+  // This observer tracks late-added empty-state content and triggers a rerender so Stencil can relocate it.
+  // In light DOM, Stencil may not relocate newly added slot content without a rerender.
+  private emptySlotObserver?: MutationObserver;
+
+  connectedCallback() {
+    this.emptySlotObserver ??= new MutationObserver((records) => {
+      const hasNewEmptyContent = records.some((record) =>
+        Array.from(record.addedNodes).some(
+          (node) =>
+            node instanceof HTMLElement &&
+            node.parentElement === this.host &&
+            (node.slot === 'no-data' || node.slot === 'no-filtered-data'),
+        ),
+      );
+      if (hasNewEmptyContent) {
+        forceUpdate(this.host);
+      }
+    });
+    this.emptySlotObserver.observe(this.host, { childList: true });
+  }
+
+  disconnectedCallback() {
+    this.emptySlotObserver?.disconnect();
+  }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -79,15 +109,19 @@ export class TdsTableBody {
   }
 
   componentWillRender() {
-    const headrColumn = this.host.parentElement?.querySelector('tds-table-header');
-    const headerColumnsNo = headrColumn?.children.length ?? 0;
-
-    // multiselect and expended features requires one extra column for controls...
-    if (this.multiselect || this.expandableRows) {
-      this.columnsNumber = headerColumnsNo + 1;
-    } else {
-      this.columnsNumber = headerColumnsNo;
-    }
+    // Sum the header cell spans, then add one column per enabled row control.
+    const headerCells = this.host.parentElement
+      ?.querySelector('tds-table-header')
+      ?.querySelectorAll<HTMLTdsHeaderCellElement>(':scope > tds-header-cell');
+    const headerColSpan = Array.from(headerCells ?? []).reduce(
+      (total, cell) =>
+        total + Math.max(1, Number(cell.colSpan ?? cell.getAttribute('col-span')) || 1),
+      0,
+    );
+    this.totalColSpan = Math.max(
+      1,
+      headerColSpan + Number(!!this.multiselect) + Number(!!this.expandableRows),
+    );
   }
 
   render() {
@@ -101,7 +135,15 @@ export class TdsTableBody {
           'tds-table--zebra-mode-columns-even': this.zebraMode === 'columns-even',
         }}
       >
-        <slot></slot>
+        <slot />
+
+        {/* Empty state row */}
+        <tr class="tds-table__empty-state-row">
+          <td class="tds-table__empty-state-cell" colSpan={this.totalColSpan}>
+            <slot name="no-data" />
+            <slot name="no-filtered-data" />
+          </td>
+        </tr>
       </Host>
     );
   }

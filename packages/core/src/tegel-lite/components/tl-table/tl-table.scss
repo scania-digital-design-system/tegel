@@ -173,6 +173,16 @@
   }
 }
 
+.tl-table__empty-state-row {
+  display: table-row;
+}
+
+.tl-table__empty-state-cell {
+  padding: var(--unit-16);
+  background-color: var(--color-background-base);
+  border: 1px solid var(--table-divider);
+}
+
 .tl-table__header-cell {
   display: table-cell;
   padding: 16px;

@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Multiselect',
 
@@ -34,6 +36,11 @@ export default {
       control: {
         type: 'boolean',
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     compactDesign: {
       name: 'Compact design',
@@ -115,6 +122,7 @@ export default {
     modeVariant: 'Inherit from parent',
     allSelected: false,
     allIndeterminate: false,
+    emptyState: 'none',
     allDisabled: false,
     compactDesign: false,
     responsiveDesign: false,
@@ -131,6 +139,7 @@ const MultiselectTemplate = ({
   modeVariant,
   allSelected,
   allIndeterminate,
+  emptyState,
   allDisabled,
   compactDesign,
   responsiveDesign,
@@ -171,7 +180,10 @@ const MultiselectTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
           <tds-table-body-row>
           <tds-body-cell cell-key="truck" cell-value="L-series"> </tds-body-cell
           ><tds-body-cell cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell
@@ -196,6 +208,13 @@ const MultiselectTemplate = ({
           ><tds-body-cell cell-key="country" cell-value="Spain"></tds-body-cell
           ><tds-body-cell cell-key="mileage" cell-value="1789357"></tds-body-cell>
         </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->

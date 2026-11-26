@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Expandable Rows',
   parameters: {
@@ -40,6 +42,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     responsiveDesign: {
       name: 'Responsive Table',
@@ -125,6 +132,7 @@ export default {
     modeVariant: 'Primary',
     compactDesign: false,
     expanded: false,
+    emptyState: 'none',
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -140,6 +148,7 @@ const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
   expanded,
+  emptyState,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -188,6 +197,9 @@ const ExpandableRowTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row ${expandedClass}" data-row-id="1">
           <td class="tl-table__body-cell">
               <button type="button" class="tl-table__expand-control" onclick="toggleExpandState(event)" 
@@ -264,6 +276,15 @@ const ExpandableRowTemplate = ({
             <!-- end of demo block -->
           </td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="5">
+              ${renderEmptyStateSlot(emptyState, 'lite')}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

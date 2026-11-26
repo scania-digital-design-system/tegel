@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Column Filtering',
 
@@ -56,6 +58,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     disablePadding: {
       name: 'Disable cell padding',
@@ -174,6 +181,7 @@ export default {
     cellTextAlignment: 'left',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
@@ -194,6 +202,7 @@ const ColumnFilteringTemplate = ({
   cellTextAlignment,
   compactDesign,
   responsiveDesign,
+  emptyState,
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
@@ -274,7 +283,10 @@ const ColumnFilteringTemplate = ({
       </tds-table-header>
 
 
-      <tds-table-body>
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
@@ -359,6 +371,13 @@ const ColumnFilteringTemplate = ({
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
               }></tds-body-cell>
           </tds-table-body-row>
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState, 'core')}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>`;
 

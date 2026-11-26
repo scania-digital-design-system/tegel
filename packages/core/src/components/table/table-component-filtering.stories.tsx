@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Filtering',
 
@@ -34,6 +36,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     verticalDivider: {
       name: 'Vertical dividers',
@@ -94,6 +101,7 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: true,
+    emptyState: 'none',
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -107,6 +115,7 @@ const FilteringTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -137,7 +146,10 @@ const FilteringTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
               <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -174,6 +186,13 @@ const FilteringTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
           <tds-table-footer>              
           </tds-table-footer>

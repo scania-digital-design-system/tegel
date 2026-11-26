@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Pagination',
 
@@ -166,6 +168,11 @@ export default {
       },
       if: { arg: 'rowsPerPage', eq: true },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -228,6 +235,7 @@ export default {
     rowsPerPageValue: 10,
     rowsPerPageDropdownOpenDirection: 'auto',
     rowsPerPageDropdownAriaLabel: 'Select rows per page',
+    emptyState: 'none',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -253,6 +261,7 @@ const PaginationTemplate = ({
   rowsPerPageValue,
   rowsPerPageDropdownOpenDirection,
   rowsPerPageDropdownAriaLabel,
+  emptyState,
   noMinWidth,
   column1Width,
   column2Width,
@@ -291,7 +300,10 @@ const PaginationTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row>
                 <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -328,6 +340,13 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
           <tds-table-footer
             pages="${pages}"
