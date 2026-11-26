@@ -84,7 +84,7 @@ jobs:
           echo "Current (published) version: $current_version"
           jq ".version = \"$current_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
-          pnpm version ${{ inputs.version }} --no-git-tag-version
+          pnpm version ${{ inputs.version }} --no-git-tag-version --no-git-checks
           new_version=$(jq -r '.version' package.json)
           echo "Setting new version: $new_version"
           echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
