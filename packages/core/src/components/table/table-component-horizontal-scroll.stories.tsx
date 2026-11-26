@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Horizontal Scroll',
 
@@ -63,6 +65,11 @@ export default {
         defaultValue: { summary: '300px' },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     column1Width: {
       name: 'Column 1 width',
       description:
@@ -107,6 +114,7 @@ export default {
     verticalDivider: false,
     noMinWidth: false,
     horizontalScrollWidth: '',
+    emptyState: 'none',
     column1Width: '',
     column2Width: '',
     column3Width: '',
@@ -124,6 +132,7 @@ const HorizontalScrollTemplate = ({
   verticalDivider,
   noMinWidth,
   horizontalScrollWidth,
+  emptyState,
   column1Width,
   column2Width,
   column3Width,
@@ -157,7 +166,10 @@ const HorizontalScrollTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row>
                 <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -194,6 +206,13 @@ const HorizontalScrollTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
           <tds-table-footer pages="4" pagination ></tds-table-footer>
   </tds-table>

@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Editable Cells',
   parameters: {
@@ -63,6 +65,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     disableHeaderPadding: {
       name: 'Disable header cell padding',
@@ -146,6 +153,7 @@ export default {
     cellTextAlignment: 'left',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     disableHeaderPadding: false,
     verticalDivider: false,
     horizontalScrollWidth: '',
@@ -163,6 +171,7 @@ const EditableCellsTemplate = ({
   cellTextAlignment,
   compactDesign,
   responsiveDesign,
+  emptyState,
   disableHeaderPadding,
   verticalDivider,
   horizontalScrollWidth,
@@ -232,6 +241,9 @@ const EditableCellsTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row" data-row="0">
           ${createEditableCell('truck-input-1', 'Test value 1', 0, col1Style, false)}
           ${createEditableCell('driver-input-1', 'Test value 2', 1, col2Style, false)}
@@ -268,6 +280,15 @@ const EditableCellsTemplate = ({
           ${createEditableCell('country-input-6', 'Test value 7', 2, col3Style, false)}
           ${createEditableCell('mileage-input-6', 'Test value 8', 3, col4Style, false)}
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="4">
+              ${renderEmptyStateSlot(emptyState, 'lite')}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
     ${horizontalScrollWidth ? '</div>' : ''}

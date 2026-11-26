@@ -96,6 +96,11 @@
   }
 }
 
+:host(.tds-table--footer-sticky) {
+  position: sticky;
+  bottom: 0;
+}
+
 :host(.footer__horizontal-scroll) {
   display: inline-table;
   position: absolute;

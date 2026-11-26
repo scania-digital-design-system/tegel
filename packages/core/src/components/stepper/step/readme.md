@@ -1,6 +1,6 @@
-# tds-stepper-item
+# tds-step
 
-
+Custom icons in each step are supported as long as state is **current** or **upcoming**. If no icon name is defined, step node will contain the index of the step.
 
 <!-- Auto Generated Below -->
 
@@ -9,6 +9,7 @@
 
 | Property         | Attribute          | Description                                                                        | Type                                              | Default      |
 | ---------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
+| `iconName`       | `icon-name`        | Icon to show in step if state is current or upcoming.                              | `string \| undefined`                             | `undefined`  |
 | `index`          | `index`            | Index of the step. Will be displayed in the step if the state is current/upcoming. | `string \| undefined`                             | `undefined`  |
 | `state`          | `state`            | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
 | `tdsAriaCurrent` | `tds-aria-current` |                                                                                    | `string \| undefined`                             | `undefined`  |

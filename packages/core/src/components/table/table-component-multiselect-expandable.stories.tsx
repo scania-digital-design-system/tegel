@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Multiselect + Expandable',
 
@@ -54,6 +56,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     responsiveDesign: {
       name: 'Responsive Table',
@@ -149,6 +156,7 @@ export default {
     allDisabled: false,
     compactDesign: false,
     expanded: false,
+    emptyState: 'none',
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -168,6 +176,7 @@ const MultiselectExpandableTemplate = ({
   allDisabled,
   compactDesign,
   expanded,
+  emptyState,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -209,7 +218,10 @@ const MultiselectExpandableTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row-expandable expanded="${expanded}" auto-collapse="${autoCollapse}" overflow="${overflow}" row-id="1">
               <tds-body-cell vertical-align="middle" cell-key="truck" cell-value="L-series"></tds-body-cell>
               <tds-body-cell vertical-align="middle" cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell>
@@ -262,6 +274,13 @@ const MultiselectExpandableTemplate = ({
                 <p>Next Service Due: 2024-06-10</p>
               </div>
             </tds-table-body-row-expandable>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
   </tds-table>
   

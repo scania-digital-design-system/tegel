@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Basic',
   parameters: {
@@ -50,6 +52,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     headerTextAlign: {
       name: 'Header text alignment',
@@ -134,6 +141,7 @@ export default {
     cellTextAlign: 'none',
     compact: false,
     responsive: false,
+    emptyState: 'none',
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDividers: false,
@@ -148,6 +156,7 @@ const Template = ({
   modeVariant,
   verticalDividers,
   responsive,
+  emptyState,
   headerTextAlign,
   cellTextAlign,
   clickable,
@@ -190,6 +199,9 @@ const Template = ({
           </tr>
         </thead>
         <tbody class="tl-table__body">
+          ${
+            emptyState === 'none'
+              ? `
           <tr class="tl-table__row">
             <td class="tl-table__body-cell" data-column="0">Test value 1</td>
             <td class="tl-table__body-cell" data-column="1">Test value 2</td>
@@ -214,6 +226,15 @@ const Template = ({
             <td class="tl-table__body-cell" data-column="2">Test value 7</td>
             <td class="tl-table__body-cell" data-column="3">Test value 8</td>
           </tr>
+          `
+              : `
+            <tr class="tl-table__empty-state-row">
+              <td class="tl-table__empty-state-cell" colspan="4">
+                ${renderEmptyStateSlot(emptyState, 'lite')}
+              </td>
+            </tr>
+          `
+          }
         </tbody>
     </table>
 

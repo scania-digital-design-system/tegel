@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Column Filtering',
 
@@ -57,6 +59,11 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     disablePadding: {
       name: 'Disable cell padding',
       description:
@@ -87,6 +94,27 @@ export default {
       },
       table: {
         defaultValue: { summary: false },
+      },
+    },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
       },
     },
     noMinWidth: {
@@ -153,10 +181,13 @@ export default {
     cellTextAlignment: 'left',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
+    stickyHeader: false,
     horizontalScrollWidth: '',
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -171,10 +202,13 @@ const ColumnFilteringTemplate = ({
   cellTextAlignment,
   compactDesign,
   responsiveDesign,
+  emptyState,
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
+  stickyHeader,
   horizontalScrollWidth,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -186,9 +220,11 @@ const ColumnFilteringTemplate = ({
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
     >
       <tds-table-header >
 
@@ -247,7 +283,10 @@ const ColumnFilteringTemplate = ({
       </tds-table-header>
 
 
-      <tds-table-body>
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
@@ -332,6 +371,13 @@ const ColumnFilteringTemplate = ({
                 cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
               }></tds-body-cell>
           </tds-table-body-row>
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState, 'core')}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>`;
 

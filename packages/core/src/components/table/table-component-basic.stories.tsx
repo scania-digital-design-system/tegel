@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Basic',
   parameters: {
@@ -79,6 +81,11 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     disablePadding: {
       name: 'Disable cell padding',
       description:
@@ -111,6 +118,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -130,6 +148,16 @@ export default {
       },
       table: {
         defaultValue: { summary: '300px' },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
       },
     },
     column1Width: {
@@ -186,10 +214,13 @@ export default {
     cellVerticalAlignment: 'top',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
+    stickyHeader: false,
     horizontalScrollWidth: '',
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -206,10 +237,13 @@ const BasicTemplate = ({
   cellVerticalAlignment,
   compactDesign,
   responsiveDesign,
+  emptyState,
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
+  stickyHeader,
   horizontalScrollWidth,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -222,9 +256,11 @@ const BasicTemplate = ({
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
     >
       <tds-table-header >
           <tds-header-cell cell-key='truck' cell-value='Truck type' disable-padding="${disableHeaderPadding}" ${
@@ -240,8 +276,11 @@ const BasicTemplate = ({
             column4Width ? `custom-width="${column4Width}"` : ''
           } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
-      <tds-table-body>
-          ${[...Array(6)]
+      <tds-table-body empty-state="${emptyState}">
+        ${
+          emptyState === 'none'
+            ? `
+          ${[...Array(12)]
             .map(
               (_, index) => `
             <tds-table-body-row ${clickable ? 'clickable' : ''}>
@@ -271,6 +310,13 @@ const BasicTemplate = ({
           `,
             )
             .join('')}
+        `
+            : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState, 'core')}
+          </div>
+        `
+        }
       </tds-table-body>
   </tds-table>
 

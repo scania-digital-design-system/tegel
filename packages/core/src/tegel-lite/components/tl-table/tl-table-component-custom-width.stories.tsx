@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Custom Width',
   parameters: {
@@ -42,6 +44,11 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     verticalDivider: {
       name: 'Vertical dividers',
@@ -102,6 +109,7 @@ export default {
     modeVariant: 'Primary',
     compactDesign: false,
     responsiveDesign: false,
+    emptyState: 'none',
     verticalDivider: true,
     noMinWidth: true,
     column1Width: '321px',
@@ -115,6 +123,7 @@ const BasicTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
+  emptyState,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -153,6 +162,9 @@ const BasicTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row">
           <td class="tl-table__body-cell" data-column="0" ${getColumnStyle(
             column1Width,
@@ -237,6 +249,15 @@ const BasicTemplate = ({
             column4Width,
           )}>Test value 8</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="4">
+              ${renderEmptyStateSlot(emptyState, 'lite')}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
     </div>

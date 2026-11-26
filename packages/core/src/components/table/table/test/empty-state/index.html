@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Table - Empty state</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body style="padding: 16px;">
+    <tds-table responsive>
+      <tds-table-header>
+        <tds-header-cell cell-key="vehicle" cell-value="Vehicle"></tds-header-cell>
+        <tds-header-cell cell-key="depot" cell-value="Depot"></tds-header-cell>
+      </tds-table-header>
+      <tds-table-body>
+        <tds-table-body-row>
+          <tds-body-cell cell-key="vehicle" cell-value="R 460"></tds-body-cell>
+          <tds-body-cell cell-key="depot" cell-value="Stockholm"></tds-body-cell>
+        </tds-table-body-row>
+        <div slot="no-data">
+          <h4>No vehicles yet</h4>
+          <p>Add a vehicle to start building your fleet.</p>
+        </div>
+        <div slot="no-filtered-data">
+          <h4>No data found</h4>
+          <p>Try adjusting your filters or check back later.</p>
+        </div>
+      </tds-table-body>
+    </tds-table>
+  </body>
+</html>

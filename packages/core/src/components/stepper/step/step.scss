@@ -2,189 +2,198 @@
 
 @mixin divider {
   content: ' ';
-  position: absolute;
+
+  // position: absolute;
   background-color: var(--tds-stepper-divider-line);
+}
+
+:host(:first-of-type) {
+  &:has(div.horizontal) {
+    justify-content: start;
+  }
+
+  [role='listitem'] {
+    &.sm,
+    &.lg {
+      .left-divider {
+        display: none;
+      }
+    }
+  }
+}
+
+:host(:last-of-type) {
+  &:has(div.horizontal) {
+    justify-content: end;
+
+    &:has(div.text-aside) {
+      flex: 0 0 auto;
+    }
+  }
+
+  [role='listitem'] {
+    &.horizontal.text-aside,
+    &.horizontal.text-below {
+      padding-right: 0;
+    }
+
+    .right-divider {
+      display: none;
+    }
+  }
+}
+
+:host(:not(:last-of-type)) {
+  [role='listitem'] {
+    &.horizontal {
+      &.text-aside {
+        .step-container {
+          .right-divider {
+            display: flex;
+            flex: 1;
+            height: 1px;
+            width: 100%;
+            min-width: 8px;
+            background-color: var(--tds-stepper-divider-line);
+          }
+        }
+      }
+    }
+  }
 }
 
 :host {
   position: relative;
+  display: flex;
+  flex: 1 0 auto;
 
   [role='listitem'] {
     display: flex;
-    justify-content: start;
+    justify-content: stretch;
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     gap: 8px;
+    flex: 1 0 auto;
+    width: 100%;
 
-    &.text-below {
-      flex-direction: column;
+    &.sm {
+      @include label-01;
+
+      --tds-step-icon: 24px;
     }
 
     &.lg {
-      padding: 0 20px;
       @include type-system-body-01;
 
-      .content-container {
-        height: 30px;
-        min-width: 30px;
+      --tds-step-icon: 30px;
+    }
+
+    .content-container {
+      height: var(--tds-step-icon);
+      min-width: var(--tds-step-icon);
+    }
+
+    &.horizontal {
+      .label {
+        text-align: center;
       }
 
-      &.vertical {
-        &::after {
-          @include divider;
+      &.text-below {
+        padding-right: 16px;
 
-          height: 36px;
-          width: 1px;
-          top: 40px;
-          left: 36px;
-        }
-      }
+        .step-container {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          justify-content: stretch;
+          position: relative;
+          flex-direction: column;
+          flex: 1 0 auto;
 
-      &.horizontal {
-        &::after {
-          @include divider;
-
-          height: 1px;
-          left: calc(50% + 16px + 16px);
-          right: 0;
-          top: 16px;
-        }
-
-        &::before {
-          @include divider;
-
-          height: 1px;
-          right: calc(50% + 16px + 16px);
-          left: 0;
-          top: 16px;
-        }
-
-        &.hide-labels {
-          &::after {
-            @include divider;
-
-            height: 1px;
-            left: calc(50% + 16px + 8px);
-            right: 0;
-            top: 16px;
-          }
-
-          &::before {
-            @include divider;
-
-            height: 1px;
-            right: calc(50% + 16px + 8px);
-            left: 0;
-            top: 16px;
-          }
-        }
-
-        &.text-aside {
-          &:not(.hide-labels) {
-            &::after {
-              @include divider;
-
+          .content-container {
+            .right-divider {
+              position: absolute;
               height: 1px;
-              left: auto;
-              right: -10px;
-              width: 10px;
-              top: 16px;
+
+              // middle of the parent element + 1/2 icon + gap between icon and divider
+              left: calc(50% + calc(var(--tds-step-icon) / 2) + 8px);
+              right: -4px;
+              background-color: var(--tds-stepper-divider-line);
             }
 
-            &::before {
-              @include divider;
-
+            .left-divider {
+              position: absolute;
               height: 1px;
-              top: 16px;
-              left: -10px;
-              right: auto;
-              width: 10px;
+              left: -4px;
+              right: calc(50% + calc(var(--tds-step-icon) / 2) + 8px);
+              background-color: var(--tds-stepper-divider-line);
+            }
+          }
+        }
+      }
+
+      &.text-aside {
+        padding-right: 8px;
+        align-items: center;
+
+        .step-container {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          justify-content: stretch;
+          flex-direction: row;
+          flex: 1;
+
+          // right-divider styles declared above in :host(:not(:last-of-type))
+
+          .content-container {
+            .left-divider {
+              display: none;
             }
           }
         }
       }
     }
 
-    &.sm {
-      padding: 0 20px;
-      @include label-01;
+    &.vertical {
+      position: relative;
+      align-items: center;
 
-      .content-container {
-        height: 24px;
-        min-width: 24px;
+      .label {
+        text-align: start;
       }
 
-      &.vertical {
-        &::after {
-          @include divider;
+      .step-container {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: start;
+        flex-direction: row;
+        flex: 1 0 auto;
 
-          height: 20px;
-          width: 1px;
-          top: 34px;
-          left: 32px;
-        }
-      }
+        .content-container {
+          .left-divider {
+            position: absolute;
+            width: 1px;
+            left: calc(var(--tds-step-icon) / 2);
+            top: calc(
+              calc(var(--tds-stepper-vertical-gap) / 2) * -1
+            ); // 1/2 icon + padding + 1/2 gap * -1.
 
-      &.horizontal {
-        &::after {
-          @include divider;
-
-          height: 1px;
-          left: calc(50% + 12px + 16px);
-          right: 0;
-          top: 13px;
-        }
-
-        &::before {
-          @include divider;
-
-          height: 1px;
-          left: 0;
-          right: calc(50% + 12px + 16px);
-          top: 13px;
-        }
-
-        &.hide-labels {
-          &::after {
-            @include divider;
-
-            height: 1px;
-            left: calc(50% + 12px + 8px);
-            right: 0;
-            top: 13px;
+            bottom: calc(50% + calc(var(--tds-step-icon) / 2) + 8px);
+            background-color: var(--tds-stepper-divider-line);
           }
 
-          &::before {
-            @include divider;
+          .right-divider {
+            position: absolute;
+            width: 1px;
+            left: calc(var(--tds-step-icon) / 2);
+            top: calc(50% + calc(var(--tds-step-icon) / 2) + 8px);
+            bottom: calc(
+              calc(var(--tds-stepper-vertical-gap) / 2) * -1
+            ); // lg -> -26px ; sm -> -18px
 
-            height: 1px;
-            right: calc(50% + 12px + 8px);
-            left: 0;
-            top: 13px;
-          }
-        }
-
-        &.text-aside {
-          &:not(.hide-labels) {
-            &::after {
-              @include divider;
-
-              height: 1px;
-              top: 13px;
-              left: auto;
-              right: -10px;
-              width: 10px;
-            }
-
-            &::before {
-              @include divider;
-
-              height: 1px;
-              top: 13px;
-              left: -10px;
-              right: auto;
-              width: 10px;
-            }
+            background-color: var(--tds-stepper-divider-line);
           }
         }
       }
@@ -222,14 +231,16 @@
     }
 
     .label {
-      text-align: center;
-
       &.lg {
         @include type-system-body-01;
+
+        max-width: 150px;
       }
 
       &.sm {
         @include label-01;
+
+        max-width: 100px;
       }
 
       &.error {
@@ -246,73 +257,6 @@
 
       &.upcoming {
         color: var(--tds-stepper-label-text-color-upcoming);
-      }
-    }
-  }
-}
-
-:host(:last-of-type) {
-  [role='listitem'].horizontal {
-    &.text-aside {
-      padding-right: 0;
-      padding-left: 20px;
-
-      &::before {
-        @include divider;
-
-        height: 1px;
-        width: 20px;
-        left: -10px;
-        right: auto;
-        top: 16px;
-      }
-
-      &.sm.hide-labels {
-        &::before {
-          top: 13px;
-          width: 13px;
-          left: 0;
-          right: calc(50% + 20px);
-        }
-      }
-
-      &.lg.hide-labels {
-        &::before {
-          top: 16px;
-          width: 16px;
-          left: 0;
-          right: calc(50% + 20px);
-        }
-      }
-    }
-  }
-
-  [role='listitem'] {
-    &.sm,
-    &.lg {
-      &::after {
-        display: none;
-      }
-    }
-  }
-
-  [role='listitem'] {
-    &.sm {
-      &.vertical {
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-:host(:first-of-type) {
-  [role='listitem'] {
-    &.sm,
-    &.lg {
-      &::before {
-        display: none;
       }
     }
   }

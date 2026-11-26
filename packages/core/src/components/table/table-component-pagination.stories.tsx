@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Pagination',
 
@@ -43,6 +45,38 @@ export default {
       },
       table: {
         defaultValue: { summary: false },
+      },
+    },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    stickyFooter: {
+      name: 'Sticky Footer',
+      description: 'Enables sticky footer.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
       },
     },
     pagination: {
@@ -134,6 +168,11 @@ export default {
       },
       if: { arg: 'rowsPerPage', eq: true },
     },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -184,6 +223,9 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
+    stickyHeader: false,
+    stickyFooter: false,
+    verticalScrollHeight: '',
     pagination: true,
     paginationLabel: 'of {pages} pages',
     pages: 4,
@@ -193,6 +235,7 @@ export default {
     rowsPerPageValue: 10,
     rowsPerPageDropdownOpenDirection: 'auto',
     rowsPerPageDropdownAriaLabel: 'Select rows per page',
+    emptyState: 'none',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -206,6 +249,9 @@ const PaginationTemplate = ({
   compactDesign,
   responsiveDesign,
   verticalDivider,
+  stickyHeader,
+  stickyFooter,
+  verticalScrollHeight,
   pagination,
   paginationLabel,
   pages,
@@ -215,6 +261,7 @@ const PaginationTemplate = ({
   rowsPerPageValue,
   rowsPerPageDropdownOpenDirection,
   rowsPerPageDropdownAriaLabel,
+  emptyState,
   noMinWidth,
   column1Width,
   column2Width,
@@ -229,12 +276,15 @@ const PaginationTemplate = ({
     <tds-link><a href="https://angular-17-demo.tegel.scania.com/">Angular</a></tds-link> Demo pages.</p> 
     <br/> 
     <tds-table
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
+      ${stickyFooter ? `sticky-footer="${stickyFooter}"` : ''}
       table-id='pagination-table'
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
       >
           <tds-table-header>
               <tds-header-cell cell-key='truck' cell-value='Truck type' ${
@@ -250,7 +300,10 @@ const PaginationTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
             <tds-table-body-row>
                 <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -287,6 +340,13 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+            `
+                : `
+              <div slot="${emptyState}">
+                ${renderEmptyStateSlot(emptyState, 'core')}
+              </div>
+            `
+            }
           </tds-table-body>
           <tds-table-footer
             pages="${pages}"

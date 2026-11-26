@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Components/Table/Batch Actions',
 
@@ -24,6 +26,27 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
+      },
+    },
     responsiveDesign: {
       name: 'Responsive Table',
       description:
@@ -42,6 +65,11 @@ export default {
       control: {
         type: 'text',
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     verticalDivider: {
       name: 'Vertical dividers',
@@ -108,7 +136,10 @@ export default {
   </tds-button>
   <tds-button  type="primary" size="sm" text="Download"></tds-button>
 </div>`,
+    emptyState: 'none',
     verticalDivider: false,
+    stickyHeader: false,
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -122,7 +153,10 @@ const BatchActionTemplate = ({
   compactDesign,
   responsiveDesign,
   batchArea,
+  emptyState,
   verticalDivider,
+  stickyHeader,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -131,6 +165,7 @@ const BatchActionTemplate = ({
 }) =>
   `
    <tds-table
+        ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
         responsive="${responsiveDesign}"
@@ -138,6 +173,7 @@ const BatchActionTemplate = ({
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
       >
           <tds-table-toolbar table-title="Batch action">
             ${batchArea}
@@ -156,7 +192,10 @@ const BatchActionTemplate = ({
                 column4Width ? `style="width: ${column4Width};"` : ''
               } cell-key='mileage' cell-value='Mileage'></tds-header-cell>
           </tds-table-header>
-          <tds-table-body>
+          <tds-table-body empty-state="${emptyState}">
+            ${
+              emptyState === 'none'
+                ? `
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
               <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -193,6 +232,13 @@ const BatchActionTemplate = ({
               <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
               <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
           </tds-table-body-row>
+        `
+                : `
+          <div slot="${emptyState}">
+            ${renderEmptyStateSlot(emptyState, 'core')}
+          </div>
+        `
+            }
       </tds-table-body>
   </tds-table>
   `;

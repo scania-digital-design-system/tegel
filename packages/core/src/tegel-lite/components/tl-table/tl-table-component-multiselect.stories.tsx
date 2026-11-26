@@ -1,3 +1,5 @@
+import { renderEmptyStateSlot } from '../../../../.storybook/utils/table-empty-state';
+
 export default {
   title: 'Tegel Lite/Table/Multiselect',
   parameters: {
@@ -42,6 +44,11 @@ export default {
       control: {
         type: 'boolean',
       },
+    },
+    emptyState: {
+      name: 'Empty state',
+      control: { type: 'radio' },
+      options: ['none', 'no-data', 'no-filtered-data'],
     },
     compactDesign: {
       name: 'Compact design',
@@ -123,6 +130,7 @@ export default {
     modeVariant: 'Primary',
     allSelected: false,
     allIndeterminate: false,
+    emptyState: 'none',
     allDisabled: false,
     compactDesign: false,
     responsive: false,
@@ -139,6 +147,7 @@ const MultiselectTemplate = ({
   modeVariant,
   allSelected,
   allIndeterminate,
+  emptyState,
   allDisabled,
   compactDesign,
   responsive,
@@ -186,6 +195,9 @@ const MultiselectTemplate = ({
         </tr>
       </thead>
       <tbody class="tl-table__body">
+        ${
+          emptyState === 'none'
+            ? `
         <tr class="tl-table__row">
           <td class="tl-table__body-cell" data-column="0">
             <div class="tl-checkbox">
@@ -230,6 +242,15 @@ const MultiselectTemplate = ({
           <td class="tl-table__body-cell" data-column="3">Spain</td>
           <td class="tl-table__body-cell" data-column="4">1789357</td>
         </tr>
+        `
+            : `
+          <tr class="tl-table__empty-state-row">
+            <td class="tl-table__empty-state-cell" colspan="5">
+              ${renderEmptyStateSlot(emptyState, 'lite')}
+            </td>
+          </tr>
+        `
+        }
       </tbody>
     </table>
 

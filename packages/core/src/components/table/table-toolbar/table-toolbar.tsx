@@ -16,6 +16,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'noMinWidth',
   'verticalDividers',
   'horizontalScrollWidth',
+  'stickyHeader',
 ];
 
 /**
@@ -38,6 +39,8 @@ export class TdsTableToolbar {
   @Prop({ reflect: true }) tdsSearchAriaLabel: string = '';
 
   @State() verticalDividers: boolean = false;
+
+  @State() stickyHeader: boolean = false;
 
   @State() compactDesign: boolean = false;
 
@@ -154,6 +157,7 @@ export class TdsTableToolbar {
     return (
       <Host
         class={{
+          'tds-table--header-sticky': this.stickyHeader,
           'tds-table--compact': this.compactDesign,
           'toolbar__horizontal-scroll': !!this.horizontalScrollWidth,
         }}
