@@ -3,8 +3,10 @@
 
 :host,
 .tds-table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   display: table;
+  position: relative;
   background-color: var(--tds-table-header-background);
   @include tds-box-sizing;
 
@@ -22,6 +24,13 @@
   overflow-x: scroll;
   white-space: nowrap;
   @include tds-scrollbar(horizontal);
+}
+
+.tds-table--vertical-scroll {
+  display: block;
+  overflow-y: scroll;
+  white-space: nowrap;
+  @include tds-scrollbar(vertical);
 }
 
 .tds-table--horizontal-scroll-toolbar {

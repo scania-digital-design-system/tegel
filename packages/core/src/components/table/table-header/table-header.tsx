@@ -12,6 +12,8 @@ import {
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { InternalTdsRowExpandedProps } from '../table-body-row-expandable/table-body-row-expandable';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -19,6 +21,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
   'compactDesign',
   'noMinWidth',
+  'stickyHeader',
 ];
 
 /**
@@ -42,6 +45,8 @@ export class TdsTableHeaderRow {
   /** Prop for controlling the indeterminate state of the "All selected"-checkbox. */
   @Prop({ reflect: true }) indeterminate: boolean = false;
 
+  @State() stickyHeader: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() expandableRows: boolean = false;
@@ -61,6 +66,8 @@ export class TdsTableHeaderRow {
   @State() enableToolbarDesign: boolean = false;
 
   @State() tableId: string | undefined = '';
+
+  @State() id: string = generateUniqueId();
 
   @Element() host!: HTMLElement;
 
@@ -94,8 +101,8 @@ export class TdsTableHeaderRow {
   }
 
   @Listen('internalTdsRowExpanded', { target: 'body' })
-  internalTdsRowExpandedListener(event: CustomEvent<object>) {
-    if (this.tableId === event.detail[0]) {
+  internalTdsRowExpandedListener(event: CustomEvent<InternalTdsRowExpandedProps>) {
+    if (this.tableId === event.detail.tableId) {
       // TODO: Improve this logic. Why we get late repose in DOM?
       setTimeout(() => {
         this.bodyExpandClicked();
@@ -124,6 +131,7 @@ export class TdsTableHeaderRow {
   componentWillLoad() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
+    this.host.id = this.id;
 
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl?.[tablePropName];
@@ -137,6 +145,21 @@ export class TdsTableHeaderRow {
       this.enableToolbarDesign =
         closestTable?.getElementsByTagName('tds-table-toolbar').length >= 1;
     }
+    if (!this.stickyHeader) return;
+
+    const headers = closestTable?.getElementsByTagName('tds-table-header');
+
+    if (!headers) return;
+
+    const index = Array.from(headers).findIndex((header) => header.id === this.id);
+
+    if (index < 0) return;
+
+    const toolbarHeight = this.compactDesign ? 56 : 64;
+    const topDistance = this.compactDesign ? 32 * index : 48 * index;
+    (headers[index] as HTMLElement).style.top = this.enableToolbarDesign
+      ? `${toolbarHeight + topDistance}px`
+      : `${topDistance}px`;
   }
 
   @Watch('selected')
@@ -158,6 +181,7 @@ export class TdsTableHeaderRow {
     return (
       <Host
         class={{
+          'tds-table--header-sticky': this.stickyHeader,
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--toolbar-available': this.enableToolbarDesign,

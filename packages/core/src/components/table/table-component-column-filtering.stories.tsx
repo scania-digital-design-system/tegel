@@ -89,6 +89,27 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stickyHeader: {
+      name: 'Sticky Header',
+      description: 'Enables sticky header.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'verticalScrollHeight', neq: '' },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    verticalScrollHeight: {
+      name: 'Vertical scrolling table height in px',
+      description: 'Used to set the boundary height of vertical scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '400px' },
+      },
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -156,7 +177,9 @@ export default {
     disablePadding: false,
     disableHeaderPadding: false,
     verticalDivider: false,
+    stickyHeader: false,
     horizontalScrollWidth: '',
+    verticalScrollHeight: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -174,7 +197,9 @@ const ColumnFilteringTemplate = ({
   disablePadding,
   disableHeaderPadding,
   verticalDivider,
+  stickyHeader,
   horizontalScrollWidth,
+  verticalScrollHeight,
   noMinWidth,
   column1Width,
   column2Width,
@@ -186,9 +211,11 @@ const ColumnFilteringTemplate = ({
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
+      ${stickyHeader ? `sticky-header="${stickyHeader}"` : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+      ${verticalScrollHeight ? `vertical-scroll-height="${verticalScrollHeight}"` : ''}
     >
       <tds-table-header >
 
