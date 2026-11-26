@@ -269,9 +269,7 @@ export class TdsTable {
   render() {
     return (
       <Host
-        style={this.responsive ? this.getHeightStyles() : undefined}
         class={{
-          'tds-table--vertical-scroll': !!this.verticalScrollHeight && this.responsive,
           'tds-table--responsive': this.responsive,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
