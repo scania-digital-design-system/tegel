@@ -24,7 +24,7 @@
     "@angular/forms": "^22.2.6",
     "@angular/platform-browser": "^22.2.6",
     "@angular/router": "^22.2.6",
-    "@scania/tegel": "workspace:*",
+    "@scania/tegel": "file:../../core-tarball/scania-tegel-1.68.2.tgz",
     "rxjs": "~7.8.0",
     "tslib": "^2.9.1"
   },
