@@ -26,7 +26,10 @@ tds-slider {
 
   // Inputfield
   --tds-slider-inputfield-number-color: var(--component--input-text-placeholder-default);
-  --tds-slider-inputfield-background: var(--component--input-background-primary);
+  --tds-slider-inputfield-background: var(
+    --tds-slider-variant-inputfield-background,
+    var(--component--input-background-primary)
+  );
 
   // Tooltip
   --tds-slider-value-tooltip-background: var(--component-tooltip-background-default);
@@ -36,12 +39,10 @@ tds-slider {
   );
 }
 
-.tds-mode-variant-primary tds-slider,
-tds-slider.tds-mode-variant-primary {
-  --tds-slider-inputfield-background: var(--component--input-background-primary);
+.tds-mode-variant-primary {
+  --tds-slider-variant-inputfield-background: var(--component--input-background-primary);
 }
 
-.tds-mode-variant-secondary tds-slider,
-tds-slider.tds-mode-variant-secondary {
-  --tds-slider-inputfield-background: var(--component--input-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-slider-variant-inputfield-background: var(--component--input-background-secondary);
 }

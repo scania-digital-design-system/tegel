@@ -1,9 +1,12 @@
 tds-card {
-  --tds-card-background: var(--component-card-background-primary-default);
+  --tds-card-background: var(
+    --tds-card-variant-background,
+    var(--component-card-background-primary-default)
+  );
   --tds-card-border-radius: calc(var(--component-card-border-radius-default) * 1px);
   --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
   --tds-card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
-  --tds-card-box: var(--tds-card-box-primary);
+  --tds-card-box: var(--tds-card-variant-box, var(--tds-card-box-primary));
   --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
   --tds-card-headline: var(--component-card-text-title-default);
@@ -17,14 +20,24 @@ tds-card {
   --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
 }
 
-.tds-mode-variant-primary tds-card {
-  --tds-card-box: var(--tds-card-box-primary);
-  --tds-card-background: var(--component-card-background-primary-default);
+.tds-mode-variant-primary {
+  --tds-card-variant-background: var(--component-card-background-primary-default);
+  --tds-card-variant-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
 }
 
-.tds-mode-variant-secondary tds-card {
-  --tds-card-box: var(--tds-card-box-secondary);
-  --tds-card-background: var(--component-card-background-secondary-default);
+.tds-mode-variant-secondary {
+  --tds-card-variant-background: var(--component-card-background-secondary-default);
+  --tds-card-variant-box: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
+}
+
+.tds-mode-dark .tds-mode-variant-primary,
+.tds-mode-dark.tds-mode-variant-primary {
+  --tds-card-variant-box: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
+}
+
+.tds-mode-dark .tds-mode-variant-secondary,
+.tds-mode-dark.tds-mode-variant-secondary {
+  --tds-card-variant-box: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
 }
 
 .traton tds-card {

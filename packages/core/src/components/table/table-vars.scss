@@ -23,16 +23,28 @@ tds-table {
   --tds-table-border-radius: calc(var(--component-table-border-radius-default) * 1px);
 
   /* Table-body-cell */
-  --tds-table-body-cell-background-hover: var(--component-table-background-cell-primary-hover);
+  --tds-table-body-cell-background-hover: var(
+    --tds-table-variant-body-cell-background-hover,
+    var(--component-table-background-cell-primary-hover)
+  );
   --tds-table-body-cell-text-color: var(--component-table-text-cell-default);
   --tds-table-body-cell-background-expanded: var(
     --component-table-background-cell-expanded-default
   );
 
   /* Table-body-row */
-  --tds-table-body-row-background: var(--component-table-background-cell-primary-default);
-  --tds-table-zebra-mode-backround: var(--component-table-background-cell-secondary-default);
-  --tds-table-body-row-background-hover: var(--component-table-background-cell-primary-hover);
+  --tds-table-body-row-background: var(
+    --tds-table-variant-body-row-background,
+    var(--component-table-background-cell-primary-default)
+  );
+  --tds-table-zebra-mode-backround: var(
+    --tds-table-variant-zebra-mode-backround,
+    var(--component-table-background-cell-secondary-default)
+  );
+  --tds-table-body-row-background-hover: var(
+    --tds-table-variant-body-row-background-hover,
+    var(--component-table-background-cell-primary-hover)
+  );
   --tds-table-body-row-background-selected: var(--component-table-background-cell-selected-default);
   --tds-table-body-row-background-selected-hover: var(
     --component-table-background-cell-selected-hover
@@ -51,18 +63,26 @@ tds-table {
   --tds-table-sort-icon-color: var(--component-table-icon-sort-default);
 }
 
-.tds-mode-variant-primary tds-table,
-tds-table.tds-mode-variant-primary {
-  --tds-table-body-cell-background-hover: var(--component-table-background-cell-primary-hover);
-  --tds-table-body-row-background: var(--component-table-background-cell-primary-default);
-  --tds-table-zebra-mode-backround: var(--component-table-background-cell-secondary-default);
-  --tds-table-body-row-background-hover: var(--component-table-background-cell-primary-hover);
+.tds-mode-variant-primary {
+  --tds-table-variant-body-cell-background-hover: var(
+    --component-table-background-cell-primary-hover
+  );
+  --tds-table-variant-body-row-background: var(--component-table-background-cell-primary-default);
+  --tds-table-variant-zebra-mode-backround: var(
+    --component-table-background-cell-secondary-default
+  );
+  --tds-table-variant-body-row-background-hover: var(
+    --component-table-background-cell-primary-hover
+  );
 }
 
-.tds-mode-variant-secondary tds-table,
-tds-table.tds-mode-variant-secondary {
-  --tds-table-body-cell-background-hover: var(--component-table-background-cell-secondary-hover);
-  --tds-table-body-row-background: var(--component-table-background-cell-secondary-default);
-  --tds-table-zebra-mode-backround: var(--component-table-background-cell-primary-default);
-  --tds-table-body-row-background-hover: var(--component-table-background-cell-secondary-hover);
+.tds-mode-variant-secondary {
+  --tds-table-variant-body-cell-background-hover: var(
+    --component-table-background-cell-secondary-hover
+  );
+  --tds-table-variant-body-row-background: var(--component-table-background-cell-secondary-default);
+  --tds-table-variant-zebra-mode-backround: var(--component-table-background-cell-primary-default);
+  --tds-table-variant-body-row-background-hover: var(
+    --component-table-background-cell-secondary-hover
+  );
 }

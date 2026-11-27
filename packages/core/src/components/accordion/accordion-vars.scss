@@ -1,10 +1,19 @@
 tds-accordion {
-  --tds-accordion-background: var(--component-accordion-background-primary-default);
+  --tds-accordion-background: var(
+    --tds-accordion-variant-background,
+    var(--component-accordion-background-primary-default)
+  );
   --tds-accordion-background-hover-primary: var(--component-accordion-background-primary-hover);
   --tds-accordion-background-hover-secondary: var(--component-accordion-background-secondary-hover);
-  --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
+  --tds-accordion-background-hover: var(
+    --tds-accordion-variant-background-hover,
+    var(--tds-accordion-background-hover-primary)
+  );
   --tds-accordion-background-focus: var(--color-background-none);
-  --tds-accordion-background-active: var(--component-accordion-background-primary-active);
+  --tds-accordion-background-active: var(
+    --tds-accordion-variant-background-active,
+    var(--component-accordion-background-primary-active)
+  );
   --tds-accordion-color: var(--component-accordion-text-default);
   --tds-accordion-color-disabled: var(--color-text-disabled);
   --tds-accordion-icon-color: var(--component-accordion-icon-default);
@@ -14,16 +23,14 @@ tds-accordion {
   --tds-accordion-opacity-disabled: calc(var(--component-accordion-opacity-disabled) / 100);
 }
 
-.tds-mode-variant-primary tds-accordion,
-tds-accordion.tds-mode-variant-primary {
-  --tds-accordion-background: var(--component-accordion-background-primary-default);
-  --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
-  --tds-accordion-background-active: var(--component-accordion-background-primary-active);
+.tds-mode-variant-primary {
+  --tds-accordion-variant-background: var(--component-accordion-background-primary-default);
+  --tds-accordion-variant-background-hover: var(--component-accordion-background-primary-hover);
+  --tds-accordion-variant-background-active: var(--component-accordion-background-primary-active);
 }
 
-.tds-mode-variant-secondary tds-accordion,
-tds-accordion.tds-mode-variant-secondary {
-  --tds-accordion-background: var(--component-accordion-background-secondary-default);
-  --tds-accordion-background-hover: var(--tds-accordion-background-hover-secondary);
-  --tds-accordion-background-active: var(--component-accordion-background-secondary-active);
+.tds-mode-variant-secondary {
+  --tds-accordion-variant-background: var(--component-accordion-background-secondary-default);
+  --tds-accordion-variant-background-hover: var(--component-accordion-background-secondary-hover);
+  --tds-accordion-variant-background-active: var(--component-accordion-background-secondary-active);
 }
