@@ -23,14 +23,14 @@ tds-dropdown {
   --tds-dropdown-border-color: var(--component-button-border-standard-tertiary-hover);
 }
 
-.tds-mode-variant-secondary {
-  --tds-dropdown-variant-bg: var(--component--input-background-secondary);
-  --tds-dropdown-variant-list-bg: var(--component-dropdown-background-secondary);
-}
-
 .tds-mode-variant-primary {
   --tds-dropdown-variant-bg: var(--component--input-background-primary);
   --tds-dropdown-variant-list-bg: var(--component-dropdown-background-primary);
+}
+
+.tds-mode-variant-secondary {
+  --tds-dropdown-variant-bg: var(--component--input-background-secondary);
+  --tds-dropdown-variant-list-bg: var(--component-dropdown-background-secondary);
 }
 
 .scania tds-dropdown {
