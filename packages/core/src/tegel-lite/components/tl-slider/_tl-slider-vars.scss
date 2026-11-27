@@ -17,16 +17,19 @@
   --slider-value-tooltip-background: var(--component-tooltip-background-default);
   --slider-value-tooltip: var(--component-tooltip-text-default);
   --slider-value-tooltip-border-radius: calc(var(--component-tooltip-border-radius-default) * 1px);
-  --slider-input-background: var(--component--input-background-primary);
+  --slider-input-background: var(
+    --slider-variant-input-background,
+    var(--component--input-background-primary)
+  );
   --slider-controls-color: var(--component-slider-icon-control-default);
 }
 
-.tl-mode-variant-primary .tl-slider,
-.tds-mode-variant-primary .tl-slider {
-  --slider-input-background: var(--component--input-background-primary);
+.tl-mode-variant-primary,
+.tds-mode-variant-primary {
+  --slider-variant-input-background: var(--component--input-background-primary);
 }
 
-.tl-mode-variant-secondary .tl-slider,
-.tds-mode-variant-secondary .tl-slider {
-  --slider-input-background: var(--component--input-background-secondary);
+.tl-mode-variant-secondary,
+.tds-mode-variant-secondary {
+  --slider-variant-input-background: var(--component--input-background-secondary);
 }

@@ -4,14 +4,14 @@ tds-block {
   --tds-block-background-secondary: var(--component-block-background-secondary);
   --tds-block-background-even: var(--component-block-background-nested-even);
   --tds-block-background-odd: var(--component-block-background-nested-odd);
-  --tds-block-background: var(--tds-block-background-primary);
+  --tds-block-background: var(--tds-block-variant-background, var(--tds-block-background-primary));
   --tds-block-border-radius: calc(var(--component-block-border-radius-default) * 1px);
 }
 
-.tds-mode-variant-primary tds-block {
-  --tds-block-background: var(--tds-block-background-primary);
+.tds-mode-variant-primary {
+  --tds-block-variant-background: var(--component-block-background-primary);
 }
 
-.tds-mode-variant-secondary tds-block {
-  --tds-block-background: var(--tds-block-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-block-variant-background: var(--component-block-background-secondary);
 }

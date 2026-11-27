@@ -1,8 +1,15 @@
 tds-folder-tabs {
-  --tds-folder-tab-background: var(--component-tabs-background-item-primary-default);
-  --tds-folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
+  --tds-folder-tab-background: var(
+    --tds-folder-tab-variant-background,
+    var(--component-tabs-background-item-primary-default)
+  );
+  --tds-folder-tab-background-hover: var(
+    --tds-folder-tab-variant-background-hover,
+    var(--component-tabs-background-item-primary-hover)
+  );
   --tds-folder-tab-background-selected: var(
-    --component-tabs-background-item-primary-current-default
+    --tds-folder-tab-variant-background-selected,
+    var(--component-tabs-background-item-primary-current-default)
   );
   --tds-folder-tab-border-selected: var(--component-tabs-border-item-indicator-default);
   --tds-folder-tabs-scroll-btn-background: var(--component-tabs-background-scroll-default);
@@ -14,20 +21,18 @@ tds-folder-tabs {
   --tds-folder-tab-item-background-disabled: var(--tds-folder-tab-background);
 }
 
-.tds-mode-variant-primary tds-folder-tabs,
-tds-folder-tabs.tds-mode-variant-primary {
-  --tds-folder-tab-background: var(--component-tabs-background-item-primary-default);
-  --tds-folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
-  --tds-folder-tab-background-selected: var(
+.tds-mode-variant-primary {
+  --tds-folder-tab-variant-background: var(--component-tabs-background-item-primary-default);
+  --tds-folder-tab-variant-background-hover: var(--component-tabs-background-item-primary-hover);
+  --tds-folder-tab-variant-background-selected: var(
     --component-tabs-background-item-primary-current-default
   );
 }
 
-.tds-mode-variant-secondary tds-folder-tabs,
-tds-folder-tabs.tds-mode-variant-secondary {
-  --tds-folder-tab-background: var(--component-tabs-background-item-secondary-default);
-  --tds-folder-tab-background-hover: var(--component-tabs-background-item-secondary-hover);
-  --tds-folder-tab-background-selected: var(
+.tds-mode-variant-secondary {
+  --tds-folder-tab-variant-background: var(--component-tabs-background-item-secondary-default);
+  --tds-folder-tab-variant-background-hover: var(--component-tabs-background-item-secondary-hover);
+  --tds-folder-tab-variant-background-selected: var(
     --component-tabs-background-item-secondary-current-default
   );
 }

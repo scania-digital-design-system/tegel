@@ -4,7 +4,10 @@ tds-navigation-tabs {
 
   /* Scroll button icon color */
   --tds-navigation-tabs-scroll-btn-color: var(--component-tabs-icon-scroll-default);
-  --tds-navigation-tabs-scroll-btn-background: var(--component-tabs-background-primary);
+  --tds-navigation-tabs-scroll-btn-background: var(
+    --tds-navigation-tabs-variant-scroll-btn-background,
+    var(--component-tabs-background-primary)
+  );
 
   /* Tab */
   --tds-navigation-tabs-tab-color: var(--component-tabs-text-item-default);
@@ -17,12 +20,10 @@ tds-navigation-tabs {
   );
 }
 
-.tds-mode-variant-primary tds-navigation-tabs,
-tds-navigation-tabs.tds-mode-variant-primary {
-  --tds-navigation-tabs-scroll-btn-background: var(--component-tabs-background-primary);
+.tds-mode-variant-primary {
+  --tds-navigation-tabs-variant-scroll-btn-background: var(--component-tabs-background-primary);
 }
 
-.tds-mode-variant-secondary tds-navigation-tabs,
-tds-navigation-tabs.tds-mode-variant-secondary {
-  --tds-navigation-tabs-scroll-btn-background: var(--component-tabs-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-navigation-tabs-variant-scroll-btn-background: var(--component-tabs-background-secondary);
 }

@@ -1,17 +1,21 @@
 tds-popover-canvas {
-  --tds-popover-canvas-color: var(--component-popover-text-link-primary-default);
-  --tds-popover-canvas-background: var(--component-popover-background-primary);
+  --tds-popover-canvas-color: var(
+    --tds-popover-canvas-variant-color,
+    var(--component-popover-text-link-primary-default)
+  );
+  --tds-popover-canvas-background: var(
+    --tds-popover-canvas-variant-background,
+    var(--component-popover-background-primary)
+  );
   --tds-popover-canvas-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
 }
 
-.tds-mode-variant-primary tds-popover-canvas,
-tds-popover-canvas.tds-mode-variant-primary {
-  --tds-popover-canvas-color: var(--component-popover-text-link-primary-default);
-  --tds-popover-canvas-background: var(--component-popover-background-primary);
+.tds-mode-variant-primary {
+  --tds-popover-canvas-variant-color: var(--component-popover-text-link-primary-default);
+  --tds-popover-canvas-variant-background: var(--component-popover-background-primary);
 }
 
-.tds-mode-variant-secondary tds-popover-canvas,
-tds-popover-canvas.tds-mode-variant-secondary {
-  --tds-popover-canvas-color: var(--component-popover-text-link-secondary-default);
-  --tds-popover-canvas-background: var(--component-popover-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-popover-canvas-variant-color: var(--component-popover-text-link-secondary-default);
+  --tds-popover-canvas-variant-background: var(--component-popover-background-secondary);
 }

@@ -6,9 +6,18 @@
 }
 
 .tl-folder-tabs__tab {
-  --folder-tab-background: var(--component-tabs-background-item-primary-default);
-  --folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
-  --folder-tab-background-selected: var(--component-tabs-background-item-primary-current-default);
+  --folder-tab-background: var(
+    --folder-tab-variant-background,
+    var(--component-tabs-background-item-primary-default)
+  );
+  --folder-tab-background-hover: var(
+    --folder-tab-variant-background-hover,
+    var(--component-tabs-background-item-primary-hover)
+  );
+  --folder-tab-background-selected: var(
+    --folder-tab-variant-background-selected,
+    var(--component-tabs-background-item-primary-current-default)
+  );
   --folder-tab-border-selected: var(--component-tabs-border-item-indicator-default);
   --folder-tab-divider-color: var(--component-tabs-border-item-divider-default);
   --folder-tab-text: var(--component-tabs-text-item-folder-default);
@@ -16,14 +25,18 @@
   --folder-tab-item-opacity-disabled: calc(var(--component-tabs-opacity-disabled) / 100);
 }
 
-.tl-folder-tabs--primary .tl-folder-tabs__tab {
-  --folder-tab-background: var(--component-tabs-background-item-primary-default);
-  --folder-tab-background-hover: var(--component-tabs-background-item-primary-hover);
-  --folder-tab-background-selected: var(--component-tabs-background-item-primary-current-default);
+.tl-folder-tabs--primary {
+  --folder-tab-variant-background: var(--component-tabs-background-item-primary-default);
+  --folder-tab-variant-background-hover: var(--component-tabs-background-item-primary-hover);
+  --folder-tab-variant-background-selected: var(
+    --component-tabs-background-item-primary-current-default
+  );
 }
 
-.tl-folder-tabs--secondary .tl-folder-tabs__tab {
-  --folder-tab-background: var(--component-tabs-background-item-secondary-default);
-  --folder-tab-background-hover: var(--component-tabs-background-item-secondary-hover);
-  --folder-tab-background-selected: var(--component-tabs-background-item-secondary-current-default);
+.tl-folder-tabs--secondary {
+  --folder-tab-variant-background: var(--component-tabs-background-item-secondary-default);
+  --folder-tab-variant-background-hover: var(--component-tabs-background-item-secondary-hover);
+  --folder-tab-variant-background-selected: var(
+    --component-tabs-background-item-secondary-current-default
+  );
 }

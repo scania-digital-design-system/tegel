@@ -1,5 +1,5 @@
 tds-dropdown {
-  --tds-dropdown-bg: var(--component--input-background-primary);
+  --tds-dropdown-bg: var(--tds-dropdown-variant-bg, var(--component--input-background-primary));
   --tds-dropdown-value-color: var(--component--input-text-value-default);
   --tds-dropdown-label-color: var(--component--input-text-label-default);
   --tds-dropdown-label-inside-color: var(--component--input-text-label-default);
@@ -15,21 +15,22 @@ tds-dropdown {
   --tds-dropdown-clear-icon-hover-color: var(--component--input-icon-control-hover);
   --tds-dropdown-list-box-shadow: 0 2px 3px 0 rgb(0, 0, 0, 0.1);
   --tds-placeholder-margin: calc(var(--unit-8) * 1px);
-  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
+  --tds-dropdown-list-background-color: var(
+    --tds-dropdown-variant-list-bg,
+    var(--component-dropdown-background-primary)
+  );
   --tds-dropdown-option-border: var(--component-dropdown-border-item-divider-default);
   --tds-dropdown-border-color: var(--component-button-border-standard-tertiary-hover);
 }
 
-.tds-mode-variant-primary tds-dropdown,
-tds-dropdown.tds-mode-variant-primary {
-  --tds-dropdown-bg: var(--component--input-background-primary);
-  --tds-dropdown-list-background-color: var(--component-dropdown-background-primary);
+.tds-mode-variant-primary {
+  --tds-dropdown-variant-bg: var(--component--input-background-primary);
+  --tds-dropdown-variant-list-bg: var(--component-dropdown-background-primary);
 }
 
-.tds-mode-variant-secondary tds-dropdown,
-tds-dropdown.tds-mode-variant-secondary {
-  --tds-dropdown-bg: var(--component--input-background-secondary);
-  --tds-dropdown-list-background-color: var(--component-dropdown-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-dropdown-variant-bg: var(--component--input-background-secondary);
+  --tds-dropdown-variant-list-bg: var(--component-dropdown-background-secondary);
 }
 
 .scania tds-dropdown {
